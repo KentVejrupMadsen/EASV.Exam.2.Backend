@@ -1,22 +1,20 @@
-import { createApp } from 'vue';
+import { createApp } from 'vue'
 
-import App from './App.vue';
-import router from './router';
-import store from './store';
+import App from './App.vue'
+import router from './router'
+import store from './store'
 
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app'
 
-import { getPerformance } from "firebase/performance";
+import { getPerformance } from 'firebase/performance'
 
-const firebaseConfig = require('./firebase.js');
+const firebaseConfig = require('./firebase.js')
 
+const app = initializeApp(firebaseConfig.getFirebaseConfig())
 
-const app = initializeApp(firebaseConfig.getFirebaseConfig());
+getPerformance(app)
 
-getPerformance(app);
-
-
-createApp( App )
-    .use( store )
-    .use( router )
-    .mount('#app');
+createApp(App)
+  .use(store)
+  .use(router)
+  .mount('#app')
