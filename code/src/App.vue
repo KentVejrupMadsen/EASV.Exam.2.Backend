@@ -24,6 +24,5 @@ export default
   <router-view/>
 </template>
 <style> 
-@import url("style.css");
 @import url("http://localhost:8080/font/stylesheet.css");
 </style>
