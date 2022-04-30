@@ -1,6 +1,7 @@
 <script>
 /* eslint-disable */
-export default {
+export default 
+{
     name: 'LoginView',
     data() 
     {
@@ -18,7 +19,6 @@ export default {
     },
     components: {},
 };
-
 </script>
 <template>
   <div class="login">

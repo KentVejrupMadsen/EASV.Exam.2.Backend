@@ -1,3 +1,6 @@
+<script>
+
+</script>
 <template>
   <div class="kanban">
     <h1>This is an about page</h1>

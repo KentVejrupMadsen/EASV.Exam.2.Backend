@@ -1,3 +1,14 @@
+<script>
+/* eslint-disable */
+export default
+{
+  name: 'Application',
+  mounted: function()
+  {
+    document.title = 'kanban project'
+  }
+}
+</script>
 <template>
   <nav>
     <router-link to="/">
