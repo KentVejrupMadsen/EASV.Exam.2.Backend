@@ -1,7 +1,9 @@
 <script>
-export default {
+export default
+{
   name: 'KanbanView',
-  components: {
+  components:
+  {
     
   }
 }

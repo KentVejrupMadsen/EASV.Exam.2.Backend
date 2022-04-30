@@ -1,10 +1,12 @@
 <script>
 /* eslint-disable */
-export default {
+export default 
+{
     name: 'RegistrationView',
     data() 
     {
-      return {
+      return 
+      {
 
       }
     },
@@ -18,8 +20,6 @@ export default {
     },
     components: {},
 };
-
-
 </script>
 <template>
   <div class="registration">

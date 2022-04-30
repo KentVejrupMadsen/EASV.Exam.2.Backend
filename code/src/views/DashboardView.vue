@@ -1,8 +1,10 @@
 <script>
 /* eslint-disable */
-export default {
+export default 
+{
   name: 'DashboardView',
-  components: {
+  components: 
+  {
     
   }
 }

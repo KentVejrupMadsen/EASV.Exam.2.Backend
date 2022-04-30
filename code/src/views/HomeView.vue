@@ -1,10 +1,12 @@
 <script>
 /* eslint-disable */
 // @ is an alias to /src
-export default {
+export default 
+{
   name: 'HomeView',
-  components: {
-    HelloWorld
+  components: 
+  {
+    
   }
 }
 </script>
