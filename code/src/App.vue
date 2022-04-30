@@ -5,7 +5,7 @@ export default
   name: 'Application',
   mounted: function()
   {
-    document.title = 'kanban project'
+    document.title = 'Kanban Project'
   }
 }
 </script>

@@ -1,12 +1,15 @@
-
+/* eslint-disable */
 import { createApp } from 'vue'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { initializeApp } from 'firebase/app'
-import { getPerformance } from 'firebase/performance'
+
 
 const firebaseConfig = require('./firebase.js')
+import { getPerformance } from 'firebase/performance'
+import { initializeApp } from "firebase/app";
+
 
 const app = initializeApp(firebaseConfig.getFirebaseConfig())
 getPerformance(app)

@@ -14,7 +14,7 @@ export default
     {
       registration()
       {
-        console.log("test");
+        
       }
 
     },
