@@ -1,6 +1,11 @@
 <script>
 /* eslint-disable */
-
+export default {
+  name: 'AboutView',
+  components: {
+    
+  }
+}
 </script>
 <template>
   <div class="about">

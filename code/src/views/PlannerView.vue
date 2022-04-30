@@ -1,5 +1,10 @@
 <script>
-
+export default {
+  name: 'PlannerView',
+  components: {
+    
+  }
+}
 </script>
 <template>
   <div class="planner">

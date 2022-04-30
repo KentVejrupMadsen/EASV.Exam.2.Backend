@@ -1,4 +1,5 @@
 <script>
+/* eslint-disable */
 
 </script>
 <template>

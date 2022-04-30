@@ -1,5 +1,10 @@
 <script>
-
+export default {
+  name: 'KanbanView',
+  components: {
+    
+  }
+}
 </script>
 <template>
   <div class="kanban">
