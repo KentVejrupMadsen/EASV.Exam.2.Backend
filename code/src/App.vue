@@ -1,5 +1,6 @@
 <script>
 /* eslint-disable */
+
 export default
 {
   name: 'Application',
