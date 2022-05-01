@@ -3,26 +3,28 @@
 export default
 {
   name: 'Application',
-  mounted: function()
+  mounted: function ()
   {
     document.title = 'Kanban Project'
   }
 }
 </script>
 <template>
-  <nav>
-    <router-link to="/">
-      Home
-    </router-link>
-    <router-link to="/about">
-      About
-    </router-link>
-    <router-link to="/login">
-      Login
-    </router-link>
-  </nav>
+  <header>
+    <nav>
+      <router-link to="/">
+        Home
+      </router-link>
+      <router-link to="/about">
+        About
+      </router-link>
+      <router-link to="/login">
+        Login
+      </router-link>
+    </nav> 
+  </header>
   <router-view/>
 </template>
-<style> 
-@import url("http://localhost:8080/font/stylesheet.css");
+<style scoped> 
+@import url('style.css');
 </style>

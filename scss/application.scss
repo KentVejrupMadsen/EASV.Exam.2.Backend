@@ -5,10 +5,41 @@ main
 
 header 
 {
+}
 
+header nav 
+{
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+}
+
+header nav a 
+{
+    font-family: $header-font;
+    margin-left: 1pc;
+    margin-right: 1pc;
+    margin-top: 0.4pc;
+    margin-bottom: 0.4pc;
 }
 
 footer 
 {
 
+}
+
+#app 
+{
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto;
+    grid-gap: 32px;
+}
+
+.center-column
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

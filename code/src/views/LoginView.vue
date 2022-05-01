@@ -1,4 +1,19 @@
+<template>
+
+<div class="center-column">
+  <div id="login">
+    <img alt="Vue logo" src="../assets/logo.png">
+    <LoginForm>
+    </LoginForm>
+    <router-link to="/registration">
+      registration
+    </router-link>
+  </div>
+</div>
+</template>
 <script>
+import LoginForm from '../components/LoginForm.vue'
+
 /* eslint-disable */
 export default 
 {
@@ -13,24 +28,20 @@ export default
     {
       login()
       {
+        console.log("enter");
         
       }
 
     },
-    components: {},
+    components: {
+      LoginForm
+    },
+    mounted: function()
+    {
+    },
+    methods: 
+    {
+      
+    }
 };
 </script>
-<template>
-  <div class="login">
-    <form>
-      <h1> Login </h1>
-      <div class="">
-        <input type="text" placeholder="Username" id="login_id"/>
-        <input type="password" placeholder="Password" id="password"/>
-        <input type="button" value="login" id="login" @click="login()"/>
-      </div>
-    </form>
-    <router-link to="/registration"> registration </router-link>
-  </div>
-</template>
-

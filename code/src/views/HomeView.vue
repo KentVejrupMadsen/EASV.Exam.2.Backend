@@ -15,3 +15,6 @@ export default
     <img alt="Vue logo" src="../assets/logo.png">
   </div>
 </template>
+<style scoped> 
+
+</style>
