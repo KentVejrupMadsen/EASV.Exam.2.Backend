@@ -31,7 +31,11 @@ export default {
   {
       login:function()
       {
-          
+        var user_id = this.form.user_identifier;
+        var user_password = this.form.password;
+
+        
+
       }
   }
 }
