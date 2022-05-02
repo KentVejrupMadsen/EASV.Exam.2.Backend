@@ -11,6 +11,8 @@
     class User 
     extends Authenticatable
     {
+        protected $table = 'accounts';
+
         use HasApiTokens, HasFactory, Notifiable;
 
         /**
