@@ -4,7 +4,8 @@
 
     use Illuminate\Http\Request;
 
-    class KanbanController extends Controller
+    class KanbanController 
+        extends Controller
     {
         //
     }
