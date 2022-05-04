@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
+    use Illuminate\Database\Eloquent\Model;
 
-class MemberGroupModel extends Model
-{
-    use HasFactory;
-}
+    class MemberGroupModel 
+        extends Model
+    {
+        use HasFactory;
+        
+        protected $table = 'member_groups';
+    }
+?>

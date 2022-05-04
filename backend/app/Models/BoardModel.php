@@ -9,5 +9,7 @@
         extends Model
     {
         use HasFactory;
+        
+        protected $table = 'boards';
     }
 ?>

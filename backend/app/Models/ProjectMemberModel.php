@@ -9,6 +9,8 @@
         extends Model
     {
         use HasFactory;
+        
+        protected $table = 'project_members';
     }
 
 ?>
