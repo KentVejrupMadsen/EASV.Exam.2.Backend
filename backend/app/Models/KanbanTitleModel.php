@@ -11,5 +11,22 @@
         use HasFactory;
         
         protected $table = 'kanban_titles';
+
+        protected $fillable = 
+        [
+            
+        ];
+
+        
+        protected $hidden = 
+        [
+            
+        ];
+
+        
+        protected $casts = 
+        [
+            
+        ];
     }
 ?>

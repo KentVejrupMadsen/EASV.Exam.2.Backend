@@ -11,5 +11,22 @@
         use HasFactory;
         
         protected $table = 'boards';
+
+        protected $fillable = 
+        [
+            
+        ];
+
+        
+        protected $hidden = 
+        [
+            
+        ];
+
+        
+        protected $casts = 
+        [
+            
+        ];
     }
 ?>

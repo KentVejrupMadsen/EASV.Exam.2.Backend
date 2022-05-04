@@ -11,5 +11,21 @@
         use HasFactory;
         
         protected $table = 'member_groups';
+        protected $fillable = 
+        [
+            
+        ];
+
+        
+        protected $hidden = 
+        [
+            
+        ];
+
+        
+        protected $casts = 
+        [
+            
+        ];
     }
 ?>

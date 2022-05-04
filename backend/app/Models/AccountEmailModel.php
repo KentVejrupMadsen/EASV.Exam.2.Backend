@@ -11,5 +11,22 @@
         use HasFactory;
 
         protected $table = 'account_emails';
+        
+        protected $fillable = 
+        [
+            
+        ];
+
+        
+        protected $hidden = 
+        [
+            
+        ];
+
+        
+        protected $casts = 
+        [
+            
+        ];
     }
 ?>

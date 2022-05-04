@@ -11,5 +11,22 @@
         use HasFactory;
         
         protected $table = 'kanbans';
+
+        protected $fillable = 
+        [
+            
+        ];
+
+        
+        protected $hidden = 
+        [
+            
+        ];
+
+        
+        protected $casts = 
+        [
+            
+        ];
     }
 ?>

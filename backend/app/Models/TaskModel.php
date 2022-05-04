@@ -11,5 +11,21 @@
         use HasFactory;
         
         protected $table = 'tasks';
+        protected $fillable = 
+        [
+            
+        ];
+
+        
+        protected $hidden = 
+        [
+            
+        ];
+
+        
+        protected $casts = 
+        [
+            
+        ];
     }
 ?>

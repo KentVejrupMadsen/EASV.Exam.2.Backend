@@ -11,5 +11,21 @@
         use HasFactory;
         
         protected $table = 'project_titles';
+        protected $fillable = 
+        [
+            
+        ];
+
+        
+        protected $hidden = 
+        [
+            
+        ];
+
+        
+        protected $casts = 
+        [
+            
+        ];
     }
 ?>
