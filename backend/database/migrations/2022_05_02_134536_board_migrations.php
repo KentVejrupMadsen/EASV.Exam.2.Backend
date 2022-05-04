@@ -6,22 +6,9 @@
 
     return new class extends Migration
     {
-        /**
-         * Run the migrations.
-         *
-         * @return void
-         */
+        
         public function up()
         {
-            Schema::create( 'tasks', 
-                function ( Blueprint $table ) 
-                {
-                    $table->id();
-                    $table->bigInteger( 'board_id' )->unsigned();
-                    $table->longText( 'content' );
-                }
-            );
-
             //
             Schema::create( 'boards', 
                 function ( Blueprint $table ) 
@@ -38,13 +25,24 @@
                           ->onDelete( 'CASCADE' );
                 }
             );
+
+
+            Schema::create( 'tasks', 
+                function ( Blueprint $table ) 
+                {
+                    $table->id();
+                    $table->bigInteger( 'board_id' )->unsigned();
+                    $table->longText( 'content' );
+                    
+                    $table->foreign( 'board_id' )
+                          ->references( 'id' )
+                          ->on( 'boards' )
+                          ->onDelete( 'CASCADE' );
+                }
+            );
         }
 
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
+        
         public function down()
         {
             //

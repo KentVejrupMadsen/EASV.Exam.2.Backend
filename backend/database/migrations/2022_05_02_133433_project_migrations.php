@@ -4,6 +4,8 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+
+    
     return new class extends Migration
     {
         
@@ -14,9 +16,9 @@
                 {
                     $table->id();
                     $table->text('content');
-                    
                 }
             );
+
 
             //
             Schema::create( 'projects', 
@@ -43,13 +45,15 @@
                 }
             );
 
-            Schema::create( 'member_group', 
+
+            Schema::create( 'member_groups', 
                 function ( Blueprint $table ) 
                 {
                     $table->id();
                     $table->text('content');   
                 }
             );
+
 
             Schema::create( 'project_members', 
                 function ( Blueprint $table ) 
@@ -72,7 +76,7 @@
 
                     $table->foreign( 'member_group_id' )
                           ->references( 'id' )
-                          ->on( 'member_group' )
+                          ->on( 'member_groups' )
                           ->onDelete( 'CASCADE' );
                     
                     
@@ -84,6 +88,8 @@
         public function down()
         {
             //
+            Schema::dropIfExists( 'project_members' );
+            Schema::dropIfExists( 'member_groups' );
             Schema::dropIfExists( 'projects' );
             Schema::dropIfExists( 'projects_titles' );
         }

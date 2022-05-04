@@ -4,6 +4,8 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+
+    
     return new class extends Migration
     {
         
@@ -17,6 +19,7 @@
                 }
             );
 
+
             Schema::create( 'accounts', 
                 function ( Blueprint $table ) 
                 {
@@ -27,6 +30,11 @@
                     $table->string( 'password' );
                     $table->rememberToken();
                     $table->timestamps();
+
+                    $table->foreign( 'email_id' )
+                          ->references( 'id' )
+                          ->on( 'account_emails' )
+                          ->onDelete( 'CASCADE' );
                 }
             );
         }
@@ -35,6 +43,7 @@
         public function down()
         {
             Schema::dropIfExists( 'accounts' );
+            Schema::dropIfExists( 'account_emails' );
         }
     };
 
