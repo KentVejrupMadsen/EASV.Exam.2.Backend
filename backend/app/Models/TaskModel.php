@@ -11,9 +11,11 @@
         use HasFactory;
         
         protected $table = 'tasks';
+        
         protected $fillable = 
         [
-            
+            'board_id',
+            'content'
         ];
 
         

@@ -13,9 +13,12 @@
         use HasFactory;
         
         protected $table = 'project_members';
+        
         protected $fillable = 
         [
-            
+            'project_id',
+            'account_id',
+            'member_group_id'    
         ];
 
         

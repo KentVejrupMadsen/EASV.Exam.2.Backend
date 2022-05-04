@@ -14,7 +14,8 @@
 
         protected $fillable = 
         [
-            
+            'kanban_title_id',
+            'project_id'
         ];
 
         

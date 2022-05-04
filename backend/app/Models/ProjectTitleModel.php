@@ -5,15 +5,18 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
+
+
     class ProjectTitleModel 
         extends Model
     {
         use HasFactory;
         
         protected $table = 'project_titles';
+
         protected $fillable = 
         [
-            
+            'content'
         ];
 
         
