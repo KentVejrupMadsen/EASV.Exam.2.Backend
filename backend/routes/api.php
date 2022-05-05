@@ -1,19 +1,44 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+    use App\Http\Controllers\AccountController;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+    $mw_sanctum =  'auth:sanctum';
+
+    // Account
+        // Login
+    Route::post( '/1.0.0/account/login', 
+        [AccountController::class, 'login']
+    );
+
+        // Register / Create
+    Route::post( '/1.0.0/account/create', 
+        [AccountController::class, 'create']
+    );
+
+    Route::middleware( $mw_sanctum )->get( '/1.0.0/account/me', 
+        [AccountController::class, 'me']
+    );
+
+        // Logout
+    Route::middleware( $mw_sanctum )->get( '/1.0.0/account/logout', 
+        [AccountController::class, 'logout']
+    );
+
+        // Update
+    Route::middleware( $mw_sanctum )->put( '/1.0.0/account/update', 
+        [AccountController::class, 'update']
+    );
+
+        // Delete
+    Route::middleware( $mw_sanctum )->delete( '/1.0.0/account/delete', 
+        [AccountController::class, 'delete']
+    );
+
+
+
+
+
+?>

@@ -4,29 +4,51 @@
 
     use Illuminate\Http\Request;
 
-    class BoardController 
+    
+    class AccountController 
         extends Controller
     {
         //
-        public function read( Request $request )
+        public function me()
+        {
+
+        }
+
+        public function read()
         {
             
         }
+        
+
+        public function login( Request $request )
+        {
+
+        }
+
+
+        public function logout( Request $request )
+        {
+
+        }
+
 
         public function create( Request $request )
         {
 
         }
 
+
         public function update( Request $request )
         {
-            
+
         }
+        
 
         public function delete( Request $request )
         {
-            
+
         }
 
     }
+
 ?>
