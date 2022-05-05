@@ -1,6 +1,6 @@
 
 *.lock
-package-lock.json
+composer.lock
 
 .editorconfig
 
@@ -8,8 +8,10 @@ package-lock.json
 
 *.example
 
-.env 
+.env
 .env.backup
 
 package-lock.json
 
+*.yml
+*.xml
