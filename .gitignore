@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 *.lock
 package-lock.json
 
@@ -7,6 +7,9 @@ package-lock.json
 .htaccess
 
 *.example
-=======
+
+.env 
+.env.backup
+
 package-lock.json
->>>>>>> a17ee82b33bb976bbf37d38de9021d162f25cc15
+
