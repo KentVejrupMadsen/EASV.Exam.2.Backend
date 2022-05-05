@@ -2,3 +2,7 @@
 package-lock.json
 
 .editorconfig
+
+.htaccess
+
+*.example
