@@ -6,3 +6,5 @@ package-lock.json
 .htaccess
 
 *.example
+.env 
+.env.backup
