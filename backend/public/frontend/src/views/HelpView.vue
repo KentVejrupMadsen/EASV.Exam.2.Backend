@@ -1,15 +1,16 @@
 <template>
   <div class="view-help">
-    <h1>Help Page</h1>
+    <MainHeader Message="Help page" />
   </div>
 </template>
 <script>
+import MainHeader from "@/components/MainHeader.vue";
   export default 
   {
     name: 'HelpView',
     components: 
     {
-      
-    }
+    MainHeader
+}
   }
 </script>

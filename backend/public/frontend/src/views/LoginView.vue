@@ -1,15 +1,18 @@
 <template>
   <div class="view-login">
-    <h1>This is an about page</h1>
+    <div> 
+      <LoginComponent introductionMessage="Login"/>
+    </div>
   </div>
 </template>
 <script>
+import LoginComponent from "../components/LoginComponent.vue";
   export default 
   {
     name: 'LoginView',
     components: 
     {
-      
-    }
+    LoginComponent
+}
   }
 </script>

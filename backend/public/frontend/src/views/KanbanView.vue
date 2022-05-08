@@ -1,15 +1,16 @@
 <template>
   <div class="view-kanban">
-    <h1>Kanban</h1>
+    <MainHeader Message="Kanban" />
   </div>
 </template>
 <script>
+import MainHeader from "@/components/MainHeader.vue";
   export default 
   {
     name: 'KanbanView',
     components: 
     {
-      
+      MainHeader
     }
   }
 </script>

@@ -1,15 +1,16 @@
 <template>
   <div class="view-about">
-    <h1>This is an about page</h1>
+    <MainHeader Message="This is an about page"/>
   </div>
 </template>
 <script>
+import MainHeader from "@/components/MainHeader.vue";
   export default 
   {
     name: 'AboutView',
     components: 
     {
-      
-    }
+    MainHeader
+}
   }
 </script>

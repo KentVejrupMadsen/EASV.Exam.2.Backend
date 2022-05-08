@@ -1,16 +1,17 @@
-<template>
-  <div class="view-home">
-    <img alt="Vue logo" src="../assets/logo.png">7
-
-  </div>
-</template>
 <script>
+  import MainHeader from "@/components/MainHeader.vue";
+  
   export default 
   {
     name: 'HomeView',
     components: 
     {
-      
+        MainHeader
     }
   }
 </script>
+<template>
+  <div class="view-home">
+    <MainHeader Message="Frontpage" />
+  </div>
+</template>

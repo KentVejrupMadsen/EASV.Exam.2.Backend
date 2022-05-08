@@ -1,20 +1,20 @@
 <template>
-  <div class="view-register">
+  <div class="view-forgot">
     <router-link to="/">
       <PageLogoComponent imageSrc="../assets/logo.png" />
     </router-link>
     
-    <MainHeader Message="Register account" />
+    <MainHeader Message="Forgot account information" />
     
   </div>
 </template>
 <script>
   import PageLogoComponent from "@/components/PageLogoComponent.vue";
-import MainHeader from "@/components/MainHeader.vue";
+  import MainHeader from "@/components/MainHeader.vue";
 
   export default 
   {
-    name: 'RegisterView',
+    name: 'ForgotView',
     components: 
     {
     PageLogoComponent,
