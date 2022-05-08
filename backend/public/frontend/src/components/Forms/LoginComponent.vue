@@ -1,17 +1,23 @@
 <script>
-import ButtonComponent from "./ButtonComponent.vue";
-import PageLogoComponent from "./PageLogoComponent.vue";
+    import ButtonComponent from "../ButtonComponent.vue";
+    import PageLogoComponent from "../PageLogoComponent.vue";
 
-import MainHeader from "@/components/MainHeader.vue";
+    import MainHeader from "@/components/MainHeader.vue";
 
-export default 
-{
-    name: "LoginComponent",
-    props: {
-        introductionMessage: String
-    },
-    components: { ButtonComponent, PageLogoComponent, MainHeader }
-}
+    export default 
+    {
+        name: "LoginComponent",
+        props: 
+        {
+            introductionMessage: String
+        },
+        components: 
+        { 
+            ButtonComponent, 
+            PageLogoComponent, 
+            MainHeader 
+        }
+    }
 </script>
 
 <template> 
