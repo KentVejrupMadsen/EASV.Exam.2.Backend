@@ -3,10 +3,14 @@
     namespace App\Http\Controllers;
 
     use Illuminate\Http\Request;
+    use Illuminate\Support\Str;
+
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Hash;
+    
+    use App\Models\User;
     use App\Http\Controllers\AccountEmailController;
 
-    use Illuminate\Support\Facades\Hash;
-    use App\Models\User;
 
     class AccountController 
         extends Controller
@@ -25,7 +29,24 @@
 
         public final function login( Request $request )
         {
+            $account_information = $request->input( 'account' );
 
+
+            if( Auth::attempt( ['username'=> Str::lower( $account_information[ 'username' ] ), 'password' => $account_information['security']['password'] ] ) )
+            {
+                $author = Auth::user();
+
+                $token = $author->createToken( 'account' )->plainTextToken;
+
+                $auth = array();
+                $auth['authorised'] = ['token_bearer' => $token];
+
+                return response()->json( $auth, 200 );
+            }
+            else 
+            {
+                return response()->json( 'Unauthorised.', [ 'error'=>'Unauthorised' ] );
+            }
         }
 
 
@@ -50,16 +71,14 @@
             }
 
             $account_create_fields = array();
-            $account_create_fields['email_id'] = $mail->id;
-            $account_create_fields['name'] = $account_information[ 'person_name' ];
-            $account_create_fields['username'] = $account_information[ 'username' ];
-            $account_create_fields['password'] = Hash::make($account_information['security']['password']);
+            $account_create_fields[ 'email_id' ]  = $mail->id;
+            $account_create_fields[ 'name' ]      = $account_information[ 'person_name' ];
+            $account_create_fields[ 'username' ]  = $account_information[ 'username' ];
+            $account_create_fields[ 'password' ]  = Hash::make( $account_information[ 'security' ][ 'password' ] );
 
             $account = User::create( $account_create_fields );
 
-
-
-            return response($account, 200);
+            return response( $account, 200 );
         }
 
 
