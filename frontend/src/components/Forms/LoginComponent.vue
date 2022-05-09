@@ -40,9 +40,23 @@
                 axios.post( 'http://localhost:8000/api/1.0.0/account/login', 
                                 obj, 
                                 { headers: { 'Content-Type':'application/json' } } )
-                         .then( ( response ) => { this.$router.push( 'localhost:8080/' ); console.log(response) }, 
+                         .then( ( response ) => { this.Login(response) }, 
                                 ( error )    => { console.log( error ); } );
 
+            },
+
+            /**
+             * Change the state so the user is logged in
+             * @param {*} Response 
+             */
+            Login( Response )
+            {
+                console.log( Response.data ); 
+                
+                this.$store.commit( 'SetAccountBearerToken', Response.data.authorised.token_bearer ); 
+                this.$store.commit( 'SetAccountName', Response.data.authorised.username ); 
+
+                this.$router.push( 'localhost:8080/' );
             }
         }
     }
