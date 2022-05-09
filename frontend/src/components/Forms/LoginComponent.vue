@@ -3,6 +3,7 @@
     import PageLogoComponent from "../PageLogoComponent.vue";
 
     import MainHeader from "@/components/MainHeader.vue";
+    import axios from 'axios';
 
     export default 
     {
@@ -18,10 +19,34 @@
             ButtonComponent, 
             PageLogoComponent, 
             MainHeader 
+        },
+        methods:
+        {
+            Send()
+            {
+                const obj = JSON.stringify(
+                    {                           
+                        "account":
+                        {
+                            "username": this.username,
+                            "security":
+                            {
+                                "password": this.password
+                            }
+                        }
+                    }
+                );
+
+                axios.post( 'http://localhost:8000/api/1.0.0/account/login', 
+                                obj, 
+                                { headers: { 'Content-Type':'application/json' } } )
+                         .then( ( response ) => { this.$router.push( 'localhost:8080/' ); console.log(response) }, 
+                                ( error )    => { console.log( error ); } );
+
+            }
         }
     }
 </script>
-
 <template> 
     <div class="login-area component">
         <router-link to="/">
@@ -41,7 +66,7 @@
             </span>
         </form>
         <span>
-            <ButtonComponent buttonMessage="Login" :isReady="false"/>
+            <ButtonComponent buttonMessage="Login" :isReady="false" @click="this.Send()"/>
         </span>
         <span>
             <router-link to="/forgot">

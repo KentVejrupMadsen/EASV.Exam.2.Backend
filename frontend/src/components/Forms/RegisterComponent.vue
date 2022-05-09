@@ -48,10 +48,11 @@
                         }
                     );
 
-                    console.log(obj);
-
-                    // Send Rest request
-                    const res = axios.post('http://localhost:8000/api/1.0.0/account/create', obj, { headers: { 'Content-Type':'application/json' } } );
+                    axios.post( 'http://localhost:8000/api/1.0.0/account/create', 
+                                obj, 
+                                { headers: { 'Content-Type':'application/json' } } )
+                         .then( ( response ) => { this.$router.push( 'localhost:8080/registration_completed' ) }, 
+                                ( error )    => { console.log( error ); } );
                 }
             },
 
