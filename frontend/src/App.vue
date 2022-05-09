@@ -23,7 +23,7 @@
       </router-link>
     </div>
     <div>
-      <NavigationComponent :isLoggedIn="false" />
+      <NavigationComponent/>
     </div>
   </header>
   <main>
