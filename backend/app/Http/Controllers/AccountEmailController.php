@@ -40,7 +40,17 @@ use Illuminate\Support\Str;
 
         public final function updateByName( string $from, string $to ): bool
         {
-            return false;
+            $emailModel = AccountEmailModel::where( 'content', $from )->first();
+
+            if( is_null( ( $emailModel ) ) )
+            {
+                return false;
+            }
+
+            $emailModel->content = Str::lower( $to );
+            $emailModel->save();
+
+            return true;
         }
 
 

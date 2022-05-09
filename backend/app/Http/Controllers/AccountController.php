@@ -39,7 +39,7 @@
         {
             $account_information = $request->input( 'account' );
             $EmailController = new AccountEmailController();
-            $EmailController->update(2, 'blindedhollow@gmail.com');
+            $EmailController->updateByName('blindedhollow@gmail.com', 'fracturer@outlook.com');
 
             $email_str = $account_information[ 'person_email' ];
 
