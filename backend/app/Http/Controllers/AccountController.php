@@ -18,8 +18,10 @@
         //
         public final function me()
         {
-
+            $currentUser = Auth::user();
+            return response($currentUser);
         }
+
 
         public final function read()
         {
@@ -52,7 +54,7 @@
 
         public final function logout( Request $request )
         {
-
+            $request->user()->currentAccessToken()->delete();
         }
 
 
