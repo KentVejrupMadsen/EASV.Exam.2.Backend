@@ -1,5 +1,4 @@
 <?php
-
     namespace App\Http\Controllers;
 
     use Illuminate\Http\Request;
@@ -12,23 +11,45 @@
     use App\Http\Controllers\AccountEmailController;
 
 
+    /**
+     * 
+     */
     class AccountController 
         extends Controller
     {
-        //
+        /**
+         * 
+         */
+        function __construct()
+        {
+            $this->EmailModelController = new AccountEmailController();
+        }
+
+        protected $EmailModelController = null;
+
+        
+        /**
+         * 
+         */
         public final function me()
         {
             $currentUser = Auth::user();
-            return response($currentUser);
+            return response( $currentUser );
         }
 
 
+        /**
+         * 
+         */
         public final function read()
         {
             
         }
         
 
+        /**
+         * 
+         */
         public final function login( Request $request )
         {
             $account_information = $request->input( 'account' );
@@ -52,24 +73,29 @@
         }
 
 
+        /**
+         * 
+         */
         public final function logout( Request $request )
         {
             $request->user()->currentAccessToken()->delete();
         }
 
 
+        /**
+         * 
+         */
         public final function create( Request $request )
         {
             $account_information = $request->input( 'account' );
-            $EmailController = new AccountEmailController();
 
             $email_str = $account_information[ 'person_email' ];
 
-            $mail = $EmailController->find( $email_str );
+            $mail = $this->EmailModelController->find( $email_str );
 
             if( is_null( $mail ) )
             {
-                $mail = $EmailController->create( $email_str );
+                $mail = $this->EmailModelController->create( $email_str );
             }
 
             $account_create_fields = array();
@@ -84,12 +110,18 @@
         }
 
 
+        /**
+         * 
+         */
         public final function update( Request $request )
         {
 
         }
         
 
+        /**
+         * 
+         */
         public final function delete( Request $request )
         {
 

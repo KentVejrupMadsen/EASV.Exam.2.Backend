@@ -1,29 +1,53 @@
 <?php
-
     namespace App\Http\Controllers;
 
     use Illuminate\Http\Request;
 
+    
+    /**
+     * 
+     */
     class ProjectController 
         extends Controller
     {
-        //
-        public function create(Request $request)
+        /**
+         * 
+         */
+        function __construct()
+        {
+            
+        }
+        
+        
+        /**
+         * 
+         */
+        public final function create( Request $request )
         {
             
         }
 
-        public function read( )
+        /**
+         * 
+         */
+        public final function read( )
         {
             
         }
 
-        public function update(Request $request)
+        /**
+         * 
+         */
+        public final function update( Request $request )
         {
             
         }
 
-        public function delete(Request $request)
+
+        /**
+         * 
+         */
+        public final function delete( Request $request )
         {
             
         }

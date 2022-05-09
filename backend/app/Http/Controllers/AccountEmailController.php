@@ -10,6 +10,18 @@
     class AccountEmailController 
         extends Controller
     {
+        /**
+         * 
+         */
+        function __construct()
+        {
+            
+        }
+        
+
+        /**
+         * 
+         */
         public final function create( string $email ): ?AccountEmailModel
         {
             $fields = array();
@@ -21,6 +33,10 @@
         }
 
 
+
+        /**
+         * 
+         */
         public final function update( int $id, string $to ): bool
         {
             $emailModel = AccountEmailModel::find( $id );
@@ -38,6 +54,10 @@
         }
 
 
+
+        /**
+         * 
+         */
         public final function updateByName( string $from, string $to ): bool
         {
             $emailModel = AccountEmailModel::where( 'content', $from )->first();
@@ -54,6 +74,10 @@
         }
 
 
+
+        /**
+         * 
+         */
         public final function deleteByName( String $email ): bool
         {
             $emailModel = $this->find( $email );
@@ -68,8 +92,10 @@
             return true;
         }
 
-
-        //
+      
+        /**
+         * 
+         */
         public final function find( string $email ): ?AccountEmailModel
         {
             $emailVar = str::lower( $email );
@@ -80,6 +106,9 @@
         }
 
 
+        /**
+         * 
+         */
         public final function exist( string $email ): bool
         {
             if( is_null( $this->find( $email ) ) )
