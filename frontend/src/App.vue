@@ -1,18 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/">
-      Home
-    </router-link>
-    <router-link to="/login">
-      Login
-    </router-link>
-    <router-link to="/about">
-      About
-    </router-link>
-    <router-link to="/help">
-        Help
-    </router-link>
-  </nav>
-  
+  <NavigationComponent :isLoggedIn="false" />
   <router-view/>
 </template>
+<script>
+  import NavigationComponent from "./components/Areas/NavigationComponent.vue";
+  
+  export default 
+    {
+      name: "Application",
+        
+      components: 
+      {
+        NavigationComponent
+      }
+    }
+</script>
