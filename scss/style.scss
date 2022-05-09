@@ -1,29 +1,5 @@
 @import 'variables.scss';
+@import 'fonts.scss';
+@import 'base.scss';
 
-a 
-{
-    text-decoration: none;
-}
-
-html 
-{
-    margin: 0px !important;
-    padding: 0px !important;
-}
-
-body 
-{
-    margin: 0px !important;
-    padding: 0px !important;
-
-}
-
-#login 
-{
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-}
-
-@import 'header.scss';
 @import 'application.scss';
