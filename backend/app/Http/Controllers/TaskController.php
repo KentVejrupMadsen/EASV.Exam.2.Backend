@@ -4,26 +4,51 @@
 
     use Illuminate\Http\Request;
 
+    /**
+     * 
+     */
     class TaskController 
         extends Controller
     {
-        //
-        public function create( Request $request )
+        /**
+         * 
+         */
+        function __construct()
         {
             
         }
         
-        public function read( Request $request )
+        /**
+         * 
+         */
+        public final function create( Request $request )
         {
             
         }
         
-        public function update( Request $request )
+
+        /**
+         * 
+         */
+        public final function read( Request $request )
+        {
+            
+        }
+        
+
+        /**
+         * 
+         */
+        public final function update( Request $request )
         {
             
         }
 
-        public function delete( Request $request )
+
+        /**
+         * 
+         */
+        public final function delete( Request $request )
         {
             
         }

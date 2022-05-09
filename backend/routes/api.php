@@ -36,8 +36,4 @@
         [AccountController::class, 'delete']
     );
 
-
-
-
-
 ?>

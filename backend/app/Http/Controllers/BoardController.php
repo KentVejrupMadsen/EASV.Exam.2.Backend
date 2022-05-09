@@ -7,23 +7,46 @@
     class BoardController 
         extends Controller
     {
-        //
-        public function read( Request $request )
+        /**
+         * 
+         */
+        function __construct()
+        {
+            
+        }
+        
+
+        /**
+         * 
+         */
+        public final function read( Request $request )
         {
             
         }
 
-        public function create( Request $request )
+
+        /**
+         * 
+         */
+        public final function create( Request $request )
         {
 
         }
 
-        public function update( Request $request )
+
+        /**
+         * 
+         */
+        public final function update( Request $request )
         {
             
         }
 
-        public function delete( Request $request )
+
+        /**
+         * 
+         */
+        public final function delete( Request $request )
         {
             
         }
