@@ -24,6 +24,11 @@ const routes =
     component: () => import(/* webpackChunkName: "about" */ '../views/RegisterView.vue')
   },
   {
+    path: '/registration_completed',
+    name: 'registration completed',
+    component: () => import(/* webpackChunkName: "about" */ '../views/RegisterCompletionView.vue')
+  },
+  {
     path: '/kanban',
     name: 'kanban',
     component: () => import(/* webpackChunkName: "about" */ '../views/KanbanView.vue')

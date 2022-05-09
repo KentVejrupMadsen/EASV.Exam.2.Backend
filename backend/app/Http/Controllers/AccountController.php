@@ -62,7 +62,7 @@
                 $token = $author->createToken( 'account' )->plainTextToken;
 
                 $auth = array();
-                $auth['authorised'] = ['token_bearer' => $token];
+                $auth['authorised'] = ['token_bearer' => $token, 'username' => $author->username ];
 
                 return response()->json( $auth, 200 );
             }

@@ -3,6 +3,7 @@
     import PageLogoComponent from "../PageLogoComponent.vue";
 
     import MainHeader from "@/components/MainHeader.vue";
+    import axios from 'axios';
 
     export default 
     {
@@ -18,10 +19,48 @@
             ButtonComponent, 
             PageLogoComponent, 
             MainHeader 
+        },
+        methods:
+        {
+            Send()
+            {
+                const obj = JSON.stringify(
+                    {                           
+                        "account":
+                        {
+                            "username": this.username,
+                            "security":
+                            {
+                                "password": this.password
+                            }
+                        }
+                    }
+                );
+
+                axios.post( 'http://localhost:8000/api/1.0.0/account/login', 
+                                obj, 
+                                { headers: { 'Content-Type':'application/json' } } )
+                         .then( ( response ) => { this.Login(response) }, 
+                                ( error )    => { console.log( error ); } );
+
+            },
+
+            /**
+             * Change the state so the user is logged in
+             * @param {*} Response 
+             */
+            Login( Response )
+            {
+                console.log( Response.data ); 
+                
+                this.$store.commit( 'SetAccountBearerToken', Response.data.authorised.token_bearer ); 
+                this.$store.commit( 'SetAccountName', Response.data.authorised.username ); 
+
+                this.$router.push( 'localhost:8080/' );
+            }
         }
     }
 </script>
-
 <template> 
     <div class="login-area component">
         <router-link to="/">
@@ -39,10 +78,10 @@
                 <label>Password</label>
                 <input v-model="password" type="password"/>
             </span>
-            <span>
-                <ButtonComponent buttonMessage="Login" :isReady="false"/>
-            </span>
         </form>
+        <span>
+            <ButtonComponent buttonMessage="Login" :isReady="false" @click="this.Send()"/>
+        </span>
         <span>
             <router-link to="/forgot">
                 <ButtonComponent buttonMessage="Forgot" :isReady="true"/>
