@@ -9,7 +9,12 @@
         name: "RegisterComponent",
         props: 
         {
-            introductionMessage: String
+            introductionMessage: String,
+            person_email: String,
+            person_name: String,
+            username: String,
+            password: String,
+            confirm_password: String
         },
         components: 
         { 
@@ -27,6 +32,10 @@
         <MainHeader :Message="introductionMessage" />
         <form>
             <span>
+                <label>Email</label>
+                <input type="text" v-model="person_email" />
+            </span>
+            <span>
                 <label>Username</label>
                 <input v-model="username" type="text"/>
             </span>
@@ -42,7 +51,7 @@
                 <input type="text" v-model="person_name" />
             </span>
             <span>
-                <ButtonComponent buttonMessage="Register" isReady="false"/>
+                <ButtonComponent buttonMessage="Register" :isReady="false"/>
             </span>
         </form>
     </div>
