@@ -26,6 +26,7 @@
                 function ( Blueprint $table ) 
                 {
                     $table->id();
+
                     $table->string( 'username' )->unique();
                     $table->string( 'name' );
                     
@@ -39,6 +40,7 @@
                     $table->string( 'password' );
                     
                     $table->rememberToken();
+                    
                     $table->timestamps();
 
                     $table->foreign( 'email_id' )
