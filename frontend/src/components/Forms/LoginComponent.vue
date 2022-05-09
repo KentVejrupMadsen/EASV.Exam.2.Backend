@@ -39,10 +39,10 @@
                 <label>Password</label>
                 <input v-model="password" type="password"/>
             </span>
-            <span>
-                <ButtonComponent buttonMessage="Login" :isReady="false"/>
-            </span>
         </form>
+        <span>
+            <ButtonComponent buttonMessage="Login" :isReady="false"/>
+        </span>
         <span>
             <router-link to="/forgot">
                 <ButtonComponent buttonMessage="Forgot" :isReady="true"/>

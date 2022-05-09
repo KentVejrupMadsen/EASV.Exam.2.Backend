@@ -9,10 +9,8 @@
         }
     }
 </script>
-
-
 <template>
-    <button class="button">
+    <button class="button"> 
         {{ buttonMessage }}
     </button>
 </template>
