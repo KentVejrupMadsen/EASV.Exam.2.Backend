@@ -2,10 +2,10 @@
 
     namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
     use App\Models\AccountEmailModel;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Support\Str;
+    
+    use Illuminate\Contracts\Validation\Validator;
+    use Illuminate\Support\Str;
 
     class AccountEmailController 
         extends Controller
@@ -54,10 +54,18 @@ use Illuminate\Support\Str;
         }
 
 
-        public final function delete( String $email ): bool
+        public final function deleteByName( String $email ): bool
         {
+            $emailModel = $this->find( $email );
 
-            return false;
+            if( is_null( $emailModel ) )
+            {
+                return false;
+            }
+
+            $emailModel->forceDelete();
+
+            return true;
         }
 
 
