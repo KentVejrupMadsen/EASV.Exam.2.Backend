@@ -5,7 +5,6 @@
     use Illuminate\Support\Facades\Schema;
 
 
-    
     return new class extends Migration
     {
         
@@ -15,7 +14,9 @@
                 function ( Blueprint $table ) 
                 {
                     $table->id();
-                    $table->text('content');
+
+                    $table->string( 'content' )
+                          ->unqie();
                 }
             );
 
@@ -26,13 +27,17 @@
                 {
                     $table->id();
                     
-                    $table->bigInteger( 'account_owner_id' )->unsigned();
-                    $table->bigInteger( 'project_title_id' )->unsigned();
+                    $table->bigInteger( 'account_owner_id' )
+                          ->unsigned();
+
+                    $table->bigInteger( 'project_title_id' )
+                          ->unsigned();
 
                     $table->longText( 'description' );
                     $table->json( 'tags' );
 
                     $table->timestamps();
+
                     $table->foreign( 'account_owner_id' )
                           ->references( 'id' )
                           ->on( 'accounts' )
@@ -50,7 +55,9 @@
                 function ( Blueprint $table ) 
                 {
                     $table->id();
-                    $table->text('content');   
+
+                    $table->string( 'content' )
+                          ->unique();   
                 }
             );
 
@@ -60,9 +67,14 @@
                 {
                     $table->id();
                     
-                    $table->bigInteger( 'project_id' )->unsigned();
-                    $table->bigInteger( 'account_id' )->unsigned();
-                    $table->bigInteger( 'member_group_id' )->unsigned();
+                    $table->bigInteger( 'project_id' )
+                          ->unsigned();
+
+                    $table->bigInteger( 'account_id' )
+                          ->unsigned();
+
+                    $table->bigInteger( 'member_group_id' )
+                          ->unsigned();
 
                     $table->foreign( 'project_id' )
                           ->references( 'id' )

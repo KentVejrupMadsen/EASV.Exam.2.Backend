@@ -3,6 +3,8 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+
+    
     return new class extends Migration
     {
         
@@ -12,7 +14,9 @@
                 function ( Blueprint $table ) 
                 {
                     $table->id();
-                    $table->text( 'content' );
+
+                    $table->string( 'content' )
+                          ->unique();
                     
                 }
             );
@@ -23,8 +27,11 @@
                 {
                     $table->id();
 
-                    $table->bigInteger( 'kanban_title_id' )->unsigned();
-                    $table->bigInteger( 'project_id' )->unsigned();
+                    $table->bigInteger( 'kanban_title_id' )
+                          ->unsigned();
+                          
+                    $table->bigInteger( 'project_id' )
+                          ->unsigned();
                     
                     $table->timestamps();
 

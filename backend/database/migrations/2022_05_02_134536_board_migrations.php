@@ -16,7 +16,9 @@
                 function ( Blueprint $table ) 
                 {
                     $table->id();
-                    $table->string('content');
+                    
+                    $table->string( 'content' )
+                          ->unique();
                 }
             );
 
@@ -25,8 +27,11 @@
                 {
                     $table->id();
                     
-                    $table->bigInteger( 'kanban_id' )->unsigned();
-                    $table->bigInteger( 'board_title_id' )->unsigned();
+                    $table->bigInteger( 'kanban_id' )
+                          ->unsigned();
+
+                    $table->bigInteger( 'board_title_id' )
+                          ->unsigned();
 
                     
                     $table->timestamps();
@@ -48,7 +53,10 @@
                 function ( Blueprint $table ) 
                 {
                     $table->id();
-                    $table->bigInteger( 'board_id' )->unsigned();
+
+                    $table->bigInteger( 'board_id' )
+                          ->unsigned();
+
                     $table->longText( 'content' );
                     
                     $table->foreign( 'board_id' )
