@@ -82,8 +82,12 @@
 
         public final function exist( string $email ): bool
         {
+            if( is_null( $this->find( $email ) ) )
+            {
+                return false;
+            }
 
-            return false;
+            return true;
         }
     }
 ?>
