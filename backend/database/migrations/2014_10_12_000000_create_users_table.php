@@ -26,6 +26,7 @@
                 function ( Blueprint $table ) 
                 {
                     $table->id();
+                    $table->string( 'username' )->unique();
                     $table->string( 'name' );
                     
                     $table->bigInteger( 'email_id' )

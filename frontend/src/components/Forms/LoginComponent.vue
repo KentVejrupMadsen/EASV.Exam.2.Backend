@@ -9,7 +9,9 @@
         name: "LoginComponent",
         props: 
         {
-            introductionMessage: String
+            introductionMessage: String,
+            username: String,
+            password: String
         },
         components: 
         { 
@@ -38,15 +40,15 @@
                 <input v-model="password" type="password"/>
             </span>
             <span>
-                <ButtonComponent buttonMessage="Login" isReady="false"/>
+                <ButtonComponent buttonMessage="Login" :isReady="false"/>
             </span>
         </form>
         <span>
             <router-link to="/forgot">
-                <ButtonComponent buttonMessage="Forgot" isReady="true"/>
+                <ButtonComponent buttonMessage="Forgot" :isReady="true"/>
             </router-link>
             <router-link to="/register">
-                <ButtonComponent buttonMessage="Register" isReady="true"/>
+                <ButtonComponent buttonMessage="Register" :isReady="true"/>
             </router-link>
         </span>
     </div>

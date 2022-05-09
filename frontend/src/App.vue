@@ -1,17 +1,36 @@
-<template>
-  <NavigationComponent :isLoggedIn="false" />
-  <router-view/>
-</template>
 <script>
   import NavigationComponent from "./components/Areas/NavigationComponent.vue";
+  import PageLogoComponent from "./components/PageLogoComponent.vue";
   
   export default 
+  {
+    name: "Application",
+    components: 
     {
-      name: "Application",
-        
-      components: 
-      {
-        NavigationComponent
-      }
+      NavigationComponent,
+      PageLogoComponent
     }
+  }
 </script>
+<style scoped>
+  @import "style.css";
+</style>
+<template>
+  <header id="header-primary">
+    <div>
+      <router-link to="/">
+        <PageLogoComponent/>
+      </router-link>
+    </div>
+    <div>
+      <NavigationComponent :isLoggedIn="false" />
+    </div>
+  </header>
+  <main>
+    <router-view/>
+  </main>
+  <footer>
+
+  </footer>
+
+</template>
