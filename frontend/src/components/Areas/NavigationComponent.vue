@@ -1,6 +1,9 @@
 <script>
-    import NavigationPublicComponent from "./navigation/NavigationPublicComponent.vue";
-    import NavigationUserComponent from "./navigation/NavigationUserComponent.vue";
+    import NavigationPublicComponent 
+        from "./navigation/NavigationPublicComponent.vue";
+
+    import NavigationUserComponent 
+        from "./navigation/NavigationUserComponent.vue";
 
 
     export default 

@@ -6,7 +6,8 @@
   </div>
 </template>
 <script>
-  import LoginComponent from "../components/Forms/LoginComponent.vue";
+  import LoginComponent 
+    from "../components/Forms/LoginComponent.vue";
 
   export default 
   {

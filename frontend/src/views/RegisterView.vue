@@ -4,9 +4,14 @@
   </div>
 </template>
 <script>
-  import PageLogoComponent from "@/components/PageLogoComponent.vue";
-  import MainHeader from "@/components/MainHeader.vue";
-  import RegisterComponent from "@/components/Forms/RegisterComponent.vue";
+  import PageLogoComponent 
+    from "@/components/PageLogoComponent.vue";
+    
+  import MainHeader 
+    from "@/components/MainHeader.vue";
+
+  import RegisterComponent 
+    from "@/components/Forms/RegisterComponent.vue";
 
   export default 
   {

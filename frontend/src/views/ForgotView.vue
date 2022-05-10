@@ -9,16 +9,18 @@
   </div>
 </template>
 <script>
-  import PageLogoComponent from "@/components/PageLogoComponent.vue";
-  import MainHeader from "@/components/MainHeader.vue";
+  import PageLogoComponent 
+    from "@/components/PageLogoComponent.vue";
+  import MainHeader 
+    from "@/components/MainHeader.vue";
 
   export default 
   {
     name: 'ForgotView',
     components: 
     {
-    PageLogoComponent,
-    MainHeader
-}
+      PageLogoComponent,
+      MainHeader
+    }
   }
 </script>
