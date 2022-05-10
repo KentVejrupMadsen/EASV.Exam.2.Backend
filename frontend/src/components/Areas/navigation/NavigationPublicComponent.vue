@@ -1,4 +1,7 @@
 <script>
+    import NavigationButtonComponent 
+        from './NavigationButtonComponent.vue';
+
     export default 
     {
         name: "NavigationPublicComponent",
@@ -7,18 +10,14 @@
         },
         components: 
         { 
-            
+            NavigationButtonComponent
         }
     }
 </script>
 <template>
-    <router-link to="/login">
-        Login
-    </router-link>
-    <router-link to="/about">
-        About
-    </router-link>
-    <router-link to="/help">
-        Help
-    </router-link>
+    <ol>
+        <NavigationButtonComponent linkUrl="/login" linkLang="en-us" linkText="Login"/>
+        <NavigationButtonComponent linkUrl="/about" linkLang="en-us" linkText="About"/>
+        <NavigationButtonComponent linkUrl="/help" linkLang="en-us" linkText="Help"/>
+    </ol>
 </template>
