@@ -1,6 +1,9 @@
 <script>
-    import NavigationPublicComponent from "./navigation/NavigationPublicComponent.vue";
-    import NavigationUserComponent from "./navigation/NavigationUserComponent.vue";
+    import NavigationPublicComponent 
+        from "./navigation/NavigationPublicComponent.vue";
+
+    import NavigationUserComponent 
+        from "./navigation/NavigationUserComponent.vue";
 
 
     export default 
@@ -8,20 +11,27 @@
         name: "NavigationComponent",
         props: 
         {
-            isLoggedIn: Boolean
+            
         },
         components: 
         {
             NavigationPublicComponent,
             NavigationUserComponent
+        },
+        methods:
+        {
+            userState()
+            {
+                return this.$store.getters.RetrieveUserState;
+            }
         }
     }
 </script>
 <template>
-    <nav v-if="!isLoggedIn">
-        <NavigationPublicComponent/>
-    </nav>
-    <nav v-if="isLoggedIn">
+    <nav v-if="userState()">
         <NavigationUserComponent/>
+    </nav>
+    <nav v-else>
+        <NavigationPublicComponent/>
     </nav>
 </template>

@@ -1,6 +1,9 @@
 <script>
-  import NavigationComponent from "./components/Areas/NavigationComponent.vue";
-  import PageLogoComponent from "./components/PageLogoComponent.vue";
+  import NavigationComponent 
+    from "./components/Areas/NavigationComponent.vue";
+
+  import PageLogoComponent 
+    from "./components/PageLogoComponent.vue";
   
   export default 
   {
@@ -23,7 +26,7 @@
       </router-link>
     </div>
     <div>
-      <NavigationComponent :isLoggedIn="false" />
+      <NavigationComponent/>
     </div>
   </header>
   <main>
