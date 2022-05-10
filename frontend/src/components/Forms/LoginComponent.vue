@@ -70,19 +70,19 @@
         <MainHeader :Message="introductionMessage" />
         
         <form>
-            <span>
+            <span class="">
                 <label>Username</label>
                 <input v-model="username" type="text"/>
             </span>
-            <span>
+            <span class="">
                 <label>Password</label>
                 <input v-model="password" type="password"/>
             </span>
         </form>
-        <span>
+        <span class="navigation main-navigation">
             <ButtonComponent buttonMessage="Login" :isReady="false" @click="this.Send()"/>
         </span>
-        <span>
+        <span class="navigation secondary-navigation">
             <router-link to="/forgot">
                 <ButtonComponent buttonMessage="Forgot" :isReady="true"/>
             </router-link>
