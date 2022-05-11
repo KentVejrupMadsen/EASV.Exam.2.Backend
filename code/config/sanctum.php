@@ -1,6 +1,6 @@
 <?php
-
     use Laravel\Sanctum\Sanctum;
+
 
     return 
     [
@@ -14,7 +14,7 @@
                         )
                )
         ),
-        'guard' => ['web'],
+        'guard' => [ 'web' ],
         'expiration' => null,
         'middleware' => 
         [
