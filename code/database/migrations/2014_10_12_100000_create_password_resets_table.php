@@ -14,6 +14,8 @@
             Schema::create( 'password_resets', 
                 function (Blueprint $table) 
                 {
+                    $table->id();
+                    
                     $table->bigInteger( 'email_id' )
                           ->unsigned()
                           ->index();
