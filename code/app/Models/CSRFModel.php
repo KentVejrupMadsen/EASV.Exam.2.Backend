@@ -11,16 +11,21 @@
     /**
      *
      */
-    class MemberGroupModel 
+    class CSRFModel
         extends Model
     {
         use HasFactory;
         
-        protected $table = 'member_groups';
-        
+        protected $table = 'CRSFToken';
+        public $timestamps = false;
+
+
         protected $fillable = 
         [
-            'content'
+            'assigned_to',
+            'secure_token',
+            'issued',
+            'accessed'
         ];
 
         

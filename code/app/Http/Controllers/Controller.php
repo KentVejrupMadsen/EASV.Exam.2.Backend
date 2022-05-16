@@ -1,5 +1,7 @@
 <?php
-
+    /**
+     * Author: Kent vejrup Madsen
+     */
     namespace App\Http\Controllers;
 
     use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

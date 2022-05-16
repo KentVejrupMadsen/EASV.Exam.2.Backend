@@ -1,4 +1,7 @@
 <?php
+    /**
+     * Author: Kent vejrup Madsen
+     */
     use Illuminate\Contracts\Http\Kernel;
     use Illuminate\Http\Request;
 

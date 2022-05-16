@@ -1,9 +1,12 @@
 <?php
-
+    /**
+     * Author: Kent vejrup Madsen
+     */
     use Illuminate\Database\Migrations\Migration;
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+    use Illuminate\Support\Str;
 
     
     return new class extends Migration
@@ -49,6 +52,18 @@
                           ->onDelete( 'CASCADE' );
                 }
             );
+
+            Schema::create( Str::lower('CRSF_Token'),
+                function ( Blueprint $table )
+                {
+                    $table->id();
+                    $table->ipAddress('assigned_to');
+                    $table->string('secure_token' );
+
+                    $table->timestamp('issued')->useCurrent();
+                    $table->timestamp('accessed');
+                }
+            );
         }
 
         
@@ -56,6 +71,7 @@
         {
             Schema::dropIfExists( 'accounts' );
             Schema::dropIfExists( 'account_emails' );
+            Schema::dropIfExists( 'crsf_token' );
         }
     };
 

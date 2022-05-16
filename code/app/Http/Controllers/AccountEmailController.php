@@ -1,11 +1,14 @@
 <?php
-
+    /**
+     * Author: Kent vejrup Madsen
+     */
     namespace App\Http\Controllers;
 
     use App\Models\AccountEmailModel;
     
     use Illuminate\Contracts\Validation\Validator;
     use Illuminate\Support\Str;
+
 
     class AccountEmailController 
         extends Controller
