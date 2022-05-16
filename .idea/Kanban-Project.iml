@@ -82,7 +82,6 @@
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/sebastian/code-unit-reverse-lookup" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/sebastian/object-reflector" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/code/vendor/laravel/sail" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/laravel/sanctum" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/code/vendor/laravel/serializable-closure" />
