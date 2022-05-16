@@ -13,6 +13,7 @@
                     "english", "javascript", "cookies", "mysql", "crud", "rest", "api",
                     "sanctum", "blade"
     ],
+    "homepage": "https://kanban-project-backend-xvkk6.ondigitalocean.app/",
     "license": "MIT",
     "authors":
     [
