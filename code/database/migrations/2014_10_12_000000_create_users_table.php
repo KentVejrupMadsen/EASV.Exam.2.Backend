@@ -53,15 +53,28 @@
                 }
             );
 
-            Schema::create( Str::lower('CRSF_Token'),
+            Schema::create( Str::lower('CSRF_Token'),
                 function ( Blueprint $table )
                 {
                     $table->id();
-                    $table->ipAddress('assigned_to');
-                    $table->string('secure_token' );
 
-                    $table->timestamp('issued')->useCurrent();
-                    $table->timestamp('accessed');
+                    $table->ipAddress('assigned_to');
+
+                    $table->string('secure_token' )->index();
+                    $table->string('secret_token' )->index();
+
+
+                    $table->timestamp('issued')
+                          ->useCurrent();
+
+                    $table->timestamp('accessed')
+                          ->nullable();
+
+                    $table->boolean('activated' )
+                          ->default( false );
+
+                    $table->boolean('invalidated' )
+                          ->default( false );
                 }
             );
         }
