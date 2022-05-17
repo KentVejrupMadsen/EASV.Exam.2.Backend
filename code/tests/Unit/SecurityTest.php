@@ -1,10 +1,12 @@
 <?php
-
+    /**
+     * Author: Kent vejrup Madsen
+     */
     namespace Tests\Unit;
 
     use PHPUnit\Framework\TestCase;
 
-    class ExampleTest 
+    class SecurityTest
         extends TestCase
     {
         

@@ -20,7 +20,7 @@
         {
             "name": "kent vejrup madsen",
             "email": "kent.vejrup.madsen@outlook.com",
-            "homepage": "",
+            "homepage": "https://github.com/KentVejrupMadsen/",
             "role": "student"
         }
     ],
@@ -31,6 +31,7 @@
     "require":
     {
         "php": "^8.0.2",
+        "google/recaptcha": "^1.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.15",
