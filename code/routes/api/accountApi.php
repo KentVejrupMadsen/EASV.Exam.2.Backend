@@ -7,7 +7,7 @@
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\AccountController;
 
-
+    //
     Route::post(
         '/1.0.0/account/login',
         [ AccountController::class, 'login' ]
@@ -19,6 +19,7 @@
         [ AccountController::class, 'create' ]
     );
 
+    // Whoami
     Route::middleware( $mw_sanctum )->get(
         '/1.0.0/account/me',
         [ AccountController::class, 'me' ]

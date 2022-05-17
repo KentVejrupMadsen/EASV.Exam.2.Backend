@@ -7,6 +7,8 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
+    use Illuminate\Support\Str;
+
 
     /**
      *
@@ -16,7 +18,8 @@
     {
         use HasFactory;
         
-        protected $table = 'CRSFToken';
+        protected $table = 'csrf_token';
+
         public $timestamps = false;
 
 
@@ -25,13 +28,17 @@
             'assigned_to',
             'secure_token',
             'issued',
-            'accessed'
+            'accessed',
+            'activated',
+            'invalidated',
+            'secret_token'
         ];
 
         
         protected $hidden = 
         [
-            
+            'secure_token',
+            'secret_token'
         ];
 
         
