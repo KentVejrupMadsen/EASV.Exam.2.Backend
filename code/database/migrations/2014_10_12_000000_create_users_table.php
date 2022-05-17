@@ -26,7 +26,7 @@
 
 
             Schema::create( 'accounts', 
-                function ( Blueprint $table ) 
+                function( Blueprint $table )
                 {
                     $table->id();
 
@@ -53,8 +53,9 @@
                 }
             );
 
-            Schema::create( Str::lower('CSRF_Token'),
-                function ( Blueprint $table )
+
+            Schema::create( Str::lower('security_CSRF_Token'),
+                function( Blueprint $table )
                 {
                     $table->id();
 
@@ -77,15 +78,32 @@
                           ->default( false );
                 }
             );
+
+
+            Schema::create( 'newsletter_users',
+                function( Blueprint $table )
+                {
+                    $table->id();
+
+                    $table->bigInteger('email_id' )
+                          ->unsigned()
+                          ->index();
+
+                    $table->foreign( 'email_id' )
+                        ->references( 'id' )
+                        ->on( 'account_emails' )
+                        ->onDelete( 'CASCADE' );
+                }
+            );
         }
 
         
         public function down()
         {
             Schema::dropIfExists( 'accounts' );
+            Schema::dropIfExists( 'newsletter_users' );
             Schema::dropIfExists( 'account_emails' );
-            Schema::dropIfExists( 'crsf_token' );
+            Schema::dropIfExists( 'security_csrf_token' );
         }
     };
-
 ?>

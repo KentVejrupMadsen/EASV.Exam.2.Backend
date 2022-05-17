@@ -150,9 +150,19 @@
             return response( $response, 200 );
         }
 
-        public final function invalidateAll()
+
+        public final function invalidateOld()
         {
 
+        }
+
+
+        /**
+         * @return void
+         */
+        public final function invalidateAll()
+        {
+            CSRFModel::where('invalidated', '=', '0')->update(array('invalidated'=>1));
         }
 
 

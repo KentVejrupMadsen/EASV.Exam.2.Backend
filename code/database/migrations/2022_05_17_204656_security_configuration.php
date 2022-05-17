@@ -16,17 +16,20 @@
          */
         public function up()
         {
-            Schema::create('sessions',
+            //
+            Schema::create( 'security_configuration',
                 function ( Blueprint $table )
-            {
-                $table->id('index');
-                $table->string('id')->unique();
-                $table->foreignId('user_id')->nullable()->index();
-                $table->string('ip_address', 45)->nullable();
-                $table->text('user_agent')->nullable();
-                $table->text('payload');
-                $table->integer('last_activity')->index();
-            });
+                {
+                    $table->id();
+
+                    $table->string('key' )
+                          ->index();
+
+                    $table->string('value' )
+                          ->nullable()
+                          ->index();
+                }
+            );
         }
 
         /**
@@ -36,7 +39,8 @@
          */
         public function down()
         {
-            Schema::dropIfExists('sessions');
+            //
+            Schema::dropIfExists( 'security_configuration' );
         }
     };
 ?>
