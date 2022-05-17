@@ -1,11 +1,17 @@
 <?php
-
+    /**
+     * Author: Kent vejrup Madsen
+     */
     namespace Tests\Feature;
 
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Tests\TestCase;
 
-    class ExampleTest
+
+    /**
+     *
+     */
+    class ProjectTest
         extends TestCase
     {
         

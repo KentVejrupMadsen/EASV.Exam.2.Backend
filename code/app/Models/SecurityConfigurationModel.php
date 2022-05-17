@@ -1,4 +1,7 @@
 <?php
+    /**
+     * Author: Kent vejrup Madsen
+     */
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
