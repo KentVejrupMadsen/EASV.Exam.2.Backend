@@ -18,8 +18,7 @@
     {
         use HasFactory;
         
-        protected $table = 'csrf_token';
-
+        protected $table = 'security_csrf_token';
         public $timestamps = false;
 
 
