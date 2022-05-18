@@ -6,6 +6,8 @@
      */
     namespace App\Http\Controllers;
 
+    use App\Models\ProjectModel;
+
     use Illuminate\Http\Request;
 
     
@@ -20,8 +22,11 @@
          */
         function __construct()
         {
-            
+
         }
+
+        private $projectMemberController = null;
+        private $projectTitleModel = null;
         
         
         /**

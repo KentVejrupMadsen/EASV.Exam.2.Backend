@@ -13,7 +13,7 @@
      * 
      */
     class KanbanController 
-        extends Controller
+        extends CrudController
     {
         function __construct()
         {

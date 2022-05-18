@@ -13,7 +13,7 @@
      * 
      */
     class ProjectMemberController 
-        extends Controller
+        extends CrudController
     {
         /**
          * 

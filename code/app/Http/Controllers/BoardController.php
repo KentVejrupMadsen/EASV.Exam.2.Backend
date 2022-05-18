@@ -10,7 +10,7 @@
 
 
     class BoardController 
-        extends Controller
+        extends CrudController
     {
         /**
          * 
