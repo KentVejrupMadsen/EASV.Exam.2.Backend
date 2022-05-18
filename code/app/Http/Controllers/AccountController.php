@@ -21,7 +21,7 @@
      * 
      */
     class AccountController 
-        extends Controller
+        extends CrudController
     {
         /**
          *
@@ -31,6 +31,7 @@
             $this->EmailModelController = new AccountEmailController();
             $this->CSRFTokenController = new CSRFTokenController();
         }
+
 
         // Variables
         protected $EmailModelController = null;
@@ -51,7 +52,7 @@
         /**
          * @return void
          */
-        public final function read()
+        public final function read( Request $request )
         {
             
         }
