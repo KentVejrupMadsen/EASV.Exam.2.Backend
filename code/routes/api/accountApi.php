@@ -40,7 +40,7 @@
     );
 
     // Update
-    Route::middleware( $mw_sanctum )->put(
+    Route::middleware( $mw_sanctum )->patch(
         '/1.0.0/account/update',
         [ AccountController::class, 'update' ]
     );

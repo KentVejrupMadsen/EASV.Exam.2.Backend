@@ -131,11 +131,35 @@
 
         /**
          * @param Request $request
-         * @return void
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
         public final function update( Request $request )
         {
+            $this->CSRFTokenController->access( $request );
 
+            $account = Auth::user();
+
+            $response = array();
+            $accountInformation = $request->input('account');
+
+
+            $mailModel = $this->EmailModelController->find( $accountInformation[ 'person_email' ] );
+
+            if( is_null( $mailModel ) )
+            {
+                $mailModel = $this->EmailModelController->create( $accountInformation[ 'person_email' ] );
+            }
+
+            $account->email_id = $mailModel->id;
+            $account->name = $accountInformation[ 'person_name' ];
+
+            // Passwords
+            $new = Hash::make($accountInformation['security']['password']);
+            $account->password = $new;
+
+            $account->save();
+
+            return Response($response, 200);
         }
 
 
@@ -145,7 +169,16 @@
          */
         public final function delete( Request $request )
         {
+            $this->CSRFTokenController->access( $request );
 
+            $response = array();
+
+            $account = Auth::user();
+
+            $account->delete();
+            $response[ 'message' ] = 'successful' ;
+
+            return Response( $response, 200 );
         }
 
 
