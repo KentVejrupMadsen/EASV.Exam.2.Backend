@@ -6,6 +6,8 @@
      */
     namespace App\Http\Controllers;
 
+    use App\Models\ProjectModel;
+
     use Illuminate\Http\Request;
 
     
@@ -13,15 +15,18 @@
      * 
      */
     class ProjectController 
-        extends Controller
+        extends CrudController
     {
         /**
          * 
          */
         function __construct()
         {
-            
+
         }
+
+        private $projectMemberController = null;
+        private $projectTitleModel = null;
         
         
         /**
@@ -35,7 +40,7 @@
         /**
          * 
          */
-        public final function read( )
+        public final function read( Request $request )
         {
             
         }

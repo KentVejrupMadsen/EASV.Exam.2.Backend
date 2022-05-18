@@ -13,7 +13,7 @@
      * 
      */
     class TaskController 
-        extends Controller
+        extends CrudController
     {
         /**
          * 

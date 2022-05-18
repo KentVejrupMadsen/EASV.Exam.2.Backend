@@ -7,11 +7,11 @@
     namespace App\Http\Controllers;
 
     use App\Models\AccountEmailModel;
-    
-    use Illuminate\Contracts\Validation\Validator;
+
     use Illuminate\Support\Str;
 
 
+    // Convert to CRUD Interface
     class AccountEmailController 
         extends Controller
     {
