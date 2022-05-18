@@ -19,7 +19,8 @@
          *
          * @var array<int, class-string|string>
          */
-        protected $middleware = [
+        protected $middleware =
+        [
             // \App\Http\Middleware\TrustHosts::class,
             \App\Http\Middleware\TrustProxies::class,
             \Illuminate\Http\Middleware\HandleCors::class,
