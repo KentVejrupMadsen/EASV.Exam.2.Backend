@@ -1,4 +1,7 @@
 openapi: 3.0.0
+info:
+  title: Kanban-Project-Backend-API
+  version: 16.05.2022
 paths:
   /api/data.json:
     get:
