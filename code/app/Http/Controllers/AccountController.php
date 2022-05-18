@@ -1,9 +1,12 @@
 <?php
     /**
      * Author: Kent vejrup Madsen
+     * Description:
+     * TODO: Make description
      */
     namespace App\Http\Controllers;
 
+    use Carbon\Carbon;
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
 
@@ -21,18 +24,22 @@
         extends Controller
     {
         /**
-         * 
+         *
          */
         function __construct()
         {
             $this->EmailModelController = new AccountEmailController();
+            $this->CSRFTokenController = new CSRFTokenController();
         }
 
+        // Variables
         protected $EmailModelController = null;
+        protected $CSRFTokenController = null;
 
-        
+        private const conflict = 409;
+
         /**
-         * 
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
         public final function me()
         {
@@ -42,19 +49,22 @@
 
 
         /**
-         * 
+         * @return void
          */
         public final function read()
         {
             
         }
-        
+
 
         /**
-         * 
+         * @param Request $request
+         * @return \Illuminate\Http\JsonResponse
          */
         public final function login( Request $request )
         {
+            $this->CSRFTokenController->access( $request );
+
             $account_information = $request->input( 'account' );
 
 
@@ -77,19 +87,25 @@
 
 
         /**
-         * 
+         * @param Request $request
+         * @return void
          */
         public final function logout( Request $request )
         {
-            $request->user()->currentAccessToken()->delete();
+            $request->user()
+                    ->currentAccessToken()
+                    ->delete();
         }
 
 
         /**
-         * 
+         * @param Request $request
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
         public final function create( Request $request )
         {
+            $this->CSRFTokenController->access( $request );
+
             $account_information = $request->input( 'account' );
 
             $email_str = $account_information[ 'person_email' ];
@@ -114,20 +130,84 @@
 
 
         /**
-         * 
+         * @param Request $request
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
         public final function update( Request $request )
         {
+            $this->CSRFTokenController->access( $request );
 
+            $account = Auth::user();
+
+            $response = array();
+            $accountInformation = $request->input('account');
+
+
+            $mailModel = $this->EmailModelController->find( $accountInformation[ 'person_email' ] );
+
+            if( is_null( $mailModel ) )
+            {
+                $mailModel = $this->EmailModelController->create( $accountInformation[ 'person_email' ] );
+            }
+
+            $account->email_id = $mailModel->id;
+            $account->name = $accountInformation[ 'person_name' ];
+
+            // Passwords
+            $new = Hash::make($accountInformation['security']['password']);
+            $account->password = $new;
+
+            $account->save();
+
+            return Response($response, 200);
         }
-        
+
 
         /**
-         * 
+         * @param Request $request
+         * @return void
          */
         public final function delete( Request $request )
         {
+            $this->CSRFTokenController->access( $request );
 
+            $response = array();
+
+            $account = Auth::user();
+
+            $account->delete();
+            $response[ 'message' ] = 'successful' ;
+
+            return Response( $response, 200 );
+        }
+
+
+        /**
+         * @param Request $request
+         * @return void
+         */
+        public final function verify( Request $request )
+        {
+            $this->CSRFTokenController->access( $request );
+
+            $response = array();
+
+            $user = Auth::user();
+
+            if( is_null( $user->email_verified_at ) )
+            {
+                $user->email_verified_at = Carbon::now();
+                $user->save();
+
+                $response['message'] = 'verified';
+                $response['at']= $user->email_verified_at;
+            }
+            else
+            {
+                abort(self::conflict );
+            }
+
+            return Response( $response );
         }
 
     }

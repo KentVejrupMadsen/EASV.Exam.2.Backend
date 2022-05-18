@@ -9,10 +9,16 @@
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\AccountController;
 
+
     //
     Route::post(
         '/1.0.0/account/login',
         [ AccountController::class, 'login' ]
+    );
+
+    Route::post(
+        '/1.0.0/account/verify',
+        [ AccountController::class, 'verify' ]
     );
 
     // Register / Create
@@ -34,7 +40,7 @@
     );
 
     // Update
-    Route::middleware( $mw_sanctum )->put(
+    Route::middleware( $mw_sanctum )->patch(
         '/1.0.0/account/update',
         [ AccountController::class, 'update' ]
     );
