@@ -61,6 +61,8 @@
          */
         public final function login( Request $request )
         {
+            $this->CSRFTokenController->access( $request );
+
             $account_information = $request->input( 'account' );
 
 
@@ -100,6 +102,8 @@
          */
         public final function create( Request $request )
         {
+            $this->CSRFTokenController->access( $request );
+
             $account_information = $request->input( 'account' );
 
             $email_str = $account_information[ 'person_email' ];
