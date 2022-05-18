@@ -133,8 +133,8 @@
             $model = CSRFModel::create( $inputModel );
 
             $responseModel = array();
-            $responseModel[ 'secure_token' ] = $inputModel[ 'secure_token' ];
-            $responseModel[ 'id' ] = $model->id;
+            $responseModel['security']['csrf'][ 'secure_token' ] = $inputModel[ 'secure_token' ];
+            $responseModel['security']['csrf'][ 'id' ] = $model->id;
 
             $request->session()->put( [ 'secret_token' => $inputModel[ 'secret_token' ] ] );
 
