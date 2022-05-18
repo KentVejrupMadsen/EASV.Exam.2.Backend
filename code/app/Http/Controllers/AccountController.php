@@ -6,6 +6,7 @@
      */
     namespace App\Http\Controllers;
 
+    use Carbon\Carbon;
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
 
@@ -35,6 +36,7 @@
         protected $EmailModelController = null;
         protected $CSRFTokenController = null;
 
+        private const conflict = 409;
 
         /**
          * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
@@ -153,7 +155,26 @@
          */
         public final function verify( Request $request )
         {
+            $this->CSRFTokenController->access( $request );
 
+            $response = array();
+
+            $user = Auth::user();
+
+            if( is_null( $user->email_verified_at ) )
+            {
+                $user->email_verified_at = Carbon::now();
+                $user->save();
+
+                $response['message'] = 'verified';
+                $response['at']= $user->email_verified_at;
+            }
+            else
+            {
+                abort(self::conflict );
+            }
+
+            return Response( $response );
         }
 
     }
