@@ -1,6 +1,8 @@
 <?php
     /**
      * Author: Kent vejrup Madsen
+     * Description:
+     * TODO: Make description
      */
     namespace App\Http\Controllers;
 
@@ -42,8 +44,12 @@
             // Variables
             $response = array();
 
-            $reqId = $request->input('id' );
-            $secureTokenFromRequest = $request->input('secure_token' );
+            $requestInput = $request->input('security');
+
+            $csrfInput = $requestInput['csrf'];
+
+            $reqId = $csrfInput[ 'id' ];
+            $secureTokenFromRequest = $csrfInput[ 'secure_token' ];
 
             $modelFound = CSRFModel::findOrFail( $reqId );
             $registered_now = Carbon::now();
@@ -78,9 +84,9 @@
                     $modelFound->save();
 
                     // both secrets are the same
-                    $response['id'] = $modelFound->id;
-                    $response['accessed'] = $modelFound->accessed;
-                    $response['issued'] = $modelFound->issued;
+                    $response['security']['csrf']['id'] = $modelFound->id;
+                    $response['security']['csrf']['accessed'] = $modelFound->accessed;
+                    $response['security']['csrf']['issued'] = $modelFound->issued;
 
                 }
                 else
@@ -127,8 +133,8 @@
             $model = CSRFModel::create( $inputModel );
 
             $responseModel = array();
-            $responseModel[ 'secure_token' ] = $inputModel[ 'secure_token' ];
-            $responseModel[ 'id' ] = $model->id;
+            $responseModel['security']['csrf'][ 'secure_token' ] = $inputModel[ 'secure_token' ];
+            $responseModel['security']['csrf'][ 'id' ] = $model->id;
 
             $request->session()->put( [ 'secret_token' => $inputModel[ 'secret_token' ] ] );
 
