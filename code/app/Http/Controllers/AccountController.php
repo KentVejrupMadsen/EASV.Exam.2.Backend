@@ -23,18 +23,21 @@
         extends Controller
     {
         /**
-         * 
+         *
          */
         function __construct()
         {
             $this->EmailModelController = new AccountEmailController();
+            $this->CSRFTokenController = new CSRFTokenController();
         }
 
+        // Variables
         protected $EmailModelController = null;
+        protected $CSRFTokenController = null;
 
-        
+
         /**
-         * 
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
         public final function me()
         {
@@ -44,16 +47,17 @@
 
 
         /**
-         * 
+         * @return void
          */
         public final function read()
         {
             
         }
-        
+
 
         /**
-         * 
+         * @param Request $request
+         * @return \Illuminate\Http\JsonResponse
          */
         public final function login( Request $request )
         {
@@ -79,16 +83,20 @@
 
 
         /**
-         * 
+         * @param Request $request
+         * @return void
          */
         public final function logout( Request $request )
         {
-            $request->user()->currentAccessToken()->delete();
+            $request->user()
+                    ->currentAccessToken()
+                    ->delete();
         }
 
 
         /**
-         * 
+         * @param Request $request
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
         public final function create( Request $request )
         {
@@ -116,18 +124,30 @@
 
 
         /**
-         * 
+         * @param Request $request
+         * @return void
          */
         public final function update( Request $request )
         {
 
         }
-        
+
 
         /**
-         * 
+         * @param Request $request
+         * @return void
          */
         public final function delete( Request $request )
+        {
+
+        }
+
+
+        /**
+         * @param Request $request
+         * @return void
+         */
+        public final function verify( Request $request )
         {
 
         }

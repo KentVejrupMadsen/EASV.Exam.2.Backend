@@ -44,8 +44,12 @@
             // Variables
             $response = array();
 
-            $reqId = $request->input('id' );
-            $secureTokenFromRequest = $request->input('secure_token' );
+            $requestInput = $request->input('security');
+
+            $csrfInput = $requestInput['csrf'];
+
+            $reqId = $csrfInput[ 'id' ];
+            $secureTokenFromRequest = $csrfInput[ 'secure_token' ];
 
             $modelFound = CSRFModel::findOrFail( $reqId );
             $registered_now = Carbon::now();
@@ -80,9 +84,9 @@
                     $modelFound->save();
 
                     // both secrets are the same
-                    $response['id'] = $modelFound->id;
-                    $response['accessed'] = $modelFound->accessed;
-                    $response['issued'] = $modelFound->issued;
+                    $response['security']['csrf']['id'] = $modelFound->id;
+                    $response['security']['csrf']['accessed'] = $modelFound->accessed;
+                    $response['security']['csrf']['issued'] = $modelFound->issued;
 
                 }
                 else
