@@ -15,7 +15,7 @@
      * 
      */
     class ProjectController 
-        extends Controller
+        extends CrudController
     {
         /**
          * 
@@ -40,7 +40,7 @@
         /**
          * 
          */
-        public final function read( )
+        public final function read( Request $request )
         {
             
         }
