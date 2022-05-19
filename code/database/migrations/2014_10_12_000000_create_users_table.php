@@ -50,34 +50,7 @@
 
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
-                          ->on( 'account_emails' )
-                          ->onDelete( 'CASCADE' );
-                }
-            );
-
-
-            Schema::create( Str::lower('security_CSRF_Token'),
-                function( Blueprint $table )
-                {
-                    $table->id();
-
-                    $table->ipAddress('assigned_to');
-
-                    $table->string('secure_token' )->index();
-                    $table->string('secret_token' )->index();
-
-
-                    $table->timestamp('issued')
-                          ->useCurrent();
-
-                    $table->timestamp('accessed')
-                          ->nullable();
-
-                    $table->boolean('activated' )
-                          ->default( false );
-
-                    $table->boolean('invalidated' )
-                          ->default( false );
+                          ->on( 'account_emails' );
                 }
             );
 
@@ -105,7 +78,6 @@
             Schema::dropIfExists( 'accounts' );
             Schema::dropIfExists( 'newsletter_users' );
             Schema::dropIfExists( 'account_emails' );
-            Schema::dropIfExists( 'security_csrf_token' );
         }
     };
 ?>
