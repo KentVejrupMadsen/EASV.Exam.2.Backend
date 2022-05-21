@@ -1,33 +1,30 @@
 <?php
-    /**
-     * Author: Kent vejrup Madsen
-     * Description:
-     * TODO: Make description
-     */
+
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
 
-    class SecurityConfigurationModel
+
+    class NewsletterSubscriptionModel
         extends Model
     {
         use HasFactory;
 
-        protected $table = 'security_configuration';
+        protected $table = 'newsletter_users';
+
         public $timestamps = false;
 
         protected $fillable =
         [
-            'key',
-            'value'
+
         ];
 
 
         protected $hidden =
         [
-            'value'
+
         ];
 
 

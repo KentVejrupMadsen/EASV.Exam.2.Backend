@@ -1,33 +1,33 @@
 <?php
-    /**
-     * Author: Kent vejrup Madsen
-     * Description:
-     * TODO: Make description
-     */
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
 
-    class SecurityConfigurationModel
+    class SecurityRecaptcha
         extends Model
     {
         use HasFactory;
 
         protected $table = 'security_configuration';
+
         public $timestamps = false;
 
         protected $fillable =
         [
-            'key',
-            'value'
+            'success',
+            'score',
+            'at_date',
+            'hostname',
+            'error'
         ];
 
 
         protected $hidden =
         [
-            'value'
+            'hostname',
+            'error'
         ];
 
 
