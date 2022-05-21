@@ -15,16 +15,5 @@
     {
         protected $table = 'account_emails';
 
-
-        protected $hidden = 
-        [
-            
-        ];
-
-        
-        protected $casts = 
-        [
-            
-        ];
     }
 ?>

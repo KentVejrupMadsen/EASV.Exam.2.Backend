@@ -37,7 +37,10 @@
         
         protected $casts = 
         [
-            
+            'account_owner_id'  => 'integer',
+            'project_title_id'  => 'integer',
+            'description'       => 'string',
+            'tags'              => 'string'
         ];
     }
 ?>

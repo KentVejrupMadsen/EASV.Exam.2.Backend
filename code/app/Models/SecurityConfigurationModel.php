@@ -28,7 +28,8 @@
 
         protected $casts =
         [
-
+            'key' => 'string',
+            'value' => 'string'
         ];
     }
 ?>

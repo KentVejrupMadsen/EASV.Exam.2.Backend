@@ -25,7 +25,8 @@
 
         protected $casts =
         [
-
+            'country_name' => 'string',
+            'country_acronym' => 'string'
         ];
     }
 ?>

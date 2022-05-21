@@ -36,7 +36,13 @@
         
         protected $casts = 
         [
-            
+            'assigned_to'   => 'string',
+            'secure_token'  => 'string',
+            'secret_token'  => 'string',
+            'issued'        => 'datetime',
+            'accessed'      => 'datetime',
+            'activated'     => 'boolean',
+            'invalidated'   => 'boolean'
         ];
     }
 ?>

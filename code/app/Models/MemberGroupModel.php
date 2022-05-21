@@ -15,16 +15,5 @@
     {
         protected $table = 'member_groups';
 
-        
-        protected $hidden = 
-        [
-            
-        ];
-
-        
-        protected $casts = 
-        [
-            
-        ];
     }
 ?>

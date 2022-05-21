@@ -21,7 +21,7 @@
 
         protected $casts =
         [
-
+            'email_id' => 'integer'
         ];
     }
 ?>

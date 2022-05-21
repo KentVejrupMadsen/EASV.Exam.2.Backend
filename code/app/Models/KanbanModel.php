@@ -36,7 +36,8 @@
         
         protected $casts = 
         [
-            
+            'kanban_title_id'   => 'integer',
+            'project_id'        => 'integer'
         ];
     }
 ?>

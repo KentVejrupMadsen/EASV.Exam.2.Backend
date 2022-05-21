@@ -33,7 +33,11 @@
         
         protected $casts = 
         [
-            
+
+            'project_id'        => 'integer',
+            'account_id'        => 'integer',
+            'member_group_id'   => 'integer'
+
         ];
     }
 ?>

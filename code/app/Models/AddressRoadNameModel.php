@@ -6,17 +6,5 @@
         extends ExtensionLabelModel
     {
         protected $table = 'address_road_names';
-
-
-        protected $hidden =
-        [
-
-        ];
-
-
-        protected $casts =
-        [
-
-        ];
     }
 ?>

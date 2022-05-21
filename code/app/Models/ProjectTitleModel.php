@@ -16,15 +16,5 @@
         protected $table = 'project_titles';
 
 
-        protected $hidden = 
-        [
-            
-        ];
-
-        
-        protected $casts = 
-        [
-            
-        ];
     }
 ?>

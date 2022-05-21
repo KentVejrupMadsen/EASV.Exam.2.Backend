@@ -9,12 +9,17 @@
         extends Model
     {
         use HasFactory;
+        public $timestamps = false;
 
         protected $fillable =
         [
             'content'
         ];
 
-        public $timestamps = false;
+
+        protected $casts =
+        [
+            'content' => 'string'
+        ];
     }
 ?>

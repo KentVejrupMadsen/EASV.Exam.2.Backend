@@ -26,7 +26,9 @@
 
         protected $casts =
         [
-
+            'area_name' => 'string',
+            'zip_number' => 'string',
+            'country_id' => 'integer'
         ];
     }
 ?>

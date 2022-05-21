@@ -15,16 +15,5 @@
     {
         protected $table = 'kanban_titles';
 
-        
-        protected $hidden = 
-        [
-            
-        ];
-
-        
-        protected $casts = 
-        [
-            
-        ];
     }
 ?>

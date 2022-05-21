@@ -27,7 +27,8 @@
         
         protected $casts = 
         [
-            
+            'board_id' => 'integer',
+            'content' => 'string'
         ];
     }
 ?>

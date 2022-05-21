@@ -7,16 +7,5 @@
     {
         protected $table = 'person_name_middle_and_last';
 
-
-        protected $hidden =
-        [
-
-        ];
-
-
-        protected $casts =
-        [
-
-        ];
     }
 ?>
