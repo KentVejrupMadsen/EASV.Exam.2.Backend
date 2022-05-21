@@ -6,18 +6,11 @@
 
 
     class PersonFirstnameModel
-        extends Model
+        extends ExtensionLabelModel
     {
         use HasFactory;
 
         protected $table = 'person_name_middle_and_last';
-
-        public $timestamps = false;
-
-        protected $fillable =
-        [
-            'content'
-        ];
 
 
         protected $hidden =

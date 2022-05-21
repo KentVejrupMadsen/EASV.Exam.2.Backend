@@ -14,18 +14,13 @@
      *
      */
     class ProjectTitleModel 
-        extends Model
+        extends ExtensionLabelModel
     {
         use HasFactory;
         
         protected $table = 'project_titles';
 
-        protected $fillable = 
-        [
-            'content'
-        ];
 
-        
         protected $hidden = 
         [
             

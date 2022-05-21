@@ -14,16 +14,11 @@
      *
      */
     class KanbanTitleModel 
-        extends Model
+        extends ExtensionLabelModel
     {
         use HasFactory;
         
         protected $table = 'kanban_titles';
-
-        protected $fillable = 
-        [
-            'content'
-        ];
 
         
         protected $hidden = 

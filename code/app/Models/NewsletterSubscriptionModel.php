@@ -1,5 +1,4 @@
 <?php
-
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,13 +17,13 @@
 
         protected $fillable =
         [
-
+            'email_id'
         ];
 
 
         protected $hidden =
         [
-
+            'email_id'
         ];
 
 
