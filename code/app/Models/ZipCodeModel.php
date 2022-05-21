@@ -1,9 +1,4 @@
 <?php
-    /**
-     * Author: Kent vejrup Madsen
-     * Description:
-     * TODO: Make description
-     */
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,23 +8,24 @@
     /**
      *
      */
-    class RecaptchaModel
+    class ZipCodeModel
         extends Model
     {
         use HasFactory;
 
-        protected $table = 'security_recaptcha';
-        public $timestamps = false;
+        protected $table = 'zip_codes';
 
         protected $fillable =
         [
-
+            'area_name',
+            'zip_number',
+            'country_id'
         ];
 
 
         protected $hidden =
         [
-
+            'country_id'
         ];
 
 

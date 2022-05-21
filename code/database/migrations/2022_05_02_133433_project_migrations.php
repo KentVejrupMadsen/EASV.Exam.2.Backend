@@ -14,19 +14,19 @@
         
         public function up()
         {
-            Schema::create( 'project_titles', 
+            Schema::create( 'project_titles',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
 
                     $table->string( 'content' )
-                          ->unqie();
+                          ->unique();
                 }
             );
 
 
             //
-            Schema::create( 'projects', 
+            Schema::create( 'projects',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -44,18 +44,16 @@
 
                     $table->foreign( 'account_owner_id' )
                           ->references( 'id' )
-                          ->on( 'accounts' )
-                          ->onDelete( 'CASCADE' );
+                          ->on( 'accounts' );
 
                     $table->foreign( 'project_title_id' )
                           ->references( 'id' )
-                          ->on( 'project_titles' )
-                          ->onDelete( 'CASCADE' );
+                          ->on( 'project_titles' );
                 }
             );
 
 
-            Schema::create( 'member_groups', 
+            Schema::create( 'member_groups',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -66,7 +64,7 @@
             );
 
 
-            Schema::create( 'project_members', 
+            Schema::create( 'project_members',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -82,8 +80,7 @@
 
                     $table->foreign( 'project_id' )
                           ->references( 'id' )
-                          ->on( 'projects' )
-                          ->onDelete( 'CASCADE' );
+                          ->on( 'projects' );
 
                     $table->foreign( 'account_id' )
                           ->references( 'id' )
@@ -92,8 +89,7 @@
 
                     $table->foreign( 'member_group_id' )
                           ->references( 'id' )
-                          ->on( 'member_groups' )
-                          ->onDelete( 'CASCADE' );
+                          ->on( 'member_groups' );
                     
                     
                 }

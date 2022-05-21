@@ -17,7 +17,6 @@
     use Illuminate\Support\Facades\Hash;
     
     use App\Models\User;
-    use App\Http\Controllers\AccountEmailController;
 
 
     /**
@@ -133,7 +132,7 @@
 
             $account_create_fields = array();
             $account_create_fields[ 'email_id' ]  = $mail->id;
-            $account_create_fields[ 'name' ]      = $account_information[ 'person_name' ];
+
             $account_create_fields[ 'username' ]  = $account_information[ 'username' ];
             $account_create_fields[ 'password' ]  = Hash::make( $account_information[ 'security' ][ 'password' ] );
 
@@ -167,7 +166,6 @@
             }
 
             $account->email_id = $mailModel->id;
-            $account->name = $accountInformation[ 'person_name' ];
 
             // Passwords
             $new = Hash::make($accountInformation['security']['password']);

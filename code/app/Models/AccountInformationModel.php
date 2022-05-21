@@ -1,29 +1,25 @@
 <?php
-    /**
-     * Author: Kent vejrup Madsen
-     * Description:
-     * TODO: Make description
-     */
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-
+    
     /**
      *
      */
-    class RecaptchaModel
+    class AccountInformationModel
         extends Model
     {
         use HasFactory;
 
-        protected $table = 'security_recaptcha';
-        public $timestamps = false;
+        protected $table = 'account_informations';
 
         protected $fillable =
         [
-
+            'account_id',
+            'created_at',
+            'updated_at'
         ];
 
 
@@ -35,7 +31,8 @@
 
         protected $casts =
         [
-
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
         ];
     }
 ?>
