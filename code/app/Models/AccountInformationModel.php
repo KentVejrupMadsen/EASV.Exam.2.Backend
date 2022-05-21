@@ -13,11 +13,13 @@
     {
         use HasFactory;
 
-        protected $table = 'boards';
+        protected $table = 'account_informations';
 
         protected $fillable =
         [
-
+            'account_id',
+            'created_at',
+            'updated_at'
         ];
 
 
@@ -29,7 +31,8 @@
 
         protected $casts =
         [
-
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
         ];
     }
 ?>

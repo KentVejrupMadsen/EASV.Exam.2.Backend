@@ -13,11 +13,12 @@
     {
         use HasFactory;
 
-        protected $table = 'boards';
+        protected $table = 'countries';
 
         protected $fillable =
         [
-
+            'country_name',
+            'country_acronym'
         ];
 
 

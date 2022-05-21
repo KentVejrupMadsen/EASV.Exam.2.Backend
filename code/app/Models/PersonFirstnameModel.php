@@ -5,27 +5,24 @@
     use Illuminate\Database\Eloquent\Model;
 
 
-    /**
-     *
-     */
-    class ZipCodeModel
+    class PersonFirstnameModel
         extends Model
     {
         use HasFactory;
 
-        protected $table = 'zip_codes';
+        protected $table = 'person_name_middle_and_last';
+
+        public $timestamps = false;
 
         protected $fillable =
         [
-            'area_name',
-            'zip_number',
-            'country_id'
+            'content'
         ];
 
 
         protected $hidden =
         [
-            'country_id'
+
         ];
 
 

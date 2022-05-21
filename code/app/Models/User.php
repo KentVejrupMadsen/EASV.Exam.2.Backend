@@ -28,6 +28,8 @@
             'name',
             'email_id',
             'password',
+            'created_at',
+            'updated_at'
         ];
 
         
@@ -43,6 +45,8 @@
         protected $casts = 
         [
             'email_verified_at' => 'datetime',
+            'created_at'        => 'datetime',
+            'updated_at'        => 'datetime',
         ];
     }
 ?>
