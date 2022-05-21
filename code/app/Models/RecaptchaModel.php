@@ -6,36 +6,39 @@
      */
     namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
 
     /**
      *
      */
     class RecaptchaModel
-        extends Model
+        extends ExtensionNoTimestampModel
     {
-        use HasFactory;
-
         protected $table = 'security_recaptcha';
-        public $timestamps = false;
 
         protected $fillable =
         [
-
+            'success',
+            'score',
+            'at_date',
+            'hostname',
+            'error'
         ];
 
 
         protected $hidden =
         [
-
+            'hostname',
+            'error'
         ];
 
 
         protected $casts =
         [
-
+            'success'   => 'boolean',
+            'score'     => 'double',
+            'at_date'   => 'datetime',
+            'hostname'  => 'string',
+            'error'     => 'string'
         ];
     }
 ?>

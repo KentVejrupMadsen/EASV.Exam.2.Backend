@@ -13,7 +13,7 @@
     {
         use HasFactory;
 
-        protected $table = 'boards';
+        protected $table = 'addresses';
 
         protected $fillable =
         [
@@ -22,9 +22,7 @@
             'road_number',
             'levels',
             'country_id',
-            'zip_code_id',
-            'created_at',
-            'updated_at'
+            'zip_code_id'
         ];
 
 
@@ -39,8 +37,12 @@
 
         protected $casts =
         [
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            'account_information_id' => 'integer',
+            'road_name_id'           => 'integer',
+            'road_number'            => 'integer',
+            'levels'                 => 'string',
+            'country_id'             => 'integer',
+            'zip_code_id'            => 'integer'
         ];
 
     }

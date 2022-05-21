@@ -24,19 +24,20 @@
         [
             'kanban_id',
             'board_title_id',
-            
         ];
 
         
         protected $hidden = 
         [
-            
+            'kanban_id',
+            'board_title_id',
         ];
 
         
         protected $casts = 
         [
-            
+            'kanban_id' => 'integer',
+            'board_title_id' => 'integer'
         ];
     }
 ?>
