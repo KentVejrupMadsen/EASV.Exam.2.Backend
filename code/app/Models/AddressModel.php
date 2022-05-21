@@ -1,9 +1,4 @@
 <?php
-    /**
-     * Author: Kent vejrup Madsen
-     * Description:
-     * TODO: Make description
-     */
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,13 +8,12 @@
     /**
      *
      */
-    class RecaptchaModel
+    class AddressModel
         extends Model
     {
         use HasFactory;
 
-        protected $table = 'security_recaptcha';
-        public $timestamps = false;
+        protected $table = 'boards';
 
         protected $fillable =
         [
@@ -37,5 +31,6 @@
         [
 
         ];
+
     }
 ?>

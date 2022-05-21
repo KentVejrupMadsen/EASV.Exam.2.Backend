@@ -35,6 +35,7 @@
         [
             'password',
             'remember_token',
+            'email_id',
             'email_verified_at'
         ];
 

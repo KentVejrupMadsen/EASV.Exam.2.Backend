@@ -17,5 +17,22 @@
 
         protected $table = 'security_configuration';
         public $timestamps = false;
+
+        protected $fillable =
+        [
+
+        ];
+
+
+        protected $hidden =
+        [
+
+        ];
+
+
+        protected $casts =
+        [
+
+        ];
     }
 ?>
