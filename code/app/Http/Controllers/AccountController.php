@@ -6,7 +6,10 @@
      */
     namespace App\Http\Controllers;
 
+    use OpenApi\Attributes as OA;
+
     use Carbon\Carbon;
+
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
 
@@ -14,7 +17,6 @@
     use Illuminate\Support\Facades\Hash;
     
     use App\Models\User;
-    use App\Http\Controllers\AccountEmailController;
 
 
     /**
@@ -42,6 +44,8 @@
         /**
          * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function me()
         {
             $currentUser = Auth::user();
@@ -52,6 +56,8 @@
         /**
          * @return void
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function read( Request $request )
         {
             
@@ -62,6 +68,8 @@
          * @param Request $request
          * @return \Illuminate\Http\JsonResponse
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function login( Request $request )
         {
             $this->CSRFTokenController->access( $request );
@@ -91,6 +99,8 @@
          * @param Request $request
          * @return void
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function logout( Request $request )
         {
             $request->user()
@@ -103,6 +113,8 @@
          * @param Request $request
          * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $request )
         {
             $this->CSRFTokenController->access( $request );
@@ -120,7 +132,7 @@
 
             $account_create_fields = array();
             $account_create_fields[ 'email_id' ]  = $mail->id;
-            $account_create_fields[ 'name' ]      = $account_information[ 'person_name' ];
+
             $account_create_fields[ 'username' ]  = $account_information[ 'username' ];
             $account_create_fields[ 'password' ]  = Hash::make( $account_information[ 'security' ][ 'password' ] );
 
@@ -134,6 +146,8 @@
          * @param Request $request
          * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function update( Request $request )
         {
             $this->CSRFTokenController->access( $request );
@@ -152,7 +166,6 @@
             }
 
             $account->email_id = $mailModel->id;
-            $account->name = $accountInformation[ 'person_name' ];
 
             // Passwords
             $new = Hash::make($accountInformation['security']['password']);
@@ -168,6 +181,8 @@
          * @param Request $request
          * @return void
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function delete( Request $request )
         {
             $this->CSRFTokenController->access( $request );
@@ -187,6 +202,8 @@
          * @param Request $request
          * @return void
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function verify( Request $request )
         {
             $this->CSRFTokenController->access( $request );

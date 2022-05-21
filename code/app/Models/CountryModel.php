@@ -1,9 +1,4 @@
 <?php
-    /**
-     * Author: Kent vejrup Madsen
-     * Description:
-     * TODO: Make description
-     */
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,17 +8,17 @@
     /**
      *
      */
-    class RecaptchaModel
+    class CountryModel
         extends Model
     {
         use HasFactory;
 
-        protected $table = 'security_recaptcha';
-        public $timestamps = false;
+        protected $table = 'countries';
 
         protected $fillable =
         [
-
+            'country_name',
+            'country_acronym'
         ];
 
 
@@ -37,5 +32,6 @@
         [
 
         ];
+
     }
 ?>
