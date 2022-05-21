@@ -91,7 +91,7 @@
             );
 
             /** Used for additional information */
-            Schema::create( 'account_informations',
+            Schema::create( 'account_information_options',
                 function( Blueprint $table )
                 {
                     $table->id();
@@ -99,6 +99,8 @@
                     $table->bigInteger( 'account_id' )
                           ->unsigned()
                           ->unique();
+
+                    $table->json('settings');
 
                     $table->timestamps();
 
@@ -149,7 +151,7 @@
 
                     $table->foreign( 'account_information_id' )
                           ->references( 'id' )
-                          ->on( 'account_informations' )
+                          ->on( 'account_information_options' )
                           ->onDelete( 'CASCADE' );
 
                     $table->foreign( 'person_name_first_id' )
@@ -209,7 +211,7 @@
 
                     $table->foreign( 'account_information_id' )
                           ->references( 'id' )
-                          ->on( 'account_informations' )
+                          ->on( 'account_information_options' )
                           ->onDelete( 'CASCADE' );
                 }
             );
@@ -235,7 +237,7 @@
         public function down()
         {
             Schema::dropIfExists( 'newsletter_users' );
-            Schema::dropIfExists( 'accounts_information' );
+            Schema::dropIfExists( 'account_information_options' );
             Schema::dropIfExists( 'countries' );
             Schema::dropIfExists( 'addresses' );
             Schema::dropIfExists( 'zip_codes' );
