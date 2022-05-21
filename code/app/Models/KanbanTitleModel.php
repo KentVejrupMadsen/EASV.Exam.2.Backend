@@ -6,9 +6,6 @@
      */
     namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
 
     /**
      *
@@ -16,8 +13,6 @@
     class KanbanTitleModel 
         extends ExtensionLabelModel
     {
-        use HasFactory;
-        
         protected $table = 'kanban_titles';
 
         

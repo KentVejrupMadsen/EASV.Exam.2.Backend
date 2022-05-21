@@ -29,7 +29,8 @@
         
         protected $hidden = 
         [
-            
+            'kanban_title_id',
+            'project_id'
         ];
 
         

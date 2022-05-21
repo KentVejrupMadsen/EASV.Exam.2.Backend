@@ -6,15 +6,10 @@
      */
     namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
 
     class TaskModel 
-        extends Model
+        extends ExtensionNoTimestampModel
     {
-        use HasFactory;
-        
         protected $table = 'tasks';
         
         protected $fillable = 
@@ -26,7 +21,7 @@
         
         protected $hidden = 
         [
-            
+            'board_id',
         ];
 
         
