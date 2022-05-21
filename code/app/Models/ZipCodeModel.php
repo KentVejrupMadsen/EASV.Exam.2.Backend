@@ -1,18 +1,13 @@
 <?php
     namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
 
     /**
      *
      */
     class ZipCodeModel
-        extends Model
+        extends ExtensionNoTimestampModel
     {
-        use HasFactory;
-
         protected $table = 'zip_codes';
 
         protected $fillable =
@@ -31,7 +26,9 @@
 
         protected $casts =
         [
-
+            'area_name' => 'string',
+            'zip_number' => 'string',
+            'country_id' => 'integer'
         ];
     }
 ?>

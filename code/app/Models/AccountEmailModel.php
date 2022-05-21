@@ -6,36 +6,14 @@
      */
     namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
 
     /**
      *
      */
     class AccountEmailModel 
-        extends Model
+        extends ExtensionLabelModel
     {
-        use HasFactory;
-        
-        public $timestamps = false;
         protected $table = 'account_emails';
-        
-        protected $fillable = 
-        [
-            'content'
-        ];
 
-        
-        protected $hidden = 
-        [
-            
-        ];
-
-        
-        protected $casts = 
-        [
-            
-        ];
     }
 ?>

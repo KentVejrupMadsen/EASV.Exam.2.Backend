@@ -1,18 +1,13 @@
 <?php
     namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
 
     /**
      *
      */
     class CountryModel
-        extends Model
+        extends ExtensionNoTimestampModel
     {
-        use HasFactory;
-
         protected $table = 'countries';
 
         protected $fillable =
@@ -30,8 +25,8 @@
 
         protected $casts =
         [
-
+            'country_name' => 'string',
+            'country_acronym' => 'string'
         ];
-
     }
 ?>

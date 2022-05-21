@@ -29,13 +29,15 @@
         
         protected $hidden = 
         [
-            
+            'kanban_title_id',
+            'project_id'
         ];
 
         
         protected $casts = 
         [
-            
+            'kanban_title_id'   => 'integer',
+            'project_id'        => 'integer'
         ];
     }
 ?>

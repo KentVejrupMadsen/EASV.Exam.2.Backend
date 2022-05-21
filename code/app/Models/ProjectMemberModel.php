@@ -6,18 +6,13 @@
      */
     namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
 
     /**
      *
      */
     class ProjectMemberModel 
-        extends Model
+        extends ExtensionNoTimestampModel
     {
-        use HasFactory;
-        
         protected $table = 'project_members';
         
         protected $fillable = 
@@ -30,13 +25,19 @@
         
         protected $hidden = 
         [
-            
+            'project_id',
+            'account_id',
+            'member_group_id'
         ];
 
         
         protected $casts = 
         [
-            
+
+            'project_id'        => 'integer',
+            'account_id'        => 'integer',
+            'member_group_id'   => 'integer'
+
         ];
     }
 ?>

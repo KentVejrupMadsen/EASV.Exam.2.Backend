@@ -6,17 +6,12 @@
      */
     namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
 
     class SecurityConfigurationModel
-        extends Model
+        extends ExtensionNoTimestampModel
     {
-        use HasFactory;
-
         protected $table = 'security_configuration';
-        public $timestamps = false;
+
 
         protected $fillable =
         [
@@ -33,7 +28,8 @@
 
         protected $casts =
         [
-
+            'key' => 'string',
+            'value' => 'string'
         ];
     }
 ?>

@@ -44,6 +44,10 @@
         
         protected $casts = 
         [
+            'username'          => 'string',
+            'name'              => 'string',
+            'email_id'          => 'integer',
+            'password'          => 'string',
             'email_verified_at' => 'datetime',
             'created_at'        => 'datetime',
             'updated_at'        => 'datetime',

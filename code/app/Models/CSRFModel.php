@@ -6,23 +6,14 @@
      */
     namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
-    use Illuminate\Support\Str;
-
 
     /**
      *
      */
     class CSRFModel
-        extends Model
+        extends ExtensionNoTimestampModel
     {
-        use HasFactory;
-        
         protected $table = 'security_csrf_token';
-        public $timestamps = false;
-
 
         protected $fillable = 
         [
@@ -45,7 +36,13 @@
         
         protected $casts = 
         [
-            
+            'assigned_to'   => 'string',
+            'secure_token'  => 'string',
+            'secret_token'  => 'string',
+            'issued'        => 'datetime',
+            'accessed'      => 'datetime',
+            'activated'     => 'boolean',
+            'invalidated'   => 'boolean'
         ];
     }
 ?>
