@@ -39,6 +39,8 @@
          * @param Request $request
          * @return Response
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function access( Request $request )
         {
             // Variables
@@ -118,6 +120,8 @@
          * @param Request $request
          * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $request )
         {
             $inputModel = array();
@@ -146,6 +150,8 @@
          * @param Request $request
          * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function reset( Request $request )
         {
             $request->session()->forget('secret_token' );
@@ -157,6 +163,8 @@
         }
 
 
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function invalidateOld()
         {
 
@@ -166,6 +174,8 @@
         /**
          * @return void
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function invalidateAll()
         {
             CSRFModel::where('invalidated', '=', '0')->update(array('invalidated'=>1));
@@ -176,6 +186,8 @@
          * @param int $id
          * @return void
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function delete( int $id )
         {
             $model = CSRFModel::findOrFail( $id );
@@ -187,6 +199,8 @@
          * @param array $values
          * @return void
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function deleteGroup( array $values )
         {
             $idx = null;
