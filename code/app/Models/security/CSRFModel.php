@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Models\tables;
+    namespace App\Models\security;
 
     use App\Models\templates\ExtensionNoTimestampModel;
 

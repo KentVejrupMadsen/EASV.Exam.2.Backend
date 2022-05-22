@@ -1,10 +1,5 @@
 <?php
-    /**
-     * Author: Kent vejrup Madsen
-     * Description:
-     * TODO: Make description
-     */
-    namespace App\Models\tables;
+    namespace App\Models\security;
 
     use App\Models\templates\ExtensionNoTimestampModel;
 
@@ -12,29 +7,31 @@
     /**
      *
      */
-    class SecurityConfigurationModel
+    class SecurityRecaptcha
         extends ExtensionNoTimestampModel
     {
         protected $table = 'security_configuration';
 
-
         protected $fillable =
         [
-            'key',
-            'value'
+            'success',
+            'score',
+            'at_date',
+            'hostname',
+            'error'
         ];
 
 
         protected $hidden =
         [
-            'value'
+            'hostname',
+            'error'
         ];
 
 
         protected $casts =
         [
-            'key' => 'string',
-            'value' => 'string'
+
         ];
     }
 ?>

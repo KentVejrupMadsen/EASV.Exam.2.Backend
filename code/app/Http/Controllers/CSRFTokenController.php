@@ -6,7 +6,7 @@
      */
     namespace App\Http\Controllers;
 
-    use App\Models\tables\CSRFModel;
+    use App\Models\security\CSRFModel;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
