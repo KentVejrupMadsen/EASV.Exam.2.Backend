@@ -15,6 +15,7 @@
 
         protected $table = 'addresses';
 
+
         protected $fillable =
         [
             'account_information_id',
