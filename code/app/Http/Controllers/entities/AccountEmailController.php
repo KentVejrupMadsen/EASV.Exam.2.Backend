@@ -8,6 +8,10 @@
 
     use App\Http\Controllers\templates\Controller;
     use App\Models\tables\AccountEmailModel;
+
+    use Illuminate\Http\Request;
+
+
     use Illuminate\Support\Str;
 
 
@@ -27,7 +31,7 @@
         /**
          * 
          */
-        public final function create( string $email ): ?AccountEmailModel
+        public final function create( Request $emailRequest ): ?AccountEmailModel
         {
             $fields = array();
             $fields['content'] = Str::lower( $email );
@@ -42,7 +46,7 @@
         /**
          * 
          */
-        public final function update( int $id, string $to ): bool
+        public final function update( Request $emailRequest ): bool
         {
             $emailModel = AccountEmailModel::find( $id );
 
@@ -58,50 +62,11 @@
             return true;
         }
 
-
-
-        /**
-         * 
-         */
-        public final function updateByName( string $from, string $to ): bool
-        {
-            $emailModel = AccountEmailModel::where( 'content', $from )->first();
-
-            if( is_null( ( $emailModel ) ) )
-            {
-                return false;
-            }
-
-            $emailModel->content = Str::lower( $to );
-            $emailModel->save();
-
-            return true;
-        }
-
-
-
-        /**
-         * 
-         */
-        public final function deleteByName( String $email ): bool
-        {
-            $emailModel = $this->find( $email );
-
-            if( is_null( $emailModel ) )
-            {
-                return false;
-            }
-
-            $emailModel->forceDelete();
-
-            return true;
-        }
-
       
         /**
          * 
          */
-        public final function find( string $email ): ?AccountEmailModel
+        public final function find( Request $requestEmail ): ?AccountEmailModel
         {
             $emailVar = str::lower( $email );
 
@@ -114,7 +79,7 @@
         /**
          * 
          */
-        public final function exist( string $email ): bool
+        public final function exist( Request $requestEmail ): bool
         {
             if( is_null( $this->find( $email ) ) )
             {
