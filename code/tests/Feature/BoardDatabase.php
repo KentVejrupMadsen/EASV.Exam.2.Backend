@@ -1,23 +1,20 @@
 <?php
-    /**
-     * Author: Kent vejrup Madsen
-     * Description:
-     * TODO: Make description
-     */
     namespace Tests\Feature;
 
     use Illuminate\Foundation\Testing\RefreshDatabase;
+    use Illuminate\Foundation\Testing\WithFaker;
     use Tests\TestCase;
 
 
-    /**
-     *
-     */
-    class ProjectMembersTest
+    class BoardDatabase
         extends TestCase
     {
-        
-        public function test_the_application_returns_a_successful_response()
+        /**
+         * A basic feature test example.
+         *
+         * @return void
+         */
+        public function test_example()
         {
             $response = $this->get('/');
 

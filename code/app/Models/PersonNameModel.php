@@ -35,7 +35,7 @@
             'account_information_id'    => 'integer',
             'person_name_first_id'      => 'integer',
             'person_name_lastname_id'   => 'integer',
-            'person_name_middlename'    => 'string'
+            'person_name_middlename'    => 'array'
         ];
     }
 ?>

@@ -13,7 +13,7 @@
     {
         use HasFactory;
 
-        protected $table = 'account_informations';
+        protected $table = 'account_information_options';
 
         protected $fillable =
         [
@@ -25,6 +25,7 @@
 
         protected $hidden =
         [
+            'account_id',
 
         ];
 

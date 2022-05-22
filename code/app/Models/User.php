@@ -7,9 +7,12 @@
     namespace App\Models;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Foundation\Auth\User as Authenticatable;
     use Illuminate\Notifications\Notifiable;
+
     use Laravel\Sanctum\HasApiTokens;
+
+    use Illuminate\Foundation\Auth\User
+        as Authenticatable;
 
     
     class User 
@@ -29,7 +32,8 @@
             'email_id',
             'password',
             'created_at',
-            'updated_at'
+            'updated_at',
+            'settings'
         ];
 
         
@@ -51,6 +55,7 @@
             'email_verified_at' => 'datetime',
             'created_at'        => 'datetime',
             'updated_at'        => 'datetime',
+            'settings'          => 'array'
         ];
     }
 ?>
