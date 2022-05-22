@@ -6,17 +6,13 @@
      */
     namespace App\Http\Controllers;
 
-    use OpenApi\Attributes as OA;
-
+    use App\Models\tables\User;
     use Carbon\Carbon;
-
     use Illuminate\Http\Request;
-    use Illuminate\Support\Str;
-
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
-    
-    use App\Models\User;
+    use Illuminate\Support\Str;
+    use OpenApi\Attributes as OA;
 
 
     /**

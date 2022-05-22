@@ -6,11 +6,10 @@
      */
     namespace App\Http\Controllers;
 
-    use App\Models\RecaptchaModel;
     use Illuminate\Http\Request;
 
 
-    /**
+/**
      *
      */
     class RecaptchaController

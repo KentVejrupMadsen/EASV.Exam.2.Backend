@@ -6,11 +6,9 @@
      */
     namespace App\Http\Controllers;
 
-    use App\Models\ProjectModel;
-
     use Illuminate\Http\Request;
 
-    
+
     /**
      * 
      */
