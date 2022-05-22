@@ -25,7 +25,6 @@ return new class extends Migration
 
                 $table->string('country_acronym', 25 )
                       ->index();
-
             }
         );
 
@@ -48,8 +47,8 @@ return new class extends Migration
 
                 // References
                 $table->foreign( 'country_id' )
-                    ->references( 'id' )
-                    ->on( 'countries' );
+                      ->references( 'id' )
+                      ->on( 'countries' );
             }
         );
 
@@ -89,6 +88,7 @@ return new class extends Migration
             }
         );
 
+
         Schema::create( 'person_name_middle_and_last',
             function( Blueprint $table )
             {
@@ -99,6 +99,7 @@ return new class extends Migration
                       ->comment( '' );
             }
         );
+
 
         Schema::create( 'person_name',
             function( Blueprint $table )
@@ -137,6 +138,7 @@ return new class extends Migration
                       ->on( 'person_name_middle_and_last' );
             }
         );
+
 
         Schema::create( 'address_road_names',
             function( Blueprint $table )
