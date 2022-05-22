@@ -13,7 +13,7 @@
     /**
      *
      */
-    class TaskTest
+    class ProjectMembersDatabase
         extends TestCase
     {
 

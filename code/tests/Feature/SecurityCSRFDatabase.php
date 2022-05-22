@@ -13,7 +13,7 @@
     /**
      *
      */
-    class SecurityCSRF
+    class SecurityCSRFDatabase
         extends TestCase
     {
 

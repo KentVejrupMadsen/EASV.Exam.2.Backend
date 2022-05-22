@@ -13,10 +13,9 @@
     /**
      *
      */
-    class ProjectTest
+    class KanbanDatabase
         extends TestCase
     {
-
 
     }
 ?>
