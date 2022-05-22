@@ -7,7 +7,9 @@
     namespace App\Models;
 
 
-    /**
+    use App\Models\templates\ExtensionNoTimestampModel;
+
+/**
      *
      */
     class RecaptchaModel

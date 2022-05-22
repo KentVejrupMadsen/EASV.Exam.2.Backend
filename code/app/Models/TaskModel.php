@@ -7,7 +7,9 @@
     namespace App\Models;
 
 
-    class TaskModel 
+    use App\Models\templates\ExtensionNoTimestampModel;
+
+    class TaskModel
         extends ExtensionNoTimestampModel
     {
         protected $table = 'tasks';

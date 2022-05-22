@@ -7,6 +7,8 @@
     namespace App\Models;
 
 
+    use App\Models\templates\ExtensionNoTimestampModel;
+
     /**
      *
      */
