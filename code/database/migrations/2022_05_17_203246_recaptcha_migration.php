@@ -22,17 +22,24 @@
             Schema::create( 'security_recaptcha',
                 function( Blueprint $table )
                 {
-                    $table->id();
+                    $table->id()
+                          ->comment('');
 
-                    $table->boolean('success' );
-                    $table->double('score' );
+                    $table->boolean('success' )
+                          ->comment('');
 
-                    $table->timestamp('at_date' );
+                    $table->double('score' )
+                          ->comment('');
 
-                    $table->string('hostname' );
+                    $table->timestamp('at_date' )
+                          ->comment('');
+
+                    $table->string('hostname' )
+                          ->comment('');
 
                     $table->mediumText('error' )
-                          ->nullable();
+                          ->nullable()
+                          ->comment('');
                 }
             );
         }

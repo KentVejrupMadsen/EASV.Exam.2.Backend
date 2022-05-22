@@ -33,13 +33,16 @@
                     $table->id();
 
                     $table->bigInteger( 'kanban_title_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
                           
                     $table->bigInteger( 'project_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
                     
                     $table->timestamps();
 
+                    // Referemces
                     $table->foreign( 'kanban_title_id' )
                           ->references( 'id' )
                           ->on( 'kanban_titles' );

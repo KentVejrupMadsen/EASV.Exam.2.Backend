@@ -32,19 +32,25 @@
                     $table->id();
                     
                     $table->bigInteger( 'account_owner_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');;
 
                     $table->bigInteger( 'project_title_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
-                    $table->longText( 'description' );
-                    $table->json( 'tags' );
+                    $table->longText( 'description' )
+                          ->comment('');
+
+                    $table->json( 'tags' )
+                          ->comment('');;
 
                     $table->timestamps();
 
                     $table->foreign( 'account_owner_id' )
                           ->references( 'id' )
-                          ->on( 'accounts' );
+                          ->on( 'accounts' )
+                          ->onDelete('cascade');
 
                     $table->foreign( 'project_title_id' )
                           ->references( 'id' )
@@ -70,14 +76,18 @@
                     $table->id();
                     
                     $table->bigInteger( 'project_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'account_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'member_group_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
+                    // References
                     $table->foreign( 'project_id' )
                           ->references( 'id' )
                           ->on( 'projects' );
@@ -102,6 +112,7 @@
             //
             Schema::dropIfExists( 'project_members' );
             Schema::dropIfExists( 'member_groups' );
+
             Schema::dropIfExists( 'projects' );
             Schema::dropIfExists( 'projects_titles' );
         }

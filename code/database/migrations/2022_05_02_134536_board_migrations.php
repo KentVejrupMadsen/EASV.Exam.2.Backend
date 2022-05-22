@@ -31,14 +31,18 @@
                     $table->id();
                     
                     $table->bigInteger( 'kanban_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'board_title_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     
                     $table->timestamps();
 
+
+                    // References
                     $table->foreign( 'kanban_id' )
                           ->references( 'id' )
                           ->on( 'kanbans' );
@@ -56,10 +60,13 @@
                     $table->id();
 
                     $table->bigInteger( 'board_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
-                    $table->longText( 'content' );
-                    
+                    $table->longText( 'content' )
+                          ->comment('');
+
+                    // References
                     $table->foreign( 'board_id' )
                           ->references( 'id' )
                           ->on( 'boards' );

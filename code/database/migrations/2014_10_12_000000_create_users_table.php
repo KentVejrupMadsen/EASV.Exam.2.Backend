@@ -77,13 +77,18 @@
                 {
                     $table->id();
 
-                    $table->string('area_name' );
+                    $table->string('area_name' )
+                          ->comment('');
+
                     $table->integer('zip_number' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger('country_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
+                    // References
                     $table->foreign( 'country_id' )
                           ->references( 'id' )
                           ->on( 'countries' );
@@ -98,12 +103,15 @@
 
                     $table->bigInteger( 'account_id' )
                           ->unsigned()
-                          ->unique();
+                          ->unique()
+                          ->comment('');
 
-                    $table->json('settings');
+                    $table->json('settings')
+                          ->comment('');
 
                     $table->timestamps();
 
+                    // References
                     $table->foreign( 'account_id' )
                           ->references( 'id' )
                           ->on( 'accounts' )
@@ -117,7 +125,8 @@
                     $table->id();
 
                     $table->string('content')
-                          ->unique();
+                          ->unique()
+                          ->comment('');
                 }
             );
 
@@ -127,7 +136,8 @@
                     $table->id();
 
                     $table->string('content')
-                          ->unique();
+                          ->unique()
+                          ->comment('');
                 }
             );
 
@@ -138,17 +148,22 @@
 
                     $table->bigInteger( 'account_information_id' )
                           ->unsigned()
-                          ->unique();
+                          ->unique()
+                          ->comment('');
 
                     $table->bigInteger('person_name_first_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger('person_name_lastname_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->json('person_name_middlename' )
-                          ->nullable();
+                          ->nullable()
+                          ->comment('');
 
+                    // References
                     $table->foreign( 'account_information_id' )
                           ->references( 'id' )
                           ->on( 'account_information_options' )
@@ -170,7 +185,8 @@
                     $table->id();
 
                     $table->string('content')
-                          ->unique();
+                          ->unique()
+                          ->comment('');
                 }
             );
 
@@ -182,21 +198,28 @@
 
                     $table->bigInteger('account_information_id' )
                           ->unsigned()
-                          ->unique();
+                          ->unique()
+                          ->comment('');
 
                     $table->bigInteger('road_name_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
-                    $table->integer('road_number' );
+                    $table->integer('road_number' )
+                          ->comment('');
 
-                    $table->string('levels' );
+                    $table->string('levels' )
+                          ->comment('');
 
                     $table->bigInteger('country_id')
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger('zip_code_id')
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
+                    // References
                     $table->foreign( 'country_id' )
                           ->references( 'id' )
                           ->on( 'countries' );
@@ -215,28 +238,11 @@
                           ->onDelete( 'CASCADE' );
                 }
             );
-
-
-            Schema::create( 'newsletter_users',
-                function( Blueprint $table )
-                {
-                    $table->id();
-
-                    $table->bigInteger('email_id' )
-                          ->unsigned()
-                          ->index();
-
-                    $table->foreign( 'email_id' )
-                          ->references( 'id' )
-                          ->on( 'account_emails' );
-                }
-            );
         }
 
         
         public function down()
         {
-            Schema::dropIfExists( 'newsletter_users' );
             Schema::dropIfExists( 'account_information_options' );
             Schema::dropIfExists( 'countries' );
             Schema::dropIfExists( 'addresses' );
