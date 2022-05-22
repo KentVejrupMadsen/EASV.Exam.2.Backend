@@ -14,7 +14,8 @@
         
         public function up()
         {
-            Schema::create( 'project_titles',
+            Schema::create(
+                'project_titles',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -26,7 +27,8 @@
 
 
             //
-            Schema::create( 'projects',
+            Schema::create(
+                'projects',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -43,10 +45,11 @@
                           ->comment('');
 
                     $table->json( 'tags' )
-                          ->comment('');;
+                          ->comment('');
 
                     $table->timestamps();
 
+                    // References
                     $table->foreign( 'account_owner_id' )
                           ->references( 'id' )
                           ->on( 'accounts' )
@@ -59,7 +62,8 @@
             );
 
 
-            Schema::create( 'member_groups',
+            Schema::create(
+                'member_groups',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -70,7 +74,8 @@
             );
 
 
-            Schema::create( 'project_members',
+            Schema::create(
+                'project_members',
                 function ( Blueprint $table ) 
                 {
                     $table->id();

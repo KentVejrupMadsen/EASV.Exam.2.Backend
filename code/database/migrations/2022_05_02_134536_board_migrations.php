@@ -15,7 +15,8 @@
         public function up()
         {
             //
-            Schema::create( 'board_titles', 
+            Schema::create(
+                'board_titles',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -25,7 +26,8 @@
                 }
             );
 
-            Schema::create( 'boards', 
+            Schema::create(
+                'boards',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -54,7 +56,8 @@
             );
 
 
-            Schema::create( 'tasks', 
+            Schema::create(
+                'tasks',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -80,6 +83,7 @@
             //
             Schema::dropIfExists( 'tasks' );
             Schema::dropIfExists( 'boards' );
+            Schema::dropIfExists( 'board_titles' );
         }
     };
 ?>

@@ -20,7 +20,8 @@
         public function up()
         {
             //
-            Schema::create( 'security_configuration',
+            Schema::create(
+                'security_configuration',
                 function ( Blueprint $table )
                 {
                     $table->id();
@@ -36,7 +37,8 @@
                 }
             );
 
-            Schema::create( Str::lower('security_CSRF_Token'),
+            Schema::create(
+                Str::lower('security_CSRF_Token'),
                 function( Blueprint $table )
                 {
                     $table->id();

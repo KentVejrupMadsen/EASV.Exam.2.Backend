@@ -8,9 +8,10 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    use Illuminate\Support\Str;
 
-    
+    /**
+     *
+     */
     return new class extends Migration
     {
         
@@ -49,6 +50,7 @@
                     
                     $table->timestamps();
 
+                    // References
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
                           ->on( 'account_emails' );
@@ -61,7 +63,7 @@
                 {
                     $table->id();
 
-                    $table->string('country_name' )
+                    $table->string( 'country_name' )
                         ->unique()
                         ->index();
 
@@ -78,15 +80,15 @@
                     $table->id();
 
                     $table->string('area_name' )
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->integer('zip_number' )
                           ->unsigned()
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->bigInteger('country_id' )
                           ->unsigned()
-                          ->comment('');
+                          ->comment( '' );
 
                     // References
                     $table->foreign( 'country_id' )
@@ -104,10 +106,10 @@
                     $table->bigInteger( 'account_id' )
                           ->unsigned()
                           ->unique()
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->json('settings')
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->timestamps();
 
@@ -126,7 +128,7 @@
 
                     $table->string('content')
                           ->unique()
-                          ->comment('');
+                          ->comment( '' );
                 }
             );
 
@@ -137,7 +139,7 @@
 
                     $table->string('content')
                           ->unique()
-                          ->comment('');
+                          ->comment( '' );
                 }
             );
 
@@ -149,19 +151,19 @@
                     $table->bigInteger( 'account_information_id' )
                           ->unsigned()
                           ->unique()
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->bigInteger('person_name_first_id' )
                           ->unsigned()
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->bigInteger('person_name_lastname_id' )
                           ->unsigned()
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->json('person_name_middlename' )
                           ->nullable()
-                          ->comment('');
+                          ->comment( '' );
 
                     // References
                     $table->foreign( 'account_information_id' )
@@ -186,7 +188,7 @@
 
                     $table->string('content')
                           ->unique()
-                          ->comment('');
+                          ->comment( '' );
                 }
             );
 
@@ -199,25 +201,25 @@
                     $table->bigInteger('account_information_id' )
                           ->unsigned()
                           ->unique()
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->bigInteger('road_name_id' )
                           ->unsigned()
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->integer('road_number' )
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->string('levels' )
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->bigInteger('country_id')
                           ->unsigned()
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->bigInteger('zip_code_id')
                           ->unsigned()
-                          ->comment('');
+                          ->comment( '' );
 
                     // References
                     $table->foreign( 'country_id' )

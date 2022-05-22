@@ -13,7 +13,8 @@
         public function up()
         {
             //
-            Schema::create( 'newsletter_users',
+            Schema::create(
+                'newsletter_users',
                 function( Blueprint $table )
                 {
                     $table->id();

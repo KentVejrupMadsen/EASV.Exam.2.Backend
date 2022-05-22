@@ -14,7 +14,8 @@
         
         public function up()
         {
-            Schema::create( 'password_resets', 
+            Schema::create(
+                'password_resets',
                 function( Blueprint $table )
                 {
                     $table->id();
@@ -22,14 +23,16 @@
                     $table->bigInteger( 'email_id' )
                           ->unsigned()
                           ->index()
-                          ->comment('');
+                          ->comment( '' );
 
-                    $table->string( 'token' );
+                    $table->string( 'token' )
+                          ->index();
                     
                     $table->timestamp( 'created_at' )
                           ->nullable()
-                          ->comment('');
+                          ->comment( '' );
 
+                    // References
                     $table->foreign( 'email_id' )
                         ->references( 'id' )
                         ->on( 'account_emails' );

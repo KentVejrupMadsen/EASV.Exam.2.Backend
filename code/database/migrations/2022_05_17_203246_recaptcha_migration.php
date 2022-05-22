@@ -19,7 +19,8 @@
         public function up()
         {
             //
-            Schema::create( 'security_recaptcha',
+            Schema::create(
+                'security_recaptcha',
                 function( Blueprint $table )
                 {
                     $table->id()
