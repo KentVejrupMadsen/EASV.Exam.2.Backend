@@ -1,4 +1,6 @@
-docker-compose.yml
+
+*.lock
+composer.lock
 
 .editorconfig
 
@@ -9,5 +11,9 @@ docker-compose.yml
 .env
 .env.backup
 
+package-lock.json
 
+*.yml
 *.xml
+
+.idea/*

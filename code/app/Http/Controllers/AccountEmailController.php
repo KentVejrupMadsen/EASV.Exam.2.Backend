@@ -1,12 +1,16 @@
 <?php
-
+    /**
+     * Author: Kent vejrup Madsen
+     * Description:
+     * TODO: Make description
+     */
     namespace App\Http\Controllers;
 
-    use App\Models\AccountEmailModel;
-    
-    use Illuminate\Contracts\Validation\Validator;
+    use App\Models\tables\AccountEmailModel;
     use Illuminate\Support\Str;
 
+
+    // Convert to CRUD Interface
     class AccountEmailController 
         extends Controller
     {

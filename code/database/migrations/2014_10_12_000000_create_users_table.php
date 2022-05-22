@@ -1,11 +1,17 @@
 <?php
-
+    /**
+     * Author: Kent vejrup Madsen
+     * Description:
+     * TODO: Make description
+     */
     use Illuminate\Database\Migrations\Migration;
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
 
-    
+    /**
+     *
+     */
     return new class extends Migration
     {
         
@@ -22,13 +28,14 @@
             );
 
 
+            // Base information for logging in
             Schema::create( 'accounts', 
-                function ( Blueprint $table ) 
+                function( Blueprint $table )
                 {
                     $table->id();
 
-                    $table->string( 'username' )->unique();
-                    $table->string( 'name' );
+                    $table->string( 'username' )
+                          ->unique();
                     
                     $table->bigInteger( 'email_id' )
                           ->unsigned()
@@ -43,10 +50,10 @@
                     
                     $table->timestamps();
 
+                    // References
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
-                          ->on( 'account_emails' )
-                          ->onDelete( 'CASCADE' );
+                          ->on( 'account_emails' );
                 }
             );
         }
@@ -58,5 +65,4 @@
             Schema::dropIfExists( 'account_emails' );
         }
     };
-
 ?>

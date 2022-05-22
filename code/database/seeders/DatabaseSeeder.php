@@ -1,4 +1,9 @@
 <?php
+    /**
+     * Author: Kent vejrup Madsen
+     * Description:
+     * TODO: Make description
+     */
     namespace Database\Seeders;
 
     use Illuminate\Database\Console\Seeds\WithoutModelEvents;
