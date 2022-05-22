@@ -7,17 +7,19 @@
     namespace App\Http\Controllers\entities;
 
     use App\Http\Controllers\templates\Controller;
+    use App\Http\Controllers\templates\CrudController;
     use App\Models\tables\AccountEmailModel;
 
     use Illuminate\Http\Request;
 
 
     use Illuminate\Support\Str;
+    use phpDocumentor\Reflection\Types\Boolean;
 
 
     // Convert to CRUD Interface
     class AccountEmailController 
-        extends Controller
+        extends CrudController
     {
         /**
          * 
@@ -26,19 +28,32 @@
         {
             
         }
-        
+
+        private const AccountKey = 'account';
+        private const NewsletterKey = 'newsletter';
+
+        public function read( Request $request ): ?AccountEmailModel
+        {
+            // TODO: Implement read() method.
+
+            return null;
+        }
+
+
+        public function delete( Request $request )
+        {
+            // TODO: Implement delete() method.
+        }
+
 
         /**
          * 
          */
         public final function create( Request $emailRequest ): ?AccountEmailModel
         {
-            $fields = array();
-            $fields['content'] = Str::lower( $email );
-            
-            $email = AccountEmailModel::create( $fields );
 
-            return $email;
+
+            return null;
         }
 
 
@@ -48,16 +63,7 @@
          */
         public final function update( Request $emailRequest ): bool
         {
-            $emailModel = AccountEmailModel::find( $id );
 
-            if( is_null( $emailModel ) )
-            {
-                return false;
-            }
-
-            $emailModel->content = Str::lower( $to );
-
-            $emailModel->save();
 
             return true;
         }
