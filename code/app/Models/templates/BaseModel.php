@@ -1,13 +1,17 @@
 <?php
-    namespace App\Models\views;
+    namespace App\Models\templates;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
 
-    abstract class ModelView
+    /**
+     *
+     */
+    abstract class BaseModel
         extends Model
     {
         use HasFactory;
+
     }
 ?>

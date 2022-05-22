@@ -1,34 +1,37 @@
 <?php
-    namespace App\Models;
+    /**
+     * Author: Kent vejrup Madsen
+     * Description:
+     * TODO: Make description
+     */
+    namespace App\Models\tables;
 
 
     use App\Models\templates\ExtensionNoTimestampModel;
 
-    class SecurityRecaptcha
+class SecurityConfigurationModel
         extends ExtensionNoTimestampModel
     {
         protected $table = 'security_configuration';
 
+
         protected $fillable =
         [
-            'success',
-            'score',
-            'at_date',
-            'hostname',
-            'error'
+            'key',
+            'value'
         ];
 
 
         protected $hidden =
         [
-            'hostname',
-            'error'
+            'value'
         ];
 
 
         protected $casts =
         [
-
+            'key' => 'string',
+            'value' => 'string'
         ];
     }
 ?>

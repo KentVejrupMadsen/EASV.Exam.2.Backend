@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Models;
+    namespace App\Models\tables;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
@@ -13,34 +13,31 @@
     /**
      *
      */
-    class ProjectModel 
+    class KanbanModel 
         extends Model
     {
         use HasFactory;
         
-        protected $table = 'projects';
-        
+        protected $table = 'kanbans';
+
         protected $fillable = 
         [
-            'account_owner_id',
-            'project_title_id',
-            'description',
-            'tags'
+            'kanban_title_id',
+            'project_id'
         ];
 
         
         protected $hidden = 
         [
-            
+            'kanban_title_id',
+            'project_id'
         ];
 
         
         protected $casts = 
         [
-            'account_owner_id'  => 'integer',
-            'project_title_id'  => 'integer',
-            'description'       => 'string',
-            'tags'              => 'string'
+            'kanban_title_id'   => 'integer',
+            'project_id'        => 'integer'
         ];
     }
 ?>

@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Models;
+    namespace App\Models\tables;
 
 
     use App\Models\templates\ExtensionLabelModel;

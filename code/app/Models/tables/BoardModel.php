@@ -4,13 +4,13 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Models;
+    namespace App\Models\tables;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 
-    /**
+/**
      *
      */
     class BoardModel 

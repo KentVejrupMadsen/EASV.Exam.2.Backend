@@ -1,11 +1,15 @@
 <?php
+    namespace App\Models\views;
 
-namespace App\Models\views;
+    use App\Models\templates\ModelView;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class ProjectViewModel extends Model
-{
-    use HasFactory;
-}
+    /**
+     *
+     */
+    class ProjectViewModel
+        extends ModelView
+    {
+
+    }
+?>

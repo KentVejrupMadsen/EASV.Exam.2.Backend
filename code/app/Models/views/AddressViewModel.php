@@ -1,13 +1,15 @@
 <?php
     namespace App\Models\views;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
+    use App\Models\templates\ModelView;
 
 
+    /**
+     *
+     */
     class AddressViewModel
-        extends Model
+        extends ModelView
     {
-        use HasFactory;
+
     }
 ?>

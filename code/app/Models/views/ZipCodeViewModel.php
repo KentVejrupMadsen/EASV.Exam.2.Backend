@@ -1,11 +1,15 @@
 <?php
+    namespace App\Models\views;
+    
+    use App\Models\templates\ModelView;
 
-namespace App\Models\views;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+    /**
+     *
+     */
+    class ZipCodeViewModel
+        extends ModelView
+    {
 
-class ZipCodeViewModel extends Model
-{
-    use HasFactory;
-}
+    }
+?>

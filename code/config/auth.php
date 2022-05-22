@@ -19,7 +19,7 @@
             'users' =>
             [
                 'driver' => 'eloquent',
-                'model' => App\Models\User::class,
+                'model' => \App\Models\tables\User::class,
             ],
             // 'users' => [
             //     'driver' => 'database',

@@ -1,5 +1,5 @@
 <?php
-    namespace App\Models;
+    namespace App\Models\tables;
 
 
     use App\Models\templates\ExtensionLabelModel;

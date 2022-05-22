@@ -6,8 +6,7 @@
      */
     namespace App\Http\Controllers;
 
-    use App\Models\AccountEmailModel;
-
+    use App\Models\tables\AccountEmailModel;
     use Illuminate\Support\Str;
 
 

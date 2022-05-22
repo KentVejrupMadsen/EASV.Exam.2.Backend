@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Models;
+    namespace App\Models\tables;
 
 
     use App\Models\templates\ExtensionLabelModel;
@@ -12,11 +12,10 @@
     /**
      *
      */
-    class ProjectTitleModel 
+    class MemberGroupModel 
         extends ExtensionLabelModel
     {
-        protected $table = 'project_titles';
-
+        protected $table = 'member_groups';
 
     }
 ?>
