@@ -6,12 +6,10 @@
      */
     namespace App\Http\Controllers;
 
+    use App\Models\security\CSRFModel;
+    use Carbon\Carbon;
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
-
-    use Carbon\Carbon;
-
-    use App\Models\CSRFModel;
 
 
     /**
