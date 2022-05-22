@@ -3,8 +3,7 @@
 
     use PHPUnit\Framework\TestCase;
 
-
-    class SecurityCSRF
+    class KanbanTest
         extends TestCase
     {
         /**

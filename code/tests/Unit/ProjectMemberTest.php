@@ -4,7 +4,7 @@
     use PHPUnit\Framework\TestCase;
 
 
-    class Account
+    class ProjectMemberTest
         extends TestCase
     {
         /**

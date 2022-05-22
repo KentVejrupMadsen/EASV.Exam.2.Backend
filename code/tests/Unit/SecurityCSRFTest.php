@@ -3,7 +3,8 @@
 
     use PHPUnit\Framework\TestCase;
 
-    class Board
+
+    class SecurityCSRFTest
         extends TestCase
     {
         /**

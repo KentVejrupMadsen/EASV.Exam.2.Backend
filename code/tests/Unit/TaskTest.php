@@ -4,7 +4,7 @@
     use PHPUnit\Framework\TestCase;
 
 
-    class Task
+    class TaskTest
         extends TestCase
     {
         /**

@@ -3,8 +3,7 @@
 
     use PHPUnit\Framework\TestCase;
 
-
-    class ProjectMember
+    class BoardTest
         extends TestCase
     {
         /**

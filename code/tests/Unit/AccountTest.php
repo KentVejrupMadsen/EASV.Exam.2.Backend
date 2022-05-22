@@ -3,7 +3,8 @@
 
     use PHPUnit\Framework\TestCase;
 
-    class Kanban
+
+    class AccountTest
         extends TestCase
     {
         /**
