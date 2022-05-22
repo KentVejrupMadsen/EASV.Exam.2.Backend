@@ -15,7 +15,8 @@
         public function up()
         {
             //
-            Schema::create( 'board_titles', 
+            Schema::create(
+                'board_titles',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -25,20 +26,25 @@
                 }
             );
 
-            Schema::create( 'boards', 
+            Schema::create(
+                'boards',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
                     
                     $table->bigInteger( 'kanban_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'board_title_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     
                     $table->timestamps();
 
+
+                    // References
                     $table->foreign( 'kanban_id' )
                           ->references( 'id' )
                           ->on( 'kanbans' );
@@ -50,16 +56,20 @@
             );
 
 
-            Schema::create( 'tasks', 
+            Schema::create(
+                'tasks',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
 
                     $table->bigInteger( 'board_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
-                    $table->longText( 'content' );
-                    
+                    $table->longText( 'content' )
+                          ->comment('');
+
+                    // References
                     $table->foreign( 'board_id' )
                           ->references( 'id' )
                           ->on( 'boards' );
@@ -73,6 +83,7 @@
             //
             Schema::dropIfExists( 'tasks' );
             Schema::dropIfExists( 'boards' );
+            Schema::dropIfExists( 'board_titles' );
         }
     };
 ?>

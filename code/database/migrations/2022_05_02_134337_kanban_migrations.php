@@ -15,7 +15,8 @@
         
         public function up()
         {
-            Schema::create( 'kanban_titles', 
+            Schema::create(
+                'kanban_titles',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -27,19 +28,23 @@
             );
 
             //
-            Schema::create( 'kanbans', 
+            Schema::create(
+                'kanbans',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
 
                     $table->bigInteger( 'kanban_title_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
                           
                     $table->bigInteger( 'project_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
                     
                     $table->timestamps();
 
+                    // References
                     $table->foreign( 'kanban_title_id' )
                           ->references( 'id' )
                           ->on( 'kanban_titles' );

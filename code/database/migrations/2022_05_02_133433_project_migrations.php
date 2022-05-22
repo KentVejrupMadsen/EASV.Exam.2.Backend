@@ -14,7 +14,8 @@
         
         public function up()
         {
-            Schema::create( 'project_titles',
+            Schema::create(
+                'project_titles',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -26,25 +27,33 @@
 
 
             //
-            Schema::create( 'projects',
+            Schema::create(
+                'projects',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
                     
                     $table->bigInteger( 'account_owner_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');;
 
                     $table->bigInteger( 'project_title_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
-                    $table->longText( 'description' );
-                    $table->json( 'tags' );
+                    $table->longText( 'description' )
+                          ->comment('');
+
+                    $table->json( 'tags' )
+                          ->comment('');
 
                     $table->timestamps();
 
+                    // References
                     $table->foreign( 'account_owner_id' )
                           ->references( 'id' )
-                          ->on( 'accounts' );
+                          ->on( 'accounts' )
+                          ->onDelete('cascade');
 
                     $table->foreign( 'project_title_id' )
                           ->references( 'id' )
@@ -53,7 +62,8 @@
             );
 
 
-            Schema::create( 'member_groups',
+            Schema::create(
+                'member_groups',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -64,20 +74,25 @@
             );
 
 
-            Schema::create( 'project_members',
+            Schema::create(
+                'project_members',
                 function ( Blueprint $table ) 
                 {
                     $table->id();
                     
                     $table->bigInteger( 'project_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'account_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'member_group_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
+                    // References
                     $table->foreign( 'project_id' )
                           ->references( 'id' )
                           ->on( 'projects' );
@@ -102,6 +117,7 @@
             //
             Schema::dropIfExists( 'project_members' );
             Schema::dropIfExists( 'member_groups' );
+
             Schema::dropIfExists( 'projects' );
             Schema::dropIfExists( 'projects_titles' );
         }

@@ -20,42 +20,56 @@
         public function up()
         {
             //
-            Schema::create( 'security_configuration',
+            Schema::create(
+                'security_configuration',
                 function ( Blueprint $table )
                 {
                     $table->id();
 
                     $table->string('key' )
-                          ->index();
+                          ->index()
+                          ->comment('');
 
                     $table->string('value' )
                           ->nullable()
-                          ->index();
+                          ->index()
+                          ->comment('');
                 }
             );
 
-            Schema::create( Str::lower('security_CSRF_Token'),
+            Schema::create(
+                Str::lower('security_CSRF_Token'),
                 function( Blueprint $table )
                 {
                     $table->id();
 
-                    $table->ipAddress('assigned_to');
+                    $table->ipAddress('assigned_to')
+                          ->comment('');
 
-                    $table->string('secure_token' )->index();
-                    $table->string('secret_token' )->index();
+                    $table->string('secure_token' )
+                          ->index()
+                          ->comment('');
+
+                    $table->string('secret_token' )
+                          ->index()
+                          ->comment('');
 
 
                     $table->timestamp('issued')
-                        ->useCurrent();
+                          ->useCurrent()
+                          ->comment('');
 
                     $table->timestamp('accessed')
-                        ->nullable();
+                          ->nullable()
+                          ->comment('');
 
                     $table->boolean('activated' )
-                        ->default( false );
+                          ->default( false )
+                          ->comment('');
 
                     $table->boolean('invalidated' )
-                        ->default( false );
+                          ->default( false )
+                          ->comment('');
                 }
             );
 

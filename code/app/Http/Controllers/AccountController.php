@@ -31,15 +31,16 @@
         function __construct()
         {
             $this->EmailModelController = new AccountEmailController();
-            $this->CSRFTokenController = new CSRFTokenController();
+            $this->CSRFTokenController  = new CSRFTokenController();
         }
 
 
         // Variables
         protected $EmailModelController = null;
-        protected $CSRFTokenController = null;
+        protected $CSRFTokenController  = null;
 
         private const conflict = 409;
+
 
         /**
          * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
@@ -200,7 +201,7 @@
 
         /**
          * @param Request $request
-         * @return void
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
