@@ -4,8 +4,9 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers;
+    namespace App\Http\Controllers\entities;
 
+    use App\Http\Controllers\templates\Controller;
     use App\Models\tables\AccountEmailModel;
     use Illuminate\Support\Str;
 
