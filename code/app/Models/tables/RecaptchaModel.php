@@ -6,10 +6,10 @@
      */
     namespace App\Models\tables;
 
-
     use App\Models\templates\ExtensionNoTimestampModel;
 
-/**
+
+    /**
      *
      */
     class RecaptchaModel

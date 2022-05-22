@@ -6,10 +6,13 @@
      */
     namespace App\Models\tables;
 
-
     use App\Models\templates\ExtensionNoTimestampModel;
 
-class SecurityConfigurationModel
+
+    /**
+     *
+     */
+    class SecurityConfigurationModel
         extends ExtensionNoTimestampModel
     {
         protected $table = 'security_configuration';

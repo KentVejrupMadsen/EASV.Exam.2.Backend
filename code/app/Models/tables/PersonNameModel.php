@@ -2,16 +2,18 @@
     namespace App\Models\tables;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Model;
 
 
-class PersonNameModel
+    /**
+     *
+     */
+    class PersonNameModel
         extends Model
     {
         use HasFactory;
 
         protected $table = 'person_name';
-
 
         protected $fillable =
         [

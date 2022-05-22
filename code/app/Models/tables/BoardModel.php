@@ -7,13 +7,13 @@
     namespace App\Models\tables;
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Model;
 
 
-/**
+    /**
      *
      */
-    class BoardModel 
+    class BoardModel
         extends Model
     {
         use HasFactory;
