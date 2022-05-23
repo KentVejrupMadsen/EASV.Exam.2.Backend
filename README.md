@@ -1,5 +1,11 @@
 # Kanban Backend
-* [To read documents](docs/readme.md)
+* [To read documentation](docs/readme.md)
+* []()
+
+## Assignment
+1. [Backend](https://github.com/KentVejrupMadsen/Kanban-Project-Backend)
+2. [Frontend](https://github.com/KentVejrupMadsen/Kanban-Project-Frontend)
+3. [Cache](https://github.com/KentVejrupMadsen/Kanban-Project-Cache)
 
 ## Header
 * Author: Kent vejrup Madsen

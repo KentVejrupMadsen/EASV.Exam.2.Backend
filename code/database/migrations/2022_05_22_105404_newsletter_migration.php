@@ -19,7 +19,7 @@
                 {
                     $table->id();
 
-                    $table->bigInteger('email_id' )
+                    $table->bigInteger( 'email_id' )
                         ->unsigned()
                         ->index()
                         ->comment('');

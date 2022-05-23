@@ -40,6 +40,8 @@
                           ->unsigned()
                           ->comment('');
 
+                    $table->mediumText( 'body' )
+                          ->comment( '' );
                     
                     $table->timestamps();
 
