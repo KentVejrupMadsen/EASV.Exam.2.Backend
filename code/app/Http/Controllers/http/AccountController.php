@@ -17,7 +17,6 @@
         as OA;
 
     use App\Http\Controllers\securities\CSRFTokenController;
-    use App\Http\Controllers\templates\CrudController;
     use App\Models\tables\User;
 
 
@@ -25,7 +24,7 @@
      * 
      */
     class AccountController 
-        extends CrudController
+        extends BaseHTTPController
     {
         /**
          *

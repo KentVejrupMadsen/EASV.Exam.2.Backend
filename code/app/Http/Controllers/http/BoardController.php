@@ -6,7 +6,6 @@
      */
     namespace App\Http\Controllers\http;
 
-    use App\Http\Controllers\templates\CrudController;
     use Illuminate\Http\Request;
 
     use OpenApi\Attributes
@@ -14,7 +13,7 @@
 
 
     class BoardController 
-        extends CrudController
+        extends BaseHTTPController
     {
         /**
          * 

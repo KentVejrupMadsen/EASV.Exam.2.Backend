@@ -12,7 +12,6 @@
         as OA;
 
     use App\Http\Controllers\factories\AccountEmailFactoryController;
-    use App\Http\Controllers\templates\CrudController;
     use App\Models\tables\AccountEmailModel;
 
 
@@ -20,7 +19,7 @@
      *
      */
     class AccountEmailController 
-        extends CrudController
+        extends BaseHTTPController
     {
         /**
          * 
