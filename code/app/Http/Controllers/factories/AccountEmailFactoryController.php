@@ -1,4 +1,9 @@
 <?php
+    /**
+     * Author: Kent vejrup Madsen
+     * Description:
+     * TODO: Make description
+     */
     namespace App\Http\Controllers\factories;
 
     use App\Http\Controllers\Controller;
@@ -11,6 +16,14 @@
     class AccountEmailFactoryController
         extends Controller
     {
+        public function __construct()
+        {
+            parent::__construct();
+
+        }
+
+        private const column_content = 'content';
+
         /**
          * @param String $email
          * @return bool
@@ -32,7 +45,7 @@
          */
         public function find( String $email ): ?AccountEmailModel
         {
-            $emailFound = AccountEmailModel::where( 'content', $email )->first();
+            $emailFound = AccountEmailModel::where( self::column_content, $email )->first();
             return $emailFound;
         }
 
@@ -52,14 +65,16 @@
 
         /**
          * @param String $email
-         * @return void
+         * @return AccountEmailModel|null
          */
-        public function create( String $email )
+        public function create( String $email ): ?AccountEmailModel
         {
             $fields = array();
             $fields['content'] = $email;
 
-            AccountEmailModel::create( $fields );
+            $model = AccountEmailModel::create( $fields );
+
+            return $model;
         }
 
 
@@ -112,7 +127,7 @@
         public function deleteByName( String $mail ): bool
         {
             $return = false;
-            $model = AccountEmailModel::where('content', $mail);
+            $model = AccountEmailModel::where( self::column_content, $mail );
 
             if( !is_null( $model ) )
             {
