@@ -24,7 +24,6 @@
                 }
             );
 
-
             //
             Schema::create(
                 'projects',
@@ -52,7 +51,7 @@
                     $table->foreign( 'account_owner_id' )
                           ->references( 'id' )
                           ->on( 'accounts' )
-                          ->onDelete('cascade');
+                          ->onDelete( 'cascade' );
 
                     $table->foreign( 'project_title_id' )
                           ->references( 'id' )
@@ -114,7 +113,6 @@
             //
             Schema::dropIfExists( 'project_members' );
             Schema::dropIfExists( 'member_groups' );
-
             Schema::dropIfExists( 'projects' );
             Schema::dropIfExists( 'projects_titles' );
         }
