@@ -6,11 +6,14 @@
      */
     namespace App\Http\Controllers\http;
 
+    use Illuminate\Http\Request;
+
+    use OpenApi\Attributes
+        as OA;
+
     use App\Http\Controllers\factories\AccountEmailFactoryController;
     use App\Http\Controllers\templates\CrudController;
     use App\Models\tables\AccountEmailModel;
-
-    use Illuminate\Http\Request;
 
 
     /**
@@ -28,12 +31,14 @@
             $this->factory = new AccountEmailFactoryController();
         }
 
+
         // key headers
         private const AccountKey    = 'account';
         private const NewsletterKey = 'newsletter';
         private const MainKey       = 'email';
 
         private $factory = null;
+
 
         /**
          * Pipeline function:

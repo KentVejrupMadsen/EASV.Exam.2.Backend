@@ -1,13 +1,22 @@
 <?php
+    /**
+     * Author: Kent vejrup Madsen
+     * Description:
+     * TODO: Make description
+     */
     namespace App\Http\Controllers\http;
 
-    use App\Http\Controllers\OA;
     use App\Http\Controllers\templates\CrudController;
     use Illuminate\Http\Request;
+
+    use OpenApi\Attributes
+        as OA;
+
 
     class ProjectTitleController
         extends CrudController
     {
+
         /**
          *
          */
