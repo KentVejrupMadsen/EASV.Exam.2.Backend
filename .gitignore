@@ -14,6 +14,8 @@ composer.lock
 package-lock.json
 
 *.yml
+*.yaml
+
 *.xml
 
 .idea/*
