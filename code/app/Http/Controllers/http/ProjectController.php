@@ -4,15 +4,17 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers;
+    namespace App\Http\Controllers\http;
 
+    use App\Http\Controllers\OA;
+    use App\Http\Controllers\templates\CrudController;
     use Illuminate\Http\Request;
 
 
     /**
      * 
      */
-    class ProjectMemberController 
+    class ProjectController 
         extends CrudController
     {
         /**
@@ -20,8 +22,12 @@
          */
         function __construct()
         {
-            
+            parent::__construct();
         }
+
+        private $projectMemberController = null;
+        private $projectTitleModel = null;
+        
         
         /**
          * 
@@ -43,7 +49,6 @@
         {
             
         }
-
 
         /**
          * 

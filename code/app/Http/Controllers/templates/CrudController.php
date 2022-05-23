@@ -2,8 +2,9 @@
     /**
      *
      */
-    namespace App\Http\Controllers;
+    namespace App\Http\Controllers\templates;
 
+    use App\Http\Controllers\Controller;
     use Illuminate\Http\Request;
 
 
@@ -14,10 +15,15 @@
         extends Controller
     {
         //
-
         public abstract function read( Request $request );
+
+        //
         public abstract function create( Request $request );
+
+        //
         public abstract function update( Request $request );
+
+        //
         public abstract function delete( Request $request );
     }
 ?>

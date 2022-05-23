@@ -4,8 +4,10 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers;
+    namespace App\Http\Controllers\http;
 
+    use App\Http\Controllers\securities\CSRFTokenController;
+    use App\Http\Controllers\templates\CrudController;
     use App\Models\tables\User;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
@@ -26,6 +28,7 @@
          */
         function __construct()
         {
+            parent::__construct();
             $this->EmailModelController = new AccountEmailController();
             $this->CSRFTokenController  = new CSRFTokenController();
         }
