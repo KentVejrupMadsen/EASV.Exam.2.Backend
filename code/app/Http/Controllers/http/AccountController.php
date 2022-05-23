@@ -7,7 +7,7 @@
     namespace App\Http\Controllers\http;
 
     use App\Http\Controllers\entities\AccountEmailController;
-    use App\Http\Controllers\security\CSRFTokenController;
+    use App\Http\Controllers\securities\CSRFTokenController;
     use App\Http\Controllers\templates\CrudController;
     use App\Models\tables\User;
 

@@ -32,6 +32,7 @@
         private const AccountKey = 'account';
         private const NewsletterKey = 'newsletter';
 
+
         public function read( Request $request ): ?AccountEmailModel
         {
             // TODO: Implement read() method.
