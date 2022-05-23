@@ -1,6 +1,7 @@
 {
     "private": true,
-    "scripts": {
+    "scripts": 
+    {
         "dev": "npm run development",
         "development": "mix",
         "watch": "mix watch",
@@ -9,10 +10,9 @@
         "prod": "npm run production",
         "production": "mix --production"
     },
-    "devDependencies": {
+    "devDependencies": 
+    {
         "axios": "^0.25",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "laravel-mix": "^6.0.6"
     }
 }
