@@ -7,12 +7,14 @@
     namespace App\Http\Controllers\securities;
 
     use App\Http\Controllers\Controller;
-    use App\Http\Controllers\OA;
-    use App\Http\Controllers\Response;
     use App\Models\security\CSRFModel;
+
     use Carbon\Carbon;
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
+
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
