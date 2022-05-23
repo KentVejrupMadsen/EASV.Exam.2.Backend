@@ -4,11 +4,11 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\security;
+    namespace App\Http\Controllers\securities;
 
+    use App\Http\Controllers\Controller;
     use App\Http\Controllers\OA;
     use App\Http\Controllers\Response;
-    use App\Http\Controllers\templates\Controller;
     use App\Models\security\CSRFModel;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
@@ -26,6 +26,7 @@
          */
         function __construct()
         {
+            parent::__construct();
 
         }
 

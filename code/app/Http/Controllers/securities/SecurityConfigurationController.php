@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\security;
+    namespace App\Http\Controllers\securities;
 
     use App\Http\Controllers\OA;
     use App\Http\Controllers\templates\CrudController;
@@ -20,6 +20,7 @@
         //
         public function __construct()
         {
+            parent::__construct();
 
         }
 
