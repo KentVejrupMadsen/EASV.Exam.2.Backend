@@ -6,12 +6,14 @@
      */
     namespace App\Http\Controllers\securities;
 
-    use App\Http\Controllers\OA;
-use App\Http\Controllers\templates\CrudController;
-use Illuminate\Http\Request;
+    use App\Http\Controllers\templates\CrudController;
+    use Illuminate\Http\Request;
+
+    use OpenApi\Attributes
+        as OA;
 
 
-/**
+    /**
      *
      */
     class RecaptchaController

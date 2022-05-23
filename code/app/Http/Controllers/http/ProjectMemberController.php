@@ -6,16 +6,17 @@
      */
     namespace App\Http\Controllers\http;
 
-    use App\Http\Controllers\OA;
-    use App\Http\Controllers\templates\CrudController;
     use Illuminate\Http\Request;
+
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
      * 
      */
     class ProjectMemberController 
-        extends CrudController
+        extends BaseHTTPController
     {
         /**
          * 
