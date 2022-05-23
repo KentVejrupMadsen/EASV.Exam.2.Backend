@@ -45,11 +45,14 @@
          * @param Request $request
          * @return AccountEmailModel|null
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public function read( Request $request ): ?AccountEmailModel
         {
             // Chose format -> later
             return $this->identifyRequest( $request );
         }
+
 
         /**
          * Makes a decission about what type of request it is and how to handle it.
@@ -79,6 +82,7 @@
             abort( 400 );
         }
 
+
         /**
          * @param Request $request
          * @param $account
@@ -98,6 +102,7 @@
 
             return null;
         }
+
 
         /**
          * @param Request $request
@@ -120,6 +125,8 @@
         }
 
 
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public function delete( Request $request )
         {
             // TODO: Implement delete() method.
@@ -129,6 +136,8 @@
         /**
          * 
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $emailRequest ): ?AccountEmailModel
         {
 
@@ -141,6 +150,8 @@
         /**
          * 
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function update( Request $emailRequest ): bool
         {
 
@@ -152,6 +163,8 @@
         /**
          * 
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function find( Request $requestEmail ): ?AccountEmailModel
         {
             $emailVar = str::lower( $email );
@@ -165,6 +178,8 @@
         /**
          * 
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public final function exist( Request $requestEmail ): bool
         {
             if( is_null( $this->find( $email ) ) )
