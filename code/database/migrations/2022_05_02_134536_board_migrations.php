@@ -49,7 +49,8 @@
                     // References
                     $table->foreign( 'kanban_id' )
                           ->references( 'id' )
-                          ->on( 'kanbans' );
+                          ->on( 'kanbans' )
+                          ->onDelete( 'cascade' );
 
                     $table->foreign( 'board_title_id' )
                           ->references( 'id' )
@@ -74,7 +75,8 @@
                     // References
                     $table->foreign( 'board_id' )
                           ->references( 'id' )
-                          ->on( 'boards' );
+                          ->on( 'boards' )
+                          ->onDelete( 'cascade');
                 }
             );
         }
