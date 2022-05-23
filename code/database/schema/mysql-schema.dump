@@ -103,7 +103,7 @@ CREATE TABLE `boards` (
   KEY `boards_kanban_id_foreign` (`kanban_id`),
   KEY `boards_board_title_id_foreign` (`board_title_id`),
   CONSTRAINT `boards_board_title_id_foreign` FOREIGN KEY (`board_title_id`) REFERENCES `board_titles` (`id`),
-  CONSTRAINT `boards_kanban_id_foreign` FOREIGN KEY (`kanban_id`) REFERENCES `kanbans` (`id`)
+  CONSTRAINT `boards_kanban_id_foreign` FOREIGN KEY (`kanban_id`) REFERENCES `kanbans` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `countries`;
@@ -156,7 +156,7 @@ CREATE TABLE `kanbans` (
   KEY `kanbans_kanban_title_id_foreign` (`kanban_title_id`),
   KEY `kanbans_project_id_foreign` (`project_id`),
   CONSTRAINT `kanbans_kanban_title_id_foreign` FOREIGN KEY (`kanban_title_id`) REFERENCES `kanban_titles` (`id`),
-  CONSTRAINT `kanbans_project_id_foreign` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`)
+  CONSTRAINT `kanbans_project_id_foreign` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `member_groups`;
@@ -373,7 +373,7 @@ CREATE TABLE `tasks` (
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `tasks_board_id_foreign` (`board_id`),
-  CONSTRAINT `tasks_board_id_foreign` FOREIGN KEY (`board_id`) REFERENCES `boards` (`id`)
+  CONSTRAINT `tasks_board_id_foreign` FOREIGN KEY (`board_id`) REFERENCES `boards` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `zip_codes`;

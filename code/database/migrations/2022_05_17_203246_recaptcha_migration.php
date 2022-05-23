@@ -11,11 +11,6 @@
 
     return new class extends Migration
     {
-        /**
-         * Run the migrations.
-         *
-         * @return void
-         */
         public function up()
         {
             //
@@ -38,18 +33,14 @@
                     $table->string( 'hostname' )
                           ->comment( '' );
 
-                    $table->mediumText('error' )
+                    $table->mediumText( 'error' )
                           ->nullable()
                           ->comment( '' );
                 }
             );
         }
 
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
+        
         public function down()
         {
             //
