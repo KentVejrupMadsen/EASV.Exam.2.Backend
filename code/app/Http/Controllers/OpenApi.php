@@ -1,7 +1,6 @@
 <?php
     namespace App\Http\Controllers;
 
-    use App\Http\Controllers\templates\Controller;
     use OpenApi\Attributes as OA;
 
 

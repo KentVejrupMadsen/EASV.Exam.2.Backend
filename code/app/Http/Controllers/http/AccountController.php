@@ -28,6 +28,7 @@
          */
         function __construct()
         {
+            parent::__construct();
             $this->EmailModelController = new AccountEmailController();
             $this->CSRFTokenController  = new CSRFTokenController();
         }

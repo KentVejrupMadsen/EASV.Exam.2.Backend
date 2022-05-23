@@ -6,10 +6,11 @@
      */
     namespace App\Http\Controllers\http;
 
+    use App\Http\Controllers\factories\AccountEmailFactoryController;
     use App\Http\Controllers\templates\CrudController;
     use App\Models\tables\AccountEmailModel;
+
     use Illuminate\Http\Request;
-    use Illuminate\Support\Str;
 
 
     /**
@@ -23,7 +24,8 @@
          */
         function __construct()
         {
-            
+            parent::__construct();
+            $this->factory = new AccountEmailFactoryController();
         }
 
         // key headers
@@ -31,6 +33,7 @@
         private const NewsletterKey = 'newsletter';
         private const MainKey       = 'email';
 
+        private $factory = null;
 
         /**
          * Pipeline function:
@@ -44,6 +47,7 @@
         }
 
         /**
+         * Makes a decission about what type of request it is and how to handle it.
          * @param Request $request
          * @return AccountEmailModel|null
          */
@@ -51,7 +55,7 @@
         {
             if( $request->has( self::MainKey ) )
             {
-                $email = $request->input(self::MainKey);
+                $email = $request->input( self::MainKey );
                 return $this->readEmail( $request, $email );
             }
 
@@ -77,6 +81,15 @@
          */
         protected function readAccount( Request $request, $account ): ?AccountEmailModel
         {
+            $accountEmail = $account['person']['email'];
+
+            $found = AccountEmailModel::where( 'content', $accountEmail )
+                                      ->first();
+
+            if( is_null( $found ) )
+            {
+
+            }
 
             return null;
         }
