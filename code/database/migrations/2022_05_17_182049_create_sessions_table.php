@@ -11,49 +11,39 @@
 
     return new class extends Migration
     {
-        /**
-         * Run the migrations.
-         *
-         * @return void
-         */
         public function up()
         {
             Schema::create(
                 'sessions',
                 function ( Blueprint $table )
                 {
-                    $table->id('index');
+                    $table->id( 'index' );
 
-                    $table->string('id')
+                    $table->string( 'id' )
                           ->unique();
 
-                    $table->foreignId('user_id')
+                    $table->foreignId( 'user_id' )
                           ->nullable()
                           ->index();
 
-                    $table->string('ip_address', 45)
+                    $table->ipAddress( 'ip_address' )
                           ->nullable();
 
-                    $table->text('user_agent')
+                    $table->text( 'user_agent' )
                           ->nullable();
 
-                    $table->text('payload');
+                    $table->text( 'payload' );
 
-                    $table->integer('last_activity')
+                    $table->integer( 'last_activity' )
                           ->index();
                 }
             );
         }
 
 
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
         public function down()
         {
-            Schema::dropIfExists('sessions');
+            Schema::dropIfExists( 'sessions' );
         }
     };
 ?>

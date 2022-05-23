@@ -23,7 +23,7 @@ return new class extends Migration
                       ->unique()
                       ->index();
 
-                $table->string('country_acronym', 25 )
+                $table->string( 'country_acronym', 25 )
                       ->index();
             }
         );
@@ -34,14 +34,14 @@ return new class extends Migration
             {
                 $table->id();
 
-                $table->string('area_name' )
+                $table->string( 'area_name' )
                       ->comment( '' );
 
-                $table->integer('zip_number' )
+                $table->integer( 'zip_number' )
                       ->unsigned()
                       ->comment( '' );
 
-                $table->bigInteger('country_id' )
+                $table->bigInteger( 'country_id' )
                       ->unsigned()
                       ->comment( '' );
 
@@ -63,7 +63,7 @@ return new class extends Migration
                       ->unique()
                       ->comment( '' );
 
-                $table->json('settings')
+                $table->json( 'settings' )
                       ->comment( '' );
 
                 $table->timestamps();
@@ -82,7 +82,7 @@ return new class extends Migration
             {
                 $table->id();
 
-                $table->string('content')
+                $table->string( 'content' )
                       ->unique()
                       ->comment( '' );
             }
@@ -94,7 +94,7 @@ return new class extends Migration
             {
                 $table->id();
 
-                $table->string('content')
+                $table->string( 'content' )
                       ->unique()
                       ->comment( '' );
             }
@@ -111,15 +111,15 @@ return new class extends Migration
                       ->unique()
                       ->comment( '' );
 
-                $table->bigInteger('person_name_first_id' )
+                $table->bigInteger( 'person_name_first_id' )
                       ->unsigned()
                       ->comment( '' );
 
-                $table->bigInteger('person_name_lastname_id' )
+                $table->bigInteger( 'person_name_lastname_id' )
                       ->unsigned()
                       ->comment( '' );
 
-                $table->json('person_name_middlename' )
+                $table->json( 'person_name_middlename' )
                       ->nullable()
                       ->comment( '' );
 
@@ -145,7 +145,7 @@ return new class extends Migration
             {
                 $table->id();
 
-                $table->string('content')
+                $table->string( 'content' )
                       ->unique()
                       ->comment( '' );
             }
@@ -157,27 +157,30 @@ return new class extends Migration
             {
                 $table->id();
 
-                $table->bigInteger('account_information_id' )
+                $table->bigInteger( 'account_information_id' )
                       ->unsigned()
                       ->unique()
                       ->comment( '' );
 
-                $table->bigInteger('road_name_id' )
+                $table->bigInteger( 'road_name_id' )
                       ->unsigned()
                       ->comment( '' );
 
-                $table->integer('road_number' )
+                $table->integer( 'road_number' )
                       ->comment( '' );
 
-                $table->string('levels' )
+                $table->string( 'levels' )
+                      ->index()
                       ->comment( '' );
 
-                $table->bigInteger('country_id')
+                $table->bigInteger( 'country_id' )
                       ->unsigned()
+                      ->index()
                       ->comment( '' );
 
-                $table->bigInteger('zip_code_id')
+                $table->bigInteger( 'zip_code_id' )
                       ->unsigned()
+                      ->index()
                       ->comment( '' );
 
                 // References

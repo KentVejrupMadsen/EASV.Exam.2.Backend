@@ -10,8 +10,7 @@
 
 
     return new class extends Migration
-    {
-        
+    {   
         public function up()
         {
             Schema::create(
@@ -105,8 +104,6 @@
                     $table->foreign( 'member_group_id' )
                           ->references( 'id' )
                           ->on( 'member_groups' );
-                    
-                    
                 }
             );
         }

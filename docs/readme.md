@@ -1,4 +1,4 @@
-# Documents
+# Documentation
 ## Header
 * Author: Kent vejrup Madsen
 * Contact: Kent.vejrup.madsen@protonmail.com
