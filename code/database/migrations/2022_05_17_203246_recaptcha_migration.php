@@ -11,11 +11,6 @@
 
     return new class extends Migration
     {
-        /**
-         * Run the migrations.
-         *
-         * @return void
-         */
         public function up()
         {
             //
@@ -24,32 +19,28 @@
                 function( Blueprint $table )
                 {
                     $table->id()
-                          ->comment('');
+                          ->comment( '' );
 
-                    $table->boolean('success' )
-                          ->comment('');
+                    $table->boolean( 'success' )
+                          ->comment( '' );
 
-                    $table->double('score' )
-                          ->comment('');
+                    $table->double( 'score' )
+                          ->comment( '' );
 
-                    $table->timestamp('at_date' )
-                          ->comment('');
+                    $table->timestamp( 'at_date' )
+                          ->comment( '' );
 
-                    $table->string('hostname' )
-                          ->comment('');
+                    $table->string( 'hostname' )
+                          ->comment( '' );
 
-                    $table->mediumText('error' )
+                    $table->mediumText( 'error' )
                           ->nullable()
-                          ->comment('');
+                          ->comment( '' );
                 }
             );
         }
 
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
+        
         public function down()
         {
             //

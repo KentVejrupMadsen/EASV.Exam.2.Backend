@@ -12,7 +12,6 @@
     
     return new class extends Migration
     {
-        
         public function up()
         {
             Schema::create(
@@ -23,7 +22,6 @@
 
                     $table->string( 'content' )
                           ->unique();
-                    
                 }
             );
 
@@ -51,7 +49,8 @@
 
                     $table->foreign( 'project_id' )
                           ->references( 'id' )
-                          ->on( 'projects' );
+                          ->on( 'projects' )
+                          ->onDelete( 'cascade' );
                 }
             );
         }

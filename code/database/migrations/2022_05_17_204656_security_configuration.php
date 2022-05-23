@@ -12,11 +12,6 @@
 
     return new class extends Migration
     {
-        /**
-         * Run the migrations.
-         *
-         * @return void
-         */
         public function up()
         {
             //
@@ -26,60 +21,56 @@
                 {
                     $table->id();
 
-                    $table->string('key' )
+                    $table->string( 'key' )
                           ->index()
-                          ->comment('');
+                          ->comment( '' );
 
-                    $table->string('value' )
+                    $table->string( 'value' )
                           ->nullable()
                           ->index()
-                          ->comment('');
+                          ->comment( '' );
                 }
             );
 
             Schema::create(
-                Str::lower('security_CSRF_Token'),
+                Str::lower( 'security_CSRF_Token' ),
                 function( Blueprint $table )
                 {
                     $table->id();
 
-                    $table->ipAddress('assigned_to')
-                          ->comment('');
+                    $table->ipAddress( 'assigned_to' )
+                          ->comment( '' );
 
-                    $table->string('secure_token' )
+                    $table->string( 'secure_token' )
                           ->index()
-                          ->comment('');
+                          ->comment( '' );
 
-                    $table->string('secret_token' )
+                    $table->string( 'secret_token' )
                           ->index()
-                          ->comment('');
+                          ->comment( '' );
 
 
-                    $table->timestamp('issued')
+                    $table->timestamp( 'issued' )
                           ->useCurrent()
-                          ->comment('');
+                          ->comment( '' );
 
-                    $table->timestamp('accessed')
+                    $table->timestamp( 'accessed' )
                           ->nullable()
-                          ->comment('');
+                          ->comment( '' );
 
-                    $table->boolean('activated' )
+                    $table->boolean( 'activated' )
                           ->default( false )
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->boolean('invalidated' )
                           ->default( false )
-                          ->comment('');
+                          ->comment( '' );
                 }
             );
 
         }
 
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
+
         public function down()
         {
             //

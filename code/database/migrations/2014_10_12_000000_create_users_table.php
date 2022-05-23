@@ -17,7 +17,8 @@
         
         public function up()
         {
-            Schema::create( 'account_emails', 
+            Schema::create( 
+                'account_emails', 
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -29,7 +30,8 @@
 
 
             // Base information for logging in
-            Schema::create( 'accounts', 
+            Schema::create( 
+                'accounts', 
                 function( Blueprint $table )
                 {
                     $table->id();

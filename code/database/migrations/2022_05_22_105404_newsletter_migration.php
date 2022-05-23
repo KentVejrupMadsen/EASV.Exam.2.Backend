@@ -3,6 +3,7 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+    
     return new class extends Migration
     {
         /**
@@ -19,7 +20,7 @@
                 {
                     $table->id();
 
-                    $table->bigInteger('email_id' )
+                    $table->bigInteger( 'email_id' )
                         ->unsigned()
                         ->index()
                         ->comment('');

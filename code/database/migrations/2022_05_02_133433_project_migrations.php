@@ -10,8 +10,7 @@
 
 
     return new class extends Migration
-    {
-        
+    {   
         public function up()
         {
             Schema::create(
@@ -24,7 +23,6 @@
                           ->unique();
                 }
             );
-
 
             //
             Schema::create(
@@ -53,7 +51,7 @@
                     $table->foreign( 'account_owner_id' )
                           ->references( 'id' )
                           ->on( 'accounts' )
-                          ->onDelete('cascade');
+                          ->onDelete( 'cascade' );
 
                     $table->foreign( 'project_title_id' )
                           ->references( 'id' )
@@ -105,8 +103,6 @@
                     $table->foreign( 'member_group_id' )
                           ->references( 'id' )
                           ->on( 'member_groups' );
-                    
-                    
                 }
             );
         }
@@ -117,7 +113,6 @@
             //
             Schema::dropIfExists( 'project_members' );
             Schema::dropIfExists( 'member_groups' );
-
             Schema::dropIfExists( 'projects' );
             Schema::dropIfExists( 'projects_titles' );
         }
