@@ -1,7 +1,3 @@
-
-*.lock
-composer.lock
-
 .editorconfig
 
 .htaccess
@@ -14,7 +10,6 @@ composer.lock
 package-lock.json
 
 *.yml
-*.yaml
 
 *.xml
 
