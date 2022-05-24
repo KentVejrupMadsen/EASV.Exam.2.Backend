@@ -11,8 +11,7 @@
 
         public function reset()
         {
-            $response = $this->get('/');
-
+            $response = $this->getJson('/api/1.0.0/' );
             $response->assertStatus(200);
         }
     }
