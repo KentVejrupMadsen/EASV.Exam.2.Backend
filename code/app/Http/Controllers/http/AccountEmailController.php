@@ -23,7 +23,7 @@
 
         public function pushRead( Request $request ): ?AccountEmailModel;
         public function pushUpdate( Request $request ): ?AccountEmailModel;
-        public function pushDelete( Request $request );
+        public function pushDelete( Request $request ): bool;
         public function pushCreate( Request $request ): ?AccountEmailModel;
     }
 
@@ -99,13 +99,15 @@
          * @param Request $request
          * @return void
          */
-        public final function pushDelete( Request $request )
+        public final function pushDelete( Request $request ): bool
         {
             if( $request->has( $this->getCase() ) )
             {
                 $content = $request->input( $this->getCase() );
-                $this->callbackDelete( $content );
+                return $this->callbackDelete( $content );
             }
+
+            return false;
         }
 
         /**
@@ -143,21 +145,25 @@
         public function callbackRead( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackRead() method.
+            return null;
         }
 
         public function callbackCreate( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackCreate() method.
+            return null;
         }
 
         public function callbackDelete( array $Content ): bool
         {
             // TODO: Implement callbackDelete() method.
+            return false;
         }
 
         public function callbackUpdate( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackUpdate() method.
+            return null;
         }
     }
 
@@ -175,21 +181,25 @@
         public function callbackRead( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackRead() method.
+            return null;
         }
 
         public function callbackCreate( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackCreate() method.
+            return null;
         }
 
         public function callbackUpdate( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackUpdate() method.
+            return null;
         }
 
         public function callbackDelete( array $Content ): bool
         {
             // TODO: Implement callbackDelete() method.
+            return false;
         }
 
     }
@@ -208,21 +218,25 @@
         public function callbackRead(array $Content): ?AccountEmailModel
         {
             // TODO: Implement callbackRead() method.
+            return null;
         }
 
         public function callbackCreate(array $Content): ?AccountEmailModel
         {
             // TODO: Implement callbackCreate() method.
+            return null;
         }
 
         public function callbackUpdate(array $Content): ?AccountEmailModel
         {
             // TODO: Implement callbackUpdate() method.
+            return null;
         }
 
         public function callbackDelete(array $Content): bool
         {
             // TODO: Implement callbackDelete() method.
+            return false;
         }
     }
 
