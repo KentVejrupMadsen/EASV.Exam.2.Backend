@@ -8,6 +8,7 @@
 
     use Illuminate\Http\Request;
 
+    use Illuminate\Support\Str;
     use OpenApi\Attributes
         as OA;
 
@@ -139,9 +140,16 @@
         #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $emailRequest ): ?AccountEmailModel
         {
+            $emailString = $emailRequest->input('account' )[ 'person' ][ 'email' ];
 
+            $emailString = Str::lower( $emailString );
 
-            return null;
+            $input = array();
+            $input[ 'content' ] = $emailString;
+
+            $model = AccountEmailModel::create( $input );
+
+            return $model;
         }
 
 
@@ -166,7 +174,8 @@
         #[OA\Response(response: '200', description: 'The data')]
         public final function find( Request $requestEmail ): ?AccountEmailModel
         {
-            $emailVar = str::lower( $email );
+            $input = $requestEmail->input('account' )[ 'person' ][ 'email' ];
+            $emailVar = Str::lower( $input );
 
             $emailModel = AccountEmailModel::where( 'content', $emailVar )->first();
 

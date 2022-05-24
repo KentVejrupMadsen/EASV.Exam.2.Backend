@@ -24,6 +24,7 @@
 
         private const column_content = 'content';
 
+
         /**
          * @param String $email
          * @return bool

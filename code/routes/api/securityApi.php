@@ -4,12 +4,11 @@
      * Description: ?
      * TODO: make a description
      */
+    use App\Http\Controllers\securities\CSRFTokenController;
+    use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\securities\CSRFTokenController;
-use Illuminate\Support\Facades\Route;
 
-
-Route::get(
+    Route::get(
         '/1.0.0/security/csrf/create',
         [ CSRFTokenController::class, 'create' ]
     );
