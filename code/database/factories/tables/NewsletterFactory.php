@@ -1,5 +1,5 @@
 <?php
-    namespace Database\Factories;
+    namespace Database\Factories\tables;
 
     use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -10,6 +10,8 @@
     class NewsletterFactory
         extends Factory
     {
+        protected $model = NewsletterFactory::class;
+
         /**
          * Define the model's default state.
          *

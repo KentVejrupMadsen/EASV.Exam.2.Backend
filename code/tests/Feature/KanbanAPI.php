@@ -6,14 +6,12 @@
      */
     namespace Tests\Feature;
 
-    use Tests\TestCase;
-
 
     /**
      *
      */
     class KanbanAPI
-        extends TestCase
+        extends BaseFeature
     {
         public function test_example()
         {
