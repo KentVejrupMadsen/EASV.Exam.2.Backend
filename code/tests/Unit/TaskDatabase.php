@@ -4,7 +4,7 @@
     use PHPUnit\Framework\TestCase;
 
 
-    class SecurityCSRFTest
+    class TaskDatabase
         extends TestCase
     {
         /**
