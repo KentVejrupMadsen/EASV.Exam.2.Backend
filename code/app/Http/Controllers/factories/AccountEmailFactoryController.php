@@ -24,6 +24,7 @@
 
         private const column_content = 'content';
 
+
         /**
          * @param String $email
          * @return bool
@@ -70,7 +71,7 @@
         public function create( String $email ): ?AccountEmailModel
         {
             $fields = array();
-            $fields['content'] = $email;
+            $fields[ 'content' ] = $email;
 
             $model = AccountEmailModel::create( $fields );
 
