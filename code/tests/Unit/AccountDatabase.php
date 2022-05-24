@@ -2,13 +2,12 @@
     namespace Tests\Unit;
 
     use App\Models\tables\AccountEmailModel;
-    use Tests\TestCase;
 
 
     class AccountDatabase
-        extends TestCase
+        extends BaseUnit
     {
-        private $maxCount = 100;
+        private $maxCount = 50;
 
         /**
          * A basic unit test example.

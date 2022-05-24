@@ -1,11 +1,9 @@
 <?php
     namespace Tests\Unit;
 
-    use PHPUnit\Framework\TestCase;
-
 
     class SecurityCSRFDatabase
-        extends TestCase
+        extends BaseUnit
     {
         /**
          * A basic unit test example.

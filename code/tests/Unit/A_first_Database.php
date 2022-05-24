@@ -1,11 +1,9 @@
 <?php
     namespace Tests\Unit;
 
-    use Tests\TestCase;
-
 
     class A_first_Database
-        extends TestCase
+        extends BaseUnit
     {
 
         public function test_reset()
