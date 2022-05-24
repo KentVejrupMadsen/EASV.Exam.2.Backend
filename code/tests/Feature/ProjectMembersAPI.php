@@ -6,22 +6,19 @@
      */
     namespace Tests\Feature;
 
-    use Illuminate\Foundation\Testing\RefreshDatabase;
-    use Tests\TestCase;
-
 
     /**
      *
      */
-    class KanbanDatabase
-        extends TestCase
+    class ProjectMembersAPI
+        extends BaseFeature
     {
+
         public function test_example()
         {
             $response = $this->get('/');
 
             $response->assertStatus(200);
         }
-
     }
 ?>

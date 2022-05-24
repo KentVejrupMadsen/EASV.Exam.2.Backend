@@ -1,16 +1,12 @@
 <?php
     namespace Tests\Feature;
 
-    use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithFaker;
-    use Tests\TestCase;
 
 
-    class AccountDatabase
-        extends TestCase
+    class BoardAPI
+        extends BaseFeature
     {
-        use RefreshDatabase;
-
         /**
          * A basic feature test example.
          *

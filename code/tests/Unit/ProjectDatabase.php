@@ -1,10 +1,9 @@
 <?php
     namespace Tests\Unit;
 
-    use PHPUnit\Framework\TestCase;
 
-    class BoardTest
-        extends TestCase
+    class ProjectDatabase
+        extends BaseUnit
     {
         /**
          * A basic unit test example.

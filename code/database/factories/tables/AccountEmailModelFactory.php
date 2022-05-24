@@ -1,15 +1,16 @@
 <?php
-    namespace Database\Factories;
+    namespace Database\Factories\tables;
 
+    use App\Models\tables\AccountEmailModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
+    use Illuminate\Support\Str;
 
 
-    /**
-     * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
-     */
-    class NewsletterFactory
+    class AccountEmailModelFactory
         extends Factory
     {
+        protected $model = AccountEmailModel::class;
+
         /**
          * Define the model's default state.
          *
@@ -17,8 +18,10 @@
          */
         public function definition()
         {
-            return [
+            return
+            [
                 //
+                'content' => $this->faker->safeEmail
             ];
         }
     }

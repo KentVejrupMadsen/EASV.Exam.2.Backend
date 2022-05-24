@@ -6,22 +6,19 @@
      */
     namespace Tests\Feature;
 
-    use Illuminate\Foundation\Testing\RefreshDatabase;
-    use Tests\TestCase;
-
 
     /**
      *
      */
-    class SecurityCSRFDatabase
-        extends TestCase
+    class KanbanAPI
+        extends BaseFeature
     {
-
         public function test_example()
         {
             $response = $this->get('/');
 
             $response->assertStatus(200);
         }
+
     }
 ?>
