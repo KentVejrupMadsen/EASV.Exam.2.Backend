@@ -17,6 +17,7 @@
 
 
     /**
+     * Account Email controller. That are used when getting "ask" by a computer for data.
      *
      */
     class AccountEmailController 
@@ -82,7 +83,6 @@
             abort( 400 );
         }
 
-
         /**
          * @param Request $request
          * @param $account
@@ -90,15 +90,8 @@
          */
         protected function readAccount( Request $request, $account ): ?AccountEmailModel
         {
-            $accountEmail = $account['person']['email'];
+            $accountEmail = $account[ 'person' ][ 'email' ];
 
-            $found = AccountEmailModel::where( 'content', $accountEmail )
-                                      ->first();
-
-            if( is_null( $found ) )
-            {
-
-            }
 
             return null;
         }
@@ -111,6 +104,8 @@
          */
         protected function readNewsletter( Request $request, $newsletter ): ?AccountEmailModel
         {
+
+
             return null;
         }
 
@@ -152,6 +147,25 @@
             return $model;
         }
 
+        protected function create_newsletter( Request $emailRequest ): ?AccountEmailModel
+        {
+
+            return null;
+        }
+
+        protected function create_account( Request $emailRequest ): ?AccountEmailModel
+        {
+
+            return null;
+        }
+
+        protected function create_email( Request $emailRequest ): ?AccountEmailModel
+        {
+
+            return null;
+        }
+
+
 
 
         /**
@@ -165,6 +179,23 @@
 
             return true;
         }
+        protected function update_newsletter( Request $emailRequest ): ?AccountEmailModel
+        {
+
+            return null;
+        }
+
+        protected function update_account( Request $emailRequest ): ?AccountEmailModel
+        {
+
+            return null;
+        }
+
+        protected function update_email( Request $emailRequest ): ?AccountEmailModel
+        {
+
+            return null;
+        }
 
       
         /**
@@ -174,12 +205,31 @@
         #[OA\Response(response: '200', description: 'The data')]
         public final function find( Request $requestEmail ): ?AccountEmailModel
         {
-            $input = $requestEmail->input('account' )[ 'person' ][ 'email' ];
-            $emailVar = Str::lower( $input );
 
-            $emailModel = AccountEmailModel::where( 'content', $emailVar )->first();
+            return null;
+        }
 
-            return $emailModel;
+        /**
+         * @param Request $requestEmail
+         * @return AccountEmailModel|null
+         */
+        protected function findNewsletter( Request $requestEmail ): ?AccountEmailModel
+        {
+            return null;
+        }
+
+        /**
+         * @param Request $request
+         * @return AccountEmailModel|null
+         */
+        protected function findAccount( Request $request ): ?AccountEmailModel
+        {
+            return null;
+        }
+
+        protected function findEmail( Request $request ): ?AccountEmailModel
+        {
+            return null;
         }
 
 
@@ -190,12 +240,32 @@
         #[OA\Response(response: '200', description: 'The data')]
         public final function exist( Request $requestEmail ): bool
         {
-            if( is_null( $this->find( $email ) ) )
-            {
-                return false;
-            }
+
 
             return true;
+        }
+
+        /**
+         * @param Request $requestEmail
+         * @return AccountEmailModel|null
+         */
+        protected function existNewsletter( Request $requestEmail ): ?AccountEmailModel
+        {
+            return null;
+        }
+
+        /**
+         * @param Request $request
+         * @return AccountEmailModel|null
+         */
+        protected function existAccount( Request $request ): ?AccountEmailModel
+        {
+            return null;
+        }
+
+        protected function existEmail( Request $request ): ?AccountEmailModel
+        {
+            return null;
         }
     }
 ?>
