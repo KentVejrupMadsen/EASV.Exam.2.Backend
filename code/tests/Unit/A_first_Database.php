@@ -1,12 +1,16 @@
 <?php
     namespace Tests\Unit;
 
-    use Tests\TestCase;
+    use Illuminate\Foundation\Testing\RefreshDatabase;
 
 
+    /**
+     *
+     */
     class A_first_Database
-        extends TestCase
+        extends BaseUnit
     {
+        use RefreshDatabase;
 
         public function test_reset()
         {

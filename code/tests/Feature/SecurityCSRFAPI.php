@@ -6,21 +6,18 @@
      */
     namespace Tests\Feature;
 
-    use Illuminate\Foundation\Testing\RefreshDatabase;
-    use Tests\TestCase;
-
+    use Illuminate\Foundation\Testing\WithoutMiddleware;
 
     /**
      *
      */
     class SecurityCSRFAPI
-        extends TestCase
+        extends BaseFeature
     {
 
-        public function test_example()
+        public function test_csrf_create()
         {
-            $response = $this->get('/');
-
+            $response = $this->getJson('/');
             $response->assertStatus(200);
         }
     }

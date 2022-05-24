@@ -1,10 +1,8 @@
 <?php
     namespace Tests\Unit;
 
-    use PHPUnit\Framework\TestCase;
-
     class KanbanDatabase
-        extends TestCase
+        extends BaseUnit
     {
         /**
          * A basic unit test example.

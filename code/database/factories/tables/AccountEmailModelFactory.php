@@ -18,19 +18,11 @@
          */
         public function definition()
         {
-            return [
+            return
+            [
                 //
-                'content' => $this->generateEmail()
+                'content' => $this->faker->safeEmail
             ];
-        }
-
-        private function generateEmail()
-        {
-            $strEmail = Str::random(12);
-            $strEmail .=  '@';
-            $strEmail .= str::random(4);
-            $strEmail .= '.localhost.loc';
-            return $strEmail;
         }
     }
 ?>

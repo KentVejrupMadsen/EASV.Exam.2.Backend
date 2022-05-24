@@ -2,13 +2,13 @@
     namespace Tests\Unit;
 
     use App\Models\tables\AccountEmailModel;
-    use Tests\TestCase;
+    use App\Models\tables\User;
 
 
     class AccountDatabase
-        extends TestCase
+        extends BaseUnit
     {
-        private $maxCount = 100;
+        private $maxCount = 1000;
 
         /**
          * A basic unit test example.
@@ -18,6 +18,18 @@
         public function test_addMail()
         {
             AccountEmailModel::factory()->count( $this->maxCount )->create();
+
+            $this->assertTrue(true );
+        }
+
+        public function test_createAccount()
+        {
+            User::factory()->count( $this->maxCount )->create();
+            $this->assertTrue(true );
+        }
+
+        public function test_subscripe()
+        {
             $this->assertTrue(true );
         }
     }
