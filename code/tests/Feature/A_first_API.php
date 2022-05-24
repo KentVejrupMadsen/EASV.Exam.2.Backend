@@ -1,20 +1,15 @@
 <?php
-    /**
-     * Author: Kent vejrup Madsen
-     * Description:
-     * TODO: Make description
-     */
     namespace Tests\Feature;
 
+    use Illuminate\Foundation\Testing\RefreshDatabase;
 
-    /**
-     *
-     */
-    class TaskAPI
+
+    class A_first_API
         extends BaseFeature
     {
+        use RefreshDatabase;
 
-        public function test_example()
+        public function reset()
         {
             $response = $this->get('/');
 

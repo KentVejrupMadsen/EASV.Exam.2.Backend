@@ -6,15 +6,12 @@
      */
     namespace Tests\Feature;
 
-    use Illuminate\Foundation\Testing\RefreshDatabase;
-    use Tests\TestCase;
-
 
     /**
      *
      */
     class ProjectAPI
-        extends TestCase
+        extends BaseFeature
     {
 
         public function test_example()
