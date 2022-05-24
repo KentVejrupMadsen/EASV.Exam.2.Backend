@@ -273,18 +273,28 @@
             parent::__construct();
         }
 
+        // Variables
         private $newsletterCase = null;
         private $accountCase    = null;
         private $mainCase       = null;
 
-        private $factory = null;
+        private $factory        = null;
+
 
         // Accessors
-        protected final function setFactory( AccountEmailFactoryController $factory )
+        /**
+         * @param AccountEmailFactoryController $factory
+         * @return void
+         */
+        protected final function setFactory( AccountEmailFactoryController $factory ): void
         {
             $this->factory = $factory;
         }
 
+
+        /**
+         * @return AccountEmailFactoryController
+         */
         protected final function getFactory(): AccountEmailFactoryController
         {
             if( is_null( $this->factory ) )
@@ -295,7 +305,11 @@
             return $this->factory;
         }
 
-        public function getNewsletterCase()
+
+        /**
+         * @return NewsletterCase
+         */
+        public function getNewsletterCase(): NewsletterCase
         {
             if( is_null( $this->newsletterCase ) )
             {
@@ -306,11 +320,20 @@
             return $this->newsletterCase;
         }
 
-        public function setNewsletterCase( NewsletterCase $value )
+
+        /**
+         * @param NewsletterCase $value
+         * @return void
+         */
+        public function setNewsletterCase( NewsletterCase $value ): void
         {
-            $this->newsletterCase= $value;
+            $this->newsletterCase = $value;
         }
 
+
+        /**
+         * @return AccountCase
+         */
         public function getAccountCase(): AccountCase
         {
             if( is_null( $this->accountCase ) )
@@ -322,11 +345,20 @@
             return $this->accountCase;
         }
 
-        public function setAccountCase( AccountCase $value )
+
+        /**
+         * @param AccountCase $value
+         * @return void
+         */
+        public function setAccountCase( AccountCase $value ): void
         {
             $this->accountCase = $value;
         }
 
+
+        /**
+         * @return MainCase
+         */
         public function getMainCase(): MainCase
         {
             if( is_null( $this->mainCase ) )
@@ -338,11 +370,21 @@
             return $this->mainCase;
         }
 
-        protected function setMainCase( MainCase $value )
+
+        /**
+         * @param MainCase $value
+         * @return void
+         */
+        protected function setMainCase( MainCase $value ): void
         {
             $this->mainCase = $value;
         }
 
+
+        /**
+         * @param AccountEmailModel|null $value
+         * @return bool
+         */
         protected function isNotEmpty( ?AccountEmailModel $value ): bool
         {
             if( !is_null( $value ) )
