@@ -21,10 +21,10 @@
     {
         public function getCase();
 
-        public function pushRead( Request $request );
-        public function pushUpdate( Request $request );
+        public function pushRead( Request $request ): ?AccountEmailModel;
+        public function pushUpdate( Request $request ): ?AccountEmailModel;
         public function pushDelete( Request $request );
-        public function pushCreate( Request $request );
+        public function pushCreate( Request $request ): ?AccountEmailModel;
     }
 
 
@@ -65,30 +65,33 @@
         // Functions
         /**
          * @param Request $request
-         * @return void
+         * @return AccountEmailModel|null
          */
-        public final function pushRead( Request $request )
+        public final function pushRead( Request $request ): ?AccountEmailModel
         {
             if( $request->has( $this->getCase() ) )
             {
                 $content = $request->input( $this->getCase() );
-                $this->callbackRead( $content );
+                return $this->callbackRead( $content );
             }
 
+            return null;
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return AccountEmailModel|null
          */
-        public final function pushCreate( Request $request )
+        public final function pushCreate( Request $request ): ?AccountEmailModel
         {
             if( $request->has( $this->getCase() ) )
             {
                 $content = $request->input( $this->getCase() );
-                $this->callbackCreate( $content );
+                return $this->callbackCreate( $content );
             }
+
+            return null;
         }
 
 
@@ -107,21 +110,23 @@
 
         /**
          * @param Request $request
-         * @return void
+         * @return AccountEmailModel|null
          */
-        public final function pushUpdate( Request $request )
+        public final function pushUpdate( Request $request ): ?AccountEmailModel
         {
             if( $request->has( $this->getCase() ) )
             {
                 $content = $request->input( $this->getCase() );
-                $this->callbackUpdate( $content );
+                return $this->callbackUpdate( $content );
             }
+
+            return null;
         }
 
-        public abstract function callbackRead( Array $Content );
-        public abstract function callbackDelete( Array $Content );
-        public abstract function callbackUpdate( Array $Content );
-        public abstract function callbackCreate( Array $Content );
+        public abstract function callbackRead( Array $Content ): ?AccountEmailModel;
+        public abstract function callbackDelete( Array $Content ): bool;
+        public abstract function callbackUpdate( Array $Content ): ?AccountEmailModel;
+        public abstract function callbackCreate( Array $Content ): ?AccountEmailModel;
     }
 
     class AccountCase
@@ -135,22 +140,22 @@
             $this->setFactory( $factory );
         }
 
-        public function callbackRead( array $Content )
+        public function callbackRead( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackRead() method.
         }
 
-        public function callbackCreate( array $Content )
+        public function callbackCreate( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackCreate() method.
         }
 
-        public function callbackDelete( array $Content )
+        public function callbackDelete( array $Content ): bool
         {
             // TODO: Implement callbackDelete() method.
         }
 
-        public function callbackUpdate( array $Content )
+        public function callbackUpdate( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackUpdate() method.
         }
@@ -167,22 +172,22 @@
 
         private const NewsletterKey = 'newsletter';
 
-        public function callbackRead( array $Content )
+        public function callbackRead( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackRead() method.
         }
 
-        public function callbackCreate( array $Content )
+        public function callbackCreate( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackCreate() method.
         }
 
-        public function callbackUpdate( array $Content )
+        public function callbackUpdate( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackUpdate() method.
         }
 
-        public function callbackDelete( array $Content )
+        public function callbackDelete( array $Content ): bool
         {
             // TODO: Implement callbackDelete() method.
         }
@@ -200,22 +205,22 @@
 
         private const MainKey = 'email';
 
-        public function callbackRead(array $Content)
+        public function callbackRead(array $Content): ?AccountEmailModel
         {
             // TODO: Implement callbackRead() method.
         }
 
-        public function callbackCreate(array $Content)
+        public function callbackCreate(array $Content): ?AccountEmailModel
         {
             // TODO: Implement callbackCreate() method.
         }
 
-        public function callbackUpdate(array $Content)
+        public function callbackUpdate(array $Content): ?AccountEmailModel
         {
             // TODO: Implement callbackUpdate() method.
         }
 
-        public function callbackDelete(array $Content)
+        public function callbackDelete(array $Content): bool
         {
             // TODO: Implement callbackDelete() method.
         }
@@ -307,6 +312,7 @@
             $this->mainCase = $value;
         }
 
+        // Code
         /**
          * Pipeline function:
          * @param Request $request
@@ -316,6 +322,8 @@
         #[OA\Response(response: '200', description: 'The data')]
         public function read( Request $request ): ?AccountEmailModel
         {
+            $this->getMainCase()->callbackRead( $request );
+            $this->getAccountCase()->callbackRead($request)
             abort(300);
         }
 
