@@ -1,7 +1,5 @@
 .editorconfig
 
-.htaccess
-
 *.example
 
 .env
