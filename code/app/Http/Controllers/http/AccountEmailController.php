@@ -62,6 +62,7 @@
             $this->case = $value;
         }
 
+
         // Functions
         /**
          * @param Request $request
@@ -77,8 +78,6 @@
 
             return null;
         }
-
-
         /**
          * @param Request $request
          * @return AccountEmailModel|null
@@ -93,11 +92,9 @@
 
             return null;
         }
-
-
         /**
          * @param Request $request
-         * @return void
+         * @return bool
          */
         public final function pushDelete( Request $request ): bool
         {
@@ -109,7 +106,6 @@
 
             return false;
         }
-
         /**
          * @param Request $request
          * @return AccountEmailModel|null
@@ -125,12 +121,33 @@
             return null;
         }
 
+
+        /**
+         * @param array $Content
+         * @return AccountEmailModel|null
+         */
         public abstract function callbackRead( Array $Content ): ?AccountEmailModel;
+        /**
+         * @param array $Content
+         * @return bool
+         */
         public abstract function callbackDelete( Array $Content ): bool;
+        /**
+         * @param array $Content
+         * @return AccountEmailModel|null
+         */
         public abstract function callbackUpdate( Array $Content ): ?AccountEmailModel;
+        /**
+         * @param array $Content
+         * @return AccountEmailModel|null
+         */
         public abstract function callbackCreate( Array $Content ): ?AccountEmailModel;
     }
 
+
+    /**
+     *
+     */
     class AccountCase
         extends ControllerCase
     {
@@ -215,25 +232,25 @@
 
         private const MainKey = 'email';
 
-        public function callbackRead(array $Content): ?AccountEmailModel
+        public function callbackRead( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackRead() method.
             return null;
         }
 
-        public function callbackCreate(array $Content): ?AccountEmailModel
+        public function callbackCreate( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackCreate() method.
             return null;
         }
 
-        public function callbackUpdate(array $Content): ?AccountEmailModel
+        public function callbackUpdate( array $Content ): ?AccountEmailModel
         {
             // TODO: Implement callbackUpdate() method.
             return null;
         }
 
-        public function callbackDelete(array $Content): bool
+        public function callbackDelete( array $Content ): bool
         {
             // TODO: Implement callbackDelete() method.
             return false;
@@ -326,6 +343,16 @@
             $this->mainCase = $value;
         }
 
+        protected function isNotEmpty( ?AccountEmailModel $value ): bool
+        {
+            if( !is_null( $value ) )
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         // Code
         /**
          * Pipeline function:
@@ -336,8 +363,27 @@
         #[OA\Response(response: '200', description: 'The data')]
         public function read( Request $request ): ?AccountEmailModel
         {
-            $this->getMainCase()->callbackRead( $request );
-            $this->getAccountCase()->callbackRead($request)
+            $response = $this->getAccountCase()
+                             ->pushRead( $request );
+            if( $this->isNotEmpty( $response ) )
+            {
+                return $response;
+            }
+
+            $response = $this->getMainCase()
+                             ->pushRead( $request );
+            if( $this->isNotEmpty( $response ) )
+            {
+                return $response;
+            }
+
+            $response = $this->getNewsletterCase()
+                             ->pushRead( $request );
+            if( $this->isNotEmpty( $response ) )
+            {
+                return $response;
+            }
+
             abort(300);
         }
 
@@ -348,9 +394,29 @@
 
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public function delete( Request $request )
+        public function delete( Request $request ): bool
         {
-            // TODO: Implement delete() method.
+            $response = $this->getAccountCase()
+                             ->pushDelete( $request );
+            if( $response )
+            {
+                return true;
+            }
+
+            $response = $this->getMainCase()
+                             ->pushDelete( $request );
+            if( $response )
+            {
+                return true;
+            }
+
+            $response = $this->getNewsletterCase()
+                             ->pushDelete( $request );
+            if( $response )
+            {
+                return true;
+            }
+
             abort(300);
         }
 
@@ -360,8 +426,28 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function create( Request $emailRequest ): ?AccountEmailModel
+        public final function create( Request $request ): ?AccountEmailModel
         {
+            $response = $this->getAccountCase()
+                             ->pushCreate( $request );
+            if( $this->isNotEmpty( $response ) )
+            {
+                return $response;
+            }
+
+            $response = $this->getMainCase()
+                             ->pushCreate( $request );
+            if( $this->isNotEmpty( $response ) )
+            {
+                return $response;
+            }
+
+            $response = $this->getNewsletterCase()
+                             ->pushCreate( $request );
+            if( $this->isNotEmpty( $response ) )
+            {
+                return $response;
+            }
 
             abort(300);
         }
@@ -373,8 +459,28 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function update( Request $emailRequest ): bool
+        public final function update( Request $request ): ?AccountEmailModel
         {
+            $response = $this->getAccountCase()
+                             ->pushUpdate( $request );
+            if( $this->isNotEmpty( $response ) )
+            {
+                return $response;
+            }
+
+            $response = $this->getMainCase()
+                             ->pushUpdate( $request );
+            if( $this->isNotEmpty( $response ) )
+            {
+                return $response;
+            }
+
+            $response = $this->getNewsletterCase()
+                             ->pushUpdate( $request );
+            if( $this->isNotEmpty( $response ) )
+            {
+                return $response;
+            }
 
 
             abort(300);
