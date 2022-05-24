@@ -124,13 +124,13 @@
 
             $account_information = $request->input( 'account' );
 
-            $email_str = $account_information[ 'person_email' ];
+            $email_str = $account_information[ 'person' ][ 'email' ];
 
-            $mail = $this->EmailModelController->find( $email_str );
+            $mail = $this->EmailModelController->find( $request );
 
             if( is_null( $mail ) )
             {
-                $mail = $this->EmailModelController->create( $email_str );
+                $mail = $this->EmailModelController->create( $request );
             }
 
             $account_create_fields = array();
