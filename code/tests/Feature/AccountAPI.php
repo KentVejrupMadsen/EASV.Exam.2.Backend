@@ -6,10 +6,9 @@
     use Tests\TestCase;
 
 
-    class AccountDatabase
+    class AccountAPI
         extends TestCase
     {
-        use RefreshDatabase;
 
         /**
          * A basic feature test example.

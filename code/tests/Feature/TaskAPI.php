@@ -13,7 +13,7 @@
     /**
      *
      */
-    class ProjectDatabase
+    class TaskAPI
         extends TestCase
     {
 

@@ -3,7 +3,7 @@
 
     use PHPUnit\Framework\TestCase;
 
-    class BoardTest
+    class BoardDatabase
         extends TestCase
     {
         /**
