@@ -10,6 +10,7 @@
      * TODO: Split it into multiple files
      */
 
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
     use Illuminate\Support\Str;
@@ -555,56 +556,57 @@
         }
 
 
-      
         /**
-         * 
+         * @param Request $request
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function find( Request $request )
+        #[OA\Post( path: '/api/1.0.0/find/email' )]
+        #[OA\Response( response: '200', description: 'retrieves an requested email object as a json response. if it exist else nothing' )]
+        public final function find( Request $request ): JsonResponse
         {
             $content = $request->input( 'find' );
             $foundMail = $this->getFactory()->find( $content );
 
-            $message = array();
+            $message                      = array();
+            $message['found']             = array();
+            $message['found']['response'] = array();
 
             if( $this->isNotEmpty( $foundMail ) )
             {
-                $message['found'] = array();
-                $message['found']['response'] = array();
                 $message['found']['response']['message'] = 'successful';
-                $message['found']['response']['id']     = $foundMail->id;
-                $message['found']['response']['mail']   = $foundMail->content;
+                $message['found']['response']['id']      = $foundMail->id;
+                $message['found']['response']['mail']    = $foundMail->content;
             }
             else
             {
-                $message['found']['response'] = array();
                 $message['found']['response']['message'] = 'none';
             }
 
-            return $message;
+            return Response()->json( $message );
         }
 
 
         /**
-         * 
+         * @param Request $request
+         * @return \Illuminate\Http\JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function exist( Request $request )
+        #[OA\Post( path: '/api/1.0.0/exist/email' )]
+        #[OA\Response( response: '200', description: 'validates if the requested email is existing in the database as a json response.' ) ]
+        public final function exist( Request $request ): JsonResponse
         {
             // Retrieve email
             $content = $request->input( 'existence_of' );
 
-            $message = array();
+            $message                            = array();
+            $message[ 'response' ]              = array();
 
             if( $this->getFactory()->exist( $content ) )
             {
-                $message['exist'] = true;
+                $message[ 'response' ][ 'exist' ] = true;
             }
             else
             {
-                $message['exist'] = false;
+                $message[ 'response' ][ 'exist' ] = false;
             }
 
             return response()->json( $message );
