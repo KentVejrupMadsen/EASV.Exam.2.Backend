@@ -4,7 +4,7 @@
     use PHPUnit\Framework\TestCase;
 
 
-    class ProjectMemberTest
+    class SecurityCSRFDatabase
         extends TestCase
     {
         /**

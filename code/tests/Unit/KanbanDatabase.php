@@ -3,8 +3,7 @@
 
     use PHPUnit\Framework\TestCase;
 
-
-    class TaskTest
+    class KanbanDatabase
         extends TestCase
     {
         /**
