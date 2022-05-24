@@ -6,6 +6,10 @@
      */
     namespace App\Http\Controllers\http;
 
+    /**
+     * TODO: Split it into multiple files
+     */
+
     use Illuminate\Http\Request;
 
     use Illuminate\Support\Str;
@@ -31,19 +35,29 @@
     abstract class ControllerCase
         implements ControllerType
     {
+        // Variables
         private $case = null;
         private $factory = null;
 
         // Accessors
-        public function setFactory( AccountEmailFactoryController $factory )
+        /**
+         * @param AccountEmailFactoryController $factory
+         * @return void
+         */
+        public final function setFactory( AccountEmailFactoryController $factory ): void
         {
             $this->factory = $factory;
         }
 
-        public function getFactory(): ?AccountEmailFactoryController
+
+        /**
+         * @return AccountEmailFactoryController|null
+         */
+        public final function getFactory(): ?AccountEmailFactoryController
         {
             return $this->factory;
         }
+
 
         /**
          * @return string|null
@@ -52,6 +66,7 @@
         {
             return $this->case;
         }
+
 
         /**
          * @param string $value
@@ -78,6 +93,7 @@
 
             return null;
         }
+
         /**
          * @param Request $request
          * @return AccountEmailModel|null
@@ -92,6 +108,7 @@
 
             return null;
         }
+
         /**
          * @param Request $request
          * @return bool
@@ -106,6 +123,7 @@
 
             return false;
         }
+
         /**
          * @param Request $request
          * @return AccountEmailModel|null
@@ -127,21 +145,25 @@
          * @return AccountEmailModel|null
          */
         public abstract function callbackRead( Array $Content ): ?AccountEmailModel;
+
         /**
          * @param array $Content
          * @return bool
          */
         public abstract function callbackDelete( Array $Content ): bool;
+
         /**
          * @param array $Content
          * @return AccountEmailModel|null
          */
         public abstract function callbackUpdate( Array $Content ): ?AccountEmailModel;
+
         /**
          * @param array $Content
          * @return AccountEmailModel|null
          */
         public abstract function callbackCreate( Array $Content ): ?AccountEmailModel;
+
     }
 
 
@@ -184,6 +206,7 @@
         }
     }
 
+
     class NewsletterCase
         extends ControllerCase
     {
@@ -221,6 +244,7 @@
 
     }
 
+
     class MainCase
         extends ControllerCase
     {
@@ -256,6 +280,7 @@
             return false;
         }
     }
+
 
     // Code
     /**
@@ -426,7 +451,7 @@
                 return $response;
             }
 
-            abort(300);
+            abort( 300 );
         }
 
 
@@ -459,7 +484,7 @@
                 return true;
             }
 
-            abort(300);
+            return false;
         }
 
 
@@ -491,7 +516,8 @@
                 return $response;
             }
 
-            abort(300);
+            // Not found
+            abort( 300 );
         }
 
 
@@ -524,8 +550,8 @@
                 return $response;
             }
 
-
-            abort(300);
+            // Not found
+            abort( 300 );
         }
 
 
@@ -535,11 +561,28 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function find( Request $requestEmail ): ?AccountEmailModel
+        public final function find( Request $request )
         {
+            $content = $request->input( 'find' );
+            $foundMail = $this->getFactory()->find( $content );
 
+            $message = array();
 
-            abort(300);
+            if( $this->isNotEmpty( $foundMail ) )
+            {
+                $message['found'] = array();
+                $message['found']['response'] = array();
+                $message['found']['response']['message'] = 'successful';
+                $message['found']['response']['id']     = $foundMail->id;
+                $message['found']['response']['mail']   = $foundMail->content;
+            }
+            else
+            {
+                $message['found']['response'] = array();
+                $message['found']['response']['message'] = 'none';
+            }
+
+            return $message;
         }
 
 
@@ -548,11 +591,23 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function exist( Request $requestEmail ): bool
+        public final function exist( Request $request )
         {
+            // Retrieve email
+            $content = $request->input( 'existence_of' );
 
+            $message = array();
 
-            abort(300);
+            if( $this->getFactory()->exist( $content ) )
+            {
+                $message['exist'] = true;
+            }
+            else
+            {
+                $message['exist'] = false;
+            }
+
+            return response()->json( $message );
         }
     }
 
