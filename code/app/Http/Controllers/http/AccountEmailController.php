@@ -16,6 +16,212 @@
     use App\Models\tables\AccountEmailModel;
 
 
+    // Templates
+    interface ControllerType
+    {
+        public function getCase();
+
+        public function pushRead( Request $request );
+        public function pushUpdate( Request $request );
+        public function pushDelete( Request $request );
+        public function pushCreate( Request $request );
+    }
+
+
+    abstract class ControllerCase
+        implements ControllerType
+    {
+        private $case = null;
+        private $factory = null;
+
+        // Accessors
+        public function setFactory( AccountEmailFactoryController $factory )
+        {
+            $this->factory = $factory;
+        }
+
+        public function getFactory(): ?AccountEmailFactoryController
+        {
+            return $this->factory;
+        }
+
+        /**
+         * @return string|null
+         */
+        public final function getCase(): ?string
+        {
+            return $this->case;
+        }
+
+        /**
+         * @param string $value
+         * @return void
+         */
+        protected final function setCase( string $value )
+        {
+            $this->case = $value;
+        }
+
+        // Functions
+        /**
+         * @param Request $request
+         * @return void
+         */
+        public final function pushRead( Request $request )
+        {
+            if( $request->has( $this->getCase() ) )
+            {
+                $content = $request->input( $this->getCase() );
+                $this->callbackRead( $content );
+            }
+
+        }
+
+
+        /**
+         * @param Request $request
+         * @return void
+         */
+        public final function pushCreate( Request $request )
+        {
+            if( $request->has( $this->getCase() ) )
+            {
+                $content = $request->input( $this->getCase() );
+                $this->callbackCreate( $content );
+            }
+        }
+
+
+        /**
+         * @param Request $request
+         * @return void
+         */
+        public final function pushDelete( Request $request )
+        {
+            if( $request->has( $this->getCase() ) )
+            {
+                $content = $request->input( $this->getCase() );
+                $this->callbackDelete( $content );
+            }
+        }
+
+        /**
+         * @param Request $request
+         * @return void
+         */
+        public final function pushUpdate( Request $request )
+        {
+            if( $request->has( $this->getCase() ) )
+            {
+                $content = $request->input( $this->getCase() );
+                $this->callbackUpdate( $content );
+            }
+        }
+
+        public abstract function callbackRead( Array $Content );
+        public abstract function callbackDelete( Array $Content );
+        public abstract function callbackUpdate( Array $Content );
+        public abstract function callbackCreate( Array $Content );
+    }
+
+    class AccountCase
+        extends ControllerCase
+    {
+        private const AccountKey    = 'account';
+
+        public function __construct( AccountEmailFactoryController $factory )
+        {
+            $this->setCase(self::AccountKey );
+            $this->setFactory( $factory );
+        }
+
+        public function callbackRead( array $Content )
+        {
+            // TODO: Implement callbackRead() method.
+        }
+
+        public function callbackCreate( array $Content )
+        {
+            // TODO: Implement callbackCreate() method.
+        }
+
+        public function callbackDelete( array $Content )
+        {
+            // TODO: Implement callbackDelete() method.
+        }
+
+        public function callbackUpdate( array $Content )
+        {
+            // TODO: Implement callbackUpdate() method.
+        }
+    }
+
+    class NewsletterCase
+        extends ControllerCase
+    {
+        public function __construct( AccountEmailFactoryController $factory )
+        {
+            $this->setCase( self::NewsletterKey );
+            $this->setFactory( $factory );
+        }
+
+        private const NewsletterKey = 'newsletter';
+
+        public function callbackRead( array $Content )
+        {
+            // TODO: Implement callbackRead() method.
+        }
+
+        public function callbackCreate( array $Content )
+        {
+            // TODO: Implement callbackCreate() method.
+        }
+
+        public function callbackUpdate( array $Content )
+        {
+            // TODO: Implement callbackUpdate() method.
+        }
+
+        public function callbackDelete( array $Content )
+        {
+            // TODO: Implement callbackDelete() method.
+        }
+
+    }
+
+    class MainCase
+        extends ControllerCase
+    {
+        public function __construct( AccountEmailFactoryController $factory )
+        {
+            $this->setCase( self::MainKey );
+            $this->setFactory( $factory );
+        }
+
+        private const MainKey = 'email';
+
+        public function callbackRead(array $Content)
+        {
+            // TODO: Implement callbackRead() method.
+        }
+
+        public function callbackCreate(array $Content)
+        {
+            // TODO: Implement callbackCreate() method.
+        }
+
+        public function callbackUpdate(array $Content)
+        {
+            // TODO: Implement callbackUpdate() method.
+        }
+
+        public function callbackDelete(array $Content)
+        {
+            // TODO: Implement callbackDelete() method.
+        }
+    }
+
+    // Code
     /**
      * Account Email controller. That are used when getting "ask" by a computer for data.
      *
@@ -29,17 +235,77 @@
         function __construct()
         {
             parent::__construct();
-            $this->factory = new AccountEmailFactoryController();
         }
 
-
-        // key headers
-        private const AccountKey    = 'account';
-        private const NewsletterKey = 'newsletter';
-        private const MainKey       = 'email';
+        private $newsletterCase = null;
+        private $accountCase    = null;
+        private $mainCase       = null;
 
         private $factory = null;
 
+        // Accessors
+        protected final function setFactory( AccountEmailFactoryController $factory )
+        {
+            $this->factory = $factory;
+        }
+
+        protected final function getFactory(): AccountEmailFactoryController
+        {
+            if( is_null( $this->factory ) )
+            {
+                $this->setFactory( new AccountEmailFactoryController() );
+            }
+
+            return $this->factory;
+        }
+
+        public function getNewsletterCase()
+        {
+            if( is_null( $this->newsletterCase ) )
+            {
+                $case = new NewsletterCase( $this->getFactory() );
+                $this->setNewsletterCase( $case );
+            }
+
+            return $this->newsletterCase;
+        }
+
+        public function setNewsletterCase( NewsletterCase $value )
+        {
+            $this->newsletterCase= $value;
+        }
+
+        public function getAccountCase(): AccountCase
+        {
+            if( is_null( $this->accountCase ) )
+            {
+                $case = new AccountCase( $this->getFactory() );
+                $this->setAccountCase( $case );
+            }
+
+            return $this->accountCase;
+        }
+
+        public function setAccountCase( AccountCase $value )
+        {
+            $this->accountCase = $value;
+        }
+
+        public function getMainCase(): MainCase
+        {
+            if( is_null( $this->mainCase ) )
+            {
+                $case = new MainCase( $this->getFactory() );
+                $this->setMainCase( $case );
+            }
+
+            return $this->mainCase;
+        }
+
+        protected function setMainCase( MainCase $value )
+        {
+            $this->mainCase = $value;
+        }
 
         /**
          * Pipeline function:
@@ -50,74 +316,12 @@
         #[OA\Response(response: '200', description: 'The data')]
         public function read( Request $request ): ?AccountEmailModel
         {
-            // Chose format -> later
-            return $this->identifyRequest( $request );
+            abort(300);
         }
 
 
-        /**
-         * Makes a decission about what type of request it is and how to handle it.
-         * @param Request $request
-         * @return AccountEmailModel|null
-         */
-        protected function identifyRequest( Request $request ): ?AccountEmailModel
-        {
-            if( $request->has( self::MainKey ) )
-            {
-                $email = $request->input( self::MainKey );
-                return $this->readEmail( $request, $email );
-            }
-
-            if( $request->has( self::AccountKey ) )
-            {
-                $account = $request->input( self::AccountKey );
-                return $this->readAccount( $request, $account );
-            }
-
-            if( $request->has( self::NewsletterKey ) )
-            {
-                $newsletter = $request->input( self::NewsletterKey );
-                return $this->readNewsletter( $request, $newsletter );
-            }
-
-            abort( 400 );
-        }
-
-        /**
-         * @param Request $request
-         * @param $account
-         * @return AccountEmailModel|null
-         */
-        protected function readAccount( Request $request, $account ): ?AccountEmailModel
-        {
-            $accountEmail = $account[ 'person' ][ 'email' ];
 
 
-            return null;
-        }
-
-
-        /**
-         * @param Request $request
-         * @param $newsletter
-         * @return AccountEmailModel|null
-         */
-        protected function readNewsletter( Request $request, $newsletter ): ?AccountEmailModel
-        {
-
-
-            return null;
-        }
-
-        /**
-         * @param Request $request
-         * @param $email
-         * @return AccountEmailModel|null
-         */
-        protected function readEmail(Request $request, $email): ?AccountEmailModel
-        {
-            return null;
-        }
 
 
         #[OA\Get(path: '/api/data.json')]
@@ -125,6 +329,7 @@
         public function delete( Request $request )
         {
             // TODO: Implement delete() method.
+            abort(300);
         }
 
 
@@ -135,36 +340,9 @@
         #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $emailRequest ): ?AccountEmailModel
         {
-            $emailString = $emailRequest->input('account' )[ 'person' ][ 'email' ];
 
-            $emailString = Str::lower( $emailString );
-
-            $input = array();
-            $input[ 'content' ] = $emailString;
-
-            $model = AccountEmailModel::create( $input );
-
-            return $model;
+            abort(300);
         }
-
-        protected function create_newsletter( Request $emailRequest ): ?AccountEmailModel
-        {
-
-            return null;
-        }
-
-        protected function create_account( Request $emailRequest ): ?AccountEmailModel
-        {
-
-            return null;
-        }
-
-        protected function create_email( Request $emailRequest ): ?AccountEmailModel
-        {
-
-            return null;
-        }
-
 
 
 
@@ -177,25 +355,9 @@
         {
 
 
-            return true;
-        }
-        protected function update_newsletter( Request $emailRequest ): ?AccountEmailModel
-        {
-
-            return null;
+            abort(300);
         }
 
-        protected function update_account( Request $emailRequest ): ?AccountEmailModel
-        {
-
-            return null;
-        }
-
-        protected function update_email( Request $emailRequest ): ?AccountEmailModel
-        {
-
-            return null;
-        }
 
       
         /**
@@ -206,30 +368,8 @@
         public final function find( Request $requestEmail ): ?AccountEmailModel
         {
 
-            return null;
-        }
 
-        /**
-         * @param Request $requestEmail
-         * @return AccountEmailModel|null
-         */
-        protected function findNewsletter( Request $requestEmail ): ?AccountEmailModel
-        {
-            return null;
-        }
-
-        /**
-         * @param Request $request
-         * @return AccountEmailModel|null
-         */
-        protected function findAccount( Request $request ): ?AccountEmailModel
-        {
-            return null;
-        }
-
-        protected function findEmail( Request $request ): ?AccountEmailModel
-        {
-            return null;
+            abort(300);
         }
 
 
@@ -242,30 +382,9 @@
         {
 
 
-            return true;
-        }
-
-        /**
-         * @param Request $requestEmail
-         * @return AccountEmailModel|null
-         */
-        protected function existNewsletter( Request $requestEmail ): ?AccountEmailModel
-        {
-            return null;
-        }
-
-        /**
-         * @param Request $request
-         * @return AccountEmailModel|null
-         */
-        protected function existAccount( Request $request ): ?AccountEmailModel
-        {
-            return null;
-        }
-
-        protected function existEmail( Request $request ): ?AccountEmailModel
-        {
-            return null;
+            abort(300);
         }
     }
+
+
 ?>
