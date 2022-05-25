@@ -21,7 +21,9 @@
         {
             return
             [
-                'content' => $this->faker->unique()->safeEmail
+                'content' => $this->faker
+                                  ->unique()
+                                  ->safeEmail
             ];
         }
     }

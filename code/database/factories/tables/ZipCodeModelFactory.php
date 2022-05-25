@@ -1,23 +1,25 @@
 <?php
+    namespace Database\Factories\tables;
 
-namespace Database\Factories\tables;
+    use Illuminate\Database\Eloquent\Factories\Factory;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
- */
-class ZipCodeModelFactory extends Factory
-{
     /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
+     * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
      */
-    public function definition()
+    class ZipCodeModelFactory
+        extends Factory
     {
-        return [
-            //
-        ];
+        /**
+         * @return string[]
+         */
+        public final function definition()
+        {
+            return
+            [
+                'area_name'=>$this->faker->postcode,
+                'zip_number'=>$this->faker->numerify,
+                'country_id'=>1
+            ];
+        }
     }
-}
+?>

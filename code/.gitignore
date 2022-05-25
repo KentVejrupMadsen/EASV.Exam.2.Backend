@@ -11,11 +11,14 @@ node_modules/*
 
 .phpunit.result.cache
 
-Homestead.yaml
-npm-debug.log
-yarn-error.log
+*.log
+
 .htaccess
 
+*.example
 *.json
 *.xml
 *.css
+
+*.yaml
+*.yml
