@@ -1,6 +1,7 @@
 <?php
     namespace Database\Factories\tables;
 
+    use App\Models\tables\AddressRoadNameModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
@@ -10,12 +11,14 @@
     class AddressRoadNameModelFactory
         extends Factory
     {
+        protected $model = AddressRoadNameModel::class;
+
         /**
          * Define the model's default state.
          *
          * @return array<string, mixed>
          */
-        public function definition()
+        public final function definition()
         {
             return
             [

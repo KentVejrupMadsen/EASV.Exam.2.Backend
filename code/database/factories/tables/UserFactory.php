@@ -31,7 +31,7 @@
         /**
          * @return array|mixed[]
          */
-        public final function definition(): array
+        public final function definition()
         {
             return
             [

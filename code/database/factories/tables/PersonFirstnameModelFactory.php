@@ -1,6 +1,7 @@
 <?php
     namespace Database\Factories\tables;
 
+    use App\Models\tables\PersonFirstnameModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
@@ -10,12 +11,14 @@
     class PersonFirstnameModelFactory
         extends Factory
     {
+        protected $model = PersonFirstnameModel::class;
+
         /**
          * Define the model's default state.
          *
          * @return array<string, mixed>
          */
-        public function definition()
+        public final function definition()
         {
             return
             [

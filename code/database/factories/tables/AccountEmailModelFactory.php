@@ -17,7 +17,7 @@
          *
          * @return array<string, mixed>
          */
-        public function definition()
+        public final function definition()
         {
             return
             [

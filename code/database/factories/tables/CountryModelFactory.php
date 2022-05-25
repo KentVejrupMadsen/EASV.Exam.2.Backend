@@ -1,26 +1,33 @@
 <?php
     namespace Database\Factories\tables;
 
+    use App\Models\tables\CountryModel;
+
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
     /**
-     * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+     *
      */
     class CountryModelFactory
         extends Factory
     {
+        protected $model = CountryModel::class;
+
         /**
-         * Define the model's default state.
-         *
-         * @return array<string, mixed>
+         * @return array|mixed[]
          */
         public final function definition()
         {
             return
             [
-                'country_name'=>$this->faker->country,
-                'country_acronym'=>$this->faker->countryCode
+                'country_name' => $this->faker
+                                       ->unique()
+                                       ->country,
+
+                'country_acronym' => $this->faker
+                                          ->unique()
+                                          ->countryCode
             ];
         }
     }

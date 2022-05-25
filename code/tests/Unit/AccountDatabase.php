@@ -8,27 +8,43 @@
     class AccountDatabase
         extends BaseUnit
     {
-        private $maxCount = 1000;
+        public function __construct(?string $name = null, array $data = [], $dataName = '')
+        {
+            parent::__construct($name, $data, $dataName);
+            $this->setMax(random_int(0, 200));
+        }
+
+        public function getMax()
+        {
+            return self::$maxCount;
+        }
+
+        public function setMax($var)
+        {
+            self::$maxCount = $var;
+        }
+
+        private static $maxCount = null;
 
         /**
          * A basic unit test example.
          *
          * @return void
          */
-        public function test_addMail()
+        public function test_add_mail()
         {
-            AccountEmailModel::factory()->count( $this->maxCount )->create();
+            AccountEmailModel::factory()->count( $this->getMax() )->create();
 
             $this->assertTrue(true );
         }
 
-        public function test_createAccount()
+        public function test_create_account()
         {
-            User::factory()->count( $this->maxCount )->create();
+            User::factory()->count( $this->getMax() )->create();
             $this->assertTrue(true );
         }
 
-        public function test_subscripe()
+        public function test_subscribe()
         {
             $this->assertTrue(true );
         }
