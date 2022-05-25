@@ -19,7 +19,8 @@
          */
         public function definition()
         {
-            return [
+            return
+            [
                 //
             ];
         }
