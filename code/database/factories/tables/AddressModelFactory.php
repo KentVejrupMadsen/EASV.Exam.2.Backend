@@ -1,21 +1,23 @@
 <?php
     namespace Database\Factories\tables;
 
+    use App\Models\tables\AddressModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
     /**
-     * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+     *
      */
     class AddressModelFactory
         extends Factory
     {
+        protected $model = AddressModel::class;
+
+
         /**
-         * Define the model's default state.
-         *
-         * @return array<string, mixed>
+         * @return array|mixed[]
          */
-        public function definition()
+        public final function definition()
         {
             return
             [

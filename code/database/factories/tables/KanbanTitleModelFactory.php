@@ -1,6 +1,7 @@
 <?php
     namespace Database\Factories\tables;
 
+    use App\Models\tables\KanbanTitleModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
@@ -10,6 +11,8 @@
     class KanbanTitleModelFactory
         extends Factory
     {
+        protected $model = KanbanTitleModel::class;
+
         /**
          * Define the model's default state.
          *
@@ -19,7 +22,7 @@
         {
             return
             [
-                //
+                'content'=> $this->faker->title
             ];
         }
     }

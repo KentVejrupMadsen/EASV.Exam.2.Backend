@@ -1,14 +1,18 @@
 <?php
     namespace Database\Factories\tables;
 
+    use App\Models\tables\ZipCodeModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
+
     /**
-     * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+     *
      */
     class ZipCodeModelFactory
         extends Factory
     {
+        protected $model = ZipCodeModel::class;
+
         /**
          * @return string[]
          */
@@ -16,9 +20,15 @@
         {
             return
             [
-                'area_name'=>$this->faker->postcode,
-                'zip_number'=>$this->faker->numerify,
-                'country_id'=>1
+                'area_name' => $this->faker
+                                    ->unique()
+                                    ->postcode,
+
+                'zip_number' => $this->faker
+                                     ->unique()
+                                     ->numerify,
+
+                'country_id' => 1
             ];
         }
     }
