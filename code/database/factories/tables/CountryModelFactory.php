@@ -15,11 +15,12 @@
          *
          * @return array<string, mixed>
          */
-        public function definition()
+        public final function definition()
         {
             return
             [
-                //
+                'country_name'=>$this->faker->country,
+                'country_acronym'=>$this->faker->countryCode
             ];
         }
     }

@@ -10,15 +10,15 @@
         extends Factory
     {
         /**
-         * Define the model's default state.
-         *
-         * @return array<string, mixed>
+         * @return string[]
          */
-        public function definition()
+        public final function definition()
         {
             return
             [
-
+                'area_name'=>$this->faker->postcode,
+                'zip_number'=>$this->faker->numerify,
+                'country_id'=>1
             ];
         }
     }
