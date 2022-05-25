@@ -7,21 +7,20 @@
     /**
      * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
      */
-    class NewsletterFactory
+    class CountryModelFactory
         extends Factory
     {
-        protected $model = NewsletterFactory::class;
-
         /**
          * Define the model's default state.
          *
          * @return array<string, mixed>
          */
-        public function definition()
+        public final function definition()
         {
             return
             [
-                //
+                'country_name'=>$this->faker->country,
+                'country_acronym'=>$this->faker->countryCode
             ];
         }
     }

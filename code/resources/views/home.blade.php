@@ -12,8 +12,8 @@
 
         </header>
         <main>
-            <p>Sorry, You're here your properly searching for the API.</p>
-            <a href="./api/" hreflang="en">Go to</a>
+            <p>Sorry. You're here. The api is at</p>
+            <a href="./api/" hreflang="en">this location </a>
         </main>
         <footer> 
 

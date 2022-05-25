@@ -1,14 +1,24 @@
-/node_modules
+node_modules/
+node_modules/*
+
 /public/hot
 /public/storage
+
 /storage/*.key
+
 /vendor
 
 
 .phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-/.idea
-/.vscode
+
+*.log
+
+.htaccess
+
+*.example
+*.json
+*.xml
+*.css
+
+*.yaml
+*.yml
