@@ -1,21 +1,11 @@
-
-*.lock
-composer.lock
-
 .editorconfig
-
-.htaccess
 
 *.example
 
 .env
 .env.backup
 
-package-lock.json
-
-*.yml
-*.yaml
-
-*.xml
+*.lock
 
 .idea/*
+/.vscode

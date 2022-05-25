@@ -3,6 +3,7 @@
 
     use App\Models\tables\AccountEmailModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
+
     use Illuminate\Support\Str;
 
 
@@ -20,8 +21,7 @@
         {
             return
             [
-                //
-                'content' => $this->faker->safeEmail
+                'content' => $this->faker->unique()->safeEmail
             ];
         }
     }
