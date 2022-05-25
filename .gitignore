@@ -1,7 +1,5 @@
 .editorconfig
 
-*.example
-
 .env
 .env.backup
 
