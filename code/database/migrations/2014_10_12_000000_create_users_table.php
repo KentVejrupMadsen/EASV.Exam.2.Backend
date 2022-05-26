@@ -49,7 +49,6 @@
                     $table->string( 'password' );
                     
                     $table->rememberToken();
-                    
                     $table->timestamps();
 
                     // References

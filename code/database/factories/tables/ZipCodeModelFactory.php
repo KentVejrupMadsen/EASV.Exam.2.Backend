@@ -22,7 +22,7 @@
             [
                 'area_name' => $this->faker
                                     ->unique()
-                                    ->postcode,
+                                    ->city,
 
                 'zip_number' => $this->faker
                                      ->unique()

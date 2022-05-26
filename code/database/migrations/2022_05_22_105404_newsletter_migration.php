@@ -21,14 +21,17 @@
                     $table->id();
 
                     $table->bigInteger( 'email_id' )
-                        ->unsigned()
-                        ->index()
-                        ->comment('');
+                          ->unsigned()
+                          ->index()
+                          ->comment('');
+
+                    $table->json('options' )
+                          ->comment();
 
                     //
                     $table->foreign( 'email_id' )
-                        ->references( 'id' )
-                        ->on( 'account_emails' );
+                          ->references( 'id' )
+                          ->on( 'account_emails' );
                 }
             );
         }
