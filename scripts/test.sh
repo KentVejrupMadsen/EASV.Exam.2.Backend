@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
-cd /mnt/d/Workspace/kanban-project/code
+#!/usr/bin/env sh
+cd ..
+cd ./code
 
 php artisan test
