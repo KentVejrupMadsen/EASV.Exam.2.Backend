@@ -8,19 +8,22 @@
 [![CircleCI](https://circleci.com/gh/KentVejrupMadsen/Kanban-Project-Backend/tree/main.svg?style=svg)](https://circleci.com/gh/KentVejrupMadsen/Kanban-Project-Backend/tree/main)
 
 
-## Content
-* [To read documentation](docs/readme.md)
-
-
-## Assignment
-1. [Backend](https://github.com/KentVejrupMadsen/Kanban-Project-Backend)
-2. [Frontend](https://github.com/KentVejrupMadsen/Kanban-Project-Frontend)
-3. [Cache](https://github.com/KentVejrupMadsen/Kanban-Project-Cache)
-
-
 ## Header
 * Author: Kent vejrup Madsen
 * Contact: Kent.vejrup.madsen@protonmail.com
 * [Code of Conduct](CODE_OF_CONDUCT.md)
 * [License](license.md)
 * (C)opyright 2022 [Kent vejrup Madsen](https://github.com/KentVejrupMadsen)
+
+## Content
+* [Documentation](docs/readme.md)
+
+## Links
+### Public version
+* [Frontend website](https://kanban-project-frontend-6bk5n.ondigitalocean.app/)
+* [Backend website](https://kanban-project-backend-xvkk6.ondigitalocean.app/)
+
+### Repositories
+1. [Backend](https://github.com/KentVejrupMadsen/Kanban-Project-Backend)
+2. [Frontend](https://github.com/KentVejrupMadsen/Kanban-Project-Frontend)
+3. [Cache](https://github.com/KentVejrupMadsen/Kanban-Project-Cache)
