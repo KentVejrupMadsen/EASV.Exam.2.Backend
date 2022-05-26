@@ -1,7 +1,11 @@
 # Kanban Backend
 ## Introduction
+
+### Status
 [![CodeScene System Mastery](https://codescene.io/projects/26526/status-badges/system-mastery)](https://codescene.io/projects/26526)
 [![CodeScene Code Health](https://codescene.io/projects/26526/status-badges/code-health)](https://codescene.io/projects/26526)
+
+[![CircleCI](https://circleci.com/gh/KentVejrupMadsen/Kanban-Project-Backend/tree/main.svg?style=svg)](https://circleci.com/gh/KentVejrupMadsen/Kanban-Project-Backend/tree/main)
 
 
 ## Content
