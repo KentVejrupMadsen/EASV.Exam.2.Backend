@@ -1,23 +1,21 @@
 <?php
+    namespace Database\Factories\security;
 
-namespace Database\Factories\security;
+    use Illuminate\Database\Eloquent\Factories\Factory;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
- */
-class ConfigurationModelFactory extends Factory
-{
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition()
+    class ConfigurationModelFactory
+        extends Factory
     {
-        return [
-            //
-        ];
+
+        public function definition()
+        {
+            return
+            [
+                //
+                'key'=>$this->faker->text,
+                'value'=>$this->faker->text
+            ];
+        }
     }
-}
+?>
