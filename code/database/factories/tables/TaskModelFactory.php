@@ -1,26 +1,22 @@
 <?php
     namespace Database\Factories\tables;
 
-    use App\Models\tables\KanbanTitleModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
     /**
      *
      */
-    class KanbanTitleModelFactory
+    class TaskModelFactory
         extends Factory
     {
-        protected $model = KanbanTitleModel::class;
-
-
         public function definition()
         {
             return
             [
-                'content'=> $this->faker
-                                 ->unique()
-                                 ->jobTitle
+                'board_id' => 0,
+                'content' => $this->faker
+                                  ->realText
             ];
         }
     }

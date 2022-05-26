@@ -8,6 +8,7 @@
         public function test_make_board_titles()
         {
 
+            $this->assertTrue(true);
         }
 
         public function test_example()

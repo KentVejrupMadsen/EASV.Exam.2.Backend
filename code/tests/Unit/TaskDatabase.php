@@ -9,7 +9,6 @@
     {
         public function test_make_test()
         {
-            TaskModel::factory()->count(1000)->create();
             $this->assertTrue(true);
         }
     }
