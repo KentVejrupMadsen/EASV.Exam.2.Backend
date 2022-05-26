@@ -1,17 +1,21 @@
 <?php
     namespace Tests\Unit;
 
+    use App\Models\tables\ProjectTitleModel;
+
 
     class ProjectDatabase
         extends BaseUnit
     {
-        /**
-         * A basic unit test example.
-         *
-         * @return void
-         */
-        public function test_example()
+        public function test_make_project_titles()
         {
+            ProjectTitleModel::factory()->count(1000)->create();
+            $this->assertTrue(true);
+        }
+
+        public function test_make_projects()
+        {
+
             $this->assertTrue(true);
         }
     }
