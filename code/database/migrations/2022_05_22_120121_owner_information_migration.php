@@ -29,14 +29,17 @@
                         $table->id();
 
                         $table->string( 'area_name' )
+                              ->index()
                               ->comment( '' );
 
                         $table->integer( 'zip_number' )
                               ->unsigned()
+                              ->index()
                               ->comment( '' );
 
                         $table->bigInteger( 'country_id' )
                               ->unsigned()
+                              ->index()
                               ->comment( '' );
 
                         // References

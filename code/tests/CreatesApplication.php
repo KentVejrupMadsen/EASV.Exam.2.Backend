@@ -3,7 +3,7 @@
 
     use Illuminate\Contracts\Console\Kernel;
 
-    
+
     trait CreatesApplication
     {
         public function createApplication()
@@ -15,5 +15,4 @@
             return $app;
         }
     }
-
 ?>

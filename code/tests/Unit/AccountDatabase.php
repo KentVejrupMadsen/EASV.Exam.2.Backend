@@ -26,11 +26,8 @@
 
         private static $maxCount = null;
 
-        /**
-         * A basic unit test example.
-         *
-         * @return void
-         */
+
+
         public function test_add_mail()
         {
             AccountEmailModel::factory()->count( $this->getMax() )->create();

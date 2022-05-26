@@ -1,11 +1,22 @@
 # Kanban Backend
+## Introduction
+
+### Status
+[![CodeScene System Mastery](https://codescene.io/projects/26526/status-badges/system-mastery)](https://codescene.io/projects/26526)
+[![CodeScene Code Health](https://codescene.io/projects/26526/status-badges/code-health)](https://codescene.io/projects/26526)
+
+[![CircleCI](https://circleci.com/gh/KentVejrupMadsen/Kanban-Project-Backend/tree/main.svg?style=svg)](https://circleci.com/gh/KentVejrupMadsen/Kanban-Project-Backend/tree/main)
+
+
+## Content
 * [To read documentation](docs/readme.md)
-* []()
+
 
 ## Assignment
 1. [Backend](https://github.com/KentVejrupMadsen/Kanban-Project-Backend)
 2. [Frontend](https://github.com/KentVejrupMadsen/Kanban-Project-Frontend)
 3. [Cache](https://github.com/KentVejrupMadsen/Kanban-Project-Cache)
+
 
 ## Header
 * Author: Kent vejrup Madsen
