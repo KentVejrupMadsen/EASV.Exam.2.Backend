@@ -20,6 +20,7 @@
             return
             [
                 //
+                'content'=>$this->faker->title
             ];
         }
     }

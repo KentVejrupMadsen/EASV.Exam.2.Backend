@@ -23,6 +23,7 @@
             return
             [
                 //
+                'content'=>$this->faker->firstName
             ];
         }
     }

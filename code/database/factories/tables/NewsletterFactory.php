@@ -22,7 +22,8 @@
             return
             [
                 //
-                'email_id' => 1
+                'email_id' => 1,
+                'options' => '{ }'
             ];
         }
     }

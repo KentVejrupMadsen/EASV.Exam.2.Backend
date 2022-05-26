@@ -1,10 +1,13 @@
 <?php
-    namespace Database\Factories\security;
+    namespace Database\Factories\tables;
 
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
-    class ConfigurationModelFactory
+    /**
+     *
+     */
+    class BoardTitleFactory
         extends Factory
     {
 
@@ -12,9 +15,7 @@
         {
             return
             [
-                //
-                'key'=>$this->faker->text,
-                'value'=>$this->faker->text
+                'content'=>$this->faker->title
             ];
         }
     }
