@@ -1,5 +1,5 @@
 <?php
-    namespace Database\Factories;
+    namespace Database\Factories\tables;
 
     use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -7,7 +7,7 @@
     /**
      * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
      */
-    class BoardFactory
+    class KanbanFactory
         extends Factory
     {
         /**
@@ -17,8 +17,13 @@
          */
         public function definition()
         {
-            return [
+            return
+            [
                 //
+                'kanban_title_id'=>0,
+                'project_id'=>0,
+                'created_at'=>$this->faker->dateTime,
+                'updated_at'=>$this->faker->dateTime
             ];
         }
     }

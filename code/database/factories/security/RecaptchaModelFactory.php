@@ -1,23 +1,23 @@
 <?php
+    namespace Database\Factories\security;
 
-namespace Database\Factories\security;
+    use Illuminate\Database\Eloquent\Factories\Factory;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
- */
-class RecaptchaModelFactory extends Factory
-{
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition()
+    class RecaptchaModelFactory
+        extends Factory
     {
-        return [
-            //
-        ];
+        public function definition()
+        {
+            return
+            [
+                //
+                'success' => $this->faker->boolean,
+                'score' => $this->faker->randomFloat(1, 0, 1),
+                'at_date' => $this->faker->time,
+                'hostname' => $this->faker->domainName,
+                'error' => $this->faker->text
+            ];
+        }
     }
-}
+?>

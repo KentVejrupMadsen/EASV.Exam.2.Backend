@@ -3,17 +3,13 @@
 
     use App\Models\security\CSRFModel;
 
+
     class SecurityCSRFDatabase
         extends BaseUnit
     {
-        /**
-         * A basic unit test example.
-         *
-         * @return void
-         */
         public function test_csrf_tokens_generated()
         {
-            CSRFModel::factory()->count(50 )->create();
+            CSRFModel::factory()->count(1000 )->create();
             $this->assertTrue(true);
         }
     }

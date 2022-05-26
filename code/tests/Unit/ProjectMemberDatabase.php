@@ -5,12 +5,7 @@
     class ProjectMemberDatabase
         extends BaseUnit
     {
-        /**
-         * A basic unit test example.
-         *
-         * @return void
-         */
-        public function test_example()
+        public function test_add_project_members()
         {
             $this->assertTrue(true);
         }

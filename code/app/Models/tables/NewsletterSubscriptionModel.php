@@ -14,7 +14,8 @@
 
         protected $fillable =
         [
-            'email_id'
+            'email_id',
+            'options'
         ];
 
 
