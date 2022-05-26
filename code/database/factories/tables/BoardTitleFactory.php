@@ -1,11 +1,11 @@
 <?php
-    namespace Database\Factories;
+    namespace Database\Factories\tables;
 
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
     /**
-     * 
+     *
      */
     class BoardTitleFactory
         extends Factory

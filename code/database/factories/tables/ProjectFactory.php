@@ -1,5 +1,5 @@
 <?php
-    namespace Database\Factories;
+    namespace Database\Factories\tables;
 
     use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -7,8 +7,7 @@
     /**
      * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
      */
-    class BoardFactory
-        extends Factory
+    class ProjectFactory extends Factory
     {
         /**
          * Define the model's default state.
