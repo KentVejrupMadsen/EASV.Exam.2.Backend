@@ -7,11 +7,9 @@
     /**
      *
      */
-    final class NewsletterFactory
+    final class KanbanFactory
         extends Factory
     {
-        protected $model = NewsletterFactory::class;
-
         /**
          * @return array
          */
@@ -20,8 +18,14 @@
             return
             [
                 //
-                'email_id' => 1,
-                'options' => '{ }'
+                'kanban_title_id' => 0,
+                'project_id' => 0,
+
+                'created_at' => $this->faker
+                                     ->dateTime,
+
+                'updated_at' => $this->faker
+                                     ->dateTime
             ];
         }
     }

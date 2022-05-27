@@ -1,4 +1,9 @@
 <?php
+    /**
+     * Author: Kent vejrup Madsen
+     * Description:
+     * TODO: Make description
+     */
     namespace App\Models\security;
 
     use App\Models\templates\ExtensionNoTimestampModel;
@@ -7,31 +12,29 @@
     /**
      *
      */
-    class SecurityRecaptcha
+    class ConfigurationModel
         extends ExtensionNoTimestampModel
     {
         protected $table = 'security_configuration';
 
+
         protected $fillable =
         [
-            'success',
-            'score',
-            'at_date',
-            'hostname',
-            'error'
+            'key',
+            'value'
         ];
 
 
         protected $hidden =
         [
-            'hostname',
-            'error'
+            'value'
         ];
 
 
         protected $casts =
         [
-
+            'key' => 'string',
+            'value' => 'string'
         ];
     }
 ?>

@@ -7,12 +7,17 @@
     /**
      *
      */
-    class A_first_Database
+    class Testdatabase
         extends BaseUnit
     {
         use RefreshDatabase;
 
-        public function test_reset()
+
+        /**
+         * Returns true by default
+         * @return void
+         */
+        public final function test_reset()
         {
             $this->assertTrue( true );
         }

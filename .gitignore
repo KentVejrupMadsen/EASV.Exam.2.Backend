@@ -1,14 +1,9 @@
 .editorconfig
 
-*.example
-
 .env
 .env.backup
 
-package-lock.json
-
-*.yml
-
-*.xml
+*.lock
 
 .idea/*
+/.vscode

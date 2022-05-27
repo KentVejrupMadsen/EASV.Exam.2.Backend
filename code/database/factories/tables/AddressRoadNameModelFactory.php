@@ -1,17 +1,17 @@
 <?php
     namespace Database\Factories\tables;
 
-    use App\Models\tables\AccountEmailModel;
+    use App\Models\tables\AddressRoadNameModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
     /**
      *
      */
-    final class AccountEmailModelFactory
+    final class AddressRoadNameModelFactory
         extends Factory
     {
-        protected $model = AccountEmailModel::class;
+        protected $model = AddressRoadNameModel::class;
 
         /**
          * @return array
@@ -20,9 +20,9 @@
         {
             return
             [
+                //
                 'content' => $this->faker
-                                  ->unique()
-                                  ->safeEmail
+                                  ->streetName
             ];
         }
     }

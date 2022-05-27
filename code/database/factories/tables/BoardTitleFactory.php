@@ -7,21 +7,16 @@
     /**
      *
      */
-    final class NewsletterFactory
+    final class BoardTitleFactory
         extends Factory
     {
-        protected $model = NewsletterFactory::class;
 
-        /**
-         * @return array
-         */
         public function definition(): array
         {
             return
             [
-                //
-                'email_id' => 1,
-                'options' => '{ }'
+                'content' => $this->faker
+                                  ->title
             ];
         }
     }

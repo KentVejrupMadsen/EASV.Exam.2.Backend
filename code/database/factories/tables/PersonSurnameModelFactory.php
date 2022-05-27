@@ -1,18 +1,15 @@
 <?php
     namespace Database\Factories\tables;
 
-    use App\Models\tables\AccountEmailModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
     /**
      *
      */
-    final class AccountEmailModelFactory
+    final class PersonSurnameModelFactory
         extends Factory
     {
-        protected $model = AccountEmailModel::class;
-
         /**
          * @return array
          */
@@ -20,9 +17,9 @@
         {
             return
             [
+                //
                 'content' => $this->faker
-                                  ->unique()
-                                  ->safeEmail
+                                  ->lastName
             ];
         }
     }

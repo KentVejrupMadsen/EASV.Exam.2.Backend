@@ -1,27 +1,29 @@
 <?php
     namespace Database\Factories\tables;
 
+    use App\Models\tables\KanbanTitleModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
     /**
      *
      */
-    final class NewsletterFactory
+    final class KanbanTitleModelFactory
         extends Factory
     {
-        protected $model = NewsletterFactory::class;
+        protected $model = KanbanTitleModel::class;
+
 
         /**
-         * @return array
+         * @return array|mixed[]
          */
         public function definition(): array
         {
             return
             [
-                //
-                'email_id' => 1,
-                'options' => '{ }'
+                'content'=> $this->faker
+                                 ->unique()
+                                 ->jobTitle
             ];
         }
     }
