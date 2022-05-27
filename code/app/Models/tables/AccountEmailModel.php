@@ -16,6 +16,5 @@
         extends ExtensionLabelModel
     {
         protected $table = 'account_emails';
-
     }
 ?>

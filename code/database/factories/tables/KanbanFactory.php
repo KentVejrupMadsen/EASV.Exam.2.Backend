@@ -16,8 +16,9 @@
         extends Factory
     {
         // Variables
-        private static $debug = false;
-        protected $model = KanbanModel::class;
+        private static $debug   = false;
+        protected $model        = KanbanModel::class;
+
 
         // Accessor
         /**

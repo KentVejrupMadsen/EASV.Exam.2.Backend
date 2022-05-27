@@ -20,7 +20,8 @@
                     $table->id();
 
                     $table->string( 'content' )
-                          ->unique();
+                          ->unique()
+                          ->comment('');
                 }
             );
 
@@ -33,17 +34,17 @@
                     
                     $table->bigInteger( 'account_owner_id' )
                           ->unsigned()
-                          ->comment('');;
+                          ->comment( '' );
 
                     $table->bigInteger( 'project_title_id' )
                           ->unsigned()
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->longText( 'description' )
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->json( 'tags' )
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->timestamps();
 
@@ -67,7 +68,8 @@
                     $table->id();
 
                     $table->string( 'content' )
-                          ->unique();   
+                          ->unique()
+                          ->comment( '' );
                 }
             );
 
