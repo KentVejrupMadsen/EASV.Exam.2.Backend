@@ -12,6 +12,17 @@
         extends Factory
     {
         protected $model = PersonNameModel::class;
+        private static $debug = false;
+
+        public final function getDebugState(): bool
+        {
+            return self::$debug;
+        }
+
+        public final function setDebugState( bool $value ): void
+        {
+            self::$debug = $value;
+        }
 
 
         /**
