@@ -9,7 +9,7 @@
     /**
      *
      */
-    class CountryModelFactory
+    final class CountryModelFactory
         extends Factory
     {
         protected $model = CountryModel::class;

@@ -7,7 +7,7 @@
     /**
      *
      */
-    class BoardTitleFactory
+    final class BoardTitleFactory
         extends Factory
     {
 

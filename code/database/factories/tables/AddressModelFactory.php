@@ -8,7 +8,7 @@
     /**
      *
      */
-    class AddressModelFactory
+    final class AddressModelFactory
         extends Factory
     {
         protected $model = AddressModel::class;

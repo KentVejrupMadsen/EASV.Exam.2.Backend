@@ -8,7 +8,7 @@
     /**
      *
      */
-    class ZipCodeModelFactory
+    final class ZipCodeModelFactory
         extends Factory
     {
         protected $model = ZipCodeModel::class;

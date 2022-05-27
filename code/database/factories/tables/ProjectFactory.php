@@ -7,7 +7,7 @@
     /**
      *
      */
-    class ProjectFactory
+    final class ProjectFactory
         extends Factory
     {
         /**

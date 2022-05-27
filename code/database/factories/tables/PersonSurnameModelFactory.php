@@ -7,7 +7,7 @@
     /**
      *
      */
-    class PersonSurnameModelFactory
+    final class PersonSurnameModelFactory
         extends Factory
     {
         /**

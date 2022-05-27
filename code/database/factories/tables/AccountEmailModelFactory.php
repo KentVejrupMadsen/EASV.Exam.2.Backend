@@ -7,7 +7,7 @@
     use Illuminate\Support\Str;
 
 
-    class AccountEmailModelFactory
+    final class AccountEmailModelFactory
         extends Factory
     {
         protected $model = AccountEmailModel::class;

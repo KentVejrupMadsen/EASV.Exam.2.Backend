@@ -4,7 +4,7 @@
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
-    class BoardFactory
+    final class BoardFactory
         extends Factory
     {
 

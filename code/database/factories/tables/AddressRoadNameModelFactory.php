@@ -8,7 +8,7 @@
     /**
      * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
      */
-    class AddressRoadNameModelFactory
+    final class AddressRoadNameModelFactory
         extends Factory
     {
         protected $model = AddressRoadNameModel::class;

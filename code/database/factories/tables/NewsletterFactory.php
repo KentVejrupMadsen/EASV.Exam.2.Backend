@@ -5,17 +5,15 @@
 
 
     /**
-     * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+     *
      */
-    class NewsletterFactory
+    final class NewsletterFactory
         extends Factory
     {
         protected $model = NewsletterFactory::class;
 
         /**
-         * Define the model's default state.
-         *
-         * @return array<string, mixed>
+         * @return array|mixed[]
          */
         public function definition()
         {

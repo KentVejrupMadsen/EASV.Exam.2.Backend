@@ -7,7 +7,7 @@
     /**
      *
      */
-    class TaskModelFactory
+    final class TaskModelFactory
         extends Factory
     {
         public function definition()

@@ -8,7 +8,7 @@
     /**
      *
      */
-    class KanbanTitleModelFactory
+    final class KanbanTitleModelFactory
         extends Factory
     {
         protected $model = KanbanTitleModel::class;
