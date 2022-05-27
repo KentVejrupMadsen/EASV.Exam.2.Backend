@@ -17,7 +17,7 @@
          * Returns true by default
          * @return void
          */
-        public final function test_reset()
+        public function test_reset()
         {
             $this->assertTrue( true );
         }
