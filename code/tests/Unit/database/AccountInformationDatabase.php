@@ -13,20 +13,21 @@
         /**
          * @return void
          */
-        public function test_add_countries()
+        public function test_add_countries(): void
         {
 
-            $this->assertTrue( true );
+            $this->completed();
         }
+
 
         /**
          * @return void
          */
-        public function test_add_zipCodes()
+        public function test_add_zipCodes(): void
         {
 
 
-            $this->assertTrue( true );
+            $this->completed();
         }
     }
 ?>

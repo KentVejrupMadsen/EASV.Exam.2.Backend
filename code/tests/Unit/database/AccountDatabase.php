@@ -81,7 +81,7 @@
         /**
          * @return void
          */
-        public function test_add_mail()
+        public function test_add_mail(): void
         {
             $this->isDebuggingEmail();
             $sampleSize = 2500;
@@ -112,7 +112,7 @@
          * @return void
          * @throws \Exception
          */
-        public final function test_create_account()
+        public final function test_create_account(): void
         {
             $this->isDebuggingAccount();
 
@@ -138,7 +138,7 @@
         /**
          * @return void
          */
-        public final function test_create_newsletters()
+        public final function test_create_newsletters(): void
         {
             $this->isDebuggingNewsletter();
 

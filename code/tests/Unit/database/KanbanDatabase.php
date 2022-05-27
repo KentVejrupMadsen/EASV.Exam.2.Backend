@@ -13,11 +13,12 @@
         /**
          * @return void
          */
-        public function test_make_kanban_titles()
+        public function test_make_kanban_titles(): void
         {
 
-            $this->assertTrue( true );
+            $this->completed();
         }
+
 
         /**
          * @return void
@@ -25,7 +26,7 @@
         public function test_make_kanbans()
         {
 
-            $this->assertTrue( true );
+            $this->completed();
         }
     }
 ?>
