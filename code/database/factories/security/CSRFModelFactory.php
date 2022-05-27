@@ -6,8 +6,10 @@
     use Illuminate\Database\Eloquent\Factories\Factory;
     use Illuminate\Support\Str;
 
-
-    class CSRFModelFactory
+    /**
+     *
+     */
+    final class CSRFModelFactory
         extends Factory
     {
         protected $model = CSRFModel::class;
@@ -17,13 +19,16 @@
         {
             return
             [
-                'assigned_to'=>$this->faker->ipv4,
-                'secure_token'=>Str::random(32),
-                'secret_token'=>Str::random(32),
-                'issued'=>$this->faker->time,
-                'accessed'=>$this->faker->time,
-                'activated'=>$this->faker->boolean,
-                'invalidated'=>$this->faker->boolean
+                'assigned_to' => $this->faker->ipv4,
+
+                'secure_token' => Str::random( 32 ),
+                'secret_token' => Str::random( 32 ),
+
+                'issued' => $this->faker->time,
+                'accessed' => $this->faker->time,
+
+                'activated' => $this->faker->boolean,
+                'invalidated' => $this->faker->boolean
             ];
         }
     }

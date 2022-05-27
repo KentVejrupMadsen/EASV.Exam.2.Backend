@@ -7,10 +7,13 @@
     /**
      *
      */
-    class TaskModelFactory
+    final class TaskModelFactory
         extends Factory
     {
-        public function definition()
+        /**
+         * @return array
+         */
+        public function definition(): array
         {
             return
             [

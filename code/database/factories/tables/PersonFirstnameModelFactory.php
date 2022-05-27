@@ -6,19 +6,17 @@
 
 
     /**
-     * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+     *
      */
-    class PersonFirstnameModelFactory
+    final class PersonFirstnameModelFactory
         extends Factory
     {
         protected $model = PersonFirstnameModel::class;
 
         /**
-         * Define the model's default state.
-         *
-         * @return array<string, mixed>
+         * @return array
          */
-        public final function definition()
+        public final function definition(): array
         {
             return
             [

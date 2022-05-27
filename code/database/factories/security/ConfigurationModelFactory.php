@@ -4,7 +4,7 @@
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
-    class ConfigurationModelFactory
+    final class ConfigurationModelFactory
         extends Factory
     {
 
@@ -13,8 +13,8 @@
             return
             [
                 //
-                'key'=>$this->faker->text,
-                'value'=>$this->faker->text
+                'key' => $this->faker->text,
+                'value' => $this->faker->text
             ];
         }
     }
