@@ -1,11 +1,17 @@
 <?php
     namespace Database\Factories\tables;
 
-    use App\Models\tables\BoardModel;
+    // External libraries
     use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
+    // Internal libraries
+    use App\Models\tables\BoardModel;
 
+
+    /**
+     *
+     */
     final class BoardFactory
         extends Factory
     {

@@ -1,11 +1,13 @@
 <?php
     namespace Database\Factories\security;
 
-    use App\Models\security\CSRFModel;
-
+    // External libraries
     use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
     use Illuminate\Support\Str;
+
+    // Internal libraries
+    use App\Models\security\CSRFModel;
 
 
     /**

@@ -1,17 +1,22 @@
 <?php
     namespace Database\Factories\tables;
 
+    // External libraries
     use Illuminate\Database\Eloquent\Factories\Factory;
+
+    // Internal libraries
+    use App\Models\tables\NewsletterSubscriptionModel;
 
 
     /**
      *
      */
-    final class NewsletterFactory
+    final class NewsletterSubscriptionModelFactory
         extends Factory
     {
+
         // Variables
-        protected $model = NewsletterFactory::class;
+        protected $model = NewsletterSubscriptionModel::class;
         private static $debug = false;
 
         // Access
