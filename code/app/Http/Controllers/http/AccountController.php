@@ -16,7 +16,7 @@
     use OpenApi\Attributes
         as OA;
 
-    use App\Http\Controllers\additional_http\CSRFTokenController;
+    use App\Http\Controllers\additional\CSRFTokenController;
     use App\Models\tables\User;
 
 
