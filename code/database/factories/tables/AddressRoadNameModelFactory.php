@@ -15,8 +15,9 @@
         extends Factory
     {
         // Variables
-        protected $model = AddressRoadNameModel::class;
-        private static $debug = false;
+        protected $model        = AddressRoadNameModel::class;
+        private static $debug   = false;
+
 
         // Accessor
         /**

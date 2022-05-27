@@ -15,8 +15,8 @@
         extends Factory
     {
         // Variables
-        protected $model = PersonFirstnameModel::class;
-        private static $debug = false;
+        protected $model        = PersonFirstnameModel::class;
+        private static $debug   = false;
 
 
         // Accessors

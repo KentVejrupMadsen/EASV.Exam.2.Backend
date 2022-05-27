@@ -16,8 +16,10 @@
     final class CSRFModelFactory
         extends Factory
     {
-        protected $model = CSRFModel::class;
-        private static $debug = false;
+        // Variables
+        protected $model        = CSRFModel::class;
+        private static $debug   = false;
+
 
         // Accessor
         /**
