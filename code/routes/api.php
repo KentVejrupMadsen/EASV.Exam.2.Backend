@@ -5,7 +5,7 @@
      * TODO: Make description
      */
     use Illuminate\Support\Facades\Route;
-    use App\Http\Controllers\ApiController;
+    use App\Http\Controllers\ApiHomeController;
 
     require_once 'api/accountApi.php';
     require_once 'api/accountEmailApi.php';
@@ -18,7 +18,7 @@
 
     Route::get(
         '/',
-        [ ApiController::class, 'home' ]
+        [ ApiHomeController::class, 'home' ]
     );
 
 ?>
