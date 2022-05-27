@@ -15,9 +15,9 @@
         {
             return
             [
-                'content'=>$this->faker
-                                ->unique()
-                                ->jobTitle
+                'content' => $this->faker
+                                  ->unique()
+                                  ->jobTitle
             ];
         }
     }
