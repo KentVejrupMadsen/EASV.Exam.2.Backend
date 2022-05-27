@@ -15,9 +15,9 @@
         protected $model = CountryModel::class;
 
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public final function definition()
+        public final function definition(): array
         {
             return
             [

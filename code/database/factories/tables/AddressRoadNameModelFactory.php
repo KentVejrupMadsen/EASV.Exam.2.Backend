@@ -6,7 +6,7 @@
 
 
     /**
-     * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+     *
      */
     final class AddressRoadNameModelFactory
         extends Factory
@@ -14,11 +14,9 @@
         protected $model = AddressRoadNameModel::class;
 
         /**
-         * Define the model's default state.
-         *
-         * @return array<string, mixed>
+         * @return array
          */
-        public final function definition()
+        public final function definition(): array
         {
             return
             [

@@ -1,15 +1,21 @@
 <?php
     namespace Tests\Unit\database;
 
-    use App\Models\security\CSRFModel;
+    use Tests\Unit\BaseUnit;
 
 
-class SecurityCSRFDatabase
+    /**
+     *
+     */
+    final class SecurityCSRFDatabase
         extends BaseUnit
     {
-        public function test_csrf_tokens_generated()
+        /**
+         * @return void
+         */
+        public final function test_csrf_tokens_generated()
         {
-            CSRFModel::factory()->count(1000 )->create();
+
             $this->assertTrue(true);
         }
     }

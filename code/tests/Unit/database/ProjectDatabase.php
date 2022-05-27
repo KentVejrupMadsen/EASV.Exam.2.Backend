@@ -1,18 +1,27 @@
 <?php
     namespace Tests\Unit\database;
 
-    use App\Models\tables\ProjectTitleModel;
+    use Tests\Unit\BaseUnit;
 
 
-    class ProjectDatabase
+    /**
+     *
+     */
+    final class ProjectDatabase
         extends BaseUnit
     {
+        /**
+         * @return void
+         */
         public function test_make_project_titles()
         {
-            ProjectTitleModel::factory()->count(1000)->create();
+
             $this->assertTrue(true);
         }
 
+        /**
+         * @return void
+         */
         public function test_make_projects()
         {
 

@@ -1,11 +1,19 @@
 <?php
     namespace Tests\Unit\database;
 
+    use Tests\Unit\BaseUnit;
 
-    class ProjectMemberDatabase
+
+    /**
+     *
+     */
+    final class ProjectMemberDatabase
         extends BaseUnit
     {
-        public function test_add_project_members()
+        /**
+         * @return void
+         */
+        public final function test_add_project_members()
         {
             $this->assertTrue(true);
         }

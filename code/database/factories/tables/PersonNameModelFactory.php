@@ -15,9 +15,9 @@
 
 
         /**
-         * @return int[]
+         * @return array
          */
-        public final function definition()
+        public final function definition(): array
         {
             return
             [

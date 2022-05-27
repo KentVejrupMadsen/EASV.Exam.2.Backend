@@ -14,7 +14,10 @@
         protected $model = KanbanTitleModel::class;
 
 
-        public function definition()
+        /**
+         * @return array|mixed[]
+         */
+        public function definition(): array
         {
             return
             [

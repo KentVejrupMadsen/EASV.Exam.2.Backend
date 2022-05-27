@@ -11,7 +11,7 @@
         extends Factory
     {
 
-        public final function definition()
+        public final function definition(): array
         {
             return
             [
