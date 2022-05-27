@@ -1,25 +1,26 @@
 <?php
     namespace Tests\Unit;
 
+    use Carbon\Carbon;
     use Illuminate\Foundation\Testing\RefreshDatabase;
 
 
     /**
      *
      */
-    class Test_database
+    class TestDatabase
         extends BaseUnit
     {
         use RefreshDatabase;
 
-
         /**
-         * Returns true by default
          * @return void
          */
-        public function test_reset()
+        public final function test_reset(): void
         {
-            $this->assertTrue( true );
+            $this->output('Test is started ' . Carbon::now()->toString() );
+
+            $this->completed();
         }
     }
 ?>

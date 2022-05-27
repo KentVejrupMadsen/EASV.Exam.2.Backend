@@ -7,6 +7,7 @@
 
     // Internal libraries
     use App\Models\tables\User;
+    use Illuminate\Support\Facades\Hash;
 
 
     /**
@@ -54,6 +55,18 @@
             }
         }
 
+        protected function generatePassword(): ?string
+        {
+            if( $this->getDebugState() )
+            {
+                return Hash::make( $this->faker->realTextBetween( 8, 16 ) );
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         /**
          * @return array
@@ -64,12 +77,21 @@
             {
                 return
                 [
-                    'username'          => $this->faker->userName,
+                    'username'          => $this->faker
+                                                ->unique()
+                                                ->userName,
+
                     'email_id'          => 0,
                     'email_verified_at' => $this->fakeIsVerified(),
-                    'password'          => '',
-                    'created_at'        => $this->faker->dateTime,
-                    'updated_at'        => $this->faker->dateTime,
+
+                    'password'          => $this->generatePassword(),
+
+                    'created_at'        => $this->faker
+                                                ->dateTime,
+
+                    'updated_at'        => $this->faker
+                                                ->dateTime,
+                    'settings' => '{ }'
                 ];
             }
             else
@@ -78,10 +100,14 @@
                 [
                     'username'          => null,
                     'email_id'          => 0,
+
                     'email_verified_at' => null,
                     'password'          => null,
+
                     'created_at'        => Carbon::now(),
                     'updated_at'        => Carbon::now(),
+
+                    'settings' => '{ }'
                 ];
             }
         }
