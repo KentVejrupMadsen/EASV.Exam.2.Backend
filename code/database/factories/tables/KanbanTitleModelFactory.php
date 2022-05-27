@@ -14,14 +14,24 @@
     final class KanbanTitleModelFactory
         extends Factory
     {
-        protected $model = KanbanTitleModel::class;
-        private static $debug = false;
+        // Variables
+        protected $model        = KanbanTitleModel::class;
+        private static $debug   = false;
 
+
+        // Accessor
+        /**
+         * @return bool
+         */
         public final function getDebugState(): bool
         {
             return self::$debug;
         }
 
+        /**
+         * @param bool $value
+         * @return void
+         */
         public final function setDebugState( bool $value ): void
         {
             self::$debug = $value;

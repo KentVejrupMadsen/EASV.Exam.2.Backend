@@ -15,25 +15,33 @@
     class TaskModel
         extends ExtensionNoTimestampModel
     {
+        // variables
+            // Table
         protected $table = 'tasks';
-        
+
+            // Constants
+        protected const field_board_id = 'board_id';
+        protected const field_content = 'content';
+
+
+        //
         protected $fillable = 
         [
-            'board_id',
-            'content'
+            self::field_board_id,
+            self::field_content
         ];
 
         
         protected $hidden = 
         [
-            'board_id',
+            self::field_board_id,
         ];
 
         
         protected $casts = 
         [
-            'board_id' => 'integer',
-            'content' => 'string'
+            self::field_board_id => 'integer',
+            self::field_content  => 'string'
         ];
     }
 ?>

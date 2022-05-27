@@ -16,8 +16,9 @@
     {
 
         // Variables
-        protected $model = NewsletterSubscriptionModel::class;
-        private static $debug = false;
+        protected $model        = NewsletterSubscriptionModel::class;
+        private static $debug   = false;
+
 
         // Access
         /**

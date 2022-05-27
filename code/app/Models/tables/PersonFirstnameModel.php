@@ -11,6 +11,5 @@
         extends ExtensionLabelModel
     {
         protected $table = 'person_name_middle_and_last';
-
     }
 ?>

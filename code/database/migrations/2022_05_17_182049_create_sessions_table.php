@@ -18,22 +18,16 @@
                 function ( Blueprint $table )
                 {
                     $table->id( 'index' );
-
                     $table->string( 'id' )
                           ->unique();
-
                     $table->foreignId( 'user_id' )
                           ->nullable()
                           ->index();
-
                     $table->ipAddress( 'ip_address' )
                           ->nullable();
-
                     $table->text( 'user_agent' )
                           ->nullable();
-
                     $table->text( 'payload' );
-
                     $table->integer( 'last_activity' )
                           ->index();
                 }

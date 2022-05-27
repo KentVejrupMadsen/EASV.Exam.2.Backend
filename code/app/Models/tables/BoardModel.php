@@ -6,6 +6,8 @@
      */
     namespace App\Models\tables;
 
+    use App\Models\templates\BaseModel;
+
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
@@ -14,10 +16,8 @@
      *
      */
     class BoardModel
-        extends Model
+        extends BaseModel
     {
-        use HasFactory;
-        
         protected $table = 'boards';
 
         protected $fillable = 

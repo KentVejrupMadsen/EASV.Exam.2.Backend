@@ -15,9 +15,9 @@
     final class RecaptchaModelFactory
         extends Factory
     {
-        //
-        protected $model = RecaptchaModel::class;
-        private static $debug = false;
+        // Variables
+        protected $model        = RecaptchaModel::class;
+        private static $debug   = false;
 
 
         // Accessor

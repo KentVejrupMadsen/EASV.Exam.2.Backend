@@ -15,8 +15,9 @@
         extends Factory
     {
         // Variables
-        protected $model = ProjectTitleModel::class;
+        protected $model      = ProjectTitleModel::class;
         private static $debug = false;
+
 
         // Accessors
         /**
