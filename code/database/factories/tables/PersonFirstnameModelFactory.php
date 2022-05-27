@@ -1,8 +1,11 @@
 <?php
     namespace Database\Factories\tables;
 
-    use App\Models\tables\PersonFirstnameModel;
+    // External libraries
     use Illuminate\Database\Eloquent\Factories\Factory;
+
+    // Internal libraries
+    use App\Models\tables\PersonFirstnameModel;
 
 
     /**
@@ -11,19 +14,53 @@
     final class PersonFirstnameModelFactory
         extends Factory
     {
+        // Variables
         protected $model = PersonFirstnameModel::class;
+        private static $debug = false;
 
+
+        // Accessors
+        /**
+         * @return bool
+         */
+        public final function getDebugState(): bool
+        {
+            return self::$debug;
+        }
+
+        /**
+         * @param bool $value
+         * @return void
+         */
+        public final function setDebugState( bool $value ): void
+        {
+            self::$debug = $value;
+        }
+
+
+        //
         /**
          * @return array
          */
         public final function definition(): array
         {
-            return
-            [
-                //
-                'content' => $this->faker
-                                  ->firstName
-            ];
+            if($this->getDebugState())
+            {
+                return
+                [
+                    //
+                    'content' => $this->faker
+                        ->firstName
+                ];
+            }
+            else
+            {
+                return
+                    [
+                        //
+                        'content' => null
+                    ];
+            }
         }
     }
 ?>

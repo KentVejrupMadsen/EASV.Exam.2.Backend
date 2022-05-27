@@ -1,8 +1,11 @@
 <?php
     namespace Database\Factories\tables;
 
-    use App\Models\tables\KanbanTitleModel;
+    // External libraries
     use Illuminate\Database\Eloquent\Factories\Factory;
+
+    // Internal libraries
+    use App\Models\tables\KanbanTitleModel;
 
 
     /**
@@ -12,6 +15,17 @@
         extends Factory
     {
         protected $model = KanbanTitleModel::class;
+        private static $debug = false;
+
+        public final function getDebugState(): bool
+        {
+            return self::$debug;
+        }
+
+        public final function setDebugState( bool $value ): void
+        {
+            self::$debug = $value;
+        }
 
 
         /**
@@ -19,12 +33,22 @@
          */
         public function definition(): array
         {
-            return
-            [
-                'content'=> $this->faker
-                                 ->unique()
-                                 ->jobTitle
-            ];
+            if($this->getDebugState())
+            {
+                return
+                    [
+                        'content'=> $this->faker
+                            ->unique()
+                            ->jobTitle
+                    ];
+            }
+            else
+            {
+                return
+                    [
+                        'content'=> null
+                    ];
+            }
         }
     }
 ?>

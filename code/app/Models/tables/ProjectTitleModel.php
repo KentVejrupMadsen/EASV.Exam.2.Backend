@@ -12,11 +12,9 @@
     /**
      *
      */
-    class ProjectTitleModel 
+    class ProjectTitleModel
         extends ExtensionLabelModel
     {
         protected $table = 'project_titles';
-
-
     }
 ?>

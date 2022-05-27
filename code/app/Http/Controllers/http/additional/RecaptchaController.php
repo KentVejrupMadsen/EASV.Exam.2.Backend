@@ -4,36 +4,25 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http;
+    namespace App\Http\Controllers\http\additional;
 
-    use Illuminate\Http\Request;
+    use App\Http\Controllers\templates\CrudController;
+use Illuminate\Http\Request;
+use OpenApi\Attributes as OA;
 
-    use OpenApi\Attributes
-        as OA;
 
-
-    class ProjectTitleController
-        extends BaseHTTPController
+/**
+     *
+     */
+    class RecaptchaController
+        extends CrudController
     {
-
-        /**
-         *
-         */
+        //
         public function __construct()
         {
             parent::__construct();
-        }
 
 
-        /**
-         * @param Request $request
-         * @return void
-         */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function create( Request $request )
-        {
-            // TODO: Implement create() method.
         }
 
 
@@ -46,6 +35,18 @@
         public final function read( Request $request )
         {
             // TODO: Implement read() method.
+        }
+
+
+        /**
+         * @param Request $request
+         * @return void
+         */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
+        public final function create( Request $request )
+        {
+            // TODO: Implement create() method.
         }
 
 
@@ -71,5 +72,6 @@
         {
             // TODO: Implement delete() method.
         }
+
     }
 ?>

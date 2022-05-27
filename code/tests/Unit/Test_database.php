@@ -7,7 +7,7 @@
     /**
      *
      */
-    class Testdatabase
+    class Test_database
         extends BaseUnit
     {
         use RefreshDatabase;
