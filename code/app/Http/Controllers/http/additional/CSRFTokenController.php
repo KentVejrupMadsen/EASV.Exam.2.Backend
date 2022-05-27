@@ -4,17 +4,15 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\additional;
+    namespace App\Http\Controllers\http\additional;
 
+    use App\Http\Controllers\additional\Response;
     use App\Http\Controllers\Controller;
     use App\Models\security\CSRFModel;
-
     use Carbon\Carbon;
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
-
-    use OpenApi\Attributes
-        as OA;
+    use OpenApi\Attributes as OA;
 
 
     /**
