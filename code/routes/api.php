@@ -19,5 +19,4 @@
         '/',
         [ ApiHomeController::class, 'home' ]
     );
-
 ?>
