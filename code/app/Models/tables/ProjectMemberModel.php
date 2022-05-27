@@ -15,31 +15,38 @@
     class ProjectMemberModel 
         extends ExtensionNoTimestampModel
     {
+        // Variables
+            // Table
         protected $table = 'project_members';
-        
+
+            // constants
+        protected const project_id = 'project_id';
+        protected const account_id = 'account_id';
+        protected const member_group_id = 'member_group_id';
+
+
+        //
         protected $fillable = 
         [
-            'project_id',
-            'account_id',
-            'member_group_id'    
+            self::project_id,
+            self::account_id,
+            self::member_group_id
         ];
 
-        
+
         protected $hidden = 
         [
-            'project_id',
-            'account_id',
-            'member_group_id'
+            self::project_id,
+            self::account_id,
+            self::member_group_id
         ];
 
         
         protected $casts = 
         [
-
-            'project_id'        => 'integer',
-            'account_id'        => 'integer',
-            'member_group_id'   => 'integer'
-
+            self::project_id        => 'integer',
+            self::account_id        => 'integer',
+            self::member_group_id   => 'integer'
         ];
     }
 ?>

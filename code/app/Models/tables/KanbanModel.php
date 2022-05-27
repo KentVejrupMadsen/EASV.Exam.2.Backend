@@ -6,38 +6,43 @@
      */
     namespace App\Models\tables;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
+    use App\Models\templates\BaseModel;
 
 
     /**
      *
      */
     class KanbanModel 
-        extends Model
+        extends BaseModel
     {
-        use HasFactory;
-        
+        // Variables
+            // Table
         protected $table = 'kanbans';
 
+            // Constant
+        protected const field_kanban_title_id = 'kanban_title_id';
+        protected const field_project_id      = 'project_id';
+
+
+        //
         protected $fillable = 
         [
-            'kanban_title_id',
-            'project_id'
+            self::field_kanban_title_id,
+            self::field_project_id
         ];
 
         
         protected $hidden = 
         [
-            'kanban_title_id',
-            'project_id'
+            self::field_kanban_title_id,
+            self::field_project_id
         ];
 
         
         protected $casts = 
         [
-            'kanban_title_id'   => 'integer',
-            'project_id'        => 'integer'
+            self::field_kanban_title_id   => 'integer',
+            self::field_project_id        => 'integer'
         ];
     }
 ?>
