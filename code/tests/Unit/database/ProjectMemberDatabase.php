@@ -15,7 +15,8 @@
          */
         public final function test_add_project_members()
         {
-            $this->assertTrue(true);
+
+            $this->completed();
         }
     }
 ?>

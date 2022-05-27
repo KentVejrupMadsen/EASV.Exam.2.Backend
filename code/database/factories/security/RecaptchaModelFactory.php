@@ -53,8 +53,8 @@
                         'success'  => $this->faker->boolean,
                         'score'    => $this->faker->randomFloat(1, 0, 1),
                         'at_date'  => $this->faker->time,
-                        'hostname' => $this->faker->domainName,
-                        'error'    => $this->faker->text
+                        'hostname' => $this->faker->unique()->domainName,
+                        'error'    => $this->faker->text(50)
                     ];
             }
             else

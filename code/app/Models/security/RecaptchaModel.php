@@ -12,7 +12,7 @@
     {
         // Variables
             // Table
-        protected $table = 'security_configuration';
+        protected $table = 'security_recaptcha';
 
             // Const
         protected const field_success   = 'success';
