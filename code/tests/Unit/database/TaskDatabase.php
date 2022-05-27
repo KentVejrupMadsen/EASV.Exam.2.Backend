@@ -1,10 +1,8 @@
 <?php
-    namespace Tests\Unit;
-
-    use App\Models\tables\TaskModel;
+    namespace Tests\Unit\database;
 
 
-    class TaskDatabase
+class TaskDatabase
         extends BaseUnit
     {
         public function test_make_test()
