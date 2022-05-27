@@ -8,7 +8,9 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-
+    /**
+     *  TODO: Write a description
+     */
     return new class extends Migration
     {
         public function up()
@@ -18,6 +20,7 @@
                 function ( Blueprint $table )
                 {
                     $table->id( 'index' );
+
                     $table->string( 'id' )
                           ->unique();
                     $table->foreignId( 'user_id' )

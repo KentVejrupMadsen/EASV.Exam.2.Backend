@@ -8,7 +8,10 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    
+
+    /**
+     *  TODO: Write a description
+     */
     return new class extends Migration
     {
         
