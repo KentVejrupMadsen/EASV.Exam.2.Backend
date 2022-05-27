@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\securities;
+    namespace App\Http\Controllers\additional_http;
 
     use App\Http\Controllers\templates\CrudController;
     use Illuminate\Http\Request;
@@ -16,13 +16,14 @@
     /**
      *
      */
-    class SecurityConfigurationController
+    class RecaptchaController
         extends CrudController
     {
         //
         public function __construct()
         {
             parent::__construct();
+
 
         }
 
@@ -33,7 +34,7 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function read(Request $request)
+        public final function read( Request $request )
         {
             // TODO: Implement read() method.
         }
@@ -45,7 +46,7 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function create(Request $request)
+        public final function create( Request $request )
         {
             // TODO: Implement create() method.
         }
@@ -57,7 +58,7 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function update(Request $request)
+        public final function update( Request $request )
         {
             // TODO: Implement update() method.
         }
@@ -69,9 +70,10 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function delete(Request $request)
+        public final function delete( Request $request )
         {
             // TODO: Implement delete() method.
         }
+
     }
 ?>
