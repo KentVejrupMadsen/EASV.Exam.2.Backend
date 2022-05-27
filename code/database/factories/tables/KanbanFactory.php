@@ -2,6 +2,7 @@
     namespace Database\Factories\tables;
 
     use App\Models\tables\KanbanModel;
+    use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
@@ -11,36 +12,59 @@
     final class KanbanFactory
         extends Factory
     {
+        // Variables
         private static $debug = false;
         protected $model = KanbanModel::class;
 
+        // Accessor
+        /**
+         * @return bool
+         */
         public final function getDebugState(): bool
         {
             return self::$debug;
         }
 
+        /**
+         * @param bool $value
+         * @return void
+         */
         public final function setDebugState( bool $value ): void
         {
             self::$debug = $value;
         }
 
+
+        //
         /**
-         * @return array
+         * @return array|mixed[]
          */
         public function definition(): array
         {
-            return
-            [
-                //
-                'kanban_title_id' => 0,
-                'project_id' => 0,
-
-                'created_at' => $this->faker
-                                     ->dateTime,
-
-                'updated_at' => $this->faker
-                                     ->dateTime
-            ];
+            if( $this->getDebugState() )
+            {
+                return
+                    [
+                        //
+                        'kanban_title_id' => 0,
+                        'project_id' => 0,
+                        'created_at' => $this->faker
+                            ->dateTime,
+                        'updated_at' => $this->faker
+                            ->dateTime
+                    ];
+            }
+            else
+            {
+                return
+                    [
+                        //
+                        'kanban_title_id'   => 0,
+                        'project_id'        => 0,
+                        'created_at'        => Carbon::now(),
+                        'updated_at'        => Carbon::now()
+                    ];
+            }
         }
     }
 ?>
