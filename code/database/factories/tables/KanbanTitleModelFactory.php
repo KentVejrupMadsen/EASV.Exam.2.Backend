@@ -30,12 +30,22 @@
          */
         public function definition(): array
         {
-            return
-            [
-                'content'=> $this->faker
-                                 ->unique()
-                                 ->jobTitle
-            ];
+            if($this->getDebugState())
+            {
+                return
+                    [
+                        'content'=> $this->faker
+                            ->unique()
+                            ->jobTitle
+                    ];
+            }
+            else
+            {
+                return
+                    [
+                        'content'=> null
+                    ];
+            }
         }
     }
 ?>
