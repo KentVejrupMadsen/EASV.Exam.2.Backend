@@ -18,6 +18,7 @@
         protected $model = TaskModel::class;
         private static $debug = false;
 
+
         // Accessors
         /**
          * @return bool

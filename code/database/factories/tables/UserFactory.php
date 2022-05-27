@@ -9,7 +9,6 @@
     use App\Models\tables\User;
 
 
-
     /**
      *
      */
@@ -17,9 +16,11 @@
         extends Factory
     {
         // Variables
-        protected $model = User::class;
-        private static $debug = false;
+        protected $model        = User::class;
+        private static $debug   = false;
 
+
+        // Accessor
         /**
          * @return bool
          */

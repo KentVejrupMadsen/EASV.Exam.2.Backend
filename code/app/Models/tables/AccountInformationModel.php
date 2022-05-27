@@ -1,40 +1,45 @@
 <?php
     namespace App\Models\tables;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
+    // Internal Libraries
+    use App\Models\templates\BaseModel;
 
 
     /**
      *
      */
     class AccountInformationModel
-        extends Model
+        extends BaseModel
     {
-        use HasFactory;
-
+        // Variables
+            // Model
         protected $table = 'account_information_options';
 
+            // Constants
+        protected const field_account = 'account_id';
+        protected const field_created_at = 'created_at';
+        protected const field_updated_at = 'updated_at';
+
+        //
         protected $fillable =
         [
-            'account_id',
-            'created_at',
-            'updated_at'
+            self::field_account,
+            self::field_created_at,
+            self::field_updated_at
         ];
 
 
         protected $hidden =
         [
-            'account_id',
-
+            self::field_account,
         ];
 
 
         protected $casts =
         [
-            'account_id' => 'integer',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            self::field_account     => 'integer',
+            self::field_created_at  => 'datetime',
+            self::field_updated_at  => 'datetime',
         ];
     }
 ?>

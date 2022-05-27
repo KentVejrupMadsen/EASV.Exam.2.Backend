@@ -10,12 +10,19 @@
     class CountryModel
         extends ExtensionNoTimestampModel
     {
+        // Variable
+            // Table
         protected $table = 'countries';
 
+            // Constant
+        protected const field_country_name    = 'country_name';
+        protected const field_country_acronym = 'country_acronym';
+
+        //
         protected $fillable =
         [
-            'country_name',
-            'country_acronym'
+            self::field_country_name,
+            self::field_country_acronym
         ];
 
 
@@ -27,8 +34,8 @@
 
         protected $casts =
         [
-            'country_name' => 'string',
-            'country_acronym' => 'string'
+            self::field_country_name    => 'string',
+            self::field_country_acronym => 'string'
         ];
     }
 ?>

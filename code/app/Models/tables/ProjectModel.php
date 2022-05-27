@@ -6,6 +6,7 @@
      */
     namespace App\Models\tables;
 
+    use App\Models\templates\BaseModel;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
@@ -14,33 +15,42 @@
      *
      */
     class ProjectModel 
-        extends Model
+        extends BaseModel
     {
-        use HasFactory;
-        
+        // Variables
+            // Table
         protected $table = 'projects';
-        
+
+            // Constants
+        protected const field_account_owner_id  = 'account_owner_id';
+        protected const field_project_title_id  = 'project_title_id';
+        protected const field_description       = 'description';
+        protected const field_tags              = 'tags';
+
+
+        //
         protected $fillable = 
         [
-            'account_owner_id',
-            'project_title_id',
-            'description',
-            'tags'
+            self::field_account_owner_id,
+            self::field_project_title_id,
+            self::field_description,
+            self::field_tags
         ];
 
         
         protected $hidden = 
         [
-            
+            self::field_account_owner_id,
+            self::field_project_title_id
         ];
 
         
         protected $casts = 
         [
-            'account_owner_id'  => 'integer',
-            'project_title_id'  => 'integer',
-            'description'       => 'string',
-            'tags'              => 'string'
+            self::field_account_owner_id  => 'integer',
+            self::field_project_title_id  => 'integer',
+            self::field_description       => 'string',
+            self::field_tags              => 'string'
         ];
     }
 ?>

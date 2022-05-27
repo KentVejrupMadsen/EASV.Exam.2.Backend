@@ -26,7 +26,7 @@
                           ->comment('');
 
                     $table->json('options' )
-                          ->comment();
+                          ->comment( '' );
 
                     //
                     $table->foreign( 'email_id' )

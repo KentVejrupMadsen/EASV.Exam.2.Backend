@@ -22,7 +22,8 @@
                     $table->id();
                     
                     $table->string( 'content' )
-                          ->unique();
+                          ->unique()
+                          ->comment('');
                 }
             );
 

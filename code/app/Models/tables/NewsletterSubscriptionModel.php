@@ -10,24 +10,31 @@
     class NewsletterSubscriptionModel
         extends ExtensionNoTimestampModel
     {
+        // Variables
+            // Table
         protected $table = 'newsletter_users';
+
+            // Const
+        protected const field_email_id = 'email_id';
+        protected const field_options  = 'options';
+
 
         protected $fillable =
         [
-            'email_id',
-            'options'
+            self::field_email_id,
+            self::field_options
         ];
 
 
         protected $hidden =
         [
-            'email_id'
+            self::field_email_id
         ];
 
 
         protected $casts =
         [
-            'email_id' => 'integer'
+            self::field_email_id => 'integer'
         ];
     }
 ?>
