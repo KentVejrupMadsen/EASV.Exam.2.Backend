@@ -11,9 +11,9 @@
     {
         /**
          * @param Request $request
-         * @return bool
+         * @return array|null
          */
-        public function pipelineTowardJSON( Request $request ): bool;
+        public function pipelineTowardJSON( Request $request ): ?array;
 
         /**
          * @return bool
@@ -23,9 +23,9 @@
 
         /**
          * @param Request $request
-         * @return bool
+         * @return array|null
          */
-        public function pipelineTowardXML( Request $request ): bool;
+        public function pipelineTowardXML( Request $request ): ?array;
 
         /**
          * @return bool
@@ -35,9 +35,9 @@
 
         /**
          * @param Request $request
-         * @return bool
+         * @return array|null
          */
-        public function pipelineTowardCSV( Request $request ): bool;
+        public function pipelineTowardCSV( Request $request ): ?array;
 
         /**
          * @return bool

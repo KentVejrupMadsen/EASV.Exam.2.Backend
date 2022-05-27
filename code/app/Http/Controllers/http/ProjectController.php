@@ -26,9 +26,42 @@
 
         }
 
-        private $projectMemberController = null;
-        private $projectTitleModel = null;
-        
+        public final function hasImplementedCSV(): bool
+        {
+            // TODO: Implement hasImplementedCSV() method.
+            return true;
+        }
+
+        public final function hasImplementedJSON(): bool
+        {
+            // TODO: Implement hasImplementedJSON() method.
+            return true;
+        }
+
+        public final function hasImplementedXML(): bool
+        {
+            // TODO: Implement hasImplementedXML() method.
+            return true;
+        }
+
+        public final function pipelineTowardCSV( Request $request ): ?array
+        {
+            // TODO: Implement pipelineTowardCSV() method.
+            return null;
+        }
+
+        public final function pipelineTowardJSON( Request $request ): ?array
+        {
+            // TODO: Implement pipelineTowardJSON() method.
+            return null;
+        }
+
+        public final function pipelineTowardXML( Request $request ): ?array
+        {
+            // TODO: Implement pipelineTowardXML() method.
+            return null;
+        }
+
         
         /**
          * 
