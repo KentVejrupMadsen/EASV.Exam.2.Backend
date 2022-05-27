@@ -23,24 +23,19 @@
     /**
      * 
      */
-    class AccountController 
+    final class AccountController
         extends ControllerPipeline
     {
         /**
          *
          */
-        function __construct()
+        public final function __construct()
         {
             parent::__construct();
-            $this->EmailModelController = new AccountEmailController();
-            $this->CSRFTokenController  = new CSRFTokenController();
         }
 
 
         // Variables
-        protected $EmailModelController = null;
-        protected $CSRFTokenController  = null;
-
         private const conflict = 409;
 
 

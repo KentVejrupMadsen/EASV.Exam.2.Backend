@@ -16,12 +16,16 @@
     /**
      * 
      */
-    class KanbanController 
+    final class KanbanController
         extends ControllerPipeline
     {
-        function __construct()
+        /**
+         *
+         */
+        public final function __construct()
         {
             parent::__construct();
+
         }
         
 

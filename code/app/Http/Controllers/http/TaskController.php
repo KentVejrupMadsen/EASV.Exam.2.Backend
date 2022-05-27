@@ -15,13 +15,13 @@
     /**
      * 
      */
-    class TaskController
+    final class TaskController
         extends ControllerPipeline
     {
         /**
          * 
          */
-        function __construct()
+        public final function __construct()
         {
             parent::__construct();
             

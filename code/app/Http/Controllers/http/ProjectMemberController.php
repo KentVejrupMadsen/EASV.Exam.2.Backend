@@ -15,15 +15,16 @@
     /**
      * 
      */
-    class ProjectMemberController 
+    final class ProjectMemberController
         extends ControllerPipeline
     {
         /**
          * 
          */
-        function __construct()
+        public final function __construct()
         {
             parent::__construct();
+
         }
         
         /**

@@ -12,13 +12,13 @@
         as OA;
 
 
-    class BoardController 
+    final class BoardController
         extends ControllerPipeline
     {
         /**
          * 
          */
-        function __construct()
+        public final function __construct()
         {
             parent::__construct();
         }

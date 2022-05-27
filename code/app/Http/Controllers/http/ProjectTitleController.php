@@ -12,14 +12,14 @@
         as OA;
 
 
-    class ProjectTitleController
+    final class ProjectTitleController
         extends ControllerPipeline
     {
 
         /**
          *
          */
-        public function __construct()
+        public final function __construct()
         {
             parent::__construct();
         }

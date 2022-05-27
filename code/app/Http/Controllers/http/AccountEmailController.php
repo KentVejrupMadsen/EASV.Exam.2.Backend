@@ -21,15 +21,16 @@
      * Account Email controller. That are used when getting "ask" by a computer for data.
      *
      */
-    class AccountEmailController 
+    final class AccountEmailController
         extends ControllerPipeline
     {
         /**
          * 
          */
-        function __construct()
+        public final function __construct()
         {
             parent::__construct();
+
         }
 
         // Code
