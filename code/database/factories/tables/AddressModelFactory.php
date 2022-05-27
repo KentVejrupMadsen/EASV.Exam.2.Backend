@@ -8,16 +8,16 @@
     /**
      *
      */
-    class AddressModelFactory
+    final class AddressModelFactory
         extends Factory
     {
         protected $model = AddressModel::class;
 
 
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public final function definition()
+        public final function definition(): array
         {
             return
             [

@@ -8,13 +8,16 @@
     /**
      *
      */
-    class PersonNameModelFactory
+    final class PersonNameModelFactory
         extends Factory
     {
         protected $model = PersonNameModel::class;
 
 
-        public final function definition()
+        /**
+         * @return array
+         */
+        public final function definition(): array
         {
             return
             [

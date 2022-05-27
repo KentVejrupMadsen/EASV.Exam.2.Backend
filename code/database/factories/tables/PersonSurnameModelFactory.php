@@ -7,13 +7,13 @@
     /**
      *
      */
-    class PersonSurnameModelFactory
+    final class PersonSurnameModelFactory
         extends Factory
     {
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public final function definition()
+        public final function definition(): array
         {
             return
             [

@@ -7,13 +7,13 @@
     /**
      *
      */
-    class ProjectFactory
+    final class ProjectFactory
         extends Factory
     {
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public function definition()
+        public function definition(): array
         {
             return
             [

@@ -1,26 +1,31 @@
 <?php
     namespace Tests\Unit\database;
 
-    use App\Models\tables\KanbanTitleModel;
+    use Tests\Unit\BaseUnit;
 
-class KanbanDatabase
+
+    /**
+     *
+     */
+    class KanbanDatabase
         extends BaseUnit
     {
         /**
-         * A basic unit test example.
-         *
          * @return void
          */
         public function test_make_kanban_titles()
         {
-            KanbanTitleModel::factory()->count(1000)->create();
-            $this->assertTrue(true);
+
+            $this->assertTrue( true );
         }
 
+        /**
+         * @return void
+         */
         public function test_make_kanbans()
         {
 
-            $this->assertTrue(true);
+            $this->assertTrue( true );
         }
     }
 ?>

@@ -4,20 +4,19 @@
     use App\Models\tables\AccountEmailModel;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
-    use Illuminate\Support\Str;
 
-
-    class AccountEmailModelFactory
+    /**
+     *
+     */
+    final class AccountEmailModelFactory
         extends Factory
     {
         protected $model = AccountEmailModel::class;
 
         /**
-         * Define the model's default state.
-         *
-         * @return array<string, mixed>
+         * @return array
          */
-        public final function definition()
+        public final function definition(): array
         {
             return
             [

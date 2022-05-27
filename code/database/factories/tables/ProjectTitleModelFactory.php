@@ -7,11 +7,11 @@
     /**
      *
      */
-    class ProjectTitleModelFactory
+    final class ProjectTitleModelFactory
         extends Factory
     {
 
-        public final function definition()
+        public final function definition(): array
         {
             return
             [

@@ -8,15 +8,15 @@
     /**
      *
      */
-    class ZipCodeModelFactory
+    final class ZipCodeModelFactory
         extends Factory
     {
         protected $model = ZipCodeModel::class;
 
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public final function definition()
+        public final function definition(): array
         {
             return
             [

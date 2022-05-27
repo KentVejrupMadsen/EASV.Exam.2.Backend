@@ -4,7 +4,7 @@
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
-    class RecaptchaModelFactory
+    final class RecaptchaModelFactory
         extends Factory
     {
         public function definition()
