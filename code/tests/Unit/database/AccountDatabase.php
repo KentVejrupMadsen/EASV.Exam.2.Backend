@@ -1,5 +1,5 @@
 <?php
-    namespace Tests\Unit;
+    namespace Tests\Unit\database;
 
     use App\Models\tables\AccountEmailModel;
     use App\Models\tables\User;
