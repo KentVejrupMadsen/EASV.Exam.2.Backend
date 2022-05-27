@@ -50,6 +50,7 @@
                     
                     $table->rememberToken();
                     $table->timestamps();
+                    $table->json( 'settings' );
 
                     // References
                     $table->foreign( 'email_id' )
