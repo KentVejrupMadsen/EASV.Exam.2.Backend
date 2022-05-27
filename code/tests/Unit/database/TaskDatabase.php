@@ -16,7 +16,7 @@
         public function test_make_test()
         {
 
-            $this->assertTrue( true );
+            $this->completed();
         }
     }
 ?>

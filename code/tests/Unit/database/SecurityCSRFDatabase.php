@@ -1,6 +1,7 @@
 <?php
     namespace Tests\Unit\database;
 
+    use App\Models\security\CSRFModel;
     use Tests\Unit\BaseUnit;
 
 
@@ -15,8 +16,12 @@
          */
         public final function test_csrf_tokens_generated()
         {
+            CSRFModel::factory()->setDebugState( true );
 
-            $this->assertTrue(true);
+            CSRFModel::factory()->count(200)->create();
+
+            CSRFModel::factory()->setDebugState( false );
+            $this->completed();
         }
     }
 ?>

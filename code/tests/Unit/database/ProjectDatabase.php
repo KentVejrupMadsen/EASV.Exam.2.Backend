@@ -16,8 +16,9 @@
         public function test_make_project_titles()
         {
 
-            $this->assertTrue(true);
+            $this->completed();
         }
+
 
         /**
          * @return void
@@ -25,7 +26,7 @@
         public function test_make_projects()
         {
 
-            $this->assertTrue(true);
+            $this->completed();
         }
     }
 ?>

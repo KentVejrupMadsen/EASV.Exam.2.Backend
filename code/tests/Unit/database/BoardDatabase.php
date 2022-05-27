@@ -13,18 +13,18 @@
         /**
          * @return void
          */
-        public function test_make_board_titles()
+        public function test_make_board_titles(): void
         {
 
-            $this->assertTrue(true);
+            $this->completed();
         }
 
         /**
          * @return void
          */
-        public function test_example()
+        public function test_example(): void
         {
-            $this->assertTrue(true);
+            $this->completed();
         }
     }
 ?>
