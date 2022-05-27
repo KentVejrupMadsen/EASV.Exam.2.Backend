@@ -1,13 +1,16 @@
 <?php
     namespace Database\Factories\security;
 
-    use App\Models\security\RecaptchaModel;
+    // External libraries
     use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
+    // Internal libraries
+    use App\Models\security\RecaptchaModel;
+
 
     /**
-     * 
+     *
      */
     final class RecaptchaModelFactory
         extends Factory

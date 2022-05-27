@@ -1,9 +1,11 @@
 <?php
     namespace Database\Factories\tables;
 
-    use App\Models\tables\CountryModel;
-
+    // External libraries
     use Illuminate\Database\Eloquent\Factories\Factory;
+
+    // Internal libraries
+    use App\Models\tables\CountryModel;
 
 
     /**
