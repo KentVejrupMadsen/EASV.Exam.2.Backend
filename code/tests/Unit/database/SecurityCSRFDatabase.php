@@ -1,10 +1,10 @@
 <?php
-    namespace Tests\Unit;
+    namespace Tests\Unit\database;
 
     use App\Models\security\CSRFModel;
 
 
-    class SecurityCSRFDatabase
+class SecurityCSRFDatabase
         extends BaseUnit
     {
         public function test_csrf_tokens_generated()

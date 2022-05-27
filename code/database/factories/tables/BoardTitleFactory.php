@@ -15,7 +15,8 @@
         {
             return
             [
-                'content'=>$this->faker->title
+                'content' => $this->faker
+                                  ->title
             ];
         }
     }

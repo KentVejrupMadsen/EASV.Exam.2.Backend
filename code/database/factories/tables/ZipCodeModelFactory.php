@@ -14,7 +14,7 @@
         protected $model = ZipCodeModel::class;
 
         /**
-         * @return string[]
+         * @return array|mixed[]
          */
         public final function definition()
         {

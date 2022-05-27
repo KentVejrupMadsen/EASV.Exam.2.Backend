@@ -23,7 +23,8 @@
             return
             [
                 //
-                'content'=>$this->faker->firstName
+                'content' => $this->faker
+                                  ->firstName
             ];
         }
     }

@@ -1,9 +1,9 @@
 <?php
-    namespace Tests\Unit;
+    namespace Tests\Unit\database;
 
     use App\Models\tables\KanbanTitleModel;
 
-    class KanbanDatabase
+class KanbanDatabase
         extends BaseUnit
     {
         /**
