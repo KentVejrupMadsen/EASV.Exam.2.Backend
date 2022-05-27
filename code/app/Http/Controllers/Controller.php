@@ -20,15 +20,8 @@
     abstract class Controller
         extends BaseController
     {
-        function __construct()
-        {
-            
-        }
-        
         use AuthorizesRequests, 
             DispatchesJobs, 
             ValidatesRequests;
-
-            
     }
 ?>
