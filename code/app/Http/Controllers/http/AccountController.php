@@ -6,44 +6,72 @@
      */
     namespace App\Http\Controllers\http;
 
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Models\tables\User;
     use Carbon\Carbon;
-
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Str;
-
-    use OpenApi\Attributes
-        as OA;
-
-    use App\Http\Controllers\securities\CSRFTokenController;
-    use App\Models\tables\User;
+    use OpenApi\Attributes as OA;
 
 
     /**
      * 
      */
-    class AccountController 
-        extends BaseHTTPController
+    final class AccountController
+        extends ControllerPipeline
     {
         /**
          *
          */
-        function __construct()
+        public final function __construct()
         {
             parent::__construct();
-            $this->EmailModelController = new AccountEmailController();
-            $this->CSRFTokenController  = new CSRFTokenController();
         }
 
 
         // Variables
-        protected $EmailModelController = null;
-        protected $CSRFTokenController  = null;
-
         private const conflict = 409;
 
+        // implement output
+        public final function hasImplementedCSV(): bool
+        {
+            // TODO: Implement hasImplementedCSV() method.
+            return true;
+        }
 
+        public final function hasImplementedJSON(): bool
+        {
+            // TODO: Implement hasImplementedJSON() method.
+            return true;
+        }
+
+        public final function hasImplementedXML(): bool
+        {
+            // TODO: Implement hasImplementedXML() method.
+            return true;
+        }
+
+        public final function pipelineTowardCSV( Request $request ): ?array
+        {
+            // TODO: Implement pipelineTowardCSV() method.
+            return null;
+        }
+
+        public final function pipelineTowardJSON( Request $request ): ?array
+        {
+            // TODO: Implement pipelineTowardJSON() method.
+            return null;
+        }
+
+        public final function pipelineTowardXML( Request $request ): ?array
+        {
+            // TODO: Implement pipelineTowardXML() method.
+            return null;
+        }
+
+        // Crud
         /**
          * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
@@ -80,7 +108,8 @@
             $account_information = $request->input( 'account' );
 
 
-            if( Auth::attempt( ['username'=> Str::lower( $account_information[ 'username' ] ), 'password' => $account_information['security']['password'] ] ) )
+            if( Auth::attempt( [ 'username'=> Str::lower( $account_information[ 'username' ] ),
+                                 'password' => $account_information['security']['password'] ] ) )
             {
                 $author = Auth::user();
 

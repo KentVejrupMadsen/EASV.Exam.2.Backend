@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\securities;
+    namespace App\Http\Controllers\additional;
 
     use App\Http\Controllers\Controller;
     use App\Models\security\CSRFModel;

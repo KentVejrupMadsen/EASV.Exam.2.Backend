@@ -4,7 +4,7 @@
      * Description: ?
      * TODO: make a description
      */
-    use App\Http\Controllers\securities\CSRFTokenController;
+    use App\Http\Controllers\additional\CSRFTokenController;
     use Illuminate\Support\Facades\Route;
 
 
