@@ -80,7 +80,8 @@
             $account_information = $request->input( 'account' );
 
 
-            if( Auth::attempt( ['username'=> Str::lower( $account_information[ 'username' ] ), 'password' => $account_information['security']['password'] ] ) )
+            if( Auth::attempt( [ 'username'=> Str::lower( $account_information[ 'username' ] ),
+                                 'password' => $account_information['security']['password'] ] ) )
             {
                 $author = Auth::user();
 
