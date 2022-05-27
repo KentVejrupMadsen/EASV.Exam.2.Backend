@@ -8,6 +8,7 @@
     // Internal libraries
     use App\Models\tables\ProjectModel;
 
+
     /**
      *
      */
@@ -15,7 +16,7 @@
         extends Factory
     {
         // Variables
-        protected $model = ProjectModel::class;
+        protected $model      = ProjectModel::class;
         private static $debug = false;
 
         // Accessors

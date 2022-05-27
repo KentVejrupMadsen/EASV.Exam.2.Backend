@@ -7,7 +7,7 @@
     // Internal libraries
     use App\Models\tables\ZipCodeModel;
 
-    
+
     /**
      *
      */
@@ -15,8 +15,9 @@
         extends Factory
     {
         // Variables
-        protected $model = ZipCodeModel::class;
-        private static $debug = false;
+        protected $model        = ZipCodeModel::class;
+        private static $debug   = false;
+
 
         // Accessors
         /**

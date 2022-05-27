@@ -4,6 +4,9 @@
       use Illuminate\Support\Facades\Schema;
 
 
+    /**
+     *  TODO: Write a description
+     */
       return new class extends Migration
       {
             public function up()
@@ -16,10 +19,12 @@
 
                         $table->string( 'country_name' )
                               ->unique()
-                              ->index();
+                              ->index()
+                              ->comment('');
 
                         $table->string( 'country_acronym', 25 )
-                              ->index();
+                              ->index()
+                              ->comment('');
                         }
                   );
 

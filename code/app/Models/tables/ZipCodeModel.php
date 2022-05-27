@@ -10,27 +10,36 @@
     class ZipCodeModel
         extends ExtensionNoTimestampModel
     {
+        // Variables
+            // Tables
         protected $table = 'zip_codes';
 
+            // Constants
+        protected const area_name = 'area_name';
+        protected const zip_number = 'zip_number';
+        protected const country_id = 'country_id';
+
+
+        //
         protected $fillable =
         [
-            'area_name',
-            'zip_number',
-            'country_id'
+            self::area_name,
+            self::zip_number,
+            self::country_id
         ];
 
 
         protected $hidden =
         [
-            'country_id'
+            self::country_id
         ];
 
 
         protected $casts =
         [
-            'area_name' => 'string',
-            'zip_number' => 'string',
-            'country_id' => 'integer'
+            self::area_name  => 'string',
+            self::zip_number => 'string',
+            self::country_id => 'integer'
         ];
     }
 ?>

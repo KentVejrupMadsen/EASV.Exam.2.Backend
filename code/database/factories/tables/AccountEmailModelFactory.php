@@ -14,8 +14,9 @@
     final class AccountEmailModelFactory
         extends Factory
     {
-        protected $model = AccountEmailModel::class;
-        private static $debug = false;
+        protected $model        = AccountEmailModel::class;
+        private static $debug   = false;
+
 
         // Accessor
         /**

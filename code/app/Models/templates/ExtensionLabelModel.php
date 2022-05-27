@@ -8,17 +8,24 @@
     abstract class ExtensionLabelModel
         extends BaseModel
     {
+        // Variables
+            // Model
         public $timestamps = false;
 
+            // Constants
+        protected const field_content = 'content';
+
+
+        //
         protected $fillable =
         [
-            'content'
+            self::field_content
         ];
 
 
         protected $casts =
         [
-            'content' => 'string'
+            self::field_content => 'string'
         ];
     }
 ?>

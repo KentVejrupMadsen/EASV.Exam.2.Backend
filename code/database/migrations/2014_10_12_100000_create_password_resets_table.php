@@ -8,7 +8,10 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    
+
+    /**
+     *  TODO: Write a description
+     */
     return new class extends Migration
     {
         
@@ -26,7 +29,8 @@
                           ->comment( '' );
 
                     $table->string( 'token' )
-                          ->index();
+                          ->index()
+                          ->comment( '' );
                     
                     $table->timestamp( 'created_at' )
                           ->nullable()

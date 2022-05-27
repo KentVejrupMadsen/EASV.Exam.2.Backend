@@ -3,12 +3,12 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    
+    /**
+     *  TODO: Write a description
+     */
     return new class extends Migration
     {
         /**
-         * Run the migrations.
-         *
          * @return void
          */
         public function up()
@@ -26,7 +26,7 @@
                           ->comment('');
 
                     $table->json('options' )
-                          ->comment();
+                          ->comment( '' );
 
                     //
                     $table->foreign( 'email_id' )

@@ -10,7 +10,7 @@
 
 
     /**
-     *
+     *  TODO: Write a description
      */
     return new class extends Migration
     {
@@ -37,20 +37,25 @@
                     $table->id();
 
                     $table->string( 'username' )
-                          ->unique();
+                          ->unique()
+                          ->comment('');
                     
                     $table->bigInteger( 'email_id' )
                           ->unsigned()
-                          ->unique();
+                          ->unique()
+                          ->comment('');
 
                     $table->timestamp( 'email_verified_at' )
                           ->nullable();
 
-                    $table->string( 'password' );
+                    $table->string( 'password' )
+                          ->comment( '' );
                     
                     $table->rememberToken();
                     $table->timestamps();
-                    $table->json( 'settings' );
+
+                    $table->json( 'settings' )
+                          ->comment( '' );
 
                     // References
                     $table->foreign( 'email_id' )

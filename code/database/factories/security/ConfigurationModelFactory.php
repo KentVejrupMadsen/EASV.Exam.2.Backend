@@ -14,8 +14,9 @@
     final class ConfigurationModelFactory
         extends Factory
     {
-        protected $model = ConfigurationModel::class;
-        private static $debug = false;
+        // Variables
+        protected $model        = ConfigurationModel::class;
+        private static $debug   = false;
 
 
         // Accessor
@@ -48,7 +49,7 @@
                     [
                         //
                         'key'   => $this->faker->text,
-                        'value' => $this->faker->text
+                        'value' => '{ }'
                     ];
             }
             else

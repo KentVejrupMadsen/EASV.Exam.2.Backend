@@ -15,26 +15,33 @@
     class ConfigurationModel
         extends ExtensionNoTimestampModel
     {
+        // Variables
+            // Table
         protected $table = 'security_configuration';
 
+            // Constants
+        protected const field_key   = 'key';
+        protected const field_value = 'value';
 
+
+        //
         protected $fillable =
         [
-            'key',
-            'value'
+            self::field_key,
+            self::field_value
         ];
 
 
         protected $hidden =
         [
-            'value'
+            self::field_value
         ];
 
 
         protected $casts =
         [
-            'key' => 'string',
-            'value' => 'string'
+            self::field_key   => 'string',
+            self::field_value => 'array'
         ];
     }
 ?>

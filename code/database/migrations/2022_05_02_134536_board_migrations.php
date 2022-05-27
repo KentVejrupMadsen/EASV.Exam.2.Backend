@@ -9,6 +9,9 @@
     use Illuminate\Support\Facades\Schema;
 
 
+    /**
+     *  TODO: Write a description
+     */
     return new class extends Migration
     {
         
@@ -22,7 +25,8 @@
                     $table->id();
                     
                     $table->string( 'content' )
-                          ->unique();
+                          ->unique()
+                          ->comment('');
                 }
             );
 
