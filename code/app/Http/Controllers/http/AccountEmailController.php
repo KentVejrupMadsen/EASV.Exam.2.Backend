@@ -6,281 +6,11 @@
      */
     namespace App\Http\Controllers\http;
 
-    /**
-     * TODO: Split it into multiple files
-     */
-
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Models\tables\AccountEmailModel;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-
-    use Illuminate\Support\Str;
-    use OpenApi\Attributes
-        as OA;
-
-    use App\Http\Controllers\factories\AccountEmailFactoryController;
-    use App\Models\tables\AccountEmailModel;
-
-
-    // Templates
-    interface ControllerType
-    {
-        public function getCase();
-
-        public function pushRead( Request $request ): ?AccountEmailModel;
-        public function pushUpdate( Request $request ): ?AccountEmailModel;
-        public function pushDelete( Request $request ): bool;
-        public function pushCreate( Request $request ): ?AccountEmailModel;
-    }
-
-
-    abstract class ControllerCase
-        implements ControllerType
-    {
-        // Variables
-        private $case = null;
-        private $factory = null;
-
-        // Accessors
-        /**
-         * @param AccountEmailFactoryController $factory
-         * @return void
-         */
-        public final function setFactory( AccountEmailFactoryController $factory ): void
-        {
-            $this->factory = $factory;
-        }
-
-
-        /**
-         * @return AccountEmailFactoryController|null
-         */
-        public final function getFactory(): ?AccountEmailFactoryController
-        {
-            return $this->factory;
-        }
-
-
-        /**
-         * @return string|null
-         */
-        public final function getCase(): ?string
-        {
-            return $this->case;
-        }
-
-
-        /**
-         * @param string $value
-         * @return void
-         */
-        protected final function setCase( string $value )
-        {
-            $this->case = $value;
-        }
-
-
-        // Functions
-        /**
-         * @param Request $request
-         * @return AccountEmailModel|null
-         */
-        public final function pushRead( Request $request ): ?AccountEmailModel
-        {
-            if( $request->has( $this->getCase() ) )
-            {
-                $content = $request->input( $this->getCase() );
-                return $this->callbackRead( $content );
-            }
-
-            return null;
-        }
-
-        /**
-         * @param Request $request
-         * @return AccountEmailModel|null
-         */
-        public final function pushCreate( Request $request ): ?AccountEmailModel
-        {
-            if( $request->has( $this->getCase() ) )
-            {
-                $content = $request->input( $this->getCase() );
-                return $this->callbackCreate( $content );
-            }
-
-            return null;
-        }
-
-        /**
-         * @param Request $request
-         * @return bool
-         */
-        public final function pushDelete( Request $request ): bool
-        {
-            if( $request->has( $this->getCase() ) )
-            {
-                $content = $request->input( $this->getCase() );
-                return $this->callbackDelete( $content );
-            }
-
-            return false;
-        }
-
-        /**
-         * @param Request $request
-         * @return AccountEmailModel|null
-         */
-        public final function pushUpdate( Request $request ): ?AccountEmailModel
-        {
-            if( $request->has( $this->getCase() ) )
-            {
-                $content = $request->input( $this->getCase() );
-                return $this->callbackUpdate( $content );
-            }
-
-            return null;
-        }
-
-
-        /**
-         * @param array $Content
-         * @return AccountEmailModel|null
-         */
-        public abstract function callbackRead( Array $Content ): ?AccountEmailModel;
-
-        /**
-         * @param array $Content
-         * @return bool
-         */
-        public abstract function callbackDelete( Array $Content ): bool;
-
-        /**
-         * @param array $Content
-         * @return AccountEmailModel|null
-         */
-        public abstract function callbackUpdate( Array $Content ): ?AccountEmailModel;
-
-        /**
-         * @param array $Content
-         * @return AccountEmailModel|null
-         */
-        public abstract function callbackCreate( Array $Content ): ?AccountEmailModel;
-
-    }
-
-
-    /**
-     *
-     */
-    class AccountCase
-        extends ControllerCase
-    {
-        private const AccountKey    = 'account';
-
-        public function __construct( AccountEmailFactoryController $factory )
-        {
-            $this->setCase(self::AccountKey );
-            $this->setFactory( $factory );
-        }
-
-        public function callbackRead( array $Content ): ?AccountEmailModel
-        {
-            // TODO: Implement callbackRead() method.
-            return null;
-        }
-
-        public function callbackCreate( array $Content ): ?AccountEmailModel
-        {
-            // TODO: Implement callbackCreate() method.
-            return null;
-        }
-
-        public function callbackDelete( array $Content ): bool
-        {
-            // TODO: Implement callbackDelete() method.
-            return false;
-        }
-
-        public function callbackUpdate( array $Content ): ?AccountEmailModel
-        {
-            // TODO: Implement callbackUpdate() method.
-            return null;
-        }
-    }
-
-
-    class NewsletterCase
-        extends ControllerCase
-    {
-        public function __construct( AccountEmailFactoryController $factory )
-        {
-            $this->setCase( self::NewsletterKey );
-            $this->setFactory( $factory );
-        }
-
-        private const NewsletterKey = 'newsletter';
-
-        public function callbackRead( array $Content ): ?AccountEmailModel
-        {
-            // TODO: Implement callbackRead() method.
-            return null;
-        }
-
-        public function callbackCreate( array $Content ): ?AccountEmailModel
-        {
-            // TODO: Implement callbackCreate() method.
-            return null;
-        }
-
-        public function callbackUpdate( array $Content ): ?AccountEmailModel
-        {
-            // TODO: Implement callbackUpdate() method.
-            return null;
-        }
-
-        public function callbackDelete( array $Content ): bool
-        {
-            // TODO: Implement callbackDelete() method.
-            return false;
-        }
-
-    }
-
-
-    class MainCase
-        extends ControllerCase
-    {
-        public function __construct( AccountEmailFactoryController $factory )
-        {
-            $this->setCase( self::MainKey );
-            $this->setFactory( $factory );
-        }
-
-        private const MainKey = 'email';
-
-        public function callbackRead( array $Content ): ?AccountEmailModel
-        {
-            // TODO: Implement callbackRead() method.
-            return null;
-        }
-
-        public function callbackCreate( array $Content ): ?AccountEmailModel
-        {
-            // TODO: Implement callbackCreate() method.
-            return null;
-        }
-
-        public function callbackUpdate( array $Content ): ?AccountEmailModel
-        {
-            // TODO: Implement callbackUpdate() method.
-            return null;
-        }
-
-        public function callbackDelete( array $Content ): bool
-        {
-            // TODO: Implement callbackDelete() method.
-            return false;
-        }
-    }
+    use OpenApi\Attributes as OA;
 
 
     // Code
@@ -288,137 +18,51 @@
      * Account Email controller. That are used when getting "ask" by a computer for data.
      *
      */
-    class AccountEmailController 
-        extends BaseHTTPController
+    final class AccountEmailController
+        extends ControllerPipeline
     {
         /**
          * 
          */
-        function __construct()
+        public final function __construct()
         {
             parent::__construct();
         }
 
-        // Variables
-        private $newsletterCase = null;
-        private $accountCase    = null;
-        private $mainCase       = null;
-
-        private $factory        = null;
-
-
-        // Accessors
-        /**
-         * @param AccountEmailFactoryController $factory
-         * @return void
-         */
-        protected final function setFactory( AccountEmailFactoryController $factory ): void
+        public final function hasImplementedCSV(): bool
         {
-            $this->factory = $factory;
+            // TODO: Implement hasImplementedCSV() method.
+            return true;
         }
 
-
-        /**
-         * @return AccountEmailFactoryController
-         */
-        protected final function getFactory(): AccountEmailFactoryController
+        public final function hasImplementedJSON(): bool
         {
-            if( is_null( $this->factory ) )
-            {
-                $this->setFactory( new AccountEmailFactoryController() );
-            }
-
-            return $this->factory;
+            // TODO: Implement hasImplementedJSON() method.
+            return true;
         }
 
-
-        /**
-         * @return NewsletterCase
-         */
-        public function getNewsletterCase(): NewsletterCase
+        public final function hasImplementedXML(): bool
         {
-            if( is_null( $this->newsletterCase ) )
-            {
-                $case = new NewsletterCase( $this->getFactory() );
-                $this->setNewsletterCase( $case );
-            }
-
-            return $this->newsletterCase;
+            // TODO: Implement hasImplementedXML() method.
+            return true;
         }
 
-
-        /**
-         * @param NewsletterCase $value
-         * @return void
-         */
-        public function setNewsletterCase( NewsletterCase $value ): void
+        public final function pipelineTowardCSV( Request $request ): ?array
         {
-            $this->newsletterCase = $value;
+            // TODO: Implement pipelineTowardCSV() method.
+            return null;
         }
 
-
-        /**
-         * @return AccountCase
-         */
-        public function getAccountCase(): AccountCase
+        public final function pipelineTowardJSON( Request $request ): ?array
         {
-            if( is_null( $this->accountCase ) )
-            {
-                $case = new AccountCase( $this->getFactory() );
-                $this->setAccountCase( $case );
-            }
-
-            return $this->accountCase;
+            // TODO: Implement pipelineTowardJSON() method.
+            return null;
         }
 
-
-        /**
-         * @param AccountCase $value
-         * @return void
-         */
-        public function setAccountCase( AccountCase $value ): void
+        public final function pipelineTowardXML( Request $request ): ?array
         {
-            $this->accountCase = $value;
-        }
-
-
-        /**
-         * @return MainCase
-         */
-        public function getMainCase(): MainCase
-        {
-            if( is_null( $this->mainCase ) )
-            {
-                $case = new MainCase( $this->getFactory() );
-                $this->setMainCase( $case );
-            }
-
-            return $this->mainCase;
-        }
-
-
-        /**
-         * @param MainCase $value
-         * @return void
-         */
-        protected function setMainCase( MainCase $value ): void
-        {
-            $this->mainCase = $value;
-        }
-
-
-        /**
-         * @param AccountEmailModel|null $value
-         * @return bool
-         */
-        protected function isNotEmpty( ?AccountEmailModel $value ): bool
-        {
-            if( !is_null( $value ) )
-            {
-                return true;
-            }
-
-            return false;
+            // TODO: Implement pipelineTowardXML() method.
+            return null;
         }
 
         // Code
@@ -431,27 +75,6 @@
         #[OA\Response(response: '200', description: 'The data')]
         public function read( Request $request ): ?AccountEmailModel
         {
-            $response = $this->getAccountCase()
-                             ->pushRead( $request );
-            if( $this->isNotEmpty( $response ) )
-            {
-                return $response;
-            }
-
-            $response = $this->getMainCase()
-                             ->pushRead( $request );
-            if( $this->isNotEmpty( $response ) )
-            {
-                return $response;
-            }
-
-            $response = $this->getNewsletterCase()
-                             ->pushRead( $request );
-            if( $this->isNotEmpty( $response ) )
-            {
-                return $response;
-            }
-
             abort( 300 );
         }
 
@@ -464,26 +87,6 @@
         #[OA\Response(response: '200', description: 'The data')]
         public function delete( Request $request ): bool
         {
-            $response = $this->getAccountCase()
-                             ->pushDelete( $request );
-            if( $response )
-            {
-                return true;
-            }
-
-            $response = $this->getMainCase()
-                             ->pushDelete( $request );
-            if( $response )
-            {
-                return true;
-            }
-
-            $response = $this->getNewsletterCase()
-                             ->pushDelete( $request );
-            if( $response )
-            {
-                return true;
-            }
 
             return false;
         }
@@ -496,26 +99,6 @@
         #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $request ): ?AccountEmailModel
         {
-            $response = $this->getAccountCase()
-                             ->pushCreate( $request );
-            if( $this->isNotEmpty( $response ) )
-            {
-                return $response;
-            }
-
-            $response = $this->getMainCase()
-                             ->pushCreate( $request );
-            if( $this->isNotEmpty( $response ) )
-            {
-                return $response;
-            }
-
-            $response = $this->getNewsletterCase()
-                             ->pushCreate( $request );
-            if( $this->isNotEmpty( $response ) )
-            {
-                return $response;
-            }
 
             // Not found
             abort( 300 );
@@ -530,27 +113,6 @@
         #[OA\Response(response: '200', description: 'The data')]
         public final function update( Request $request ): ?AccountEmailModel
         {
-            $response = $this->getAccountCase()
-                             ->pushUpdate( $request );
-            if( $this->isNotEmpty( $response ) )
-            {
-                return $response;
-            }
-
-            $response = $this->getMainCase()
-                             ->pushUpdate( $request );
-            if( $this->isNotEmpty( $response ) )
-            {
-                return $response;
-            }
-
-            $response = $this->getNewsletterCase()
-                             ->pushUpdate( $request );
-            if( $this->isNotEmpty( $response ) )
-            {
-                return $response;
-            }
-
             // Not found
             abort( 300 );
         }
@@ -564,25 +126,8 @@
         #[OA\Response( response: '200', description: 'retrieves an requested email object as a json response. if it exist else nothing' )]
         public final function find( Request $request ): JsonResponse
         {
-            $content = $request->input( 'find' );
-            $foundMail = $this->getFactory()->find( $content );
 
-            $message                      = array();
-            $message['found']             = array();
-            $message['found']['response'] = array();
-
-            if( $this->isNotEmpty( $foundMail ) )
-            {
-                $message['found']['response']['message'] = 'successful';
-                $message['found']['response']['id']      = $foundMail->id;
-                $message['found']['response']['mail']    = $foundMail->content;
-            }
-            else
-            {
-                $message['found']['response']['message'] = 'none';
-            }
-
-            return Response()->json( $message );
+            return Response()->json();
         }
 
 
@@ -594,22 +139,9 @@
         #[OA\Response( response: '200', description: 'validates if the requested email is existing in the database as a json response.' ) ]
         public final function exist( Request $request ): JsonResponse
         {
-            // Retrieve email
-            $content = $request->input( 'existence_of' );
 
-            $message                            = array();
-            $message[ 'response' ]              = array();
 
-            if( $this->getFactory()->exist( $content ) )
-            {
-                $message[ 'response' ][ 'exist' ] = true;
-            }
-            else
-            {
-                $message[ 'response' ][ 'exist' ] = false;
-            }
-
-            return response()->json( $message );
+            return response()->json();
         }
     }
 

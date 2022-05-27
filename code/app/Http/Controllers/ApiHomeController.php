@@ -5,7 +5,7 @@
 
 
 
-    class ApiController
+    class ApiHomeController
         extends Controller
     {
         //
