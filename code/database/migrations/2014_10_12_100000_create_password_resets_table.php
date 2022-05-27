@@ -26,7 +26,8 @@
                           ->comment( '' );
 
                     $table->string( 'token' )
-                          ->index();
+                          ->index()
+                          ->comment( '' );
                     
                     $table->timestamp( 'created_at' )
                           ->nullable()

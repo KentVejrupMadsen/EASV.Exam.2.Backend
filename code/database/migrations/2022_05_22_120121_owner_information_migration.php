@@ -16,10 +16,12 @@
 
                         $table->string( 'country_name' )
                               ->unique()
-                              ->index();
+                              ->index()
+                              ->comment('');
 
                         $table->string( 'country_acronym', 25 )
-                              ->index();
+                              ->index()
+                              ->comment('');
                         }
                   );
 
