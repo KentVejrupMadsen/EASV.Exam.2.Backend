@@ -20,6 +20,7 @@
         protected const country_id = 'country_id';
 
 
+        //
         protected $fillable =
         [
             self::area_name,

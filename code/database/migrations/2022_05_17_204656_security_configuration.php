@@ -7,9 +7,11 @@
     use Illuminate\Database\Migrations\Migration;
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
-    use Illuminate\Support\Str;
 
 
+    /**
+     *
+     */
     return new class extends Migration
     {
         public function up()
@@ -25,15 +27,14 @@
                           ->index()
                           ->comment( '' );
 
-                    $table->string( 'value' )
+                    $table->json( 'value' )
                           ->nullable()
-                          ->index()
                           ->comment( '' );
                 }
             );
 
             Schema::create(
-                Str::lower( 'security_CSRF_Token' ),
+                 'security_csrf_token',
                 function( Blueprint $table )
                 {
                     $table->id();

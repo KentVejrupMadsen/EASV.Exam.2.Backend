@@ -23,6 +23,7 @@
         protected const field_key   = 'key';
         protected const field_value = 'value';
 
+
         //
         protected $fillable =
         [
@@ -40,7 +41,7 @@
         protected $casts =
         [
             self::field_key   => 'string',
-            self::field_value => 'string'
+            self::field_value => 'array'
         ];
     }
 ?>
