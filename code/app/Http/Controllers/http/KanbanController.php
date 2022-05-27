@@ -6,11 +6,9 @@
      */
     namespace App\Http\Controllers\http;
 
+    use App\Http\Controllers\templates\ControllerPipeline;
     use Illuminate\Http\Request;
-
-    use OpenApi\Attributes
-        as OA;
-
+    use OpenApi\Attributes as OA;
 
 
     /**

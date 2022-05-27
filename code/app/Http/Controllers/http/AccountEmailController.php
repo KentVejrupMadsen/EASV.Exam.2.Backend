@@ -6,14 +6,12 @@
      */
     namespace App\Http\Controllers\http;
 
+    use App\Http\Controllers\factories\AccountEmailFactoryController;
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Models\tables\AccountEmailModel;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-
-    use OpenApi\Attributes
-        as OA;
-
-    use App\Http\Controllers\factories\AccountEmailFactoryController;
-    use App\Models\tables\AccountEmailModel;
+    use OpenApi\Attributes as OA;
 
 
     // Code

@@ -1,7 +1,5 @@
 <?php
-    namespace App\Http\Controllers\http;
-
-    use App\Http\Controllers\templates\CrudController;
+    namespace App\Http\Controllers\templates;
 
 
     /**

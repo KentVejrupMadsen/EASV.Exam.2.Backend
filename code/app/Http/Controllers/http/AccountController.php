@@ -6,18 +6,14 @@
      */
     namespace App\Http\Controllers\http;
 
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Models\tables\User;
     use Carbon\Carbon;
-
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Str;
-
-    use OpenApi\Attributes
-        as OA;
-
-    use App\Http\Controllers\additional\CSRFTokenController;
-    use App\Models\tables\User;
+    use OpenApi\Attributes as OA;
 
 
     /**
