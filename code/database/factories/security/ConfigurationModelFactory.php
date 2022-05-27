@@ -49,7 +49,7 @@
                     [
                         //
                         'key'   => $this->faker->text,
-                        'value' => $this->faker->text
+                        'value' => '{ }'
                     ];
             }
             else

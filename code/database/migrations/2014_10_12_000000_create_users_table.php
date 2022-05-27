@@ -10,7 +10,7 @@
 
 
     /**
-     *
+     *  TODO: Write a description
      */
     return new class extends Migration
     {

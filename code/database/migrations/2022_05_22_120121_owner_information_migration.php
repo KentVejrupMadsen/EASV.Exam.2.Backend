@@ -4,6 +4,9 @@
       use Illuminate\Support\Facades\Schema;
 
 
+    /**
+     *  TODO: Write a description
+     */
       return new class extends Migration
       {
             public function up()
