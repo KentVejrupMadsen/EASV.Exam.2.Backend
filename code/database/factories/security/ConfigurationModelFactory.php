@@ -1,6 +1,10 @@
 <?php
     namespace Database\Factories\security;
 
+    // Internal libraries
+    use App\Models\security\ConfigurationModel;
+
+    // External libraries
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
@@ -10,7 +14,7 @@
     final class ConfigurationModelFactory
         extends Factory
     {
-        protected $model = null;
+        protected $model = ConfigurationModel::class;
         private static $debug = false;
 
 

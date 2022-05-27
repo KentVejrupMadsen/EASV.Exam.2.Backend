@@ -1,10 +1,12 @@
 <?php
     namespace Database\Factories\tables;
 
-    use App\Models\tables\ProjectModel;
+    // External libraries
     use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
+    // Internal libraries
+    use App\Models\tables\ProjectModel;
 
     /**
      *

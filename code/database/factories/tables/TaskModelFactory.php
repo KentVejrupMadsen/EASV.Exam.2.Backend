@@ -1,8 +1,11 @@
 <?php
     namespace Database\Factories\tables;
 
-    use App\Models\tables\TaskModel;
+    // External libraries
     use Illuminate\Database\Eloquent\Factories\Factory;
+
+    // Internal libraries
+    use App\Models\tables\TaskModel;
 
 
     /**
