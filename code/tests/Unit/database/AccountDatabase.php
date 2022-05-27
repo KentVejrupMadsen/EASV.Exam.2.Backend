@@ -1,6 +1,7 @@
 <?php
     namespace Tests\Unit\database;
 
+    use App\Models\tables\AccountEmailModel;
     use Tests\Unit\BaseUnit;
 
 
@@ -15,6 +16,8 @@
          */
         public function test_add_mail()
         {
+            AccountEmailModel::factory()->setDebugState( true );
+            AccountEmailModel::factory()->count( 10 )->create();
 
             $this->assertTrue(true );
         }
