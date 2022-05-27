@@ -13,7 +13,7 @@
 
 
     class BoardController 
-        extends BaseHTTPController
+        extends ControllerPipeline
     {
         /**
          * 

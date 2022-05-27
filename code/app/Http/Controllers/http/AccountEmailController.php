@@ -22,7 +22,7 @@
      *
      */
     class AccountEmailController 
-        extends BaseHTTPController
+        extends ControllerPipeline
     {
         /**
          * 

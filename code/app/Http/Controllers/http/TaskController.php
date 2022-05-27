@@ -16,7 +16,7 @@
      * 
      */
     class TaskController
-        extends BaseHTTPController
+        extends ControllerPipeline
     {
         /**
          * 

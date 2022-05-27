@@ -17,7 +17,7 @@
      * 
      */
     class KanbanController 
-        extends BaseHTTPController
+        extends ControllerPipeline
     {
         function __construct()
         {

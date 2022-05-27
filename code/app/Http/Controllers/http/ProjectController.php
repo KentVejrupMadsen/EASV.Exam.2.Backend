@@ -16,7 +16,7 @@
      * 
      */
     class ProjectController 
-        extends BaseHTTPController
+        extends ControllerPipeline
     {
         /**
          * 
