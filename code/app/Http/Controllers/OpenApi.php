@@ -5,8 +5,8 @@
         as OA;
 
 
-    #[OA\Info(title: "Kanban-Project-Backend-API", version: "16.05.2022")]
-    class OpenApi
+    #[OA\Info( title: "Kanban-Project-Backend-API", version: "16.05.2022" ) ]
+    final class OpenApi
         extends Controller
     {
 

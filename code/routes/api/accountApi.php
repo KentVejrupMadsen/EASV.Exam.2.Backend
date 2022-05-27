@@ -10,7 +10,7 @@
     use Illuminate\Support\Facades\Route;
 
 
-//
+    //
     Route::post(
         '/1.0.0/account/login',
         [ AccountController::class, 'login' ]
