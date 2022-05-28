@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
         // Variables
             // Table
         protected $table = 'person_name';
+        public $timestamps = false;
 
             // Constants
         protected const field_account_information_id  = 'account_information_id';
