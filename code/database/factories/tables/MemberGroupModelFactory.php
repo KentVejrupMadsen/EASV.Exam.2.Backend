@@ -5,25 +5,33 @@
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
-    use App\Models\tables\PersonNameModel;
+    use App\Models\tables\MemberGroupModel;
 
 
     /**
      *
      */
-    final class PersonNameModelFactory
+    final class MemberGroupModelFactory
         extends Factory
     {
         // Variables
-        protected $model        = PersonNameModel::class;
+        protected $model        = MemberGroupModel::class;
         private static $debug   = false;
 
+
         // Accessors
+        /**
+         * @return bool
+         */
         public final function getDebugState(): bool
         {
             return self::$debug;
         }
 
+        /**
+         * @param bool $value
+         * @return void
+         */
         public final function setDebugState( bool $value ): void
         {
             self::$debug = $value;
@@ -39,24 +47,16 @@
             if( $this->getDebugState() )
             {
                 return
-                    [
-                        //
-                        'account_information_id'    => 0,
-                        'person_name_first_id'      => 0,
-                        'person_name_lastname_id'   => 0,
-                        'person_name_middlename'    => '{ }'
-                    ];
+                [
+                    'content' => $this->faker->unique()->text(45)
+                ];
             }
             else
             {
                 return
-                    [
-                        //
-                        'account_information_id'    => 0,
-                        'person_name_first_id'      => 0,
-                        'person_name_lastname_id'   => 0,
-                        'person_name_middlename'    => '{ }'
-                    ];
+                [
+                    'content' => null
+                ];
             }
         }
     }
