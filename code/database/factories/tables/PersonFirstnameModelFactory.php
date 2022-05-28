@@ -44,13 +44,12 @@
          */
         public final function definition(): array
         {
-            if($this->getDebugState())
+            if( $this->getDebugState() )
             {
                 return
                 [
                     //
-                    'content' => $this->faker
-                        ->firstName
+                    'content' => $this->faker->unique()->firstName
                 ];
             }
             else

@@ -41,8 +41,7 @@
                 return
                 [
                     //
-                    'content' => $this->faker
-                                      ->lastName
+                    'content' => $this->faker->unique()->lastName
                 ];
             }
             else
