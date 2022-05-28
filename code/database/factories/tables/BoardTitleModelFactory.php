@@ -39,7 +39,7 @@
 
 
         /**
-         * @return array|mixed[]|null[]
+         * @return array|mixed[]
          */
         public function definition(): array
         {

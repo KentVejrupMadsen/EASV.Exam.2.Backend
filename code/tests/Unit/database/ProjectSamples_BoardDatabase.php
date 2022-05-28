@@ -1,6 +1,7 @@
 <?php
     namespace Tests\Unit\database;
 
+    use App\Models\tables\BoardModel;
     use App\Models\tables\BoardTitleModel;
     use Tests\Unit\BaseUnit;
 
@@ -8,7 +9,7 @@
     /**
      *
      */
-    final class BoardDatabase
+    final class ProjectSamples_BoardDatabase
         extends BaseUnit
     {
         /**
@@ -29,6 +30,15 @@
          */
         public function test_make_boards(): void
         {
+
+            BoardModel::factory()->setDebugState( true );
+
+            for($idx = 0; $idx = 0; $idx++)
+            {
+
+            }
+
+            BoardModel::factory()->setDebugState( false );
             $this->completed();
         }
     }
