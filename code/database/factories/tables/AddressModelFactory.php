@@ -6,6 +6,7 @@
 
     // Internal libraries
     use App\Models\tables\AddressModel;
+    use Illuminate\Support\Str;
 
 
     /**
@@ -40,39 +41,39 @@
 
         //
         /**
-         * @return array
+         * @return array|mixed[]
          */
         public final function definition(): array
         {
             if( $this->getDebugState() )
             {
                 return
-                    [
-                        //
-                        'account_information_id' => 0,
-                        'road_name_id' => 0,
+                [
+                    //
+                    'account_information_id' => 0,
+                    'road_name_id'           => 0,
 
-                        'road_number' => $this->faker
-                            ->randomDigit(),
+                    'road_number' => $this->faker
+                                          ->randomDigit(),
 
-                        'levels' => $this->faker
-                            ->text( 2 ),
-                        'country_id' => 0,
-                        'zip_code_id' => 0
-                    ];
+                    'levels' => Str::random(3),
+
+                    'country_id'  => 0,
+                    'zip_code_id' => 0
+                ];
             }
             else
             {
                 return
-                    [
+                [
                         //
-                        'account_information_id' => 0,
-                        'road_name_id' => 0,
-                        'road_number' => 0,
-                        'levels' => 0,
-                        'country_id' => 0,
-                        'zip_code_id' => 0
-                    ];
+                    'account_information_id' => 0,
+                    'road_name_id'           => 0,
+                    'road_number'            => 0,
+                    'levels'                 => 'UNKN',
+                    'country_id'             => 0,
+                    'zip_code_id'            => 0
+                ];
             }
         }
     }
