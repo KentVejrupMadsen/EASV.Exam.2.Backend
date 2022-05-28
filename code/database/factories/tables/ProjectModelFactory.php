@@ -12,7 +12,7 @@
     /**
      *
      */
-    final class ProjectFactory
+    final class ProjectModelFactory
         extends Factory
     {
         // Variables
