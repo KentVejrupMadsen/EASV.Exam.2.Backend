@@ -1,8 +1,10 @@
 <?php
     namespace Tests\Unit\database;
 
+    use App\Models\tables\AccountInformationModel;
     use App\Models\tables\AddressRoadNameModel;
     use App\Models\tables\CountryModel;
+    use App\Models\tables\User;
     use App\Models\tables\ZipCodeModel;
     use Tests\Unit\BaseUnit;
 
@@ -55,6 +57,27 @@
             AddressRoadNameModel::factory()->setDebugState( true );
             AddressRoadNameModel::factory()->count(2000)->create();
             AddressRoadNameModel::factory()->setDebugState( false );
+            $this->completed();
+        }
+
+
+        /**
+         * @return void
+         */
+        public function test_make_information_options(): void
+        {
+            $accounts = User::all();
+            AccountInformationModel::factory()->setDebugState( true );
+
+            for( $idx = 0;
+                 $idx < sizeof( $accounts );
+                 $idx++ )
+            {
+                $currentAccount = $accounts[ $idx ];
+                AccountInformationModel::factory()->create([ 'account_id' => $currentAccount->id ]);
+            }
+
+            AccountInformationModel::factory()->setDebugState( false );
             $this->completed();
         }
     }
