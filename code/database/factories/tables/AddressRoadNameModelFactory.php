@@ -46,19 +46,19 @@
             if( $this->getDebugState() )
             {
                 return
-                    [
+                [
                         //
-                        'content' => $this->faker
-                            ->streetName
-                    ];
+                    'content' => $this->faker
+                                      ->unique()
+                                      ->streetName
+                ];
             }
             else
             {
                 return
-                    [
-                        //
-                        'content' => null
-                    ];
+                [
+                    'content' => null
+                ];
             }
         }
     }
