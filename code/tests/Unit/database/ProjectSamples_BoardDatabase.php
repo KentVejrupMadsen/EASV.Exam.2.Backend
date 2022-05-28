@@ -4,6 +4,8 @@
     use App\Models\tables\BoardModel;
     use App\Models\tables\BoardTitleModel;
     use App\Models\tables\KanbanModel;
+    use App\Models\tables\TaskModel;
+
     use Tests\Unit\BaseUnit;
 
 
@@ -16,7 +18,7 @@
         /**
          * @return void
          */
-        public function test_make_board_titles(): void
+        public final function test_make_board_titles(): void
         {
             BoardTitleModel::factory()->setDebugState( true );
             BoardTitleModel::factory()->count(200)->create();
@@ -30,7 +32,7 @@
          * @return void
          * @throws \Exception
          */
-        public function test_make_boards(): void
+        public final function test_make_boards(): void
         {
             $titles = BoardTitleModel::all()->all();
             $kanbans = KanbanModel::all()->all();
@@ -61,6 +63,40 @@
             }
 
             BoardModel::factory()->setDebugState( false );
+            $this->completed();
+        }
+
+
+        /**
+         * @return void
+         * @throws \Exception
+         */
+        public final function test_make_tasks(): void
+        {
+            $boards = BoardModel::all()->all();
+            $maxBoards = sizeof( $boards );
+
+            $sample = random_int(1, 8);
+
+            TaskModel::factory()->setDebugState( true );
+
+            for( $idx = 0;
+                 $idx < $maxBoards;
+                 $idx++ )
+            {
+                //
+                $currentBoard = $boards[$idx];
+
+                for( $sampleIdx = 0;
+                     $sampleIdx < $sample;
+                     $sampleIdx++ )
+                {
+                    TaskModel::factory()->create( [ 'board_id' => $currentBoard->id ] );
+                }
+
+            }
+
+            TaskModel::factory()->setDebugState( false );
             $this->completed();
         }
     }

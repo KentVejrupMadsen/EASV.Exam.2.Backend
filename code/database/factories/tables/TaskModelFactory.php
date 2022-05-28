@@ -27,7 +27,7 @@
         {
             return self::$debug;
         }
-
+ 
         /**
          * @param bool $value
          * @return void
