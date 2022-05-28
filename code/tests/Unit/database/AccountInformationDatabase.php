@@ -5,10 +5,13 @@
     use App\Models\tables\AddressModel;
     use App\Models\tables\AddressRoadNameModel;
     use App\Models\tables\CountryModel;
+    use App\Models\tables\PersonFirstnameModel;
+    use App\Models\tables\PersonNameModel;
+    use App\Models\tables\PersonSurnameModel;
     use App\Models\tables\User;
     use App\Models\tables\ZipCodeModel;
+
     use PHPUnit\Exception;
-    use Illuminate\Database\Eloquent\Collection;
     use Tests\Unit\BaseUnit;
 
 
@@ -128,7 +131,7 @@
          * @return int
          * @throws \Exception
          */
-        protected function shuffleArray( $array ): int
+        protected final function shuffleArray( $array ): int
         {
             $ret = 0;
 
@@ -150,10 +153,12 @@
             return $ret;
         }
 
+
         /**
          * @return void
+         * @throws \Exception
          */
-        public function test_make_addresses(): void
+        public final function test_make_addresses(): void
         {
             AddressModel::factory()->setDebugState( true );
             $accountInformation = $this->getAccountInformation();
@@ -183,6 +188,55 @@
             }
 
             AddressModel::factory()->setDebugState( false );
+            $this->completed();
+        }
+
+
+        public final function test_add_firstnames()
+        {
+            PersonFirstnameModel::factory()->setDebugState(true);
+            PersonFirstnameModel::factory()->count(200 )->create();
+            PersonFirstnameModel::factory()->setDebugState(false);
+            $this->completed();
+        }
+
+
+        public final function test_add_middle_and_lastnames_names()
+        {
+            PersonSurnameModel::factory()->setDebugState( true );
+            PersonSurnameModel::factory()->count( 200 )->create();
+            PersonSurnameModel::factory()->setDebugState( false );
+            $this->completed();
+        }
+
+        public final function test_add_person_names()
+        {
+            PersonNameModel::factory()->setDebugState( true );
+
+            $info = $this->getAccountInformation();
+            $maxInfo = sizeof( $info );
+
+            $allFirstNames = PersonFirstnameModel::all()->all();
+            $allSurnames = PersonSurnameModel::all()->all();
+
+            for( $idxInfo = 0;
+                 $idxInfo < $maxInfo;
+                 $idxInfo++ )
+            {
+                $currentInformation = $info[ $idxInfo ];
+
+                $randomFirstName = $this->shuffleArray( $allFirstNames );
+                $randomFirstnameModel = $allFirstNames[ $randomFirstName ];
+
+                $randomSurname = $this->shuffleArray( $allSurnames );
+                $randomSurnameModel = $allSurnames[ $randomSurname ];
+
+                PersonNameModel::factory()->create( [ 'account_information_id'  => $currentInformation->id,
+                                                      'person_name_first_id'    => $randomFirstnameModel->id,
+                                                      'person_name_lastname_id' => $randomSurnameModel->id ] );
+            }
+
+            PersonNameModel::factory()->setDebugState( false );
             $this->completed();
         }
     }

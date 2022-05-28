@@ -44,7 +44,7 @@
                         'account_information_id'    => 0,
                         'person_name_first_id'      => 0,
                         'person_name_lastname_id'   => 0,
-                        'person_name_middlename'    => 0
+                        'person_name_middlename'    => '{ }'
                     ];
             }
             else
@@ -55,7 +55,7 @@
                         'account_information_id'    => 0,
                         'person_name_first_id'      => 0,
                         'person_name_lastname_id'   => 0,
-                        'person_name_middlename'    => 0
+                        'person_name_middlename'    => '{ }'
                     ];
             }
         }
