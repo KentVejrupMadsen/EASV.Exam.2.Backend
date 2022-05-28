@@ -1,6 +1,7 @@
 <?php
     namespace Tests\Unit\database;
 
+    use App\Models\tables\AddressRoadNameModel;
     use App\Models\tables\CountryModel;
     use App\Models\tables\ZipCodeModel;
     use Tests\Unit\BaseUnit;
@@ -15,7 +16,7 @@
         /**
          * @return void
          */
-        public function test_add_countries(): void
+        public final function test_add_countries(): void
         {
             CountryModel::factory()->setDebugState( true );
             CountryModel::factory()->count(195)->create();
@@ -28,7 +29,7 @@
         /**
          * @return void
          */
-        public function test_add_zipCodes(): void
+        public final function test_add_zipCodes(): void
         {
             $allCountries = CountryModel::all();
             ZipCodeModel::factory()->setDebugState( true );
@@ -42,6 +43,18 @@
             }
 
             ZipCodeModel::factory()->setDebugState( false );
+            $this->completed();
+        }
+
+
+        /**
+         * @return void
+         */
+        public final function test_add_address_roads(): void
+        {
+            AddressRoadNameModel::factory()->setDebugState( true );
+            AddressRoadNameModel::factory()->count(2000)->create();
+            AddressRoadNameModel::factory()->setDebugState( false );
             $this->completed();
         }
     }

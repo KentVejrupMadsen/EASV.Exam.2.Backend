@@ -49,7 +49,8 @@
                     [
                         //
                         'content' => $this->faker
-                            ->streetName
+                                          ->unique()
+                                          ->streetName
                     ];
             }
             else
