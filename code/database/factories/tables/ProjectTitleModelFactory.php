@@ -47,7 +47,7 @@
                 [
                     'content' => $this->faker
                                       ->unique()
-                                      ->jobTitle
+                                      ->realText
                 ];
             }
             else
