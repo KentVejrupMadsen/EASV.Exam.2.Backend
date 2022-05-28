@@ -1,6 +1,9 @@
 <?php
     namespace Tests\Unit\database;
 
+    use App\Models\tables\KanbanModel;
+    use App\Models\tables\KanbanTitleModel;
+
     use Tests\Unit\BaseUnit;
 
 
@@ -13,8 +16,11 @@
         /**
          * @return void
          */
-        public function test_make_kanban_titles(): void
+        public final function test_make_kanban_titles(): void
         {
+            KanbanTitleModel::factory()->setDebugState( true );
+            KanbanTitleModel::factory()->count(200)->create();
+            KanbanTitleModel::factory()->setDebugState( true );
 
             $this->completed();
         }
@@ -23,7 +29,7 @@
         /**
          * @return void
          */
-        public function test_make_kanbans()
+        public final function test_make_kanbans()
         {
 
             $this->completed();
