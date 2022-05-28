@@ -6,21 +6,20 @@
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
-    use App\Models\tables\KanbanModel;
+    use App\Models\tables\ProjectModel;
 
 
     /**
      *
      */
-    final class KanbanFactory
+    final class ProjectModelFactory
         extends Factory
     {
         // Variables
-        private static $debug   = false;
-        protected $model        = KanbanModel::class;
+        protected $model      = ProjectModel::class;
+        private static $debug = false;
 
-
-        // Accessor
+        // Accessors
         /**
          * @return bool
          */
@@ -41,21 +40,24 @@
 
         //
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public function definition(): array
+        public final function definition(): array
         {
             if( $this->getDebugState() )
             {
                 return
                     [
                         //
-                        'kanban_title_id' => 0,
-                        'project_id' => 0,
+                        'account_owner_id' => 0,
+                        'project_title_id' => 0,
+                        'description' => $this->faker
+                                              ->realText,
+                        'tags' => '{ }',
                         'created_at' => $this->faker
-                            ->dateTime,
+                                             ->dateTime,
                         'updated_at' => $this->faker
-                            ->dateTime
+                                             ->dateTime
                     ];
             }
             else
@@ -63,10 +65,12 @@
                 return
                     [
                         //
-                        'kanban_title_id'   => 0,
-                        'project_id'        => 0,
-                        'created_at'        => Carbon::now(),
-                        'updated_at'        => Carbon::now()
+                        'account_owner_id' => 0,
+                        'project_title_id' => 0,
+                        'description' => null,
+                        'tags' => null,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now()
                     ];
             }
         }

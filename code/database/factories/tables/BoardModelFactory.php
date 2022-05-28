@@ -6,18 +6,19 @@
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
-    use App\Models\tables\ProjectModel;
+    use App\Models\tables\BoardModel;
 
 
     /**
      *
      */
-    final class ProjectFactory
+    final class BoardModelFactory
         extends Factory
     {
         // Variables
-        protected $model      = ProjectModel::class;
-        private static $debug = false;
+        protected $model        = BoardModel::class;
+        private static $debug   = false;
+
 
         // Accessors
         /**
@@ -42,18 +43,15 @@
         /**
          * @return array
          */
-        public final function definition(): array
+        public function definition(): array
         {
             if( $this->getDebugState() )
             {
                 return
                     [
-                        //
-                        'account_owner_id' => 0,
-                        'project_title_id' => 0,
-                        'description' => $this->faker
-                                              ->realText,
-                        'tags' => '{ }',
+                        'kanban_id' => 0,
+                        'board_title_id' => 0,
+                        'body' => '{}',
                         'created_at' => $this->faker
                                              ->dateTime,
                         'updated_at' => $this->faker
@@ -64,13 +62,11 @@
             {
                 return
                     [
-                        //
-                        'account_owner_id' => 0,
-                        'project_title_id' => 0,
-                        'description' => null,
-                        'tags' => null,
-                        'created_at' => Carbon::now(),
-                        'updated_at' => Carbon::now()
+                        'kanban_id'      => 0,
+                        'board_title_id' => 0,
+                        'body'           => null,
+                        'created_at'     => Carbon::now(),
+                        'updated_at'     => Carbon::now()
                     ];
             }
         }
