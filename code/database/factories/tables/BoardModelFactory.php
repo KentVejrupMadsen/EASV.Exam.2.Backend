@@ -6,21 +6,21 @@
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
-    use App\Models\tables\KanbanModel;
+    use App\Models\tables\BoardModel;
 
 
     /**
      *
      */
-    final class KanbanFactory
+    final class BoardModelFactory
         extends Factory
     {
         // Variables
+        protected $model        = BoardModel::class;
         private static $debug   = false;
-        protected $model        = KanbanModel::class;
 
 
-        // Accessor
+        // Accessors
         /**
          * @return bool
          */
@@ -41,7 +41,7 @@
 
         //
         /**
-         * @return array|mixed[]
+         * @return array
          */
         public function definition(): array
         {
@@ -49,24 +49,24 @@
             {
                 return
                     [
-                        //
-                        'kanban_title_id' => 0,
-                        'project_id' => 0,
+                        'kanban_id' => 0,
+                        'board_title_id' => 0,
+                        'body' => '{}',
                         'created_at' => $this->faker
-                            ->dateTime,
+                                             ->dateTime,
                         'updated_at' => $this->faker
-                            ->dateTime
+                                             ->dateTime
                     ];
             }
             else
             {
                 return
                     [
-                        //
-                        'kanban_title_id'   => 0,
-                        'project_id'        => 0,
-                        'created_at'        => Carbon::now(),
-                        'updated_at'        => Carbon::now()
+                        'kanban_id'      => 0,
+                        'board_title_id' => 0,
+                        'body'           => null,
+                        'created_at'     => Carbon::now(),
+                        'updated_at'     => Carbon::now()
                     ];
             }
         }
