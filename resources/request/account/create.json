@@ -4,9 +4,15 @@
     "username":"username",
     "security_credentials":
     {
-      "password":"Epc63gez"
+      "password":"password",
+      "confirm":"confirm"
+    },
+    "person":
+    {
+      "email":"email@out.tlc"
     }
   },
+
   "security":
   {
     "csrf":
