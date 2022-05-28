@@ -11,7 +11,7 @@
     /**
      *
      */
-    final class BoardTitleFactory
+    final class BoardTitleModelFactory
         extends Factory
     {
         // Variables
@@ -48,7 +48,8 @@
                 return
                     [
                         'content' => $this->faker
-                            ->title
+                                          ->unique()
+                                          ->realText(50)
                     ];
             }
             else
