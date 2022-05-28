@@ -47,7 +47,7 @@
                 [
                     'content' => $this->faker
                                       ->unique()
-                                      ->realText
+                                      ->realText(50)
                 ];
             }
             else

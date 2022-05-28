@@ -2,24 +2,25 @@
     namespace Database\Factories\tables;
 
     // External libraries
+    use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
-    use App\Models\tables\BoardTitleModel;
+    use App\Models\tables\KanbanModel;
 
 
     /**
      *
      */
-    final class BoardTitleFactory
+    final class KanbanModelFactory
         extends Factory
     {
         // Variables
         private static $debug   = false;
-        protected $model        = BoardTitleModel::class;
+        protected $model        = KanbanModel::class;
 
 
-        // Accessors
+        // Accessor
         /**
          * @return bool
          */
@@ -38,8 +39,9 @@
         }
 
 
+        //
         /**
-         * @return array|mixed[]|null[]
+         * @return array|mixed[]
          */
         public function definition(): array
         {
@@ -47,15 +49,24 @@
             {
                 return
                     [
-                        'content' => $this->faker
-                            ->title
+                        //
+                        'kanban_title_id' => 0,
+                        'project_id' => 0,
+                        'created_at' => $this->faker
+                            ->dateTime,
+                        'updated_at' => $this->faker
+                            ->dateTime
                     ];
             }
             else
             {
                 return
                     [
-                        'content' => null
+                        //
+                        'kanban_title_id'   => 0,
+                        'project_id'        => 0,
+                        'created_at'        => Carbon::now(),
+                        'updated_at'        => Carbon::now()
                     ];
             }
         }
