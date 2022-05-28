@@ -1,4 +1,4 @@
---
+-- Account Emails
 create trigger on_insert_of_account_emails
     before insert on account_emails
     for each row
@@ -126,6 +126,7 @@ create trigger on_update_of_person_first
 begin
     set new.content = lower(new.content);
 end;
+
 
 -- Person Middle and Lastname
 create trigger on_insert_of_person_name_middle_and_last
