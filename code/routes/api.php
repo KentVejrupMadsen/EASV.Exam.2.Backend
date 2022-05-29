@@ -4,5 +4,5 @@
      * Description:
      * TODO: Make description
      */
-    require_once './api/apiRoutes.php';
+    require_once 'api/apiRoutes.php';
 ?>

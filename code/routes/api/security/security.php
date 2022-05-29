@@ -1,3 +1,3 @@
 <?php
-    require_once './securityCSRFApi.php';
+    require_once 'securityCSRFApi.php';
 ?>
