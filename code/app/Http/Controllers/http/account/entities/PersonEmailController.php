@@ -1,16 +1,23 @@
 <?php
     /**
      * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
      * TODO: Make description
      */
     namespace App\Http\Controllers\http\account\entities;
 
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Models\tables\AccountEmailModel;
+    // External Libraries
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
+
+    // Internal libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Http\Requests\PersonEmailRequest;
+    use App\Models\tables\AccountEmailModel;
 
 
     // Code

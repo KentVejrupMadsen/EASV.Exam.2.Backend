@@ -1,18 +1,24 @@
 <?php
     /**
      * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
      * TODO: Make description
      */
     namespace App\Http\Controllers\http\security;
 
-    use App\Http\Controllers\Controller;
-    use App\Http\Controllers\templates\CrudController;
-    use App\Models\security\CSRFModel;
+    // External libraries
     use Carbon\Carbon;
+
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
+
+    // Internal libraries
+    use App\Http\Controllers\templates\CrudController;
+    use App\Models\security\CSRFModel;
 
 
     /**
