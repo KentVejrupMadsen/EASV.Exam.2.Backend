@@ -5,14 +5,18 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests;
+    namespace App\Http\Requests\account\entities;
 
     use Illuminate\Foundation\Http\FormRequest;
 
 
-    class ToolsProjectMemberRequest
+    /**
+     *
+     */
+    class PersonEmailRequest
         extends FormRequest
     {
+
         public function authorize()
         {
             return false;

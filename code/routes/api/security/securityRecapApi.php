@@ -15,25 +15,25 @@
     // Routes
     Route::get(
         '/1.0.0/security/recaptcha/read',
-        [ SecurityRecaptchaController::class, 'read' ]
+        [ SecurityRecaptchaController::class, 'publicRead' ]
     );
 
         // Create
     Route::post(
         '/1.0.0/security/recaptcha/create',
-        [ SecurityRecaptchaController::class, 'create' ]
+        [ SecurityRecaptchaController::class, 'publicCreate' ]
     );
 
         // Update
     Route::patch(
         '/1.0.0/security/recaptcha/update',
-        [ SecurityRecaptchaController::class, 'update' ]
+        [ SecurityRecaptchaController::class, 'publicUpdate' ]
     );
 
         // Delete
     Route::delete(
         '/1.0.0/security/recaptcha/delete',
-        [ SecurityRecaptchaController::class, 'delete' ]
+        [ SecurityRecaptchaController::class, 'publicDelete' ]
     );
 
 ?>

@@ -15,7 +15,7 @@
     //  Rotes
     Route::post(
         '/1.0.0/security/csrf/create',
-        [ SecurityCSRFTokenController::class, 'create' ]
+        [ SecurityCSRFTokenController::class, 'publicCreate' ]
     );
 
     Route::post(
@@ -30,16 +30,16 @@
 
     Route::get(
         '/1.0.0/security/csrf/read',
-        [ SecurityCSRFTokenController::class, 'read' ]
+        [ SecurityCSRFTokenController::class, 'publicRead' ]
     );
 
     Route::patch(
         '/1.0.0/security/csrf/update',
-        [ SecurityCSRFTokenController::class, 'update' ]
+        [ SecurityCSRFTokenController::class, 'publicUpdate' ]
     );
 
     Route::delete(
         '/1.0.0/security/csrf/delete',
-        [ SecurityCSRFTokenController::class, 'delete' ]
+        [ SecurityCSRFTokenController::class, 'publicDelete' ]
     );
 ?>

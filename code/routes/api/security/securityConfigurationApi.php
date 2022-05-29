@@ -16,24 +16,24 @@
     // Routes
     Route::get(
         '/1.0.0/security/configuration/read',
-        [ SecurityConfigurationController::class, 'read' ]
+        [ SecurityConfigurationController::class, 'publicRead' ]
     );
 
     // Create
     Route::post(
         '/1.0.0/security/configuration/create',
-        [ SecurityConfigurationController::class, 'create' ]
+        [ SecurityConfigurationController::class, 'publicCreate' ]
     );
 
     // Update
     Route::patch(
         '/1.0.0/security/configuration/update',
-        [ SecurityConfigurationController::class, 'update' ]
+        [ SecurityConfigurationController::class, 'publicUpdate' ]
     );
 
     // Delete
     Route::delete(
         '/1.0.0/security/configuration/delete',
-        [ SecurityConfigurationController::class, 'delete' ]
+        [ SecurityConfigurationController::class, 'publicDelete' ]
     );
 ?>
