@@ -5,12 +5,12 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests;
+    namespace App\Http\Requests\account\entities;
 
     use Illuminate\Foundation\Http\FormRequest;
 
 
-    class PersonNameRequest
+    class PersonAddressRequest
         extends FormRequest
     {
         public function authorize()

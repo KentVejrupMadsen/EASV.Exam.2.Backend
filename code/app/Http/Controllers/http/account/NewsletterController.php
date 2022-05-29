@@ -8,19 +8,15 @@
     namespace App\Http\Controllers\http\account;
 
     // External Libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
     use Carbon\Carbon;
-
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Str;
-
-    use OpenApi\Attributes
-        as OA;
+    use OpenApi\Attributes as OA;
 
     // internal Libraries
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\NewsletterRequest;
 
 
     /**

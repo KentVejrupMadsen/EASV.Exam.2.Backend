@@ -8,16 +8,13 @@
     namespace App\Http\Controllers\http\account\entities;
 
     // External libraries
-    use Illuminate\Http\JsonResponse;
-    use Illuminate\Http\Request;
-
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Models\tables\AccountEmailModel;
-    use App\Http\Requests\PersonAddressRequest;
+    use Illuminate\Http\JsonResponse;
+    use Illuminate\Http\Request;
+    use OpenApi\Attributes as OA;
+
+    // Internal Libraries
 
 
     // Code
