@@ -1,6 +1,7 @@
 <?php
     /**
      * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
      * TODO: Make description
      */
@@ -8,10 +9,11 @@
 
     use App\Http\Controllers\templates\CrudController;
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+    use OpenApi\Attributes
+        as OA;
 
 
-/**
+    /**
      *
      */
     class SecurityRecaptchaController
