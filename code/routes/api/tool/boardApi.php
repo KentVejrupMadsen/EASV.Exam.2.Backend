@@ -5,7 +5,6 @@
      * Description:
      * TODO: Make description
      */
-    $mw_sanctum =  'auth:sanctum';
 
     // External libraries
     use Illuminate\Support\Facades\Route;

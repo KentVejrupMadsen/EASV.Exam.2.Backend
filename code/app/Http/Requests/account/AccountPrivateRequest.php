@@ -7,22 +7,28 @@
      */
     namespace App\Http\Requests\account;
 
-    use Illuminate\Foundation\Http\FormRequest;
+    use App\Http\Requests\template\AccountProtectedRequest;
 
 
     /**
      *
      */
-    class AccountRequest
-        extends FormRequest
+    class AccountPrivateRequest
+        extends AccountProtectedRequest
     {
-        public function authorize()
+        /**
+         * @return bool
+         */
+        public final function authorize(): bool
         {
             return false;
         }
 
 
-        public function rules()
+        /**
+         * @return array
+         */
+        public final function rules(): array
         {
             return
             [
