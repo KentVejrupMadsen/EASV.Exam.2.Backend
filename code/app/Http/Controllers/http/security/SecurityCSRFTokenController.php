@@ -42,7 +42,7 @@
         private const conflict = 409;
 
 
-        // Read
+        // Functions that the routes interacts with
         /**
          * @param SecurityCSRFRequest $Request
          * @return void

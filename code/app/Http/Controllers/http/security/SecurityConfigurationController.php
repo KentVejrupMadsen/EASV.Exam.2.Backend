@@ -30,6 +30,46 @@
 
         }
 
+        // Functions that the routes interacts with
+        /**
+         * @param SecurityConfigurationRequest $Request
+         * @return void
+         */
+        public function publicRead( SecurityConfigurationRequest $Request )
+        {
+            $this->read( $Request );
+        }
+
+
+        /**
+         * @param SecurityConfigurationRequest $Request
+         * @return void
+         */
+        public function publicUpdate( SecurityConfigurationRequest $Request )
+        {
+            $this->update( $Request );
+        }
+
+
+        /**
+         * @param SecurityConfigurationRequest $Request
+         * @return void
+         */
+        public function publicCreate( SecurityConfigurationRequest $Request )
+        {
+            $this->create( $Request );
+        }
+
+
+        /**
+         * @param SecurityConfigurationRequest $Request
+         * @return void
+         */
+        public function publicDelete( SecurityConfigurationRequest $Request )
+        {
+            $this->delete( $Request );
+        }
+
 
         /**
          * @param Request $request
