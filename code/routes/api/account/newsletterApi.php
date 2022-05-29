@@ -7,6 +7,8 @@
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\http\account\NewsletterController;
 
+
+    //
     Route::get(
         '/1.0.0/account/newsletter/read',
         [ NewsletterController::class, 'read' ]
