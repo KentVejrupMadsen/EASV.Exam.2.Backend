@@ -6,9 +6,7 @@
      */
     namespace App\Http\Controllers\http\options;
 
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Models\tables\User;
-
+    // External libraries
     use Carbon\Carbon;
 
     use Illuminate\Http\Request;
@@ -18,6 +16,11 @@
 
     use OpenApi\Attributes
         as OA;
+
+    // Internal libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Models\tables\User;
+    use App\Http\Requests\StateRequest;
 
 
     /**

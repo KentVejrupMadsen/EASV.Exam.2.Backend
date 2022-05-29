@@ -7,11 +7,15 @@
      */
     namespace App\Http\Controllers\http\security;
 
-    use App\Http\Controllers\templates\CrudController;
+    // External libraries
     use Illuminate\Http\Request;
     use OpenApi\Attributes
         as OA;
 
+    // Internal libraries
+    use App\Http\Controllers\templates\CrudController;
+    use App\Http\Requests\SecurityCSRFRequest;
+    
 
     /**
      *

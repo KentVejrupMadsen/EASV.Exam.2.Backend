@@ -7,14 +7,17 @@
      */
     namespace App\Http\Controllers\http\account\entities;
 
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Models\tables\AccountEmailModel;
-
+    // External Libraries
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
     use OpenApi\Attributes
         as OA;
+
+    // Internal libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Models\tables\AccountEmailModel;
+    use App\Http\Requests\PersonNameRequest;
 
 
     // Code

@@ -7,9 +7,7 @@
      */
     namespace App\Http\Controllers\http\account;
 
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Models\tables\User;
-
+    // External Libraries
     use Carbon\Carbon;
 
     use Illuminate\Http\Request;
@@ -19,6 +17,10 @@
 
     use OpenApi\Attributes
         as OA;
+
+    // internal Libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Http\Requests\NewsletterRequest;
 
 
     /**
