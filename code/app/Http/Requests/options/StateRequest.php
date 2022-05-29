@@ -10,6 +10,9 @@
     use Illuminate\Foundation\Http\FormRequest;
 
 
+    /**
+     *
+     */
     class StateRequest
         extends FormRequest
     {
