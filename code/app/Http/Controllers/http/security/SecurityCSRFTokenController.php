@@ -7,6 +7,7 @@
     namespace App\Http\Controllers\http\security;
 
     use App\Http\Controllers\Controller;
+    use App\Http\Controllers\templates\CrudController;
     use App\Models\security\CSRFModel;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
@@ -18,7 +19,7 @@
      * 
      */
     class SecurityCSRFTokenController
-        extends Controller
+        extends CrudController
     {
         /**
          * 
@@ -33,6 +34,18 @@
         private const preConditionFailed = 412;
         private const forbidden = 403;
         private const conflict = 409;
+
+
+        public function read( Request $request )
+        {
+            // TODO: Implement read() method.
+        }
+
+
+        public function update( Request $request )
+        {
+            // TODO: Implement update() method.
+        }
 
 
         /**
@@ -184,15 +197,14 @@
 
 
         /**
-         * @param int $id
+         * @param Request $request
          * @return void
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function delete( int $id )
+        public final function delete( Request $request)
         {
-            $model = CSRFModel::findOrFail( $id );
-            $model->delete();
+
         }
 
 
