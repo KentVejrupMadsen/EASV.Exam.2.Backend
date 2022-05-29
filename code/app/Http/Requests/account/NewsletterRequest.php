@@ -5,12 +5,15 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests;
+    namespace App\Http\Requests\account;
 
     use Illuminate\Foundation\Http\FormRequest;
 
 
-    class ToolsBoardRequest
+    /**
+     *
+     */
+    class NewsletterRequest
         extends FormRequest
     {
         public function authorize()

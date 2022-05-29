@@ -20,7 +20,8 @@
 
     // internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\NewsletterRequest;
+    use App\Http\Requests\account\NewsletterRequest;
+    use App\Models\tables\NewsletterSubscriptionModel;
 
 
     /**

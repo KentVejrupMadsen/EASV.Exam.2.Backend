@@ -5,15 +5,17 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests;
+    namespace App\Http\Requests\security;
 
     use Illuminate\Foundation\Http\FormRequest;
 
 
-    class PersonEmailRequest
+    /**
+     *
+     */
+    class SecurityCSRFRequest
         extends FormRequest
     {
-
         public function authorize()
         {
             return false;

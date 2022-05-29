@@ -8,13 +8,12 @@
     namespace App\Http\Controllers\http\security;
 
     // External libraries
+    use App\Http\Controllers\templates\CrudController;
+    use App\Http\Requests\security\SecurityConfigurationRequest;
     use Illuminate\Http\Request;
-    use OpenApi\Attributes
-        as OA;
+    use OpenApi\Attributes as OA;
 
     // Internal Libraries
-    use App\Http\Controllers\templates\CrudController;
-    use App\Http\Requests\SecurityConfigurationRequest;
 
 
     /**
@@ -28,6 +27,46 @@
         {
 
 
+        }
+
+        // Functions that the routes interacts with
+        /**
+         * @param SecurityConfigurationRequest $Request
+         * @return void
+         */
+        public function publicRead( SecurityConfigurationRequest $Request )
+        {
+            $this->read( $Request );
+        }
+
+
+        /**
+         * @param SecurityConfigurationRequest $Request
+         * @return void
+         */
+        public function publicUpdate( SecurityConfigurationRequest $Request )
+        {
+            $this->update( $Request );
+        }
+
+
+        /**
+         * @param SecurityConfigurationRequest $Request
+         * @return void
+         */
+        public function publicCreate( SecurityConfigurationRequest $Request )
+        {
+            $this->create( $Request );
+        }
+
+
+        /**
+         * @param SecurityConfigurationRequest $Request
+         * @return void
+         */
+        public function publicDelete( SecurityConfigurationRequest $Request )
+        {
+            $this->delete( $Request );
         }
 
 

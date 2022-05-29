@@ -8,16 +8,15 @@
     namespace App\Http\Controllers\http\security;
 
     // External libraries
-    use Illuminate\Http\Request;
-    use OpenApi\Attributes
-        as OA;
+use App\Http\Controllers\templates\CrudController;
+use App\Http\Requests\security\SecurityCSRFRequest;
+use Illuminate\Http\Request;
+use OpenApi\Attributes as OA;
 
-    // Internal libraries
-    use App\Http\Controllers\templates\CrudController;
-    use App\Http\Requests\SecurityCSRFRequest;
-    
+// Internal libraries
 
-    /**
+
+/**
      *
      */
     class SecurityRecaptchaController
@@ -29,7 +28,46 @@
 
         }
 
+        /**
+         * @param SecurityCSRFRequest $Request
+         * @return void
+         */
+        public function publicRead( SecurityCSRFRequest $Request )
+        {
+            $this->read( $Request );
+        }
 
+
+        /**
+         * @param SecurityCSRFRequest $Request
+         * @return void
+         */
+        public function publicUpdate( SecurityCSRFRequest $Request )
+        {
+            $this->update( $Request );
+        }
+
+
+        /**
+         * @param SecurityCSRFRequest $Request
+         * @return void
+         */
+        public function publicCreate( SecurityCSRFRequest $Request )
+        {
+            $this->create( $Request );
+        }
+
+
+        /**
+         * @param SecurityCSRFRequest $Request
+         * @return void
+         */
+        public function publicDelete( SecurityCSRFRequest $Request )
+        {
+            $this->delete( $Request );
+        }
+
+        //
         /**
          * @param Request $request
          * @return void
