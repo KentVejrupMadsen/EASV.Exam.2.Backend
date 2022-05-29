@@ -5,12 +5,12 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests;
+    namespace App\Http\Requests\security;
 
     use Illuminate\Foundation\Http\FormRequest;
 
 
-    class SecurityRecaptchaRequest
+    class SecurityCSRFRequest
         extends FormRequest
     {
         public function authorize()
@@ -21,7 +21,8 @@
 
         public function rules()
         {
-            return [
+            return
+            [
                 //
             ];
         }

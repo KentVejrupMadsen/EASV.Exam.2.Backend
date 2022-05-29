@@ -5,12 +5,12 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests;
+    namespace App\Http\Requests\security;
 
     use Illuminate\Foundation\Http\FormRequest;
 
 
-    class ToolsBoardRequest
+    class SecurityConfigurationRequest
         extends FormRequest
     {
         public function authorize()
