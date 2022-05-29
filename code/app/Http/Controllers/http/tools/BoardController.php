@@ -4,17 +4,14 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http;
+    namespace App\Http\Controllers\http\tools;
 
     use App\Http\Controllers\templates\ControllerPipeline;
     use Illuminate\Http\Request;
     use OpenApi\Attributes as OA;
 
 
-    /**
-     * 
-     */
-    final class ProjectMemberController
+    final class BoardController
         extends ControllerPipeline
     {
         /**
@@ -23,7 +20,6 @@
         public final function __construct()
         {
             parent::__construct();
-
         }
 
         public final function hasImplementedCSV(): bool
@@ -62,12 +58,13 @@
             return null;
         }
         
+
         /**
          * 
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function create( Request $request )
+        public final function read( Request $request )
         {
             
         }
@@ -78,9 +75,9 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function read( Request $request )
+        public final function create( Request $request )
         {
-            
+
         }
 
 
@@ -104,5 +101,6 @@
         {
             
         }
+
     }
 ?>

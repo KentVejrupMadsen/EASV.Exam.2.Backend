@@ -4,24 +4,26 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http;
+    namespace App\Http\Controllers\http\tools;
 
     use App\Http\Controllers\templates\ControllerPipeline;
-
     use Illuminate\Http\Request;
-    use OpenApi\Attributes
-        as OA;
+    use OpenApi\Attributes as OA;
 
 
-    final class BoardController
+    /**
+     * 
+     */
+    final class KanbanController
         extends ControllerPipeline
     {
         /**
-         * 
+         *
          */
         public final function __construct()
         {
             parent::__construct();
+
         }
 
         public final function hasImplementedCSV(): bool
@@ -59,18 +61,6 @@
             // TODO: Implement pipelineTowardXML() method.
             return null;
         }
-        
-
-        /**
-         * 
-         */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function read( Request $request )
-        {
-            
-        }
-
 
         /**
          * 
@@ -79,7 +69,7 @@
         #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $request )
         {
-
+            
         }
 
 
@@ -104,5 +94,15 @@
             
         }
 
+
+        /**
+         * 
+         */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
+        public final function read( Request $request )
+        {
+            
+        }
     }
 ?>

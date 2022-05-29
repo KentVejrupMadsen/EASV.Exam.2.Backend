@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http;
+    namespace App\Http\Controllers\http\tools;
 
     use App\Http\Controllers\templates\ControllerPipeline;
     use Illuminate\Http\Request;

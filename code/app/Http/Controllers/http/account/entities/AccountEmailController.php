@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http;
+    namespace App\Http\Controllers\http\account\entities;
 
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Models\tables\AccountEmailModel;
