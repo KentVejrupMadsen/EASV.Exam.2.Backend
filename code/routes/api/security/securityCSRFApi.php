@@ -1,15 +1,18 @@
 <?php
     /**
      * Author: Kent vejrup Madsen
-     * Description: ?
-     * TODO: make a description
+     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Description:
+     * TODO: Make description
      */
-
+    // Internal libraries
     use App\Http\Controllers\http\security\SecurityCSRFTokenController;
+
+    // External libraries
     use Illuminate\Support\Facades\Route;
 
 
-    //
+    //  Rotes
     Route::post(
         '/1.0.0/security/csrf/create',
         [ SecurityCSRFTokenController::class, 'create' ]
