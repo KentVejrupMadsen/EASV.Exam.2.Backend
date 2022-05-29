@@ -39,9 +39,14 @@
             parent::__construct();
         }
 
-
         // Variables
         private const conflict = 409;
+
+
+        public final function publicState( StateRequest $request )
+        {
+
+        }
 
     }
 
