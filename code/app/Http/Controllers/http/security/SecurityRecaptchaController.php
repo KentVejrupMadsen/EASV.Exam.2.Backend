@@ -15,7 +15,7 @@
     // Internal libraries
     use App\Http\Controllers\templates\CrudController;
     use App\Http\Requests\SecurityCSRFRequest;
-    
+
 
     /**
      *
