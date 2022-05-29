@@ -4,19 +4,5 @@
      * Description:
      * TODO: Make description
      */
-    use Illuminate\Support\Facades\Route;
-    use App\Http\Controllers\ApiHomeController;
-
-    require_once 'api/accountApi.php';
-    require_once 'api/boardApi.php';
-    require_once 'api/kanbanApi.php';
-    require_once 'api/projectApi.php';
-    require_once 'api/securityApi.php';
-    require_once 'api/taskApi.php';
-
-
-    Route::get(
-        '/',
-        [ ApiHomeController::class, 'home' ]
-    );
+    require_once 'api/apiRoutes.php';
 ?>
