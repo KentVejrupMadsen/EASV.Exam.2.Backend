@@ -14,7 +14,7 @@ use OpenApi\Attributes as OA;
 /**
      *
      */
-    class RecaptchaController
+    class SecurityRecaptchaController
         extends CrudController
     {
         //
