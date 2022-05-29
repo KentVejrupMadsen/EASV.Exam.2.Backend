@@ -8,7 +8,7 @@
      */
     abstract class ControllerPipeline
         extends CrudController
-        implements ControllerPipelineInterface
+            implements ControllerPipelineInterface
     {
         public function __construct()
         {

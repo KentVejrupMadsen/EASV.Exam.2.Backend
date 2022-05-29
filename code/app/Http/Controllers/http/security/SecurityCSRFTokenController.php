@@ -36,13 +36,13 @@
         private const conflict = 409;
 
 
-        public function read(Request $request)
+        public function read( Request $request )
         {
             // TODO: Implement read() method.
         }
 
-        
-        public function update(Request $request)
+
+        public function update( Request $request )
         {
             // TODO: Implement update() method.
         }
