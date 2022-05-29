@@ -4,9 +4,8 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\additional;
+    namespace App\Http\Controllers\http\security;
 
-    use App\Http\Controllers\additional\Response;
     use App\Http\Controllers\Controller;
     use App\Models\security\CSRFModel;
     use Carbon\Carbon;
@@ -18,7 +17,7 @@
     /**
      * 
      */
-    class CSRFTokenController
+    class SecurityCSRFTokenController
         extends Controller
     {
         /**
@@ -26,7 +25,7 @@
          */
         function __construct()
         {
-            parent::__construct();
+
 
         }
 
