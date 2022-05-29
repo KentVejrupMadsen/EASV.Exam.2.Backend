@@ -7,11 +7,11 @@
      */
     namespace App\Http\Requests\tools;
 
-    use Illuminate\Foundation\Http\FormRequest;
+    use App\Http\Requests\options\AccountProtectedRequest;
 
 
     class ToolsKanbanRequest
-        extends FormRequest
+        extends AccountProtectedRequest
     {
         /**
          * @return bool

@@ -7,14 +7,14 @@
      */
     namespace App\Http\Requests\security;
 
-    use Illuminate\Foundation\Http\FormRequest;
+    use App\Http\Requests\options\AccountProtectedRequest;
 
 
     /**
      *
      */
     class SecurityConfigurationRequest
-        extends FormRequest
+        extends AccountProtectedRequest
     {
         /**
          * @return bool

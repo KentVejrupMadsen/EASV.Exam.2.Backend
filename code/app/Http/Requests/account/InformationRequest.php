@@ -7,14 +7,14 @@
      */
     namespace App\Http\Requests\account;
 
-    use Illuminate\Foundation\Http\FormRequest;
+    use App\Http\Requests\options\AccountProtectedRequest;
 
 
     /**
      *
      */
     class InformationRequest
-        extends FormRequest
+        extends AccountProtectedRequest
     {
         /**
          * @return bool

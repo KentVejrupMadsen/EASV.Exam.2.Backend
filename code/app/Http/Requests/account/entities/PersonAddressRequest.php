@@ -7,14 +7,14 @@
      */
     namespace App\Http\Requests\account\entities;
 
-    use Illuminate\Foundation\Http\FormRequest;
+    use App\Http\Requests\options\AccountProtectedRequest;
 
 
     /**
      *
      */
     class PersonAddressRequest
-        extends FormRequest
+        extends AccountProtectedRequest
     {
         /**
          * @return bool
