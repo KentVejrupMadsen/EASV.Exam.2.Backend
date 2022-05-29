@@ -7,23 +7,27 @@
      */
     namespace App\Http\Requests\options;
 
-    use Illuminate\Foundation\Http\FormRequest;
+    use App\Http\Requests\template\PublicRequest;
 
 
     /**
      *
      */
     class StateRequest
-        extends FormRequest
+        extends PublicRequest
     {
-
-        public function authorize()
+        /**
+         * @return bool
+         */
+        public function authorize(): bool
         {
             return false;
         }
 
-
-        public function rules()
+        /**
+         * @return array
+         */
+        public final function rules(): array
         {
             return
             [

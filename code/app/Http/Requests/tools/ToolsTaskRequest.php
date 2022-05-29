@@ -7,19 +7,25 @@
      */
     namespace App\Http\Requests\tools;
 
-    use Illuminate\Foundation\Http\FormRequest;
+    use App\Http\Requests\template\AccountProtectedRequest;
 
 
     class ToolsTaskRequest
-        extends FormRequest
+        extends AccountProtectedRequest
     {
-        public function authorize()
+        /**
+         * @return bool
+         */
+        public function authorize(): bool
         {
             return false;
         }
 
 
-        public function rules()
+        /**
+         * @return array
+         */
+        public function rules(): array
         {
             return
             [

@@ -8,15 +8,18 @@
     namespace App\Http\Controllers\http\security;
 
     // External libraries
-    use App\Http\Controllers\templates\CrudController;
-    use App\Http\Requests\security\SecurityCSRFRequest;
-    use App\Models\security\CSRFModel;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
 
     // Internal libraries
+    use App\Http\Controllers\templates\CrudController;
+    use App\Http\Requests\security\SecurityCSRFRequest;
+
+    use App\Models\security\CSRFModel;
 
 
     /**
@@ -66,7 +69,7 @@
          */
         public function publicCreate( SecurityCSRFRequest $Request )
         {
-            $this->create( $Request );
+            return Response()->json('test', 200);
         }
 
 
@@ -105,7 +108,7 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function access( Request $request )
+        public final function access( SecurityCSRFRequest $request )
         {
             // Variables
             $response = array();
@@ -211,12 +214,12 @@
 
 
         /**
-         * @param Request $request
+         * @param SecurityCSRFRequest $request
          * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function reset( Request $request )
+        public final function reset( SecurityCSRFRequest $request )
         {
             $request->session()->forget('secret_token' );
 

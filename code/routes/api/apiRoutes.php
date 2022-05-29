@@ -5,10 +5,10 @@
      * Description:
      * TODO: Make description
      */
-    require_once 'account/account.php';
-    require_once 'options/options.php';
-    require_once 'security/security.php';
-    require_once 'tool/tool.php';
+    require_once 'account/accountRoutes.php';
+    require_once 'options/optionsRoutes.php';
+    require_once 'security/securityRoutes.php';
+    require_once 'tool/toolRoutes.php';
 
     require_once 'homeApi.php';
 ?>

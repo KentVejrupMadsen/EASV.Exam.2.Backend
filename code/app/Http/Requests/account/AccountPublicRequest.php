@@ -5,13 +5,16 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\tools;
+    namespace App\Http\Requests\account;
 
-    use App\Http\Requests\template\AccountProtectedRequest;
+    use App\Http\Requests\template\PublicRequest;
 
 
-    class ToolsProjectRequest
-        extends AccountProtectedRequest
+    /**
+     *
+     */
+    class AccountPublicRequest
+        extends PublicRequest
     {
         /**
          * @return bool

@@ -16,13 +16,29 @@
     class SecurityRecaptchaRequest
         extends FormRequest
     {
-        public function authorize()
+        /**
+         * @return bool
+         */
+        protected final function denyAccess(): bool
+        {
+            $ret = false;
+
+            return $ret;
+        }
+
+        /**
+         * @return bool
+         */
+        public final function authorize(): bool
         {
             return false;
         }
 
 
-        public function rules()
+        /**
+         * @return array
+         */
+        public final function rules(): array
         {
             return
             [
