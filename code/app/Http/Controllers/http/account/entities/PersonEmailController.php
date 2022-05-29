@@ -8,13 +8,14 @@
     namespace App\Http\Controllers\http\account\entities;
 
     // External Libraries
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Models\tables\AccountEmailModel;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+    use OpenApi\Attributes
+        as OA;
 
     // Internal libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Models\tables\AccountEmailModel;
 
 
     // Code
