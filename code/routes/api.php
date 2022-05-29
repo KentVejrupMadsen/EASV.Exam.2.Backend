@@ -6,7 +6,11 @@
      * TODO: Make description
      */
     // Constants
-    define('MIDSANC', 'auth:sanctum');
+    const MIDDLEWARE_SANCTUM = 'auth:sanctum';
+
+    // Short constants
+    define('MIDSANC', MIDDLEWARE_SANCTUM);
+
 
     // Requiring all the routes
     require_once 'api/apiRoutes.php';
