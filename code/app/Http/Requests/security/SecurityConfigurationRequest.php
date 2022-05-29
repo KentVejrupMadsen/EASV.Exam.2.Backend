@@ -7,22 +7,38 @@
      */
     namespace App\Http\Requests\security;
 
-    use Illuminate\Foundation\Http\FormRequest;
+    use App\Http\Requests\template\AccountProtectedRequest;
 
 
     /**
      *
      */
     class SecurityConfigurationRequest
-        extends FormRequest
+        extends AccountProtectedRequest
     {
-        public function authorize()
+        /**
+         * @return bool
+         */
+        protected final function denyAccess(): bool
+        {
+            $ret = false;
+
+            return $ret;
+        }
+
+        /**
+         * @return bool
+         */
+        public function authorize(): bool
         {
             return false;
         }
 
 
-        public function rules()
+        /**
+         * @return array
+         */
+        public function rules(): array
         {
             return
             [

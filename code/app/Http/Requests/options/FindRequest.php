@@ -7,19 +7,19 @@
      */
     namespace App\Http\Requests\options;
 
-    use Illuminate\Foundation\Http\FormRequest;
+    use App\Http\Requests\template\PublicRequest;
 
 
     /**
      *
      */
     class FindRequest
-        extends FormRequest
+        extends PublicRequest
     {
         /**
-         * @return false
+         * @return bool
          */
-        public function authorize()
+        public function authorize(): bool
         {
             return false;
         }
@@ -27,7 +27,7 @@
         /**
          * @return array
          */
-        public function rules()
+        public function rules(): array
         {
             return
             [

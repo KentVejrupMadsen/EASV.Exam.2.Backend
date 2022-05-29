@@ -16,13 +16,35 @@
     class SecurityCSRFRequest
         extends FormRequest
     {
-        public function authorize()
+        /**
+         * @return bool
+         */
+        protected final function denyAccess(): bool
         {
-            return false;
+            $ret = false;
+
+            return $ret;
+        }
+
+        /**
+         * @return bool
+         */
+        public final function authorize(): bool
+        {
+            if( $this->denyAccess() )
+            {
+                return false;
+            }
+
+            //
+            return true;
         }
 
 
-        public function rules()
+        /**
+         * @return array
+         */
+        public final function rules(): array
         {
             return
             [

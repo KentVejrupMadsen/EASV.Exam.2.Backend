@@ -5,8 +5,6 @@
      * Description:
      * TODO: Make description
      */
-    $mw_sanctum =  'auth:sanctum';
-
     // Internal libraries
     use App\Http\Controllers\http\account\AccountController;
 
@@ -32,25 +30,25 @@
     );
 
         // Whoami
-    Route::middleware( $mw_sanctum )->get(
+    Route::middleware( MIDSANC )->get(
         '/1.0.0/account/me',
         [ AccountController::class, 'me' ]
     );
 
         // Logout
-    Route::middleware( $mw_sanctum )->get(
+    Route::middleware( MIDSANC )->get(
         '/1.0.0/account/logout',
         [ AccountController::class, 'logout' ]
     );
 
         // Update
-    Route::middleware( $mw_sanctum )->patch(
+    Route::middleware( MIDSANC )->patch(
         '/1.0.0/account/update',
         [ AccountController::class, 'update' ]
     );
 
         // Delete
-    Route::middleware( $mw_sanctum )->delete(
+    Route::middleware( MIDSANC )->delete(
         '/1.0.0/account/delete',
         [ AccountController::class, 'delete' ]
     );
