@@ -9,7 +9,7 @@
     use Illuminate\Support\Facades\Route;
 
     // Internal libraries
-    use \App\Http\Controllers\ApiHomeController;
+    use App\Http\Controllers\ApiHomeController;
 
 
     // Routes
