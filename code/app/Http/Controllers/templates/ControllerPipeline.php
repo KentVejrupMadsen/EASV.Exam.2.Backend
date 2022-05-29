@@ -10,6 +10,10 @@
         extends CrudController
         implements ControllerPipelineInterface
     {
+        public function __construct()
+        {
+
+        }
 
 
     }
