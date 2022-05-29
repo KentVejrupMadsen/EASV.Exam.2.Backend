@@ -16,13 +16,18 @@
     class PersonAddressRequest
         extends FormRequest
     {
-        public function authorize()
+        /**
+         * @return bool
+         */
+        public final function authorize(): bool
         {
             return false;
         }
 
-
-        public function rules()
+        /**
+         * @return array
+         */
+        public final function rules()
         {
             return
             [
