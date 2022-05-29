@@ -20,6 +20,7 @@
 
     // Internal
     use App\Models\tables\AccountEmailModel;
+    use App\Http\Requests\options\FindRequest;
     use App\Http\Controllers\templates\ControllerOption;
 
 
@@ -41,7 +42,10 @@
         // Variables
         private const conflict = 409;
 
+        public function publicFind( FindRequest $request )
+        {
 
+        }
     }
 
 ?>
