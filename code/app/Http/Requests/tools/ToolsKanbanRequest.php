@@ -7,7 +7,7 @@
      */
     namespace App\Http\Requests\tools;
 
-    use App\Http\Requests\options\AccountProtectedRequest;
+    use App\Http\Requests\template\AccountProtectedRequest;
 
 
     class ToolsKanbanRequest

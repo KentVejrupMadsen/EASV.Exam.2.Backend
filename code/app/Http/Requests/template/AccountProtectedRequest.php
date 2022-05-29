@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\options;
+    namespace App\Http\Requests\template;
 
     use Illuminate\Foundation\Http\FormRequest;
 
