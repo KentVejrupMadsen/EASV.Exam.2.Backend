@@ -5,5 +5,9 @@
      * Description:
      * TODO: Make description
      */
+    // Constants
+    define('MIDSANC', 'auth:sanctum');
+
+    // Requiring all the routes
     require_once 'api/apiRoutes.php';
 ?>
