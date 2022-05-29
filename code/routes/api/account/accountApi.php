@@ -6,10 +6,8 @@
      */
     $mw_sanctum =  'auth:sanctum';
 
-use App\Http\Controllers\http\account\AccountController;
-use Illuminate\Support\Facades\Route;
-
-require_once 'newsletterApi.php';
+    use App\Http\Controllers\http\account\AccountController;
+    use Illuminate\Support\Facades\Route;
 
 
     //
