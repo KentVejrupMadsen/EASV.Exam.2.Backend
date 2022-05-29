@@ -4,11 +4,11 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\additional;
+    namespace App\Http\Controllers\http\security;
 
     use App\Http\Controllers\templates\CrudController;
-use Illuminate\Http\Request;
-use OpenApi\Attributes as OA;
+    use Illuminate\Http\Request;
+    use OpenApi\Attributes as OA;
 
 
 /**
@@ -20,7 +20,7 @@ use OpenApi\Attributes as OA;
         //
         public function __construct()
         {
-            parent::__construct();
+            
 
 
         }

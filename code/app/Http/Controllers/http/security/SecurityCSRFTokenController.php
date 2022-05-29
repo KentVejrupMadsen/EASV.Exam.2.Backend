@@ -197,15 +197,14 @@
 
 
         /**
-         * @param int $id
+         * @param Request $request
          * @return void
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function delete( int $id )
+        public final function delete( Request $request)
         {
-            $model = CSRFModel::findOrFail( $id );
-            $model->delete();
+
         }
 
 

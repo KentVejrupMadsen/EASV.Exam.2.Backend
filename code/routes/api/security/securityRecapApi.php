@@ -6,7 +6,7 @@
      */
 
     use Illuminate\Support\Facades\Route;
-    use App\Http\Controllers\http\additional\SecurityRecaptchaController;
+    use App\Http\Controllers\http\security\SecurityRecaptchaController;
 
 
     //
