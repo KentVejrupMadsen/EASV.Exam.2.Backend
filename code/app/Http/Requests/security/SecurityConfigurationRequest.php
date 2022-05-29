@@ -16,13 +16,29 @@
     class SecurityConfigurationRequest
         extends FormRequest
     {
-        public function authorize()
+        /**
+         * @return bool
+         */
+        protected final function denyAccess(): bool
+        {
+            $ret = false;
+
+            return $ret;
+        }
+
+        /**
+         * @return bool
+         */
+        public function authorize(): bool
         {
             return false;
         }
 
 
-        public function rules()
+        /**
+         * @return array
+         */
+        public function rules(): array
         {
             return
             [

@@ -13,13 +13,19 @@
     class ToolsTaskRequest
         extends FormRequest
     {
-        public function authorize()
+        /**
+         * @return bool
+         */
+        public function authorize(): bool
         {
             return false;
         }
 
 
-        public function rules()
+        /**
+         * @return array
+         */
+        public function rules(): array
         {
             return
             [

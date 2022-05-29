@@ -69,7 +69,7 @@
          */
         public function publicCreate( SecurityCSRFRequest $Request )
         {
-            $this->create( $Request );
+            return Response()->json('test', 200);
         }
 
 

@@ -17,9 +17,9 @@
         extends FormRequest
     {
         /**
-         * @return false
+         * @return bool
          */
-        public function authorize()
+        public function authorize(): bool
         {
             return false;
         }
@@ -27,7 +27,7 @@
         /**
          * @return array
          */
-        public function rules()
+        public function rules(): array
         {
             return
             [
