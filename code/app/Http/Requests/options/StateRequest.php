@@ -7,14 +7,14 @@
      */
     namespace App\Http\Requests\options;
 
-    use Illuminate\Foundation\Http\FormRequest;
+    use App\Http\Requests\template\PublicRequest;
 
 
     /**
      *
      */
     class StateRequest
-        extends FormRequest
+        extends PublicRequest
     {
         /**
          * @return bool

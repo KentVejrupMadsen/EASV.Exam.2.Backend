@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\options;
+    namespace App\Http\Requests\account;
 
     use App\Http\Requests\template\PublicRequest;
 
@@ -13,21 +13,22 @@
     /**
      *
      */
-    class FindRequest
+    class AccountPublicRequest
         extends PublicRequest
     {
         /**
          * @return bool
          */
-        public function authorize(): bool
+        public final function authorize(): bool
         {
             return false;
         }
 
+
         /**
          * @return array
          */
-        public function rules(): array
+        public final function rules(): array
         {
             return
             [
