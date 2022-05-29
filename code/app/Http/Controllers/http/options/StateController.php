@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\account;
+    namespace App\Http\Controllers\http\options;
 
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Models\tables\User;
@@ -19,7 +19,7 @@
     /**
      * 
      */
-    final class FindController
+    final class StateController
         extends ControllerPipeline
     {
         /**
