@@ -4,5 +4,6 @@
      * Description:
      * TODO: Make description
      */
-    require_once 'api/apiRoutes.php';
+    use Illuminate\Support\Facades\Route;
+
 ?>
