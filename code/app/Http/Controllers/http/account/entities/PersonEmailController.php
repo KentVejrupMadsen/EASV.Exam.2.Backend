@@ -18,7 +18,7 @@
      * Account Email controller. That are used when getting "ask" by a computer for data.
      *
      */
-    final class AccountEmailController
+    final class PersonEmailController
         extends ControllerPipeline
     {
         /**
