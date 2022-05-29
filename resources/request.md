@@ -1,54 +1,108 @@
 # Request Structure
 ``` json
 {
+    "root": "./request",
     "request":
     {
-        "account" : 
+        "account" :
         {
-            "entities": 
+            "entities":
             {
-                "person": 
+                "person":
                 {
-                    "address":  
+                    "address":
                     {
                     
+                        "type": "directory"
                     },
                     "email":
                     {
                     
+                        "type": "directory"
                     },
-                    "name": 
+                    "name":
                     {
                     
-                    },
-                }
+                        "type":"directory"
+                    },   
+                    "type": "directory"
+                },
+                "type":"directory"
             },
-            "information": 
+            "information":
             {
+            
+                "type":"directory"
             },
-            "newsletter": 
+            "newsletter":
             {
-            }
+            
+                "type":"directory"
+            },
+            "type":"directory"
         },
-        "options" : 
+        "options":
         {
-            "find": {},
-            "state": {}
+            "find":
+            {
+            
+                "type":"directory"
+            },
+            "state":
+            {
+            
+                "type":"directory"
+            },
+            "type":"directory"
         },
-        "security" : 
+        "security":
         {
-            "recap": {},   
-            "configuration": {},
-            "csrf": {},
+            "recap":
+            {
+            
+                "type": "directory"
+            },   
+            "configuration":
+            {
+            
+                "type": "directory"
+            },
+            "csrf":
+            {
+            
+                "type": "directory"
+            },
+            "type": "directory"
         },
-        "tool" : 
+        "tool":
         {
-            "board":{},
-            "kanban":{},
-            "project":{},
-            "projectMember":{},
-            "tasks":{}
-        }
+            "board":
+            {
+            
+                "type": "directory"
+            },
+            "kanban":
+            {
+            
+                "type": "directory"
+            },
+            "project":
+            {
+            
+                "type": "directory"
+            },
+            "projectMember":
+            {
+            
+                "type": "directory"
+            },
+            "tasks":
+            {
+                "type": "directory"
+            },
+            "type": "directory"
+        },
+        "type": "directory"
     }
 }
 ```
