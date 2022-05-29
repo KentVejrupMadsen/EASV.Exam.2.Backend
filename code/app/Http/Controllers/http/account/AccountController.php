@@ -7,18 +7,23 @@
      */
     namespace App\Http\Controllers\http\account;
 
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Models\tables\User;
-
+    // External Libraries
     use Carbon\Carbon;
 
     use Illuminate\Http\Request;
+
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Str;
 
     use OpenApi\Attributes
         as OA;
+
+    // Internal Libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Models\tables\User;
+    use App\Http\Requests\AccountRequest;
+
 
 
     /**
