@@ -1,6 +1,7 @@
 <?php
     /**
      * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
      * TODO: Make description
      */
@@ -8,9 +9,12 @@
 
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Models\tables\AccountEmailModel;
+
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
 
 
     // Code
