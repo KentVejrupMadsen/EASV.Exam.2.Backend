@@ -260,6 +260,12 @@
             return Response( $response );
         }
 
+        public final function exposeApiStructure(): array
+        {
+            $structure = [];
+            return $structure;
+        }
+
     }
 
 ?>

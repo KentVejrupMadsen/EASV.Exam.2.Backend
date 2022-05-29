@@ -1,16 +1,20 @@
 <?php
     /**
      * Author: Kent vejrup Madsen
-     * Description: ?
-     * TODO: make a description
+     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Description:
+     * TODO: Make description
      */
     $mw_sanctum =  'auth:sanctum';
 
+    // Internal libraries
     use App\Http\Controllers\http\account\AccountController;
+
+    // External libraries
     use Illuminate\Support\Facades\Route;
 
 
-    //
+    // Routes
     Route::post(
         '/1.0.0/account/login',
         [ AccountController::class, 'login' ]
@@ -21,31 +25,31 @@
         [ AccountController::class, 'verify' ]
     );
 
-    // Register / Create
+        // Register / Create
     Route::post(
         '/1.0.0/account/create',
         [ AccountController::class, 'create' ]
     );
 
-    // Whoami
+        // Whoami
     Route::middleware( $mw_sanctum )->get(
         '/1.0.0/account/me',
         [ AccountController::class, 'me' ]
     );
 
-    // Logout
+        // Logout
     Route::middleware( $mw_sanctum )->get(
         '/1.0.0/account/logout',
         [ AccountController::class, 'logout' ]
     );
 
-    // Update
+        // Update
     Route::middleware( $mw_sanctum )->patch(
         '/1.0.0/account/update',
         [ AccountController::class, 'update' ]
     );
 
-    // Delete
+        // Delete
     Route::middleware( $mw_sanctum )->delete(
         '/1.0.0/account/delete',
         [ AccountController::class, 'delete' ]

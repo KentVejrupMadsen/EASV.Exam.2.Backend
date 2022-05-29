@@ -1,15 +1,20 @@
 <?php
     /**
      * Author: Kent vejrup Madsen
-     * Description: ?
-     * TODO: make a description
+     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Description:
+     * TODO: Make description
      */
     $mw_sanctum =  'auth:sanctum';
 
+    // External libraries
     use Illuminate\Support\Facades\Route;
+
+    // Internal libraries
     use App\Http\Controllers\http\tools\TaskController;
 
 
+    // Routes
     Route::get(
         '/1.0.0/tool/task/read',
         [ TaskController::class, 'read' ]

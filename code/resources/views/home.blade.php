@@ -6,6 +6,7 @@
         <title> 
             301: Sorry for the inconvencience, It's at another location.
         </title>
+        <meta http-equiv="refresh" content="5; URL=./api/" />
     </head>
     <body> 
         <header>

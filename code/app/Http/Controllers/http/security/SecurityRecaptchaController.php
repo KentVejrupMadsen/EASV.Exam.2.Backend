@@ -20,8 +20,6 @@
         //
         public function __construct()
         {
-            
-
 
         }
 
