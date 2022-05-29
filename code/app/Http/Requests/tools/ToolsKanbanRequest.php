@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests;
+    namespace App\Http\Requests\tools;
 
     use Illuminate\Foundation\Http\FormRequest;
 
