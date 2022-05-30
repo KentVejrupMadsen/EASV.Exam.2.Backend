@@ -8,7 +8,7 @@
     namespace App\Http\Controllers\http\security;
 
     // External libraries
-    use App\Http\Controllers\templates\ControllerMessages;
+    use App\Http\Controllers\cache\RedisCacheCSRFController;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Redis;
@@ -18,6 +18,7 @@
         as OA;
 
     // Internal libraries
+    use App\Http\Controllers\templates\ControllerMessages;
     use App\Http\Controllers\templates\CrudController;
     use App\Http\Requests\security\SecurityCSRFRequest;
 
@@ -30,12 +31,36 @@
     class SecurityCSRFTokenController
         extends CrudController
     {
+        private $cache = null;
+
+        protected final function getCache()
+        {
+            return $this->cache;
+        }
+
+        protected final function setCache( RedisCacheCSRFController $cacheController )
+        {
+            $this->cache = $cacheController;
+        }
+
+
+        /**
+         * @return bool
+         */
+        protected final function isCacheEmpty(): bool
+        {
+            return is_null( $this->cache );
+        }
+
         /**
          * 
          */
         function __construct()
         {
-
+            if( $this->isCacheEmpty() )
+            {
+                $this->setCache( RedisCacheCSRFController::getSingleton() );
+            }
         }
 
         // Functions that the routes interacts with
@@ -50,9 +75,9 @@
             // Variables
             $response = array();
 
-            $requestInput = $request->input('security');
+            $requestInput = $request->input('security' );
 
-            $csrfInput = $requestInput['csrf'];
+            $csrfInput = $requestInput[ 'csrf' ];
 
             $reqId = $csrfInput[ 'id' ];
             $secureTokenFromRequest = $csrfInput[ 'secure_token' ];
@@ -218,8 +243,6 @@
         }
 
 
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
         public final function invalidateOld()
         {
 
@@ -233,7 +256,9 @@
         #[OA\Response(response: '200', description: 'The data')]
         public final function invalidateAll()
         {
-            CSRFModel::where( 'invalidated', '=', '0' )->update( array( 'invalidated' => 1 ) );
+            CSRFModel::where( 'invalidated', '=', '0' )->update(
+                array( 'invalidated' => 1 )
+            );
         }
 
 
@@ -254,13 +279,13 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function delete( Request $request)
+        public final function delete( Request $request )
         {
 
         }
 
 
-        // Grouped functions internal
+        // Grouped functions internally
         /**
          * @param array $values
          * @return void
