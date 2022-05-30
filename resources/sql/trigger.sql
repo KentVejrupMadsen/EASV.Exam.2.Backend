@@ -184,9 +184,9 @@ begin
         values ( New.id );
 
     insert into account_information_options( account_id,
-                                            settings,
-                                            created_at,
-                                            updated_at )
+                                             settings,
+                                             created_at,
+                                            u pdated_at )
     values
         (
          New.id,
