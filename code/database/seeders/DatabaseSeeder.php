@@ -1,6 +1,7 @@
 <?php
     /**
      * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
      * TODO: Make description
      */
@@ -15,14 +16,23 @@
     use Illuminate\Database\Seeder;
 
 
+    /**
+     *
+     */
     class DatabaseSeeder 
         extends Seeder
     {
+        /**
+         * @return void
+         */
         public function run()
         {
             $this->makeBaseAccount();
         }
 
+        /**
+         * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Factories\HasFactory|\Illuminate\Database\Eloquent\Model|mixed
+         */
         protected function createEmailEntity()
         {
             $modelEmail = AccountEmailModel::factory()->create(
@@ -33,6 +43,10 @@
             return $modelEmail;
         }
 
+
+        /**
+         * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Factories\HasFactory|\Illuminate\Database\Eloquent\Model|mixed
+         */
         protected function makeBaseEmail()
         {
             $model = AccountEmailModel::where( 'content', 'unknown' )->first();
@@ -45,6 +59,10 @@
             return $model;
         }
 
+
+        /**
+         * @return void
+         */
         public function makeBaseAccount()
         {
             $modelEmail = $this->makeBaseEmail();
