@@ -5,14 +5,17 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\tools;
+    namespace App\Http\Controllers\httpControllers\tools;
 
     use App\Http\Controllers\templates\ControllerPipeline;
     use Illuminate\Http\Request;
     use OpenApi\Attributes as OA;
 
 
-    final class BoardController
+    /**
+     * 
+     */
+    final class ProjectMemberController
         extends ControllerPipeline
     {
         /**
@@ -21,6 +24,7 @@
         public final function __construct()
         {
             parent::__construct();
+
         }
 
         public final function hasImplementedCSV(): bool
@@ -59,13 +63,12 @@
             return null;
         }
         
-
         /**
          * 
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function read( Request $request )
+        public final function create( Request $request )
         {
             
         }
@@ -76,9 +79,9 @@
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function create( Request $request )
+        public final function read( Request $request )
         {
-
+            
         }
 
 
@@ -105,16 +108,16 @@
 
         private static $controller = null;
 
-        public static final function setSingleton( BoardController $controller )
+        public static final function setSingleton( ProjectMemberController $controller )
         {
             self::$controller = $controller;
         }
 
-        public static final function getSingleton(): BoardController
+        public static final function getSingleton(): ProjectMemberController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new BoardController() );
+                self::setSingleton( new ProjectMemberController() );
             }
 
             return self::$controller;

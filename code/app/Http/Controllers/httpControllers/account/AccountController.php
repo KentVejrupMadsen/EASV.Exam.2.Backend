@@ -5,9 +5,9 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\account;
+    namespace App\Http\Controllers\httpControllers\account;
 
-    // External libraries
+    // External Libraries
     use Carbon\Carbon;
 
     use Illuminate\Http\Request;
@@ -18,17 +18,15 @@
     use OpenApi\Attributes
         as OA;
 
-    // Internal libraries
+    // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-
-    use App\Models\tables\AccountInformationModel;
-    use App\Http\Requests\account\InformationRequest;
+    use App\Models\tables\User;
 
 
     /**
      * 
      */
-    final class InformationController
+    final class AccountController
         extends ControllerPipeline
     {
         /**
@@ -269,18 +267,24 @@
             return Response( $response );
         }
 
+        public final function exposeApiStructure(): array
+        {
+            $structure = [];
+            return $structure;
+        }
+
         private static $controller = null;
 
-        public static final function setSingleton( InformationController $controller )
+        public static final function setSingleton( AccountController $controller )
         {
             self::$controller = $controller;
         }
 
-        public static final function getSingleton(): InformationController
+        public static final function getSingleton(): AccountController
         {
-            if( is_null( self::$controller ) )
+            if(is_null(self::$controller))
             {
-                self::setSingleton( new InformationController() );
+                self::setSingleton( new AccountController() );
             }
 
             return self::$controller;

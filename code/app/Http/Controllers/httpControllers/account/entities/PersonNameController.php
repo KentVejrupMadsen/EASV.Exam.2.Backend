@@ -5,11 +5,12 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\account\entities;
+    namespace App\Http\Controllers\httpControllers\account\entities;
 
     // External Libraries
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
+
     use OpenApi\Attributes
         as OA;
 
@@ -23,7 +24,7 @@
      * Account Email controller. That are used when getting "ask" by a computer for data.
      *
      */
-    final class PersonEmailController
+    final class PersonNameController
         extends ControllerPipeline
     {
         /**
@@ -149,22 +150,21 @@
             return response()->json();
         }
 
-        //
         private static $controller = null;
 
-        public static final function getSingleton(): PersonEmailController
+        public static final function setSingleton( PersonNameController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): PersonNameController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new PersonEmailController() );
+                self::setSingleton( new PersonNameController() );
             }
 
             return self::$controller;
-        }
-
-        public static final function setSingleton( PersonEmailController $controller )
-        {
-            self::$controller = $controller;
         }
     }
 ?>

@@ -5,17 +5,14 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\tools;
+    namespace App\Http\Controllers\httpControllers\tools;
 
     use App\Http\Controllers\templates\ControllerPipeline;
     use Illuminate\Http\Request;
     use OpenApi\Attributes as OA;
 
 
-    /**
-     * 
-     */
-    final class TaskController
+    final class BoardController
         extends ControllerPipeline
     {
         /**
@@ -24,7 +21,6 @@
         public final function __construct()
         {
             parent::__construct();
-            
         }
 
         public final function hasImplementedCSV(): bool
@@ -63,16 +59,6 @@
             return null;
         }
         
-        /**
-         * 
-         */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function create( Request $request )
-        {
-            
-        }
-        
 
         /**
          * 
@@ -83,7 +69,18 @@
         {
             
         }
-        
+
+
+        /**
+         * 
+         */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
+        public final function create( Request $request )
+        {
+
+        }
+
 
         /**
          * 
@@ -108,16 +105,16 @@
 
         private static $controller = null;
 
-        public static final function setSingleton( TaskController $controller )
+        public static final function setSingleton( BoardController $controller )
         {
             self::$controller = $controller;
         }
 
-        public static final function getSingleton(): TaskController
+        public static final function getSingleton(): BoardController
         {
-            if(is_null(self::$controller))
+            if( is_null( self::$controller ) )
             {
-                self::setSingleton(new TaskController());
+                self::setSingleton( new BoardController() );
             }
 
             return self::$controller;

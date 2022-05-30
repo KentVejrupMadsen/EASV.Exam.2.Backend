@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\options;
+    namespace App\Http\Controllers\httpControllers\options;
 
     // External libraries
     use Carbon\Carbon;

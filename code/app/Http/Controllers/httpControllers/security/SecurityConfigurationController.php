@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\security;
+    namespace App\Http\Controllers\httpControllers\security;
 
     // External libraries
     use App\Http\Controllers\templates\CrudController;

@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\tools;
+    namespace App\Http\Controllers\httpControllers\tools;
 
     use App\Http\Controllers\templates\ControllerPipeline;
     use Illuminate\Http\Request;
@@ -15,11 +15,11 @@
     /**
      * 
      */
-    final class ProjectMemberController
+    final class KanbanController
         extends ControllerPipeline
     {
         /**
-         * 
+         *
          */
         public final function __construct()
         {
@@ -62,24 +62,13 @@
             // TODO: Implement pipelineTowardXML() method.
             return null;
         }
-        
+
         /**
          * 
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $request )
-        {
-            
-        }
-
-
-        /**
-         * 
-         */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function read( Request $request )
         {
             
         }
@@ -106,18 +95,29 @@
             
         }
 
+
+        /**
+         * 
+         */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
+        public final function read( Request $request )
+        {
+            
+        }
+
         private static $controller = null;
 
-        public static final function setSingleton( ProjectMemberController $controller )
+        public static final function setSingleton( $controller )
         {
             self::$controller = $controller;
         }
 
-        public static final function getSingleton(): ProjectMemberController
+        public static final function getSingleton()
         {
-            if( is_null( self::$controller ) )
+            if(is_null(self::$controller))
             {
-                self::setSingleton( new ProjectMemberController() );
+                self::setSingleton(new PersonNameController());
             }
 
             return self::$controller;

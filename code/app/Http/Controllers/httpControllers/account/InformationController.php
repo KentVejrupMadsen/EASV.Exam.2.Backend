@@ -5,9 +5,9 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\account;
+    namespace App\Http\Controllers\httpControllers\account;
 
-    // External Libraries
+    // External libraries
     use Carbon\Carbon;
 
     use Illuminate\Http\Request;
@@ -18,16 +18,17 @@
     use OpenApi\Attributes
         as OA;
 
-    // internal Libraries
+    // Internal libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\account\NewsletterRequest;
-    use App\Models\tables\NewsletterSubscriptionModel;
+
+    use App\Models\tables\AccountInformationModel;
+    use App\Http\Requests\account\InformationRequest;
 
 
     /**
      * 
      */
-    final class NewsletterController
+    final class InformationController
         extends ControllerPipeline
     {
         /**
@@ -270,16 +271,16 @@
 
         private static $controller = null;
 
-        public static final function setSingleton( NewsletterController $controller )
+        public static final function setSingleton( InformationController $controller )
         {
             self::$controller = $controller;
         }
 
-        public static final function getSingleton(): NewsletterController
+        public static final function getSingleton(): InformationController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new NewsletterController() );
+                self::setSingleton( new InformationController() );
             }
 
             return self::$controller;

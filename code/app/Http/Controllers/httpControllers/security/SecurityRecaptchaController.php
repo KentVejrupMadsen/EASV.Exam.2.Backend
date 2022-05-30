@@ -5,13 +5,16 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\http\security;
+    namespace App\Http\Controllers\httpControllers\security;
 
     // External libraries
-use App\Http\Controllers\templates\CrudController;
-use App\Http\Requests\security\SecurityCSRFRequest;
-use Illuminate\Http\Request;
-use OpenApi\Attributes as OA;
+    use App\Http\Controllers\templates\CrudController;
+    use App\Http\Requests\security\SecurityCSRFRequest;
+
+    use Illuminate\Http\Request;
+
+    use OpenApi\Attributes
+        as OA;
 
 // Internal libraries
 
