@@ -8,7 +8,7 @@
     namespace App\Http\Controllers\httpControllers\security;
 
     // External libraries
-    use App\Http\Controllers\cache\RedisCacheCSRFController;
+    use App\Http\Controllers\cacheControllers\RedisCacheCSRFController;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Redis;

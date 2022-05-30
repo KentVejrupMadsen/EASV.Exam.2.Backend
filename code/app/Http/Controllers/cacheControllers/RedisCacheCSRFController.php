@@ -1,5 +1,5 @@
 <?php
-    namespace App\Http\Controllers\cache;
+    namespace App\Http\Controllers\cacheControllers;
 
     use App\Http\Controllers\Controller;
 
