@@ -105,5 +105,22 @@
         {
             
         }
+
+        private static $controller = null;
+
+        public static final function setSingleton( $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton()
+        {
+            if(is_null(self::$controller))
+            {
+                self::setSingleton(new PersonNameController());
+            }
+
+            return self::$controller;
+        }
     }
 ?>

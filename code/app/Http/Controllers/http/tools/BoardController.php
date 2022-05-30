@@ -103,5 +103,21 @@
             
         }
 
+        private static $controller = null;
+
+        public static final function setSingleton( BoardController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): BoardController
+        {
+            if( is_null( self::$controller ) )
+            {
+                self::setSingleton( new BoardController() );
+            }
+
+            return self::$controller;
+        }
     }
 ?>

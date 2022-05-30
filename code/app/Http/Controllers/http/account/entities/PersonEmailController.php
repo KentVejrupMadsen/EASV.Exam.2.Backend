@@ -148,7 +148,23 @@
 
             return response()->json();
         }
+
+        //
+        private static $controller = null;
+
+        public static final function getSingleton(): PersonEmailController
+        {
+            if( is_null( self::$controller ) )
+            {
+                self::setSingleton( new PersonEmailController() );
+            }
+
+            return self::$controller;
+        }
+
+        public static final function setSingleton( PersonEmailController $controller )
+        {
+            self::$controller = $controller;
+        }
     }
-
-
 ?>
