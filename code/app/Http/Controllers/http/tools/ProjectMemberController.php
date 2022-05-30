@@ -105,5 +105,22 @@
         {
             
         }
+
+        private static $controller = null;
+
+        public static final function setSingleton( ProjectMemberController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): ProjectMemberController
+        {
+            if( is_null( self::$controller ) )
+            {
+                self::setSingleton( new ProjectMemberController() );
+            }
+
+            return self::$controller;
+        }
     }
 ?>

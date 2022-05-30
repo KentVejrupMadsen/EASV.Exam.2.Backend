@@ -1,4 +1,10 @@
 <?php
+    /**
+     * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Description:
+     * TODO: Make description
+     */
     namespace App\Models\security;
 
     use App\Models\templates\ExtensionNoTimestampModel;

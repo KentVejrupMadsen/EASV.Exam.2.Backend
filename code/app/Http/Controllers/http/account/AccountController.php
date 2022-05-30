@@ -273,6 +273,22 @@
             return $structure;
         }
 
-    }
+        private static $controller = null;
 
+        public static final function setSingleton( AccountController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): AccountController
+        {
+            if(is_null(self::$controller))
+            {
+                self::setSingleton( new AccountController() );
+            }
+
+            return self::$controller;
+        }
+
+    }
 ?>
