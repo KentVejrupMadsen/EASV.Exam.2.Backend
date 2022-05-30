@@ -12,27 +12,34 @@
     use App\Http\Controllers\httpControllers\account\NewsletterController;
 
 
+    const newsletter_route = '/' . CURRENT_VERSION . '/account/newsletter';
+
+    const newsletter_read_route   = newsletter_route . '/read';
+    const newsletter_create_route = newsletter_route . '/create';
+    const newsletter_update_route = newsletter_route . '/update';
+    const newsletter_delete_route = newsletter_route . '/delete';
+
     // Routes
     Route::get(
-        '/1.0.0/account/newsletter/read',
+        newsletter_read_route,
         [ NewsletterController::class, 'read' ]
     );
 
         // Create
     Route::post(
-        '/1.0.0/account/newsletter/create',
+        newsletter_create_route,
         [ NewsletterController::class, 'create' ]
     );
 
         // Update
     Route::patch(
-        '/1.0.0/account/newsletter/update',
+        newsletter_update_route,
         [ NewsletterController::class, 'update' ]
     );
 
         // Delete
     Route::delete(
-        '/1.0.0/account/newsletter/delete',
+        newsletter_delete_route,
         [ NewsletterController::class, 'delete' ]
     );
 ?>
