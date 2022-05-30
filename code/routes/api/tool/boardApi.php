@@ -10,7 +10,7 @@
     use Illuminate\Support\Facades\Route;
 
     // Internal libraries
-    use App\Http\Controllers\http\tools\BoardController;
+    use App\Http\Controllers\httpControllers\tools\BoardController;
 
     // Routes
     Route::get(

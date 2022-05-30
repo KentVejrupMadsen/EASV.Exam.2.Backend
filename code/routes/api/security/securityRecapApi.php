@@ -9,7 +9,7 @@
     use Illuminate\Support\Facades\Route;
 
     // Internal libraries
-    use App\Http\Controllers\http\security\SecurityRecaptchaController;
+    use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
 
 
     // Routes

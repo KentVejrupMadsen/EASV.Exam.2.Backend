@@ -6,7 +6,7 @@
      * TODO: Make description
      */
     // Internal libraries
-    use App\Http\Controllers\http\account\AccountController;
+    use App\Http\Controllers\httpControllers\account\AccountController;
 
     // External libraries
     use Illuminate\Support\Facades\Route;

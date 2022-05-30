@@ -9,7 +9,7 @@
     use Illuminate\Support\Facades\Route;
 
     // Internal libraries
-    use App\Http\Controllers\http\tools\KanbanController;
+    use App\Http\Controllers\httpControllers\tools\KanbanController;
 
 
     // Routes
