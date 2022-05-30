@@ -8,19 +8,27 @@
     namespace App\Http\Controllers\httpControllers\security;
 
     // External libraries
+    use Carbon\Carbon;
+
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Redis;
+    use Illuminate\Support\Str;
+
+    use OpenApi\Attributes
+        as OA;
+
+    // Internal libraries
     use App\Http\Controllers\cacheControllers\security\RedisCacheCSRFController;
     use App\Http\Controllers\templates\ControllerMessages;
     use App\Http\Controllers\templates\CrudController;
     use App\Http\Requests\security\SecurityCSRFRequest;
     use App\Models\security\CSRFModel;
-    use Carbon\Carbon;
-    use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Redis;
-    use Illuminate\Support\Str;
-    use OpenApi\Attributes as OA;
 
-    // Internal libraries
 
+    class CSRFTemplate
+    {
+
+    }
 
     /**
      * 

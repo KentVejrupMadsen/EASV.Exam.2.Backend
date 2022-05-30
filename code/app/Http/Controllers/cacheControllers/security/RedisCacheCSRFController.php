@@ -3,6 +3,7 @@
 
     use App\Http\Controllers\Controller;
     use App\Models\security\CSRFModel;
+    use Illuminate\Support\Facades\Redis;
 
 
     /**
@@ -11,9 +12,21 @@
     class RedisCacheCSRFController
         extends Controller
     {
-        public function create()
+        public final function __construct()
         {
 
+        }
+
+
+        public function isAvailable(): bool
+        {
+            return Redis::connection()->ping();
+        }
+
+
+        public function create( $id, CSRFModel $model )
+        {
+            Redis::set();
         }
 
         public function createByModel( CSRFModel $model )
