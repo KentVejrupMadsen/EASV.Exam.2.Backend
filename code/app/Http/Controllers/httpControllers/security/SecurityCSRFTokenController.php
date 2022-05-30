@@ -10,6 +10,7 @@
     // External libraries
     use Carbon\Carbon;
 
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Redis;
     use Illuminate\Support\Str;
@@ -130,12 +131,12 @@
             $this->isModelAlreadyAccessed( $foundFromDB );
 
             $this->validateActorAddress( $foundFromDB,
-                                             $request );
+                                         $request );
 
             $this->validateSecureToken( $foundFromDB,
-                                            $secureTokenFromRequest );
+                                        $secureTokenFromRequest );
 
-            if( $this->validateSecret( $foundFromDB, $this->retrieveSecret() ) )
+            if( $this->validateSecret( $foundFromDB, $this->retrieveSecret( $foundFromDB ) ) )
             {
                 $response = self::generateAccessResponse( $foundFromDB->id,
                                                           $foundFromDB->accessed,
@@ -151,7 +152,7 @@
             return response( $response , 200 );
         }
 
-        protected function retrieveSecret(): string
+        protected function retrieveSecret( CSRFModel $model ): string
         {
             $returnValue = '';
             //$pullSecret =  $request->session()->pull('secret_token' );
@@ -199,7 +200,7 @@
 
         /**
          * @param SecurityCSRFRequest $Request
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         * @return JsonResponse
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
@@ -211,15 +212,18 @@
 
         /**
          * @param Request $request
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         * @return JsonResponse
          */
         public final function create( Request $request )
         {
             $model = $this->generateCSRFModel( $request );
-            $responseModel = self::generateCreateResponse( $model->id, $model->secure_token );
-            Redis::set( '_csrf_api_token_' . $model->id, $model );
 
-            return response( $responseModel, 200 );
+            $responseModel = self::generateCreateResponse( $model->id,
+                                                           $model->secure_token );
+
+            $this->getCache()->create( $model );
+
+            return response()->json( $responseModel );
         }
 
 
@@ -242,23 +246,44 @@
 
         }
 
+        protected final static function getCSRFBodyFromInput( Request $request ): array
+        {
+            return $request->input( 'security.csrf' );
+        }
 
         /**
          * @param SecurityCSRFRequest $request
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         * @return JsonResponse
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function reset( SecurityCSRFRequest $request )
         {
+            $csrf_input = self::getCSRFBodyFromInput( $request );
 
-            Redis::del('_csrf_api_token_' . $request->input('id' ) );
-            //$request->session()->forget('secret_token' );
+            $foundFromDB = CSRFModel::find( $csrf_input[ 'id' ] )->firstOrFail();
+            $foundFromDB = $this->resetModel( $foundFromDB );
 
-            $response = array();
-            $response['message'] = 'reset';
 
-            return response( $response, 200 );
+            return response()->json( $foundFromDB );
+        }
+
+
+        /**
+         * @param CSRFModel $model
+         * @return CSRFModel
+         */
+        protected function resetModel( CSRFModel $model ): CSRFModel
+        {
+            $m = $model;
+
+            $m->issued = Carbon::now();
+            $m->secure_token = $this->generateToken();
+            $m->secret_token = $this->generateToken();
+
+            $m->save();
+
+            return $m;
         }
 
 
@@ -468,9 +493,9 @@
         }
 
         /**
-         * @return null
+         * @return RedisCacheCSRFController
          */
-        protected final function getCache()
+        protected final function getCache(): RedisCacheCSRFController
         {
             return $this->cache;
         }
@@ -480,7 +505,7 @@
          * @param RedisCacheCSRFController $cacheController
          * @return void
          */
-        protected final function setCache( RedisCacheCSRFController $cacheController )
+        protected final function setCache( RedisCacheCSRFController $cacheController ): void
         {
             $this->cache = $cacheController;
         }

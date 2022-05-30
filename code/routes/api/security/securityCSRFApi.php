@@ -23,12 +23,12 @@
         [ SecurityCSRFTokenController::class, 'access' ]
     );
 
-    Route::get(
+    Route::patch(
         '/1.0.0/security/csrf/reset',
         [ SecurityCSRFTokenController::class, 'reset' ]
     );
 
-    Route::get(
+    Route::post(
         '/1.0.0/security/csrf/read',
         [ SecurityCSRFTokenController::class, 'publicRead' ]
     );
