@@ -1,5 +1,5 @@
 <?php
-    namespace App\Http\Controllers\cacheControllers;
+    namespace App\Http\Controllers\cacheControllers\security;
 
     use App\Http\Controllers\Controller;
     use App\Models\security\CSRFModel;
