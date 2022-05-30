@@ -17,18 +17,16 @@
     use OpenApi\Attributes
         as OA;
 
+
     // Internal libraries
     use App\Http\Controllers\cacheControllers\security\RedisCacheCSRFController;
     use App\Http\Controllers\templates\ControllerMessages;
     use App\Http\Controllers\templates\CrudController;
+
     use App\Http\Requests\security\SecurityCSRFRequest;
+
     use App\Models\security\CSRFModel;
 
-
-    class CSRFTemplate
-    {
-
-    }
 
     /**
      * 
@@ -36,26 +34,11 @@
     class SecurityCSRFTokenController
         extends CrudController
     {
+        // Variables
+        private static $controller = null;
         private $cache = null;
+        private $tokenLength = 64;
 
-        protected final function getCache()
-        {
-            return $this->cache;
-        }
-
-        protected final function setCache( RedisCacheCSRFController $cacheController )
-        {
-            $this->cache = $cacheController;
-        }
-
-
-        /**
-         * @return bool
-         */
-        protected final function isCacheEmpty(): bool
-        {
-            return is_null( $this->cache );
-        }
 
         /**
          * 
@@ -67,6 +50,7 @@
                 $this->setCache( RedisCacheCSRFController::getSingleton() );
             }
         }
+
 
         // Functions that the routes interacts with
         /**
@@ -156,10 +140,13 @@
          * @param SecurityCSRFRequest $Request
          * @return void
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public function publicRead( SecurityCSRFRequest $Request )
         {
             $this->read( $Request );
         }
+
 
         /**
          * @param Request $request
@@ -170,39 +157,27 @@
             // TODO: Implement read() method.
         }
 
+
         /**
          * @param SecurityCSRFRequest $Request
          * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
+        #[OA\Get(path: '/api/data.json')]
+        #[OA\Response(response: '200', description: 'The data')]
         public function publicCreate( SecurityCSRFRequest $Request )
         {
             return $this->create( $Request );
         }
 
+
         /**
          * @param Request $request
          * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $request )
         {
-            $inputModel = array();
-
-            $inputModel[ 'assigned_to' ] = $request->ip();
-
-            $inputModel[ 'secure_token' ] = str::random(64 );
-            $inputModel[ 'secret_token' ] = str::random(64 );
-
-            $inputModel[ 'activated' ] = false;
-            $inputModel[ 'invalidated' ] = false;
-
-            $model = CSRFModel::create( $inputModel );
-
-            $responseModel = array();
-            $responseModel['security']['csrf'][ 'secure_token' ] = $inputModel[ 'secure_token' ];
-            $responseModel['security']['csrf'][ 'id' ] = $model->id;
-
+            $model = $this->generateCSRFModel( $request );
+            $responseModel = self::generateCreateResponse( $model->id, $model->secure_token );
             Redis::set( '_csrf_api_token_' . $model->id, $model );
 
             return response( $responseModel, 200 );
@@ -225,7 +200,7 @@
          */
         public function update( Request $request )
         {
-            // TODO: Implement update() method.
+
         }
 
 
@@ -291,12 +266,24 @@
 
 
         // Grouped functions internally
+        protected final function generateCSRFModel( Request $request ): ?CSRFModel
+        {
+            $inputModel = self::generateInputModel(
+                $request->ip(),
+                $this->generateToken(),
+                $this->generateToken(),
+                false,
+                false
+            );
+
+            $model = CSRFModel::factory()->create( $inputModel );
+            return $model;
+        }
+
         /**
          * @param array $values
          * @return void
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
         protected final function deleteGroup( array $values )
         {
             $idx = null;
@@ -312,13 +299,125 @@
             }
         }
 
-        private static $controller = null;
 
+        /**
+         * @param int $id
+         * @param string $secure_token
+         * @return \array[][]
+         */
+        protected static function generateCreateResponse( int $id, string $secure_token ): array
+        {
+            $response =
+                [
+                    'security' =>
+                        [
+                            'csrf' =>
+                                [
+                                    'id' => $id,
+                                    'secure_token' => $secure_token
+                                ]
+                        ]
+                ];
+
+            return $response;
+        }
+
+
+        /**
+         * @param string $ipAssignedTo
+         * @param string $secureToken
+         * @param string $secretToken
+         * @param bool $activated
+         * @param bool $invalidated
+         * @return array
+         */
+        protected static function generateInputModel( string $ipAssignedTo,
+                                                      string $secureToken,
+                                                      string $secretToken,
+                                                      bool $activated,
+                                                      bool $invalidated ): array
+        {
+            $inputModel =
+                [
+                    'assigned_to'   => $ipAssignedTo,
+                    'secure_token'  => $secureToken,
+                    'secret_token'  => $secretToken,
+                    'activated'     => $activated,
+                    'invalidated'   => $invalidated
+                ];
+
+            return $inputModel;
+        }
+
+
+        /**
+         * @return array
+         */
+        protected static function generateResetResponse(): array
+        {
+            $response =
+                [
+
+                ];
+
+            return $response;
+        }
+
+
+        /**
+         * @param int $id
+         * @param Carbon $accessed
+         * @param Carbon $issued
+         * @return \array[][]
+         */
+        protected static function generateAccessResponse( int $id,
+                                                          Carbon $accessed,
+                                                          Carbon $issued ): array
+        {
+            $response =
+            [
+                'security' =>
+                [
+                    'csrf' =>
+                    [
+                        'id'        => $id,
+                        'accessed'  => $accessed,
+                        'issued'    => $issued
+                    ]
+                ]
+            ];
+
+            return $response;
+        }
+
+
+        /**
+         * @return array
+         */
+        protected static function generateInvalidateResponse(): array
+        {
+            $response =
+                [
+
+                ];
+
+            return $response;
+        }
+
+
+        // Accessors
+        /**
+         * @param SecurityCSRFTokenController $controller
+         * @return void
+         */
         public static final function setSingleton( SecurityCSRFTokenController $controller )
         {
             self::$controller = $controller;
         }
 
+        /**
+         * @return SecurityCSRFTokenController
+         */
         public static final function getSingleton(): SecurityCSRFTokenController
         {
             if( is_null( self::$controller ) )
@@ -329,5 +428,68 @@
             return self::$controller;
         }
 
+        /**
+         * @return null
+         */
+        protected final function getCache()
+        {
+            return $this->cache;
+        }
+
+
+        /**
+         * @param RedisCacheCSRFController $cacheController
+         * @return void
+         */
+        protected final function setCache( RedisCacheCSRFController $cacheController )
+        {
+            $this->cache = $cacheController;
+        }
+
+
+        /**
+         * @return bool
+         */
+        protected final function isCacheEmpty(): bool
+        {
+            return is_null( $this->cache );
+        }
+
+        /**
+         * @return int
+         */
+        public final function getTokenLength(): int
+        {
+            return $this->tokenLength;
+        }
+
+
+        /**
+         * @param int $tokenNewLength
+         * @return void
+         */
+        protected final function setTokenLength( int $tokenNewLength ): void
+        {
+            $this->tokenLength = $tokenNewLength;
+        }
+
+
+        /**
+         * @return string
+         */
+        protected final function generateToken(): string
+        {
+            return self::randomToken( $this->getTokenLength() );
+        }
+
+
+        /**
+         * @param int $size
+         * @return string
+         */
+        protected final static function randomToken( int $size ): string
+        {
+            return Str::random( $size );
+        }
     }
 ?>
