@@ -79,9 +79,10 @@
         /**
          * @param CSRFModel $model
          * @param Request $request
-         * @return bool
+         * @return void
          */
-        protected final function isActorAddressNotTheSame( CSRFModel $model, Request $request ): void
+        protected final function validateActorAddress( CSRFModel $model,
+                                                       Request   $request ): void
         {
             if( !$model->assigned_to == $request->ip() )
             {
@@ -94,9 +95,10 @@
             }
         }
 
-        protected final function isSecureTokenNotTheSame( CSRFModel $model, string $secureToken ): void
+        protected final function validateSecureToken( CSRFModel $model,
+                                                      string $secureTokenInput ): void
         {
-            if( !( $model->secure_token == $secureToken ) )
+            if( !( $model->secure_token == $secureTokenInput ) )
             {
                 abort(ControllerMessages::preConditionFailed );
             }
@@ -122,18 +124,54 @@
             $reqId = $csrfInput[ 'id' ];
             $secureTokenFromRequest = $csrfInput[ 'secure_token' ];
 
-            $modelFound = CSRFModel::findOrFail( $reqId );
+            $foundFromDB = CSRFModel::findOrFail( $reqId );
 
-            $this->isModelInvalid( $modelFound );
-            $this->isModelAlreadyAccessed( $modelFound );
-            $this->isActorAddressNotTheSame( $modelFound, $request );
+            $this->isModelInvalid( $foundFromDB );
+            $this->isModelAlreadyAccessed( $foundFromDB );
 
+            $this->validateActorAddress( $foundFromDB,
+                                             $request );
 
+            $this->validateSecureToken( $foundFromDB,
+                                            $secureTokenFromRequest );
+
+            if( $this->validateSecret( $foundFromDB, $this->retrieveSecret() ) )
+            {
+                $response = self::generateAccessResponse( $foundFromDB->id,
+                                                          $foundFromDB->accessed,
+                                                          $foundFromDB->issued );
+            }
+            else
+            {
+                $foundFromDB->accessed = Carbon::now();
+                $foundFromDB->invalidated = true;
+                $foundFromDB->save();
+            }
 
             return response( $response , 200 );
         }
 
+        protected function retrieveSecret(): string
+        {
+            $returnValue = '';
+            //$pullSecret =  $request->session()->pull('secret_token' );
+            return $returnValue;
+        }
 
+
+        protected function validateSecret( CSRFModel $fromDB, string $secret ): bool
+        {
+            if( $fromDB->secret_token == $secret )
+            {
+                $fromDB->accessed  = Carbon::now();
+                $fromDB->activated = true;
+                $fromDB->save();
+
+                return true;
+            }
+
+            return false;
+        }
 
 
         //
