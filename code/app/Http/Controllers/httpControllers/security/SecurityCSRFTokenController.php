@@ -51,6 +51,57 @@
             }
         }
 
+        /**
+         * @param CSRFModel $model
+         * @return void
+         */
+        protected final function isModelInvalid( CSRFModel $model ): void
+        {
+            if( $model->invalidated )
+            {
+                abort(ControllerMessages::unAuthorized );
+            }
+        }
+
+        /**
+         * @param CSRFModel $model
+         * @return void
+         */
+        protected final function isModelAlreadyAccessed( CSRFModel $model ): void
+        {
+            if( is_null( $model->accessed ) )
+            {
+                abort( ControllerMessages::conflict );
+            }
+        }
+
+
+        /**
+         * @param CSRFModel $model
+         * @param Request $request
+         * @return bool
+         */
+        protected final function isActorAddressNotTheSame( CSRFModel $model, Request $request ): void
+        {
+            if( !$model->assigned_to == $request->ip() )
+            {
+                $model->accessed = Carbon::now();
+                $model->invalidated = true;
+
+                $model->save();
+
+                abort(ControllerMessages::forbidden );
+            }
+        }
+
+        protected final function isSecureTokenNotTheSame( CSRFModel $model, string $secureToken ): void
+        {
+            if( !( $model->secure_token == $secureToken ) )
+            {
+                abort(ControllerMessages::preConditionFailed );
+            }
+        }
+
 
         // Functions that the routes interacts with
         /**
@@ -73,62 +124,16 @@
 
             $modelFound = CSRFModel::findOrFail( $reqId );
 
-            // Code
-            if( $modelFound->invalidated )
-            {
-                // Unauthorized
-                abort( ControllerMessages::unAuthorized );
-            }
+            $this->isModelInvalid( $modelFound );
+            $this->isModelAlreadyAccessed( $modelFound );
+            $this->isActorAddressNotTheSame( $modelFound, $request );
 
-            if( $modelFound->accessed )
-            {
-                abort(ControllerMessages::conflict );
-            }
 
-            if( $modelFound->assigned_to == $request->ip() )
-            {
-                // Are the secure token the same ? no, request is invalid
-                if( !( $modelFound->secure_token == $secureTokenFromRequest ) )
-                {
-                    abort(ControllerMessages::preConditionFailed );
-                }
-
-                // Comment out
-                $pullSecret =  $request->session()->pull('secret_token' );
-
-                if( $modelFound->secret_token == $pullSecret )
-                {
-                    $registered_now = Carbon::now();
-                    $modelFound->accessed = $registered_now;
-                    $modelFound->activated = true;
-
-                    $modelFound->save();
-
-                    $response = self::generateAccessResponse( $modelFound->id, $modelFound->accessed, $modelFound->issued );
-                }
-                else
-                {
-                    $modelFound->accessed = $registered_now;
-                    $modelFound->invalidated = true;
-
-                    $modelFound->save();
-
-                    abort(ControllerMessages::unAuthorized );
-                }
-
-            }
-            else
-            {
-                $modelFound->accessed = $registered_now;
-                $modelFound->invalidated = true;
-
-                $modelFound->save();
-
-                abort(ControllerMessages::forbidden );
-            }
 
             return response( $response , 200 );
         }
+
+
 
 
         //
