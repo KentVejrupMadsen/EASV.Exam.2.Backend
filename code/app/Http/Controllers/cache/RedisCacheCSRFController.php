@@ -4,6 +4,9 @@
     use App\Http\Controllers\Controller;
 
 
+    /**
+     *
+     */
     class RedisCacheCSRFController
         extends Controller
     {
