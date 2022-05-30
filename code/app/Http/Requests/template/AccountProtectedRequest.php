@@ -17,6 +17,27 @@
         extends FormRequest
     {
 
+        protected function requireLoginGuard(): bool
+        {
+            if( is_null( $this->bearerToken() ) )
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
+        protected function requireVerifiedAccountGaurd(): bool
+        {
+            if( is_null( $this->user()->email_verfied_at ) )
+            {
+                return false;
+            }
+
+            return true;
+        }
+
 
 
     }
