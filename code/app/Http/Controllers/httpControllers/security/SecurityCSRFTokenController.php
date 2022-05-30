@@ -72,7 +72,6 @@
             $secureTokenFromRequest = $csrfInput[ 'secure_token' ];
 
             $modelFound = CSRFModel::findOrFail( $reqId );
-            $registered_now = Carbon::now();
 
             // Code
             if( $modelFound->invalidated )
@@ -99,16 +98,13 @@
 
                 if( $modelFound->secret_token == $pullSecret )
                 {
+                    $registered_now = Carbon::now();
                     $modelFound->accessed = $registered_now;
                     $modelFound->activated = true;
 
                     $modelFound->save();
 
-                    // both secrets are the same
-                    $response['security']['csrf']['id'] = $modelFound->id;
-                    $response['security']['csrf']['accessed'] = $modelFound->accessed;
-                    $response['security']['csrf']['issued'] = $modelFound->issued;
-
+                    $response = self::generateAccessResponse( $modelFound->id, $modelFound->accessed, $modelFound->issued );
                 }
                 else
                 {
