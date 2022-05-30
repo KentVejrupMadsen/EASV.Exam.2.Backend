@@ -307,5 +307,22 @@
             }
         }
 
+        private static $controller = null;
+
+        public static final function setSingleton( SecurityCSRFTokenController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): SecurityCSRFTokenController
+        {
+            if( is_null( self::$controller ) )
+            {
+                self::setSingleton( new SecurityCSRFTokenController() );
+            }
+
+            return self::$controller;
+        }
+
     }
 ?>

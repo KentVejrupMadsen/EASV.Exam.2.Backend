@@ -46,6 +46,22 @@
         {
 
         }
-    }
 
+        private static $controller = null;
+
+        public static final function setSingleton( FindController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): FindController
+        {
+            if( is_null( self::$controller ) )
+            {
+                self::setSingleton( new FindController() );
+            }
+
+            return self::$controller;
+        }
+    }
 ?>

@@ -48,6 +48,22 @@
 
         }
 
-    }
+        private static $controller = null;
 
+        public static final function setSingleton( StateController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): StateController
+        {
+            if( is_null( self::$controller ) )
+            {
+                self::setSingleton( new StateController() );
+            }
+
+            return self::$controller;
+        }
+
+    }
 ?>
