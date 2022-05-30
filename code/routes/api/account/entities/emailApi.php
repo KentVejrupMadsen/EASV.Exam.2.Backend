@@ -9,7 +9,7 @@
     use Illuminate\Support\Facades\Route;
 
     // Internal libraries
-    use App\Http\Controllers\http\account\entities\PersonEmailController;
+    use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
 
 
     // Routes

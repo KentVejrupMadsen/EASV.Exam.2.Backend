@@ -9,7 +9,7 @@
     use Illuminate\Support\Facades\Route;
 
     // Internal libraries
-    use App\Http\Controllers\http\tools\TaskController;
+    use App\Http\Controllers\httpControllers\tools\TaskController;
 
 
     // Routes

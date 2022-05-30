@@ -7,7 +7,7 @@
      */
     use Illuminate\Support\Facades\Route;
 
-    use App\Http\Controllers\http\account\entities\PersonAddressController;
+    use App\Http\Controllers\httpControllers\account\entities\PersonAddressController;
 
     
     Route::get(

@@ -9,25 +9,25 @@
 
     // Internal libraries
         // Account
-    use App\Http\Controllers\http\account\AccountController;
-    use App\Http\Controllers\http\account\InformationController;
-    use App\Http\Controllers\http\account\NewsletterController;
+    use App\Http\Controllers\httpControllers\account\AccountController;
+    use App\Http\Controllers\httpControllers\account\InformationController;
+    use App\Http\Controllers\httpControllers\account\NewsletterController;
 
         // Options
-    use App\Http\Controllers\http\options\FindController;
-    use App\Http\Controllers\http\options\StateController;
+    use App\Http\Controllers\httpControllers\options\FindController;
+    use App\Http\Controllers\httpControllers\options\StateController;
 
         // Security
-    use App\Http\Controllers\http\security\SecurityConfigurationController;
-    use App\Http\Controllers\http\security\SecurityCSRFTokenController;
-    use App\Http\Controllers\http\security\SecurityRecaptchaController;
+    use App\Http\Controllers\httpControllers\security\SecurityConfigurationController;
+    use App\Http\Controllers\httpControllers\security\SecurityCSRFTokenController;
+    use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
 
         // Tools
-    use App\Http\Controllers\http\tools\BoardController;
-    use App\Http\Controllers\http\tools\KanbanController;
-    use App\Http\Controllers\http\tools\ProjectController;
-    use App\Http\Controllers\http\tools\ProjectMemberController;
-    use App\Http\Controllers\http\tools\TaskController;
+    use App\Http\Controllers\httpControllers\tools\BoardController;
+    use App\Http\Controllers\httpControllers\tools\KanbanController;
+    use App\Http\Controllers\httpControllers\tools\ProjectController;
+    use App\Http\Controllers\httpControllers\tools\ProjectMemberController;
+    use App\Http\Controllers\httpControllers\tools\TaskController;
 
     // external libraries
     use Illuminate\Http\Request;
@@ -151,5 +151,23 @@
             return Response()->json( $response );
         }
 
+
+        //
+        private static $controller = null;
+
+        public static final function setSingleton( ApiHomeController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): ApiHomeController
+        {
+            if(is_null(self::$controller))
+            {
+                self::setSingleton(new ApiHomeController());
+            }
+
+            return self::$controller;
+        }
     }
 ?>
