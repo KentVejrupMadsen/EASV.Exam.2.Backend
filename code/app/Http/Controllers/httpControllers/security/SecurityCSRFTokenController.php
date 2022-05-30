@@ -20,8 +20,8 @@
     // Internal libraries
     use App\Http\Controllers\templates\ControllerMessages;
     use App\Http\Controllers\templates\CrudController;
-    use App\Http\Requests\security\SecurityCSRFRequest;
 
+    use App\Http\Requests\security\SecurityCSRFRequest;
     use App\Models\security\CSRFModel;
 
 

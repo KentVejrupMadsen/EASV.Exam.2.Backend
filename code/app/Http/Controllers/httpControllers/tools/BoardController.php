@@ -7,9 +7,14 @@
      */
     namespace App\Http\Controllers\httpControllers\tools;
 
-    use App\Http\Controllers\templates\ControllerPipeline;
+    // External
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
+
+    // Internal
+    use App\Http\Controllers\templates\ControllerPipeline;
 
 
     final class BoardController

@@ -7,10 +7,13 @@
      */
     namespace App\Http\Controllers\httpControllers\tools;
 
-    use App\Http\Controllers\templates\ControllerPipeline;
+    // External Libraries
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+    use OpenApi\Attributes
+        as OA;
 
+    // Internal code
+    use App\Http\Controllers\templates\ControllerPipeline;
 
     /**
      * 

@@ -8,18 +8,17 @@
     namespace App\Http\Controllers\httpControllers\security;
 
     // External libraries
-    use App\Http\Controllers\templates\CrudController;
-    use App\Http\Requests\security\SecurityCSRFRequest;
-
     use Illuminate\Http\Request;
 
     use OpenApi\Attributes
         as OA;
 
-// Internal libraries
+    // Internal libraries
+    use App\Http\Controllers\templates\CrudController;
+    use App\Http\Requests\security\SecurityCSRFRequest;
 
 
-/**
+    /**
      *
      */
     class SecurityRecaptchaController
