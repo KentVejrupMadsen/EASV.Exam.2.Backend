@@ -42,9 +42,9 @@
 
                     //
                     $table->foreign( 'account_id' )
-                        ->references( 'id' )
-                        ->on( 'accounts' )
-                        ->onDelete( 'cascade' );
+                          ->references( 'id' )
+                          ->on( 'accounts' )
+                          ->onDelete( 'cascade' );
                 }
             );
         }

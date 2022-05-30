@@ -181,5 +181,9 @@ create trigger on_creation_of_accounts
     for each row
 begin
     insert into account_states( account_id )
-    values ( New.id );
+        values ( New.id );
+
+    insert into account_information_options(account_id, settings, created_at, updated_at)
+    values
+        (New.id, '{}', now(), now());
 end;
