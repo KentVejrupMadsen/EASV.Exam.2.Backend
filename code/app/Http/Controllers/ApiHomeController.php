@@ -151,5 +151,23 @@
             return Response()->json( $response );
         }
 
+
+        //
+        private static $controller = null;
+
+        public static final function setSingleton( ApiHomeController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): ApiHomeController
+        {
+            if(is_null(self::$controller))
+            {
+                self::setSingleton(new ApiHomeController());
+            }
+
+            return self::$controller;
+        }
     }
 ?>
