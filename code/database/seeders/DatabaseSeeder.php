@@ -23,18 +23,44 @@
             $this->makeBaseAccount();
         }
 
+        protected function createEmailEntity()
+        {
+            $modelEmail = AccountEmailModel::factory()->create(
+                [
+                    'content' => 'unknown'
+                ]
+            );
+            return $modelEmail;
+        }
+
+        protected function makeBaseEmail()
+        {
+            $model = AccountEmailModel::where( 'content', 'unknown' )->first();
+
+            if( is_null( $model ) )
+            {
+                $model = $this->createEmailEntity();
+            }
+
+            return $model;
+        }
+
         public function makeBaseAccount()
         {
-            $modelEmail = AccountEmailModel::factory()->create( [ 'content' => 'unknown' ] );
+            $modelEmail = $this->makeBaseEmail();
 
             User::factory()->create(
-                [ 'username' => 'admin',
-                  'email_id' => $modelEmail->id,
-                  'email_verified_at' => null,
-                  'password'=> Hash::make('admin' ),
-                  'created_at'=>Carbon::now(),
-                  'updated_at'=>Carbon::now(),
-                  'settings'=>'' ] );
+                [
+                    'username'          => 'admin',
+                    'email_id'          => $modelEmail->id,
+                    'email_verified_at' => null,
+                    'password'          => Hash::make('admin' ),
+                    'created_at'        => Carbon::now(),
+                    'updated_at'        => Carbon::now(),
+                    'settings'          => ''
+                ]
+            );
+
 
         }
     }
