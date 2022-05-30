@@ -174,3 +174,24 @@ create trigger on_update_of_zip_codes
 begin
     set new.area_name = lower(new.area_name);
 end;
+
+-- on creation of a model
+create trigger on_creation_of_accounts
+    after insert on accounts
+    for each row
+begin
+    insert into account_states( account_id )
+        values ( New.id );
+
+    insert into account_information_options( account_id,
+                                             settings,
+                                             created_at,
+                                            u pdated_at )
+    values
+        (
+         New.id,
+         '{}',
+         now(),
+         now()
+        );
+end;
