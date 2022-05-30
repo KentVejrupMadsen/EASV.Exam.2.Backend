@@ -6,7 +6,7 @@
      * TODO: Make description
      */
     // Internal libraries
-    use App\Http\Controllers\http\security\SecurityCSRFTokenController;
+    use App\Http\Controllers\httpControllers\security\SecurityCSRFTokenController;
 
     // External libraries
     use Illuminate\Support\Facades\Route;
