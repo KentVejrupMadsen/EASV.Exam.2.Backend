@@ -2,6 +2,7 @@
     namespace App\Http\Controllers\cacheControllers;
 
     use App\Http\Controllers\Controller;
+    use App\Models\security\CSRFModel;
 
 
     /**
@@ -15,7 +16,12 @@
 
         }
 
-        public function get()
+        public function createByModel( CSRFModel $model )
+        {
+
+        }
+
+        public function get( int $id )
         {
 
         }
@@ -25,7 +31,17 @@
 
         }
 
+        public function updateByModel( CSRFModel $model )
+        {
+
+        }
+
         public function delete()
+        {
+
+        }
+
+        public function deleteByModel( CSRFModel $model )
         {
 
         }
