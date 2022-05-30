@@ -8,8 +8,10 @@
     namespace App\Http\Controllers\http\security;
 
     // External libraries
+    use App\Http\Controllers\templates\ControllerMessages;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Redis;
     use Illuminate\Support\Str;
 
     use OpenApi\Attributes
@@ -36,75 +38,10 @@
 
         }
 
-        private const unAuthorized = 401;
-        private const preConditionFailed = 412;
-        private const forbidden = 403;
-        private const conflict = 409;
-
-
         // Functions that the routes interacts with
         /**
-         * @param SecurityCSRFRequest $Request
-         * @return void
-         */
-        public function publicRead( SecurityCSRFRequest $Request )
-        {
-            $this->read( $Request );
-        }
-
-
-        /**
-         * @param SecurityCSRFRequest $Request
-         * @return void
-         */
-        public function publicUpdate( SecurityCSRFRequest $Request )
-        {
-            $this->update( $Request );
-        }
-
-
-        /**
-         * @param SecurityCSRFRequest $Request
-         * @return void
-         */
-        public function publicCreate( SecurityCSRFRequest $Request )
-        {
-            return Response()->json('test', 200);
-        }
-
-
-        /**
-         * @param SecurityCSRFRequest $Request
-         * @return void
-         */
-        public function publicDelete( SecurityCSRFRequest $Request )
-        {
-            $this->delete( $Request );
-        }
-
-
-        //
-        /**
-         * @param Request $request
-         * @return void
-         */
-        public function read( Request $request )
-        {
-            // TODO: Implement read() method.
-        }
-
-
-        public function update( Request $request )
-        {
-            // TODO: Implement update() method.
-        }
-
-
-
-        /**
-         * acknowledgement of that the given token has been accessed
-         * @param Request $request
-         * @return Response
+         * @param SecurityCSRFRequest $request
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
@@ -127,12 +64,12 @@
             if( $modelFound->invalidated )
             {
                 // Unauthorized
-                abort( self::unAuthorized );
+                abort( ControllerMessages::unAuthorized );
             }
 
             if( $modelFound->accessed )
             {
-                abort(self::conflict );
+                abort(ControllerMessages::conflict );
             }
 
             if( $modelFound->assigned_to == $request->ip() )
@@ -140,9 +77,10 @@
                 // Are the secure token the same ? no, request is invalid
                 if( !( $modelFound->secure_token == $secureTokenFromRequest ) )
                 {
-                    abort(self::preConditionFailed );
+                    abort(ControllerMessages::preConditionFailed );
                 }
 
+                // Comment out
                 $pullSecret =  $request->session()->pull('secret_token' );
 
                 if( $modelFound->secret_token == $pullSecret )
@@ -165,7 +103,7 @@
 
                     $modelFound->save();
 
-                    abort(self::unAuthorized );
+                    abort(ControllerMessages::unAuthorized );
                 }
 
             }
@@ -176,12 +114,40 @@
 
                 $modelFound->save();
 
-                abort(self::forbidden );
+                abort(ControllerMessages::forbidden );
             }
 
             return response( $response , 200 );
         }
 
+
+        //
+        /**
+         * @param SecurityCSRFRequest $Request
+         * @return void
+         */
+        public function publicRead( SecurityCSRFRequest $Request )
+        {
+            $this->read( $Request );
+        }
+
+        /**
+         * @param Request $request
+         * @return void
+         */
+        public function read( Request $request )
+        {
+            // TODO: Implement read() method.
+        }
+
+        /**
+         * @param SecurityCSRFRequest $Request
+         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         */
+        public function publicCreate( SecurityCSRFRequest $Request )
+        {
+            return $this->create( $Request );
+        }
 
         /**
          * @param Request $request
@@ -207,9 +173,29 @@
             $responseModel['security']['csrf'][ 'secure_token' ] = $inputModel[ 'secure_token' ];
             $responseModel['security']['csrf'][ 'id' ] = $model->id;
 
-            $request->session()->put( [ 'secret_token' => $inputModel[ 'secret_token' ] ] );
+            Redis::set( '_csrf_api_token_' . $model->id, $model );
 
             return response( $responseModel, 200 );
+        }
+
+
+        /**
+         * @param SecurityCSRFRequest $Request
+         * @return void
+         */
+        public function publicUpdate( SecurityCSRFRequest $Request )
+        {
+            $this->update( $Request );
+        }
+
+
+        /**
+         * @param Request $request
+         * @return void
+         */
+        public function update( Request $request )
+        {
+            // TODO: Implement update() method.
         }
 
 
@@ -221,7 +207,9 @@
         #[OA\Response(response: '200', description: 'The data')]
         public final function reset( SecurityCSRFRequest $request )
         {
-            $request->session()->forget('secret_token' );
+
+            Redis::del('_csrf_api_token_' . $request->input('id' ) );
+            //$request->session()->forget('secret_token' );
 
             $response = array();
             $response['message'] = 'reset';
@@ -245,8 +233,20 @@
         #[OA\Response(response: '200', description: 'The data')]
         public final function invalidateAll()
         {
-            CSRFModel::where('invalidated', '=', '0')->update(array('invalidated'=>1));
+            CSRFModel::where( 'invalidated', '=', '0' )->update( array( 'invalidated' => 1 ) );
         }
+
+
+        //
+        /**
+         * @param SecurityCSRFRequest $Request
+         * @return void
+         */
+        public function publicDelete( SecurityCSRFRequest $Request )
+        {
+            $this->delete( $Request );
+        }
+
 
         /**
          * @param Request $request
