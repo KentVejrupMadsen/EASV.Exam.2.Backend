@@ -105,5 +105,22 @@
         {
             
         }
+
+        private static $controller = null;
+
+        public static final function setSingleton( TaskController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): TaskController
+        {
+            if(is_null(self::$controller))
+            {
+                self::setSingleton(new TaskController());
+            }
+
+            return self::$controller;
+        }
     }
 ?>

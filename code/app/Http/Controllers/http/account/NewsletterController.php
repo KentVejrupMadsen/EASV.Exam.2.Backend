@@ -268,6 +268,22 @@
             return Response( $response );
         }
 
-    }
+        private static $controller = null;
 
+        public static final function setSingleton( NewsletterController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): NewsletterController
+        {
+            if( is_null( self::$controller ) )
+            {
+                self::setSingleton( new NewsletterController() );
+            }
+
+            return self::$controller;
+        }
+
+    }
 ?>

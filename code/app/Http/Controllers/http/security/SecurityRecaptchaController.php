@@ -115,5 +115,21 @@ use OpenApi\Attributes as OA;
             // TODO: Implement delete() method.
         }
 
+        private static $controller = null;
+
+        public static final function setSingleton( SecurityRecaptchaController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton()
+        {
+            if( is_null( self::$controller ) )
+            {
+                self::setSingleton( new SecurityRecaptchaController() );
+            }
+
+            return self::$controller;
+        }
     }
 ?>

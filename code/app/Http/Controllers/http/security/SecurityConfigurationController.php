@@ -116,5 +116,23 @@
         {
             // TODO: Implement delete() method.
         }
+
+        //
+        private static $controller = null;
+
+        public static final function setSingleton( SecurityConfigurationController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): SecurityConfigurationController
+        {
+            if(is_null(self::$controller))
+            {
+                self::setSingleton(new SecurityConfigurationController());
+            }
+
+            return self::$controller;
+        }
     }
 ?>

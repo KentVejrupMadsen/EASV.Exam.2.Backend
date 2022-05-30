@@ -269,6 +269,22 @@
             return Response( $response );
         }
 
-    }
+        private static $controller = null;
 
+        public static final function setSingleton( InformationController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): InformationController
+        {
+            if( is_null( self::$controller ) )
+            {
+                self::setSingleton( new InformationController() );
+            }
+
+            return self::$controller;
+        }
+
+    }
 ?>
