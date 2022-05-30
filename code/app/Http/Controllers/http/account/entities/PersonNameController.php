@@ -149,7 +149,22 @@
 
             return response()->json();
         }
+
+        private static $controller = null;
+
+        public static final function setSingleton( PersonNameController $controller )
+        {
+            self::$controller = $controller;
+        }
+
+        public static final function getSingleton(): PersonNameController
+        {
+            if( is_null( self::$controller ) )
+            {
+                self::setSingleton( new PersonNameController() );
+            }
+
+            return self::$controller;
+        }
     }
-
-
 ?>
