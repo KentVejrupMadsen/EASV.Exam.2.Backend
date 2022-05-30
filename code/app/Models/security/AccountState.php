@@ -46,11 +46,11 @@
 
         protected $casts =
         [
-            self::field_account_id => 'integer',
-            self::field_deactivated => 'boolean',
-            self::field_writeable_disabled => 'boolean',
-            self::field_locked => 'boolean',
-            self::field_archived => 'boolean'
+            self::field_account_id          => 'integer',
+            self::field_deactivated         => 'boolean',
+            self::field_writeable_disabled  => 'boolean',
+            self::field_locked              => 'boolean',
+            self::field_archived            => 'boolean'
         ];
     }
 ?>
