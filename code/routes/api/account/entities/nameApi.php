@@ -11,6 +11,7 @@
     // Internal library
     use App\Http\Controllers\httpControllers\account\entities\PersonNameController;
 
+
     const entityNameRoute = '/' . CURRENT_VERSION . '/account/entities/name';
     const entityNameReadRoute = entityNameRoute . '/read';
     const entityNameCreateRoute = entityNameRoute . '/create';
