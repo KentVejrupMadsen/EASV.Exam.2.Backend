@@ -20,23 +20,40 @@
         protected $table = 'accounts_view';
 
         protected $fillable =
-            [
-                '',
-                '',
-                ''
-            ];
+        [
+            'id',
+            'username',
+            'email',
+            'email_verified_at',
+            'password',
+            'remember_token',
+            'created_at',
+            'updated_at',
+            'settings'
+        ];
 
         protected $hidden =
-            [
-                '',
-            ];
-
+        [
+            'id',
+            'email_verified_at',
+            'password',
+            'remember_token',
+            'settings'
+        ];
 
         protected $casts =
-            [
-                ''    => 'integer',
-                ''  => 'datetime',
-                ''  => 'datetime',
-            ];
+        [
+            'id'        => 'integer',
+            'username'  => 'string',
+
+            'email'     => 'string',
+            'email_verified_at' =>'timestamp',
+
+            'password'       => 'string',
+            'remember_token' => 'string',
+            'created_at'     => 'timestamp',
+            'updated_at'     => 'timestamp',
+            'settings'       => 'array'
+        ];
     }
 ?>
