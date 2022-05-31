@@ -20,23 +20,31 @@
         protected $table = 'kanbans_view';
 
         protected $fillable =
-            [
-                '',
-                '',
-                ''
-            ];
+        [
+            'id',
+            'project_id',
+            'kanban_title',
+            'created_at',
+            'updated_at'
+        ];
+
 
         protected $hidden =
-            [
-                '',
-            ];
+        [
+            'id',
+            'project_id'
+        ];
 
 
         protected $casts =
-            [
-                ''    => 'integer',
-                ''  => 'datetime',
-                ''  => 'datetime',
-            ];
+        [
+            'id'            => 'integer',
+
+            'project_id'    => 'integer',
+            'kanban_title'  => 'string',
+
+            'created_at'    => 'timestamp',
+            'updated_at'    => 'timestamp'
+        ];
     }
 ?>
