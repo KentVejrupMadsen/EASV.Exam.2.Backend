@@ -11,12 +11,13 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
 
+
     const recaptchaRoute = 'recaptcha';
 
-    const recaptchaReadRoute   =  'read';
     const recaptchaCreateRoute =  'create';
-    const recaptchaUpdateRoute =  'update';
     const recaptchaDeleteRoute =  'delete';
+    const recaptchaReadRoute   =  'read';
+    const recaptchaUpdateRoute =  'update';
 
 
     function securityRecapApi(): void
@@ -29,10 +30,10 @@
                 (
                     function()
                     {
-                        Route::get( recaptchaReadRoute, 'publicRead' );
                         Route::post( recaptchaCreateRoute, 'publicCreate' );
-                        Route::patch( recaptchaUpdateRoute, 'publicUpdate' );
                         Route::delete( recaptchaDeleteRoute, 'publicDelete' );
+                        Route::get( recaptchaReadRoute, 'publicRead' );
+                        Route::patch( recaptchaUpdateRoute, 'publicUpdate' );
                     }
                 );
             }

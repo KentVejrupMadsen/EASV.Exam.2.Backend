@@ -9,7 +9,7 @@
 
     use App\Http\Controllers\httpControllers\options\StateController;
 
-    const stateRoute = 'states';
+    const stateRoute = 'state';
 
 
     function stateApi(): void

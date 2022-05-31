@@ -13,12 +13,12 @@
 
     const csrfRoute = 'csrf';
 
-    const csrfCreateRoute =  'create';
-    const csrfAccessRoute =  'access';
-    const csrfResetRoute =  'reset';
-    const csrfReadRoute =  'read';
-    const csrfUpdateRoute =  'update';
+    const csrfAccessRoute = 'access';
+    const csrfCreateRoute = 'create';
     const csrfDeleteRoute = 'delete';
+    const csrfReadRoute   = 'read';
+    const csrfResetRoute  = 'reset';
+    const csrfUpdateRoute = 'update';
 
 
     function securityCSRFApi(): void
@@ -31,12 +31,12 @@
                 (
                     function()
                     {
-                        Route::post( csrfCreateRoute, 'publicCreate' );
                         Route::post( csrfAccessRoute, 'access' );
-                        Route::patch( csrfResetRoute, 'reset' );
-                        Route::post( csrfReadRoute,'publicRead' );
-                        Route::patch( csrfUpdateRoute, 'publicUpdate' );
+                        Route::post( csrfCreateRoute, 'publicCreate' );
                         Route::delete( csrfDeleteRoute, 'publicDelete' );
+                        Route::post( csrfReadRoute,'publicRead' );
+                        Route::patch( csrfResetRoute, 'reset' );
+                        Route::patch( csrfUpdateRoute, 'publicUpdate' );
                     }
                 );
             }

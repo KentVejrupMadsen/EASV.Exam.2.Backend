@@ -30,8 +30,8 @@
                (
                    function()
                    {
-                       Route::get( newsletter_read_route, 'read' );
                        Route::post( newsletter_create_route, 'create' );
+                       Route::get( newsletter_read_route, 'read' );
                        Route::patch( newsletter_update_route, 'update' );
                        Route::delete( newsletter_delete_route, 'delete' );
                    }

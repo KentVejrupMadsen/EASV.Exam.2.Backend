@@ -14,10 +14,10 @@
 
     const configurationRoute = 'configuration';
 
-    const configurationReadRoute   = 'read';
     const configurationCreateRoute = 'create';
-    const configurationUpdateRoute = 'update';
     const configurationDeleteRoute = 'delete';
+    const configurationReadRoute   = 'read';
+    const configurationUpdateRoute = 'update';
 
 
     function securityConfigurationApi(): void
@@ -30,10 +30,10 @@
                 (
                     function ()
                     {
-                        Route::get( configurationReadRoute, 'publicRead' );
                         Route::post( configurationCreateRoute, 'publicCreate' );
-                        Route::patch( configurationUpdateRoute, 'publicUpdate' );
                         Route::delete( configurationDeleteRoute, 'publicDelete' );
+                        Route::get( configurationReadRoute, 'publicRead' );
+                        Route::patch( configurationUpdateRoute, 'publicUpdate' );
                     }
                 );
             }
