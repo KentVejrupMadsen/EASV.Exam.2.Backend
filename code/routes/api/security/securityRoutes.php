@@ -13,7 +13,7 @@
 
     function SecurityRoutes(): void
     {
-        Route::prefix( 'security' )->group
+        Route::prefix( 'securities' )->group
         (
             function()
             {

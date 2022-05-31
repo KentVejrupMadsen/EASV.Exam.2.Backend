@@ -9,16 +9,22 @@
 
     use App\Http\Controllers\httpControllers\options\FindController;
 
-    const findRoute = '/' . CURRENT_VERSION . '/find';
+    const findRoute = 'find';
 
 
     function findApi(): void
     {
-        Route::controller( FindController::class )->group
+        Route::prefix( findRoute  )->group
         (
             function()
             {
-                Route::post(findRoute, 'publicFind' );
+                Route::controller( FindController::class )->group
+                (
+                    function()
+                    {
+                        Route::post( 'email', 'publicFind' );
+                    }
+                );
             }
         );
     }
