@@ -10,9 +10,6 @@
     use App\Models\templates\ModelView;
 
 
-    /**
-     *
-     */
     class ZipCodeViewShortModel
         extends ModelView
     {
@@ -28,7 +25,7 @@
             'country_acronym'
         ];
 
-        
+
         protected $hidden =
         [
             'id',

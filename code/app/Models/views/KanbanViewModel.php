@@ -10,9 +10,6 @@
     use App\Models\templates\ModelView;
 
 
-    /**
-     *
-     */
     class KanbanViewModel
         extends ModelView
     {

@@ -10,9 +10,6 @@
     use App\Models\templates\ModelView;
 
 
-    /**
-     *
-     */
     class AccountViewModel
         extends ModelView
     {
