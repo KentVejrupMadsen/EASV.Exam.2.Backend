@@ -25,7 +25,7 @@
         /**
          * @param bool $makeSingleton
          */
-        public final function __construct( bool $makeSingleton = false )
+        public function __construct( bool $makeSingleton = false )
         {
             if( $makeSingleton )
             {
