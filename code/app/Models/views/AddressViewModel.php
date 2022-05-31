@@ -17,27 +17,39 @@
         extends ModelView
     {
         public $timestamps = false;
-        protected $table = 'addresses_view';
+        protected $table   = 'addresses_view';
 
         protected $fillable =
-            [
-                '',
-                '',
-                ''
-            ];
+        [
+            'id',
+            'account_information_id',
+            'road_name',
+            'road_number',
+            'levels',
+            'address_country',
+            'zip_code_id'
+        ];
+
 
         protected $hidden =
-            [
-                '',
-            ];
+        [
+            'id',
+            'account_information_id',
+            'zip_code_id'
+        ];
 
 
         protected $casts =
-            [
-                ''    => 'integer',
-                ''  => 'datetime',
-                ''  => 'datetime',
-            ];
+        [
+            'id'                     => 'integer',
+            'account_information_id' => 'integer',
 
+            'road_name'       => 'string',
+            'road_number'     => 'integer',
+            'levels'          => 'string',
+            'address_country' => 'string',
+
+            'zip_code_id' => 'integer'
+        ];
     }
 ?>
