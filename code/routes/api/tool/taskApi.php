@@ -12,23 +12,30 @@
     use App\Http\Controllers\httpControllers\tools\TaskController;
 
 
-    const taskRoute = '/' . CURRENT_VERSION . '/tool/task';
-    const taskReadRoute = taskRoute . '/read';
-    const taskCreateRoute = taskRoute . '/create';
-    const taskUpdateRoute = taskRoute . '/update';
-    const taskDeleteRoute = taskRoute . '/delete';
+    const taskRoute = 'task';
+
+    const taskCreateRoute = 'create';
+    const taskDeleteRoute = 'delete';
+    const taskReadRoute   = 'read';
+    const taskUpdateRoute = 'update';
 
 
     function TaskApi(): void
     {
-        Route::controller( TaskController::class )->group
+        Route::prefix( taskRoute )->group
         (
             function()
             {
-                Route::get( taskReadRoute, 'read' );
-                Route::post( taskCreateRoute, 'create' );
-                Route::patch( taskUpdateRoute, 'update' );
-                Route::delete( taskDeleteRoute, 'delete' );
+                Route::controller( TaskController::class )->group
+                (
+                    function()
+                    {
+                        Route::post( taskCreateRoute, 'create' );
+                        Route::delete( taskDeleteRoute, 'delete' );
+                        Route::get( taskReadRoute, 'read' );
+                        Route::patch( taskUpdateRoute, 'update' );
+                    }
+                );
             }
         );
     }

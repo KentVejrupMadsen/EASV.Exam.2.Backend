@@ -11,24 +11,30 @@
     // Internal library
     use App\Http\Controllers\httpControllers\account\entities\PersonNameController;
 
+    const NameRoute = 'name';
 
-    const entityNameRoute = '/' . CURRENT_VERSION . '/account/entities/name';
-    const entityNameReadRoute = entityNameRoute . '/read';
-    const entityNameCreateRoute = entityNameRoute . '/create';
-    const entityNameUpdateRoute = entityNameRoute . '/update';
-    const entityNameDeleteRoute = entityNameRoute . '/delete';
+    const NameReadRoute = 'read';
+    const NameCreateRoute = 'create';
+    const NameUpdateRoute = 'update';
+    const NameDeleteRoute = 'delete';
 
 
     function NameApi()
     {
-        Route::controller( PersonNameController::class )->group
+        Route::prefix( NameRoute )->group
         (
             function()
             {
-                Route::get( entityNameReadRoute, 'read' );
-                Route::post( entityNameCreateRoute,'create' );
-                Route::patch( entityNameUpdateRoute, 'update' );
-                Route::delete( entityNameDeleteRoute, 'delete' );
+                Route::controller( PersonNameController::class )->group
+                (
+                    function()
+                    {
+                        Route::get( NameReadRoute, 'read' );
+                        Route::post( NameCreateRoute,'create' );
+                        Route::patch( NameUpdateRoute, 'update' );
+                        Route::delete( NameDeleteRoute, 'delete' );
+                    }
+                );
             }
         );
     }

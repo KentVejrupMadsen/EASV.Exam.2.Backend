@@ -13,23 +13,30 @@
     use App\Http\Controllers\httpControllers\tools\BoardController;
 
 
-    const boardRoute = '/' . CURRENT_VERSION . '/tool/board';
-    const boardReadRoute = boardRoute . '/read';
-    const boardCreateRoute = boardRoute . '/create';
-    const boardUpdateRoute = boardRoute . '/update';
-    const boardDeleteRoute = boardRoute . '/delete';
+    const boardRoute       = 'board';
+
+    const boardCreateRoute = 'create';
+    const boardDeleteRoute = 'delete';
+    const boardReadRoute   = 'read';
+    const boardUpdateRoute = 'update';
 
 
     function BoardApi(): void
     {
-        Route::controller( BoardController::class )->group
+        Route::prefix( boardRoute )->group
         (
             function()
             {
-                Route::get( boardReadRoute, 'read' );
-                Route::post(boardCreateRoute, 'create' );
-                Route::patch(boardUpdateRoute, 'update' );
-                Route::delete( boardDeleteRoute, 'delete' );
+                Route::controller( BoardController::class )->group
+                (
+                    function()
+                    {
+                        Route::post( boardCreateRoute, 'create' );
+                        Route::delete( boardDeleteRoute, 'delete' );
+                        Route::patch( boardUpdateRoute, 'update' );
+                        Route::get( boardReadRoute, 'read' );
+                    }
+                );
             }
         );
     }

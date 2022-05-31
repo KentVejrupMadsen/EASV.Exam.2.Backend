@@ -11,24 +11,29 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
 
-    const entityEmailRoute = '/' . CURRENT_VERSION . '/account/entities/email';
-    const EntityEmailRead = entityEmailRoute . '/read';
-    const EntityEmailCreate = entityEmailRoute . '/create';
-    const EntityEmailUpdate = entityEmailRoute . '/update';
-    const EntityEmailDelete = entityEmailRoute . '/delete';
+    const EmailRoute  = 'email';
+    const RouteRead   = '/read';
+    const RouteCreate = '/create';
+    const RouteUpdate =  '/update';
+    const RouteDelete =   '/delete';
 
 
     function EmailApi(): void
     {
-        Route::controller( PersonEmailController::class )->group
+        Route::prefix( EmailRoute )->group
         (
             function()
             {
-                Route::get( EntityEmailRead, 'read' );
-                Route::post( EntityEmailCreate, 'create' );
-                Route::patch( EntityEmailUpdate, 'update' );
-
-                Route::delete( EntityEmailDelete, 'delete' );
+                Route::controller( PersonEmailController::class )->group
+                (
+                    function()
+                    {
+                        Route::get( RouteRead, 'read' );
+                        Route::post( RouteCreate, 'create' );
+                        Route::patch( RouteUpdate, 'update' );
+                        Route::delete( RouteDelete, 'delete' );
+                    }
+                );
             }
         );
     }

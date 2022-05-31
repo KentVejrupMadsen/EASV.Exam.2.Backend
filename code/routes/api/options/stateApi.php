@@ -9,16 +9,22 @@
 
     use App\Http\Controllers\httpControllers\options\StateController;
 
-    const stateRoute = '/' . CURRENT_VERSION . '/state';
+    const stateRoute = 'state';
 
 
     function stateApi(): void
     {
-        Route::controller( StateController::class )->group
+        Route::prefix( stateRoute )->group
         (
             function()
             {
-                Route::post( stateRoute, 'publicState' );
+                Route::controller( StateController::class )->group
+                (
+                    function()
+                    {
+                        Route::post( 'email', 'publicState' );
+                    }
+                );
             }
         );
     }

@@ -16,7 +16,7 @@
 
     function AccountRoutes(): void
     {
-        Route::prefix( 'account' )->group
+        Route::prefix( 'accounts' )->group
         (
             function()
             {
