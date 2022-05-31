@@ -19,24 +19,38 @@
         public $timestamps = false;
         protected $table = 'projects_view';
 
+
         protected $fillable =
-            [
-                '',
-                '',
-                ''
-            ];
+        [
+            'id',
+            'account_owner_id',
+            'project_title',
+            'description',
+            'tags',
+            'created_at',
+            'updated_at'
+        ];
+
 
         protected $hidden =
-            [
-                '',
-            ];
+        [
+            'id',
+            'account_owner_id'
+        ];
 
 
         protected $casts =
-            [
-                ''    => 'integer',
-                ''  => 'datetime',
-                ''  => 'datetime',
-            ];
+        [
+            'id'                => 'integer',
+            'account_owner_id'  => 'integer',
+
+            'project_title' => 'string',
+            'description'   => 'string',
+
+            'tags' => 'array',
+
+            'created_at' => 'timestamp',
+            'updated_at' => 'timestamp'
+        ];
     }
 ?>
