@@ -18,7 +18,7 @@
     const recaptchaUpdateRoute = recaptchaRoute . '/update';
     const recaptchaDeleteRoute = recaptchaRoute . '/delete';
 
-    
+
     // Routes
     Route::get(
         recaptchaReadRoute,
