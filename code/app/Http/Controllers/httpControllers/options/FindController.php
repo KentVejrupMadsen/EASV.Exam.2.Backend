@@ -24,18 +24,20 @@
     use App\Http\Controllers\templates\ControllerOption;
 
 
-    /**
-     * 
-     */
-    final class FindController
+    class FindController
         extends ControllerOption
     {
         /**
-         *
+         * @param bool $makeSingleton
          */
-        public final function __construct()
+        public function __construct( bool $makeSingleton = false )
         {
             parent::__construct();
+
+            if( $makeSingleton )
+            {
+                self::setSingleton( $this );
+            }
         }
 
 

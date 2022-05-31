@@ -1,10 +1,19 @@
 <?php
+    /**
+     * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Description:
+     * TODO: Make description
+     */
     namespace App\Http\Controllers\cacheControllers\security;
 
-    use App\Http\Controllers\Controller;
-    use App\Models\security\CSRFModel;
+    // External libraries
     use Illuminate\Support\Facades\Redis;
     use Illuminate\Support\Str;
+
+    // Internal libraries
+    use App\Http\Controllers\Controller;
+    use App\Models\security\CSRFModel;
 
 
     /**
@@ -13,10 +22,17 @@
     class RedisCacheCSRFController
         extends Controller
     {
-        public function __construct()
+        /**
+         * @param bool $makeSingleton
+         */
+        public function __construct( bool $makeSingleton = false )
         {
-
+            if( $makeSingleton )
+            {
+                self::setSingleton( $this );
+            }
         }
+
 
         public final function select( ?CSRFModel $model ): ?CSRFModel
         {

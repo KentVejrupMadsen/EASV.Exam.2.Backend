@@ -20,21 +20,24 @@
 
     // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
+
     use App\Models\tables\User;
 
 
-    /**
-     * 
-     */
-    final class AccountController
+    class AccountController
         extends ControllerPipeline
     {
         /**
-         *
+         * @param bool $makeSingleton
          */
-        public final function __construct()
+        public function __construct( bool $makeSingleton = false )
         {
             parent::__construct();
+
+            if( $makeSingleton )
+            {
+                self::setSingleton( $this );
+            }
         }
 
 
