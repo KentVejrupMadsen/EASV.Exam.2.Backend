@@ -37,17 +37,17 @@
     {
         // Variables
         private static ?SecurityCSRFTokenController $controller = null;
-        private ?RedisCacheCSRFController           $cache      = null;
+
+        private ?RedisCacheCSRFController $cache       = null;
+        private ?CSRFResponseJSONFactory  $jsonFactory = null;
 
         private int $tokenLength = 64;
 
-        private ?CSRFResponseJSONFactory $jsonFactory = null;
-
 
         /**
-         * 
+         * @param bool $makeSingleton
          */
-        function __construct()
+        function __construct( bool $makeSingleton = true )
         {
             if( $this->isCacheEmpty() )
             {
@@ -57,6 +57,11 @@
             if( $this->isJsonFactoryEmpty() )
             {
                 $this->setJsonFactory( CSRFResponseJSONFactory::getSingleton() );
+            }
+
+            if( $makeSingleton )
+            {
+                self::setSingleton( $this );
             }
         }
 

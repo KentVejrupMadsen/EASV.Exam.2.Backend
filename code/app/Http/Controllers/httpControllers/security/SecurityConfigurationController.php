@@ -23,7 +23,7 @@
         extends CrudController
     {
         //
-        public function __construct()
+        public function __construct( bool $makeSingleton = true )
         {
 
 

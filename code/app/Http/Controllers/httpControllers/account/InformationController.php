@@ -34,7 +34,7 @@
         /**
          *
          */
-        public final function __construct()
+        public final function __construct( bool $makeSingleton = true )
         {
             parent::__construct();
         }
