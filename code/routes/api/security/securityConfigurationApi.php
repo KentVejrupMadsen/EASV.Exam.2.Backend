@@ -18,7 +18,7 @@
     const configurationUpdateRoute = configurationRoute . '/update';
     const configurationDeleteRoute = configurationRoute . '/delete';
 
-    
+
     // Routes
     Route::get(
         configurationReadRoute,
