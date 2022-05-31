@@ -13,7 +13,7 @@
 
 
     //
-    const data_route = 'data';
+    const data_route = 'account';
 
     const login_route   = '/login';
     const verify_route  =  '/verify';
