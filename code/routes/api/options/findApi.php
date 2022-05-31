@@ -6,10 +6,14 @@
      * TODO: Make description
      */
     use Illuminate\Support\Facades\Route;
+
     use App\Http\Controllers\httpControllers\options\FindController;
 
+    const findRoute = '/' . CURRENT_VERSION . '/find';
+
+
     Route::post(
-        '/1.0.0/find',
+        findRoute,
         [ FindController::class, 'publicFind' ]
     );
 ?>
