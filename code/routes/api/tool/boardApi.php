@@ -12,27 +12,34 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\BoardController;
 
+    const boardRoute = '/' . CURRENT_VERSION . '/tool/board';
+    const boardReadRoute = boardRoute . '/read';
+    const boardCreateRoute = boardRoute . '/create';
+    const boardUpdateRoute = boardRoute . '/update';
+    const boardDeleteRoute = boardRoute . '/delete';
+
+
     // Routes
     Route::get(
-        '/1.0.0/tool/board/read',
+        boardReadRoute,
         [ BoardController::class, 'read' ]
     );
 
     // Create
     Route::post(
-        '/1.0.0/tool/board/create',
+        boardCreateRoute,
         [ BoardController::class, 'create' ]
     );
 
     // Update
     Route::patch(
-        '/1.0.0/tool/board/update',
+        boardUpdateRoute,
         [ BoardController::class, 'update' ]
     );
 
     // Delete
     Route::delete(
-        '/1.0.0/tool/board/delete',
+        boardDeleteRoute,
         [ BoardController::class, 'delete' ]
     );
 ?>
