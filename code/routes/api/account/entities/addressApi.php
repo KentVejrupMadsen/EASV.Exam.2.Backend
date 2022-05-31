@@ -17,26 +17,17 @@
     const entitiesAddressDeleteRoute = entitiesAddressRoute . '/delete';
 
 
-    Route::get(
-        entitiesAddressReadRoute,
-        [ PersonAddressController::class, 'read' ]
-    );
-
-    // Create
-    Route::post(
-        entitiesAddressCreateRoute,
-        [ PersonAddressController::class, 'create' ]
-    );
-
-    // Update
-    Route::patch(
-        entitiesAddressUpdateRoute,
-        [ PersonAddressController::class, 'update' ]
-    );
-
-    // Delete
-    Route::delete(
-        entitiesAddressDeleteRoute,
-        [ PersonAddressController::class, 'delete' ]
-    );
+    function AddressApi()
+    {
+        Route::controller( PersonAddressController::class )->group
+        (
+            function()
+            {
+                Route::get(entitiesAddressReadRoute, 'read');
+                Route::post(entitiesAddressCreateRoute, 'create');
+                Route::patch(entitiesAddressUpdateRoute, 'update' );
+                Route::delete(entitiesAddressDeleteRoute, 'delete');
+            }
+        );
+    }
 ?>

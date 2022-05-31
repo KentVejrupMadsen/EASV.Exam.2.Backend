@@ -10,7 +10,7 @@
     use App\Models\templates\ModelView;
 
 
-    class ZipCodeViewFullModel
+    final class ZipCodeViewFullModel
         extends ModelView
     {
         public $timestamps = false;

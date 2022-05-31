@@ -11,6 +11,7 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\TaskController;
 
+
     const taskRoute = '/' . CURRENT_VERSION . '/tool/task';
     const taskReadRoute = taskRoute . '/read';
     const taskCreateRoute = taskRoute . '/create';
@@ -18,27 +19,17 @@
     const taskDeleteRoute = taskRoute . '/delete';
 
 
-    // Routes
-    Route::get(
-        taskReadRoute,
-        [ TaskController::class, 'read' ]
-    );
-
-    // Create
-    Route::post(
-        taskCreateRoute,
-        [ TaskController::class, 'create' ]
-    );
-
-    // Update
-    Route::patch(
-        taskUpdateRoute,
-        [ TaskController::class, 'update' ]
-    );
-
-    // Delete
-    Route::delete(
-        taskDeleteRoute,
-        [ TaskController::class, 'delete' ]
-    );
+    function TaskApi(): void
+    {
+        Route::controller( TaskController::class )->group
+        (
+            function()
+            {
+                Route::get( taskReadRoute, 'read' );
+                Route::post( taskCreateRoute, 'create' );
+                Route::patch( taskUpdateRoute, 'update' );
+                Route::delete( taskDeleteRoute, 'delete' );
+            }
+        );
+    }
 ?>
