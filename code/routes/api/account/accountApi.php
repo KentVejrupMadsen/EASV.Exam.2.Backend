@@ -15,13 +15,13 @@
     //
     const account_route = 'account';
 
-    const account_login_route   = '/login';
-    const account_verify_route  =  '/verify';
-    const account_create_route  =  '/create';
-    const account_me_route      =  '/me';
-    const account_logout_route  =  '/logout';
-    const account_update_route  =  '/update';
-    const account_delete_route  =  '/delete';
+    const login_route   = '/login';
+    const verify_route  =  '/verify';
+    const create_route  =  '/create';
+    const me_route      =  '/me';
+    const logout_route  =  '/logout';
+    const update_route  =  '/update';
+    const delete_route  =  '/delete';
 
 
     function AccountApi()
@@ -34,18 +34,18 @@
                 (
                     function()
                     {
-                        Route::post( account_login_route, 'login' );
-                        Route::post( account_verify_route, 'verify' );
-                        Route::post( account_create_route, 'create' );
+                        Route::post( login_route, 'login' );
+                        Route::post( verify_route, 'verify' );
+                        Route::post( create_route, 'create' );
 
                         Route::middleware( MIDSANC )->group
                         (
                             function()
                             {
-                                Route::get( account_me_route,'me' );
-                                Route::get( account_logout_route, 'logout' );
-                                Route::patch( account_update_route, 'update' );
-                                Route::delete( account_delete_route, 'delete' );
+                                Route::get( me_route,'me' );
+                                Route::get( logout_route, 'logout' );
+                                Route::patch( update_route, 'update' );
+                                Route::delete( delete_route, 'delete' );
                             }
                         );
                     }

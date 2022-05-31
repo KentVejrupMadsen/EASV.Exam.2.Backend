@@ -9,17 +9,17 @@
 
     use App\Http\Controllers\httpControllers\account\entities\PersonAddressController;
 
-    const entitiesAddressRoute = '/' . CURRENT_VERSION . '/account/entities/address';
+    const AddressRoute = 'address';
 
-    const entitiesAddressReadRoute = entitiesAddressRoute . '/read';
-    const entitiesAddressCreateRoute = entitiesAddressRoute . '/create';
-    const entitiesAddressUpdateRoute = entitiesAddressRoute . '/update';
-    const entitiesAddressDeleteRoute = entitiesAddressRoute . '/delete';
+    const AddressReadRoute   = 'read';
+    const AddressCreateRoute = 'create';
+    const AddressUpdateRoute =  'update';
+    const AddressDeleteRoute =  'delete';
 
 
     function AddressApi()
     {
-        Route::prefix( 'address' )->group
+        Route::prefix( AddressRoute )->group
         (
             function()
             {
@@ -27,10 +27,10 @@
                 (
                     function()
                     {
-                        Route::get(entitiesAddressReadRoute, 'read');
-                        Route::post(entitiesAddressCreateRoute, 'create');
-                        Route::patch(entitiesAddressUpdateRoute, 'update' );
-                        Route::delete(entitiesAddressDeleteRoute, 'delete');
+                        Route::get( AddressReadRoute, 'read' );
+                        Route::post( AddressCreateRoute, 'create' );
+                        Route::patch( AddressUpdateRoute, 'update' );
+                        Route::delete( AddressDeleteRoute, 'delete');
                     }
                 );
             }
