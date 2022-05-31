@@ -1,10 +1,19 @@
 <?php
+    /**
+     * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Description:
+     * TODO: Make description
+     */
     namespace App\Http\Controllers\cacheControllers\security;
 
-    use App\Http\Controllers\Controller;
-    use App\Models\security\CSRFModel;
+    // External libraries
     use Illuminate\Support\Facades\Redis;
     use Illuminate\Support\Str;
+
+    // Internal libraries
+    use App\Http\Controllers\Controller;
+    use App\Models\security\CSRFModel;
 
 
     /**
