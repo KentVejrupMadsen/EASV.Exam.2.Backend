@@ -11,34 +11,34 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\TaskController;
 
-    const boardRoute = '/' . CURRENT_VERSION . '/tool/board';
-    const boardReadRoute = boardRoute . '/read';
-    const boardCreateRoute = boardRoute . '/create';
-    const boardUpdateRoute = boardRoute . '/update';
-    const boardDeleteRoute = boardRoute . '/delete';
+    const taskRoute = '/' . CURRENT_VERSION . '/tool/task';
+    const taskReadRoute = taskRoute . '/read';
+    const taskCreateRoute = taskRoute . '/create';
+    const taskUpdateRoute = taskRoute . '/update';
+    const taskDeleteRoute = taskRoute . '/delete';
 
 
     // Routes
     Route::get(
-        '/1.0.0/tool/task/read',
+        taskReadRoute,
         [ TaskController::class, 'read' ]
     );
 
     // Create
     Route::post(
-        '/1.0.0/tool/task/create',
+        taskCreateRoute,
         [ TaskController::class, 'create' ]
     );
 
     // Update
     Route::patch(
-        '/1.0.0/tool/task/update',
+        taskUpdateRoute,
         [ TaskController::class, 'update' ]
     );
 
     // Delete
     Route::delete(
-        '/1.0.0/tool/task/delete',
+        taskDeleteRoute,
         [ TaskController::class, 'delete' ]
     );
 ?>
