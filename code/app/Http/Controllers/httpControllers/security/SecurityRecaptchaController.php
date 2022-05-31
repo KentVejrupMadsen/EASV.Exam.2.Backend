@@ -24,10 +24,15 @@
     class SecurityRecaptchaController
         extends CrudController
     {
-        //
-        public function __construct( bool $makeSingleton = false )
+        /**
+         * @param bool $makeSingleton
+         */
+        public final function __construct( bool $makeSingleton = false )
         {
-
+            if( $makeSingleton )
+            {
+                self::setSingleton( $this );
+            }
         }
 
         /**

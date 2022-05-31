@@ -17,11 +17,11 @@
     use App\Http\Controllers\templates\ControllerPipeline;
 
 
-    final class BoardController
+    class BoardController
         extends ControllerPipeline
     {
         /**
-         * 
+         * @param bool $makeSingleton
          */
         public final function __construct( bool $makeSingleton = false )
         {

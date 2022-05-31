@@ -15,14 +15,12 @@
     // Internal code
     use App\Http\Controllers\templates\ControllerPipeline;
 
-    /**
-     * 
-     */
-    final class ProjectController
+
+    class ProjectController
         extends ControllerPipeline
     {
         /**
-         * 
+         * @param bool $makeSingleton
          */
         public final function __construct( bool $makeSingleton = false )
         {

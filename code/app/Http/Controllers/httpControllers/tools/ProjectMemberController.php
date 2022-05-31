@@ -16,14 +16,11 @@
     use App\Http\Controllers\templates\ControllerPipeline;
 
 
-    /**
-     * 
-     */
-    final class ProjectMemberController
+    class ProjectMemberController
         extends ControllerPipeline
     {
         /**
-         * 
+         * @param bool $makeSingleton
          */
         public final function __construct( bool $makeSingleton = false )
         {

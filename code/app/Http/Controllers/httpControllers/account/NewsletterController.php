@@ -24,14 +24,11 @@
     use App\Models\tables\NewsletterSubscriptionModel;
 
 
-    /**
-     * 
-     */
-    final class NewsletterController
+    class NewsletterController
         extends ControllerPipeline
     {
         /**
-         *
+         * @param bool $makeSingleton
          */
         public final function __construct( bool $makeSingleton = false )
         {

@@ -18,16 +18,14 @@
     use App\Models\tables\AccountEmailModel;
 
 
-    // Code
     /**
      * Account Email controller. That are used when getting "ask" by a computer for data.
-     *
      */
-    final class PersonEmailController
+    class PersonEmailController
         extends ControllerPipeline
     {
         /**
-         * 
+         * @param bool $makeSingleton
          */
         public final function __construct( bool $makeSingleton = false )
         {

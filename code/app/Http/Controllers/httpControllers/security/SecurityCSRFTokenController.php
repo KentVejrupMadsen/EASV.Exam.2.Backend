@@ -47,7 +47,7 @@
         /**
          * @param bool $makeSingleton
          */
-        function __construct( bool $makeSingleton = false )
+        public final function __construct( bool $makeSingleton = false )
         {
             if( $this->isCacheEmpty() )
             {

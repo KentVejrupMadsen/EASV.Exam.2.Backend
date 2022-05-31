@@ -17,14 +17,11 @@
     use App\Http\Controllers\templates\ControllerPipeline;
 
 
-    /**
-     * 
-     */
     final class TaskController
         extends ControllerPipeline
     {
         /**
-         * 
+         * @param bool $makeSingleton
          */
         public final function __construct( bool $makeSingleton = false )
         {

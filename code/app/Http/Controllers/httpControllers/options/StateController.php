@@ -25,14 +25,11 @@
     use App\Http\Requests\options\StateRequest;
 
 
-    /**
-     * 
-     */
-    final class StateController
+    class StateController
         extends ControllerOption
     {
         /**
-         *
+         * @param bool $makeSingleton
          */
         public final function __construct( bool $makeSingleton = false )
         {

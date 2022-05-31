@@ -19,16 +19,14 @@
     use App\Models\tables\AddressModel;
 
 
-    // Code
     /**
      * Account Email controller. That are used when getting "ask" by a computer for data.
-     *
      */
-    final class PersonAddressController
+    class PersonAddressController
         extends ControllerPipeline
     {
         /**
-         * 
+         * @param bool $makeSingleton
          */
         public final function __construct( bool $makeSingleton = false )
         {

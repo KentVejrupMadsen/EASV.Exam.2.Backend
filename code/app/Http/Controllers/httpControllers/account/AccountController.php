@@ -24,14 +24,11 @@
     use App\Models\tables\User;
 
 
-    /**
-     * 
-     */
-    final class AccountController
+    class AccountController
         extends ControllerPipeline
     {
         /**
-         *
+         * @param bool $makeSingleton
          */
         public final function __construct( bool $makeSingleton = false )
         {

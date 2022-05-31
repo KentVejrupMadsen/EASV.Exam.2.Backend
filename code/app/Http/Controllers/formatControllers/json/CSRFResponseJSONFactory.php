@@ -22,6 +22,9 @@
     class CSRFResponseJSONFactory
         extends BaseController
     {
+        /**
+         * @param bool $makeSingleton
+         */
         public function __construct( bool $makeSingleton = false )
         {
             if( $makeSingleton )
