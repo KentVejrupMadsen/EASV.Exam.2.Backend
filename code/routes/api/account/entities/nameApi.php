@@ -9,30 +9,36 @@
     use Illuminate\Support\Facades\Route;
 
     // Internal library
-    use App\Http\Controllers\http\account\entities\PersonNameController;
+    use App\Http\Controllers\httpControllers\account\entities\PersonNameController;
 
+
+    const entityNameRoute = '/' . CURRENT_VERSION . '/account/entities/name';
+    const entityNameReadRoute = entityNameRoute . '/read';
+    const entityNameCreateRoute = entityNameRoute . '/create';
+    const entityNameUpdateRoute = entityNameRoute . '/update';
+    const entityNameDeleteRoute = entityNameRoute . '/delete';
 
     // Routes
     Route::get(
-        '/1.0.0/account/entities/name/read',
+        entityNameReadRoute,
         [ PersonNameController::class, 'read' ]
     );
 
     // Create
     Route::post(
-        '/1.0.0/account/entities/name/create',
+        entityNameCreateRoute,
         [ PersonNameController::class, 'create' ]
     );
 
     // Update
     Route::patch(
-        '/1.0.0/account/entities/name/update',
+        entityNameUpdateRoute,
         [ PersonNameController::class, 'update' ]
     );
 
     // Delete
     Route::delete(
-        '/1.0.0/account/entities/name/delete',
+        entityNameDeleteRoute,
         [ PersonNameController::class, 'delete' ]
     );
 ?>

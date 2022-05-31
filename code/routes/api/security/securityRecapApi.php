@@ -9,30 +9,37 @@
     use Illuminate\Support\Facades\Route;
 
     // Internal libraries
-    use App\Http\Controllers\http\security\SecurityRecaptchaController;
+    use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
+
+    const recaptchaRoute = '/' . CURRENT_VERSION . '/security/recaptcha';
+
+    const recaptchaReadRoute = recaptchaRoute . '/read';
+    const recaptchaCreateRoute = recaptchaRoute . '/create';
+    const recaptchaUpdateRoute = recaptchaRoute . '/update';
+    const recaptchaDeleteRoute = recaptchaRoute . '/delete';
 
 
     // Routes
     Route::get(
-        '/1.0.0/security/recaptcha/read',
+        recaptchaReadRoute,
         [ SecurityRecaptchaController::class, 'publicRead' ]
     );
 
         // Create
     Route::post(
-        '/1.0.0/security/recaptcha/create',
+        recaptchaCreateRoute,
         [ SecurityRecaptchaController::class, 'publicCreate' ]
     );
 
         // Update
     Route::patch(
-        '/1.0.0/security/recaptcha/update',
+        recaptchaUpdateRoute,
         [ SecurityRecaptchaController::class, 'publicUpdate' ]
     );
 
         // Delete
     Route::delete(
-        '/1.0.0/security/recaptcha/delete',
+        recaptchaDeleteRoute,
         [ SecurityRecaptchaController::class, 'publicDelete' ]
     );
 

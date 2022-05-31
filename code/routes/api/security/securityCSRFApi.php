@@ -6,40 +6,48 @@
      * TODO: Make description
      */
     // Internal libraries
-    use App\Http\Controllers\http\security\SecurityCSRFTokenController;
+    use App\Http\Controllers\httpControllers\security\SecurityCSRFTokenController;
 
     // External libraries
     use Illuminate\Support\Facades\Route;
 
+    const csrfRoute = '/' . CURRENT_VERSION . '/security/csrf';
+    const csrfCreateRoute = csrfRoute . '/create';
+    const csrfAccessRoute = csrfRoute . '/access';
+    const csrfResetRoute = csrfRoute . '/reset';
+    const csrfReadRoute = csrfRoute . '/read';
+    const csrfUpdateRoute = csrfRoute . '/update';
+    const csrfDeleteRoute = csrfRoute . '/delete';
+
 
     //  Rotes
     Route::post(
-        '/1.0.0/security/csrf/create',
+        csrfCreateRoute,
         [ SecurityCSRFTokenController::class, 'publicCreate' ]
     );
 
     Route::post(
-        '/1.0.0/security/csrf/access',
+        csrfAccessRoute,
         [ SecurityCSRFTokenController::class, 'access' ]
     );
 
-    Route::get(
-        '/1.0.0/security/csrf/reset',
+    Route::patch(
+        csrfResetRoute,
         [ SecurityCSRFTokenController::class, 'reset' ]
     );
 
-    Route::get(
-        '/1.0.0/security/csrf/read',
+    Route::post(
+        csrfReadRoute,
         [ SecurityCSRFTokenController::class, 'publicRead' ]
     );
 
     Route::patch(
-        '/1.0.0/security/csrf/update',
+        csrfUpdateRoute,
         [ SecurityCSRFTokenController::class, 'publicUpdate' ]
     );
 
     Route::delete(
-        '/1.0.0/security/csrf/delete',
+        csrfDeleteRoute,
         [ SecurityCSRFTokenController::class, 'publicDelete' ]
     );
 ?>

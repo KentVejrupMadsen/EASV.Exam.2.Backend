@@ -7,29 +7,36 @@
      */
     use Illuminate\Support\Facades\Route;
 
-    use App\Http\Controllers\http\account\entities\PersonAddressController;
+    use App\Http\Controllers\httpControllers\account\entities\PersonAddressController;
 
-    
+    const entitiesAddressRoute = '/' . CURRENT_VERSION . '/account/entities/address';
+
+    const entitiesAddressReadRoute = entitiesAddressRoute . '/read';
+    const entitiesAddressCreateRoute = entitiesAddressRoute . '/create';
+    const entitiesAddressUpdateRoute = entitiesAddressRoute . '/update';
+    const entitiesAddressDeleteRoute = entitiesAddressRoute . '/delete';
+
+
     Route::get(
-        '/1.0.0/account/entities/address/read',
+        entitiesAddressReadRoute,
         [ PersonAddressController::class, 'read' ]
     );
 
     // Create
     Route::post(
-        '/1.0.0/account/entities/address/create',
+        entitiesAddressCreateRoute,
         [ PersonAddressController::class, 'create' ]
     );
 
     // Update
     Route::patch(
-        '/1.0.0/account/entities/address/update',
+        entitiesAddressUpdateRoute,
         [ PersonAddressController::class, 'update' ]
     );
 
     // Delete
     Route::delete(
-        '/1.0.0/account/entities/address/delete',
+        entitiesAddressDeleteRoute,
         [ PersonAddressController::class, 'delete' ]
     );
 ?>

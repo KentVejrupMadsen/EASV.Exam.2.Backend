@@ -9,30 +9,36 @@
     use Illuminate\Support\Facades\Route;
 
     // Internal libraries
-    use App\Http\Controllers\http\tools\TaskController;
+    use App\Http\Controllers\httpControllers\tools\TaskController;
+
+    const taskRoute = '/' . CURRENT_VERSION . '/tool/task';
+    const taskReadRoute = taskRoute . '/read';
+    const taskCreateRoute = taskRoute . '/create';
+    const taskUpdateRoute = taskRoute . '/update';
+    const taskDeleteRoute = taskRoute . '/delete';
 
 
     // Routes
     Route::get(
-        '/1.0.0/tool/task/read',
+        taskReadRoute,
         [ TaskController::class, 'read' ]
     );
 
     // Create
     Route::post(
-        '/1.0.0/tool/task/create',
+        taskCreateRoute,
         [ TaskController::class, 'create' ]
     );
 
     // Update
     Route::patch(
-        '/1.0.0/tool/task/update',
+        taskUpdateRoute,
         [ TaskController::class, 'update' ]
     );
 
     // Delete
     Route::delete(
-        '/1.0.0/tool/task/delete',
+        taskDeleteRoute,
         [ TaskController::class, 'delete' ]
     );
 ?>

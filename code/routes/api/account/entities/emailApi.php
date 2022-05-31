@@ -9,30 +9,36 @@
     use Illuminate\Support\Facades\Route;
 
     // Internal libraries
-    use App\Http\Controllers\http\account\entities\PersonEmailController;
+    use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
+
+    const entityEmailRoute = '/' . CURRENT_VERSION . '/account/entities/email';
+    const EntityEmailRead = entityEmailRoute . '/read';
+    const EntityEmailCreate = entityEmailRoute . '/create';
+    const EntityEmailUpdate = entityEmailRoute . '/update';
+    const EntityEmailDelete = entityEmailRoute . '/delete';
 
 
     // Routes
     Route::get(
-        '/1.0.0/account/entities/email/read',
+        EntityEmailRead,
         [ PersonEmailController::class, 'read' ]
     );
 
     // Create
     Route::post(
-        '/1.0.0/account/entities/email/create',
+        EntityEmailCreate,
         [ PersonEmailController::class, 'create' ]
     );
 
     // Update
     Route::patch(
-        '/1.0.0/account/entities/email/update',
+        EntityEmailUpdate,
         [ PersonEmailController::class, 'update' ]
     );
 
     // Delete
     Route::delete(
-        '/1.0.0/account/entities/email/delete',
+        EntityEmailDelete,
         [ PersonEmailController::class, 'delete' ]
     );
 ?>

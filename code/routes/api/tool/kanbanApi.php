@@ -9,30 +9,38 @@
     use Illuminate\Support\Facades\Route;
 
     // Internal libraries
-    use App\Http\Controllers\http\tools\KanbanController;
+    use App\Http\Controllers\httpControllers\tools\KanbanController;
+
+
+    const kanbanRoute = '/' . CURRENT_VERSION . '/tool/kanban';
+
+    const kanbanReadRoute = kanbanRoute . '/read';
+    const kanbanCreateRoute = kanbanRoute . '/create';
+    const kanbanUpdateRoute = kanbanRoute . '/update';
+    const kanbanDeleteRoute = kanbanRoute . '/delete';
 
 
     // Routes
     Route::get(
-        '/1.0.0/tool/kanban/read',
+        kanbanReadRoute,
         [ KanbanController::class, 'read' ]
     );
 
     // Create
     Route::post(
-        '/1.0.0/tool/kanban/create',
+        kanbanCreateRoute,
         [ KanbanController::class, 'create' ]
     );
 
     // Update
     Route::patch(
-        '/1.0.0/tool/kanban/update',
+        kanbanUpdateRoute,
         [ KanbanController::class, 'update' ]
     );
 
     // Delete
     Route::delete(
-        '/1.0.0/tool/kanban/delete',
+        kanbanDeleteRoute,
         [ KanbanController::class, 'delete' ]
     );
 ?>
