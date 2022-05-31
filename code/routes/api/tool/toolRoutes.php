@@ -9,4 +9,13 @@
     require_once 'kanbanApi.php';
     require_once 'projectApi.php';
     require_once 'taskApi.php';
+
+
+    function ToolRoutes(): void
+    {
+        BoardApi();
+        KanbanApi();
+        ProjectApi();
+        TaskApi();
+    }
 ?>

@@ -19,14 +19,17 @@
     const recaptchaDeleteRoute = recaptchaRoute . '/delete';
 
 
-    Route::controller( SecurityRecaptchaController::class )->group
-    (
-        function()
-        {
-            Route::get(recaptchaReadRoute, 'publicRead' );
-            Route::post(recaptchaCreateRoute, 'publicCreate' );
-            Route::patch(recaptchaUpdateRoute, 'publicUpdate' );
-            Route::delete(recaptchaDeleteRoute, 'publicDelete' );
-        }
-    );
+    function securityRecapApi(): void
+    {
+        Route::controller( SecurityRecaptchaController::class )->group
+        (
+            function()
+            {
+                Route::get(recaptchaReadRoute, 'publicRead' );
+                Route::post(recaptchaCreateRoute, 'publicCreate' );
+                Route::patch(recaptchaUpdateRoute, 'publicUpdate' );
+                Route::delete(recaptchaDeleteRoute, 'publicDelete' );
+            }
+        );
+    }
 ?>

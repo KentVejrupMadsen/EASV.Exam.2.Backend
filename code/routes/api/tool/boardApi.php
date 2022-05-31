@@ -20,14 +20,17 @@
     const boardDeleteRoute = boardRoute . '/delete';
 
 
-    Route::controller( BoardController::class )->group
-    (
-        function()
-        {
-            Route::get( boardReadRoute, 'read' );
-            Route::post(boardCreateRoute, 'create' );
-            Route::patch(boardUpdateRoute, 'update' );
-            Route::delete( boardDeleteRoute, 'delete' );
-        }
-    );
+    function BoardApi(): void
+    {
+        Route::controller( BoardController::class )->group
+        (
+            function()
+            {
+                Route::get( boardReadRoute, 'read' );
+                Route::post(boardCreateRoute, 'create' );
+                Route::patch(boardUpdateRoute, 'update' );
+                Route::delete( boardDeleteRoute, 'delete' );
+            }
+        );
+    }
 ?>

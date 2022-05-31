@@ -20,13 +20,17 @@
     const configurationDeleteRoute = configurationRoute . '/delete';
 
 
-    Route::controller(SecurityConfigurationController::class)->group(
-        function ()
-        {
-            Route::get( configurationReadRoute, 'publicRead' );
-            Route::post(configurationCreateRoute, 'publicCreate' );
-            Route::patch( configurationUpdateRoute, 'publicUpdate' );
-            Route::delete( configurationDeleteRoute, 'publicDelete' );
-        }
-    );
+    function securityConfigurationApi(): void
+    {
+        Route::controller( SecurityConfigurationController::class )->group
+        (
+            function ()
+            {
+                Route::get( configurationReadRoute, 'publicRead' );
+                Route::post(configurationCreateRoute, 'publicCreate' );
+                Route::patch( configurationUpdateRoute, 'publicUpdate' );
+                Route::delete( configurationDeleteRoute, 'publicDelete' );
+            }
+        );
+    }
 ?>

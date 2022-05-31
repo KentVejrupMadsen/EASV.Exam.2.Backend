@@ -19,14 +19,17 @@
     const projectDeleteRoute = projectRoute . '/delete';
 
 
-    Route::controller( ProjectController::class )->group
-    (
-        function()
-        {
-            Route::get( projectReadRoute, 'read' );
-            Route::post( projectCreateRoute, 'create' );
-            Route::patch( projectUpdateRoute, 'update' );
-            Route::delete( projectDeleteRoute, 'delete' );
-        }
-    );
+    function ProjectApi(): void
+    {
+        Route::controller( ProjectController::class )->group
+        (
+            function()
+            {
+                Route::get( projectReadRoute, 'read' );
+                Route::post( projectCreateRoute, 'create' );
+                Route::patch( projectUpdateRoute, 'update' );
+                Route::delete( projectDeleteRoute, 'delete' );
+            }
+        );
+    }
 ?>

@@ -8,4 +8,11 @@
     require_once 'securityCSRFApi.php';
     require_once 'securityConfigurationApi.php';
     require_once 'securityRecapApi.php';
+
+    function SecurityRoutes(): void
+    {
+        securityCSRFApi();
+        securityConfigurationApi();
+        securityRecapApi();
+    }
 ?>

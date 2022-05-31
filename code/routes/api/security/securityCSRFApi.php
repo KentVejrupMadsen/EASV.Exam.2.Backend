@@ -19,16 +19,19 @@
     const csrfUpdateRoute = csrfRoute . '/update';
     const csrfDeleteRoute = csrfRoute . '/delete';
 
-    Route::controller(SecurityCSRFTokenController::class)->group
-    (
-        function()
-        {
-            Route::post(csrfCreateRoute, 'publicCreate');
-            Route::post(csrfAccessRoute, 'access');
-            Route::patch(csrfResetRoute, 'reset');
-            Route::post(csrfReadRoute,'publicRead');
-            Route::patch(csrfUpdateRoute, 'publicUpdate');
-            Route::delete( csrfDeleteRoute, 'publicDelete');
-        }
-    );
+    function securityCSRFApi(): void
+    {
+        Route::controller(SecurityCSRFTokenController::class)->group
+        (
+            function()
+            {
+                Route::post(csrfCreateRoute, 'publicCreate');
+                Route::post(csrfAccessRoute, 'access');
+                Route::patch(csrfResetRoute, 'reset');
+                Route::post(csrfReadRoute,'publicRead');
+                Route::patch(csrfUpdateRoute, 'publicUpdate');
+                Route::delete( csrfDeleteRoute, 'publicDelete');
+            }
+        );
+    }
 ?>
