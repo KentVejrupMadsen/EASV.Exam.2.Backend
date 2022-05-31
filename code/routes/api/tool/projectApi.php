@@ -11,7 +11,13 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\ProjectController;
 
+    const boardRoute = '/' . CURRENT_VERSION . '/tool/board';
+    const boardReadRoute = boardRoute . '/read';
+    const boardCreateRoute = boardRoute . '/create';
+    const boardUpdateRoute = boardRoute . '/update';
+    const boardDeleteRoute = boardRoute . '/delete';
 
+    
     // Routes
     Route::get(
         '/1.0.0/tool/project/read',

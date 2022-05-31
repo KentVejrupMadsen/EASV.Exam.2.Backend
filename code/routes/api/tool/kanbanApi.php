@@ -11,6 +11,12 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\KanbanController;
 
+    const boardRoute = '/' . CURRENT_VERSION . '/tool/board';
+    const boardReadRoute = boardRoute . '/read';
+    const boardCreateRoute = boardRoute . '/create';
+    const boardUpdateRoute = boardRoute . '/update';
+    const boardDeleteRoute = boardRoute . '/delete';
+
 
     // Routes
     Route::get(
