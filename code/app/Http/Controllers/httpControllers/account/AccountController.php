@@ -20,6 +20,7 @@
 
     // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
+
     use App\Models\tables\User;
 
 
