@@ -25,18 +25,20 @@
     use App\Http\Requests\account\InformationRequest;
 
 
-    /**
-     * 
-     */
-    final class InformationController
+    class InformationController
         extends ControllerPipeline
     {
         /**
-         *
+         * @param bool $makeSingleton
          */
-        public final function __construct()
+        public function __construct( bool $makeSingleton = false )
         {
             parent::__construct();
+
+            if( $makeSingleton )
+            {
+                self::setSingleton( $this );
+            }
         }
 
 

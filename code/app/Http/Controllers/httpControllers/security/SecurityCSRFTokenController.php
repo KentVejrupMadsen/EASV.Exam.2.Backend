@@ -8,11 +8,11 @@
     namespace App\Http\Controllers\httpControllers\security;
 
     // External libraries
+    use App\Http\Controllers\formatControllers\json\CSRFResponseJSONFactory;
     use Carbon\Carbon;
 
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Redis;
     use Illuminate\Support\Str;
 
     use OpenApi\Attributes
@@ -36,20 +36,48 @@
         extends CrudController
     {
         // Variables
-        private static $controller = null;
-        private $cache = null;
-        private $tokenLength = 64;
+        private static ?SecurityCSRFTokenController $controller = null;
+
+        private ?RedisCacheCSRFController $cache       = null;
+        private ?CSRFResponseJSONFactory  $jsonFactory = null;
+
+        private int $tokenLength = 64;
 
 
         /**
-         * 
+         * @param bool $makeSingleton
          */
-        function __construct()
+        public function __construct( bool $makeSingleton = false )
         {
             if( $this->isCacheEmpty() )
             {
                 $this->setCache( RedisCacheCSRFController::getSingleton() );
             }
+
+            if( $this->isJsonFactoryEmpty() )
+            {
+                $this->setJsonFactory( CSRFResponseJSONFactory::getSingleton() );
+            }
+
+            if( $makeSingleton )
+            {
+                self::setSingleton( $this );
+            }
+        }
+
+        protected final function setJsonFactory( CSRFResponseJSONFactory $factory )
+        {
+            $this->jsonFactory = $factory;
+        }
+
+        protected final function getJsonFactory(): CSRFResponseJSONFactory
+        {
+            return $this->jsonFactory;
+        }
+
+        protected final function isJsonFactoryEmpty()
+        {
+            return is_null( $this->jsonFactory );
         }
 
         /**

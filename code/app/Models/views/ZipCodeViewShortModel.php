@@ -10,18 +10,21 @@
     use App\Models\templates\ModelView;
 
 
-    class NewsletterViewModel
+    class ZipCodeViewShortModel
         extends ModelView
     {
         public $timestamps = false;
-        protected $table = 'newsletter_view';
+        protected $table = 'zip_codes_view_short';
+
 
         protected $fillable =
         [
             'id',
-            'email',
-            'options'
+            'area_name',
+            'zip_number',
+            'country_acronym'
         ];
+
 
         protected $hidden =
         [
@@ -31,9 +34,12 @@
 
         protected $casts =
         [
-            'id'        => 'integer',
-            'email'     => 'string',
-            'options'   => 'array'
+            'id' => 'integer',
+
+            'area_name'     => 'string',
+            'zip_number'    => 'integer',
+
+            'country_acronym' => 'string'
         ];
     }
 ?>
