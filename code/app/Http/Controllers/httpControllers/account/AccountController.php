@@ -33,9 +33,14 @@
         /**
          *
          */
-        public final function __construct( bool $makeSingleton = true )
+        public final function __construct( bool $makeSingleton = false )
         {
             parent::__construct();
+
+            if( $makeSingleton )
+            {
+                self::setSingleton( $this );
+            }
         }
 
 

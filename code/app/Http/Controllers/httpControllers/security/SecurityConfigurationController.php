@@ -23,10 +23,12 @@
         extends CrudController
     {
         //
-        public function __construct( bool $makeSingleton = true )
+        public function __construct( bool $makeSingleton = false )
         {
-
-
+            if( $makeSingleton )
+            {
+                self::setSingleton( $this );
+            }
         }
 
         // Functions that the routes interacts with
