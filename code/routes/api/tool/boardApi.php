@@ -18,28 +18,15 @@
     const boardUpdateRoute = boardRoute . '/update';
     const boardDeleteRoute = boardRoute . '/delete';
 
-
-    // Routes
-    Route::get(
-        boardReadRoute,
-        [ BoardController::class, 'read' ]
-    );
-
-    // Create
-    Route::post(
-        boardCreateRoute,
-        [ BoardController::class, 'create' ]
-    );
-
-    // Update
-    Route::patch(
-        boardUpdateRoute,
-        [ BoardController::class, 'update' ]
-    );
-
-    // Delete
-    Route::delete(
-        boardDeleteRoute,
-        [ BoardController::class, 'delete' ]
+    
+    Route::controller( BoardController::class )->group
+    (
+        function()
+        {
+            Route::get( boardReadRoute, 'read' );
+            Route::post(boardCreateRoute, 'create' );
+            Route::patch(boardUpdateRoute, 'update' );
+            Route::delete( boardDeleteRoute, 'delete' );
+        }
     );
 ?>

@@ -19,7 +19,8 @@
     const kanbanUpdateRoute = kanbanRoute . '/update';
     const kanbanDeleteRoute = kanbanRoute . '/delete';
 
-    Route::controller(KanbanController::class)->group
+
+    Route::controller( KanbanController::class )->group
     (
         function()
         {
