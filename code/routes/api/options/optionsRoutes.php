@@ -5,12 +5,22 @@
      * Description:
      * TODO: Make description
      */
+    use Illuminate\Support\Facades\Route;
+
     require_once 'findApi.php';
     require_once 'stateApi.php';
 
-    function optionsRoutes(): void
+
+    //
+    function OptionsRoutes(): void
     {
-        findApi();
-        stateApi();
+        Route::prefix( 'options' )->group
+        (
+            function()
+            {
+                findApi();
+                stateApi();
+            }
+        );
     }
 ?>

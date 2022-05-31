@@ -5,18 +5,27 @@
      * Description:
      * TODO: Make description
      */
+    // External
     use Illuminate\Support\Facades\Route;
 
+    // Internal
     require_once 'homeApi.php';
 
+    
     const CURRENT_VERSION = '1.0.0';
     const VersionUrl = '/' . CURRENT_VERSION;
 
 
-    Route::prefix( VersionUrl )->group(
-        function()
-        {
-            HomeApi();
-        }
-    );
+    function ApiRoutes()
+    {
+        Route::prefix( VersionUrl )->group
+        (
+            function()
+            {
+                HomeApi();
+            }
+        );
+    }
+
+    ApiRoutes();
 ?>

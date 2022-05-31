@@ -10,12 +10,21 @@
     require_once 'projectApi.php';
     require_once 'taskApi.php';
 
+    use Illuminate\Support\Facades\Route;
 
+
+    //
     function ToolRoutes(): void
     {
-        BoardApi();
-        KanbanApi();
-        ProjectApi();
-        TaskApi();
+        Route::prefix( 'tools' )->group
+        (
+            function()
+            {
+                BoardApi();
+                KanbanApi();
+                ProjectApi();
+                TaskApi();
+            }
+        );
     }
 ?>

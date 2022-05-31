@@ -9,10 +9,18 @@
     require_once 'securityConfigurationApi.php';
     require_once 'securityRecapApi.php';
 
+    use Illuminate\Support\Facades\Route;
+
     function SecurityRoutes(): void
     {
-        securityCSRFApi();
-        securityConfigurationApi();
-        securityRecapApi();
+        Route::prefix( 'security' )->group
+        (
+            function()
+            {
+                securityCSRFApi();
+                securityConfigurationApi();
+                securityRecapApi();
+            }
+        );
     }
 ?>

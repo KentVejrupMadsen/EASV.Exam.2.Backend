@@ -11,6 +11,7 @@
     // Internal libraries
     use App\Http\Controllers\ApiHomeController;
 
+
     function HomeApi()
     {
         Route::get(
