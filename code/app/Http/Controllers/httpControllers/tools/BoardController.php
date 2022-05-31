@@ -17,15 +17,20 @@
     use App\Http\Controllers\templates\ControllerPipeline;
 
 
-    final class BoardController
+    class BoardController
         extends ControllerPipeline
     {
         /**
-         * 
+         * @param bool $makeSingleton
          */
-        public final function __construct()
+        public final function __construct( bool $makeSingleton = false )
         {
             parent::__construct();
+
+            if( $makeSingleton )
+            {
+                self::setSingleton( $this );
+            }
         }
 
         public final function hasImplementedCSV(): bool
