@@ -5,6 +5,9 @@
      * Description:
      * TODO: Make description
      */
+    // External libraries
+    use Illuminate\Support\Facades\Route;
+
     require_once 'entities/entitiesRoutes.php';
 
     require_once 'accountApi.php';
@@ -13,7 +16,15 @@
 
     function AccountRoutes(): void
     {
-        AccountApi();
-        NewsletterApi();
+        Route::prefix( 'account' )->group
+        (
+            function()
+            {
+                AccountApi();
+                NewsletterApi();
+                EntitiesRoutes();
+            }
+        );
+
     }
 ?>

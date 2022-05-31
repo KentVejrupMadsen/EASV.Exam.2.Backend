@@ -5,6 +5,10 @@
      * Description:
      * TODO: Make description
      */
+    // External library
+    use Illuminate\Support\Facades\Route;
+
+    // Internally
     require_once 'addressApi.php';
     require_once 'emailApi.php';
     require_once 'nameApi.php';
@@ -12,7 +16,14 @@
 
     function EntitiesRoutes()
     {
-        AddressApi();
-        EmailApi();
+        Route::prefix( 'entities' )->group
+        (
+            function()
+            {
+                AddressApi();
+                EmailApi();
+                NameApi();
+            }
+        );
     }
 ?>

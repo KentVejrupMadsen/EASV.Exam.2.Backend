@@ -48,8 +48,6 @@
                                 Route::delete( account_delete_route, 'delete' );
                             }
                         );
-
-                        EntitiesRoutes();
                     }
                 );
             }
