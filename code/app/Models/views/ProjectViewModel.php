@@ -10,7 +10,7 @@
     use App\Models\templates\ModelView;
 
 
-    class ProjectViewModel
+    final class ProjectViewModel
         extends ModelView
     {
         public $timestamps = false;

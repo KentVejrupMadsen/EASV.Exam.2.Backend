@@ -12,35 +12,31 @@
     use App\Http\Controllers\httpControllers\tools\KanbanController;
 
 
-    const kanbanRoute = '/' . CURRENT_VERSION . '/tool/kanban';
+    const kanbanRoute = 'kanban';
 
-    const kanbanReadRoute = kanbanRoute . '/read';
-    const kanbanCreateRoute = kanbanRoute . '/create';
-    const kanbanUpdateRoute = kanbanRoute . '/update';
-    const kanbanDeleteRoute = kanbanRoute . '/delete';
+    const kanbanCreateRoute = 'create';
+    const kanbanDeleteRoute = 'delete';
+    const kanbanReadRoute   = 'read';
+    const kanbanUpdateRoute = 'update';
 
 
-    // Routes
-    Route::get(
-        kanbanReadRoute,
-        [ KanbanController::class, 'read' ]
-    );
-
-    // Create
-    Route::post(
-        kanbanCreateRoute,
-        [ KanbanController::class, 'create' ]
-    );
-
-    // Update
-    Route::patch(
-        kanbanUpdateRoute,
-        [ KanbanController::class, 'update' ]
-    );
-
-    // Delete
-    Route::delete(
-        kanbanDeleteRoute,
-        [ KanbanController::class, 'delete' ]
-    );
+    function KanbanApi(): void
+    {
+        Route::prefix( kanbanRoute )->group
+        (
+            function()
+            {
+                Route::controller( KanbanController::class )->group
+                (
+                    function()
+                    {
+                        Route::post( kanbanCreateRoute, 'create' );
+                        Route::delete( kanbanDeleteRoute, 'delete' );
+                        Route::patch( kanbanUpdateRoute, 'update' );
+                        Route::get( kanbanReadRoute, 'read' );
+                    }
+                );
+            }
+        );
+    }
 ?>

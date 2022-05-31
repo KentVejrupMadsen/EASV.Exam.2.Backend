@@ -10,7 +10,7 @@
     use App\Models\templates\ModelView;
 
 
-    class NewsletterViewModel
+    final class NewsletterViewModel
         extends ModelView
     {
         public $timestamps = false;

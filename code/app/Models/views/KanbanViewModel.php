@@ -10,7 +10,7 @@
     use App\Models\templates\ModelView;
 
 
-    class KanbanViewModel
+    final class KanbanViewModel
         extends ModelView
     {
         public $timestamps = false;

@@ -12,34 +12,32 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\BoardController;
 
-    const boardRoute = '/' . CURRENT_VERSION . '/tool/board';
-    const boardReadRoute = boardRoute . '/read';
-    const boardCreateRoute = boardRoute . '/create';
-    const boardUpdateRoute = boardRoute . '/update';
-    const boardDeleteRoute = boardRoute . '/delete';
+
+    const boardRoute       = 'board';
+
+    const boardCreateRoute = 'create';
+    const boardDeleteRoute = 'delete';
+    const boardReadRoute   = 'read';
+    const boardUpdateRoute = 'update';
 
 
-    // Routes
-    Route::get(
-        boardReadRoute,
-        [ BoardController::class, 'read' ]
-    );
-
-    // Create
-    Route::post(
-        boardCreateRoute,
-        [ BoardController::class, 'create' ]
-    );
-
-    // Update
-    Route::patch(
-        boardUpdateRoute,
-        [ BoardController::class, 'update' ]
-    );
-
-    // Delete
-    Route::delete(
-        boardDeleteRoute,
-        [ BoardController::class, 'delete' ]
-    );
+    function BoardApi(): void
+    {
+        Route::prefix( boardRoute )->group
+        (
+            function()
+            {
+                Route::controller( BoardController::class )->group
+                (
+                    function()
+                    {
+                        Route::post( boardCreateRoute, 'create' );
+                        Route::delete( boardDeleteRoute, 'delete' );
+                        Route::patch( boardUpdateRoute, 'update' );
+                        Route::get( boardReadRoute, 'read' );
+                    }
+                );
+            }
+        );
+    }
 ?>

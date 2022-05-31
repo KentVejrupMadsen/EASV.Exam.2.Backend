@@ -9,34 +9,31 @@
 
     use App\Http\Controllers\httpControllers\account\entities\PersonAddressController;
 
-    const entitiesAddressRoute = '/' . CURRENT_VERSION . '/account/entities/address';
+    const AddressRoute = 'address';
 
-    const entitiesAddressReadRoute = entitiesAddressRoute . '/read';
-    const entitiesAddressCreateRoute = entitiesAddressRoute . '/create';
-    const entitiesAddressUpdateRoute = entitiesAddressRoute . '/update';
-    const entitiesAddressDeleteRoute = entitiesAddressRoute . '/delete';
+    const AddressReadRoute   = 'read';
+    const AddressCreateRoute = 'create';
+    const AddressUpdateRoute =  'update';
+    const AddressDeleteRoute =  'delete';
 
 
-    Route::get(
-        entitiesAddressReadRoute,
-        [ PersonAddressController::class, 'read' ]
-    );
-
-    // Create
-    Route::post(
-        entitiesAddressCreateRoute,
-        [ PersonAddressController::class, 'create' ]
-    );
-
-    // Update
-    Route::patch(
-        entitiesAddressUpdateRoute,
-        [ PersonAddressController::class, 'update' ]
-    );
-
-    // Delete
-    Route::delete(
-        entitiesAddressDeleteRoute,
-        [ PersonAddressController::class, 'delete' ]
-    );
+    function AddressApi()
+    {
+        Route::prefix( AddressRoute )->group
+        (
+            function()
+            {
+                Route::controller( PersonAddressController::class )->group
+                (
+                    function()
+                    {
+                        Route::get( AddressReadRoute, 'read' );
+                        Route::post( AddressCreateRoute, 'create' );
+                        Route::patch( AddressUpdateRoute, 'update' );
+                        Route::delete( AddressDeleteRoute, 'delete');
+                    }
+                );
+            }
+        );
+    }
 ?>

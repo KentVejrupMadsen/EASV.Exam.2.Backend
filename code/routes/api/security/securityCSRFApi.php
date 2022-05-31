@@ -11,43 +11,35 @@
     // External libraries
     use Illuminate\Support\Facades\Route;
 
-    const csrfRoute = '/' . CURRENT_VERSION . '/security/csrf';
-    const csrfCreateRoute = csrfRoute . '/create';
-    const csrfAccessRoute = csrfRoute . '/access';
-    const csrfResetRoute = csrfRoute . '/reset';
-    const csrfReadRoute = csrfRoute . '/read';
-    const csrfUpdateRoute = csrfRoute . '/update';
-    const csrfDeleteRoute = csrfRoute . '/delete';
+    const csrfRoute = 'csrf';
+
+    const csrfAccessRoute = 'access';
+    const csrfCreateRoute = 'create';
+    const csrfDeleteRoute = 'delete';
+    const csrfReadRoute   = 'read';
+    const csrfResetRoute  = 'reset';
+    const csrfUpdateRoute = 'update';
 
 
-    //  Rotes
-    Route::post(
-        csrfCreateRoute,
-        [ SecurityCSRFTokenController::class, 'publicCreate' ]
-    );
-
-    Route::post(
-        csrfAccessRoute,
-        [ SecurityCSRFTokenController::class, 'access' ]
-    );
-
-    Route::patch(
-        csrfResetRoute,
-        [ SecurityCSRFTokenController::class, 'reset' ]
-    );
-
-    Route::post(
-        csrfReadRoute,
-        [ SecurityCSRFTokenController::class, 'publicRead' ]
-    );
-
-    Route::patch(
-        csrfUpdateRoute,
-        [ SecurityCSRFTokenController::class, 'publicUpdate' ]
-    );
-
-    Route::delete(
-        csrfDeleteRoute,
-        [ SecurityCSRFTokenController::class, 'publicDelete' ]
-    );
+    function securityCSRFApi(): void
+    {
+        Route::prefix( csrfRoute )->group
+        (
+            function()
+            {
+                Route::controller( SecurityCSRFTokenController::class )->group
+                (
+                    function()
+                    {
+                        Route::post( csrfAccessRoute, 'access' );
+                        Route::post( csrfCreateRoute, 'publicCreate' );
+                        Route::delete( csrfDeleteRoute, 'publicDelete' );
+                        Route::post( csrfReadRoute,'publicRead' );
+                        Route::patch( csrfResetRoute, 'reset' );
+                        Route::patch( csrfUpdateRoute, 'publicUpdate' );
+                    }
+                );
+            }
+        );
+    }
 ?>
