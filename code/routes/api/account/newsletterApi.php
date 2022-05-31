@@ -20,14 +20,17 @@
     const newsletter_delete_route = newsletter_route . '/delete';
 
 
-    Route::controller(NewsletterController::class)->group
-    (
-        function()
-        {
-            Route::get(newsletter_read_route, 'read' );
-            Route::post(newsletter_create_route, 'create' );
-            Route::patch(newsletter_update_route, 'update');
-            Route::delete(newsletter_delete_route, 'delete' );
-        }
-    );
+   function NewsletterApi()
+   {
+       Route::controller( NewsletterController::class )->group
+       (
+           function()
+           {
+               Route::get( newsletter_read_route, 'read' );
+               Route::post( newsletter_create_route, 'create' );
+               Route::patch( newsletter_update_route, 'update' );
+               Route::delete( newsletter_delete_route, 'delete' );
+           }
+       );
+   }
 ?>

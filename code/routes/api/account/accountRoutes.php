@@ -9,4 +9,11 @@
 
     require_once 'accountApi.php';
     require_once 'newsletterApi.php';
+
+
+    function AccountRoutes(): void
+    {
+        AccountApi();
+        NewsletterApi();
+    }
 ?>

@@ -19,14 +19,17 @@
     const entityNameDeleteRoute = entityNameRoute . '/delete';
 
 
-    Route::controller( PersonNameController::class )->group
-    (
-        function()
-        {
-            Route::get( entityNameReadRoute, 'read' );
-            Route::post(entityNameCreateRoute,'create' );
-            Route::patch(entityNameUpdateRoute, 'update' );
-            Route::delete(entityNameDeleteRoute, 'delete' );
-        }
-    );
+    function NameApi()
+    {
+        Route::controller( PersonNameController::class )->group
+        (
+            function()
+            {
+                Route::get( entityNameReadRoute, 'read' );
+                Route::post( entityNameCreateRoute,'create' );
+                Route::patch( entityNameUpdateRoute, 'update' );
+                Route::delete( entityNameDeleteRoute, 'delete' );
+            }
+        );
+    }
 ?>
