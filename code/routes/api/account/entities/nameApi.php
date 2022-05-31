@@ -21,14 +21,20 @@
 
     function NameApi()
     {
-        Route::controller( PersonNameController::class )->group
+        Route::prefix( 'name' )->group
         (
             function()
             {
-                Route::get( entityNameReadRoute, 'read' );
-                Route::post( entityNameCreateRoute,'create' );
-                Route::patch( entityNameUpdateRoute, 'update' );
-                Route::delete( entityNameDeleteRoute, 'delete' );
+                Route::controller( PersonNameController::class )->group
+                (
+                    function()
+                    {
+                        Route::get( entityNameReadRoute, 'read' );
+                        Route::post( entityNameCreateRoute,'create' );
+                        Route::patch( entityNameUpdateRoute, 'update' );
+                        Route::delete( entityNameDeleteRoute, 'delete' );
+                    }
+                );
             }
         );
     }

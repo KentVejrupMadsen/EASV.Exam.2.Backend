@@ -20,15 +20,21 @@
 
     function EmailApi(): void
     {
-        Route::controller( PersonEmailController::class )->group
+        Route::prefix( 'email' )->group
         (
             function()
             {
-                Route::get( EntityEmailRead, 'read' );
-                Route::post( EntityEmailCreate, 'create' );
-                Route::patch( EntityEmailUpdate, 'update' );
+                Route::controller( PersonEmailController::class )->group
+                (
+                    function()
+                    {
+                        Route::get( EntityEmailRead, 'read' );
+                        Route::post( EntityEmailCreate, 'create' );
+                        Route::patch( EntityEmailUpdate, 'update' );
 
-                Route::delete( EntityEmailDelete, 'delete' );
+                        Route::delete( EntityEmailDelete, 'delete' );
+                    }
+                );
             }
         );
     }

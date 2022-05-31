@@ -19,14 +19,20 @@
 
     function AddressApi()
     {
-        Route::controller( PersonAddressController::class )->group
+        Route::prefix( 'address' )->group
         (
             function()
             {
-                Route::get(entitiesAddressReadRoute, 'read');
-                Route::post(entitiesAddressCreateRoute, 'create');
-                Route::patch(entitiesAddressUpdateRoute, 'update' );
-                Route::delete(entitiesAddressDeleteRoute, 'delete');
+                Route::controller( PersonAddressController::class )->group
+                (
+                    function()
+                    {
+                        Route::get(entitiesAddressReadRoute, 'read');
+                        Route::post(entitiesAddressCreateRoute, 'create');
+                        Route::patch(entitiesAddressUpdateRoute, 'update' );
+                        Route::delete(entitiesAddressDeleteRoute, 'delete');
+                    }
+                );
             }
         );
     }
