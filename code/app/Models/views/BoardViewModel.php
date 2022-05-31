@@ -10,7 +10,7 @@
     use App\Models\templates\ModelView;
 
 
-    class BoardViewModel
+    final class BoardViewModel
         extends ModelView
     {
         public $timestamps = false;

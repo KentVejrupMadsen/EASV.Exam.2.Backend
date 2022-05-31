@@ -19,28 +19,17 @@
     const kanbanUpdateRoute = kanbanRoute . '/update';
     const kanbanDeleteRoute = kanbanRoute . '/delete';
 
-
-    // Routes
-    Route::get(
-        kanbanReadRoute,
-        [ KanbanController::class, 'read' ]
-    );
-
-    // Create
-    Route::post(
-        kanbanCreateRoute,
-        [ KanbanController::class, 'create' ]
-    );
-
-    // Update
-    Route::patch(
-        kanbanUpdateRoute,
-        [ KanbanController::class, 'update' ]
-    );
-
-    // Delete
-    Route::delete(
-        kanbanDeleteRoute,
-        [ KanbanController::class, 'delete' ]
-    );
+    function KanbanApi(): void
+    {
+        Route::controller( KanbanController::class )->group
+        (
+            function()
+            {
+                Route::get( kanbanReadRoute, 'read' );
+                Route::post( kanbanCreateRoute, 'create' );
+                Route::patch( kanbanUpdateRoute, 'update' );
+                Route::delete( kanbanDeleteRoute, 'delete' );
+            }
+        );
+    }
 ?>
