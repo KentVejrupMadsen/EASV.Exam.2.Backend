@@ -12,13 +12,14 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\BoardController;
 
+
     const boardRoute = '/' . CURRENT_VERSION . '/tool/board';
     const boardReadRoute = boardRoute . '/read';
     const boardCreateRoute = boardRoute . '/create';
     const boardUpdateRoute = boardRoute . '/update';
     const boardDeleteRoute = boardRoute . '/delete';
 
-    
+
     Route::controller( BoardController::class )->group
     (
         function()

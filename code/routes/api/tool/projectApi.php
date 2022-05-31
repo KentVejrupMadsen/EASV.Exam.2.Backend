@@ -18,28 +18,15 @@
     const projectUpdateRoute = projectRoute . '/update';
     const projectDeleteRoute = projectRoute . '/delete';
 
-
-    // Routes
-    Route::get(
-        projectReadRoute,
-        [ ProjectController::class, 'read' ]
-    );
-
-        // Create
-    Route::post(
-        projectCreateRoute,
-        [ ProjectController::class, 'create' ]
-    );
-
-        // Update
-    Route::patch(
-        projectUpdateRoute,
-        [ ProjectController::class, 'update' ]
-    );
-
-        // Delete
-    Route::delete(
-        projectDeleteRoute,
-        [ ProjectController::class, 'delete' ]
+    
+    Route::controller( ProjectController::class )->group
+    (
+        function()
+        {
+            Route::get( projectReadRoute, 'read' );
+            Route::post( projectCreateRoute, 'create' );
+            Route::patch( projectUpdateRoute, 'update' );
+            Route::delete( projectDeleteRoute, 'delete' );
+        }
     );
 ?>
