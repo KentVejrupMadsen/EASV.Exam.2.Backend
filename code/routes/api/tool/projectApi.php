@@ -18,7 +18,7 @@
     const projectUpdateRoute = projectRoute . '/update';
     const projectDeleteRoute = projectRoute . '/delete';
 
-    
+
     Route::controller( ProjectController::class )->group
     (
         function()
