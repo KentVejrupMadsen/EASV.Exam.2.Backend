@@ -16,7 +16,8 @@
     const entitiesAddressUpdateRoute = entitiesAddressRoute . '/update';
     const entitiesAddressDeleteRoute = entitiesAddressRoute . '/delete';
 
-    Route::controller(PersonAddressController::class)->group
+
+    Route::controller( PersonAddressController::class )->group
     (
         function()
         {

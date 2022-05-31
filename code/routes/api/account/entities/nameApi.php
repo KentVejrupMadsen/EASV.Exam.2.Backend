@@ -18,27 +18,15 @@
     const entityNameUpdateRoute = entityNameRoute . '/update';
     const entityNameDeleteRoute = entityNameRoute . '/delete';
 
-    // Routes
-    Route::get(
-        entityNameReadRoute,
-        [ PersonNameController::class, 'read' ]
-    );
 
-    // Create
-    Route::post(
-        entityNameCreateRoute,
-        [ PersonNameController::class, 'create' ]
-    );
-
-    // Update
-    Route::patch(
-        entityNameUpdateRoute,
-        [ PersonNameController::class, 'update' ]
-    );
-
-    // Delete
-    Route::delete(
-        entityNameDeleteRoute,
-        [ PersonNameController::class, 'delete' ]
+    Route::controller( PersonNameController::class )->group
+    (
+        function()
+        {
+            Route::get( entityNameReadRoute, 'read' );
+            Route::post(entityNameCreateRoute,'create' );
+            Route::patch(entityNameUpdateRoute, 'update' );
+            Route::delete(entityNameDeleteRoute, 'delete' );
+        }
     );
 ?>

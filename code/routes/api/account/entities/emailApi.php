@@ -18,27 +18,15 @@
     const EntityEmailDelete = entityEmailRoute . '/delete';
 
 
-    // Routes
-    Route::get(
-        EntityEmailRead,
-        [ PersonEmailController::class, 'read' ]
-    );
+    Route::controller( PersonEmailController::class )->group
+    (
+        function()
+        {
+            Route::get( EntityEmailRead, 'read' );
+            Route::post( EntityEmailCreate, 'create' );
+            Route::patch( EntityEmailUpdate, 'update' );
 
-    // Create
-    Route::post(
-        EntityEmailCreate,
-        [ PersonEmailController::class, 'create' ]
-    );
-
-    // Update
-    Route::patch(
-        EntityEmailUpdate,
-        [ PersonEmailController::class, 'update' ]
-    );
-
-    // Delete
-    Route::delete(
-        EntityEmailDelete,
-        [ PersonEmailController::class, 'delete' ]
+            Route::delete( EntityEmailDelete, 'delete' );
+        }
     );
 ?>
