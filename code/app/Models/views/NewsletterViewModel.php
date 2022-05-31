@@ -20,23 +20,23 @@
         protected $table = 'newsletter_view';
 
         protected $fillable =
-            [
-                '',
-                '',
-                ''
-            ];
+        [
+            'id',
+            'email',
+            'options'
+        ];
 
         protected $hidden =
-            [
-                '',
-            ];
+        [
+            'id',
+        ];
 
 
         protected $casts =
-            [
-                ''    => 'integer',
-                ''  => 'datetime',
-                ''  => 'datetime',
-            ];
+        [
+            'id'        => 'integer',
+            'email'     => 'string',
+            'options'   => 'array'
+        ];
     }
 ?>
