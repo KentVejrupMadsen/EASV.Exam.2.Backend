@@ -12,8 +12,11 @@
     const stateRoute = '/' . CURRENT_VERSION . '/state';
 
 
-    Route::post(
-        stateRoute,
-        [ StateController::class, 'publicState' ]
+    Route::controller( StateController::class )->group
+    (
+        function()
+        {
+            Route::post( stateRoute, 'publicState' );
+        }
     );
 ?>

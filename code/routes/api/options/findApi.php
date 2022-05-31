@@ -12,8 +12,11 @@
     const findRoute = '/' . CURRENT_VERSION . '/find';
 
 
-    Route::post(
-        findRoute,
-        [ FindController::class, 'publicFind' ]
+    Route::controller( FindController::class )->group
+    (
+        function()
+        {
+            Route::post(findRoute, 'publicFind' );
+        }
     );
 ?>
