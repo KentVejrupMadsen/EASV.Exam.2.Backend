@@ -12,11 +12,14 @@
     const stateRoute = '/' . CURRENT_VERSION . '/state';
 
 
-    Route::controller( StateController::class )->group
-    (
-        function()
-        {
-            Route::post( stateRoute, 'publicState' );
-        }
-    );
+    function stateApi(): void
+    {
+        Route::controller( StateController::class )->group
+        (
+            function()
+            {
+                Route::post( stateRoute, 'publicState' );
+            }
+        );
+    }
 ?>

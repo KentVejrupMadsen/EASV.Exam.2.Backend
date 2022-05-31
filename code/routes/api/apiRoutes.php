@@ -7,27 +7,16 @@
      */
     use Illuminate\Support\Facades\Route;
 
-
-
-    require_once 'account/accountRoutes.php';
-    require_once 'options/optionsRoutes.php';
-    require_once 'security/securityRoutes.php';
-    require_once 'tool/toolRoutes.php';
-
+    require_once 'homeApi.php';
 
     const CURRENT_VERSION = '1.0.0';
     const VersionUrl = '/' . CURRENT_VERSION;
 
 
-
-    Route::name( VersionUrl )->group(
+    Route::prefix( VersionUrl )->group(
         function()
         {
-
+            HomeApi();
         }
     );
-
-
-
-    require_once 'homeApi.php';
 ?>

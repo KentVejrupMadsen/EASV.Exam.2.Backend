@@ -7,4 +7,10 @@
      */
     require_once 'findApi.php';
     require_once 'stateApi.php';
+
+    function optionsRoutes(): void
+    {
+        findApi();
+        stateApi();
+    }
 ?>

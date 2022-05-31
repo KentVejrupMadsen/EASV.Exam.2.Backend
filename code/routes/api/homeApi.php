@@ -11,10 +11,11 @@
     // Internal libraries
     use App\Http\Controllers\ApiHomeController;
 
-
-    // Routes
-    Route::get(
-        '/',
-        [ ApiHomeController::class, 'home' ]
-    );
+    function HomeApi()
+    {
+        Route::get(
+            '/',
+            [ ApiHomeController::class, 'home' ]
+        );
+    }
 ?>
