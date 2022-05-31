@@ -9,12 +9,12 @@
 
     use App\Http\Controllers\httpControllers\options\FindController;
 
-    const findRoute = '/' . CURRENT_VERSION . '/find';
+    const findRoute = 'find';
 
 
     function findApi(): void
     {
-        Route::prefix( 'find' )->group
+        Route::prefix( findRoute  )->group
         (
             function()
             {
@@ -22,7 +22,7 @@
                 (
                     function()
                     {
-                        Route::post( findRoute, 'publicFind' );
+                        Route::post( 'email', 'publicFind' );
                     }
                 );
             }

@@ -9,12 +9,12 @@
 
     use App\Http\Controllers\httpControllers\options\StateController;
 
-    const stateRoute = '/' . CURRENT_VERSION . '/state';
+    const stateRoute = 'states';
 
 
     function stateApi(): void
     {
-        Route::prefix( 'state' )->group
+        Route::prefix( stateRoute )->group
         (
             function()
             {
@@ -22,7 +22,7 @@
                 (
                     function()
                     {
-                        Route::post( '', 'publicState' );
+                        Route::post( 'email', 'publicState' );
                     }
                 );
             }

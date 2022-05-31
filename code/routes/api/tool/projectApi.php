@@ -11,24 +11,30 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\ProjectController;
 
-    const projectRoute = '/' . CURRENT_VERSION . '/tool/project';
+    const projectRoute = 'project';
 
-    const projectReadRoute = projectRoute . '/read';
-    const projectCreateRoute = projectRoute . '/create';
-    const projectUpdateRoute = projectRoute . '/update';
-    const projectDeleteRoute = projectRoute . '/delete';
+    const projectReadRoute = 'read';
+    const projectCreateRoute = 'create';
+    const projectUpdateRoute = 'update';
+    const projectDeleteRoute = 'delete';
 
 
     function ProjectApi(): void
     {
-        Route::controller( ProjectController::class )->group
+        Route::prefix( projectRoute )->group
         (
             function()
             {
-                Route::get( projectReadRoute, 'read' );
-                Route::post( projectCreateRoute, 'create' );
-                Route::patch( projectUpdateRoute, 'update' );
-                Route::delete( projectDeleteRoute, 'delete' );
+                Route::controller( ProjectController::class )->group
+                (
+                    function()
+                    {
+                        Route::get( projectReadRoute, 'read' );
+                        Route::post( projectCreateRoute, 'create' );
+                        Route::patch( projectUpdateRoute, 'update' );
+                        Route::delete( projectDeleteRoute, 'delete' );
+                    }
+                );
             }
         );
     }
