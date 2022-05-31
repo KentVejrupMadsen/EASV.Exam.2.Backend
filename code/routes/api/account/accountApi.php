@@ -13,7 +13,7 @@
 
 
     //
-    const account_route = 'account';
+    const data_route = 'data';
 
     const login_route   = '/login';
     const verify_route  =  '/verify';
@@ -26,7 +26,7 @@
 
     function AccountApi()
     {
-        Route::prefix( account_route )->group
+        Route::prefix( data_route )->group
         (
             function()
             {

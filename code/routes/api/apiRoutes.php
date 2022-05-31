@@ -27,9 +27,11 @@
             function()
             {
                 HomeApi();
-                AccountApi();
+                AccountRoutes();
+
                 OptionsRoutes();
                 SecurityRoutes();
+
                 ToolRoutes();
             }
         );
