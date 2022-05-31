@@ -10,7 +10,7 @@
     use App\Models\templates\ModelView;
 
 
-    class AddressViewModel
+    final class AddressViewModel
         extends ModelView
     {
         public $timestamps = false;
