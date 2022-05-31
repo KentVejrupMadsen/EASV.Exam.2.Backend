@@ -10,8 +10,12 @@
 
     // Internal
     require_once 'homeApi.php';
+    require_once 'account/accountRoutes.php';
+    require_once 'options/optionsRoutes.php';
+    require_once 'tool/toolRoutes.php';
+    require_once 'security/securityRoutes.php';
 
-    
+
     const CURRENT_VERSION = '1.0.0';
     const VersionUrl = '/' . CURRENT_VERSION;
 
@@ -23,6 +27,10 @@
             function()
             {
                 HomeApi();
+                AccountApi();
+                OptionsRoutes();
+                SecurityRoutes();
+                ToolRoutes();
             }
         );
     }
