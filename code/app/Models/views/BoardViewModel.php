@@ -16,6 +16,27 @@
     class BoardViewModel
         extends ModelView
     {
+        public $timestamps = false;
+        protected $table = 'boards_view';
 
+        protected $fillable =
+            [
+                '',
+                '',
+                ''
+            ];
+
+        protected $hidden =
+            [
+                '',
+            ];
+
+
+        protected $casts =
+            [
+                ''    => 'integer',
+                ''  => 'datetime',
+                ''  => 'datetime',
+            ];
     }
 ?>

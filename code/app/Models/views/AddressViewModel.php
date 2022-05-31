@@ -16,6 +16,28 @@
     class AddressViewModel
         extends ModelView
     {
+        public $timestamps = false;
+        protected $table = 'addresses_view';
+
+        protected $fillable =
+            [
+                '',
+                '',
+                ''
+            ];
+
+        protected $hidden =
+            [
+                '',
+            ];
+
+
+        protected $casts =
+            [
+                ''    => 'integer',
+                ''  => 'datetime',
+                ''  => 'datetime',
+            ];
 
     }
 ?>

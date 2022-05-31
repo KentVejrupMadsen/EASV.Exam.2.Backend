@@ -13,11 +13,11 @@
     /**
      *
      */
-    class ProjectViewModel
+    class ZipCodeViewShortModel
         extends ModelView
     {
         public $timestamps = false;
-        protected $table = 'projects_view';
+        protected $table = 'zip_codes_view_short';
 
         protected $fillable =
             [

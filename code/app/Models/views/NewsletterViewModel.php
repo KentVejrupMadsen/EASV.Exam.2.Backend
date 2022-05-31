@@ -9,12 +9,34 @@
 
     use App\Models\templates\ModelView;
 
+
     /**
      *
      */
     class NewsletterViewModel
         extends ModelView
     {
+        public $timestamps = false;
+        protected $table = 'newsletter_view';
 
+        protected $fillable =
+            [
+                '',
+                '',
+                ''
+            ];
+
+        protected $hidden =
+            [
+                '',
+            ];
+
+
+        protected $casts =
+            [
+                ''    => 'integer',
+                ''  => 'datetime',
+                ''  => 'datetime',
+            ];
     }
 ?>

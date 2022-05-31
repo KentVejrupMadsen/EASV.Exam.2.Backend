@@ -16,6 +16,27 @@
     class KanbanViewModel
         extends ModelView
     {
+        public $timestamps = false;
+        protected $table = 'kanbans_view';
 
+        protected $fillable =
+            [
+                '',
+                '',
+                ''
+            ];
+
+        protected $hidden =
+            [
+                '',
+            ];
+
+
+        protected $casts =
+            [
+                ''    => 'integer',
+                ''  => 'datetime',
+                ''  => 'datetime',
+            ];
     }
 ?>

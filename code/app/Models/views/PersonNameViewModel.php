@@ -17,5 +17,27 @@
         extends ModelView
     {
 
+        public $timestamps = false;
+        protected $table = 'person_names_view';
+
+        protected $fillable =
+            [
+                '',
+                '',
+                ''
+            ];
+
+        protected $hidden =
+            [
+                '',
+            ];
+
+
+        protected $casts =
+            [
+                ''    => 'integer',
+                ''  => 'datetime',
+                ''  => 'datetime',
+            ];
     }
 ?>

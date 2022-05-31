@@ -16,6 +16,27 @@
     class AccountViewModel
         extends ModelView
     {
+        public $timestamps = false;
+        protected $table = 'accounts_view';
 
+        protected $fillable =
+            [
+                '',
+                '',
+                ''
+            ];
+
+        protected $hidden =
+            [
+                '',
+            ];
+
+
+        protected $casts =
+            [
+                ''    => 'integer',
+                ''  => 'datetime',
+                ''  => 'datetime',
+            ];
     }
 ?>
