@@ -14,10 +14,10 @@
 
     const taskRoute = 'task';
 
-    const taskReadRoute   = 'read';
     const taskCreateRoute = 'create';
-    const taskUpdateRoute = 'update';
     const taskDeleteRoute = 'delete';
+    const taskReadRoute   = 'read';
+    const taskUpdateRoute = 'update';
 
 
     function TaskApi(): void
@@ -30,10 +30,10 @@
                 (
                     function()
                     {
-                        Route::get( taskReadRoute, 'read' );
                         Route::post( taskCreateRoute, 'create' );
-                        Route::patch( taskUpdateRoute, 'update' );
                         Route::delete( taskDeleteRoute, 'delete' );
+                        Route::get( taskReadRoute, 'read' );
+                        Route::patch( taskUpdateRoute, 'update' );
                     }
                 );
             }

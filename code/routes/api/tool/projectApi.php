@@ -13,10 +13,10 @@
 
     const projectRoute = 'project';
 
-    const projectReadRoute = 'read';
     const projectCreateRoute = 'create';
-    const projectUpdateRoute = 'update';
     const projectDeleteRoute = 'delete';
+    const projectReadRoute   = 'read';
+    const projectUpdateRoute = 'update';
 
 
     function ProjectApi(): void
@@ -29,10 +29,10 @@
                 (
                     function()
                     {
-                        Route::get( projectReadRoute, 'read' );
                         Route::post( projectCreateRoute, 'create' );
-                        Route::patch( projectUpdateRoute, 'update' );
                         Route::delete( projectDeleteRoute, 'delete' );
+                        Route::get( projectReadRoute, 'read' );
+                        Route::patch( projectUpdateRoute, 'update' );
                     }
                 );
             }

@@ -15,10 +15,10 @@
 
     const boardRoute       = 'board';
 
-    const boardReadRoute   = 'read';
     const boardCreateRoute = 'create';
-    const boardUpdateRoute = 'update';
     const boardDeleteRoute = 'delete';
+    const boardReadRoute   = 'read';
+    const boardUpdateRoute = 'update';
 
 
     function BoardApi(): void
@@ -31,10 +31,10 @@
                 (
                     function()
                     {
-                        Route::get( boardReadRoute, 'read' );
                         Route::post( boardCreateRoute, 'create' );
-                        Route::patch( boardUpdateRoute, 'update' );
                         Route::delete( boardDeleteRoute, 'delete' );
+                        Route::patch( boardUpdateRoute, 'update' );
+                        Route::get( boardReadRoute, 'read' );
                     }
                 );
             }

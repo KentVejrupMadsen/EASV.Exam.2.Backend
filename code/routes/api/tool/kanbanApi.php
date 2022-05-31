@@ -14,10 +14,11 @@
 
     const kanbanRoute = 'kanban';
 
-    const kanbanReadRoute = 'read';
     const kanbanCreateRoute = 'create';
-    const kanbanUpdateRoute = 'update';
     const kanbanDeleteRoute = 'delete';
+    const kanbanReadRoute   = 'read';
+    const kanbanUpdateRoute = 'update';
+
 
     function KanbanApi(): void
     {
@@ -29,10 +30,10 @@
                 (
                     function()
                     {
-                        Route::get( kanbanReadRoute, 'read' );
                         Route::post( kanbanCreateRoute, 'create' );
-                        Route::patch( kanbanUpdateRoute, 'update' );
                         Route::delete( kanbanDeleteRoute, 'delete' );
+                        Route::patch( kanbanUpdateRoute, 'update' );
+                        Route::get( kanbanReadRoute, 'read' );
                     }
                 );
             }
