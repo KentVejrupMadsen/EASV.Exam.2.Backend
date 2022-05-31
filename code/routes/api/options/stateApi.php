@@ -14,11 +14,17 @@
 
     function stateApi(): void
     {
-        Route::controller( StateController::class )->group
+        Route::prefix( 'state' )->group
         (
             function()
             {
-                Route::post( stateRoute, 'publicState' );
+                Route::controller( StateController::class )->group
+                (
+                    function()
+                    {
+                        Route::post( '', 'publicState' );
+                    }
+                );
             }
         );
     }

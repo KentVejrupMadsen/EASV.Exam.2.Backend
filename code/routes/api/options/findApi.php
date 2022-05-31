@@ -14,11 +14,17 @@
 
     function findApi(): void
     {
-        Route::controller( FindController::class )->group
+        Route::prefix( 'find' )->group
         (
             function()
             {
-                Route::post(findRoute, 'publicFind' );
+                Route::controller( FindController::class )->group
+                (
+                    function()
+                    {
+                        Route::post( findRoute, 'publicFind' );
+                    }
+                );
             }
         );
     }
