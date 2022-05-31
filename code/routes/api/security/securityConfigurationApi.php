@@ -12,28 +12,34 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\security\SecurityConfigurationController;
 
+    const configurationRoute = '/' . CURRENT_VERSION . '/security/configuration';
+    const configurationReadRoute   = configurationRoute . '/read';
+    const configurationCreateRoute = configurationRoute . '/create';
+    const configurationUpdateRoute = configurationRoute . '/update';
+    const configurationDeleteRoute = configurationRoute . '/delete';
 
+    
     // Routes
     Route::get(
-        '/1.0.0/security/configuration/read',
+        configurationReadRoute,
         [ SecurityConfigurationController::class, 'publicRead' ]
     );
 
     // Create
     Route::post(
-        '/1.0.0/security/configuration/create',
+        configurationCreateRoute,
         [ SecurityConfigurationController::class, 'publicCreate' ]
     );
 
     // Update
     Route::patch(
-        '/1.0.0/security/configuration/update',
+        configurationUpdateRoute,
         [ SecurityConfigurationController::class, 'publicUpdate' ]
     );
 
     // Delete
     Route::delete(
-        '/1.0.0/security/configuration/delete',
+        configurationDeleteRoute,
         [ SecurityConfigurationController::class, 'publicDelete' ]
     );
 ?>
