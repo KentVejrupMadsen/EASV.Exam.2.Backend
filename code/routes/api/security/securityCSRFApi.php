@@ -19,35 +19,16 @@
     const csrfUpdateRoute = csrfRoute . '/update';
     const csrfDeleteRoute = csrfRoute . '/delete';
 
-
-    //  Rotes
-    Route::post(
-        csrfCreateRoute,
-        [ SecurityCSRFTokenController::class, 'publicCreate' ]
-    );
-
-    Route::post(
-        csrfAccessRoute,
-        [ SecurityCSRFTokenController::class, 'access' ]
-    );
-
-    Route::patch(
-        csrfResetRoute,
-        [ SecurityCSRFTokenController::class, 'reset' ]
-    );
-
-    Route::post(
-        csrfReadRoute,
-        [ SecurityCSRFTokenController::class, 'publicRead' ]
-    );
-
-    Route::patch(
-        csrfUpdateRoute,
-        [ SecurityCSRFTokenController::class, 'publicUpdate' ]
-    );
-
-    Route::delete(
-        csrfDeleteRoute,
-        [ SecurityCSRFTokenController::class, 'publicDelete' ]
+    Route::controller(SecurityCSRFTokenController::class)->group
+    (
+        function()
+        {
+            Route::post(csrfCreateRoute, 'publicCreate');
+            Route::post(csrfAccessRoute, 'access');
+            Route::patch(csrfResetRoute, 'reset');
+            Route::post(csrfReadRoute,'publicRead');
+            Route::patch(csrfUpdateRoute, 'publicUpdate');
+            Route::delete( csrfDeleteRoute, 'publicDelete');
+        }
     );
 ?>
