@@ -24,9 +24,9 @@
         function()
         {
             Route::get(recaptchaReadRoute, 'publicRead' );
-            Route::post(recaptchaCreateRoute, 'publicCreate');
-            Route::patch(recaptchaUpdateRoute, 'publicUpdate');
-            Route::delete(recaptchaDeleteRoute, 'publicDelete');
+            Route::post(recaptchaCreateRoute, 'publicCreate' );
+            Route::patch(recaptchaUpdateRoute, 'publicUpdate' );
+            Route::delete(recaptchaDeleteRoute, 'publicDelete' );
         }
     );
 ?>
