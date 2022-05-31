@@ -6,10 +6,14 @@
      * TODO: Make description
      */
     use Illuminate\Support\Facades\Route;
+
     use App\Http\Controllers\httpControllers\options\StateController;
 
+    const stateRoute = '/' . CURRENT_VERSION . '/state';
+
+
     Route::post(
-        '/1.0.0/state',
+        stateRoute,
         [ StateController::class, 'publicState' ]
     );
 ?>

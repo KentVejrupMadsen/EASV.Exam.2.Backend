@@ -4,6 +4,7 @@
     use App\Http\Controllers\Controller;
     use App\Models\security\CSRFModel;
     use Illuminate\Support\Facades\Redis;
+    use Illuminate\Support\Str;
 
 
     /**
@@ -12,51 +13,45 @@
     class RedisCacheCSRFController
         extends Controller
     {
-        public final function __construct()
+        public function __construct()
         {
 
         }
 
-
-        public function isAvailable(): bool
+        public final function select( ?CSRFModel $model ): ?CSRFModel
         {
-            return Redis::connection()->ping();
+            $cached = Redis::get( $this->redisStrKey( $model->id ) );
+            return $cached;
+        }
+
+        public final function create( ?CSRFModel $model ): void
+        {
+            Redis::set( $this->redisStrKey( $model->id ), $model );
         }
 
 
-        public function create( $id, CSRFModel $model )
+        public final function update( ?CSRFModel $model ): void
         {
-            Redis::set();
+            $key = $this->redisStrKey( $model->id );
+
+            Redis::del( $key );
+            Redis::set( $key, $model );
         }
 
-        public function createByModel( CSRFModel $model )
-        {
 
+        public final function delete( ?CSRFModel $model ): void
+        {
+            Redis::del( $this->redisStrKey( $model->id ) );
         }
 
-        public function get( int $id )
+
+        /**
+         * @param int $id
+         * @return string
+         */
+        protected final function redisStrKey( int $id ): string
         {
-
-        }
-
-        public function update()
-        {
-
-        }
-
-        public function updateByModel( CSRFModel $model )
-        {
-
-        }
-
-        public function delete()
-        {
-
-        }
-
-        public function deleteByModel( CSRFModel $model )
-        {
-
+            return Str::lower( '_csrf_api_token__' . $id );
         }
 
 
