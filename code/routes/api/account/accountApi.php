@@ -22,44 +22,17 @@
     const account_update_route  = account_route . '/update';
     const account_delete_route  = account_route . '/delete';
 
-    // Routes
-    Route::post(
-        account_login_route,
-        [ AccountController::class, 'login' ]
-    );
-
-    Route::post(
-        account_verify_route,
-        [ AccountController::class, 'verify' ]
-    );
-
-        // Register / Create
-    Route::post(
-        account_create_route,
-        [ AccountController::class, 'create' ]
-    );
-
-        // Whoami
-    Route::middleware( MIDSANC )->get(
-        account_me_route,
-        [ AccountController::class, 'me' ]
-    );
-
-        // Logout
-    Route::middleware( MIDSANC )->get(
-        account_logout_route,
-        [ AccountController::class, 'logout' ]
-    );
-
-        // Update
-    Route::middleware( MIDSANC )->patch(
-        account_update_route,
-        [ AccountController::class, 'update' ]
-    );
-
-        // Delete
-    Route::middleware( MIDSANC )->delete(
-        account_delete_route,
-        [ AccountController::class, 'delete' ]
+    Route::controller( AccountController::class )->group
+    (
+        function()
+        {
+            Route::post(account_login_route, 'login');
+            Route::post(account_verify_route, 'verify');
+            Route::post(account_create_route, 'create');
+            Route::middleware( MIDSANC )->get(account_me_route,'me');
+            Route::middleware( MIDSANC )->get(account_logout_route, 'logout');
+            Route::middleware( MIDSANC )->patch(account_update_route, 'update');
+            Route::middleware( MIDSANC )->delete(account_delete_route, 'delete');
+        }
     );
 ?>
