@@ -19,24 +19,30 @@
         public $timestamps = false;
         protected $table = 'zip_codes_view_short';
 
-        protected $fillable =
-            [
-                '',
-                '',
-                ''
-            ];
 
+        protected $fillable =
+        [
+            'id',
+            'area_name',
+            'zip_number',
+            'country_acronym'
+        ];
+
+        
         protected $hidden =
-            [
-                '',
-            ];
+        [
+            'id',
+        ];
 
 
         protected $casts =
-            [
-                ''    => 'integer',
-                ''  => 'datetime',
-                ''  => 'datetime',
-            ];
+        [
+            'id' => 'integer',
+
+            'area_name'     => 'string',
+            'zip_number'    => 'integer',
+
+            'country_acronym' => 'string'
+        ];
     }
 ?>
