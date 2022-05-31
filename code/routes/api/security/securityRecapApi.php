@@ -11,24 +11,30 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
 
-    const recaptchaRoute = '/' . CURRENT_VERSION . '/security/recaptcha';
+    const recaptchaRoute = 'recaptcha';
 
-    const recaptchaReadRoute = recaptchaRoute . '/read';
-    const recaptchaCreateRoute = recaptchaRoute . '/create';
-    const recaptchaUpdateRoute = recaptchaRoute . '/update';
-    const recaptchaDeleteRoute = recaptchaRoute . '/delete';
+    const recaptchaReadRoute   =  'read';
+    const recaptchaCreateRoute =  'create';
+    const recaptchaUpdateRoute =  'update';
+    const recaptchaDeleteRoute =  'delete';
 
 
     function securityRecapApi(): void
     {
-        Route::controller( SecurityRecaptchaController::class )->group
+        Route::prefix( recaptchaRoute )->group
         (
             function()
             {
-                Route::get(recaptchaReadRoute, 'publicRead' );
-                Route::post(recaptchaCreateRoute, 'publicCreate' );
-                Route::patch(recaptchaUpdateRoute, 'publicUpdate' );
-                Route::delete(recaptchaDeleteRoute, 'publicDelete' );
+                Route::controller( SecurityRecaptchaController::class )->group
+                (
+                    function()
+                    {
+                        Route::get( recaptchaReadRoute, 'publicRead' );
+                        Route::post( recaptchaCreateRoute, 'publicCreate' );
+                        Route::patch( recaptchaUpdateRoute, 'publicUpdate' );
+                        Route::delete( recaptchaDeleteRoute, 'publicDelete' );
+                    }
+                );
             }
         );
     }

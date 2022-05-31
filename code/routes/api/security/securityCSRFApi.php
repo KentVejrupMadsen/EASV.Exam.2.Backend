@@ -20,7 +20,7 @@
     const csrfUpdateRoute =  'update';
     const csrfDeleteRoute = 'delete';
 
-    
+
     function securityCSRFApi(): void
     {
         Route::prefix( csrfRoute )->group
