@@ -77,22 +77,21 @@
         // Code
         /**
          * @param Request $request
-         * @return void
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/1.0.0/accounts/entities/name/read')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public function read( Request $request )
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/name/read' )]
+        #[OA\Response( response: '200', description: 'reads a specific person name entity values from the database table' )]
+        public function read( Request $request ): JsonResponse
         {
-
+            return Response()->json(null, 200);
         }
 
 
-        #[OA\Delete(path: '/api/1.0.0/accounts/entities/name/delete')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public function delete( Request $request )
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/name/delete')]
+        #[OA\Response( response: '200', description: 'deletes a specific person name entity from the database table')]
+        public function delete( Request $request ): JsonResponse
         {
-
-            return false;
+            return Response()->json(null, 200);
         }
 
 
@@ -100,12 +99,10 @@
          * 
          */
         #[OA\Post(path: '/api/1.0.0/accounts/entities/name/create')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function create( Request $request )
+        #[OA\Response(response: '200', description: 'creates a specific person name entity by inserting it into the database')]
+        public final function create( Request $request ): JsonResponse
         {
-
-            // Not found
-            abort( 300 );
+            return Response()->json(null, 200);
         }
 
 
@@ -113,9 +110,9 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Patch(path: '/api/1.0.0/accounts/entities/name/update')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function update( Request $request )
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/name/update' )]
+        #[OA\Response( response: '200', description: 'updates the person entities name with a new name' )]
+        public final function update( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
         }

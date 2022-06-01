@@ -113,7 +113,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/account/login' )]
+        #[OA\Post( path: 'api/1.0.0/accounts/account/login' )]
         #[OA\Response( response: '200', description: 'The data' )]
         public final function login( Request $request ): JsonResponse
         {
