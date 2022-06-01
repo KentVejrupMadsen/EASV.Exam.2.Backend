@@ -32,13 +32,6 @@
     class SecurityCSRFTokenController
         extends CrudController
     {
-        // Variables
-        private static ?SecurityCSRFTokenController $controller = null;
-
-        private ?RedisCacheCSRFController $cache       = null;
-        private ?CSRFResponseJSONFactory  $jsonFactory = null;
-
-
         /**
          * @param bool $makeSingleton
          */
@@ -60,41 +53,47 @@
             }
         }
 
+        // Variables
+        private static ?SecurityCSRFTokenController $controller = null;
+
+        private ?RedisCacheCSRFController $cache       = null;
+        private ?CSRFResponseJSONFactory  $jsonFactory = null;
+
 
 
         // Functions that the routes interacts with
         /**
          * @param SecurityCSRFRequest $request
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         * @return JsonResponse
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function access( SecurityCSRFRequest $request )
         {
-            return null;
+            return Response()->json([], 200);
         }
 
 
         //
         /**
          * @param SecurityCSRFRequest $Request
-         * @return void
+         * @return JsonResponse
          */
         #[OA\Get(path: '/api/data.json')]
         #[OA\Response(response: '200', description: 'The data')]
         public function publicRead( SecurityCSRFRequest $Request )
         {
-            $this->read( $Request );
+            return $this->read( $Request );
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return JsonResponse
          */
         public function read( Request $request )
         {
-
+            return Response()->json([], 200);
         }
 
 
@@ -116,28 +115,31 @@
          */
         public final function create( Request $request )
         {
+            $array = [];
 
-            return response()->json( $responseModel );
+            return response()->json( $array, 200 );
         }
 
 
         /**
          * @param SecurityCSRFRequest $Request
-         * @return void
+         * @return JsonResponse
          */
         public function publicUpdate( SecurityCSRFRequest $Request )
         {
-            $this->update( $Request );
+            return $this->update( $Request );
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return JsonResponse
          */
         public function update( Request $request )
         {
+            $array = [];
 
+            return Response()->json( $array, 200 );
         }
 
         /**
@@ -149,7 +151,6 @@
         public final function reset( SecurityCSRFRequest $request )
         {
 
-            return response()->json( $foundFromDB );
         }
 
 
