@@ -2,6 +2,7 @@
     namespace App\Factory;
 
     use App\Models\security\CSRFModel;
+    use Carbon\Carbon;
     use Illuminate\Support\Str;
 
 
@@ -21,6 +22,46 @@
         {
             $input = self::generateInputArray( $ip, $this->getDefaultLength() );
             return self::makeModel( $input );
+        }
+
+        public function appendIssued( CSRFModel &$model, ?Carbon $time = null ): CSRFModel
+        {
+            if( is_null( $time ) )
+            {
+                $model->issued = Carbon::now();
+            }
+            else
+            {
+                $model->issued = $time;
+            }
+            return $model;
+        }
+
+        public function appendAccessed( CSRFModel &$model, ?Carbon $time = null ): CSRFModel
+        {
+            if( is_null( $time ) )
+            {
+                $model->accessed = Carbon::now();
+            }
+            else
+            {
+                $model->accessed = $time;
+            }
+            return $model;
+        }
+
+
+        public function executeActivateModel( CSRFModel &$model, bool $shouldSave = true ): CSRFModel
+        {
+            $this->appendIssued( $model );
+            $model->activated = true;
+
+            if( $shouldSave )
+            {
+                $model->save();
+            }
+
+            return $model;
         }
 
         //
