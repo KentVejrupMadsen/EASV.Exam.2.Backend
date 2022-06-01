@@ -10,6 +10,7 @@
     // External Libraries
     use Carbon\Carbon;
 
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
@@ -39,6 +40,8 @@
                 self::setSingleton( $this );
             }
         }
+
+        private static $controller = null;
 
 
         // Variables
@@ -81,211 +84,131 @@
             return null;
         }
 
-        // Crud
         /**
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Get(path: '/api/1.0.0/accounts/account/me')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function me()
+        public final function me(): JsonResponse
         {
             $currentUser = Auth::user();
-            return response( $currentUser );
-        }
-
-
-        /**
-         * @return void
-         */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function read( Request $request )
-        {
-            
+            return response()->json($currentUser, 200);
         }
 
 
         /**
          * @param Request $request
-         * @return \Illuminate\Http\JsonResponse
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Get(path: '/api/1.0.0/accounts/account/read')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function login( Request $request )
+        public final function read( Request $request ): JsonResponse
         {
-            $this->CSRFTokenController->access( $request );
 
-            $account_information = $request->input( 'account' );
-
-
-            if( Auth::attempt( [ 'username'=> Str::lower( $account_information[ 'username' ] ),
-                                 'password' => $account_information['security']['password'] ] ) )
-            {
-                $author = Auth::user();
-
-                $token = $author->createToken( 'account' )->plainTextToken;
-
-                $auth = array();
-                $auth['authorised'] = ['token_bearer' => $token, 'username' => $author->username ];
-
-                return response()->json( $auth, 200 );
-            }
-            else 
-            {
-                return response()->json( 'Unauthorised.', [ 'error'=>'Unauthorised' ] );
-            }
+            return Response()->json( null, 200 );
         }
 
 
         /**
          * @param Request $request
+         * @return JsonResponse
+         */
+        #[OA\Post( path: '/api/1.0.0/accounts/account/login' )]
+        #[OA\Response( response: '200', description: 'The data' )]
+        public final function login( Request $request ): JsonResponse
+        {
+
+            return Response()->json(null, 200);
+        }
+
+
+        /** Renders the current bearer token invalid
+         * @param Request $request
          * @return void
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Get( path: '/api/1.0.0/accounts/account/logout' )]
         #[OA\Response(response: '200', description: 'The data')]
         public final function logout( Request $request )
         {
-            $request->user()
-                    ->currentAccessToken()
-                    ->delete();
+
         }
 
 
         /**
          * @param Request $request
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Post(path: '/api/1.0.0/accounts/account/create')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function create( Request $request )
+        public final function create( Request $request ): JsonResponse
         {
-            $this->CSRFTokenController->access( $request );
 
-            $account_information = $request->input( 'account' );
-
-            $email_str = $account_information[ 'person' ][ 'email' ];
-
-            $mail = $this->EmailModelController->find( $request );
-
-            if( is_null( $mail ) )
-            {
-                $mail = $this->EmailModelController->create( $request );
-            }
-
-            $account_create_fields = array();
-            $account_create_fields[ 'email_id' ]  = $mail->id;
-
-            $account_create_fields[ 'username' ]  = $account_information[ 'username' ];
-            $account_create_fields[ 'password' ]  = Hash::make( $account_information[ 'security' ][ 'password' ] );
-
-            $account = User::create( $account_create_fields );
-
-            return response( $account, 200 );
+            return response()->json(null, 200);
         }
 
 
         /**
          * @param Request $request
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Patch( path: '/api/1.0.0/accounts/account/update' )]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function update( Request $request )
+        public final function update( Request $request ): JsonResponse
         {
-            $this->CSRFTokenController->access( $request );
 
-            $account = Auth::user();
-
-            $response = array();
-            $accountInformation = $request->input('account');
-
-
-            $mailModel = $this->EmailModelController->find( $accountInformation[ 'person_email' ] );
-
-            if( is_null( $mailModel ) )
-            {
-                $mailModel = $this->EmailModelController->create( $accountInformation[ 'person_email' ] );
-            }
-
-            $account->email_id = $mailModel->id;
-
-            // Passwords
-            $new = Hash::make($accountInformation['security']['password']);
-            $account->password = $new;
-
-            $account->save();
-
-            return Response($response, 200);
+            return Response()->json(null, 200);
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Delete(path: '/api/1.0.0/accounts/account/delete')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function delete( Request $request )
+        public final function delete( Request $request ): JsonResponse
         {
-            $this->CSRFTokenController->access( $request );
 
-            $response = array();
-
-            $account = Auth::user();
-
-            $account->delete();
-            $response[ 'message' ] = 'successful' ;
-
-            return Response( $response, 200 );
+            return Response()->json( null, 200 );
         }
 
 
         /**
          * @param Request $request
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Post(path: '/api/1.0.0/accounts/account/verify')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function verify( Request $request )
+        public final function verify( Request $request ): JsonResponse
         {
-            $this->CSRFTokenController->access( $request );
 
-            $response = array();
-
-            $user = Auth::user();
-
-            if( is_null( $user->email_verified_at ) )
-            {
-                $user->email_verified_at = Carbon::now();
-                $user->save();
-
-                $response['message'] = 'verified';
-                $response['at']= $user->email_verified_at;
-            }
-            else
-            {
-                abort(self::conflict );
-            }
-
-            return Response( $response );
+            return Response()->json( null, 200 );
         }
 
+
+        /**
+         * @return array
+         */
         public final function exposeApiStructure(): array
         {
-            $structure = [];
-            return $structure;
+            return [];
         }
 
-        private static $controller = null;
-
-        public static final function setSingleton( AccountController $controller )
+        /**
+         * @param AccountController $controller
+         * @return void
+         */
+        public static final function setSingleton( AccountController $controller ): void
         {
             self::$controller = $controller;
         }
 
+        /**
+         * @return AccountController
+         */
         public static final function getSingleton(): AccountController
         {
-            if(is_null(self::$controller))
+            if( is_null( self::$controller ) )
             {
                 self::setSingleton( new AccountController() );
             }
