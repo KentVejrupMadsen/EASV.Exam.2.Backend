@@ -5,9 +5,9 @@
      * Description:
      * TODO: Make description
      */
-    require_once 'securityCSRFApi.php';
-    require_once 'securityConfigurationApi.php';
-    require_once 'securityRecapApi.php';
+    require_once 'SecurityCSRFApi.php';
+    require_once 'SecurityConfigurationApi.php';
+    require_once 'SecurityRecapApi.php';
 
     use Illuminate\Support\Facades\Route;
 
