@@ -33,13 +33,21 @@
             }
         }
 
-
+        /**
+         * @param CSRFModel|null $model
+         * @return CSRFModel|null
+         */
         public final function select( ?CSRFModel $model ): ?CSRFModel
         {
             $cached = $this->selectById( $model->id );
             return $cached;
         }
 
+
+        /**
+         * @param int $id
+         * @return CSRFModel|null
+         */
         public final function selectById( int $id ): ?CSRFModel
         {
             $cached = Redis::get( $this->redisStrKey( $id ) );
@@ -52,6 +60,11 @@
             return null;
         }
 
+
+        /**
+         * @param string $values
+         * @return CSRFModel|null
+         */
         protected function decodeJSON( string $values ): ?CSRFModel
         {
             $jsonValues = json_decode( $values, true );
@@ -74,6 +87,11 @@
             return $cachedModel;
         }
 
+
+        /**
+         * @param array $array
+         * @return CSRFModel
+         */
         private function decodeJSONComplete( array $array ): CSRFModel
         {
             $cachedModel = $this->decodeJSONMinimum( $array );
@@ -85,6 +103,11 @@
             return $cachedModel;
         }
 
+
+        /**
+         * @param array $array
+         * @return CSRFModel
+         */
         private function decodeJSONMinimum( array $array ): CSRFModel
         {
             $cachedModel = new CSRFModel();
@@ -98,6 +121,10 @@
             return$cachedModel;
         }
 
+        /**
+         * @param CSRFModel $cachedModel
+         * @return array
+         */
         protected final function cacheCompleteModel( CSRFModel $cachedModel ): array
         {
             return
@@ -117,6 +144,11 @@
             ];
         }
 
+
+        /**
+         * @param CSRFModel $cachedModel
+         * @return array
+         */
         protected final function cacheSecurity( CSRFModel $cachedModel ): array
         {
             return
@@ -133,6 +165,12 @@
                 ];
         }
 
+
+        /**
+         * @param CSRFModel|null $model
+         * @param bool $full
+         * @return void
+         */
         public final function create( ?CSRFModel $model,
                                       bool $full = true ): void
         {
@@ -148,6 +186,11 @@
         }
 
 
+        /**
+         * @param CSRFModel|null $model
+         * @param bool $full
+         * @return void
+         */
         public final function update( ?CSRFModel $model, bool $full = true ): void
         {
             $key = $this->redisStrKey( $model->id );
@@ -157,6 +200,10 @@
         }
 
 
+        /**
+         * @param CSRFModel|null $model
+         * @return void
+         */
         public final function delete( ?CSRFModel $model ): void
         {
             Redis::del( $this->redisStrKey( $model->id ) );
