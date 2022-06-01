@@ -8,6 +8,7 @@
     namespace App\Http\Controllers\httpControllers\tools;
 
     // External
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
     use OpenApi\Attributes
@@ -17,7 +18,7 @@
     use App\Http\Controllers\templates\ControllerPipeline;
 
 
-    final class TaskController
+    class TaskController
         extends ControllerPipeline
     {
         /**
@@ -72,44 +73,51 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Post(path: '/api/1.0.0/tools/task/create')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function create( Request $request )
+        public final function create( Request $request ): JsonResponse
         {
-            
+
+
+            return Response()->json(null, 200);
         }
         
 
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Get(path: '/api/1.0.0/tools/task/read')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function read( Request $request )
+        public final function read( Request $request ): JsonResponse
         {
-            
+
+
+            return Response()->json(null, 200);
         }
         
 
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Patch( path: '/api/1.0.0/tools/task/update' )]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function update( Request $request )
+        public final function update( Request $request ): JsonResponse
         {
-            
+
+
+            return Response()->json(null, 200);
         }
 
 
         /**
-         * 
+         * @param Request $request
+         * @return void
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Delete(path: '/api/1.0.0/tools/task/delete')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function delete( Request $request )
+        public final function delete( Request $request ): JsonResponse
         {
-            
+            return Response()->json(null, 200);
         }
 
         private static $controller = null;
