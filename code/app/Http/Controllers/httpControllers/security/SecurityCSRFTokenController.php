@@ -8,7 +8,6 @@
     namespace App\Http\Controllers\httpControllers\security;
 
     // External libraries
-    use App\Http\Controllers\formatControllers\json\CSRFResponseJSONFactory;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
@@ -24,6 +23,8 @@
     use App\Http\Requests\security\SecurityCSRFRequest;
 
     use App\Models\security\CSRFModel;
+    use App\Factory\SecurityCSRFConstructor;
+    use App\Http\Controllers\formatControllers\json\CSRFResponseJSONFactory;
 
 
     /**
@@ -57,8 +58,31 @@
         private static ?SecurityCSRFTokenController $controller = null;
 
         private ?RedisCacheCSRFController $cache       = null;
-        private ?CSRFResponseJSONFactory  $jsonFactory = null;
+        private ?CSRFResponseJSONFactory $jsonFactory = null;
+        private ?SecurityCSRFConstructor $constructor = null;
 
+
+        /**
+         * @return SecurityCSRFConstructor
+         */
+        public final function getConstructor(): SecurityCSRFConstructor
+        {
+            if( is_null( $this->constructor ) )
+            {
+                $this->setConstructor( SecurityCSRFConstructor::getFactory() );
+            }
+
+            return $this->constructor;
+        }
+
+        /**
+         * @param $constructor
+         * @return void
+         */
+        protected final function setConstructor( $constructor ): void
+        {
+            $this->constructor = $constructor;
+        }
 
 
         // Functions that the routes interacts with
@@ -110,14 +134,17 @@
 
 
         /**
-         * @param Request $request
+         * @param Request $Request
          * @return JsonResponse
          */
-        public final function create( Request $request ): JsonResponse
+        public final function create( Request $Request ): JsonResponse
         {
-            $array = [];
+            $model = $this->getConstructor()
+                          ->constructNewModel( $Request->ip() );
 
-            return response()->json( $array, 200 );
+
+
+            return response()->json( $model, 200 );
         }
 
 
@@ -143,6 +170,7 @@
 
             return Response()->json( $array, 200 );
         }
+
 
         /**
          * @param SecurityCSRFRequest $request
