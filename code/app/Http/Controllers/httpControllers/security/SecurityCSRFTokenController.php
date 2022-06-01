@@ -8,8 +8,6 @@
     namespace App\Http\Controllers\httpControllers\security;
 
     // External libraries
-    use App\Factory\SecurityCSRFConstructor;
-    use App\Http\Controllers\formatControllers\json\CSRFResponseJSONFactory;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
@@ -25,6 +23,8 @@
     use App\Http\Requests\security\SecurityCSRFRequest;
 
     use App\Models\security\CSRFModel;
+    use App\Factory\SecurityCSRFConstructor;
+    use App\Http\Controllers\formatControllers\json\CSRFResponseJSONFactory;
 
 
     /**
@@ -134,14 +134,17 @@
 
 
         /**
-         * @param Request $request
+         * @param Request $Request
          * @return JsonResponse
          */
-        public final function create( Request $request ): JsonResponse
+        public final function create( Request $Request ): JsonResponse
         {
-            $array = [];
+            $model = $this->getConstructor()
+                          ->constructNewModel( $Request->ip() );
 
-            return response()->json( $array, 200 );
+
+
+            return response()->json( $model, 200 );
         }
 
 
