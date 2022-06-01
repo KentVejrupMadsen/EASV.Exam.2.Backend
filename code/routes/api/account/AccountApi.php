@@ -25,22 +25,22 @@
     const AccountVerifyRoute  =  'verify';
 
 
-    function AccountApi()
+    function AccountApi(): void
     {
         Route::prefix( data_route )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( AccountController::class )->group
                 (
-                    function()
+                    function(): void
                     {
                         Route::post( AccountCreateRoute, 'create' );
                         Route::post( AccountLoginRoute, 'login' );
 
                         Route::middleware( MIDSANC )->group
                         (
-                            function()
+                            function(): void
                             {
                                 Route::delete( AccountDeleteRoute, 'delete' );
                                 Route::get( AccountLogoutRoute, 'logout' );

@@ -12,28 +12,28 @@
     use App\Http\Controllers\httpControllers\account\NewsletterController;
 
 
-    const newsletter_route = 'newsletter';
+    const NewsletterRoute = 'newsletter';
 
-    const newsletter_read_route   =  'read';
-    const newsletter_create_route =  'create';
-    const newsletter_update_route =  'update';
-    const newsletter_delete_route =  'delete';
+    const NewsletterCreateRoute =  'create';
+    const NewsletterReadRoute   =  'read';
+    const NewsletterUpdateRoute =  'update';
+    const NewsletterDeleteRoute =  'delete';
 
 
-   function NewsletterApi()
+   function NewsletterApi(): void
    {
-       Route::prefix( newsletter_route )->group
+       Route::prefix( NewsletterRoute )->group
        (
-           function()
+           function(): void
            {
                Route::controller( NewsletterController::class )->group
                (
-                   function()
+                   function(): void
                    {
-                       Route::post( newsletter_create_route, 'create' );
-                       Route::get( newsletter_read_route, 'read' );
-                       Route::patch( newsletter_update_route, 'update' );
-                       Route::delete( newsletter_delete_route, 'delete' );
+                       Route::post( NewsletterCreateRoute, 'create' );
+                       Route::get( NewsletterReadRoute, 'read' );
+                       Route::patch( NewsletterUpdateRoute, 'update' );
+                       Route::delete( NewsletterDeleteRoute, 'delete' );
                    }
                );
            }

@@ -14,11 +14,13 @@
     require_once 'NewsletterApi.php';
 
 
+    const accounts_route = 'accounts';
+
     function AccountRoutes(): void
     {
-        Route::prefix( 'accounts' )->group
+        Route::prefix( accounts_route )->group
         (
-            function()
+            function(): void
             {
                 AccountApi();
                 NewsletterApi();
