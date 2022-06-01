@@ -216,7 +216,10 @@
             }
         }
 
-
+        
+        /**
+         * @return void
+         */
         public final function clearDatabase(): void
         {
             CSRFModel::truncate();

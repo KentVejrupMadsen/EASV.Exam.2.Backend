@@ -40,7 +40,8 @@
         {
             if( $this->isCacheEmpty() )
             {
-                $this->setCache( RedisCacheCSRFController::getSingleton() );
+                $controller = new RedisCacheCSRFController( true );
+                $this->setCache( $controller );
             }
 
             if( $this->isJsonFactoryEmpty() )
@@ -57,7 +58,7 @@
         // Variables
         private static ?SecurityCSRFTokenController $controller = null;
 
-        private ?RedisCacheCSRFController $cache       = null;
+        private ?RedisCacheCSRFController $cache      = null;
         private ?CSRFResponseJSONFactory $jsonFactory = null;
         private ?SecurityCSRFConstructor $constructor = null;
 
@@ -127,25 +128,30 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Get(path: '/api/1.0.0/securities/csrf/create')]
+        #[OA\Get( path: '/api/1.0.0/securities/csrf/create' )]
         #[OA\Response( response: '200',
                        description: 'The data')]
         public function publicCreate( SecurityCSRFRequest $Request ): JsonResponse
         {
-            return $this->create( $Request );
+            $model = $this->create( $Request );
+            $this->getCache()->create( $model );
+
+            $c = $this->getCache()->select( $model );
+
+            return response()->json( $c->secure_token, 200 );
         }
 
 
         /**
          * @param Request $Request
-         * @return JsonResponse
+         * @return CSRFModel|null
          */
-        public final function create( Request $Request ): JsonResponse
+        public final function create( Request $Request ): ?CSRFModel
         {
             $model = $this->getConstructor()
                           ->constructNewModel( $Request->ip() );
 
-            return response()->json( $model, 200 );
+            return $model;
         }
 
 
