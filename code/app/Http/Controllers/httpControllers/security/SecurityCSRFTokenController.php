@@ -58,8 +58,8 @@
         private static ?SecurityCSRFTokenController $controller = null;
 
         private ?RedisCacheCSRFController $cache       = null;
-        private ?CSRFResponseJSONFactory  $jsonFactory = null;
-        private ?SecurityCSRFConstructor $contructor = null;
+        private ?CSRFResponseJSONFactory $jsonFactory = null;
+        private ?SecurityCSRFConstructor $constructor = null;
 
 
         /**
@@ -67,12 +67,12 @@
          */
         public final function getConstructor(): SecurityCSRFConstructor
         {
-            if( is_null( $this->contructor ) )
+            if( is_null( $this->constructor ) )
             {
                 $this->setConstructor( SecurityCSRFConstructor::getFactory() );
             }
-            
-            return $this->contructor;
+
+            return $this->constructor;
         }
 
         /**
@@ -81,7 +81,7 @@
          */
         protected final function setConstructor( $constructor ): void
         {
-            $this->contructor = $constructor;
+            $this->constructor = $constructor;
         }
 
 

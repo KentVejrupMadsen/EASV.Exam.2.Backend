@@ -1,6 +1,9 @@
 <?php
     namespace App\Factory;
 
+    use App\Models\security\CSRFModel;
+
+
     class SecurityCSRFConstructor
     {
         public function __construct()
@@ -29,7 +32,7 @@
          * @param SecurityCSRFConstructor $factory
          * @return void
          */
-        protected final static function setFactory(SecurityCSRFConstructor $factory ): void
+        protected final static function setFactory( SecurityCSRFConstructor $factory ): void
         {
             self::$factory = $factory;
         }
