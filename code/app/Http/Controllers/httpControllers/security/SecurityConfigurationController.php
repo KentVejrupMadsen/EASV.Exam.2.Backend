@@ -9,7 +9,9 @@
 
     // External libraries
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
 
     // Internal Libraries
     use App\Http\Controllers\templates\CrudController;
