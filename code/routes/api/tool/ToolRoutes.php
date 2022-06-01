@@ -5,10 +5,10 @@
      * Description:
      * TODO: Make description
      */
-    require_once 'boardApi.php';
-    require_once 'kanbanApi.php';
-    require_once 'projectApi.php';
-    require_once 'taskApi.php';
+    require_once 'BoardApi.php';
+    require_once 'KanbanApi.php';
+    require_once 'ProjectApi.php';
+    require_once 'TaskApi.php';
 
     use Illuminate\Support\Facades\Route;
 

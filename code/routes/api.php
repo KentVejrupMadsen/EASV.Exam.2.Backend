@@ -13,5 +13,5 @@
 
 
     // Requiring all the routes
-    require_once 'api/apiRoutes.php';
+    require_once 'api/ApiRoutes.php';
 ?>
