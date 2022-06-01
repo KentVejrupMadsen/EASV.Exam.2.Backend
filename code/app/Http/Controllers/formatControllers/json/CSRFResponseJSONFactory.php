@@ -8,6 +8,8 @@
     namespace App\Http\Controllers\formatControllers\json;
 
     // External libraries
+    use App\Models\security\CSRFModel;
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
     use Illuminate\Routing\Controller
@@ -31,6 +33,23 @@
             {
                 self::setSingleton( $this );
             }
+        }
+
+
+        /**
+         * @param CSRFModel $model
+         * @return \Illuminate\Http\JsonResponse
+         */
+        public function CreateResponse( CSRFModel $model ): JsonResponse
+        {
+            $array =
+            [
+                'id'            => $model->id,
+                'secure_token'  => $model->secure_token,
+                'issued'        => $model->issued
+            ];
+
+            return Response()->json($array, 200);
         }
 
 
