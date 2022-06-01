@@ -8,6 +8,7 @@
     namespace App\Http\Controllers\httpControllers\security;
 
     // External libraries
+    use App\Factory\SecurityCSRFConstructor;
     use App\Http\Controllers\formatControllers\json\CSRFResponseJSONFactory;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
@@ -58,7 +59,30 @@
 
         private ?RedisCacheCSRFController $cache       = null;
         private ?CSRFResponseJSONFactory  $jsonFactory = null;
+        private ?SecurityCSRFConstructor $contructor = null;
 
+
+        /**
+         * @return SecurityCSRFConstructor
+         */
+        public final function getConstructor(): SecurityCSRFConstructor
+        {
+            if( is_null( $this->contructor ) )
+            {
+                $this->setConstructor( SecurityCSRFConstructor::getFactory() );
+            }
+            
+            return $this->contructor;
+        }
+
+        /**
+         * @param $constructor
+         * @return void
+         */
+        protected final function setConstructor( $constructor ): void
+        {
+            $this->contructor = $constructor;
+        }
 
 
         // Functions that the routes interacts with
@@ -143,6 +167,7 @@
 
             return Response()->json( $array, 200 );
         }
+
 
         /**
          * @param SecurityCSRFRequest $request
