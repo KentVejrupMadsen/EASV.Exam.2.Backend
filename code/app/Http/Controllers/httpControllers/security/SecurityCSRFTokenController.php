@@ -66,9 +66,9 @@
          * @param SecurityCSRFRequest $request
          * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Post(path: '/api/1.0.0/securities/csrf/access')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function access( SecurityCSRFRequest $request )
+        public final function access( SecurityCSRFRequest $request ): JsonResponse
         {
             return Response()->json([], 200);
         }
@@ -79,9 +79,9 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public function publicRead( SecurityCSRFRequest $Request )
+        #[OA\Get( path: '/api/1.0.0/securities/csrf/read' )]
+        #[OA\Response( response: '200', description: 'The data' )]
+        public function publicRead( SecurityCSRFRequest $Request ): JsonResponse
         {
             return $this->read( $Request );
         }
@@ -91,7 +91,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        public function read( Request $request )
+        public function read( Request $request ): JsonResponse
         {
             return Response()->json([], 200);
         }
@@ -101,9 +101,9 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Get(path: '/api/1.0.0/securities/csrf/create')]
         #[OA\Response(response: '200', description: 'The data')]
-        public function publicCreate( SecurityCSRFRequest $Request )
+        public function publicCreate( SecurityCSRFRequest $Request ): JsonResponse
         {
             return $this->create( $Request );
         }
@@ -113,7 +113,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        public final function create( Request $request )
+        public final function create( Request $request ): JsonResponse
         {
             $array = [];
 
@@ -125,7 +125,9 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        public function publicUpdate( SecurityCSRFRequest $Request )
+        #[OA\Patch( path: '/api/1.0.0/securities/csrf/update' )]
+        #[OA\Response( response: '200', description: 'The data' )]
+        public function publicUpdate( SecurityCSRFRequest $Request ): JsonResponse
         {
             return $this->update( $Request );
         }
@@ -135,7 +137,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        public function update( Request $request )
+        public function update( Request $request ): JsonResponse
         {
             $array = [];
 
@@ -146,11 +148,11 @@
          * @param SecurityCSRFRequest $request
          * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Get(path: '/api/1.0.0/securities/csrf/reset')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function reset( SecurityCSRFRequest $request )
+        public final function reset( SecurityCSRFRequest $request ): JsonResponse
         {
-
+            return Response()->json([], 200);
         }
 
 
@@ -159,23 +161,23 @@
         //
         /**
          * @param SecurityCSRFRequest $Request
-         * @return void
+         * @return JsonResponse
          */
-        public function publicDelete( SecurityCSRFRequest $Request )
+        #[OA\Delete(path: '/api/1.0.0/securities/csrf/delete' )]
+        #[OA\Response(response: '200', description: 'The data')]
+        public function publicDelete( SecurityCSRFRequest $Request ): JsonResponse
         {
-            $this->delete( $Request );
+            return Response()->json([], 200);
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function delete( Request $request )
+        public final function delete( Request $request ): JsonResponse
         {
-
+            return Response()->json( [], 200 );
         }
 
         // Accessors
