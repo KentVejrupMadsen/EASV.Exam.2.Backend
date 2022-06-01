@@ -142,8 +142,6 @@
             $model = $this->getConstructor()
                           ->constructNewModel( $Request->ip() );
 
-
-
             return response()->json( $model, 200 );
         }
 
