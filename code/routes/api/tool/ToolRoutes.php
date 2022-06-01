@@ -12,11 +12,13 @@
 
     use Illuminate\Support\Facades\Route;
 
+    const ToolRoute = 'tools';
 
+    
     //
     function ToolRoutes(): void
     {
-        Route::prefix( 'tools' )->group
+        Route::prefix( ToolRoute )->group
         (
             function()
             {

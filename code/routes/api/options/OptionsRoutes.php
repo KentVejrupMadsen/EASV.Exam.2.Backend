@@ -7,8 +7,9 @@
      */
     use Illuminate\Support\Facades\Route;
 
-    require_once 'findApi.php';
-    require_once 'stateApi.php';
+    require_once 'FindApi.php';
+    require_once 'StateApi.php';
+
 
     const options_route = 'options';
 
