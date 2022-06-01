@@ -5,11 +5,12 @@
      * Description:
      * TODO: Make description
      */
+    // External libraries
+    use Illuminate\Support\Facades\Route;
+
     // Internal libraries
     use App\Http\Controllers\httpControllers\security\SecurityCSRFTokenController;
 
-    // External libraries
-    use Illuminate\Support\Facades\Route;
 
     const csrfRoute = 'csrf';
 
@@ -25,16 +26,16 @@
     {
         Route::prefix( csrfRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( SecurityCSRFTokenController::class )->group
                 (
                     function()
                     {
                         Route::post( csrfAccessRoute, 'access' );
-                        Route::post( csrfCreateRoute, 'publicCreate' );
+                        Route::get( csrfCreateRoute, 'publicCreate' );
                         Route::delete( csrfDeleteRoute, 'publicDelete' );
-                        Route::post( csrfReadRoute,'publicRead' );
+                        Route::get( csrfReadRoute,'publicRead' );
                         Route::patch( csrfResetRoute, 'reset' );
                         Route::patch( csrfUpdateRoute, 'publicUpdate' );
                     }
