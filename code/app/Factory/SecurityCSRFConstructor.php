@@ -5,6 +5,7 @@
     use Illuminate\Support\Str;
 
     use App\Models\security\CSRFModel;
+    use JetBrains\PhpStorm\ArrayShape;
 
 
     class SecurityCSRFConstructor
@@ -253,7 +254,8 @@
          * @param int $randomTokenSize
          * @return array|null
          */
-        protected static function generateInputArray( string $ipAssignedTo, int $randomTokenSize ): ?array
+        #[ArrayShape(['assigned_to' => "string", 'secure_token' => "string", 'secret_token' => "string", 'issued' => "\Carbon\Carbon", 'activated' => "false", 'invalidated' => "false"])]
+        protected static function generateInputArray(string $ipAssignedTo, int $randomTokenSize ): ?array
         {
             return
             [
