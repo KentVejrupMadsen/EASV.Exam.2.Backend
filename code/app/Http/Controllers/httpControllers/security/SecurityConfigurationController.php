@@ -44,7 +44,7 @@
          * @param SecurityConfigurationRequest $Request
          * @return void
          */
-        #[OA\Post(path: '/api/1.0.0/securities/configuration/read' )]
+        #[OA\Get(path: '/api/1.0.0/securities/configuration/read' )]
         #[OA\Response(response: '200', description: 'The data')]
         public function publicRead( SecurityConfigurationRequest $Request )
         {
