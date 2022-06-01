@@ -76,23 +76,23 @@
 
         // Code
         /**
-         * Pipeline function:
          * @param Request $request
-         * @return AccountEmailModel|null
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Get(path: '/api/1.0.0/accounts/entities/address/read')]
         #[OA\Response(response: '200', description: 'The data')]
-        public function read( Request $request ): ?AccountEmailModel
+        public function read( Request $request ): JsonResponse
         {
-            abort( 300 );
+
+            return Response()->json(null, 200);
         }
 
-
-
-
-
-
-        #[OA\Get(path: '/api/data.json')]
+        
+        /**
+         * @param Request $request
+         * @return bool
+         */
+        #[OA\Delete(path: '/api/1.0.0/accounts/entities/address/delete')]
         #[OA\Response(response: '200', description: 'The data')]
         public function delete( Request $request ): bool
         {
@@ -104,13 +104,11 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Post(path: '/api/1.0.0/accounts/entities/address/create')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function create( Request $request ): ?AccountEmailModel
+        public final function create( Request $request ): JsonResponse
         {
-
-            // Not found
-            abort( 300 );
+            return Response()->json(null, 200);
         }
 
 
@@ -118,12 +116,11 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Patch(path: '/api/1.0.0/accounts/entities/address/update')]
         #[OA\Response(response: '200', description: 'The data')]
-        public final function update( Request $request ): ?AccountEmailModel
+        public final function update( Request $request ): JsonResponse
         {
-            // Not found
-            abort( 300 );
+            return Response()->json( null, 200 );
         }
 
 
@@ -131,26 +128,26 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/find/email' )]
+        #[OA\Post( path: '/api/1.0.0/options/find/email' )]
         #[OA\Response( response: '200', description: 'retrieves an requested email object as a json response. if it exist else nothing' )]
         public final function find( Request $request ): JsonResponse
         {
 
-            return Response()->json();
+            return Response()->json( null, 200 );
         }
 
 
         /**
          * @param Request $request
-         * @return \Illuminate\Http\JsonResponse
+         * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/exist/email' )]
+        #[OA\Post( path: 'api/1.0.0/options/state/email' )]
         #[OA\Response( response: '200', description: 'validates if the requested email is existing in the database as a json response.' ) ]
         public final function exist( Request $request ): JsonResponse
         {
 
 
-            return response()->json();
+            return response()->json( null, 200);
         }
 
         //
