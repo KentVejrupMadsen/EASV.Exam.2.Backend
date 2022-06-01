@@ -21,7 +21,7 @@
     const ConfigurationUpdateRoute = 'update';
 
 
-    function securityConfigurationApi(): void
+    function SecurityConfigurationApi(): void
     {
         Route::prefix( ConfigurationRoute )->group
         (

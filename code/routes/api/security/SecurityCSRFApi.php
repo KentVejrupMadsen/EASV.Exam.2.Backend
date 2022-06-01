@@ -22,7 +22,7 @@
     const CSRFUpdateRoute = 'update';
 
 
-    function securityCSRFApi(): void
+    function SecurityCSRFApi(): void
     {
         Route::prefix( csrfRoute )->group
         (
