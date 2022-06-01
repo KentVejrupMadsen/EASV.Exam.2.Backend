@@ -13,28 +13,28 @@
     use App\Http\Controllers\httpControllers\security\SecurityConfigurationController;
 
 
-    const configurationRoute = 'configuration';
+    const ConfigurationRoute = 'configuration';
 
-    const configurationCreateRoute = 'create';
-    const configurationDeleteRoute = 'delete';
-    const configurationReadRoute   = 'read';
-    const configurationUpdateRoute = 'update';
+    const ConfigurationCreateRoute = 'create';
+    const ConfigurationDeleteRoute = 'delete';
+    const ConfigurationReadRoute   = 'read';
+    const ConfigurationUpdateRoute = 'update';
 
 
     function securityConfigurationApi(): void
     {
-        Route::prefix( configurationRoute )->group
+        Route::prefix( ConfigurationRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( SecurityConfigurationController::class )->group
                 (
-                    function ()
+                    function(): void
                     {
-                        Route::post( configurationCreateRoute, 'publicCreate' );
-                        Route::delete( configurationDeleteRoute, 'publicDelete' );
-                        Route::post( configurationReadRoute, 'publicRead' );
-                        Route::patch( configurationUpdateRoute, 'publicUpdate' );
+                        Route::post( ConfigurationCreateRoute, 'publicCreate' );
+                        Route::delete( ConfigurationDeleteRoute, 'publicDelete' );
+                        Route::post( ConfigurationReadRoute, 'publicRead' );
+                        Route::patch( ConfigurationUpdateRoute, 'publicUpdate' );
                     }
                 );
             }
