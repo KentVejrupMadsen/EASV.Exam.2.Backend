@@ -72,7 +72,7 @@
         /**
          * 
          */
-        #[OA\Post(path: '/api/1.0.0/tools/task/create')]
+        #[OA\Post(path: '/api/1.0.0/tools/project/create')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $request )
         {
@@ -83,7 +83,7 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/1.0.0/tools/task/read')]
+        #[OA\Get(path: '/api/1.0.0/tools/project/read')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function read( Request $request )
         {
@@ -94,7 +94,7 @@
         /**
          * 
          */
-        #[OA\Patch(path: '/api/1.0.0/tools/task/update')]
+        #[OA\Patch(path: '/api/1.0.0/tools/project/update')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function update( Request $request )
         {
@@ -105,7 +105,7 @@
         /**
          * 
          */
-        #[OA\Delete(path: '/api/1.0.0/tools/task/delete')]
+        #[OA\Delete(path: '/api/1.0.0/tools/project/delete')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function delete( Request $request )
         {
