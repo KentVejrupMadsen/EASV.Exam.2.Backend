@@ -33,7 +33,7 @@
                     {
                         Route::post( ConfigurationCreateRoute, 'publicCreate' );
                         Route::delete( ConfigurationDeleteRoute, 'publicDelete' );
-                        Route::post( ConfigurationReadRoute, 'publicRead' );
+                        Route::get( ConfigurationReadRoute, 'publicRead' );
                         Route::patch( ConfigurationUpdateRoute, 'publicUpdate' );
                     }
                 );
