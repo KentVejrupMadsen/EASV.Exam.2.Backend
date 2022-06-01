@@ -8,6 +8,7 @@
     namespace App\Http\Controllers\httpControllers\tools;
 
     // External
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
     use OpenApi\Attributes
@@ -17,7 +18,7 @@
     use App\Http\Controllers\templates\ControllerPipeline;
 
 
-    final class TaskController
+    class TaskController
         extends ControllerPipeline
     {
         /**
@@ -68,48 +69,58 @@
             // TODO: Implement pipelineTowardXML() method.
             return null;
         }
-        
-        /**
-         * 
-         */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function create( Request $request )
-        {
-            
-        }
-        
 
         /**
-         * 
+         * @param Request $request
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function read( Request $request )
+        #[OA\Post(path: '/api/1.0.0/tools/task/create' )]
+        #[OA\Response( response: '200', description: 'create a new task for a kanban board' )]
+        public final function create( Request $request ): JsonResponse
         {
-            
-        }
-        
 
-        /**
-         * 
-         */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function update( Request $request )
-        {
-            
+
+            return Response()->json(null, 200);
         }
 
 
         /**
-         * 
+         * @param Request $request
+         * @return JsonResponse
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function delete( Request $request )
+        #[OA\Get(path:'/api/1.0.0/tools/task/read')]
+        #[OA\Response( response: '200', description: 'read the content of a task' )]
+        public final function read( Request $request ): JsonResponse
         {
-            
+
+
+            return Response()->json(null, 200);
+        }
+
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
+        #[OA\Patch( path: '/api/1.0.0/tools/task/update' )]
+        #[OA\Response( response: '200', description: 'updates the information for a specific task' )]
+        public final function update( Request $request ): JsonResponse
+        {
+
+
+            return Response()->json(null, 200);
+        }
+
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
+        #[OA\Delete( path: '/api/1.0.0/tools/task/delete' )]
+        #[OA\Response( response: '200', description: 'Delete a specific tasks. ' )]
+        public final function delete( Request $request ): JsonResponse
+        {
+            return Response()->json(null, 200);
         }
 
         private static $controller = null;

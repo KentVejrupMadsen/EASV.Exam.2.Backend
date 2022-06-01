@@ -113,7 +113,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Patch(path: '/api/1.0.0/accounts/entities/name/update')]
+        #[OA\Patch(path: '/api/1.0.0/accounts/entities/email/update')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function update( Request $request ): JsonResponse
         {
