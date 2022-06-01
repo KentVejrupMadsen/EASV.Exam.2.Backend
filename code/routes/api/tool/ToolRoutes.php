@@ -14,7 +14,7 @@
 
     const ToolRoute = 'tools';
 
-
+    
     //
     function ToolRoutes(): void
     {

@@ -18,11 +18,11 @@
     {
         Route::prefix( securityRoute )->group
         (
-            function()
+            function(): void
             {
-                securityCSRFApi();
-                securityConfigurationApi();
-                securityRecapApi();
+                SecurityCSRFApi();
+                SecurityConfigurationApi();
+                SecurityRecapApi();
             }
         );
     }

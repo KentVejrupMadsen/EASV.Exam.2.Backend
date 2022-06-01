@@ -16,11 +16,11 @@
     {
         Route::prefix( statusRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( HealthController::class )->group
                 (
-                    function()
+                    function(): void
                     {
                         Route::get( 'now', 'now' );
                     }
