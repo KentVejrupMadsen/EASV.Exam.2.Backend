@@ -73,7 +73,7 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Get(path: '/api/1.0.0/tools/board/read')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function read( Request $request )
         {
@@ -84,7 +84,7 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Post(path: '/api/1.0.0/tools/board/create')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $request )
         {
@@ -95,7 +95,7 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Patch(path: '/api/1.0.0/tools/board/update')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function update( Request $request )
         {
@@ -106,7 +106,7 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Delete(path: '/api/1.0.0/tools/board/delete')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function delete( Request $request )
         {

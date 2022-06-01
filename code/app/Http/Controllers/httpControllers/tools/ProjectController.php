@@ -72,7 +72,7 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Post(path: '/api/1.0.0/tools/project/create')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $request )
         {
@@ -83,7 +83,7 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Get(path: '/api/1.0.0/tools/project/read')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function read( Request $request )
         {
@@ -93,7 +93,7 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Patch(path: '/api/1.0.0/tools/project/update')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function update( Request $request )
         {
@@ -104,7 +104,7 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/data.json')]
+        #[OA\Delete(path: '/api/1.0.0/tools/project/delete')]
         #[OA\Response(response: '200', description: 'The data')]
         public final function delete( Request $request )
         {
@@ -113,16 +113,23 @@
 
         private static $controller = null;
 
-        public static final function setSingleton( $controller )
+        /**
+         * @param ProjectController $controller
+         * @return void
+         */
+        public static final function setSingleton( ProjectController $controller )
         {
             self::$controller = $controller;
         }
 
-        public static final function getSingleton()
+        /**
+         * @return ProjectController
+         */
+        public static final function getSingleton(): ProjectController
         {
-            if(is_null(self::$controller))
+            if( is_null( self::$controller ) )
             {
-                self::setSingleton(new PersonNameController());
+                self::setSingleton( new ProjectController() );
             }
 
             return self::$controller;
