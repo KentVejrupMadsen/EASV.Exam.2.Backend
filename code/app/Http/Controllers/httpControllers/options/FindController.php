@@ -44,6 +44,9 @@
         // Variables
         private const conflict = 409;
 
+
+        #[OA\Post( path: '/api/1.0.0/options/find/email' )]
+        #[OA\Response( response: '200', description: 'validates if the requested email is existing in the database as a json response.' ) ]
         public function publicFind( FindRequest $request )
         {
 

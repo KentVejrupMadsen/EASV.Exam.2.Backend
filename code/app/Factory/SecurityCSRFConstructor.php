@@ -7,6 +7,7 @@
     use App\Models\security\CSRFModel;
 
 
+
     class SecurityCSRFConstructor
     {
         public function __construct()
@@ -17,6 +18,7 @@
         // Variables
         private int $tokenDefaultLength = 64;
         private static $factory = null;
+
 
         // Code
         /**
@@ -233,7 +235,7 @@
          * @param bool $normalised
          * @return string
          */
-        protected static function generateRandomToken( int $stringLength, bool $normalised = false )
+        protected static function generateRandomToken( int $stringLength, bool $normalised = false ): string
         {
             $generatedValue = Str::random( $stringLength );
 
@@ -253,7 +255,7 @@
          * @param int $randomTokenSize
          * @return array|null
          */
-        protected static function generateInputArray( string $ipAssignedTo, int $randomTokenSize ): ?array
+        protected static function generateInputArray(string $ipAssignedTo, int $randomTokenSize ): ?array
         {
             return
             [

@@ -82,19 +82,6 @@
             return null;
         }
 
-        // Crud
-        /**
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-         */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
-        public final function me()
-        {
-            $currentUser = Auth::user();
-            return response( $currentUser );
-        }
-
-
         /**
          * @return void
          */
