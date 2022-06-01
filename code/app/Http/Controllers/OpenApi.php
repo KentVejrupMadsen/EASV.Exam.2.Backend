@@ -11,7 +11,10 @@
         as OA;
 
 
-    #[OA\Info( title: "Kanban-Project-Backend-API", version: "1.06.2022" ) ]
+    #[OA\Info( version: '1.06.2022', title: 'Kanban-Project-Backend-API') ]
+    #[OA\Contact(name: 'kent vejrup madsen', url: 'https://github.com/KentVejrupMadsen', email: 'kent.vejrup.madsen@protonmail.com')]
+    #[OA\Server( url: 'https://kanban.goalpioneers.com/' )]
+    #[OA\License( name: 'MIT License', url: 'https://github.com/KentVejrupMadsen/Kanban-Project-Backend/blob/main/License.md')]
     final class OpenApi
         extends Controller
     {
