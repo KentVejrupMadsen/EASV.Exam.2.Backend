@@ -50,6 +50,18 @@
             return $model;
         }
 
+        public function executeInvalidateModel( CSRFModel &$model, bool $shouldSave = true ): CSRFModel
+        {
+            $model->invalidated = true;
+            
+            if( $shouldSave )
+            {
+                $model->save();
+            }
+
+            return $model;
+        }
+
 
         public function executeActivateModel( CSRFModel &$model, bool $shouldSave = true ): CSRFModel
         {
