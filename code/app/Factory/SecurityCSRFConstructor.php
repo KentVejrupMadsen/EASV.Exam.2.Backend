@@ -26,6 +26,7 @@
         public function constructNewModel( string $ip ): CSRFModel
         {
             $input = self::generateInputArray( $ip, $this->getDefaultLength() );
+
             return self::makeModel( $input );
         }
 
@@ -216,7 +217,7 @@
             }
         }
 
-        
+
         /**
          * @return void
          */
@@ -259,6 +260,7 @@
                 'assigned_to' => $ipAssignedTo,
                 'secure_token' => self::generateRandomToken( $randomTokenSize ),
                 'secret_token' => self::generateRandomToken( $randomTokenSize ),
+                'issued' => Carbon::now(),
                 'activated' => false,
                 'invalidated' => false
             ];

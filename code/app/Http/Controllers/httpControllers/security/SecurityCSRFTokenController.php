@@ -134,11 +134,11 @@
         public function publicCreate( SecurityCSRFRequest $Request ): JsonResponse
         {
             $model = $this->create( $Request );
-            $this->getCache()->create( $model );
 
-            $c = $this->getCache()->select( $model );
+            // Caches the secret and public key
+            $this->getCache()->create( $model, false );
 
-            return response()->json( $c->secure_token, 200 );
+            return $this->getJsonFactory()->CreateResponse( $model );
         }
 
 

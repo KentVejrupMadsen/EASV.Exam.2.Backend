@@ -176,11 +176,13 @@
         {
             if( $full )
             {
-                Redis::set( $this->redisStrKey( $model->id ), json_encode( $this->cacheCompleteModel( $model ) ) );
+                Redis::set( $this->redisStrKey( $model->id ),
+                            json_encode( $this->cacheCompleteModel( $model ) ) );
             }
             else
             {
-                Redis::set( $this->redisStrKey( $model->id ), json_encode( $this->cacheSecurity( $model ) ) );
+                Redis::set( $this->redisStrKey( $model->id ),
+                            json_encode( $this->cacheSecurity( $model ) ) );
             }
 
         }
