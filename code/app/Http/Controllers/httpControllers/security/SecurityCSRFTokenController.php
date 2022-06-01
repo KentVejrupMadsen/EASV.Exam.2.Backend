@@ -60,21 +60,6 @@
             }
         }
 
-        protected final function setJsonFactory( CSRFResponseJSONFactory $factory )
-        {
-            $this->jsonFactory = $factory;
-        }
-
-        protected final function getJsonFactory(): CSRFResponseJSONFactory
-        {
-            return $this->jsonFactory;
-        }
-
-        protected final function isJsonFactoryEmpty()
-        {
-            return is_null( $this->jsonFactory );
-        }
-
 
 
         // Functions that the routes interacts with
@@ -193,11 +178,12 @@
         }
 
         // Accessors
+            // Controller singleton
         /**
          * @param SecurityCSRFTokenController $controller
          * @return void
          */
-        public static final function setSingleton( SecurityCSRFTokenController $controller )
+        public static final function setSingleton( SecurityCSRFTokenController $controller ): void
         {
             self::$controller = $controller;
         }
@@ -215,14 +201,20 @@
             return self::$controller;
         }
 
+
+        // Redis cache
         /**
          * @return RedisCacheCSRFController
          */
         protected final function getCache(): RedisCacheCSRFController
         {
+            if( $this->isCacheEmpty() )
+            {
+                $this->setCache( new RedisCacheCSRFController( true ) );
+            }
+
             return $this->cache;
         }
-
 
         /**
          * @param RedisCacheCSRFController $cacheController
@@ -233,13 +225,29 @@
             $this->cache = $cacheController;
         }
 
-
         /**
          * @return bool
          */
         protected final function isCacheEmpty(): bool
         {
             return is_null( $this->cache );
+        }
+
+        // Formatter
+            // Json
+        protected final function setJsonFactory( CSRFResponseJSONFactory $factory ): void
+        {
+            $this->jsonFactory = $factory;
+        }
+
+        protected final function getJsonFactory(): CSRFResponseJSONFactory
+        {
+            return $this->jsonFactory;
+        }
+
+        protected final function isJsonFactoryEmpty(): bool
+        {
+            return is_null( $this->jsonFactory );
         }
     }
 ?>
