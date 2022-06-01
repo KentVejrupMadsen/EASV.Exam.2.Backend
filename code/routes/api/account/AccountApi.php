@@ -23,6 +23,7 @@
     const AccountLogoutRoute  =  'logout';
     const AccountUpdateRoute  =  'update';
     const AccountVerifyRoute  =  'verify';
+    const AccountReadRoute    = 'read';
 
 
     function AccountApi(): void
@@ -37,6 +38,7 @@
                     {
                         Route::post( AccountCreateRoute, 'create' );
                         Route::post( AccountLoginRoute, 'login' );
+                        Route::get( AccountReadRoute, 'read' );
 
                         Route::middleware( MIDSANC )->group
                         (

@@ -143,15 +143,12 @@
 
 
         /**
-         * @param Request $Request
+         * @param Request $request
          * @return CSRFModel|null
          */
-        public final function create( Request $Request ): ?CSRFModel
+        public final function create( Request $request ): ?CSRFModel
         {
-            $model = $this->getConstructor()
-                          ->constructNewModel( $Request->ip() );
-
-            return $model;
+            return $this->getConstructor()->constructNewModel( $request->ip() );
         }
 
 
