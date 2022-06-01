@@ -61,18 +61,41 @@
                 return null;
             }
 
-            $cachedModel = new CSRFModel();
+            if( $jsonValues[ 'cache_type' ] == 'complete' )
+            {
+                $cachedModel = $this->decodeJSONComplete( $jsonValues[ 'csrf' ] );
+            }
 
-            $cachedModel->id            = $jsonValues['csrf']['id'];
-            $cachedModel->assigned_to   = $jsonValues['csrf']['assigned_to'];
-            $cachedModel->secure_token  = $jsonValues['csrf']['secure_token'];
-            $cachedModel->secret_token  = $jsonValues['csrf']['secret_token'];
-            $cachedModel->issued        = $jsonValues['csrf']['issued'];
-            $cachedModel->accessed      = $jsonValues['csrf']['accessed'];
-            $cachedModel->activated     = $jsonValues['csrf']['activated'];
-            $cachedModel->invalidated   = $jsonValues['csrf']['invalidated'];
+            if( $jsonValues[ 'cache_type' ] == 'secure' )
+            {
+                $cachedModel = $this->decodeJSONComplete( $jsonValues[ 'csrf' ] );
+            }
 
             return $cachedModel;
+        }
+
+        private function decodeJSONComplete( array $array ): CSRFModel
+        {
+            $cachedModel = $this->decodeJSONMinimum( $array );
+
+            $cachedModel->accessed      = $array[ 'accessed' ];
+            $cachedModel->activated     = $array[ 'activated' ];
+            $cachedModel->invalidated   = $array[ 'invalidated' ];
+
+            return $cachedModel;
+        }
+
+        private function decodeJSONMinimum( array $array ): CSRFModel
+        {
+            $cachedModel = new CSRFModel();
+
+            $cachedModel->id            = $array[ 'id' ];
+            $cachedModel->assigned_to   = $array[ 'assigned_to' ];
+            $cachedModel->secure_token  = $array[ 'secure_token' ];
+            $cachedModel->secret_token  = $array[ 'secret_token' ];
+            $cachedModel->issued        = $array[ 'issued' ];
+
+            return$cachedModel;
         }
 
         protected final function cacheCompleteModel( CSRFModel $cachedModel ): array
@@ -94,6 +117,22 @@
             ];
         }
 
+        protected final function cacheSecurity( CSRFModel $cachedModel ): array
+        {
+            return
+                [
+                    'csrf' =>
+                    [
+                        'id'            => $cachedModel->id,
+                        'assigned_to'   => $cachedModel->assigned_to,
+                        'secure_token'  => $cachedModel->secure_token,
+                        'secret_token'  => $cachedModel->secret_token,
+                        'issued'        => $cachedModel->issued,
+                    ],
+                    'cache_type' => 'secure'
+                ];
+        }
+
         public final function create( ?CSRFModel $model,
                                       bool $full = true ): void
         {
@@ -101,6 +140,11 @@
             {
                 Redis::set( $this->redisStrKey( $model->id ), json_encode( $this->cacheCompleteModel( $model ) ) );
             }
+            else
+            {
+                Redis::set( $this->redisStrKey( $model->id ), json_encode( $this->cacheSecurity( $model ) ) );
+            }
+
         }
 
 
