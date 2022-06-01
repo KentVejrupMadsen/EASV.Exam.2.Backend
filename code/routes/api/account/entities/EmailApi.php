@@ -23,11 +23,11 @@
     {
         Route::prefix( EmailRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( PersonEmailController::class )->group
                 (
-                    function()
+                    function(): void
                     {
                         Route::get( EmailRouteRead, 'read' );
                         Route::post( EmailRouteCreate, 'create' );
