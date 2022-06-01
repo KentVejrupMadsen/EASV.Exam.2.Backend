@@ -5,7 +5,7 @@
     use Illuminate\Support\Str;
 
     use App\Models\security\CSRFModel;
-    use JetBrains\PhpStorm\ArrayShape;
+
 
 
     class SecurityCSRFConstructor
@@ -18,6 +18,7 @@
         // Variables
         private int $tokenDefaultLength = 64;
         private static $factory = null;
+
 
         // Code
         /**
@@ -234,7 +235,7 @@
          * @param bool $normalised
          * @return string
          */
-        protected static function generateRandomToken( int $stringLength, bool $normalised = false )
+        protected static function generateRandomToken( int $stringLength, bool $normalised = false ): string
         {
             $generatedValue = Str::random( $stringLength );
 
@@ -254,7 +255,6 @@
          * @param int $randomTokenSize
          * @return array|null
          */
-        #[ArrayShape(['assigned_to' => "string", 'secure_token' => "string", 'secret_token' => "string", 'issued' => "\Carbon\Carbon", 'activated' => "false", 'invalidated' => "false"])]
         protected static function generateInputArray(string $ipAssignedTo, int $randomTokenSize ): ?array
         {
             return
