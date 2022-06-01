@@ -8,6 +8,7 @@
     use Illuminate\Support\Facades\Route;
 
     use App\Http\Controllers\httpControllers\status\HealthController;
+
     const statusRoute = 'status';
 
 
@@ -21,7 +22,7 @@
                 (
                     function()
                     {
-                        Route::get('now', 'now');
+                        Route::get( 'now', 'now' );
                     }
                 );
 

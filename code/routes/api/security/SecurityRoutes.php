@@ -11,9 +11,12 @@
 
     use Illuminate\Support\Facades\Route;
 
+    const securityRoute = 'securities';
+
+
     function SecurityRoutes(): void
     {
-        Route::prefix( 'securities' )->group
+        Route::prefix( securityRoute )->group
         (
             function()
             {
