@@ -11,7 +11,7 @@
     const statusRoute = 'status';
 
 
-    function statusRoutes()
+    function StatusRoutes(): void
     {
         Route::prefix( statusRoute )->group
         (
