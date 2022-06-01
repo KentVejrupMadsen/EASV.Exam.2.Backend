@@ -26,6 +26,7 @@
         public function constructNewModel( string $ip ): CSRFModel
         {
             $input = self::generateInputArray( $ip, $this->getDefaultLength() );
+
             return self::makeModel( $input );
         }
 
@@ -155,6 +156,77 @@
             return $model;
         }
 
+
+        /**
+         * @param string $ipAddress
+         * @return array
+         */
+        public final function allByIpAddress( string $ipAddress ): array
+        {
+            $models = CSRFModel::where( 'assigned_to', '=', $ipAddress )->get()->toArray();
+            return $models;
+        }
+
+
+        /**
+         * @param CSRFModel $model
+         * @return void
+         */
+        public final function deleteModel( CSRFModel &$model ): void
+        {
+            $model->delete();
+        }
+
+
+        /**
+         * @param int $id
+         * @return void
+         */
+        public final function deleteById( int $id ): void
+        {
+            CSRFModel::destroy( $id );
+        }
+
+
+        /**
+         * @param string $ip
+         * @param bool $all
+         * @return void
+         */
+        public final function deleteByIpAddress( string $ip, bool $all = true ): void
+        {
+            $associatedIPs = CSRFModel::where( 'assigned_to', '=', $ip )->get()->toArray();
+
+            for( $idx = 0;
+                 $idx < count( $associatedIPs );
+                 $idx++ )
+            {
+                $current = $associatedIPs[$idx];
+
+                if( $all )
+                {
+                    $current->delete();
+                }
+                else
+                {
+                    if( $current->invalidated )
+                    {
+                        $current->delete();
+                    }
+                }
+            }
+        }
+
+
+        /**
+         * @return void
+         */
+        public final function clearDatabase(): void
+        {
+            CSRFModel::truncate();
+        }
+
+
         //
         /**
          * @param int $stringLength
@@ -188,6 +260,7 @@
                 'assigned_to' => $ipAssignedTo,
                 'secure_token' => self::generateRandomToken( $randomTokenSize ),
                 'secret_token' => self::generateRandomToken( $randomTokenSize ),
+                'issued' => Carbon::now(),
                 'activated' => false,
                 'invalidated' => false
             ];
@@ -206,11 +279,18 @@
 
 
         // Accessors
+        /**
+         * @return int
+         */
         public final function getDefaultLength(): int
         {
             return $this->tokenDefaultLength;
         }
 
+        /**
+         * @param int $value
+         * @return void
+         */
         public final function setDefaultLength( int $value ): void
         {
             $this->tokenDefaultLength = $value;

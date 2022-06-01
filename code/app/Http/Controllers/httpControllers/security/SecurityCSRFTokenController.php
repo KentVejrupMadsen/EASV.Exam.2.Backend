@@ -40,7 +40,8 @@
         {
             if( $this->isCacheEmpty() )
             {
-                $this->setCache( RedisCacheCSRFController::getSingleton() );
+                $controller = new RedisCacheCSRFController( true );
+                $this->setCache( $controller );
             }
 
             if( $this->isJsonFactoryEmpty() )
@@ -57,7 +58,7 @@
         // Variables
         private static ?SecurityCSRFTokenController $controller = null;
 
-        private ?RedisCacheCSRFController $cache       = null;
+        private ?RedisCacheCSRFController $cache      = null;
         private ?CSRFResponseJSONFactory $jsonFactory = null;
         private ?SecurityCSRFConstructor $constructor = null;
 
@@ -90,8 +91,9 @@
          * @param SecurityCSRFRequest $request
          * @return JsonResponse
          */
-        #[OA\Post(path: '/api/1.0.0/securities/csrf/access')]
-        #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Post( path: '/api/1.0.0/securities/csrf/access' )]
+        #[OA\Response( response: '200',
+                       description: 'The data')]
         public final function access( SecurityCSRFRequest $request ): JsonResponse
         {
             return Response()->json([], 200);
@@ -104,7 +106,8 @@
          * @return JsonResponse
          */
         #[OA\Get( path: '/api/1.0.0/securities/csrf/read' )]
-        #[OA\Response( response: '200', description: 'The data' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
         public function publicRead( SecurityCSRFRequest $Request ): JsonResponse
         {
             return $this->read( $Request );
@@ -125,24 +128,30 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Get(path: '/api/1.0.0/securities/csrf/create')]
-        #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Get( path: '/api/1.0.0/securities/csrf/create' )]
+        #[OA\Response( response: '200',
+                       description: 'The data')]
         public function publicCreate( SecurityCSRFRequest $Request ): JsonResponse
         {
-            return $this->create( $Request );
+            $model = $this->create( $Request );
+
+            // Caches the secret and public key
+            $this->getCache()->create( $model, false );
+
+            return $this->getJsonFactory()->CreateResponse( $model );
         }
 
 
         /**
          * @param Request $Request
-         * @return JsonResponse
+         * @return CSRFModel|null
          */
-        public final function create( Request $Request ): JsonResponse
+        public final function create( Request $Request ): ?CSRFModel
         {
             $model = $this->getConstructor()
                           ->constructNewModel( $Request->ip() );
 
-            return response()->json( $model, 200 );
+            return $model;
         }
 
 
@@ -151,7 +160,8 @@
          * @return JsonResponse
          */
         #[OA\Patch( path: '/api/1.0.0/securities/csrf/update' )]
-        #[OA\Response( response: '200', description: 'The data' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
         public function publicUpdate( SecurityCSRFRequest $Request ): JsonResponse
         {
             return $this->update( $Request );
@@ -175,7 +185,8 @@
          * @return JsonResponse
          */
         #[OA\Get(path: '/api/1.0.0/securities/csrf/reset')]
-        #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response( response: '200',
+                       description: 'The data')]
         public final function reset( SecurityCSRFRequest $request ): JsonResponse
         {
             return Response()->json([], 200);
@@ -190,7 +201,8 @@
          * @return JsonResponse
          */
         #[OA\Delete(path: '/api/1.0.0/securities/csrf/delete' )]
-        #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response( response: '200',
+                       description: 'The data')]
         public function publicDelete( SecurityCSRFRequest $Request ): JsonResponse
         {
             return Response()->json([], 200);
@@ -264,16 +276,26 @@
 
         // Formatter
             // Json
+        /**
+         * @param CSRFResponseJSONFactory $factory
+         * @return void
+         */
         protected final function setJsonFactory( CSRFResponseJSONFactory $factory ): void
         {
             $this->jsonFactory = $factory;
         }
 
+        /**
+         * @return CSRFResponseJSONFactory
+         */
         protected final function getJsonFactory(): CSRFResponseJSONFactory
         {
             return $this->jsonFactory;
         }
 
+        /**
+         * @return bool
+         */
         protected final function isJsonFactoryEmpty(): bool
         {
             return is_null( $this->jsonFactory );
