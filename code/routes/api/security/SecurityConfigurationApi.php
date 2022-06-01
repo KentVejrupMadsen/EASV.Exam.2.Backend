@@ -12,6 +12,7 @@
     // Internal libraries
     use App\Http\Controllers\httpControllers\security\SecurityConfigurationController;
 
+
     const configurationRoute = 'configuration';
 
     const configurationCreateRoute = 'create';
@@ -32,7 +33,7 @@
                     {
                         Route::post( configurationCreateRoute, 'publicCreate' );
                         Route::delete( configurationDeleteRoute, 'publicDelete' );
-                        Route::get( configurationReadRoute, 'publicRead' );
+                        Route::post( configurationReadRoute, 'publicRead' );
                         Route::patch( configurationUpdateRoute, 'publicUpdate' );
                     }
                 );

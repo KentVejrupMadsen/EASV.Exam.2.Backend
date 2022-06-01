@@ -88,7 +88,7 @@
         {
             if( $model->invalidated )
             {
-                abort(ControllerMessages::unAuthorized );
+                abort( ControllerMessages::unAuthorized );
             }
         }
 
@@ -129,7 +129,7 @@
         {
             if( !( $model->secure_token == $secureTokenInput ) )
             {
-                abort(ControllerMessages::preConditionFailed );
+                abort( ControllerMessages::preConditionFailed );
             }
         }
 
@@ -368,7 +368,7 @@
                 false
             );
 
-            $model = CSRFModel::factory()->create( $inputModel );
+            $model = CSRFModel::create( $inputModel );
             return $model;
         }
 

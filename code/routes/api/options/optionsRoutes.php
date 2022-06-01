@@ -10,11 +10,11 @@
     require_once 'findApi.php';
     require_once 'stateApi.php';
 
+    const options_route = 'options';
 
-    //
     function OptionsRoutes(): void
     {
-        Route::prefix( 'options' )->group
+        Route::prefix( options_route )->group
         (
             function()
             {
