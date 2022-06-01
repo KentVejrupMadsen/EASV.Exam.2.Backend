@@ -119,7 +119,7 @@
         {
             return Response()->json(null, 200);
         }
-        
+
 
         private static $controller = null;
 

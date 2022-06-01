@@ -121,32 +121,6 @@
         }
 
 
-        /**
-         * @param Request $request
-         * @return JsonResponse
-         */
-        #[OA\Post( path: '/api/1.0.0/options/find/email' )]
-        #[OA\Response( response: '200', description: 'retrieves an requested email object as a json response. if it exist else nothing' )]
-        public final function find( Request $request ): JsonResponse
-        {
-
-            return Response()->json( null, 200 );
-        }
-
-
-        /**
-         * @param Request $request
-         * @return JsonResponse
-         */
-        #[OA\Post( path: '/api/1.0.0/options/state/email' )]
-        #[OA\Response( response: '200', description: 'validates if the requested email is existing in the database as a json response.' ) ]
-        public final function exist( Request $request ): JsonResponse
-        {
-
-
-            return response()->json( null, 200);
-        }
-
         //
         private static $controller = null;
 
