@@ -22,6 +22,7 @@
     class SecurityConfigurationController
         extends CrudController
     {
+        //
         /**
          * @param bool $makeSingleton
          */
@@ -33,11 +34,16 @@
             }
         }
 
+        // Variables
+        private static $controller = null;
+
         // Functions that the routes interacts with
         /**
          * @param SecurityConfigurationRequest $Request
          * @return void
          */
+        #[OA\Post(path: '/api/1.0.0/securities/configuration/read' )]
+        #[OA\Response(response: '200', description: 'The data')]
         public function publicRead( SecurityConfigurationRequest $Request )
         {
             $this->read( $Request );
@@ -48,6 +54,8 @@
          * @param SecurityConfigurationRequest $Request
          * @return void
          */
+        #[OA\Patch(path: '/api/1.0.0/securities/configuration/update' )]
+        #[OA\Response(response: '200', description: 'The data')]
         public function publicUpdate( SecurityConfigurationRequest $Request )
         {
             $this->update( $Request );
@@ -58,6 +66,8 @@
          * @param SecurityConfigurationRequest $Request
          * @return void
          */
+        #[OA\Post(path: '/api/1.0.0/securities/configuration/create' )]
+        #[OA\Response(response: '200', description: 'The data')]
         public function publicCreate( SecurityConfigurationRequest $Request )
         {
             $this->create( $Request );
@@ -68,6 +78,8 @@
          * @param SecurityConfigurationRequest $Request
          * @return void
          */
+        #[OA\Delete(path: '/api/1.0.0/securities/configuration/delete' )]
+        #[OA\Response(response: '200', description: 'The data')]
         public function publicDelete( SecurityConfigurationRequest $Request )
         {
             $this->delete( $Request );
@@ -78,8 +90,6 @@
          * @param Request $request
          * @return void
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
         public final function read( Request $request )
         {
             // TODO: Implement read() method.
@@ -90,8 +100,6 @@
          * @param Request $request
          * @return void
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $request )
         {
             // TODO: Implement create() method.
@@ -102,8 +110,6 @@
          * @param Request $request
          * @return void
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
         public final function update( Request $request )
         {
             // TODO: Implement update() method.
@@ -114,16 +120,12 @@
          * @param Request $request
          * @return void
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
         public final function delete( Request $request )
         {
             // TODO: Implement delete() method.
         }
 
-        //
-        private static $controller = null;
-
+        // Accessors
         public static final function setSingleton( SecurityConfigurationController $controller )
         {
             self::$controller = $controller;
