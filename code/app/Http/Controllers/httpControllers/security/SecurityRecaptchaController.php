@@ -39,6 +39,8 @@
          * @param SecurityCSRFRequest $Request
          * @return void
          */
+        #[OA\Get(path: '/api/1.0.0/securities/recaptcha/read' )]
+        #[OA\Response(response: '200', description: 'The data')]
         public function publicRead( SecurityCSRFRequest $Request )
         {
             $this->read( $Request );
@@ -49,6 +51,8 @@
          * @param SecurityCSRFRequest $Request
          * @return void
          */
+        #[OA\Patch(path: '/api/1.0.0/securities/recaptcha/update' )]
+        #[OA\Response(response: '200', description: 'The data')]
         public function publicUpdate( SecurityCSRFRequest $Request )
         {
             $this->update( $Request );
@@ -59,6 +63,8 @@
          * @param SecurityCSRFRequest $Request
          * @return void
          */
+        #[OA\Post(path: '/api/1.0.0/securities/recaptcha/create' )]
+        #[OA\Response(response: '200', description: 'The data')]
         public function publicCreate( SecurityCSRFRequest $Request )
         {
             $this->create( $Request );
@@ -69,6 +75,8 @@
          * @param SecurityCSRFRequest $Request
          * @return void
          */
+        #[OA\Delete(path: '/api/1.0.0/securities/recaptcha/delete' )]
+        #[OA\Response(response: '200', description: 'The data')]
         public function publicDelete( SecurityCSRFRequest $Request )
         {
             $this->delete( $Request );
@@ -79,8 +87,6 @@
          * @param Request $request
          * @return void
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
         public final function read( Request $request )
         {
             // TODO: Implement read() method.
@@ -91,8 +97,6 @@
          * @param Request $request
          * @return void
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
         public final function create( Request $request )
         {
             // TODO: Implement create() method.
@@ -103,8 +107,6 @@
          * @param Request $request
          * @return void
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
         public final function update( Request $request )
         {
             // TODO: Implement update() method.
@@ -115,8 +117,6 @@
          * @param Request $request
          * @return void
          */
-        #[OA\Get(path: '/api/data.json')]
-        #[OA\Response(response: '200', description: 'The data')]
         public final function delete( Request $request )
         {
             // TODO: Implement delete() method.
