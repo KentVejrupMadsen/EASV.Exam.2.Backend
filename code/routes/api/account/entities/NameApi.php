@@ -19,15 +19,15 @@
     const NameDeleteRoute = 'delete';
 
 
-    function NameApi()
+    function NameApi(): void
     {
         Route::prefix( NameRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( PersonNameController::class )->group
                 (
-                    function()
+                    function(): void
                     {
                         Route::get( NameReadRoute, 'read' );
                         Route::post( NameCreateRoute,'create' );

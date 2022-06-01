@@ -12,15 +12,15 @@
     const stateRoute = 'state';
 
 
-    function stateApi(): void
+    function StateApi(): void
     {
         Route::prefix( stateRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( StateController::class )->group
                 (
-                    function()
+                    function(): void
                     {
                         Route::post( 'email', 'publicState' );
                     }

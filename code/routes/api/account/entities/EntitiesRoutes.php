@@ -9,14 +9,16 @@
     use Illuminate\Support\Facades\Route;
 
     // Internally
-    require_once 'addressApi.php';
-    require_once 'emailApi.php';
-    require_once 'nameApi.php';
+    require_once 'AddressApi.php';
+    require_once 'EmailApi.php';
+    require_once 'NameApi.php';
 
+
+    const EntityRoute = 'entities';
 
     function EntitiesRoutes()
     {
-        Route::prefix( 'entities' )->group
+        Route::prefix( EntityRoute )->group
         (
             function()
             {

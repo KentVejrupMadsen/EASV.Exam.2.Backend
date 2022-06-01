@@ -14,12 +14,12 @@
 
     const csrfRoute = 'csrf';
 
-    const csrfAccessRoute = 'access';
-    const csrfCreateRoute = 'create';
-    const csrfDeleteRoute = 'delete';
-    const csrfReadRoute   = 'read';
-    const csrfResetRoute  = 'reset';
-    const csrfUpdateRoute = 'update';
+    const CSRFAccessRoute = 'access';
+    const CSRFCreateRoute = 'create';
+    const CSRFDeleteRoute = 'delete';
+    const CSRFReadRoute   = 'read';
+    const CSRFResetRoute  = 'reset';
+    const CSRFUpdateRoute = 'update';
 
 
     function securityCSRFApi(): void
@@ -30,14 +30,14 @@
             {
                 Route::controller( SecurityCSRFTokenController::class )->group
                 (
-                    function()
+                    function(): void
                     {
-                        Route::post( csrfAccessRoute, 'access' );
-                        Route::get( csrfCreateRoute, 'publicCreate' );
-                        Route::delete( csrfDeleteRoute, 'publicDelete' );
-                        Route::get( csrfReadRoute,'publicRead' );
-                        Route::patch( csrfResetRoute, 'reset' );
-                        Route::patch( csrfUpdateRoute, 'publicUpdate' );
+                        Route::post( CSRFAccessRoute, 'access' );
+                        Route::get( CSRFCreateRoute, 'publicCreate' );
+                        Route::delete( CSRFDeleteRoute, 'publicDelete' );
+                        Route::get( CSRFReadRoute,'publicRead' );
+                        Route::patch( CSRFResetRoute, 'reset' );
+                        Route::patch( CSRFUpdateRoute, 'publicUpdate' );
                     }
                 );
             }
