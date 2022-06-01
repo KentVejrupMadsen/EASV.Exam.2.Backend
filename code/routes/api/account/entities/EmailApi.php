@@ -12,26 +12,27 @@
     use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
 
     const EmailRoute  = 'email';
-    const RouteRead   = '/read';
-    const RouteCreate = '/create';
-    const RouteUpdate =  '/update';
-    const RouteDelete =   '/delete';
+
+    const EmailRouteRead   = 'read';
+    const EmailRouteCreate = 'create';
+    const EmailRouteUpdate = 'update';
+    const EmailRouteDelete = 'delete';
 
 
     function EmailApi(): void
     {
         Route::prefix( EmailRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( PersonEmailController::class )->group
                 (
-                    function()
+                    function(): void
                     {
-                        Route::get( RouteRead, 'read' );
-                        Route::post( RouteCreate, 'create' );
-                        Route::patch( RouteUpdate, 'update' );
-                        Route::delete( RouteDelete, 'delete' );
+                        Route::get( EmailRouteRead, 'read' );
+                        Route::post( EmailRouteCreate, 'create' );
+                        Route::patch( EmailRouteUpdate, 'update' );
+                        Route::delete( EmailRouteDelete, 'delete' );
                     }
                 );
             }

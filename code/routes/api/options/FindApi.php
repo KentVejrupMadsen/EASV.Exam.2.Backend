@@ -12,15 +12,15 @@
     const findRoute = 'find';
 
 
-    function findApi(): void
+    function FindApi(): void
     {
         Route::prefix( findRoute  )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( FindController::class )->group
                 (
-                    function()
+                    function(): void
                     {
                         Route::post( 'email', 'publicFind' );
                     }

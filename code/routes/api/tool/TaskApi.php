@@ -24,11 +24,11 @@
     {
         Route::prefix( taskRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( TaskController::class )->group
                 (
-                    function()
+                    function(): void
                     {
                         Route::post( taskCreateRoute, 'create' );
                         Route::delete( taskDeleteRoute, 'delete' );

@@ -23,11 +23,11 @@
     {
         Route::prefix( projectRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( ProjectController::class )->group
                 (
-                    function()
+                    function(): void
                     {
                         Route::post( projectCreateRoute, 'create' );
                         Route::delete( projectDeleteRoute, 'delete' );

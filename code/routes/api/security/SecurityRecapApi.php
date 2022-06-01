@@ -12,28 +12,28 @@
     use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
 
 
-    const recaptchaRoute = 'recaptcha';
+    const RecaptchaRoute = 'recaptcha';
 
-    const recaptchaCreateRoute =  'create';
-    const recaptchaDeleteRoute =  'delete';
-    const recaptchaReadRoute   =  'read';
-    const recaptchaUpdateRoute =  'update';
+    const RecaptchaCreateRoute =  'create';
+    const RecaptchaDeleteRoute =  'delete';
+    const RecaptchaReadRoute   =  'read';
+    const RecaptchaUpdateRoute =  'update';
 
 
-    function securityRecapApi(): void
+    function SecurityRecapApi(): void
     {
-        Route::prefix( recaptchaRoute )->group
+        Route::prefix( RecaptchaRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( SecurityRecaptchaController::class )->group
                 (
-                    function()
+                    function(): void
                     {
-                        Route::post( recaptchaCreateRoute, 'publicCreate' );
-                        Route::delete( recaptchaDeleteRoute, 'publicDelete' );
-                        Route::get( recaptchaReadRoute, 'publicRead' );
-                        Route::patch( recaptchaUpdateRoute, 'publicUpdate' );
+                        Route::post( RecaptchaCreateRoute, 'publicCreate' );
+                        Route::delete( RecaptchaDeleteRoute, 'publicDelete' );
+                        Route::get( RecaptchaReadRoute, 'publicRead' );
+                        Route::patch( RecaptchaUpdateRoute, 'publicUpdate' );
                     }
                 );
             }

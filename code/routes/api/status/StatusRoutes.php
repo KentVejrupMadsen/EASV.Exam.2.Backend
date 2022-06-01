@@ -8,20 +8,21 @@
     use Illuminate\Support\Facades\Route;
 
     use App\Http\Controllers\httpControllers\status\HealthController;
+
     const statusRoute = 'status';
 
 
-    function statusRoutes()
+    function StatusRoutes(): void
     {
         Route::prefix( statusRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( HealthController::class )->group
                 (
-                    function()
+                    function(): void
                     {
-                        Route::get('now', 'now');
+                        Route::get( 'now', 'now' );
                     }
                 );
 

@@ -17,15 +17,15 @@
     const AddressDeleteRoute =  'delete';
 
 
-    function AddressApi()
+    function AddressApi(): void
     {
         Route::prefix( AddressRoute )->group
         (
-            function()
+            function(): void
             {
                 Route::controller( PersonAddressController::class )->group
                 (
-                    function()
+                    function(): void
                     {
                         Route::get( AddressReadRoute, 'read' );
                         Route::post( AddressCreateRoute, 'create' );
