@@ -12,10 +12,11 @@
     use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
 
     const EmailRoute  = 'email';
-    const RouteRead   = '/read';
-    const RouteCreate = '/create';
-    const RouteUpdate =  '/update';
-    const RouteDelete =   '/delete';
+
+    const RouteRead   = 'read';
+    const RouteCreate = 'create';
+    const RouteUpdate = 'update';
+    const RouteDelete = 'delete';
 
 
     function EmailApi(): void

@@ -8,10 +8,10 @@
     // External libraries
     use Illuminate\Support\Facades\Route;
 
-    require_once 'entities/entitiesRoutes.php';
+    require_once 'entities/EntitiesRoutes.php';
 
-    require_once 'accountApi.php';
-    require_once 'newsletterApi.php';
+    require_once 'AccountApi.php';
+    require_once 'NewsletterApi.php';
 
 
     function AccountRoutes(): void
