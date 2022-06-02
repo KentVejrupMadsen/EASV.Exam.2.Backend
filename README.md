@@ -3,9 +3,11 @@
 
 
 ### Status
-[![CodeScene System Mastery](https://codescene.io/projects/26526/status-badges/system-mastery)](https://codescene.io/projects/26526)
-[![CodeScene Code Health](https://codescene.io/projects/26526/status-badges/code-health)](https://codescene.io/projects/26526)
+[![CodeScene Code Health](https://codescene.io/projects/26688/status-badges/code-health)](https://codescene.io/projects/26688)
+[![CodeScene System Mastery](https://codescene.io/projects/26688/status-badges/system-mastery)](https://codescene.io/projects/26688)
 
+### Links
+* [API 1.0.0 Alpha - Swaggerhub](https://app.swaggerhub.com/apis/Goal-Pioneers/kanban-project_backend_api/1.0.0-alpha#/)
 
 ## Header
 * Author: Kent vejrup Madsen
@@ -19,8 +21,9 @@
 
 ## Links
 ### Public version
-* [Frontend website](https://kanban-project-frontend-6bk5n.ondigitalocean.app/)
-* [Backend website](https://kanban-project-backend-xvkk6.ondigitalocean.app/)
+* [Frontend website](frontend.goalpioneers.com)
+* [Backend website](kanban.goalpioneers.com)
+* [Cache website](cache.goalpioneers.com)
 
 ### Repositories
 1. [Backend](https://github.com/KentVejrupMadsen/Kanban-Project-Backend)
