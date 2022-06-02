@@ -11,8 +11,6 @@
     use Illuminate\Support\Facades\Redis;
     use Illuminate\Support\Str;
 
-    use OpenApi\Attributes
-        as OA;
 
     // Internal libraries
     use App\Http\Controllers\Controller;
@@ -22,7 +20,6 @@
     /**
      *
      */
-    #[OA\Schema()]
     class RedisCacheCSRFController
         extends Controller
     {

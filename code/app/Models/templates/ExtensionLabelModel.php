@@ -31,7 +31,6 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: ExtensionLabelModel::class,
             type: 'array',
             maximum: 1,
             minimum: 1,

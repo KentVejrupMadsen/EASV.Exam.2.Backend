@@ -39,7 +39,6 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: ProjectMemberModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,
@@ -54,7 +53,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: ProjectMemberModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,

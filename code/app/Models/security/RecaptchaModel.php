@@ -47,7 +47,6 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: RecaptchaModel::class,
             type: 'array',
             maximum: 5,
             minimum: 5,
@@ -64,7 +63,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: RecaptchaModel::class,
             type: 'array',
             maximum: 2,
             minimum: 2,
