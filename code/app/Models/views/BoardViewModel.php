@@ -9,12 +9,17 @@
 
     use App\Models\templates\ModelView;
 
+    use OpenApi\Attributes
+        as OA;
 
-    final class BoardViewModel
+
+    #[OA\Schema()]
+    class BoardViewModel
         extends ModelView
     {
+        public const table_name = 'boards_view';
         public $timestamps = false;
-        protected $table = 'boards_view';
+        protected $table = self::table_name;
 
 
         protected $fillable =

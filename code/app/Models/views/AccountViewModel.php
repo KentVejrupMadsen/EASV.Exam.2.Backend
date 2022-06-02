@@ -9,12 +9,17 @@
 
     use App\Models\templates\ModelView;
 
+    use OpenApi\Attributes
+        as OA;
 
-    final class AccountViewModel
+
+    #[OA\Schema()]
+    class AccountViewModel
         extends ModelView
     {
+        public const table_name = 'accounts_view';
         public $timestamps = false;
-        protected $table = 'accounts_view';
+        protected $table = self::table_name;
 
         protected $fillable =
         [

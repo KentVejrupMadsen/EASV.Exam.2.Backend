@@ -9,12 +9,17 @@
 
     use App\Models\templates\ModelView;
 
+    use OpenApi\Attributes
+        as OA;
 
-    final class AddressViewModel
+
+    #[OA\Schema()]
+    class AddressViewModel
         extends ModelView
     {
+        public const table_name = 'addresses_view';
         public $timestamps = false;
-        protected $table   = 'addresses_view';
+        protected $table   = table_name;
 
         protected $fillable =
         [

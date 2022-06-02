@@ -9,12 +9,17 @@
 
     use App\Models\templates\ModelView;
 
+    use OpenApi\Attributes
+        as OA;
 
-    final class ZipCodeViewShortModel
+
+    #[OA\Schema()]
+    class ZipCodeViewShortModel
         extends ModelView
     {
+        public const table_name = 'zip_codes_view_short';
         public $timestamps = false;
-        protected $table = 'zip_codes_view_short';
+        protected $table = self::table_name;
 
 
         protected $fillable =
