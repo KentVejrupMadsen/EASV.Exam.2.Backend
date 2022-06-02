@@ -37,7 +37,6 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: KanbanModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,
@@ -50,7 +49,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: KanbanModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,

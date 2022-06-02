@@ -49,7 +49,6 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: PersonNameModel::class,
             type: 'array',
             maximum: 4,
             minimum: 4,
@@ -65,7 +64,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: PersonNameModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,

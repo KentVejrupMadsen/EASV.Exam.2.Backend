@@ -24,7 +24,6 @@
 
         #[OA\Property(
             property: 'fillable',
-            schema: ZipCodeViewShortModel::class,
             type: 'array',
             maximum: 4,
             minimum: 4,
@@ -39,7 +38,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: ZipCodeViewShortModel::class,
             type: 'array',
             maximum: 1,
             minimum: 1,

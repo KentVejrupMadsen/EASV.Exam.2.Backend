@@ -34,7 +34,6 @@
 
         #[OA\Property(
             property: 'fillable',
-            schema: AddressModel::class,
             type: 'array',
             maximum: 6,
             minimum: 6,
@@ -52,7 +51,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: AddressModel::class,
             type: 'array',
             maximum: 4,
             minimum: 4,
