@@ -48,6 +48,7 @@
 
         #[OA\Post( path: '/api/1.0.0/options/find/email' )]
         #[OA\Response( response: '200', description: 'validates if the requested email is existing in the database as a json response.' ) ]
+        #[OA\Response(response: '404', description: 'content not found')]
         public function publicFind( FindRequest $request )
         {
 
