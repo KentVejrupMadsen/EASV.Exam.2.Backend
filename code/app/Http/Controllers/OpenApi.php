@@ -23,9 +23,8 @@
     #[OA\Server( url: 'https://kanban.goalpioneers.com/api/1.0.0',
                  description: 'public available server' )]
 
-    #[OA\Server( url: 'localhost:8000/api/1.0.0',
+    #[OA\Server( url: 'http://localhost:8000/api/1.0.0',
                  description: 'local development server' )]
-
     final class OpenApi
         extends Controller
     {
