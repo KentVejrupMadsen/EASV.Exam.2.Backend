@@ -82,6 +82,7 @@
          */
         #[OA\Get( path: '/api/1.0.0/accounts/entities/name/read' )]
         #[OA\Response( response: '200', description: 'reads a specific person name entity values from the database table' )]
+        #[OA\Response(response: '404', description: 'content not found')]
         public function read( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
@@ -90,6 +91,7 @@
 
         #[OA\Delete( path: '/api/1.0.0/accounts/entities/name/delete')]
         #[OA\Response( response: '200', description: 'deletes a specific person name entity from the database table')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public function delete( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
@@ -101,6 +103,7 @@
          */
         #[OA\Post(path: '/api/1.0.0/accounts/entities/name/create')]
         #[OA\Response(response: '200', description: 'creates a specific person name entity by inserting it into the database')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function create( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
@@ -113,6 +116,7 @@
          */
         #[OA\Patch( path: '/api/1.0.0/accounts/entities/name/update' )]
         #[OA\Response( response: '200', description: 'updates the person entities name with a new name' )]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function update( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);

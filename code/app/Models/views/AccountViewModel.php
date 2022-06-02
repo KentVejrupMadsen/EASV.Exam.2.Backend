@@ -21,6 +21,13 @@
         public const table_name = 'accounts_view';
         protected $table = self::table_name;
 
+        #[OA\Property(
+            property: 'fillable',
+            schema: AccountViewModel::class,
+            type: 'array',
+            maximum: 9,
+            minimum: 9,
+            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             'id',
@@ -34,6 +41,14 @@
             'settings'
         ];
 
+
+        #[OA\Property(
+            property: 'hidden',
+            schema: AccountViewModel::class,
+            type: 'array',
+            maximum: 5,
+            minimum: 5,
+            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             'id',

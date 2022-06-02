@@ -19,10 +19,16 @@
     {
         #[OA\Property( type: 'string' )]
         public const table_name = 'zip_codes_view_short';
-
         protected $table = self::table_name;
 
 
+        #[OA\Property(
+            property: 'fillable',
+            schema: ZipCodeViewShortModel::class,
+            type: 'array',
+            maximum: 4,
+            minimum: 4,
+            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             'id',
@@ -31,7 +37,13 @@
             'country_acronym'
         ];
 
-
+        #[OA\Property(
+            property: 'hidden',
+            schema: ZipCodeViewShortModel::class,
+            type: 'array',
+            maximum: 1,
+            minimum: 1,
+            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             'id',

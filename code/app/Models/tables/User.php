@@ -67,7 +67,13 @@
             HasFactory,
             Notifiable;
 
-
+        #[OA\Property(
+            property: 'fillable',
+            schema: User::class,
+            type: 'array',
+            maximum: 9,
+            minimum: 9,
+            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             self::field_username,
@@ -81,7 +87,14 @@
             self::field_verified_at
         ];
 
-        
+
+        #[OA\Property(
+            property: 'hidden',
+            schema: User::class,
+            type: 'array',
+            maximum: 4,
+            minimum: 4,
+            items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
             self::field_password,

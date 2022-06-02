@@ -35,13 +35,27 @@
 
 
         //
+        #[OA\Property(
+            property: 'fillable',
+            schema: TaskModel::class,
+            type: 'array',
+            maximum: 2,
+            minimum: 2,
+            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             self::field_board_id,
             self::field_content
         ];
 
-        
+
+        #[OA\Property(
+            property: 'hidden',
+            schema: TaskModel::class,
+            type: 'array',
+            maximum: 1,
+            minimum: 1,
+            items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
             self::field_board_id,
