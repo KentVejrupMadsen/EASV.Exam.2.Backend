@@ -3,8 +3,8 @@
 
 
 ### Status
-[![CodeScene Code Health](https://codescene.io/projects/26688/status-badges/code-health)](https://codescene.io/projects/26688)
-[![CodeScene System Mastery](https://codescene.io/projects/26688/status-badges/system-mastery)](https://codescene.io/projects/26688)
+[![CodeScene Code Health](https://codescene.io/projects/26526/status-badges/code-health)](https://codescene.io/projects/26526)
+[![CodeScene System Mastery](https://codescene.io/projects/26688/status-badges/system-mastery)](https://codescene.io/projects/26526)
 
 ### Links
 * [API 1.0.0 Alpha - Swaggerhub](https://app.swaggerhub.com/apis/Goal-Pioneers/kanban-project_backend_api/1.0.0-alpha#/)
