@@ -7,10 +7,14 @@
     */
     namespace App\Models\templates;
 
+    use OpenApi\Attributes
+        as OA;
+
 
     /**
      *
      */
+    #[OA\Schema()]
     abstract class ExtensionLabelModel
         extends BaseModel
     {
@@ -19,7 +23,8 @@
         public $timestamps = false;
 
             // Constants
-        protected const field_content = 'content';
+        #[OA\Property()]
+        public const field_content = 'content';
 
 
         //
