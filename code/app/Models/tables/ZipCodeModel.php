@@ -45,7 +45,7 @@
             type: 'array',
             maximum: 3,
             minimum: 3,
-            items: new OA\Items(type: 'string|integer'))]
+            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             self::area_name,
@@ -60,7 +60,7 @@
             type: 'array',
             maximum: 1,
             minimum: 1,
-            items: new OA\Items(type: 'integer'))]
+            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             self::country_id

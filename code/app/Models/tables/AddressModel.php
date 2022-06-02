@@ -38,7 +38,7 @@
             type: 'array',
             maximum: 6,
             minimum: 6,
-            items: new OA\Items( type: 'integer' ) )]
+            items: new OA\Items( type: 'string' ) )]
         protected $fillable =
         [
             'account_information_id',
@@ -56,7 +56,7 @@
             type: 'array',
             maximum: 4,
             minimum: 4,
-            items: new OA\Items( type: 'integer' ) ) ]
+            items: new OA\Items( type: 'string' ) ) ]
         protected $hidden =
         [
             'country_id',

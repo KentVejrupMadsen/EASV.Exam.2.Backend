@@ -33,7 +33,7 @@
             type: 'array',
             maximum: 2,
             minimum: 2,
-            items: new OA\Items(type: 'integer'))]
+            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             'kanban_id',
@@ -46,7 +46,7 @@
             type: 'array',
             maximum: 2,
             minimum: 2,
-            items: new OA\Items(type: 'integer'))]
+            items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
             'kanban_id',

@@ -43,7 +43,7 @@
             type: 'array',
             maximum: 3,
             minimum: 3,
-            items: new OA\Items(type: 'integer'))]
+            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             self::project_id,
@@ -58,7 +58,7 @@
             type: 'array',
             maximum: 3,
             minimum: 3,
-            items: new OA\Items(type: 'integer'))]
+            items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
             self::project_id,

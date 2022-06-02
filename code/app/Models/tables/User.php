@@ -73,7 +73,7 @@
             type: 'array',
             maximum: 9,
             minimum: 9,
-            items: new OA\Items(type: 'integer|string|carbon'))]
+            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             self::field_username,
@@ -94,7 +94,7 @@
             type: 'array',
             maximum: 4,
             minimum: 4,
-            items: new OA\Items(type: 'string|integer'))]
+            items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
             self::field_password,

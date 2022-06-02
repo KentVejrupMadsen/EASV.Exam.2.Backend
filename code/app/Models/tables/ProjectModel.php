@@ -50,7 +50,7 @@
             type: 'array',
             maximum: 4,
             minimum: 4,
-            items: new OA\Items(type: 'string|json'))]
+            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             self::field_account_owner_id,
@@ -66,7 +66,7 @@
             type: 'array',
             maximum: 2,
             minimum: 2,
-            items: new OA\Items(type: 'integer'))]
+            items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
             self::field_account_owner_id,

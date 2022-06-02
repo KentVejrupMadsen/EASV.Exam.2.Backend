@@ -41,7 +41,7 @@
             type: 'array',
             maximum: 2,
             minimum: 2,
-            items: new OA\Items(type: 'integer|string'))]
+            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             self::field_board_id,
@@ -55,7 +55,7 @@
             type: 'array',
             maximum: 1,
             minimum: 1,
-            items: new OA\Items(type: 'integer'))]
+            items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
             self::field_board_id,

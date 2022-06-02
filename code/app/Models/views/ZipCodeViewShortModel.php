@@ -24,10 +24,10 @@
 
         #[OA\Property(
             property: 'fillable',
-            schema: AccountViewModel::class,
+            schema: ZipCodeViewShortModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
+            maximum: 4,
+            minimum: 4,
             items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
@@ -39,10 +39,10 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: AccountViewModel::class,
+            schema: ZipCodeViewShortModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
+            maximum: 1,
+            minimum: 1,
             items: new OA\Items(type: 'string'))]
         protected $hidden =
         [

@@ -39,7 +39,7 @@
             type: 'array',
             maximum: 3,
             minimum: 3,
-            items: new OA\Items(type: 'string|json'))]
+            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             self::field_email_id,
