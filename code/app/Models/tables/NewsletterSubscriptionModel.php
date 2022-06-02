@@ -8,11 +8,14 @@
     namespace App\Models\tables;
 
     use App\Models\templates\ExtensionNoTimestampModel;
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
      *
      */
+    #[OA\Schema()]
     class NewsletterSubscriptionModel
         extends ExtensionNoTimestampModel
     {

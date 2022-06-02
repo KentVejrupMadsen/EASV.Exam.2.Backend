@@ -10,7 +10,10 @@
     use App\Models\templates\ExtensionLabelModel;
     use Illuminate\Database\Eloquent\Model;
 
+    use OpenApi\Attributes
+        as OA;
 
+    #[OA\Schema()]
     class BoardTitleModel
         extends ExtensionLabelModel
     {

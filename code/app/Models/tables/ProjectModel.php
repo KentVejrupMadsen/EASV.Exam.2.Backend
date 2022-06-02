@@ -11,10 +11,14 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
+    use OpenApi\Attributes
+        as OA;
+
 
     /**
      *
      */
+    #[OA\Schema()]
     class ProjectModel 
         extends BaseModel
     {

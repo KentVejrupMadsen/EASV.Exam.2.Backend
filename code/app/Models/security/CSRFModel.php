@@ -9,10 +9,13 @@
 
     use App\Models\templates\ExtensionNoTimestampModel;
 
+    use OpenApi\Attributes
+        as OA;
 
     /**
      *
      */
+    #[OA\Schema()]
     class CSRFModel
         extends ExtensionNoTimestampModel
     {

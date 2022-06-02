@@ -8,11 +8,14 @@
     namespace App\Models\security;
 
     use App\Models\templates\ExtensionNoTimestampModel;
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
      *
      */
+    #[OA\Schema()]
     class AccountState
         extends ExtensionNoTimestampModel
     {

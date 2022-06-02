@@ -9,10 +9,13 @@
 
     use Illuminate\Foundation\Http\FormRequest;
 
+    use OpenApi\Attributes
+        as OA;
 
     /**
      *
      */
+    #[OA\Schema()]
     class SecurityRecaptchaRequest
         extends FormRequest
     {

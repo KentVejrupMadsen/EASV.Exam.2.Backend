@@ -9,10 +9,13 @@
 
     use App\Models\templates\ExtensionLabelModel;
 
+    use OpenApi\Attributes
+        as OA;
 
     /**
      *
      */
+    #[OA\Schema()]
     class PersonFirstnameModel
         extends ExtensionLabelModel
     {

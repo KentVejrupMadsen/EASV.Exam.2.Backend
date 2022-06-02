@@ -9,10 +9,13 @@
 
     use App\Models\templates\BaseModel;
 
+    use OpenApi\Attributes
+        as OA;
 
     /**
      *
      */
+    #[OA\Schema()]
     class KanbanModel 
         extends BaseModel
     {

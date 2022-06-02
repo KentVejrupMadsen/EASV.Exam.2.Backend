@@ -9,10 +9,14 @@
 
     use App\Models\templates\ExtensionNoTimestampModel;
 
+    use OpenApi\Attributes
+        as OA;
+
 
     /**
      *
      */
+    #[OA\Schema()]
     class ZipCodeModel
         extends ExtensionNoTimestampModel
     {

@@ -8,11 +8,14 @@
     namespace App\Models\tables;
     
     use App\Models\templates\ExtensionLabelModel;
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
      *
      */
+    #[OA\Schema()]
     class AddressRoadNameModel
         extends ExtensionLabelModel
     {

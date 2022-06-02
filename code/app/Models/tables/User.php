@@ -14,11 +14,14 @@
 
     use Illuminate\Notifications\Notifiable;
     use Laravel\Sanctum\HasApiTokens;
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
      *
      */
+    #[OA\Schema()]
     class User 
         extends Authenticatable
     {
