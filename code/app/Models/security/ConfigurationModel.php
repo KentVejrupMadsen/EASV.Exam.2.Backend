@@ -35,6 +35,13 @@
 
 
         //
+        #[OA\Property(
+            property: 'fillable',
+            schema: ConfigurationModel::class,
+            type: 'array',
+            maximum: 2,
+            minimum: 2,
+            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             self::field_key,
@@ -42,6 +49,13 @@
         ];
 
 
+        #[OA\Property(
+            property: 'hidden',
+            schema: ConfigurationModel::class,
+            type: 'array',
+            maximum: 1,
+            minimum: 1,
+            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             self::field_value

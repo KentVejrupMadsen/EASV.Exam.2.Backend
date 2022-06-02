@@ -14,6 +14,7 @@
 
     use OpenApi\Attributes
         as OA;
+    use phpDocumentor\Reflection\Type;
 
     /**
      *
@@ -25,10 +26,19 @@
         #[OA\Property( type: 'string' )]
         public const table_name = 'addresses';
 
+        #[OA\Property( type: 'boolean' )]
         public $timestamps = false;
+
         protected $table = self::table_name;
 
 
+        #[OA\Property(
+            property: 'fillable',
+            schema: AddressModel::class,
+            type: 'array',
+            maximum: 6,
+            minimum: 6,
+            items: new OA\Items( type: 'string' ) )]
         protected $fillable =
         [
             'account_information_id',
@@ -40,6 +50,13 @@
         ];
 
 
+        #[OA\Property(
+            property: 'hidden',
+            schema: AddressModel::class,
+            type: 'array',
+            maximum: 4,
+            minimum: 4,
+            items: new OA\Items( type: 'string' ) ) ]
         protected $hidden =
         [
             'country_id',

@@ -37,6 +37,13 @@
 
 
         //
+        #[OA\Property(
+            property: 'fillable',
+            schema: ProjectMemberModel::class,
+            type: 'array',
+            maximum: 3,
+            minimum: 3,
+            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             self::project_id,
@@ -45,6 +52,13 @@
         ];
 
 
+        #[OA\Property(
+            property: 'hidden',
+            schema: ProjectMemberModel::class,
+            type: 'array',
+            maximum: 3,
+            minimum: 3,
+            items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
             self::project_id,

@@ -89,7 +89,9 @@
          * @return JsonResponse
          */
         #[OA\Get(path: '/api/1.0.0/accounts/account/me')]
+        #[OA\Parameter(name:'Authorization', description: 'has to be included in the header of the request', in: 'header')]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function me(): JsonResponse
         {
             $currentUser = Auth::user();
@@ -103,6 +105,7 @@
          */
         #[OA\Get(path: '/api/1.0.0/accounts/account/read')]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function read( Request $request ): JsonResponse
         {
 
@@ -116,6 +119,7 @@
          */
         #[OA\Post( path: 'api/1.0.0/accounts/account/login' )]
         #[OA\Response( response: '200', description: 'The data' )]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function login( Request $request ): JsonResponse
         {
 
@@ -128,7 +132,9 @@
          * @return void
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/logout' )]
+        #[OA\Parameter(name:'Authorization', description: 'has to be included in the header of the request', in: 'header')]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function logout( Request $request )
         {
 
@@ -141,6 +147,7 @@
          */
         #[OA\Post(path: '/api/1.0.0/accounts/account/create')]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function create( Request $request ): JsonResponse
         {
 
@@ -152,8 +159,11 @@
          * @param Request $request
          * @return JsonResponse
          */
+
         #[OA\Patch( path: '/api/1.0.0/accounts/account/update' )]
+        #[OA\Parameter(name:'Authorization', description: 'has to be included in the header of the request', in: 'header')]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function update( Request $request ): JsonResponse
         {
 
@@ -165,8 +175,11 @@
          * @param Request $request
          * @return JsonResponse
          */
+
         #[OA\Delete(path: '/api/1.0.0/accounts/account/delete')]
+        #[OA\Parameter(name:'Authorization', description: 'has to be included in the header of the request', in: 'header')]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function delete( Request $request ): JsonResponse
         {
 
@@ -178,8 +191,11 @@
          * @param Request $request
          * @return JsonResponse
          */
+
         #[OA\Post(path: '/api/1.0.0/accounts/account/verify')]
+        #[OA\Parameter(name:'Authorization', description: 'has to be included in the header of the request', in: 'header')]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function verify( Request $request ): JsonResponse
         {
 

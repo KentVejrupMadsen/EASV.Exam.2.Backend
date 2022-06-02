@@ -29,6 +29,7 @@
         // Variables
             // Table
         protected $table = self::table_name;
+        #[OA\Property( type: 'boolean' )]
         public $timestamps = false;
 
             // Constants
@@ -46,6 +47,13 @@
 
 
         //
+        #[OA\Property(
+            property: 'fillable',
+            schema: PersonNameModel::class,
+            type: 'array',
+            maximum: 4,
+            minimum: 4,
+            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             self::field_account_information_id,
@@ -55,6 +63,13 @@
         ];
 
 
+        #[OA\Property(
+            property: 'hidden',
+            schema: PersonNameModel::class,
+            type: 'array',
+            maximum: 3,
+            minimum: 3,
+            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             self::field_account_information_id,
