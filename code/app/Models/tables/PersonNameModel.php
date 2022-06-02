@@ -29,6 +29,7 @@
         // Variables
             // Table
         protected $table = self::table_name;
+        #[OA\Property( type: 'boolean' )]
         public $timestamps = false;
 
             // Constants

@@ -25,7 +25,9 @@
         #[OA\Property( type: 'string' )]
         public const table_name = 'addresses';
 
+        #[OA\Property( type: 'boolean' )]
         public $timestamps = false;
+
         protected $table = self::table_name;
 
 
