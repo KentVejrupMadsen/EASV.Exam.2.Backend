@@ -8,26 +8,41 @@
     namespace App\Models\tables;
 
     use App\Models\templates\BaseModel;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
+
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
      *
      */
+    #[OA\Schema()]
     class PersonNameModel
         extends BaseModel
     {
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'person_name';
+
         // Variables
             // Table
-        protected $table = 'person_name';
+        protected $table = self::table_name;
         public $timestamps = false;
 
             // Constants
-        protected const field_account_information_id  = 'account_information_id';
-        protected const field_person_name_first_id    = 'person_name_first_id';
-        protected const field_person_name_lastname_id = 'person_name_lastname_id';
-        protected const field_person_name_middlename  = 'person_name_middlename';
+        #[OA\Property( type: 'string' )]
+        public const field_account_information_id  = 'account_information_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_person_name_first_id    = 'person_name_first_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_person_name_lastname_id = 'person_name_lastname_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_person_name_middlename  = 'person_name_middlename';
 
 
         //

@@ -9,23 +9,39 @@
 
     use App\Models\templates\ExtensionNoTimestampModel;
 
+    use OpenApi\Attributes
+        as OA;
+
 
     /**
      *
      */
+    #[OA\Schema()]
     class AccountState
         extends ExtensionNoTimestampModel
     {
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'account_states';
+
         // Variables
             // Table
-        protected $table = 'account_states';
+        protected $table = self::table_name;
 
             // Constants
-        protected const field_account_id            = 'account_id';
-        protected const field_deactivated           = 'deactivated';
-        protected const field_writeable_disabled    = 'writeable_disabled';
-        protected const field_locked                = 'locked';
-        protected const field_archived              = 'archived';
+        #[OA\Property( type: 'string' )]
+        public const field_account_id            = 'account_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_deactivated           = 'deactivated';
+
+        #[OA\Property( type: 'string' )]
+        public const field_writeable_disabled    = 'writeable_disabled';
+
+        #[OA\Property( type: 'string' )]
+        public const field_locked                = 'locked';
+
+        #[OA\Property( type: 'string' )]
+        public const field_archived              = 'archived';
 
 
         //

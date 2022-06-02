@@ -9,13 +9,18 @@
 
     use App\Models\templates\ExtensionLabelModel;
 
+    use OpenApi\Attributes
+        as OA;
 
     /**
      *
      */
+    #[OA\Schema()]
     class ProjectTitleModel
         extends ExtensionLabelModel
     {
-        protected $table = 'project_titles';
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'project_titles';
+        protected $table = self::table_name;
     }
 ?>

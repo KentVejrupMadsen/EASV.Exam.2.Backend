@@ -11,22 +11,36 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
+    use OpenApi\Attributes
+        as OA;
+
 
     /**
      *
      */
+    #[OA\Schema()]
     class ProjectModel 
         extends BaseModel
     {
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'projects';
+
         // Variables
             // Table
-        protected $table = 'projects';
+        protected $table = self::table_name;
 
             // Constants
-        protected const field_account_owner_id  = 'account_owner_id';
-        protected const field_project_title_id  = 'project_title_id';
-        protected const field_description       = 'description';
-        protected const field_tags              = 'tags';
+        #[OA\Property( type: 'string' )]
+        public const field_account_owner_id  = 'account_owner_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_project_title_id  = 'project_title_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_description = 'description';
+
+        #[OA\Property( type: 'string' )]
+        public const field_tags = 'tags';
 
 
         //

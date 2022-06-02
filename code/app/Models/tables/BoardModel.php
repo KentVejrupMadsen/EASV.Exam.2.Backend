@@ -12,14 +12,20 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
+    use OpenApi\Attributes
+        as OA;
+
 
     /**
      *
      */
+    #[OA\Schema()]
     class BoardModel
         extends BaseModel
     {
-        protected $table = 'boards';
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'boards';
+        protected $table = self::table_name;
 
         protected $fillable = 
         [

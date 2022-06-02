@@ -9,20 +9,29 @@
 
     use App\Models\templates\ExtensionNoTimestampModel;
 
+    use OpenApi\Attributes
+        as OA;
 
     /**
      *
      */
+    #[OA\Schema()]
     class CountryModel
         extends ExtensionNoTimestampModel
     {
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'countries';
+
         // Variable
             // Table
-        protected $table = 'countries';
+        protected $table = self::table_name;
 
             // Constant
-        protected const field_country_name    = 'country_name';
-        protected const field_country_acronym = 'country_acronym';
+        #[OA\Property(type: 'string' )]
+        public const field_country_name    = 'country_name';
+
+        #[OA\Property( type: 'string' )]
+        public const field_country_acronym = 'country_acronym';
 
         //
         protected $fillable =

@@ -9,12 +9,17 @@
 
     use App\Models\templates\ModelView;
 
+    use OpenApi\Attributes
+        as OA;
 
-    final class KanbanViewModel
+
+    #[OA\Schema()]
+    class KanbanViewModel
         extends ModelView
     {
-        public $timestamps = false;
-        protected $table = 'kanbans_view';
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'kanbans_view';
+        protected $table = self::table_name;
 
         protected $fillable =
         [

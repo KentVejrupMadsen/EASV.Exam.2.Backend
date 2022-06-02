@@ -18,6 +18,7 @@
     use App\Http\Controllers\templates\ControllerPipeline;
 
 
+    #[OA\Schema()]
     class TaskController
         extends ControllerPipeline
     {

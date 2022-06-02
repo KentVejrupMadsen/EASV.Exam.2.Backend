@@ -9,20 +9,32 @@
 
     use App\Models\templates\ExtensionNoTimestampModel;
 
+    use OpenApi\Attributes
+        as OA;
+
 
     /**
      *
      */
+    #[OA\Schema()]
     class ZipCodeModel
         extends ExtensionNoTimestampModel
     {
         // Variables
             // Tables
-        protected $table = 'zip_codes';
+        protected $table = self::table_name;
+
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'zip_codes';
 
             // Constants
+        #[OA\Property( type: 'string' )]
         protected const area_name = 'area_name';
+
+        #[OA\Property( type: 'string' )]
         protected const zip_number = 'zip_number';
+
+        #[OA\Property( type: 'string' )]
         protected const country_id = 'country_id';
 
 

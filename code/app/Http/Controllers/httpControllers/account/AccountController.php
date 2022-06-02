@@ -25,6 +25,7 @@
     use App\Models\tables\User;
 
 
+    #[OA\Schema()]
     class AccountController
         extends ControllerPipeline
     {

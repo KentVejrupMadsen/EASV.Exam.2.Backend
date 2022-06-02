@@ -9,20 +9,29 @@
 
     use App\Models\templates\ExtensionNoTimestampModel;
 
+    use OpenApi\Attributes
+        as OA;
 
     /**
      *
      */
+    #[OA\Schema()]
     class TaskModel
         extends ExtensionNoTimestampModel
     {
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'tasks';
+
         // variables
             // Table
-        protected $table = 'tasks';
+        protected $table = self::table_name;
 
             // Constants
-        protected const field_board_id = 'board_id';
-        protected const field_content = 'content';
+        #[OA\Property( type: 'string' )]
+        public const field_board_id = 'board_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_content = 'content';
 
 
         //

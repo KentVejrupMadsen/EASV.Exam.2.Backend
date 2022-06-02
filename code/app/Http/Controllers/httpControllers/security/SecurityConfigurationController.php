@@ -21,6 +21,7 @@
     /**
      *
      */
+    #[OA\Schema()]
     class SecurityConfigurationController
         extends CrudController
     {

@@ -9,12 +9,17 @@
 
     use App\Models\templates\ModelView;
 
+    use OpenApi\Attributes
+        as OA;
 
-    final class ProjectViewModel
+
+    #[OA\Schema()]
+    class ProjectViewModel
         extends ModelView
     {
-        public $timestamps = false;
-        protected $table = 'projects_view';
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'projects_view';
+        protected $table = self::table_name;
 
 
         protected $fillable =

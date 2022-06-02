@@ -21,6 +21,7 @@
     /**
      * Account Email controller. That are used when getting "ask" by a computer for data.
      */
+    #[OA\Schema()]
     class PersonEmailController
         extends ControllerPipeline
     {

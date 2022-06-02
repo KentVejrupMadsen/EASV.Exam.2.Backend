@@ -9,21 +9,31 @@
 
     use App\Models\templates\ExtensionNoTimestampModel;
 
+    use OpenApi\Attributes
+        as OA;
 
     /**
      *
      */
+    #[OA\Schema()]
     class ProjectMemberModel 
         extends ExtensionNoTimestampModel
     {
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'project_members';
         // Variables
             // Table
-        protected $table = 'project_members';
+        protected $table = self::table_name;
 
             // constants
-        protected const project_id = 'project_id';
-        protected const account_id = 'account_id';
-        protected const member_group_id = 'member_group_id';
+        #[OA\Property( type: 'string' )]
+        public const project_id = 'project_id';
+
+        #[OA\Property( type: 'string' )]
+        public const account_id = 'account_id';
+
+        #[OA\Property( type: 'string' )]
+        public const member_group_id = 'member_group_id';
 
 
         //
