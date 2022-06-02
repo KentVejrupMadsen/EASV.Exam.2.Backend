@@ -22,8 +22,11 @@
     class AddressModel
         extends BaseModel
     {
+        #[OA\Property()]
+        public const table_name = 'addresses';
+
         public $timestamps = false;
-        protected $table = 'addresses';
+        protected $table = self::table_name;
 
 
         protected $fillable =

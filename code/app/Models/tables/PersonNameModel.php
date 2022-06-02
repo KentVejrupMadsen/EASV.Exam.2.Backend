@@ -23,9 +23,11 @@
     class PersonNameModel
         extends BaseModel
     {
+        #[OA\Property()]
+        public const table_name = 'person_name';
         // Variables
             // Table
-        protected $table = 'person_name';
+        protected $table = self::table_name;
         public $timestamps = false;
 
             // Constants

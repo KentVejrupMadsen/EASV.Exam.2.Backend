@@ -19,6 +19,8 @@
     class PersonSurnameModel
         extends ExtensionLabelModel
     {
-        protected $table = 'person_name_middle_and_last';
+        #[OA\Property()]
+        public const table_name = 'person_name_middle_and_last';
+        protected $table = self::table_name;
     }
 ?>

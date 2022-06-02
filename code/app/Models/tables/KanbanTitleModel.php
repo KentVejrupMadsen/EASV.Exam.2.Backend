@@ -19,7 +19,9 @@
     class KanbanTitleModel 
         extends ExtensionLabelModel
     {
-        protected $table = 'kanban_titles';
+        #[OA\Property()]
+        public const table_name = 'kanban_titles';
+        protected $table = self::table_name;
 
     }
 ?>

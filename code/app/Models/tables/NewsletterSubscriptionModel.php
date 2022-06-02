@@ -19,9 +19,11 @@
     class NewsletterSubscriptionModel
         extends ExtensionNoTimestampModel
     {
+        #[OA\Property()]
+        public const table_name = 'newsletter_users';
         // Variables
             // Table
-        protected $table = 'newsletter_users';
+        protected $table = self::table_name;
 
             // Const
         #[OA\Property( )]

@@ -22,7 +22,10 @@
     {
         // Variables
             // Tables
-        protected $table = 'zip_codes';
+        protected $table = self::table_name;
+
+        #[OA\Property()]
+        public const table_name = 'zip_codes';
 
             // Constants
         #[OA\Property()]

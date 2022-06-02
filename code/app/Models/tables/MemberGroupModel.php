@@ -19,6 +19,8 @@
     class MemberGroupModel 
         extends ExtensionLabelModel
     {
-        protected $table = 'member_groups';
+        #[OA\Property()]
+        public const table_name = 'member_groups';
+        protected $table = self::table_name;
     }
 ?>

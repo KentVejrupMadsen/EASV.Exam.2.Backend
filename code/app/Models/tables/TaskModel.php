@@ -19,9 +19,12 @@
     class TaskModel
         extends ExtensionNoTimestampModel
     {
+        #[OA\Property()]
+        public const table_name = 'tasks';
+
         // variables
             // Table
-        protected $table = 'tasks';
+        protected $table = self::table_name;
 
             // Constants
         #[OA\Property()]

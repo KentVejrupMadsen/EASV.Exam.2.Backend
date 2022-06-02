@@ -19,9 +19,12 @@
     class KanbanModel 
         extends BaseModel
     {
+        #[OA\Property()]
+        public const table_name = 'kanbans';
+
         // Variables
             // Table
-        protected $table = 'kanbans';
+        protected $table = self::table_name;
 
             // Constant
         #[OA\Property(  )]

@@ -19,9 +19,11 @@
     class CountryModel
         extends ExtensionNoTimestampModel
     {
+        #[OA\Property()]
+        public const table_name = 'countries';
         // Variable
             // Table
-        protected $table = 'countries';
+        protected $table = self::table_name;
 
             // Constant
         #[OA\Property( )]

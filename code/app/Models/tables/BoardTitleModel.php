@@ -17,6 +17,8 @@
     class BoardTitleModel
         extends ExtensionLabelModel
     {
-        protected $table = 'board_titles';
+        #[OA\Property()]
+        public const table_name = 'board_titles';
+        protected $table = self::table_name;
     }
 ?>

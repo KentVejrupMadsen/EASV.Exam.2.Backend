@@ -19,9 +19,11 @@
     class ProjectMemberModel 
         extends ExtensionNoTimestampModel
     {
+        #[OA\Property()]
+        public const table_name = 'project_members';
         // Variables
             // Table
-        protected $table = 'project_members';
+        protected $table = self::table_name;
 
             // constants
         #[OA\Property()]

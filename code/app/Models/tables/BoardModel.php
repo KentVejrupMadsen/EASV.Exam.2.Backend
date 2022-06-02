@@ -23,7 +23,9 @@
     class BoardModel
         extends BaseModel
     {
-        protected $table = 'boards';
+        #[OA\Property()]
+        public const table_name = 'boards';
+        protected $table = self::table_name;
 
         protected $fillable = 
         [

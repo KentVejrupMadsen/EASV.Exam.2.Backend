@@ -20,6 +20,9 @@
     class AccountEmailModel 
         extends ExtensionLabelModel
     {
-        protected $table = 'account_emails';
+        #[OA\Property()]
+        public const table_name = 'account_emails';
+
+        protected $table = self::table_name;
     }
 ?>

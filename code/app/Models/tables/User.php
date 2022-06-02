@@ -25,9 +25,12 @@
     class User 
         extends Authenticatable
     {
+        #[OA\Property()]
+        public const table_name = 'accounts';
+
         // Variables
             // Table
-        protected $table = 'accounts';
+        protected $table = self::table_name;
 
             // Constants
         #[OA\Property(  )]

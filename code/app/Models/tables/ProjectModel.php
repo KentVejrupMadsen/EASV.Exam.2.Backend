@@ -22,9 +22,12 @@
     class ProjectModel 
         extends BaseModel
     {
+        #[OA\Property()]
+        public const table_name = 'projects';
+
         // Variables
             // Table
-        protected $table = 'projects';
+        protected $table = self::table_name;
 
             // Constants
         #[OA\Property()]

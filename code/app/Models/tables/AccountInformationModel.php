@@ -20,9 +20,12 @@
     class AccountInformationModel
         extends BaseModel
     {
+        #[OA\Property()]
+        public const table_name = 'account_information_options';
+
         // Variables
             // Model
-        protected $table = 'account_information_options';
+        protected $table = self::table_name;
 
             // Constants
         #[OA\Property(  )]
