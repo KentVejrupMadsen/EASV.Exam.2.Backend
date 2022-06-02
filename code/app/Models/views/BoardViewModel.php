@@ -17,6 +17,7 @@
     class BoardViewModel
         extends ModelView
     {
+        #[OA\Property()]
         public const table_name = 'boards_view';
         public $timestamps = false;
         protected $table = self::table_name;

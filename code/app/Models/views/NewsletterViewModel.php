@@ -17,6 +17,7 @@
     class NewsletterViewModel
         extends ModelView
     {
+        #[OA\Property()]
         public const table_name = 'newsletter_view';
         public $timestamps = false;
         protected $table = self::table_name;

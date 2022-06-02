@@ -17,9 +17,10 @@
     class AddressViewModel
         extends ModelView
     {
+        #[OA\Property()]
         public const table_name = 'addresses_view';
         public $timestamps = false;
-        protected $table   = table_name;
+        protected $table  = self::table_name;
 
         protected $fillable =
         [

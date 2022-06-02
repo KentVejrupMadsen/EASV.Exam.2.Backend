@@ -17,6 +17,7 @@
     class KanbanViewModel
         extends ModelView
     {
+        #[OA\Property()]
         public const table_name = 'kanbans_view';
         public $timestamps = false;
         protected $table = self::table_name;
