@@ -16,6 +16,7 @@
     use App\Http\Controllers\templates\ControllerPipeline;
 
 
+    #[OA\Schema()]
     class ProjectController
         extends ControllerPipeline
     {
