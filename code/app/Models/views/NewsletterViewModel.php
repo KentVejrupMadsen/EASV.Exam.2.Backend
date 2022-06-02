@@ -23,7 +23,6 @@
 
         #[OA\Property(
             property: 'fillable',
-            schema: NewsletterViewModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,
@@ -37,7 +36,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: NewsletterViewModel::class,
             type: 'array',
             maximum: 1,
             minimum: 1,

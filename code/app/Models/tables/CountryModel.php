@@ -37,7 +37,6 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: CountryModel::class,
             type: 'array',
             maximum: 2,
             minimum: 2,

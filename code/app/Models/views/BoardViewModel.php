@@ -23,7 +23,6 @@
 
         #[OA\Property(
             property: 'fillable',
-            schema: BoardViewModel::class,
             type: 'array',
             maximum: 6,
             minimum: 6,
@@ -40,7 +39,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: BoardViewModel::class,
             type: 'array',
             maximum: 2,
             minimum: 2,

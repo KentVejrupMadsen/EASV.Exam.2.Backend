@@ -37,7 +37,6 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: ConfigurationModel::class,
             type: 'array',
             maximum: 2,
             minimum: 2,
@@ -51,7 +50,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: ConfigurationModel::class,
             type: 'array',
             maximum: 1,
             minimum: 1,
