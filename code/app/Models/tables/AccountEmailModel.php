@@ -9,13 +9,20 @@
 
     use App\Models\templates\ExtensionLabelModel;
 
+    use OpenApi\Attributes
+        as OA;
+
 
     /**
      *
      */
+    #[OA\Schema()]
     class AccountEmailModel 
         extends ExtensionLabelModel
     {
-        protected $table = 'account_emails';
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'account_emails';
+
+        protected $table = self::table_name;
     }
 ?>

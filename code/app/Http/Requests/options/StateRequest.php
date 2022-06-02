@@ -9,10 +9,14 @@
 
     use App\Http\Requests\template\PublicRequest;
 
+    use OpenApi\Attributes
+        as OA;
+
 
     /**
      *
      */
+    #[OA\Schema()]
     class StateRequest
         extends PublicRequest
     {

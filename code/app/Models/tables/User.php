@@ -14,31 +14,53 @@
 
     use Illuminate\Notifications\Notifiable;
     use Laravel\Sanctum\HasApiTokens;
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
      *
      */
+    #[OA\Schema()]
     class User 
         extends Authenticatable
     {
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'accounts';
+
         // Variables
             // Table
-        protected $table = 'accounts';
+        protected $table = self::table_name;
 
             // Constants
-        protected const field_username = 'username';
+        #[OA\Property( type: 'string' )]
+        public const field_username = 'username';
 
-        protected const field_name = 'name';
-        protected const field_email_id = 'email_id';
-        protected const field_password = 'password';
+        #[OA\Property( type: 'string' )]
+        public const field_name = 'name';
 
-        protected const field_created_at = 'created_at';
-        protected const field_updated_at = 'updated_at';
+        #[OA\Property( type: 'string' )]
+        public const field_email_id = 'email_id';
 
-        protected const field_settings = 'settings';
-        protected const field_remember_token = 'remember_token';
-        protected const field_verified_at = 'email_verified_at';
+        #[OA\Property( type: 'string' )]
+        public const field_password = 'password';
+
+
+        #[OA\Property( type: 'string' )]
+        public const field_created_at = 'created_at';
+
+        #[OA\Property( type: 'string' )]
+        public const field_updated_at = 'updated_at';
+
+
+        #[OA\Property( type: 'string' )]
+        public const field_settings = 'settings';
+
+        #[OA\Property( type: 'string' )]
+        public const field_remember_token = 'remember_token';
+
+        #[OA\Property( type: 'string' )]
+        public const field_verified_at = 'email_verified_at';
 
 
         use HasApiTokens,

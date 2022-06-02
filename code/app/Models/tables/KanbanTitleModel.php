@@ -9,14 +9,19 @@
 
     use App\Models\templates\ExtensionLabelModel;
 
+    use OpenApi\Attributes
+        as OA;
 
     /**
      *
      */
+    #[OA\Schema()]
     class KanbanTitleModel 
         extends ExtensionLabelModel
     {
-        protected $table = 'kanban_titles';
+        #[OA\Property( type: 'string'  )]
+        public const table_name = 'kanban_titles';
+        protected $table = self::table_name;
 
     }
 ?>

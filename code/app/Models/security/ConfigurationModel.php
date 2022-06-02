@@ -8,21 +8,30 @@
     namespace App\Models\security;
 
     use App\Models\templates\ExtensionNoTimestampModel;
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
      *
      */
+    #[OA\Schema()]
     class ConfigurationModel
         extends ExtensionNoTimestampModel
     {
         // Variables
             // Table
-        protected $table = 'security_configuration';
+        protected $table = self::table_name;
 
             // Constants
-        protected const field_key   = 'key';
-        protected const field_value = 'value';
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'security_configuration';
+
+        #[OA\Property( type: 'string' )]
+        public const field_key   = 'key';
+
+        #[OA\Property( type: 'string' )]
+        public const field_value = 'value';
 
 
         //

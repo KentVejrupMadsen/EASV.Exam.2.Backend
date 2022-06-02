@@ -9,7 +9,10 @@
 
     use App\Http\Requests\template\AccountProtectedRequest;
 
+    use OpenApi\Attributes
+        as OA;
 
+    #[OA\Schema()]
     class ToolsBoardRequest
         extends AccountProtectedRequest
     {

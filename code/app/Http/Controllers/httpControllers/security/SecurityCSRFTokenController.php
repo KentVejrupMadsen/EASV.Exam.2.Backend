@@ -30,6 +30,7 @@
     /**
      * 
      */
+    #[OA\Schema()]
     class SecurityCSRFTokenController
         extends CrudController
     {

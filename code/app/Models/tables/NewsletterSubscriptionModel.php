@@ -8,21 +8,30 @@
     namespace App\Models\tables;
 
     use App\Models\templates\ExtensionNoTimestampModel;
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
      *
      */
+    #[OA\Schema()]
     class NewsletterSubscriptionModel
         extends ExtensionNoTimestampModel
     {
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'newsletter_users';
+
         // Variables
             // Table
-        protected $table = 'newsletter_users';
+        protected $table = self::table_name;
 
             // Const
-        protected const field_email_id = 'email_id';
-        protected const field_options  = 'options';
+        #[OA\Property( type: 'string' )]
+        public const field_email_id = 'email_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_options  = 'options';
 
 
         protected $fillable =

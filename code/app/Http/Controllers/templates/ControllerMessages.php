@@ -1,6 +1,9 @@
 <?php
     namespace App\Http\Controllers\templates;
 
+    /**
+     *
+     */
     class ControllerMessages
     {
         public const unAuthorized = 401;
@@ -8,7 +11,4 @@
         public const forbidden = 403;
         public const conflict = 409;
     }
-
-
-
 ?>

@@ -9,12 +9,17 @@
 
     use App\Models\templates\ModelView;
 
+    use OpenApi\Attributes
+        as OA;
 
-    final class NewsletterViewModel
+
+    #[OA\Schema()]
+    class NewsletterViewModel
         extends ModelView
     {
-        public $timestamps = false;
-        protected $table = 'newsletter_view';
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'newsletter_view';
+        protected $table = self::table_name;
 
         protected $fillable =
         [

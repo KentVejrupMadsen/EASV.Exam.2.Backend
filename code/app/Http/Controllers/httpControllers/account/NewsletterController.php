@@ -25,6 +25,7 @@
     use App\Models\tables\NewsletterSubscriptionModel;
 
 
+    #[OA\Schema()]
     class NewsletterController
         extends ControllerPipeline
     {

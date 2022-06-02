@@ -8,19 +8,23 @@
     namespace App\Http\Controllers\formatControllers\json;
 
     // External libraries
-    use App\Models\security\CSRFModel;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
     use Illuminate\Routing\Controller
         as BaseController;
 
+    use OpenApi\Attributes
+        as OA;
+
     // Internal library
+    use App\Models\security\CSRFModel;
 
 
     /**
      *
      */
+    #[OA\Schema()]
     class CSRFResponseJSONFactory
         extends BaseController
     {
