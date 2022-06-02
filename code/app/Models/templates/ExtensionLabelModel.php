@@ -18,12 +18,14 @@
     abstract class ExtensionLabelModel
         extends BaseModel
     {
+
         // Variables
             // Model
+        #[OA\Property(type: 'boolean')]
         public $timestamps = false;
 
             // Constants
-        #[OA\Property()]
+        #[OA\Property(type:'string')]
         public const field_content = 'content';
 
 

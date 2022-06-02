@@ -20,7 +20,7 @@
     class AccountInformationModel
         extends BaseModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'account_information_options';
 
         // Variables
@@ -28,13 +28,13 @@
         protected $table = self::table_name;
 
             // Constants
-        #[OA\Property(  )]
+        #[OA\Property( type: 'string' )]
         public const field_account = 'account_id';
 
-        #[OA\Property( )]
+        #[OA\Property( type: 'string' )]
         public const field_created_at = 'created_at';
 
-        #[OA\Property(  )]
+        #[OA\Property( type: 'string' )]
         public const field_updated_at = 'updated_at';
 
 

@@ -22,7 +22,7 @@
     class ProjectModel 
         extends BaseModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'projects';
 
         // Variables
@@ -30,16 +30,16 @@
         protected $table = self::table_name;
 
             // Constants
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_account_owner_id  = 'account_owner_id';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_project_title_id  = 'project_title_id';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_description = 'description';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_tags = 'tags';
 
 

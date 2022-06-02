@@ -23,7 +23,7 @@
     class BoardModel
         extends BaseModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'boards';
         protected $table = self::table_name;
 

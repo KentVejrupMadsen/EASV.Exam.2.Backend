@@ -20,7 +20,7 @@
     class AccountState
         extends ExtensionNoTimestampModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'account_states';
 
         // Variables
@@ -28,19 +28,19 @@
         protected $table = self::table_name;
 
             // Constants
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_account_id            = 'account_id';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_deactivated           = 'deactivated';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_writeable_disabled    = 'writeable_disabled';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_locked                = 'locked';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_archived              = 'archived';
 
 

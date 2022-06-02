@@ -17,9 +17,8 @@
     class PersonNameViewModel
         extends ModelView
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'person_names_view';
-        public $timestamps = false;
         protected $table = self::table_name;
 
 

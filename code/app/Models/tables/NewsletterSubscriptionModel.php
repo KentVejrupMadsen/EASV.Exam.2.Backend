@@ -19,7 +19,7 @@
     class NewsletterSubscriptionModel
         extends ExtensionNoTimestampModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'newsletter_users';
 
         // Variables
@@ -27,10 +27,10 @@
         protected $table = self::table_name;
 
             // Const
-        #[OA\Property( )]
+        #[OA\Property( type: 'string' )]
         public const field_email_id = 'email_id';
 
-        #[OA\Property(  )]
+        #[OA\Property( type: 'string' )]
         public const field_options  = 'options';
 
 

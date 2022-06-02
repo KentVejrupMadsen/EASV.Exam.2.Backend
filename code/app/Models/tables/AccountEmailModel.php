@@ -20,7 +20,7 @@
     class AccountEmailModel 
         extends ExtensionLabelModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'account_emails';
 
         protected $table = self::table_name;

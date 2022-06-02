@@ -19,7 +19,7 @@
     class ProjectTitleModel
         extends ExtensionLabelModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'project_titles';
         protected $table = self::table_name;
     }

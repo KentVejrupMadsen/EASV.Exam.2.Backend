@@ -24,12 +24,13 @@
         protected $table = self::table_name;
 
             // Constants
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'security_configuration';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_key   = 'key';
-        #[OA\Property()]
+
+        #[OA\Property( type: 'string' )]
         public const field_value = 'value';
 
 

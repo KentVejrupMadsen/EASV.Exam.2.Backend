@@ -17,9 +17,8 @@
     class ZipCodeViewFullModel
         extends ModelView
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'zip_codes_view_full';
-        public $timestamps = false;
         protected $table = self::table_name;
 
         protected $fillable =

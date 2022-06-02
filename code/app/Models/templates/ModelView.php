@@ -18,7 +18,7 @@
     abstract class ModelView
         extends BaseModel
     {
+        #[OA\Property(type: 'boolean')]
         public $timestamps = false;
-
     }
 ?>

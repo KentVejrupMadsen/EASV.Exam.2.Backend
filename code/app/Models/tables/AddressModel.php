@@ -22,7 +22,7 @@
     class AddressModel
         extends BaseModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'addresses';
 
         public $timestamps = false;

@@ -19,7 +19,7 @@
     class AddressRoadNameModel
         extends ExtensionLabelModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'address_road_names';
         protected $table = self::table_name;
     }

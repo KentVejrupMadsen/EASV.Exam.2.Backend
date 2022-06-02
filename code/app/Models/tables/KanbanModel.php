@@ -19,7 +19,7 @@
     class KanbanModel 
         extends BaseModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'kanbans';
 
         // Variables
@@ -27,10 +27,10 @@
         protected $table = self::table_name;
 
             // Constant
-        #[OA\Property(  )]
+        #[OA\Property( type: 'string' )]
         public const field_kanban_title_id = 'kanban_title_id';
 
-        #[OA\Property(  )]
+        #[OA\Property( type: 'string' )]
         public const field_project_id      = 'project_id';
 
 

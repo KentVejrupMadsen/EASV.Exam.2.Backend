@@ -19,7 +19,7 @@
     class CountryModel
         extends ExtensionNoTimestampModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'countries';
 
         // Variable
@@ -27,10 +27,10 @@
         protected $table = self::table_name;
 
             // Constant
-        #[OA\Property( )]
+        #[OA\Property(type: 'string' )]
         public const field_country_name    = 'country_name';
 
-        #[OA\Property(  )]
+        #[OA\Property( type: 'string' )]
         public const field_country_acronym = 'country_acronym';
 
         //

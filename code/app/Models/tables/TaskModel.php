@@ -19,7 +19,7 @@
     class TaskModel
         extends ExtensionNoTimestampModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'tasks';
 
         // variables
@@ -27,10 +27,10 @@
         protected $table = self::table_name;
 
             // Constants
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_board_id = 'board_id';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_content = 'content';
 
 

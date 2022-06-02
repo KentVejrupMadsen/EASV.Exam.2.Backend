@@ -23,24 +23,25 @@
     class PersonNameModel
         extends BaseModel
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'person_name';
+
         // Variables
             // Table
         protected $table = self::table_name;
         public $timestamps = false;
 
             // Constants
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_account_information_id  = 'account_information_id';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_person_name_first_id    = 'person_name_first_id';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_person_name_lastname_id = 'person_name_lastname_id';
 
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const field_person_name_middlename  = 'person_name_middlename';
 
 

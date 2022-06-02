@@ -17,10 +17,8 @@
     class AccountViewModel
         extends ModelView
     {
-        #[OA\Property()]
+        #[OA\Property( type: 'string' )]
         public const table_name = 'accounts_view';
-
-        public $timestamps = false;
         protected $table = self::table_name;
 
         protected $fillable =
