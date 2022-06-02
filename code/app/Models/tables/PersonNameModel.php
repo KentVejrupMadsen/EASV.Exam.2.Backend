@@ -32,16 +32,16 @@
 
             // Constants
         #[OA\Property()]
-        protected const field_account_information_id  = 'account_information_id';
+        public const field_account_information_id  = 'account_information_id';
 
         #[OA\Property()]
-        protected const field_person_name_first_id    = 'person_name_first_id';
+        public const field_person_name_first_id    = 'person_name_first_id';
 
         #[OA\Property()]
-        protected const field_person_name_lastname_id = 'person_name_lastname_id';
+        public const field_person_name_lastname_id = 'person_name_lastname_id';
 
         #[OA\Property()]
-        protected const field_person_name_middlename  = 'person_name_middlename';
+        public const field_person_name_middlename  = 'person_name_middlename';
 
 
         //

@@ -31,16 +31,16 @@
 
             // Constants
         #[OA\Property()]
-        protected const field_account_owner_id  = 'account_owner_id';
+        public const field_account_owner_id  = 'account_owner_id';
 
         #[OA\Property()]
-        protected const field_project_title_id  = 'project_title_id';
+        public const field_project_title_id  = 'project_title_id';
 
         #[OA\Property()]
-        protected const field_description = 'description';
+        public const field_description = 'description';
 
         #[OA\Property()]
-        protected const field_tags = 'tags';
+        public const field_tags = 'tags';
 
 
         //

@@ -29,13 +29,14 @@
 
             // Constants
         #[OA\Property(  )]
-        protected const field_account = 'account_id';
+        public const field_account = 'account_id';
 
         #[OA\Property( )]
-        protected const field_created_at = 'created_at';
+        public const field_created_at = 'created_at';
 
         #[OA\Property(  )]
-        protected const field_updated_at = 'updated_at';
+        public const field_updated_at = 'updated_at';
+
 
         //
         protected $fillable =

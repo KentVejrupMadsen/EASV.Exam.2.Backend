@@ -39,7 +39,7 @@
 
         #[OA\Property()]
         public const field_hostname  = 'hostname';
-        
+
         #[OA\Property()]
         public const field_error     = 'error';
 

@@ -28,10 +28,10 @@
 
             // Constants
         #[OA\Property()]
-        protected const field_board_id = 'board_id';
+        public const field_board_id = 'board_id';
 
         #[OA\Property()]
-        protected const field_content = 'content';
+        public const field_content = 'content';
 
 
         //

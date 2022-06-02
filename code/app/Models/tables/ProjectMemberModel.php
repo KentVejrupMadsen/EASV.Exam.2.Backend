@@ -27,13 +27,13 @@
 
             // constants
         #[OA\Property()]
-        protected const project_id = 'project_id';
+        public const project_id = 'project_id';
 
         #[OA\Property()]
-        protected const account_id = 'account_id';
+        public const account_id = 'account_id';
 
         #[OA\Property()]
-        protected const member_group_id = 'member_group_id';
+        public const member_group_id = 'member_group_id';
 
 
         //

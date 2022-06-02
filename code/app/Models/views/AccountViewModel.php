@@ -19,6 +19,7 @@
     {
         #[OA\Property()]
         public const table_name = 'accounts_view';
+
         public $timestamps = false;
         protected $table = self::table_name;
 

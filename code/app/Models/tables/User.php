@@ -34,33 +34,33 @@
 
             // Constants
         #[OA\Property(  )]
-        protected const field_username = 'username';
+        public const field_username = 'username';
 
         #[OA\Property()]
-        protected const field_name = 'name';
+        public const field_name = 'name';
 
         #[OA\Property()]
-        protected const field_email_id = 'email_id';
+        public const field_email_id = 'email_id';
 
         #[OA\Property()]
-        protected const field_password = 'password';
-
-
-        #[OA\Property()]
-        protected const field_created_at = 'created_at';
-
-        #[OA\Property()]
-        protected const field_updated_at = 'updated_at';
+        public const field_password = 'password';
 
 
         #[OA\Property()]
-        protected const field_settings = 'settings';
+        public const field_created_at = 'created_at';
 
         #[OA\Property()]
-        protected const field_remember_token = 'remember_token';
+        public const field_updated_at = 'updated_at';
+
 
         #[OA\Property()]
-        protected const field_verified_at = 'email_verified_at';
+        public const field_settings = 'settings';
+
+        #[OA\Property()]
+        public const field_remember_token = 'remember_token';
+
+        #[OA\Property()]
+        public const field_verified_at = 'email_verified_at';
 
 
         use HasApiTokens,

@@ -21,16 +21,17 @@
     {
         #[OA\Property()]
         public const table_name = 'newsletter_users';
+
         // Variables
             // Table
         protected $table = self::table_name;
 
             // Const
         #[OA\Property( )]
-        protected const field_email_id = 'email_id';
+        public const field_email_id = 'email_id';
 
         #[OA\Property(  )]
-        protected const field_options  = 'options';
+        public const field_options  = 'options';
 
 
         protected $fillable =

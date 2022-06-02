@@ -21,16 +21,17 @@
     {
         #[OA\Property()]
         public const table_name = 'countries';
+
         // Variable
             // Table
         protected $table = self::table_name;
 
             // Constant
         #[OA\Property( )]
-        protected const field_country_name    = 'country_name';
+        public const field_country_name    = 'country_name';
 
         #[OA\Property(  )]
-        protected const field_country_acronym = 'country_acronym';
+        public const field_country_acronym = 'country_acronym';
 
         //
         protected $fillable =

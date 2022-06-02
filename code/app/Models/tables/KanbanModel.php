@@ -28,10 +28,10 @@
 
             // Constant
         #[OA\Property(  )]
-        protected const field_kanban_title_id = 'kanban_title_id';
+        public const field_kanban_title_id = 'kanban_title_id';
 
         #[OA\Property(  )]
-        protected const field_project_id      = 'project_id';
+        public const field_project_id      = 'project_id';
 
 
         //
