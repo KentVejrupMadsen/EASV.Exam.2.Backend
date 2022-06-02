@@ -50,12 +50,6 @@
         ];
 
 
-        protected $hidden =
-        [
-
-        ];
-
-
         protected $casts =
         [
             self::field_country_name    => 'string',

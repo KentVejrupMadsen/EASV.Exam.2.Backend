@@ -35,6 +35,13 @@
             'options'
         ];
 
+        #[OA\Property(
+            property: 'hidden',
+            schema: AccountViewModel::class,
+            type: 'array',
+            maximum: 3,
+            minimum: 3,
+            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             'id',
