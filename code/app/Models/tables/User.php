@@ -30,17 +30,33 @@
         protected $table = 'accounts';
 
             // Constants
+        #[OA\Property( property: 'string' )]
         protected const field_username = 'username';
 
+        #[OA\Property(property: 'string')]
         protected const field_name = 'name';
+
+        #[OA\Property(property: 'string')]
         protected const field_email_id = 'email_id';
+
+        #[OA\Property(property: 'string')]
         protected const field_password = 'password';
 
+
+        #[OA\Property(property: 'string')]
         protected const field_created_at = 'created_at';
+
+        #[OA\Property(property: 'string')]
         protected const field_updated_at = 'updated_at';
 
+
+        #[OA\Property(property: 'string')]
         protected const field_settings = 'settings';
+
+        #[OA\Property(property: 'string')]
         protected const field_remember_token = 'remember_token';
+
+        #[OA\Property(property: 'string')]
         protected const field_verified_at = 'email_verified_at';
 
 

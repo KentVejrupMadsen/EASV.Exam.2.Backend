@@ -24,8 +24,13 @@
         protected $table = 'project_members';
 
             // constants
+        #[OA\Property( property: 'string' )]
         protected const project_id = 'project_id';
+
+        #[OA\Property( property: 'string' )]
         protected const account_id = 'account_id';
+
+        #[OA\Property( property: 'string' )]
         protected const member_group_id = 'member_group_id';
 
 

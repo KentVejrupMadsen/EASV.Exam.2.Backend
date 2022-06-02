@@ -25,8 +25,13 @@
         protected $table = 'account_information_options';
 
             // Constants
+        #[OA\Property( property: 'string' )]
         protected const field_account = 'account_id';
+
+        #[OA\Property( property: 'string' )]
         protected const field_created_at = 'created_at';
+
+        #[OA\Property( property: 'string' )]
         protected const field_updated_at = 'updated_at';
 
         //

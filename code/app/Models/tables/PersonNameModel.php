@@ -29,9 +29,16 @@
         public $timestamps = false;
 
             // Constants
+        #[OA\Property( property: 'string' )]
         protected const field_account_information_id  = 'account_information_id';
+
+        #[OA\Property( property: 'string' )]
         protected const field_person_name_first_id    = 'person_name_first_id';
+
+        #[OA\Property( property: 'string' )]
         protected const field_person_name_lastname_id = 'person_name_lastname_id';
+
+        #[OA\Property( property: 'string' )]
         protected const field_person_name_middlename  = 'person_name_middlename';
 
 

@@ -27,9 +27,16 @@
         protected $table = 'projects';
 
             // Constants
+        #[OA\Property(property: 'string')]
         protected const field_account_owner_id  = 'account_owner_id';
+
+        #[OA\Property(property: 'string')]
         protected const field_project_title_id  = 'project_title_id';
+
+        #[OA\Property(property: 'string')]
         protected const field_description       = 'description';
+
+        #[OA\Property(property: 'string')]
         protected const field_tags              = 'tags';
 
 
