@@ -24,10 +24,10 @@
         protected $table = 'kanbans';
 
             // Constant
-        #[OA\Property( property: 'string' )]
+        #[OA\Property(  )]
         protected const field_kanban_title_id = 'kanban_title_id';
 
-        #[OA\Property( property: 'string' )]
+        #[OA\Property(  )]
         protected const field_project_id      = 'project_id';
 
 

@@ -24,10 +24,10 @@
         protected $table = 'countries';
 
             // Constant
-        #[OA\Property( property: 'string' )]
+        #[OA\Property( )]
         protected const field_country_name    = 'country_name';
 
-        #[OA\Property( property: 'string' )]
+        #[OA\Property(  )]
         protected const field_country_acronym = 'country_acronym';
 
         //

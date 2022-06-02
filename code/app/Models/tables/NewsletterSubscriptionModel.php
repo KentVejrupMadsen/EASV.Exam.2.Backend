@@ -24,10 +24,10 @@
         protected $table = 'newsletter_users';
 
             // Const
-        #[OA\Property( property: 'string' )]
+        #[OA\Property( )]
         protected const field_email_id = 'email_id';
 
-        #[OA\Property( property: 'string' )]
+        #[OA\Property(  )]
         protected const field_options  = 'options';
 
 

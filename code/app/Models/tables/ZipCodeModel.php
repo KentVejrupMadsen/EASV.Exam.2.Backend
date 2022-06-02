@@ -25,13 +25,13 @@
         protected $table = 'zip_codes';
 
             // Constants
-        #[OA\Property( property: 'string' )]
+        #[OA\Property()]
         protected const area_name = 'area_name';
 
-        #[OA\Property( property: 'string' )]
+        #[OA\Property()]
         protected const zip_number = 'zip_number';
 
-        #[OA\Property( property: 'string' )]
+        #[OA\Property()]
         protected const country_id = 'country_id';
 
 
