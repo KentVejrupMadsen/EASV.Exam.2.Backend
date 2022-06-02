@@ -21,22 +21,36 @@
     {
         // Variables
             // Const
-        public const table_name = 'assigned_to';
-        protected const field_assigned_to = self::table_name;
+        #[OA\Property()]
+        public const table_name = 'security_csrf_token';
 
-        protected const field_issued   = 'issued';
-        protected const field_accessed = 'accessed';
+        #[OA\Property()]
+        protected const field_assigned_to = 'assigned_to';
 
-        protected const field_activated   = 'activated';
-        protected const field_invalidated = 'invalidated';
+        #[OA\Property()]
+        public const field_issued   = 'issued';
 
-        protected const field_secret_token = 'secret_token';
-        protected const field_secure_token = 'secure_token';
+        #[OA\Property()]
+        public const field_accessed = 'accessed';
 
-        protected const field_identity = 'id';
+        #[OA\Property()]
+        public const field_activated   = 'activated';
+
+        #[OA\Property()]
+        public const field_invalidated = 'invalidated';
+
+
+        #[OA\Property()]
+        public const field_secret_token = 'secret_token';
+
+        #[OA\Property()]
+        public const field_secure_token = 'secure_token';
+
+        #[OA\Property()]
+        public const field_identity = 'id';
 
             // table
-        protected $table = 'security_csrf_token';
+        protected $table = self::table_name;
 
 
         //

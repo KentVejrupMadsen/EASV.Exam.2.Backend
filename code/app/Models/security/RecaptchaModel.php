@@ -22,15 +22,26 @@
     {
         // Variables
             // Table
+        #[OA\Property()]
         public const table_name = 'security_recaptcha';
+
         protected $table = self::table_name;
 
             // Const
-        protected const field_success   = 'success';
-        protected const field_score     = 'score';
-        protected const field_at_date   = 'at_date';
-        protected const field_hostname  = 'hostname';
-        protected const field_error     = 'error';
+        #[OA\Property()]
+        public const field_success   = 'success';
+
+        #[OA\Property()]
+        public const field_score     = 'score';
+
+        #[OA\Property()]
+        public const field_at_date   = 'at_date';
+
+        #[OA\Property()]
+        public const field_hostname  = 'hostname';
+        
+        #[OA\Property()]
+        public const field_error     = 'error';
 
 
         //
