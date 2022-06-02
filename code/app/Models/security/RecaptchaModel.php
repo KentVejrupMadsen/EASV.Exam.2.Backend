@@ -22,7 +22,8 @@
     {
         // Variables
             // Table
-        protected $table = 'security_recaptcha';
+        public const table_name = 'security_recaptcha';
+        protected $table = self::table_name;
 
             // Const
         protected const field_success   = 'success';

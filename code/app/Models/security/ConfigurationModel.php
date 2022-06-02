@@ -21,9 +21,11 @@
     {
         // Variables
             // Table
-        protected $table = 'security_configuration';
+        protected $table = self::table_name;
 
             // Constants
+        public const table_name = 'security_configuration';
+
         protected const field_key   = 'key';
         protected const field_value = 'value';
 

@@ -21,7 +21,8 @@
     {
         // Variables
             // Const
-        protected const field_assigned_to = 'assigned_to';
+        public const table_name = 'assigned_to';
+        protected const field_assigned_to = self::table_name;
 
         protected const field_issued   = 'issued';
         protected const field_accessed = 'accessed';
