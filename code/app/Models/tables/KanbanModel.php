@@ -35,13 +35,26 @@
 
 
         //
+        #[OA\Property(
+            property: 'fillable',
+            schema: KanbanModel::class,
+            type: 'array',
+            maximum: 3,
+            minimum: 3,
+            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             self::field_kanban_title_id,
             self::field_project_id
         ];
 
-        
+        #[OA\Property(
+            property: 'hidden',
+            schema: KanbanModel::class,
+            type: 'array',
+            maximum: 3,
+            minimum: 3,
+            items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
             self::field_kanban_title_id,

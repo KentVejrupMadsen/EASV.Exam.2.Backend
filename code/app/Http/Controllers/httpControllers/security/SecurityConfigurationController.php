@@ -47,6 +47,7 @@
          */
         #[OA\Get(path: '/api/1.0.0/securities/configuration/read' )]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public function publicRead( SecurityConfigurationRequest $Request )
         {
             $this->read( $Request );
@@ -59,6 +60,7 @@
          */
         #[OA\Patch(path: '/api/1.0.0/securities/configuration/update' )]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public function publicUpdate( SecurityConfigurationRequest $Request )
         {
             $this->update( $Request );
@@ -71,6 +73,7 @@
          */
         #[OA\Post(path: '/api/1.0.0/securities/configuration/create' )]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public function publicCreate( SecurityConfigurationRequest $Request )
         {
             $this->create( $Request );
@@ -83,6 +86,7 @@
          */
         #[OA\Delete(path: '/api/1.0.0/securities/configuration/delete' )]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public function publicDelete( SecurityConfigurationRequest $Request )
         {
             $this->delete( $Request );

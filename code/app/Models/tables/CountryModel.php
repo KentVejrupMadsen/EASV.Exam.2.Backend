@@ -12,6 +12,7 @@
     use OpenApi\Attributes
         as OA;
 
+
     /**
      *
      */
@@ -34,16 +35,17 @@
         public const field_country_acronym = 'country_acronym';
 
         //
+        #[OA\Property(
+            property: 'fillable',
+            schema: CountryModel::class,
+            type: 'array',
+            maximum: 2,
+            minimum: 2,
+            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             self::field_country_name,
             self::field_country_acronym
-        ];
-
-
-        protected $hidden =
-        [
-
         ];
 
 

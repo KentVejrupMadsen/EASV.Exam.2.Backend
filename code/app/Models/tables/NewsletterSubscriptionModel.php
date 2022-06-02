@@ -33,14 +33,26 @@
         #[OA\Property( type: 'string' )]
         public const field_options  = 'options';
 
-
+        #[OA\Property(
+            property: 'fillable',
+            schema: AccountInformationModel::class,
+            type: 'array',
+            maximum: 3,
+            minimum: 3,
+            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             self::field_email_id,
             self::field_options
         ];
 
-
+        #[OA\Property(
+            property: 'hidden',
+            schema: AccountInformationModel::class,
+            type: 'array',
+            maximum: 3,
+            minimum: 3,
+            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             self::field_email_id

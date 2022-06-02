@@ -82,6 +82,7 @@
          */
         #[OA\Get(path: '/api/1.0.0/accounts/entities/email/read')]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public function read( Request $request ): ?AccountEmailModel
         {
             abort( 300 );
@@ -90,6 +91,7 @@
 
         #[OA\Delete(path: '/api/1.0.0/accounts/entities/email/delete')]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public function delete( Request $request ): bool
         {
 
@@ -103,6 +105,7 @@
          */
         #[OA\Post(path: '/api/1.0.0/accounts/entities/email/create')]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function create( Request $request ): JsonResponse
         {
 
@@ -116,6 +119,7 @@
          */
         #[OA\Patch(path: '/api/1.0.0/accounts/entities/email/update')]
         #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Response(response: '404', description: 'content not found')]
         public final function update( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);

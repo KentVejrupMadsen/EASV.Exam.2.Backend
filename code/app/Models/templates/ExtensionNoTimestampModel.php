@@ -17,8 +17,7 @@
     abstract class ExtensionNoTimestampModel
         extends BaseModel
     {
-
-        #[OA\Property(type: 'boolean')]
+        #[OA\Property( type: 'boolean' )]
         public $timestamps = false;
     }
 ?>
