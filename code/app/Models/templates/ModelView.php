@@ -7,12 +7,14 @@
      */
     namespace App\Models\templates;
 
-    use Illuminate\Database\Eloquent\Model;
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
      *
      */
+    #[OA\Schema()]
     abstract class ModelView
         extends BaseModel
     {

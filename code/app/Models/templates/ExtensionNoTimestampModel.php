@@ -7,10 +7,13 @@
      */
     namespace App\Models\templates;
 
+    use OpenApi\Attributes
+        as OA;
 
     /**
      *
      */
+    #[OA\Schema()]
     abstract class ExtensionNoTimestampModel
         extends BaseModel
     {
