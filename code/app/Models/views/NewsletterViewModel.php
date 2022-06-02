@@ -21,6 +21,7 @@
         public const table_name = 'newsletter_view';
         protected $table = self::table_name;
 
+        #[OA\Property( )]
         protected $fillable =
         [
             'id',

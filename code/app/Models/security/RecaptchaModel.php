@@ -45,6 +45,7 @@
 
 
         //
+        #[OA\Property( )]
         protected $fillable =
         [
             self::field_success,

@@ -35,6 +35,7 @@
 
 
         //
+        #[OA\Property( )]
         protected $fillable = 
         [
             self::field_board_id,

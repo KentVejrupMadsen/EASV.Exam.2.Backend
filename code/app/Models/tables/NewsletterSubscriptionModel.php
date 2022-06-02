@@ -33,7 +33,7 @@
         #[OA\Property( type: 'string' )]
         public const field_options  = 'options';
 
-
+        #[OA\Property( )]
         protected $fillable =
         [
             self::field_email_id,

@@ -27,6 +27,7 @@
         public const table_name = 'boards';
         protected $table = self::table_name;
 
+        #[OA\Property( )]
         protected $fillable = 
         [
             'kanban_id',

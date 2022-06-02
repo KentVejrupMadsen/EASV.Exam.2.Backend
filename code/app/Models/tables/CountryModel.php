@@ -34,6 +34,7 @@
         public const field_country_acronym = 'country_acronym';
 
         //
+        #[OA\Property( )]
         protected $fillable =
         [
             self::field_country_name,

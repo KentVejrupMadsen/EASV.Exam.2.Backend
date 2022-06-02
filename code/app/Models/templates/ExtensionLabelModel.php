@@ -18,7 +18,6 @@
     abstract class ExtensionLabelModel
         extends BaseModel
     {
-
         // Variables
             // Model
         #[OA\Property(type: 'boolean')]
@@ -30,6 +29,7 @@
 
 
         //
+        #[OA\Property( )]
         protected $fillable =
         [
             self::field_content

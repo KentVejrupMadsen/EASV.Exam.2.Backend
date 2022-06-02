@@ -39,6 +39,7 @@
 
 
         //
+        #[OA\Property( )]
         protected $fillable =
         [
             self::area_name,

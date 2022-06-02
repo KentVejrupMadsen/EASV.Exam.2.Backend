@@ -21,6 +21,7 @@
         public const table_name = 'zip_codes_view_full';
         protected $table = self::table_name;
 
+        #[OA\Property( )]
         protected $fillable =
         [
             'id',

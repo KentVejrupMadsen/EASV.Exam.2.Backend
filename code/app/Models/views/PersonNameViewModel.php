@@ -21,7 +21,7 @@
         public const table_name = 'person_names_view';
         protected $table = self::table_name;
 
-
+        #[OA\Property( )]
         protected $fillable =
         [
             'id',

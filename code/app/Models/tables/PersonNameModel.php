@@ -46,6 +46,7 @@
 
 
         //
+        #[OA\Property( )]
         protected $fillable =
         [
             self::field_account_information_id,

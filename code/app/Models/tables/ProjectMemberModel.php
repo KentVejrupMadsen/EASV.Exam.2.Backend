@@ -37,6 +37,7 @@
 
 
         //
+        #[OA\Property( )]
         protected $fillable = 
         [
             self::project_id,

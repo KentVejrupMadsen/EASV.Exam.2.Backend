@@ -19,10 +19,10 @@
     {
         #[OA\Property( type: 'string' )]
         public const table_name = 'zip_codes_view_short';
-
         protected $table = self::table_name;
 
 
+        #[OA\Property( )]
         protected $fillable =
         [
             'id',
