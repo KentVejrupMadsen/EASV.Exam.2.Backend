@@ -25,6 +25,7 @@
     use App\Http\Requests\options\StateRequest;
 
 
+    #[OA\Schema()]
     class StateController
         extends ControllerOption
     {

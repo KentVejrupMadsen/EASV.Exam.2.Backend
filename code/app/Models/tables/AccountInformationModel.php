@@ -9,22 +9,34 @@
 
     // Internal Libraries
     use App\Models\templates\BaseModel;
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
      *
      */
+    #[OA\Schema()]
     class AccountInformationModel
         extends BaseModel
     {
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'account_information_options';
+
         // Variables
             // Model
-        protected $table = 'account_information_options';
+        protected $table = self::table_name;
 
             // Constants
-        protected const field_account = 'account_id';
-        protected const field_created_at = 'created_at';
-        protected const field_updated_at = 'updated_at';
+        #[OA\Property( type: 'string' )]
+        public const field_account = 'account_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_created_at = 'created_at';
+
+        #[OA\Property( type: 'string' )]
+        public const field_updated_at = 'updated_at';
+
 
         //
         protected $fillable =

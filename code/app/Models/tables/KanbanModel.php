@@ -9,20 +9,29 @@
 
     use App\Models\templates\BaseModel;
 
+    use OpenApi\Attributes
+        as OA;
 
     /**
      *
      */
+    #[OA\Schema()]
     class KanbanModel 
         extends BaseModel
     {
+        #[OA\Property( type: 'string' )]
+        public const table_name = 'kanbans';
+
         // Variables
             // Table
-        protected $table = 'kanbans';
+        protected $table = self::table_name;
 
             // Constant
-        protected const field_kanban_title_id = 'kanban_title_id';
-        protected const field_project_id      = 'project_id';
+        #[OA\Property( type: 'string' )]
+        public const field_kanban_title_id = 'kanban_title_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_project_id      = 'project_id';
 
 
         //

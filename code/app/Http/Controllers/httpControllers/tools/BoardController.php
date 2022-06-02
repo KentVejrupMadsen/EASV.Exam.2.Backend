@@ -17,6 +17,7 @@
     use App\Http\Controllers\templates\ControllerPipeline;
 
 
+    #[OA\Schema()]
     class BoardController
         extends ControllerPipeline
     {
