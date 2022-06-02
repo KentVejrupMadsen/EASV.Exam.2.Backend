@@ -37,11 +37,11 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: AccountInformationModel::class,
+            schema: KanbanModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            items: new OA\Items(type: 'integer'))]
         protected $fillable = 
         [
             self::field_kanban_title_id,
@@ -50,11 +50,11 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: AccountInformationModel::class,
+            schema: KanbanModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            items: new OA\Items(type: 'integer'))]
         protected $hidden = 
         [
             self::field_kanban_title_id,

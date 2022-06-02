@@ -37,11 +37,11 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: AccountInformationModel::class,
+            schema: TaskModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            maximum: 2,
+            minimum: 2,
+            items: new OA\Items(type: 'integer|string'))]
         protected $fillable = 
         [
             self::field_board_id,
@@ -51,11 +51,11 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: AccountInformationModel::class,
+            schema: TaskModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            maximum: 1,
+            minimum: 1,
+            items: new OA\Items(type: 'integer'))]
         protected $hidden = 
         [
             self::field_board_id,

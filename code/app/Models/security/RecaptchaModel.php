@@ -47,10 +47,10 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: AccountState::class,
+            schema: RecaptchaModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
+            maximum: 5,
+            minimum: 5,
             items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
@@ -64,10 +64,10 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: AccountState::class,
+            schema: RecaptchaModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
+            maximum: 2,
+            minimum: 2,
             items: new OA\Items(type: 'string'))]
         protected $hidden =
         [

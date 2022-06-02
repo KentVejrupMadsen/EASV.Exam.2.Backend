@@ -46,11 +46,11 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: AccountInformationModel::class,
+            schema: ProjectModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            maximum: 4,
+            minimum: 4,
+            items: new OA\Items(type: 'string|json'))]
         protected $fillable = 
         [
             self::field_account_owner_id,
@@ -62,11 +62,11 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: AccountInformationModel::class,
+            schema: ProjectModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            maximum: 2,
+            minimum: 2,
+            items: new OA\Items(type: 'integer'))]
         protected $hidden = 
         [
             self::field_account_owner_id,

@@ -56,11 +56,11 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: AccountState::class,
+            schema: CSRFModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            maximum: 8,
+            minimum: 8,
+            items: new OA\Items( type: 'string' ))]
         protected $fillable = 
         [
             self::field_identity,
@@ -75,11 +75,11 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: AccountState::class,
+            schema: CSRFModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            items: new OA\Items( type: 'string' ))]
         protected $hidden = 
         [
             self::field_identity,

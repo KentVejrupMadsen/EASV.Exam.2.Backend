@@ -41,11 +41,11 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: AccountInformationModel::class,
+            schema: ZipCodeModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            items: new OA\Items(type: 'string|integer'))]
         protected $fillable =
         [
             self::area_name,
@@ -56,11 +56,11 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: AccountInformationModel::class,
+            schema: ZipCodeModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            maximum: 1,
+            minimum: 1,
+            items: new OA\Items(type: 'integer'))]
         protected $hidden =
         [
             self::country_id

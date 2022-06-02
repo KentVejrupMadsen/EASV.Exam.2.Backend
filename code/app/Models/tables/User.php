@@ -69,11 +69,11 @@
 
         #[OA\Property(
             property: 'fillable',
-            schema: AccountInformationModel::class,
+            schema: User::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            maximum: 9,
+            minimum: 9,
+            items: new OA\Items(type: 'integer|string|carbon'))]
         protected $fillable = 
         [
             self::field_username,
@@ -90,11 +90,11 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: AccountInformationModel::class,
+            schema: User::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            maximum: 4,
+            minimum: 4,
+            items: new OA\Items(type: 'string|integer'))]
         protected $hidden = 
         [
             self::field_password,

@@ -31,9 +31,9 @@
             property: 'fillable',
             schema: AccountInformationModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            maximum: 2,
+            minimum: 2,
+            items: new OA\Items(type: 'integer'))]
         protected $fillable = 
         [
             'kanban_id',
@@ -44,9 +44,9 @@
             property: 'hidden',
             schema: AccountInformationModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+            maximum: 2,
+            minimum: 2,
+            items: new OA\Items(type: 'integer'))]
         protected $hidden = 
         [
             'kanban_id',

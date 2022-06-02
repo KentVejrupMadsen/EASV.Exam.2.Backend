@@ -11,8 +11,7 @@
 
     use OpenApi\Attributes
         as OA;
-    use phpDocumentor\Reflection\DocBlock\Tags\Reference\Reference;
-    use phpDocumentor\Reflection\Type;
+
 
     /**
      *

@@ -66,8 +66,8 @@
             property: 'hidden',
             schema: AccountState::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
+            maximum: 1,
+            minimum: 1,
             items: new OA\Items(type: 'string'))]
         protected $hidden =
         [

@@ -37,10 +37,10 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: AccountState::class,
+            schema: ConfigurationModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
+            maximum: 2,
+            minimum: 2,
             items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
@@ -51,10 +51,10 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: AccountState::class,
+            schema: ConfigurationModel::class,
             type: 'array',
-            maximum: 3,
-            minimum: 3,
+            maximum: 1,
+            minimum: 1,
             items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
