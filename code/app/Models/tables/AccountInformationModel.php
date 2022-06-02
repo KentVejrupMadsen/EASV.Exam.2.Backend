@@ -41,7 +41,6 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: AccountInformationModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,
@@ -55,7 +54,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: AccountInformationModel::class,
             type: 'array',
             maximum: 1,
             minimum: 1,

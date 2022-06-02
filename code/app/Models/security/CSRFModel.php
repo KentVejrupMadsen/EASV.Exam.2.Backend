@@ -56,7 +56,6 @@
         //
         #[OA\Property(
             property: 'fillable',
-            schema: CSRFModel::class,
             type: 'array',
             maximum: 8,
             minimum: 8,
@@ -75,7 +74,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: CSRFModel::class,
             type: 'array',
             maximum: 3,
             minimum: 3,

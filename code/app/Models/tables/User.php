@@ -69,7 +69,6 @@
 
         #[OA\Property(
             property: 'fillable',
-            schema: User::class,
             type: 'array',
             maximum: 9,
             minimum: 9,
@@ -90,7 +89,6 @@
 
         #[OA\Property(
             property: 'hidden',
-            schema: User::class,
             type: 'array',
             maximum: 4,
             minimum: 4,
