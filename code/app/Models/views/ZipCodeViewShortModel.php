@@ -20,7 +20,7 @@
         #[OA\Property()]
         public const table_name = 'zip_codes_view_short';
         public $timestamps = false;
-        
+
         protected $table = self::table_name;
 
 

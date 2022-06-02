@@ -8,6 +8,7 @@
     namespace App\Models\security;
 
     use App\Models\templates\ExtensionNoTimestampModel;
+
     use OpenApi\Attributes
         as OA;
 
@@ -19,9 +20,10 @@
     class AccountState
         extends ExtensionNoTimestampModel
     {
+        public const table_name = 'account_states';
         // Variables
             // Table
-        protected $table = 'account_states';
+        protected $table = self::table_name;
 
             // Constants
         protected const field_account_id            = 'account_id';
