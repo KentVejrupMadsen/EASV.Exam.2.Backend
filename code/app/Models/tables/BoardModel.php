@@ -27,7 +27,13 @@
         public const table_name = 'boards';
         protected $table = self::table_name;
 
-        #[OA\Property( )]
+        #[OA\Property(
+            property: 'fillable',
+            schema: AccountInformationModel::class,
+            type: 'array',
+            maximum: 3,
+            minimum: 3,
+            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             'kanban_id',

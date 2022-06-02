@@ -11,6 +11,8 @@
 
     use OpenApi\Attributes
         as OA;
+    use phpDocumentor\Reflection\DocBlock\Tags\Reference\Reference;
+    use phpDocumentor\Reflection\Type;
 
     /**
      *
@@ -34,7 +36,13 @@
         public const field_country_acronym = 'country_acronym';
 
         //
-        #[OA\Property( )]
+        #[OA\Property(
+            property: 'fillable',
+            schema: CountryModel::class,
+            type: 'array',
+            maximum: 2,
+            minimum: 2,
+            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             self::field_country_name,

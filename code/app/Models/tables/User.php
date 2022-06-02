@@ -67,7 +67,13 @@
             HasFactory,
             Notifiable;
 
-        #[OA\Property( )]
+        #[OA\Property(
+            property: 'fillable',
+            schema: AccountInformationModel::class,
+            type: 'array',
+            maximum: 3,
+            minimum: 3,
+            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             self::field_username,
