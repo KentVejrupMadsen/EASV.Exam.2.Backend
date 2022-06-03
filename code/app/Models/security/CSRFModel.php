@@ -25,7 +25,7 @@
         public const table_name = 'security_csrf_token';
 
         #[OA\Property( type: 'string' )]
-        protected const field_assigned_to = 'assigned_to';
+        public const field_assigned_to = 'assigned_to';
 
         #[OA\Property( type: 'string' )]
         public const field_issued   = 'issued';
