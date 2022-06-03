@@ -9,10 +9,15 @@
 
     use Illuminate\Database\Eloquent\Factories\Factory;
 
+    
+    /**
+     *
+     */
     abstract class FactoryTemplate
         extends Factory
     {
-
+        public abstract function getDebugState(): bool;
+        public abstract function setDebugState( bool $value ): void;
     }
 
 ?>

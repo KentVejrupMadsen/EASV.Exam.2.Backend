@@ -8,19 +8,18 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingKanbanTitleModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
-    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\KanbanTitleModel;
+    use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingKanbanTitleModelFactory;
 
 
     /**
      *
      */
     class KanbanTitleModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = KanbanTitleModel::class;

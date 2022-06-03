@@ -10,7 +10,7 @@
     // External libraries
     use Carbon\Carbon;
     use Database\Factories\security\testing\TestingRecaptchaModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
+    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\security\RecaptchaModel;
@@ -20,7 +20,7 @@
      *
      */
     class RecaptchaModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = RecaptchaModel::class;

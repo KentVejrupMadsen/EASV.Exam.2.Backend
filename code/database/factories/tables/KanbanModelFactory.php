@@ -9,19 +9,18 @@
 
     // External libraries
     use Carbon\Carbon;
-    use Database\Factories\tables\testing\TestingKanbanModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
-    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\KanbanModel;
+    use Database\Factories\tables\testing\TestingKanbanModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class KanbanModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         private static $debug   = false;

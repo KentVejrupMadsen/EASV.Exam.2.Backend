@@ -8,19 +8,18 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingTaskModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\TaskModel;
     use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingTaskModelFactory;
 
 
     /**
      *
      */
     class TaskModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model = TaskModel::class;

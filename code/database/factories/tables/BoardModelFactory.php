@@ -9,19 +9,18 @@
 
     // External libraries
     use Carbon\Carbon;
-    use Database\Factories\tables\testing\TestingBoardModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
-    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\BoardModel;
+    use Database\Factories\tables\testing\TestingBoardModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class BoardModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = BoardModel::class;

@@ -9,19 +9,18 @@
 
     // External libraries
     use Carbon\Carbon;
-    use Database\Factories\tables\testing\TestingProjectModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
-    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\ProjectModel;
+    use Database\Factories\tables\testing\TestingProjectModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class ProjectModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model      = ProjectModel::class;

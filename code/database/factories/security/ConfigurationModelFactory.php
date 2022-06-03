@@ -12,14 +12,14 @@
 
     // External libraries
     use Database\Factories\security\testing\TestingConfigurationModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class ConfigurationModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = ConfigurationModel::class;
