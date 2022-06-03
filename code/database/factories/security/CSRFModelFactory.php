@@ -11,7 +11,7 @@
     use Carbon\Carbon;
 
     use Database\Factories\security\testing\TestingCSRFModelFactory;
-
+    use Database\Factories\templates\FactoryTemplate;
     use Illuminate\Support\Str;
 
     // Internal libraries
@@ -22,7 +22,7 @@
      *
      */
     class CSRFModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = CSRFModel::class;

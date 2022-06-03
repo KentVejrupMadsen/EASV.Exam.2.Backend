@@ -8,19 +8,18 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingNewsletterSubscriptionModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
-    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\NewsletterSubscriptionModel;
+    use Database\Factories\tables\testing\TestingNewsletterSubscriptionModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class NewsletterSubscriptionModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
 
         // Variables

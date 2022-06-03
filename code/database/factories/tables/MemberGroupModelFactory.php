@@ -8,19 +8,18 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingMemberGroupModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
-    use Database\Factories\templates\FactoryTemplate;
+
 
     // Internal libraries
     use App\Models\tables\MemberGroupModel;
-
+    use Database\Factories\tables\testing\TestingMemberGroupModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
     /**
      *
      */
     class MemberGroupModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = MemberGroupModel::class;

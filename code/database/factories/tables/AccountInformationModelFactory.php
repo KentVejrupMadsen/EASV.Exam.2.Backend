@@ -9,19 +9,18 @@
 
     // External libraries
     use Carbon\Carbon;
-    use Database\Factories\tables\testing\TestingAccountInformationModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
-    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\AccountInformationModel;
+    use Database\Factories\tables\testing\TestingAccountInformationModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class AccountInformationModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         protected $model        = AccountInformationModel::class;
         private static $debug   = false;

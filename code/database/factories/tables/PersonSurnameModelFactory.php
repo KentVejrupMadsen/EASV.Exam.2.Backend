@@ -8,19 +8,18 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingPersonSurnameModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
-    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\PersonSurnameModel;
+    use Database\Factories\tables\testing\TestingPersonSurnameModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class PersonSurnameModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = PersonSurnameModel::class;

@@ -8,19 +8,18 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingBoardTitleModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
-    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\BoardTitleModel;
+    use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingBoardTitleModelFactory;
 
 
     /**
      *
      */
     class BoardTitleModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         private static $debug   = false;

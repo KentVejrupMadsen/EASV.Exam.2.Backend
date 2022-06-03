@@ -9,20 +9,19 @@
 
     // External libraries
     use Carbon\Carbon;
-    use Database\Factories\tables\testing\TestingUserFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
-    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\User;
     use Illuminate\Support\Facades\Hash;
+    use Database\Factories\tables\testing\TestingUserFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class UserFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = User::class;

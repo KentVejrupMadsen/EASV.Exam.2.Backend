@@ -8,11 +8,11 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingAccountEmailModelFactory;
 
     // Internal libraries
     use App\Models\tables\AccountEmailModel;
     use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingAccountEmailModelFactory;
 
 
     /**

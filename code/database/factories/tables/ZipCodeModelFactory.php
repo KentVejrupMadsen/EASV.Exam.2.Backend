@@ -8,19 +8,18 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingZipCodeModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
-    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\ZipCodeModel;
+    use Database\Factories\tables\testing\TestingZipCodeModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class ZipCodeModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = ZipCodeModel::class;

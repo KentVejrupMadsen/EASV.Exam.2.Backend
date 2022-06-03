@@ -8,19 +8,19 @@
     namespace Database\Factories\tables;
 
     // External libraries
-use Database\Factories\tables\testing\TestingAddressRoadNameModelFactory;
-use Illuminate\Database\Eloquent\Factories\Factory;
+
 
     // Internal libraries
     use App\Models\tables\AddressRoadNameModel;
-use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingAddressRoadNameModelFactory;
 
 
     /**
      *
      */
     class AddressRoadNameModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = AddressRoadNameModel::class;
