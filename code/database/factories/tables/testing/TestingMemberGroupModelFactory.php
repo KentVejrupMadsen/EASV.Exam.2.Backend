@@ -31,9 +31,9 @@
         public final function definition(): array
         {
             return
-                [
-                    'content' => $this->faker->unique()->text(45)
-                ];
+            [
+                'content' => $this->faker->unique()->text(45)
+            ];
         }
     }
 ?>

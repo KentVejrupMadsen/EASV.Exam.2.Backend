@@ -25,20 +25,18 @@
         protected $model      = ProjectMemberModel::class;
 
 
-
-        //
         /**
          * @return array
          */
         public final function definition(): array
         {
             return
-                [
+            [
                     //
-                    'project_id' => 0,
-                    'account_id' => 0,
-                    'member_group_id' => 0
-                ];
+                'project_id' => 0,
+                'account_id' => 0,
+                'member_group_id' => 0
+            ];
         }
     }
 ?>

@@ -24,7 +24,6 @@
         protected $model        = PersonNameModel::class;
 
 
-
         //
         /**
          * @return array
@@ -32,13 +31,12 @@
         public final function definition(): array
         {
             return
-                [
-                    //
-                    'account_information_id'    => 0,
-                    'person_name_first_id'      => 0,
-                    'person_name_lastname_id'   => 0,
-                    'person_name_middlename'    => '{ }'
-                ];
+            [
+                'account_information_id'    => 0,
+                'person_name_first_id'      => 0,
+                'person_name_lastname_id'   => 0,
+                'person_name_middlename'    => ''
+            ];
         }
     }
 ?>

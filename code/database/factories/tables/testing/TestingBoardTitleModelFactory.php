@@ -26,14 +26,12 @@
         /**
          * @return array|mixed[]
          */
-        public function definition(): array
+        public final function definition(): array
         {
             return
-                [
-                    'content' => $this -> faker
-                                       -> unique()
-                                       -> realText(50)
-                ];
+            [
+                'content' => $this -> faker -> unique() -> realText(50)
+            ];
         }
     }
 ?>

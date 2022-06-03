@@ -28,14 +28,13 @@
         /**
          * @return array
          */
-        public function definition(): array
+        public final function definition(): array
         {
             return
-                [
-                    'board_id' => 0,
-                    'content'  => $this->faker
-                        ->realText
-                ];
+            [
+                'board_id' => 0,
+                'content'  => $this->faker->realText
+            ];
         }
     }
 ?>

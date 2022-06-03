@@ -25,23 +25,18 @@
         protected $model        = KanbanModel::class;
 
 
-
-        //
         /**
          * @return array|mixed[]
          */
-        public function definition(): array
+        public final function definition(): array
         {
             return
-                [
-                    //
-                    'kanban_title_id' => 0,
-                    'project_id' => 0,
-                    'created_at' => $this->faker
-                        ->dateTime,
-                    'updated_at' => $this->faker
-                        ->dateTime
-                ];
+            [
+                'kanban_title_id' => 0,
+                'project_id' => 0,
+                'created_at' => $this->faker->dateTime,
+                'updated_at' => $this->faker->dateTime
+            ];
         }
     }
 ?>

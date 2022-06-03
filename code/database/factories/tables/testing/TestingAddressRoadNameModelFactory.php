@@ -30,12 +30,9 @@
         public final function definition(): array
         {
             return
-                [
-                    //
-                    'content' => $this->faker
-                        ->unique()
-                        ->streetName
-                ];
+            [
+                'content' => $this->faker->unique()->streetName
+            ];
         }
     }
 ?>

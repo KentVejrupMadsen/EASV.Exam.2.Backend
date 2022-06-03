@@ -24,17 +24,12 @@
         protected $model      = ProjectTitleModel::class;
 
 
-
-        //
         public final function definition(): array
         {
-
             return
-                [
-                    'content' => $this->faker
-                        ->unique()
-                        ->realText(50)
-                ];
+            [
+                'content' => $this->faker->unique()->realText(50)
+            ];
         }
     }
 ?>

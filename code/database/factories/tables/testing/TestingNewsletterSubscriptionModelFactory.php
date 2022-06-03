@@ -20,23 +20,21 @@
     class TestingNewsletterSubscriptionModelFactory
         extends Factory
     {
-
         // Variables
         protected $model        = NewsletterSubscriptionModel::class;
 
 
-        //
         /**
          * @return array
          */
         public function definition(): array
         {
             return
-                [
+            [
                     //
-                    'email_id' => 1,
-                    'options' => '{ }'
-                ];
+                'email_id' => 1,
+                'options' => ''
+            ];
         }
     }
 ?>

@@ -31,10 +31,9 @@
         public final function definition(): array
         {
             return
-                [
-                    //
-                    'content' => $this->faker->unique()->firstName
-                ];
+            [
+                'content' => $this->faker->unique()->firstName
+            ];
         }
     }
 ?>

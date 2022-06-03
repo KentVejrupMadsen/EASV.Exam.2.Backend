@@ -31,15 +31,10 @@
         public final function definition(): array
         {
             return
-                [
-                    'country_name' => $this->faker
-                        ->unique()
-                        ->country,
-
-                    'country_acronym' => $this->faker
-                        ->unique()
-                        ->countryCode
-                ];
+            [
+                'country_name'    => $this->faker->unique()->country,
+                'country_acronym' => $this->faker->unique()->countryCode
+            ];
         }
     }
 ?>

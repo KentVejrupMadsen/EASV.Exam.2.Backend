@@ -24,17 +24,16 @@
         protected $model        = PersonSurnameModel::class;
 
 
-        //
         /**
          * @return array
          */
         public final function definition(): array
         {
             return
-                [
+            [
                     //
-                    'content' => $this->faker->unique()->lastName
-                ];
+                'content' => $this->faker->unique()->lastName
+            ];
         }
     }
 ?>

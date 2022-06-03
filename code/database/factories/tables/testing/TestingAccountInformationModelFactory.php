@@ -31,12 +31,12 @@
         public final function definition(): array
         {
             return
-                [
-                    'account_id' => 0,
-                    'settings'   => '{ }',
-                    'created_at' => $this->faker->dateTime,
-                    'updated_at' => $this->faker->dateTime
-                ];
+            [
+                'account_id' => 0,
+                'settings'   => '',
+                'created_at' => $this->faker->dateTime,
+                'updated_at' => $this->faker->dateTime
+            ];
         }
     }
 ?>

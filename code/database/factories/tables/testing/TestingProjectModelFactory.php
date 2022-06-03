@@ -25,26 +25,20 @@
         protected $model      = ProjectModel::class;
 
 
-
-        //
         /**
          * @return array
          */
         public final function definition(): array
         {
             return
-                [
-                    //
-                    'account_owner_id' => 0,
-                    'project_title_id' => 0,
-                    'description' => $this->faker
-                        ->realText,
-                    'tags' => '{ }',
-                    'created_at' => $this->faker
-                        ->dateTime,
-                    'updated_at' => $this->faker
-                        ->dateTime
-                ];
+            [
+                'account_owner_id' => 0,
+                'project_title_id' => 0,
+                'description' => $this->faker->realText,
+                'tags' => '',
+                'created_at' => $this->faker->dateTime,
+                'updated_at' => $this->faker->dateTime
+            ];
         }
     }
 ?>

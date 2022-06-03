@@ -30,13 +30,10 @@
          */
         public function definition(): array
         {
-
             return
-                [
-                    'content'=> $this->faker
-                        ->unique()
-                        ->jobTitle
-                ];
+            [
+                'content' => $this->faker->unique()->jobTitle
+            ];
         }
     }
 ?>

@@ -28,18 +28,16 @@
         /**
          * @return array
          */
-        public function definition(): array
+        public final function definition(): array
         {
             return
-                [
-                    'kanban_id' => 0,
-                    'board_title_id' => 0,
-                    'body' => '{}',
-                    'created_at' => $this->faker
-                        ->dateTime,
-                    'updated_at' => $this->faker
-                        ->dateTime
-                ];
+            [
+                'kanban_id' => 0,
+                'board_title_id' => 0,
+                'body' => '',
+                'created_at' => $this->faker->dateTime,
+                'updated_at' => $this->faker->dateTime
+            ];
         }
     }
 ?>

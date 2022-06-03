@@ -30,28 +30,12 @@
          */
         public final function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
-                [
-                    'area_name' => $this->faker
-                                        ->unique()
-                                        ->city,
-                    'zip_number' => $this->faker
-                                         ->unique()
-                                         ->numerify,
-                    'country_id' => 0
-                ];
-            }
-            else
-            {
-                return
-                [
-                    'area_name'  => null,
-                    'zip_number' => 0,
-                    'country_id' => 0
-                ];
-            }
+            return
+            [
+                'area_name'  => $this->faker->unique()->city,
+                'zip_number' => $this->faker->unique()->numerify,
+                'country_id' => 0
+            ];
         }
     }
 ?>
