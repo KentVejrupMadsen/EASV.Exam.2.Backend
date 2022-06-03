@@ -9,21 +9,23 @@
 
     // External libraries
     use Carbon\Carbon;
-    use Database\Factories\tables\testing\TestingAccountInformationModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\AccountInformationModel;
+    use Database\Factories\tables\testing\TestingAccountInformationModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class AccountInformationModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         protected $model        = AccountInformationModel::class;
         private static $debug   = false;
+
+        private static ?TestingAccountInformationModelFactory $testingFactory = null;
 
 
         private static ?TestingAccountInformationModelFactory $testingFactory = null;
@@ -45,6 +47,28 @@
 
         // Accessor
         /**
+         * @return TestingAccountInformationModelFactory
+         */
+        public static final function getTestingFactory(): TestingAccountInformationModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingAccountInformationModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        /**
+         * @param TestingAccountInformationModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingAccountInformationModelFactory $fakeFactory ): void
+        {
+            self::$testingFactory = $fakeFactory;
+        }
+
+        /**
          * @return bool
          */
         public final function getDebugState(): bool
@@ -62,26 +86,11 @@
         }
 
 
+        // Definitions
         /**
          * @return array
          */
-        public final function definition(): array
-        {
-            if( $this->getDebugState() )
-            {
-                return $this->fakeDefinition();
-            }
-            else
-            {
-                return $this->normalDefinition();
-            }
-        }
-
-
-        /**
-         * @return array
-         */
-        protected function fakeDefinition(): array
+        protected final function TestDefinition(): array
         {
             return self::getTestingFactory()->definition();
         }
@@ -90,7 +99,7 @@
         /**
          * @return array
          */
-        protected function normalDefinition(): array
+        protected final function DefaultDefinition(): array
         {
             return
             [

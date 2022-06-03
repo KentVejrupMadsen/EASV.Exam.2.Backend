@@ -7,10 +7,13 @@
      */
     namespace App\Models\tables;
 
+    // Internal libraries
     use App\Models\templates\ExtensionLabelModel;
 
+    // External libraries
     use OpenApi\Attributes
         as OA;
+
 
     /**
      *
@@ -23,5 +26,6 @@
         public const table_name = 'kanban_titles';
         protected $table = self::table_name;
 
+        public const field_content = ExtensionLabelModel::field_content;
     }
 ?>

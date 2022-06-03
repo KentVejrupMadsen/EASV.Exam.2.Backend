@@ -7,6 +7,7 @@
      */
     namespace App\Models\templates;
 
+    // External libraries
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 

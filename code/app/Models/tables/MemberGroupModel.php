@@ -7,10 +7,13 @@
      */
     namespace App\Models\tables;
 
+    // Internal libraries
     use App\Models\templates\ExtensionLabelModel;
 
+    // External libraries
     use OpenApi\Attributes
         as OA;
+
 
     /**
      *
@@ -22,5 +25,7 @@
         #[OA\Property( type: 'string' )]
         public const table_name = 'member_groups';
         protected $table = self::table_name;
+
+        public const field_content = ExtensionLabelModel::field_content;
     }
 ?>

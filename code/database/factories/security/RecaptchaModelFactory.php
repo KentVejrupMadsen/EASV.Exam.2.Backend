@@ -10,7 +10,7 @@
     // External libraries
     use Carbon\Carbon;
     use Database\Factories\security\testing\TestingRecaptchaModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
+    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\security\RecaptchaModel;
@@ -20,13 +20,16 @@
      *
      */
     class RecaptchaModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = RecaptchaModel::class;
         private static $debug   = false;
         private static ?TestingRecaptchaModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingRecaptchaModelFactory
+         */
         public static final function getTestingFactory(): TestingRecaptchaModelFactory
         {
             if( is_null( self::$testingFactory ) )
@@ -37,7 +40,11 @@
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingRecaptchaModelFactory $fakeFactory )
+        /**
+         * @param TestingRecaptchaModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingRecaptchaModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }
@@ -62,28 +69,29 @@
         }
 
 
-        //
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public final function definition(): array
+        protected final function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+            return self::getTestingFactory()->definition();
+        }
+
+
+        /**
+         * @return array
+         */
+        protected final function DefaultDefinition(): array
+        {
+            return
                 [
-                        //
-                    'success'  => false,
-                    'score'    => 0.0,
-                    'at_date'  => Carbon::now(),
-                    'hostname' => null,
-                    'error'    => null
+                    //
+                    RecaptchaModel::field_success  => false,
+                    RecaptchaModel::field_score    => 0.0,
+                    RecaptchaModel::field_at_date  => Carbon::now(),
+                    RecaptchaModel::field_hostname => null,
+                    RecaptchaModel::field_error    => null
                 ];
-            }
         }
     }
 ?>

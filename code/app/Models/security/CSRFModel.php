@@ -7,10 +7,13 @@
      */
     namespace App\Models\security;
 
+    // Internal libraries
     use App\Models\templates\ExtensionNoTimestampModel;
 
+    // External libraries
     use OpenApi\Attributes
         as OA;
+
 
     /**
      *
@@ -25,7 +28,7 @@
         public const table_name = 'security_csrf_token';
 
         #[OA\Property( type: 'string' )]
-        protected const field_assigned_to = 'assigned_to';
+        public const field_assigned_to = 'assigned_to';
 
         #[OA\Property( type: 'string' )]
         public const field_issued   = 'issued';

@@ -8,22 +8,24 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingPersonFirstnameModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\PersonFirstnameModel;
+    use Database\Factories\tables\testing\TestingPersonFirstnameModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class PersonFirstnameModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = PersonFirstnameModel::class;
         private static $debug   = false;
+
+        private static ?TestingPersonFirstnameModelFactory $testingFactory = null;
 
 
         private static ?TestingPersonFirstnameModelFactory $testingFactory = null;
@@ -45,6 +47,28 @@
 
         // Accessors
         /**
+         * @return TestingPersonFirstnameModelFactory
+         */
+        public static final function getTestingFactory(): TestingPersonFirstnameModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingPersonFirstnameModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        /**
+         * @param TestingPersonFirstnameModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingPersonFirstnameModelFactory $fakeFactory ): void
+        {
+            self::$testingFactory = $fakeFactory;
+        }
+
+        /**
          * @return bool
          */
         public final function getDebugState(): bool
@@ -62,24 +86,26 @@
         }
 
 
-        //
+        // Definitions
+        /**
+         * @return null[]
+         */
+        protected final function DefaultDefinition(): array
+        {
+            return
+                [
+                    //
+                    'content' => null
+                ];
+        }
+
         /**
          * @return array
          */
-        public final function definition(): array
+        protected final function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'content' => null
-                    ];
-            }
+
+            return self::getTestingFactory()->definition();
         }
     }
 ?>

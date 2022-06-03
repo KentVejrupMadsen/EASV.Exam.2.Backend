@@ -9,18 +9,18 @@
 
     // External libraries
     use Carbon\Carbon;
-    use Database\Factories\tables\testing\TestingProjectMemberModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\ProjectMemberModel;
+    use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingProjectMemberModelFactory;
 
 
     /**
      *
      */
     class ProjectMemberModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model      = ProjectMemberModel::class;
@@ -29,17 +29,24 @@
 
         private static ?TestingProjectMemberModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingProjectMemberModelFactory
+         */
         public static final function getTestingFactory(): TestingProjectMemberModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingProjectMemberModelFactory());
+                self::setTestingFactory( new TestingProjectMemberModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingProjectMemberModelFactory $fakeFactory )
+        /**
+         * @param TestingProjectMemberModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingProjectMemberModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }
@@ -63,26 +70,28 @@
         }
 
 
-        //
+        // Definitions
+        /**
+         * @return int[]
+         */
+        protected final function DefaultDefinition(): array
+        {
+            return
+                [
+                    //
+                    'project_id' => 0,
+                    'account_id' => 0,
+                    'member_group_id' => 0
+                ];
+        }
+
         /**
          * @return array
          */
-        public final function definition(): array
+        protected final function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'project_id' => 0,
-                        'account_id' => 0,
-                        'member_group_id' => 0
-                    ];
-            }
+
+            return self::getTestingFactory()->definition();
         }
     }
 ?>

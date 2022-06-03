@@ -8,7 +8,6 @@
     namespace Database\Factories\tables\testing;
 
     // External libraries
-    use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -23,8 +22,6 @@
     {
         protected $model        = AccountInformationModel::class;
 
-
-
         /**
          * @return array
          */
@@ -32,10 +29,10 @@
         {
             return
             [
-                'account_id' => 0,
-                'settings'   => '',
-                'created_at' => $this->faker->dateTime,
-                'updated_at' => $this->faker->dateTime
+                AccountInformationModel::field_account => 0,
+                AccountInformationModel::field_settings => '',
+                AccountInformationModel::field_created_at => $this->faker->dateTime,
+                AccountInformationModel::field_updated_at => $this->faker->dateTime
             ];
         }
     }

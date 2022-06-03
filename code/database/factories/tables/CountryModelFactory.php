@@ -8,23 +8,24 @@
     namespace Database\Factories\tables;
 
     // External libraries
-use Database\Factories\tables\testing\TestingCountryModelFactory;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\CountryModel;
+    use Database\Factories\tables\testing\TestingCountryModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class CountryModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = CountryModel::class;
         private static $debug   = false;
 
+        private static ?TestingCountryModelFactory $testingFactory = null;
 
         private static ?TestingCountryModelFactory $testingFactory = null;
 
@@ -45,6 +46,28 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
         // Accessor
         /**
+         * @return TestingCountryModelFactory
+         */
+        public static final function getTestingFactory(): TestingCountryModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingCountryModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        /**
+         * @param TestingCountryModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingCountryModelFactory $fakeFactory ): void
+        {
+            self::$testingFactory = $fakeFactory;
+        }
+
+        /**
          * @return bool
          */
         public final function getDebugState(): bool
@@ -61,24 +84,25 @@ use Illuminate\Database\Eloquent\Factories\Factory;
             self::$debug = $value;
         }
 
+        // Definitions
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+            return self::getTestingFactory()->definition();
+        }
 
         /**
-         * @return array|mixed[]|null[]
+         * @return null[]
          */
-        public final function definition(): array
+        protected final function DefaultDefinition(): array
         {
-            if($this->getDebugState())
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        'country_name'    => null,
-                        'country_acronym' => null
-                    ];
-            }
+            return
+                [
+                    'country_name'    => null,
+                    'country_acronym' => null
+                ];
         }
     }
 ?>

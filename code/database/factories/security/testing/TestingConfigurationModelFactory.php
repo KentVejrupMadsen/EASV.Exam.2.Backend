@@ -21,7 +21,6 @@
         // Variables
         protected $model        = ConfigurationModel::class;
 
-
         /**
          * @return array|mixed[]
          */
@@ -29,9 +28,8 @@
         {
             return
             [
-                    //
-                'key'   => $this->faker->text,
-                'value' => ''
+                ConfigurationModel::field_key   => $this->faker->text,
+                ConfigurationModel::field_value => ''
             ];
         }
     }

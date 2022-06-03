@@ -8,18 +8,18 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingZipCodeModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\ZipCodeModel;
+    use Database\Factories\tables\testing\TestingZipCodeModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class ZipCodeModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = ZipCodeModel::class;
@@ -28,22 +28,29 @@
 
         private static ?TestingZipCodeModelFactory $testingFactory = null;
 
+        // Accessors
+        /**
+         * @return TestingZipCodeModelFactory
+         */
         public static final function getTestingFactory(): TestingZipCodeModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingZipCodeModelFactory());
+                self::setTestingFactory( new TestingZipCodeModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingZipCodeModelFactory $fakeFactory )
+        /**
+         * @param TestingZipCodeModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingZipCodeModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessors
         /**
          * @return bool
          */
@@ -61,25 +68,27 @@
             self::$debug = $value;
         }
 
-
+        //
         /**
          * @return array
          */
-        public final function definition(): array
+        protected final function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+            return
                 [
                     'area_name'  => null,
                     'zip_number' => 0,
                     'country_id' => 0
                 ];
-            }
+        }
+
+
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+            return self::getTestingFactory()->definition();
         }
     }
 ?>

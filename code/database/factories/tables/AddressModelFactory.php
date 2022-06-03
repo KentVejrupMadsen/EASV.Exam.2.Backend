@@ -8,23 +8,25 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingAddressModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
+    use Illuminate\Support\Str;
 
     // Internal libraries
     use App\Models\tables\AddressModel;
-    use Illuminate\Support\Str;
+    use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingAddressModelFactory;
 
 
     /**
      *
      */
     class AddressModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = AddressModel::class;
         private static $debug   = false;
+
+        private static ?TestingAddressModelFactory $testingFactory = null;
 
 
         private static ?TestingAddressModelFactory $testingFactory = null;
@@ -46,6 +48,28 @@
 
         // Accessor
         /**
+         * @return TestingAddressModelFactory
+         */
+        public static final function getTestingFactory(): TestingAddressModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingAddressModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        /**
+         * @param TestingAddressModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingAddressModelFactory $fakeFactory ): void
+        {
+            self::$testingFactory = $fakeFactory;
+        }
+
+        /**
          * @return bool
          */
         public final function getDebugState(): bool
@@ -63,21 +87,24 @@
         }
 
 
-        //
+        // Definitions
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public final function definition(): array
+        protected final function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+            return self::getTestingFactory()->definition();
+        }
+
+        /**
+         * @return array
+         */
+        protected final function DefaultDefinition(): array
+        {
+
+            return
                 [
-                        //
+                    //
                     'account_information_id' => 0,
                     'road_name_id'           => 0,
                     'road_number'            => 0,
@@ -85,7 +112,6 @@
                     'country_id'             => 0,
                     'zip_code_id'            => 0
                 ];
-            }
         }
     }
 ?>

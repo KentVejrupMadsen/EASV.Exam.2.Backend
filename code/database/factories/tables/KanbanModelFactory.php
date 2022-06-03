@@ -9,18 +9,18 @@
 
     // External libraries
     use Carbon\Carbon;
-    use Database\Factories\tables\testing\TestingKanbanModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\KanbanModel;
+    use Database\Factories\tables\testing\TestingKanbanModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class KanbanModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         private static $debug   = false;
@@ -28,23 +28,30 @@
 
         private static ?TestingKanbanModelFactory $testingFactory = null;
 
+        // Accessor
+        /**
+         * @return TestingKanbanModelFactory
+         */
         public static final function getTestingFactory(): TestingKanbanModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingKanbanModelFactory());
+                self::setTestingFactory( new TestingKanbanModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingKanbanModelFactory $fakeFactory )
+        /**
+         * @param TestingKanbanModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingKanbanModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }
 
 
-        // Accessor
         /**
          * @return bool
          */
@@ -62,28 +69,27 @@
             self::$debug = $value;
         }
 
-
-        //
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public function definition(): array
+        protected final function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'kanban_title_id'   => 0,
-                        'project_id'        => 0,
-                        'created_at'        => Carbon::now(),
-                        'updated_at'        => Carbon::now()
-                    ];
-            }
+            return self::getTestingFactory()->definition();
+        }
+
+        /**
+         * @return array
+         */
+        protected final function DefaultDefinition(): array
+        {
+            return
+                [
+                    //
+                    'kanban_title_id'   => 0,
+                    'project_id'        => 0,
+                    'created_at'        => Carbon::now(),
+                    'updated_at'        => Carbon::now()
+                ];
         }
     }
 ?>

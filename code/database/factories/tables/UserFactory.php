@@ -9,24 +9,49 @@
 
     // External libraries
     use Carbon\Carbon;
-    use Database\Factories\tables\testing\TestingUserFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\User;
     use Illuminate\Support\Facades\Hash;
+    use Database\Factories\tables\testing\TestingUserFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class UserFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = User::class;
         private static $debug   = false;
 
+        private static ?TestingUserFactory $testingFactory = null;
+
+
+        // Accessor
+        /**
+         * @return TestingUserFactory
+         */
+        public static final function getTestingFactory(): TestingUserFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingUserFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        /**
+         * @param TestingUserFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingUserFactory $fakeFactory ): void
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         private static ?TestingUserFactory $testingFactory = null;
 
@@ -64,46 +89,14 @@
         }
 
 
-        /**
-         * @return \DateTime|null
-         */
-        protected function fakeIsVerified(): ?\DateTime
-        {
-            if( $this->faker->boolean )
-            {
-                return $this->faker->dateTime;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        protected function generatePassword(): ?string
-        {
-            if( $this->getDebugState() )
-            {
-                return Hash::make( $this->faker->realTextBetween( 8, 16 ) );
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-
+        // Definitions
         /**
          * @return array
          */
-        public final function definition(): array
+        protected final function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+
+            return
                 [
                     'username'          => null,
                     'email_id'          => 0,
@@ -116,7 +109,16 @@
 
                     'settings' => '{ }'
                 ];
-            }
+        }
+
+
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+
+            return self::getTestingFactory()->definition();
         }
 
     }
