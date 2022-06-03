@@ -64,29 +64,6 @@
         private ?SecurityCSRFConstructor $constructor = null;
 
 
-        /**
-         * @return SecurityCSRFConstructor
-         */
-        public final function getConstructor(): SecurityCSRFConstructor
-        {
-            if( is_null( $this->constructor ) )
-            {
-                $this->setConstructor( SecurityCSRFConstructor::getFactory() );
-            }
-
-            return $this->constructor;
-        }
-
-        /**
-         * @param $constructor
-         * @return void
-         */
-        protected final function setConstructor( $constructor ): void
-        {
-            $this->constructor = $constructor;
-        }
-
-
         // Functions that the routes interacts with
         /**
          * @param SecurityCSRFRequest $request
@@ -223,16 +200,7 @@
         }
 
         // Accessors
-            // Controller singleton
-        /**
-         * @param SecurityCSRFTokenController $controller
-         * @return void
-         */
-        public static final function setSingleton( SecurityCSRFTokenController $controller ): void
-        {
-            self::$controller = $controller;
-        }
-
+            // Getters
         /**
          * @return SecurityCSRFTokenController
          */
@@ -247,7 +215,6 @@
         }
 
 
-        // Redis cache
         /**
          * @return RedisCacheCSRFController
          */
@@ -261,33 +228,6 @@
             return $this->cache;
         }
 
-        /**
-         * @param RedisCacheCSRFController $cacheController
-         * @return void
-         */
-        protected final function setCache( RedisCacheCSRFController $cacheController ): void
-        {
-            $this->cache = $cacheController;
-        }
-
-        /**
-         * @return bool
-         */
-        protected final function isCacheEmpty(): bool
-        {
-            return is_null( $this->cache );
-        }
-
-        // Formatter
-            // Json
-        /**
-         * @param CSRFResponseJSONFactory $factory
-         * @return void
-         */
-        protected final function setJsonFactory( CSRFResponseJSONFactory $factory ): void
-        {
-            $this->jsonFactory = $factory;
-        }
 
         /**
          * @return CSRFResponseJSONFactory
@@ -298,11 +238,72 @@
         }
 
         /**
+         * @return SecurityCSRFConstructor
+         */
+        public final function getConstructor(): SecurityCSRFConstructor
+        {
+            if( is_null( $this->constructor ) )
+            {
+                $this->setConstructor( SecurityCSRFConstructor::getFactory() );
+            }
+
+            return $this->constructor;
+        }
+
+
+        // Setters
+        /**
+         * @param RedisCacheCSRFController $cacheController
+         * @return void
+         */
+        protected final function setCache( RedisCacheCSRFController $cacheController ): void
+        {
+            $this->cache = $cacheController;
+        }
+
+        /**
+         * @param CSRFResponseJSONFactory $factory
+         * @return void
+         */
+        protected final function setJsonFactory( CSRFResponseJSONFactory $factory ): void
+        {
+            $this->jsonFactory = $factory;
+        }
+
+        /**
+         * @param $constructor
+         * @return void
+         */
+        protected final function setConstructor( $constructor ): void
+        {
+            $this->constructor = $constructor;
+        }
+
+        /**
+         * @param SecurityCSRFTokenController $controller
+         * @return void
+         */
+        public static final function setSingleton( SecurityCSRFTokenController $controller ): void
+        {
+            self::$controller = $controller;
+        }
+
+        /**
          * @return bool
          */
         protected final function isJsonFactoryEmpty(): bool
         {
             return is_null( $this->jsonFactory );
         }
+
+        /**
+         * @return bool
+         */
+        protected final function isCacheEmpty(): bool
+        {
+            return is_null( $this->cache );
+        }
+
+
     }
 ?>
