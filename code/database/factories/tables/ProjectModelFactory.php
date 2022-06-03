@@ -9,6 +9,7 @@
 
     // External libraries
     use Carbon\Carbon;
+    use Database\Factories\tables\testing\TestingProjectModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -18,12 +19,30 @@
     /**
      *
      */
-    final class ProjectModelFactory
+    class ProjectModelFactory
         extends Factory
     {
         // Variables
         protected $model      = ProjectModel::class;
         private static $debug = false;
+
+
+        private static ?TestingProjectModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingProjectModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingProjectModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingProjectModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessors
         /**
@@ -52,19 +71,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        //
-                        'account_owner_id' => 0,
-                        'project_title_id' => 0,
-                        'description' => $this->faker
-                                              ->realText,
-                        'tags' => '{ }',
-                        'created_at' => $this->faker
-                                             ->dateTime,
-                        'updated_at' => $this->faker
-                                             ->dateTime
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

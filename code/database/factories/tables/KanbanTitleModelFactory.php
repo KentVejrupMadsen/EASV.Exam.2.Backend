@@ -8,6 +8,7 @@
     namespace Database\Factories\tables;
 
     // External libraries
+    use Database\Factories\tables\testing\TestingKanbanTitleModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -17,13 +18,30 @@
     /**
      *
      */
-    final class KanbanTitleModelFactory
+    class KanbanTitleModelFactory
         extends Factory
     {
         // Variables
         protected $model        = KanbanTitleModel::class;
         private static $debug   = false;
 
+
+        private static ?TestingKanbanTitleModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingKanbanTitleModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingKanbanTitleModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingKanbanTitleModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessor
         /**
@@ -51,12 +69,7 @@
         {
             if($this->getDebugState())
             {
-                return
-                    [
-                        'content'=> $this->faker
-                            ->unique()
-                            ->jobTitle
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

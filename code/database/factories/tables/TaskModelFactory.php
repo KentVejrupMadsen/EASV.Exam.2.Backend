@@ -8,6 +8,7 @@
     namespace Database\Factories\tables;
 
     // External libraries
+    use Database\Factories\tables\testing\TestingTaskModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -17,13 +18,30 @@
     /**
      *
      */
-    final class TaskModelFactory
+    class TaskModelFactory
         extends Factory
     {
         // Variables
         protected $model = TaskModel::class;
         private static $debug = false;
 
+
+        private static ?TestingTaskModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingTaskModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingTaskModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingTaskModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessors
         /**
@@ -51,12 +69,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        'board_id' => 0,
-                        'content'  => $this->faker
-                                           ->realText
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {
