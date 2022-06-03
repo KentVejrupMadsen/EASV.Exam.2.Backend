@@ -22,16 +22,14 @@
     {
         protected $model = AccountEmailModel::class;
 
-
-
         /**
-         * @return array
+         * @return array|mixed[]
          */
         public final function definition(): array
         {
             return
             [
-                'content' =>  $this -> faker -> unique() -> safeEmail
+                AccountEmailModel::field_content => $this->faker->unique()->safeEmail
             ];
         }
     }

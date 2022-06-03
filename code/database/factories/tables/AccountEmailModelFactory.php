@@ -23,7 +23,7 @@
     {
         protected $model        = AccountEmailModel::class;
         private static $debug   = false;
-        
+
         private static ?TestingAccountEmailModelFactory $testingFactory = null;
 
 
