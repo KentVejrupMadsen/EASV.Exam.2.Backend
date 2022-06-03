@@ -9,6 +9,7 @@
 
     // External libraries
     use Carbon\Carbon;
+    use Database\Factories\tables\testing\TestingProjectMemberModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -18,12 +19,30 @@
     /**
      *
      */
-    final class ProjectMemberModelFactory
+    class ProjectMemberModelFactory
         extends Factory
     {
         // Variables
         protected $model      = ProjectMemberModel::class;
         private static $debug = false;
+
+
+        private static ?TestingProjectMemberModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingProjectMemberModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingProjectMemberModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingProjectMemberModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessors
         /**
@@ -52,13 +71,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        //
-                        'project_id' => 0,
-                        'account_id' => 0,
-                        'member_group_id' => 0
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

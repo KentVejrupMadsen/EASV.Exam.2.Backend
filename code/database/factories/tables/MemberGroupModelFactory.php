@@ -8,6 +8,7 @@
     namespace Database\Factories\tables;
 
     // External libraries
+    use Database\Factories\tables\testing\TestingMemberGroupModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -17,13 +18,30 @@
     /**
      *
      */
-    final class MemberGroupModelFactory
+    class MemberGroupModelFactory
         extends Factory
     {
         // Variables
         protected $model        = MemberGroupModel::class;
         private static $debug   = false;
 
+
+        private static ?TestingMemberGroupModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingMemberGroupModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingMemberGroupModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingMemberGroupModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessors
         /**
@@ -52,10 +70,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                [
-                    'content' => $this->faker->unique()->text(45)
-                ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

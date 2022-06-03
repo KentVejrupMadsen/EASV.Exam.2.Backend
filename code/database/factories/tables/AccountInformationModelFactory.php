@@ -9,6 +9,7 @@
 
     // External libraries
     use Carbon\Carbon;
+    use Database\Factories\tables\testing\TestingAccountInformationModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -18,12 +19,29 @@
     /**
      *
      */
-    final class AccountInformationModelFactory
+    class AccountInformationModelFactory
         extends Factory
     {
         protected $model        = AccountInformationModel::class;
         private static $debug   = false;
 
+
+        private static ?TestingAccountInformationModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingAccountInformationModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingAccountInformationModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingAccountInformationModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessor
         /**
@@ -65,13 +83,7 @@
          */
         protected function fakeDefinition(): array
         {
-            return
-            [
-                'account_id' => 0,
-                'settings'   => '{ }',
-                'created_at' => $this->faker->dateTime,
-                'updated_at' => $this->faker->dateTime
-            ];
+            return self::getTestingFactory()->definition();
         }
 
 

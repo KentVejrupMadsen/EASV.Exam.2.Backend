@@ -8,7 +8,8 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\tables\testing\TestingAddressRoadNameModelFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\AddressRoadNameModel;
@@ -17,13 +18,30 @@
     /**
      *
      */
-    final class AddressRoadNameModelFactory
+    class AddressRoadNameModelFactory
         extends Factory
     {
         // Variables
         protected $model        = AddressRoadNameModel::class;
         private static $debug   = false;
 
+
+        private static ?TestingAddressRoadNameModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingAddressRoadNameModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingAddressRoadNameModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingAddressRoadNameModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessor
         /**
@@ -51,13 +69,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                [
-                        //
-                    'content' => $this->faker
-                                      ->unique()
-                                      ->streetName
-                ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

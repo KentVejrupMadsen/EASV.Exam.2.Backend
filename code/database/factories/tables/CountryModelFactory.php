@@ -8,7 +8,8 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\tables\testing\TestingCountryModelFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\CountryModel;
@@ -17,13 +18,30 @@
     /**
      *
      */
-    final class CountryModelFactory
+    class CountryModelFactory
         extends Factory
     {
         // Variables
         protected $model        = CountryModel::class;
         private static $debug   = false;
 
+
+        private static ?TestingCountryModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingCountryModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingCountryModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingCountryModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessor
         /**
@@ -51,16 +69,7 @@
         {
             if($this->getDebugState())
             {
-                return
-                    [
-                        'country_name' => $this->faker
-                                               ->unique()
-                                               ->country,
-
-                        'country_acronym' => $this->faker
-                                                  ->unique()
-                                                  ->countryCode
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

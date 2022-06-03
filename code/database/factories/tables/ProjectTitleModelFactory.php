@@ -8,7 +8,8 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\tables\testing\TestingProjectTitleModelFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\ProjectTitleModel;
@@ -17,13 +18,30 @@
     /**
      *
      */
-    final class ProjectTitleModelFactory
+    class ProjectTitleModelFactory
         extends Factory
     {
         // Variables
         protected $model      = ProjectTitleModel::class;
         private static $debug = false;
 
+
+        private static ?TestingProjectTitleModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingProjectTitleModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingProjectTitleModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingProjectTitleModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessors
         /**
@@ -49,12 +67,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                [
-                    'content' => $this->faker
-                                      ->unique()
-                                      ->realText(50)
-                ];
+                return self::getTestingFactory()->definition();
             }
             else
             {
