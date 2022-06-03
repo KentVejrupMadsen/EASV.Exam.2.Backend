@@ -69,23 +69,20 @@
         }
 
 
-        /**
-         * @return array|mixed[]|null[]
-         */
-        public final function definition(): array
+        protected function TestDefinition(): array
         {
-            if($this->getDebugState())
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        'country_name'    => null,
-                        'country_acronym' => null
-                    ];
-            }
+
+            return self::getTestingFactory()->definition();
+        }
+
+        protected final function DefaultDefinition(): array
+        {
+
+            return
+                [
+                    'country_name'    => null,
+                    'country_acronym' => null
+                ];
         }
     }
 ?>

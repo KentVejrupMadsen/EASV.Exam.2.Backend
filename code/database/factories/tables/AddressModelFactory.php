@@ -70,21 +70,17 @@
         }
 
 
-        //
-        /**
-         * @return array|mixed[]
-         */
-        public final function definition(): array
+        protected function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+            return self::getTestingFactory()->definition();
+        }
+
+        protected final function DefaultDefinition(): array
+        {
+
+            return
                 [
-                        //
+                    //
                     'account_information_id' => 0,
                     'road_name_id'           => 0,
                     'road_number'            => 0,
@@ -92,7 +88,6 @@
                     'country_id'             => 0,
                     'zip_code_id'            => 0
                 ];
-            }
         }
     }
 ?>

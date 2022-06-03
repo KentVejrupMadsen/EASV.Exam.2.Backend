@@ -28,6 +28,7 @@
 
         private static ?TestingZipCodeModelFactory $testingFactory = null;
 
+        // Accessors
         /**
          * @return TestingZipCodeModelFactory
          */
@@ -50,7 +51,6 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessors
         /**
          * @return bool
          */
@@ -68,25 +68,27 @@
             self::$debug = $value;
         }
 
-
+        //
         /**
          * @return array
          */
-        public final function definition(): array
+        protected final function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+            return
                 [
                     'area_name'  => null,
                     'zip_number' => 0,
                     'country_id' => 0
                 ];
-            }
+        }
+
+
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+            return self::getTestingFactory()->definition();
         }
     }
 ?>

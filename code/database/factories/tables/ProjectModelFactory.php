@@ -70,29 +70,30 @@
         }
 
 
-        //
         /**
          * @return array
          */
-        public final function definition(): array
+        protected final function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'account_owner_id' => 0,
-                        'project_title_id' => 0,
-                        'description' => null,
-                        'tags' => null,
-                        'created_at' => Carbon::now(),
-                        'updated_at' => Carbon::now()
-                    ];
-            }
+            return
+                [
+                    //
+                    'account_owner_id' => 0,
+                    'project_title_id' => 0,
+                    'description' => null,
+                    'tags' => null,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
+                ];
+        }
+
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+
+            return self::getTestingFactory()->definition();
         }
     }
 ?>

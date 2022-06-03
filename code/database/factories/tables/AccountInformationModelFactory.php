@@ -72,23 +72,7 @@
         /**
          * @return array
          */
-        public final function definition(): array
-        {
-            if( $this->getDebugState() )
-            {
-                return $this->fakeDefinition();
-            }
-            else
-            {
-                return $this->normalDefinition();
-            }
-        }
-
-
-        /**
-         * @return array
-         */
-        protected function fakeDefinition(): array
+        protected function TestDefinition(): array
         {
             return self::getTestingFactory()->definition();
         }
@@ -97,7 +81,7 @@
         /**
          * @return array
          */
-        protected function normalDefinition(): array
+        protected final function DefaultDefinition(): array
         {
             return
             [

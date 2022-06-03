@@ -25,9 +25,10 @@
         protected $model = TaskModel::class;
         private static $debug = false;
 
-
         private static ?TestingTaskModelFactory $testingFactory = null;
 
+
+        // Accessor
         /**
          * @return TestingTaskModelFactory
          */
@@ -68,24 +69,27 @@
             self::$debug = $value;
         }
 
-        //
+
+        // Definition
         /**
          * @return array
          */
-        public function definition(): array
+        protected final function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        'board_id' => 0,
-                        'content'  => null
-                    ];
-            }
+            return
+            [
+                'board_id' => 0,
+                'content'  => null
+            ];
+        }
+
+
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+            return self::getTestingFactory()->definition();
         }
     }
 ?>

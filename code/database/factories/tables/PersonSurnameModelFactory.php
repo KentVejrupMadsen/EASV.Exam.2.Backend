@@ -61,24 +61,21 @@
             self::$debug = $value;
         }
 
-        //
-        /**
-         * @return array
-         */
-        public final function definition(): array
+
+        protected function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'content' => null
-                    ];
-            }
+
+            return
+                [
+                    //
+                    'content' => null
+                ];
+        }
+
+        protected function TestDefinition(): array
+        {
+
+            return self::getTestingFactory()->definition();
         }
     }
 ?>

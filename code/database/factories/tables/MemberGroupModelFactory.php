@@ -69,23 +69,19 @@
         }
 
 
-        //
-        /**
-         * @return array
-         */
-        public final function definition(): array
+        protected function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+
+            return self::getTestingFactory()->definition();
+        }
+
+        protected final function DefaultDefinition(): array
+        {
+
+            return
                 [
                     'content' => null
                 ];
-            }
         }
     }
 ?>

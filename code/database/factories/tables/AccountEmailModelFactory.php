@@ -68,41 +68,20 @@
             self::$debug = $value;
         }
 
-
-        /**
-         * @return array
-         */
-        public final function definition(): array
-        {
-            if( $this->getDebugState() )
-            {
-                return $this->fakeDefinition();
-            }
-            else
-            {
-                return $this->normalDefinition();
-            }
-        }
-
-
         /**
          * @return null[]
          */
-        protected function fakeDefinition(): array
-        {
-            return self::getTestingFactory()->definition();
-        }
-
-
-        /**
-         * @return null[]
-         */
-        protected function normalDefinition(): array
+        protected function DefaultDefinition(): array
         {
             return
             [
                 'content' => null
             ];
+        }
+
+        protected function TestDefinition(): array
+        {
+            return self::getTestingFactory()->definition();
         }
     }
 ?>
