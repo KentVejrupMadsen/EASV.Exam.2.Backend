@@ -18,7 +18,7 @@
     /**
      *
      */
-    final class ProjectModelFactory
+    class ProjectModelFactory
         extends Factory
     {
         // Variables

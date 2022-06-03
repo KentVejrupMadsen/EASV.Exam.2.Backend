@@ -17,7 +17,7 @@
     /**
      *
      */
-    final class MemberGroupModelFactory
+    class MemberGroupModelFactory
         extends Factory
     {
         // Variables

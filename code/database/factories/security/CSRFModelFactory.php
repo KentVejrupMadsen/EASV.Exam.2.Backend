@@ -10,6 +10,7 @@
     // External libraries
     use Carbon\Carbon;
 
+    use Database\Factories\security\testing\TestingCSRFModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
     use Illuminate\Support\Str;
 
@@ -27,6 +28,23 @@
         protected $model        = CSRFModel::class;
         private static $debug   = false;
 
+        private static ?TestingCSRFModelFactory $testingFactory = null;
+
+
+        public static final function getTestingFactory(): TestingCSRFModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingCSRFModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingCSRFModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessor
         /**
@@ -55,18 +73,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        'assigned_to'  => $this->faker->ipv4,
-                        'secure_token' => Str::random( 32 ),
-                        'secret_token' => Str::random( 32 ),
 
-                        'issued'       => $this->faker->time,
-                        'accessed'     => $this->faker->time,
-
-                        'activated'    => $this->faker->boolean,
-                        'invalidated'  => $this->faker->boolean
-                    ];
             }
             else
             {

@@ -17,7 +17,7 @@
     /**
      *
      */
-    final class TaskModelFactory
+    class TaskModelFactory
         extends Factory
     {
         // Variables

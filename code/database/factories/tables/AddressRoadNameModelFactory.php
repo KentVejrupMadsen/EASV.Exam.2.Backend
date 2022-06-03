@@ -17,7 +17,7 @@
     /**
      *
      */
-    final class AddressRoadNameModelFactory
+    class AddressRoadNameModelFactory
         extends Factory
     {
         // Variables

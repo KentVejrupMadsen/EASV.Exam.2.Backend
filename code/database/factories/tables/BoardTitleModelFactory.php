@@ -17,7 +17,7 @@
     /**
      *
      */
-    final class BoardTitleModelFactory
+    class BoardTitleModelFactory
         extends Factory
     {
         // Variables

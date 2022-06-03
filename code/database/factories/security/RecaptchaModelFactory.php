@@ -9,6 +9,7 @@
 
     // External libraries
     use Carbon\Carbon;
+    use Database\Factories\security\testing\TestingRecaptchaModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -24,6 +25,22 @@
         // Variables
         protected $model        = RecaptchaModel::class;
         private static $debug   = false;
+        private static ?TestingRecaptchaModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingRecaptchaModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingRecaptchaModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingRecaptchaModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
 
         // Accessor

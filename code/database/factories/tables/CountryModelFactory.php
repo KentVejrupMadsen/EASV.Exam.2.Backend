@@ -17,7 +17,7 @@
     /**
      *
      */
-    final class CountryModelFactory
+    class CountryModelFactory
         extends Factory
     {
         // Variables

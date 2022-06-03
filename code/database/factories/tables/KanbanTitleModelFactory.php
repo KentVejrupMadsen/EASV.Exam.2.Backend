@@ -17,7 +17,7 @@
     /**
      *
      */
-    final class KanbanTitleModelFactory
+    class KanbanTitleModelFactory
         extends Factory
     {
         // Variables

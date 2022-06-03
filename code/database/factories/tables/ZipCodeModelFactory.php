@@ -17,7 +17,7 @@
     /**
      *
      */
-    final class ZipCodeModelFactory
+    class ZipCodeModelFactory
         extends Factory
     {
         // Variables

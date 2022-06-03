@@ -17,7 +17,7 @@
     /**
      *
      */
-    final class PersonSurnameModelFactory
+    class PersonSurnameModelFactory
         extends Factory
     {
         // Variables

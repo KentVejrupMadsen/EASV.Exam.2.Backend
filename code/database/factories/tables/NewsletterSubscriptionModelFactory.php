@@ -17,7 +17,7 @@
     /**
      *
      */
-    final class NewsletterSubscriptionModelFactory
+    class NewsletterSubscriptionModelFactory
         extends Factory
     {
 

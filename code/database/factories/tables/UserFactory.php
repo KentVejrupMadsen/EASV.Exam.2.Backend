@@ -19,7 +19,7 @@
     /**
      *
      */
-    final class UserFactory
+    class UserFactory
         extends Factory
     {
         // Variables
