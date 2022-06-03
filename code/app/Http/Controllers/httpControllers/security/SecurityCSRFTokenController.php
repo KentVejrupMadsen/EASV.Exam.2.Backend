@@ -60,7 +60,7 @@
         // Variables
         private static ?SecurityCSRFTokenController $controller = null;
 
-        private ?RedisCacheCSRFController $cache      = null;
+        private ?RedisCacheCSRFController $cache = null;
         private ?CSRFResponseJSONFactory $jsonFactory = null;
         private ?SecurityCSRFConstructor $constructor = null;
 
@@ -175,7 +175,7 @@
                        description: 'content not found' )]
         public final function reset( SecurityCSRFRequest $request ): JsonResponse
         {
-            return Response()->json([], 200);
+            return Response()->json( [], 200 );
         }
 
 
@@ -193,7 +193,7 @@
                        description: 'content not found' )]
         public function publicDelete( SecurityCSRFRequest $Request ): JsonResponse
         {
-            return Response()->json([], 200);
+            return Response()->json( [], 200 );
         }
 
 

@@ -17,7 +17,7 @@
     /**
      *
      */
-    final class ConfigurationModelFactory
+    class ConfigurationModelFactory
         extends Factory
     {
         // Variables

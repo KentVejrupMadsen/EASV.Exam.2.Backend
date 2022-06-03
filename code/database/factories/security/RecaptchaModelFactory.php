@@ -18,7 +18,7 @@
     /**
      *
      */
-    final class RecaptchaModelFactory
+    class RecaptchaModelFactory
         extends Factory
     {
         // Variables

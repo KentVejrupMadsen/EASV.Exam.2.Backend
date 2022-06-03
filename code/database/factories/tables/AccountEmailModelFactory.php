@@ -17,7 +17,7 @@
     /**
      *
      */
-    final class AccountEmailModelFactory
+    class AccountEmailModelFactory
         extends Factory
     {
         protected $model        = AccountEmailModel::class;

@@ -20,7 +20,7 @@
     /**
      *
      */
-    final class CSRFModelFactory
+    class CSRFModelFactory
         extends Factory
     {
         // Variables
