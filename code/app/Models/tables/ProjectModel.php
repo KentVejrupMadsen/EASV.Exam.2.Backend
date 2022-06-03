@@ -42,6 +42,12 @@
         #[OA\Property( type: 'string' )]
         public const field_tags = 'tags';
 
+        #[OA\Property( type: 'string' )]
+        public const field_created_at = 'created_at';
+
+        #[OA\Property( type: 'string' )]
+        public const field_updated_at = 'updated_at';
+
 
         //
         #[OA\Property(

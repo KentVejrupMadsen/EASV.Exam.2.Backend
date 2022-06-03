@@ -68,6 +68,7 @@
             self::$debug = $value;
         }
 
+
         // Definition
         /**
          * @return array
@@ -75,13 +76,12 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    //
-                    'account_information_id'    => 0,
-                    'person_name_first_id'      => 0,
-                    'person_name_lastname_id'   => 0,
-                    'person_name_middlename'    => '{ }'
-                ];
+            [
+                PersonNameModel::field_account_information_id    => 0,
+                PersonNameModel::field_person_name_first_id      => 0,
+                PersonNameModel::field_person_name_lastname_id   => 0,
+                PersonNameModel::field_person_name_middlename    => ''
+            ];
         }
 
 

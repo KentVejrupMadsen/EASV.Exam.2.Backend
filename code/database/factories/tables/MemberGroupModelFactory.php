@@ -101,9 +101,9 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    'content' => null
-                ];
+            [
+                MemberGroupModel::field_content => null
+            ];
         }
     }
 ?>

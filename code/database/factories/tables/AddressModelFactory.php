@@ -8,7 +8,6 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Illuminate\Support\Str;
 
     // Internal libraries
     use App\Models\tables\AddressModel;
@@ -101,17 +100,15 @@
          */
         protected final function DefaultDefinition(): array
         {
-
             return
-                [
-                    //
-                    'account_information_id' => 0,
-                    'road_name_id'           => 0,
-                    'road_number'            => 0,
-                    'levels'                 => 'UNKN',
-                    'country_id'             => 0,
-                    'zip_code_id'            => 0
-                ];
+            [
+                    AddressModel::field_account_information_id => 0,
+                    AddressModel::field_road_name_id           => 0,
+                    AddressModel::field_road_number            => 0,
+                    AddressModel::field_levels                 => 'UNKN',
+                    AddressModel::field_country_id             => 0,
+                    AddressModel::field_zip_code_id            => 0
+            ];
         }
     }
 ?>

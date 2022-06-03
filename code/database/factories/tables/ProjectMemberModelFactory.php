@@ -77,12 +77,11 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    //
-                    'project_id' => 0,
-                    'account_id' => 0,
-                    'member_group_id' => 0
-                ];
+            [
+                ProjectMemberModel::project_id => 0,
+                ProjectMemberModel::account_id => 0,
+                ProjectMemberModel::member_group_id => 0
+            ];
         }
 
         /**

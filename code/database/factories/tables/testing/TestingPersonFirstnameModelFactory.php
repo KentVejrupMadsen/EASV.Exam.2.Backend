@@ -32,7 +32,7 @@
         {
             return
             [
-                'content' => $this->faker->unique()->firstName
+                PersonFirstnameModel::field_content => $this->faker->unique()->firstName
             ];
         }
     }

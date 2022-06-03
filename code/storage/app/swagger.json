@@ -1,0 +1,2317 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "kanban_project_backend_api",
+    "contact" : {
+      "name" : "kent vejrup madsen",
+      "url" : "https://github.com/KentVejrupMadsen",
+      "email" : "kent.vejrup.madsen@protonmail.com"
+    },
+    "license" : {
+      "name" : "MIT License",
+      "url" : "https://github.com/KentVejrupMadsen/Kanban-Project-Backend/blob/main/License.md"
+    },
+    "components": {
+        "schemas": {
+            "CSRFResponseJSONFactory": {},
+            "AccountController": {},
+            "InformationController": {},
+            "NewsletterController": {},
+            "PersonAddressController": {
+                "description": "Account Email controller. That are used when getting \"ask\" by a computer for data."
+            },
+            "PersonEmailController": {
+                "description": "Account Email controller. That are used when getting \"ask\" by a computer for data."
+            },
+            "PersonNameController": {
+                "description": "Account Email controller. That are used when getting \"ask\" by a computer for data."
+            },
+            "FindController": {},
+            "StateController": {},
+            "SecurityCSRFTokenController": {},
+            "SecurityConfigurationController": {},
+            "SecurityRecaptchaController": {},
+            "BoardController": {},
+            "KanbanController": {},
+            "ProjectController": {},
+            "ProjectMemberController": {},
+            "TaskController": {},
+            "AccountPrivateRequest": {},
+            "AccountPublicRequest": {},
+            "InformationRequest": {},
+            "NewsletterRequest": {},
+            "PersonAddressRequest": {},
+            "PersonEmailRequest": {},
+            "PersonNameRequest": {},
+            "FindRequest": {},
+            "StateRequest": {},
+            "SecurityCSRFRequest": {},
+            "SecurityConfigurationRequest": {},
+            "SecurityRecaptchaRequest": {},
+            "ToolsBoardRequest": {},
+            "ToolsKanbanRequest": {},
+            "ToolsProjectMemberRequest": {},
+            "ToolsProjectRequest": {},
+            "ToolsTaskRequest": {},
+            "AccountState": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 1,
+                                "minimum": 1
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "account_states"
+                                ]
+                            },
+                            "field_account_id": {
+                                "type": "string",
+                                "enum": [
+                                    "account_id"
+                                ]
+                            },
+                            "field_deactivated": {
+                                "type": "string",
+                                "enum": [
+                                    "deactivated"
+                                ]
+                            },
+                            "field_writeable_disabled": {
+                                "type": "string",
+                                "enum": [
+                                    "writeable_disabled"
+                                ]
+                            },
+                            "field_locked": {
+                                "type": "string",
+                                "enum": [
+                                    "locked"
+                                ]
+                            },
+                            "field_archived": {
+                                "type": "string",
+                                "enum": [
+                                    "archived"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "CSRFModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 8,
+                                "minimum": 8
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "security_csrf_token"
+                                ]
+                            },
+                            "field_assigned_to": {
+                                "type": "string",
+                                "enum": [
+                                    "assigned_to"
+                                ]
+                            },
+                            "field_issued": {
+                                "type": "string",
+                                "enum": [
+                                    "issued"
+                                ]
+                            },
+                            "field_accessed": {
+                                "type": "string",
+                                "enum": [
+                                    "accessed"
+                                ]
+                            },
+                            "field_activated": {
+                                "type": "string",
+                                "enum": [
+                                    "activated"
+                                ]
+                            },
+                            "field_invalidated": {
+                                "type": "string",
+                                "enum": [
+                                    "invalidated"
+                                ]
+                            },
+                            "field_secret_token": {
+                                "type": "string",
+                                "enum": [
+                                    "secret_token"
+                                ]
+                            },
+                            "field_secure_token": {
+                                "type": "string",
+                                "enum": [
+                                    "secure_token"
+                                ]
+                            },
+                            "field_identity": {
+                                "type": "string",
+                                "enum": [
+                                    "id"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "ConfigurationModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 2,
+                                "minimum": 2
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 1,
+                                "minimum": 1
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "security_configuration"
+                                ]
+                            },
+                            "field_key": {
+                                "type": "string",
+                                "enum": [
+                                    "key"
+                                ]
+                            },
+                            "field_value": {
+                                "type": "string",
+                                "enum": [
+                                    "value"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "RecaptchaModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 5,
+                                "minimum": 5
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 2,
+                                "minimum": 2
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "security_recaptcha"
+                                ]
+                            },
+                            "field_success": {
+                                "type": "string",
+                                "enum": [
+                                    "success"
+                                ]
+                            },
+                            "field_score": {
+                                "type": "string",
+                                "enum": [
+                                    "score"
+                                ]
+                            },
+                            "field_at_date": {
+                                "type": "string",
+                                "enum": [
+                                    "at_date"
+                                ]
+                            },
+                            "field_hostname": {
+                                "type": "string",
+                                "enum": [
+                                    "hostname"
+                                ]
+                            },
+                            "field_error": {
+                                "type": "string",
+                                "enum": [
+                                    "error"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "AccountEmailModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionLabelModel"
+                    },
+                    {
+                        "properties": {
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "account_emails"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "AccountInformationModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 1,
+                                "minimum": 1
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "account_information_options"
+                                ]
+                            },
+                            "field_account": {
+                                "type": "string",
+                                "enum": [
+                                    "account_id"
+                                ]
+                            },
+                            "field_created_at": {
+                                "type": "string",
+                                "enum": [
+                                    "created_at"
+                                ]
+                            },
+                            "field_updated_at": {
+                                "type": "string",
+                                "enum": [
+                                    "updated_at"
+                                ]
+                            },
+                            "field_settings": {
+                                "type": "string",
+                                "enum": [
+                                    "settings"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "AddressModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "timestamps": {
+                                "type": "boolean"
+                            },
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 6,
+                                "minimum": 6
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 4,
+                                "minimum": 4
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "addresses"
+                                ]
+                            },
+                            "field_account_information_id": {
+                                "type": "string",
+                                "enum": [
+                                    "account_information_id"
+                                ]
+                            },
+                            "field_road_name_id": {
+                                "type": "string",
+                                "enum": [
+                                    "road_name_id"
+                                ]
+                            },
+                            "field_road_number": {
+                                "type": "string",
+                                "enum": [
+                                    "road_number"
+                                ]
+                            },
+                            "field_levels": {
+                                "type": "string",
+                                "enum": [
+                                    "levels"
+                                ]
+                            },
+                            "field_country_id": {
+                                "type": "string",
+                                "enum": [
+                                    "country_id"
+                                ]
+                            },
+                            "field_zip_code_id": {
+                                "type": "string",
+                                "enum": [
+                                    "zip_code_id"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "AddressRoadNameModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionLabelModel"
+                    },
+                    {
+                        "properties": {
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "address_road_names"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "BoardModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 2,
+                                "minimum": 2
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 2,
+                                "minimum": 2
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "boards"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "BoardTitleModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionLabelModel"
+                    },
+                    {
+                        "properties": {
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "board_titles"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "CountryModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 2,
+                                "minimum": 2
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "countries"
+                                ]
+                            },
+                            "field_country_name": {
+                                "type": "string",
+                                "enum": [
+                                    "country_name"
+                                ]
+                            },
+                            "field_country_acronym": {
+                                "type": "string",
+                                "enum": [
+                                    "country_acronym"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "KanbanModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "kanbans"
+                                ]
+                            },
+                            "field_kanban_title_id": {
+                                "type": "string",
+                                "enum": [
+                                    "kanban_title_id"
+                                ]
+                            },
+                            "field_project_id": {
+                                "type": "string",
+                                "enum": [
+                                    "project_id"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "KanbanTitleModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionLabelModel"
+                    },
+                    {
+                        "properties": {
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "kanban_titles"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "MemberGroupModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionLabelModel"
+                    },
+                    {
+                        "properties": {
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "member_groups"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "NewsletterSubscriptionModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "newsletter_users"
+                                ]
+                            },
+                            "field_email_id": {
+                                "type": "string",
+                                "enum": [
+                                    "email_id"
+                                ]
+                            },
+                            "field_options": {
+                                "type": "string",
+                                "enum": [
+                                    "options"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "PersonFirstnameModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionLabelModel"
+                    },
+                    {
+                        "properties": {
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "person_name_first"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "PersonNameModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "timestamps": {
+                                "type": "boolean"
+                            },
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 4,
+                                "minimum": 4
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "person_name"
+                                ]
+                            },
+                            "field_account_information_id": {
+                                "type": "string",
+                                "enum": [
+                                    "account_information_id"
+                                ]
+                            },
+                            "field_person_name_first_id": {
+                                "type": "string",
+                                "enum": [
+                                    "person_name_first_id"
+                                ]
+                            },
+                            "field_person_name_lastname_id": {
+                                "type": "string",
+                                "enum": [
+                                    "person_name_lastname_id"
+                                ]
+                            },
+                            "field_person_name_middlename": {
+                                "type": "string",
+                                "enum": [
+                                    "person_name_middlename"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "PersonSurnameModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionLabelModel"
+                    },
+                    {
+                        "properties": {
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "person_name_middle_and_last"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "ProjectMemberModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "project_members"
+                                ]
+                            },
+                            "project_id": {
+                                "type": "string",
+                                "enum": [
+                                    "project_id"
+                                ]
+                            },
+                            "account_id": {
+                                "type": "string",
+                                "enum": [
+                                    "account_id"
+                                ]
+                            },
+                            "member_group_id": {
+                                "type": "string",
+                                "enum": [
+                                    "member_group_id"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "ProjectModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 4,
+                                "minimum": 4
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 2,
+                                "minimum": 2
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "projects"
+                                ]
+                            },
+                            "field_account_owner_id": {
+                                "type": "string",
+                                "enum": [
+                                    "account_owner_id"
+                                ]
+                            },
+                            "field_project_title_id": {
+                                "type": "string",
+                                "enum": [
+                                    "project_title_id"
+                                ]
+                            },
+                            "field_description": {
+                                "type": "string",
+                                "enum": [
+                                    "description"
+                                ]
+                            },
+                            "field_tags": {
+                                "type": "string",
+                                "enum": [
+                                    "tags"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "ProjectTitleModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionLabelModel"
+                    },
+                    {
+                        "properties": {
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "project_titles"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "TaskModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 2,
+                                "minimum": 2
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 1,
+                                "minimum": 1
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "tasks"
+                                ]
+                            },
+                            "field_board_id": {
+                                "type": "string",
+                                "enum": [
+                                    "board_id"
+                                ]
+                            },
+                            "field_content": {
+                                "type": "string",
+                                "enum": [
+                                    "content"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "User": {
+                "properties": {
+                    "fillable": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "maximum": 9,
+                        "minimum": 9
+                    },
+                    "hidden": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "maximum": 4,
+                        "minimum": 4
+                    },
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "accounts"
+                        ]
+                    },
+                    "field_username": {
+                        "type": "string",
+                        "enum": [
+                            "username"
+                        ]
+                    },
+                    "field_name": {
+                        "type": "string",
+                        "enum": [
+                            "name"
+                        ]
+                    },
+                    "field_email_id": {
+                        "type": "string",
+                        "enum": [
+                            "email_id"
+                        ]
+                    },
+                    "field_password": {
+                        "type": "string",
+                        "enum": [
+                            "password"
+                        ]
+                    },
+                    "field_created_at": {
+                        "type": "string",
+                        "enum": [
+                            "created_at"
+                        ]
+                    },
+                    "field_updated_at": {
+                        "type": "string",
+                        "enum": [
+                            "updated_at"
+                        ]
+                    },
+                    "field_settings": {
+                        "type": "string",
+                        "enum": [
+                            "settings"
+                        ]
+                    },
+                    "field_remember_token": {
+                        "type": "string",
+                        "enum": [
+                            "remember_token"
+                        ]
+                    },
+                    "field_verified_at": {
+                        "type": "string",
+                        "enum": [
+                            "email_verified_at"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ZipCodeModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 1,
+                                "minimum": 1
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "zip_codes"
+                                ]
+                            },
+                            "area_name": {
+                                "type": "string",
+                                "enum": [
+                                    "area_name"
+                                ]
+                            },
+                            "zip_number": {
+                                "type": "string",
+                                "enum": [
+                                    "zip_number"
+                                ]
+                            },
+                            "country_id": {
+                                "type": "string",
+                                "enum": [
+                                    "country_id"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "BaseModel": {},
+            "ExtensionLabelModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "timestamps": {
+                                "type": "boolean"
+                            },
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 1,
+                                "minimum": 1
+                            },
+                            "field_content": {
+                                "type": "string",
+                                "enum": [
+                                    "content"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "ExtensionNoTimestampModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "timestamps": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                ]
+            },
+            "ModelView": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/BaseModel"
+                    },
+                    {
+                        "properties": {
+                            "timestamps": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                ]
+            },
+            "AccountViewModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ModelView"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 9,
+                                "minimum": 9
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 5,
+                                "minimum": 5
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "accounts_view"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "AddressViewModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ModelView"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 7,
+                                "minimum": 7
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "addresses_view"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "BoardViewModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ModelView"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 6,
+                                "minimum": 6
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 2,
+                                "minimum": 2
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "boards_view"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "KanbanViewModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ModelView"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 5,
+                                "minimum": 5
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 2,
+                                "minimum": 2
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "kanbans_view"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "NewsletterViewModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ModelView"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 3,
+                                "minimum": 3
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 1,
+                                "minimum": 1
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "newsletter_view"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "PersonNameViewModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ModelView"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 5,
+                                "minimum": 5
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 2,
+                                "minimum": 2
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "person_names_view"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "ProjectViewModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ModelView"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 7,
+                                "minimum": 7
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 2,
+                                "minimum": 2
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "projects_view"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "ZipCodeViewFullModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ModelView"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 5,
+                                "minimum": 5
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 1,
+                                "minimum": 1
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "zip_codes_view_full"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "ZipCodeViewShortModel": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ModelView"
+                    },
+                    {
+                        "properties": {
+                            "fillable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 4,
+                                "minimum": 4
+                            },
+                            "hidden": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maximum": 1,
+                                "minimum": 1
+                            },
+                            "table_name": {
+                                "type": "string",
+                                "enum": [
+                                    "zip_codes_view_short"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/account/read" : {
+      "get" : {
+        "operationId" : "c128ead99184f983bc1eb63ac342fa35",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "api/1.0.0/accounts/account/login" : {
+      "post" : {
+        "operationId" : "839764e42feb4c6ba1c5f87feb62a1b7",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/account/logout" : {
+      "get" : {
+        "summary" : "Renders the current bearer token invalid",
+        "operationId" : "cf3e4f718e9cb3d650efb0d62d647eec",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "has to be included in the header of the request",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/account/create" : {
+      "post" : {
+        "operationId" : "61c2976977d7f6b7c5c65ce1bbd19ff6",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/account/update" : {
+      "patch" : {
+        "operationId" : "e0e62aab11fd1619bdc7b633ae8f2d8e",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "has to be included in the header of the request",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/account/delete" : {
+      "delete" : {
+        "operationId" : "4c45de4f369fe6055861500d11543e16",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "has to be included in the header of the request",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/account/verify" : {
+      "post" : {
+        "operationId" : "7c0f062fae9f153af1d3c7b6f80e6d9e",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "has to be included in the header of the request",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/information/read" : {
+      "get" : {
+        "operationId" : "75ba96e1883d5cfefaf1e2109b95fac1",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/information/create" : {
+      "post" : {
+        "operationId" : "a252f4d44fa835ced3c227746011163c",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/information/update" : {
+      "patch" : {
+        "operationId" : "e637f37960c699d93379be1a023eea8c",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/information/delete" : {
+      "delete" : {
+        "operationId" : "ccc7b6bf9af8de60d82e6a9881bf4541",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/newsletter/read" : {
+      "get" : {
+        "operationId" : "9cca3f6aa7562b92bc265a51125b678c",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/newsletter/create" : {
+      "post" : {
+        "operationId" : "46d8bf329c5f0a287f6ca3565a040ae3",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/newsletter/update" : {
+      "patch" : {
+        "operationId" : "1825fd364a609e05056bd7a5feda9dd4",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/newsletter/delete" : {
+      "delete" : {
+        "operationId" : "09379bd4975a2cb2184ae8d37fb2aa68",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/address/read" : {
+      "get" : {
+        "operationId" : "fd4e2feea00197c6c904c040d45bd5f6",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/address/delete" : {
+      "delete" : {
+        "operationId" : "883df642a5ce23a85168f2f57be1ecf8",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/address/create" : {
+      "post" : {
+        "operationId" : "e1371cc4adc6543107732c16d3e4983f",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/address/update" : {
+      "patch" : {
+        "operationId" : "0a9376cfb4a6a1e2bcfee0174faf6a2d",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/email/read" : {
+      "get" : {
+        "summary" : "Pipeline function:",
+        "operationId" : "b1897fef8d56fcbd57aa5c38fd93b281",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/email/delete" : {
+      "delete" : {
+        "operationId" : "7cf4ba90d92d16253de0777fb8b30c1a",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/email/create" : {
+      "post" : {
+        "operationId" : "a1fa0d97268195047bc4bc0992b694b0",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/email/update" : {
+      "patch" : {
+        "operationId" : "ad54aa0147731715dad151084f2753e0",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/name/read" : {
+      "get" : {
+        "operationId" : "4830ae4207fd890a43a99d7bbea20991",
+        "responses" : {
+          "200" : {
+            "description" : "reads a specific person name entity values from the database table"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/name/delete" : {
+      "delete" : {
+        "operationId" : "bb8d9c328687cb4120cba4ac27cfd5de",
+        "responses" : {
+          "200" : {
+            "description" : "deletes a specific person name entity from the database table"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/name/create" : {
+      "post" : {
+        "operationId" : "37fd6f6071a5ebc67756f0617731a540",
+        "responses" : {
+          "200" : {
+            "description" : "creates a specific person name entity by inserting it into the database"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/accounts/entities/name/update" : {
+      "patch" : {
+        "operationId" : "00d80efb62ab09b6278970d5bbc4bd8e",
+        "responses" : {
+          "200" : {
+            "description" : "updates the person entities name with a new name"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/options/find/email" : {
+      "post" : {
+        "operationId" : "cdb466a47aae7fdafa82ff89c5b519cc",
+        "responses" : {
+          "200" : {
+            "description" : "validates if the requested email is existing in the database as a json response."
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/options/state/email" : {
+      "post" : {
+        "operationId" : "6cb689dd782f6a330daee9cade2dd995",
+        "responses" : {
+          "200" : {
+            "description" : "validates if the requested email is existing in the database as a json response."
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/csrf/access" : {
+      "post" : {
+        "operationId" : "26c87c50b6b698a08e3eb8ea386024fd",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/csrf/read" : {
+      "get" : {
+        "operationId" : "43e4176a2a3c448d0092503975905adb",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/csrf/create" : {
+      "get" : {
+        "operationId" : "0fe6763e017a22cda2cf355b7b6e0822",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/csrf/update" : {
+      "patch" : {
+        "operationId" : "f302cfaf4b1c814a56d49df544c2cf88",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/csrf/reset" : {
+      "get" : {
+        "operationId" : "68b2f372ce7e188bb071a7c5fc32ce0d",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/csrf/delete" : {
+      "delete" : {
+        "operationId" : "6afa39961cfb7b2d2bbc1ce726566e4f",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/configuration/read" : {
+      "get" : {
+        "operationId" : "62c56ffb7f2b03488c2c043d68fa84f3",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/configuration/update" : {
+      "patch" : {
+        "operationId" : "e34df4ff721ce5c9bf3eae2b23b68a90",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/configuration/create" : {
+      "post" : {
+        "operationId" : "cd6b3110866b696180f33f29299ccdaf",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/configuration/delete" : {
+      "delete" : {
+        "operationId" : "2af51c2259d3fbd150653754c219b227",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/recaptcha/read" : {
+      "get" : {
+        "operationId" : "0ca673d55bab6494c13345d7b5a21713",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/recaptcha/update" : {
+      "patch" : {
+        "operationId" : "10ee50b5e9ab7aa2fb0ff535c1e9bcfa",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/recaptcha/create" : {
+      "post" : {
+        "operationId" : "0721dc07f01dae7d7997f4a62493b57c",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/securities/recaptcha/delete" : {
+      "delete" : {
+        "operationId" : "acf5106395661b211e4f235a6e941c9c",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/board/read" : {
+      "get" : {
+        "operationId" : "7a0677940b0bafc6dde00f24cd5fb3c5",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/board/create" : {
+      "post" : {
+        "operationId" : "1fa9997a967cc43b2c88080651308ebb",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/board/update" : {
+      "patch" : {
+        "operationId" : "730913f236fdd17a5576943881f4ef84",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/board/delete" : {
+      "delete" : {
+        "operationId" : "ebc9ff915c5616cc9085b6b49242c342",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/kanban/create" : {
+      "post" : {
+        "operationId" : "a805b07e7001511accd48a089e7d57fb",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/kanban/update" : {
+      "patch" : {
+        "operationId" : "baa7d78e5fffbd0c42cf321a997c0801",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/kanban/delete" : {
+      "delete" : {
+        "operationId" : "8e449789c4665faa5ad52200601c2f2a",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/kanban/read" : {
+      "get" : {
+        "operationId" : "8ad08295af3d762cfc1c92ed9d2ac7ed",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/project/create" : {
+      "post" : {
+        "operationId" : "9c339d650a5474d26e6b501d3afcedcc",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/project/read" : {
+      "get" : {
+        "operationId" : "743c64065c9c31db18ad4857fd919cf1",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/project/update" : {
+      "patch" : {
+        "operationId" : "0d0dfd0242dd4eeb6e0d7f45a1be0932",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/project/delete" : {
+      "delete" : {
+        "operationId" : "51eb6cbd176190e23fbae26af1e635ed",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/project/group/create" : {
+      "post" : {
+        "operationId" : "e4e59fcc0d17e2e4fcd7ab059c07d8fa",
+        "responses" : {
+          "200" : {
+            "description" : "The "
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/project/group/read" : {
+      "get" : {
+        "operationId" : "49e8b4a97837fcaf57606a3213c5dfa3",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/project/group/update" : {
+      "patch" : {
+        "operationId" : "0fa9c48ece22c411e3c2d70bb78bc37d",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/project/group/delete" : {
+      "delete" : {
+        "operationId" : "39eae3e9e292961a1d35dca9e20a488e",
+        "responses" : {
+          "200" : {
+            "description" : "The data"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/task/create" : {
+      "post" : {
+        "operationId" : "784f1fa5438c06078f3f9660138bd1d6",
+        "responses" : {
+          "200" : {
+            "description" : "create a new task for a kanban board"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/task/read" : {
+      "get" : {
+        "operationId" : "02a3e45a0df008dd656e8f902460e26e",
+        "responses" : {
+          "200" : {
+            "description" : "read the content of a task"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/task/update" : {
+      "patch" : {
+        "operationId" : "54cf5df0c32f6d1794b4b4fa963cc1d0",
+        "responses" : {
+          "200" : {
+            "description" : "updates the information for a specific task"
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    },
+    "/api/1.0.0/tools/task/delete" : {
+      "delete" : {
+        "operationId" : "6d3cfa766991ce07ae80439739aea6b6",
+        "responses" : {
+          "200" : {
+            "description" : "Delete a specific tasks. "
+          },
+          "404" : {
+            "description" : "content not found"
+          }
+        }
+      }
+    }
+}

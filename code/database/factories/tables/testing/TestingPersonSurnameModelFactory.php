@@ -21,7 +21,7 @@
         extends Factory
     {
         // Variables
-        protected $model        = PersonSurnameModel::class;
+        protected $model = PersonSurnameModel::class;
 
 
         /**
@@ -31,8 +31,7 @@
         {
             return
             [
-                    //
-                'content' => $this->faker->unique()->lastName
+                PersonSurnameModel::field_content => $this->faker->unique()->lastName
             ];
         }
     }

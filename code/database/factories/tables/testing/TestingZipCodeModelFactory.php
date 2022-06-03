@@ -22,8 +22,7 @@
     {
         // Variables
         protected $model        = ZipCodeModel::class;
-
-
+        
 
         /**
          * @return array
@@ -32,9 +31,9 @@
         {
             return
             [
-                'area_name'  => $this->faker->unique()->city,
-                'zip_number' => $this->faker->unique()->numerify,
-                'country_id' => 0
+                ZipCodeModel::field_area_name  => $this->faker->unique()->city,
+                ZipCodeModel::field_zip_number => 0,
+                ZipCodeModel::field_country_id => $this->faker->unique()->numerify
             ];
         }
     }

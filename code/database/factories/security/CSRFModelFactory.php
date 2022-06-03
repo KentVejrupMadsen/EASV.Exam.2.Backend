@@ -85,15 +85,15 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    CSRFModel::field_assigned_to  => null,
-                    CSRFModel::field_secure_token => Str::random( 32 ),
-                    CSRFModel::field_secret_token => Str::random( 32 ),
-                    CSRFModel::field_issued       => Carbon::now(),
-                    CSRFModel::field_accessed     => null,
-                    CSRFModel::field_activated    => false,
-                    CSRFModel::field_invalidated  => false
-                ];
+            [
+                CSRFModel::field_assigned_to  => null,
+                CSRFModel::field_secure_token => Str::random( 32 ),
+                CSRFModel::field_secret_token => Str::random( 32 ),
+                CSRFModel::field_issued       => Carbon::now(),
+                CSRFModel::field_accessed     => null,
+                CSRFModel::field_activated    => false,
+                CSRFModel::field_invalidated  => false
+            ];
         }
     }
 ?>

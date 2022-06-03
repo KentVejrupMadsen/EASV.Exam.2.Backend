@@ -8,7 +8,6 @@
     namespace Database\Factories\tables\testing;
 
     // External libraries
-    use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -61,13 +60,13 @@
         {
             return
             [
-                'username'          => $this->faker->unique()->userName,
-                'email_id'          => 0,
-                'email_verified_at' => $this->fakeIsVerified(),
-                'password'          => $this->generatePassword(),
-                'created_at'        => $this->faker->dateTime,
-                'updated_at'        => $this->faker->dateTime,
-                'settings'          => ''
+                User::field_username          => $this->faker->unique()->userName,
+                User::field_email_id          => 0,
+                User::field_verified_at       => $this->fakeIsVerified(),
+                User::field_password          => $this->generatePassword(),
+                User::field_created_at        => $this->faker->dateTime,
+                User::field_updated_at        => $this->faker->dateTime,
+                User::field_settings          => ''
             ];
         }
 

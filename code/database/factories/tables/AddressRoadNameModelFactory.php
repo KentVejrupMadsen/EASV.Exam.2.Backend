@@ -102,9 +102,9 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    'content' => null
-                ];
+            [
+                AddressRoadNameModel::field_content => null
+            ];
         }
     }
 ?>

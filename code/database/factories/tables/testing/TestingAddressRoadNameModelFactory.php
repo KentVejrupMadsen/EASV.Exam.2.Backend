@@ -31,7 +31,7 @@
         {
             return
             [
-                'content' => $this->faker->unique()->streetName
+                AddressRoadNameModel::field_content => $this->faker->unique()->streetName
             ];
         }
     }

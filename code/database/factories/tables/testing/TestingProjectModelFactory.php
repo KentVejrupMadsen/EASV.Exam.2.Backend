@@ -8,7 +8,6 @@
     namespace Database\Factories\tables\testing;
 
     // External libraries
-    use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -22,7 +21,7 @@
         extends Factory
     {
         // Variables
-        protected $model      = ProjectModel::class;
+        protected $model = ProjectModel::class;
 
 
         /**
@@ -32,12 +31,12 @@
         {
             return
             [
-                'account_owner_id' => 0,
-                'project_title_id' => 0,
-                'description' => $this->faker->realText,
-                'tags' => '',
-                'created_at' => $this->faker->dateTime,
-                'updated_at' => $this->faker->dateTime
+                ProjectModel::field_account_owner_id => 0,
+                ProjectModel::field_project_title_id => 0,
+                ProjectModel::field_description => $this->faker->realText,
+                ProjectModel::field_tags => '',
+                ProjectModel::field_created_at => $this->faker->dateTime,
+                ProjectModel::field_updated_at => $this->faker->dateTime
             ];
         }
     }

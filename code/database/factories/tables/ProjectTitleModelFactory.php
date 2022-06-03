@@ -77,9 +77,9 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    'content' => null
-                ];
+            [
+                ProjectTitleModel::field_content => null
+            ];
         }
 
         /**

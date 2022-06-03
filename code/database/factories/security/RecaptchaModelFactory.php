@@ -84,14 +84,13 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    //
-                    RecaptchaModel::field_success  => false,
-                    RecaptchaModel::field_score    => 0.0,
-                    RecaptchaModel::field_at_date  => Carbon::now(),
-                    RecaptchaModel::field_hostname => null,
-                    RecaptchaModel::field_error    => null
-                ];
+            [
+                RecaptchaModel::field_success  => false,
+                RecaptchaModel::field_score    => 0.0,
+                RecaptchaModel::field_at_date  => Carbon::now(),
+                RecaptchaModel::field_hostname => null,
+                RecaptchaModel::field_error    => null
+            ];
         }
     }
 ?>

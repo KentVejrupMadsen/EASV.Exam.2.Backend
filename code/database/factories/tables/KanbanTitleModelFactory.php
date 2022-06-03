@@ -101,11 +101,10 @@
          */
         protected final function DefaultDefinition(): array
         {
-
             return
-                [
-                    'content'=> null
-                ];
+            [
+                KanbanTitleModel::field_content => null
+            ];
         }
     }
 ?>

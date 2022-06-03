@@ -24,20 +24,20 @@
     {
         // Variables
             // Tables
-        protected $table = self::table_name;
+        protected $table = self::field_table_name;
 
         #[OA\Property( type: 'string' )]
-        public const table_name = 'zip_codes';
+        public const field_table_name = 'zip_codes';
 
             // Constants
         #[OA\Property( type: 'string' )]
-        protected const area_name = 'area_name';
+        public const field_area_name = 'area_name';
 
         #[OA\Property( type: 'string' )]
-        protected const zip_number = 'zip_number';
+        public const field_zip_number = 'zip_number';
 
         #[OA\Property( type: 'string' )]
-        protected const country_id = 'country_id';
+        public const field_country_id = 'country_id';
 
 
         //
@@ -49,9 +49,9 @@
             items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
-            self::area_name,
-            self::zip_number,
-            self::country_id
+            self::field_area_name,
+            self::field_zip_number,
+            self::field_country_id
         ];
 
 
@@ -63,15 +63,15 @@
             items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
-            self::country_id
+            self::field_country_id
         ];
 
 
         protected $casts =
         [
-            self::area_name  => 'string',
-            self::zip_number => 'string',
-            self::country_id => 'integer'
+            self::field_area_name  => 'string',
+            self::field_zip_number => 'string',
+            self::field_country_id => 'integer'
         ];
     }
 ?>
