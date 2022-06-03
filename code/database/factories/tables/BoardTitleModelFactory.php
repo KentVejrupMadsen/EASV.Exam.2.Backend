@@ -8,23 +8,24 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingBoardTitleModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\BoardTitleModel;
+    use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingBoardTitleModelFactory;
 
 
     /**
      *
      */
     class BoardTitleModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         private static $debug   = false;
         protected $model        = BoardTitleModel::class;
 
+        private static ?TestingBoardTitleModelFactory $testingFactory = null;
 
         private static ?TestingBoardTitleModelFactory $testingFactory = null;
 
@@ -45,6 +46,28 @@
 
         // Accessors
         /**
+         * @return TestingBoardTitleModelFactory
+         */
+        public static final function getTestingFactory(): TestingBoardTitleModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingBoardTitleModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        /**
+         * @param TestingBoardTitleModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingBoardTitleModelFactory $fakeFactory ): void
+        {
+            self::$testingFactory = $fakeFactory;
+        }
+
+        /**
          * @return bool
          */
         public final function getDebugState(): bool
@@ -62,22 +85,25 @@
         }
 
 
+        // Definitions
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public function definition(): array
+        protected final function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        'content' => null
-                    ];
-            }
+            return self::getTestingFactory()->definition();
+        }
+
+
+        /**
+         * @return null[]
+         */
+        protected final function DefaultDefinition(): array
+        {
+            return
+                [
+                    'content' => null
+                ];
         }
     }
 ?>

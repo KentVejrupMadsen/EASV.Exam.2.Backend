@@ -34,7 +34,7 @@
         {
             return
             [
-                    //
+                //
                 'account_information_id' => 0,
                 'road_name_id'           => 0,
                 'road_number' => $this->faker->randomDigit(),

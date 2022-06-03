@@ -9,6 +9,7 @@
 
     // Internal Libraries
     use App\Models\templates\BaseModel;
+
     use OpenApi\Attributes
         as OA;
 
@@ -36,6 +37,9 @@
 
         #[OA\Property( type: 'string' )]
         public const field_updated_at = 'updated_at';
+
+        #[OA\Property( type: 'string' )]
+        public const field_settings = 'settings';
 
 
         //

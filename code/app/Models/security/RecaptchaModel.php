@@ -7,8 +7,10 @@
      */
     namespace App\Models\security;
 
+    // Internal libraries
     use App\Models\templates\ExtensionNoTimestampModel;
 
+    // External libraries
     use OpenApi\Attributes
         as OA;
 

@@ -8,22 +8,25 @@
     namespace Database\Factories\tables;
 
     // External libraries
-use Database\Factories\tables\testing\TestingAddressRoadNameModelFactory;
-use Illuminate\Database\Eloquent\Factories\Factory;
+
 
     // Internal libraries
     use App\Models\tables\AddressRoadNameModel;
+    use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingAddressRoadNameModelFactory;
 
 
     /**
      *
      */
     class AddressRoadNameModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = AddressRoadNameModel::class;
         private static $debug   = false;
+
+        private static ?TestingAddressRoadNameModelFactory $testingFactory = null;
 
 
         private static ?TestingAddressRoadNameModelFactory $testingFactory = null;
@@ -45,6 +48,28 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
         // Accessor
         /**
+         * @return TestingAddressRoadNameModelFactory
+         */
+        public static final function getTestingFactory(): TestingAddressRoadNameModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingAddressRoadNameModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        /**
+         * @param TestingAddressRoadNameModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingAddressRoadNameModelFactory $fakeFactory ): void
+        {
+            self::$testingFactory = $fakeFactory;
+        }
+
+        /**
          * @return bool
          */
         public final function getDebugState(): bool
@@ -62,22 +87,24 @@ use Illuminate\Database\Eloquent\Factories\Factory;
         }
 
 
+        // Definition
         /**
          * @return array
          */
-        public final function definition(): array
+        protected final function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+            return self::getTestingFactory()->definition();
+        }
+
+        /**
+         * @return null[]
+         */
+        protected final function DefaultDefinition(): array
+        {
+            return
                 [
                     'content' => null
                 ];
-            }
         }
     }
 ?>

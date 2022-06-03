@@ -9,23 +9,24 @@
 
     // External libraries
     use Carbon\Carbon;
-    use Database\Factories\tables\testing\TestingBoardModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\BoardModel;
+    use Database\Factories\tables\testing\TestingBoardModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class BoardModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = BoardModel::class;
         private static $debug   = false;
 
+        private static ?TestingBoardModelFactory $testingFactory = null;
 
         private static ?TestingBoardModelFactory $testingFactory = null;
 
@@ -46,6 +47,28 @@
 
         // Accessors
         /**
+         * @return TestingBoardModelFactory
+         */
+        public static final function getTestingFactory(): TestingBoardModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingBoardModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        /**
+         * @param TestingBoardModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingBoardModelFactory $fakeFactory ): void
+        {
+            self::$testingFactory = $fakeFactory;
+        }
+
+        /**
          * @return bool
          */
         public final function getDebugState(): bool
@@ -63,19 +86,22 @@
         }
 
 
-        //
+        // Defintions
         /**
          * @return array
          */
-        public function definition(): array
+        protected final function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+            return self::getTestingFactory()->definition();
+        }
+
+        /**
+         * @return array
+         */
+        protected final function DefaultDefinition(): array
+        {
+
+            return
                 [
                     'kanban_id'      => 0,
                     'board_title_id' => 0,
@@ -83,7 +109,6 @@
                     'created_at'     => Carbon::now(),
                     'updated_at'     => Carbon::now()
                 ];
-            }
         }
     }
 ?>

@@ -8,43 +8,50 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingNewsletterSubscriptionModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\NewsletterSubscriptionModel;
+    use Database\Factories\tables\testing\TestingNewsletterSubscriptionModelFactory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class NewsletterSubscriptionModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
 
         // Variables
         protected $model        = NewsletterSubscriptionModel::class;
         private static $debug   = false;
 
-
         private static ?TestingNewsletterSubscriptionModelFactory $testingFactory = null;
 
+
+        // Accessor
+        /**
+         * @return TestingNewsletterSubscriptionModelFactory
+         */
         public static final function getTestingFactory(): TestingNewsletterSubscriptionModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingNewsletterSubscriptionModelFactory());
+                self::setTestingFactory( new TestingNewsletterSubscriptionModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingNewsletterSubscriptionModelFactory $fakeFactory )
+        /**
+         * @param TestingNewsletterSubscriptionModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingNewsletterSubscriptionModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }
 
-        // Access
         /**
          * @return bool
          */
@@ -62,25 +69,27 @@
             self::$debug = $value;
         }
 
-        //
+
+        // Definitions
         /**
          * @return array
          */
-        public function definition(): array
+        protected final function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'email_id' => 0,
-                        'options' => null
-                    ];
-            }
+            return self::getTestingFactory()->definition();
+        }
+
+        /**
+         * @return array
+         */
+        protected final function DefaultDefinition(): array
+        {
+            return
+                [
+                    //
+                    'email_id' => 0,
+                    'options' => null
+                ];
         }
     }
 ?>

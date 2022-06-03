@@ -12,31 +12,38 @@
 
     // External libraries
     use Database\Factories\security\testing\TestingConfigurationModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class ConfigurationModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = ConfigurationModel::class;
         private static $debug   = false;
         private static ?TestingConfigurationModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingConfigurationModelFactory
+         */
         public static final function getTestingFactory(): TestingConfigurationModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingConfigurationModelFactory());
+                self::setTestingFactory( new TestingConfigurationModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingConfigurationModelFactory $fakeFactory )
+        /**
+         * @param TestingConfigurationModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingConfigurationModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }
@@ -62,23 +69,26 @@
 
 
         /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+
+            return self::getTestingFactory()->definition();
+        }
+
+
+        /**
          * @return null[]
          */
-        public function definition(): array
+        protected final function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+            return
                 [
                     //
-                    'key'   => null,
-                    'value' => null
+                    ConfigurationModel::field_key   => null,
+                    ConfigurationModel::field_value => null
                 ];
-            }
         }
     }
 ?>

@@ -14,7 +14,6 @@
 
     use OpenApi\Attributes
         as OA;
-    use phpDocumentor\Reflection\Type;
 
     /**
      *
@@ -31,6 +30,24 @@
 
         protected $table = self::table_name;
 
+        #[OA\Property( type: 'string' )]
+        public const field_account_information_id = 'account_information_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_road_name_id = 'road_name_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_road_number = 'road_number';
+
+        #[OA\Property( type: 'string' )]
+        public const field_levels = 'levels';
+
+        #[OA\Property( type: 'string' )]
+        public const field_country_id = 'country_id';
+
+        #[OA\Property( type: 'string' )]
+        public const field_zip_code_id = 'zip_code_id';
+
 
         #[OA\Property(
             property: 'fillable',
@@ -40,12 +57,12 @@
             items: new OA\Items( type: 'string' ) )]
         protected $fillable =
         [
-            'account_information_id',
-            'road_name_id',
-            'road_number',
-            'levels',
-            'country_id',
-            'zip_code_id'
+            self::field_account_information_id,
+            self::field_road_name_id,
+            self::field_road_number,
+            self::field_levels,
+            self::field_country_id,
+            self::field_zip_code_id
         ];
 
 
@@ -57,21 +74,21 @@
             items: new OA\Items( type: 'string' ) ) ]
         protected $hidden =
         [
-            'country_id',
-            'zip_code_id',
-            'road_name_id',
-            'account_information_id',
+            self::field_account_information_id,
+            self::field_road_name_id,
+            self::field_country_id,
+            self::field_zip_code_id
         ];
 
 
         protected $casts =
         [
-            'account_information_id' => 'integer',
-            'road_name_id'           => 'integer',
-            'road_number'            => 'integer',
-            'levels'                 => 'string',
-            'country_id'             => 'integer',
-            'zip_code_id'            => 'integer'
+            self::field_account_information_id => 'integer',
+            self::field_road_name_id           => 'integer',
+            self::field_road_number            => 'integer',
+            self::field_levels                 => 'string',
+            self::field_country_id             => 'integer',
+            self::field_zip_code_id            => 'integer'
         ];
 
     }

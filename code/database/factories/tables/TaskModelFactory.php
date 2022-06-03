@@ -8,23 +8,48 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingTaskModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\TaskModel;
+    use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingTaskModelFactory;
 
 
     /**
      *
      */
     class TaskModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model = TaskModel::class;
         private static $debug = false;
 
+        private static ?TestingTaskModelFactory $testingFactory = null;
+
+
+        // Accessor
+        /**
+         * @return TestingTaskModelFactory
+         */
+        public static final function getTestingFactory(): TestingTaskModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingTaskModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        /**
+         * @param TestingTaskModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingTaskModelFactory $fakeFactory ): void
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         private static ?TestingTaskModelFactory $testingFactory = null;
 
@@ -61,24 +86,27 @@
             self::$debug = $value;
         }
 
-        //
+
+        // Definition
         /**
          * @return array
          */
-        public function definition(): array
+        protected final function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        'board_id' => 0,
-                        'content'  => null
-                    ];
-            }
+            return
+            [
+                'board_id' => 0,
+                'content'  => null
+            ];
+        }
+
+
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+            return self::getTestingFactory()->definition();
         }
     }
 ?>

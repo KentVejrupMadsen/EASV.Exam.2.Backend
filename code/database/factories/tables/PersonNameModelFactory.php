@@ -8,74 +8,90 @@
     namespace Database\Factories\tables;
 
     // External libraries
-use Database\Factories\tables\testing\TestingPersonNameModelFactory;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\PersonNameModel;
+    use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingPersonNameModelFactory;
 
 
     /**
      *
      */
     class PersonNameModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         // Variables
         protected $model        = PersonNameModel::class;
         private static $debug   = false;
 
-
         private static ?TestingPersonNameModelFactory $testingFactory = null;
 
+        // Accessors
+        /**
+         * @return TestingPersonNameModelFactory
+         */
         public static final function getTestingFactory(): TestingPersonNameModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingPersonNameModelFactory());
+                self::setTestingFactory( new TestingPersonNameModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingPersonNameModelFactory $fakeFactory )
+        /**
+         * @param TestingPersonNameModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingPersonNameModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }
 
         // Accessors
+        /**
+         * @return bool
+         */
         public final function getDebugState(): bool
         {
             return self::$debug;
         }
 
+        /**
+         * @param bool $value
+         * @return void
+         */
         public final function setDebugState( bool $value ): void
         {
             self::$debug = $value;
         }
 
-
-        //
+        // Definition
         /**
          * @return array
          */
-        public final function definition(): array
+        protected final function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'account_information_id'    => 0,
-                        'person_name_first_id'      => 0,
-                        'person_name_lastname_id'   => 0,
-                        'person_name_middlename'    => '{ }'
-                    ];
-            }
+            return
+                [
+                    //
+                    'account_information_id'    => 0,
+                    'person_name_first_id'      => 0,
+                    'person_name_lastname_id'   => 0,
+                    'person_name_middlename'    => '{ }'
+                ];
+        }
+
+
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+
+            return self::getTestingFactory()->definition();
         }
     }
 ?>

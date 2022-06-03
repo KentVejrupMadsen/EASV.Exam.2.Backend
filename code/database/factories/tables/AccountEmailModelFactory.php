@@ -8,21 +8,23 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Database\Factories\tables\testing\TestingAccountEmailModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\AccountEmailModel;
+    use Database\Factories\templates\FactoryTemplate;
+    use Database\Factories\tables\testing\TestingAccountEmailModelFactory;
 
 
     /**
      *
      */
     class AccountEmailModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
-        protected $model        = AccountEmailModel::class;
-        private static $debug   = false;
+        protected $model = AccountEmailModel::class;
+        private static $debug = false;
+
+        private static ?TestingAccountEmailModelFactory $testingFactory = null;
 
 
         private static ?TestingAccountEmailModelFactory $testingFactory = null;
@@ -44,6 +46,28 @@
 
         // Accessor
         /**
+         * @return TestingAccountEmailModelFactory
+         */
+        public static final function getTestingFactory(): TestingAccountEmailModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingAccountEmailModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        /**
+         * @param TestingAccountEmailModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingAccountEmailModelFactory $fakeFactory ): void
+        {
+            self::$testingFactory = $fakeFactory;
+        }
+
+        /**
          * @return bool
          */
         public final function getDebugState(): bool
@@ -60,41 +84,24 @@
             self::$debug = $value;
         }
 
-
-        /**
-         * @return array
-         */
-        public final function definition(): array
-        {
-            if( $this->getDebugState() )
-            {
-                return $this->fakeDefinition();
-            }
-            else
-            {
-                return $this->normalDefinition();
-            }
-        }
-
-
+        // Definitions
         /**
          * @return null[]
          */
-        protected function fakeDefinition(): array
-        {
-            return self::getTestingFactory()->definition();
-        }
-
-
-        /**
-         * @return null[]
-         */
-        protected function normalDefinition(): array
+        protected final function DefaultDefinition(): array
         {
             return
             [
                 'content' => null
             ];
+        }
+
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+            return self::getTestingFactory()->definition();
         }
     }
 ?>
