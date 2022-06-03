@@ -25,9 +25,9 @@
         protected $model        = PersonNameModel::class;
         private static $debug   = false;
 
-
         private static ?TestingPersonNameModelFactory $testingFactory = null;
 
+        // Accessors
         /**
          * @return TestingPersonNameModelFactory
          */
@@ -51,17 +51,28 @@
         }
 
         // Accessors
+        /**
+         * @return bool
+         */
         public final function getDebugState(): bool
         {
             return self::$debug;
         }
 
+        /**
+         * @param bool $value
+         * @return void
+         */
         public final function setDebugState( bool $value ): void
         {
             self::$debug = $value;
         }
 
-        protected function DefaultDefinition(): array
+        // Definition
+        /**
+         * @return array
+         */
+        protected final function DefaultDefinition(): array
         {
             return
                 [
@@ -73,7 +84,11 @@
                 ];
         }
 
-        protected function TestDefinition(): array
+
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
 
             return self::getTestingFactory()->definition();

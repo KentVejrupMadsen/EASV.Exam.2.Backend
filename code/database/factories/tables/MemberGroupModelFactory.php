@@ -25,9 +25,10 @@
         protected $model        = MemberGroupModel::class;
         private static $debug   = false;
 
-
         private static ?TestingMemberGroupModelFactory $testingFactory = null;
 
+
+        // Accessors
         /**
          * @return TestingMemberGroupModelFactory
          */
@@ -50,7 +51,6 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessors
         /**
          * @return bool
          */
@@ -68,16 +68,21 @@
             self::$debug = $value;
         }
 
-
-        protected function TestDefinition(): array
+        // Definitions
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
-
             return self::getTestingFactory()->definition();
         }
 
+
+        /**
+         * @return null[]
+         */
         protected final function DefaultDefinition(): array
         {
-
             return
                 [
                     'content' => null

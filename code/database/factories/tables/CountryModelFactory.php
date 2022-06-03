@@ -25,9 +25,9 @@
         protected $model        = CountryModel::class;
         private static $debug   = false;
 
-
         private static ?TestingCountryModelFactory $testingFactory = null;
 
+        // Accessor
         /**
          * @return TestingCountryModelFactory
          */
@@ -50,7 +50,6 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessor
         /**
          * @return bool
          */
@@ -68,16 +67,20 @@
             self::$debug = $value;
         }
 
-
-        protected function TestDefinition(): array
+        // Definitions
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
-
             return self::getTestingFactory()->definition();
         }
 
+        /**
+         * @return null[]
+         */
         protected final function DefaultDefinition(): array
         {
-
             return
                 [
                     'country_name'    => null,

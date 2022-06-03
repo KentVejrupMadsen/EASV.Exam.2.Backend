@@ -25,9 +25,10 @@
         protected $model        = PersonFirstnameModel::class;
         private static $debug   = false;
 
-
         private static ?TestingPersonFirstnameModelFactory $testingFactory = null;
 
+
+        // Accessors
         /**
          * @return TestingPersonFirstnameModelFactory
          */
@@ -50,7 +51,6 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessors
         /**
          * @return bool
          */
@@ -69,9 +69,12 @@
         }
 
 
-        protected function DefaultDefinition(): array
+        // Definitions
+        /**
+         * @return null[]
+         */
+        protected final function DefaultDefinition(): array
         {
-
             return
                 [
                     //
@@ -79,7 +82,10 @@
                 ];
         }
 
-        protected function TestDefinition(): array
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
 
             return self::getTestingFactory()->definition();

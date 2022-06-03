@@ -26,9 +26,9 @@
         protected $model      = ProjectModel::class;
         private static $debug = false;
 
-
         private static ?TestingProjectModelFactory $testingFactory = null;
 
+        // Accessor
         /**
          * @return TestingProjectModelFactory
          */
@@ -70,6 +70,7 @@
         }
 
 
+        // Definition
         /**
          * @return array
          */
@@ -87,12 +88,12 @@
                 ];
         }
 
+
         /**
          * @return array
          */
         protected final function TestDefinition(): array
         {
-
             return self::getTestingFactory()->definition();
         }
     }

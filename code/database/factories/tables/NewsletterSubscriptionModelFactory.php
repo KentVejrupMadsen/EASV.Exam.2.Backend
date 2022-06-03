@@ -26,9 +26,10 @@
         protected $model        = NewsletterSubscriptionModel::class;
         private static $debug   = false;
 
-
         private static ?TestingNewsletterSubscriptionModelFactory $testingFactory = null;
 
+
+        // Accessor
         /**
          * @return TestingNewsletterSubscriptionModelFactory
          */
@@ -51,7 +52,6 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Access
         /**
          * @return bool
          */
@@ -70,15 +70,20 @@
         }
 
 
-        protected function TestDefinition(): array
+        // Definitions
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
-
             return self::getTestingFactory()->definition();
         }
 
+        /**
+         * @return array
+         */
         protected final function DefaultDefinition(): array
         {
-
             return
                 [
                     //

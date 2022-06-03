@@ -70,7 +70,11 @@
         }
 
 
-        protected function DefaultDefinition(): array
+        // Definitions
+        /**
+         * @return int[]
+         */
+        protected final function DefaultDefinition(): array
         {
             return
                 [
@@ -81,7 +85,10 @@
                 ];
         }
 
-        protected function TestDefinition(): array
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
 
             return self::getTestingFactory()->definition();

@@ -26,9 +26,10 @@
         protected $model        = AddressRoadNameModel::class;
         private static $debug   = false;
 
-
         private static ?TestingAddressRoadNameModelFactory $testingFactory = null;
 
+
+        // Accessor
         /**
          * @return TestingAddressRoadNameModelFactory
          */
@@ -51,7 +52,6 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessor
         /**
          * @return bool
          */
@@ -70,15 +70,20 @@
         }
 
 
-        protected function TestDefinition(): array
+        // Definition
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
-
             return self::getTestingFactory()->definition();
         }
 
+        /**
+         * @return null[]
+         */
         protected final function DefaultDefinition(): array
         {
-
             return
                 [
                     'content' => null
