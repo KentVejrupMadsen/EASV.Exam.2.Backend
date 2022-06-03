@@ -4,11 +4,11 @@
     use Illuminate\Console\Command;
 
 
-    final class GenerateRobotTXT
+    final class GenerateOpenAPICommandYAML
         extends Command
     {
-        protected $signature = 'generate:robot';
-        protected $description = 'generates the robot.txt file to be parsed by google crawlers';
+        protected $signature = 'generate:openapi-yaml';
+        protected $description = 'generates a openapi file to make the specification file';
 
 
         public function handle()

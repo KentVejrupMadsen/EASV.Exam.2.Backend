@@ -4,28 +4,14 @@
     use Illuminate\Console\Command;
 
 
-    class GenerateSitemap
+    final class GenerateSitemap
         extends Command
     {
-        /**
-         * The name and signature of the console command.
-         *
-         * @var string
-         */
-        protected $signature = 'generate:name';
+        protected $signature = 'generate:sitemap';
 
-        /**
-         * The console command description.
-         *
-         * @var string
-         */
-        protected $description = 'Command description';
+        protected $description = 'generates a sitemap for search engines to crawl';
 
-        /**
-         * Execute the console command.
-         *
-         * @return int
-         */
+
         public function handle()
         {
             return 0;
