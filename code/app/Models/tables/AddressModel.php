@@ -83,12 +83,12 @@
 
         protected $casts =
         [
-            'account_information_id' => 'integer',
-            'road_name_id'           => 'integer',
-            'road_number'            => 'integer',
-            'levels'                 => 'string',
-            'country_id'             => 'integer',
-            'zip_code_id'            => 'integer'
+            self::field_account_information_id => 'integer',
+            self::field_road_name_id           => 'integer',
+            self::field_road_number            => 'integer',
+            self::field_levels                 => 'string',
+            self::field_country_id             => 'integer',
+            self::field_zip_code_id            => 'integer'
         ];
 
     }

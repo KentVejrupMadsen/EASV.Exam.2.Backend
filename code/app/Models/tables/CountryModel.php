@@ -28,7 +28,7 @@
         protected $table = self::table_name;
 
             // Constant
-        #[OA\Property(type: 'string' )]
+        #[OA\Property( type: 'string' )]
         public const field_country_name    = 'country_name';
 
         #[OA\Property( type: 'string' )]

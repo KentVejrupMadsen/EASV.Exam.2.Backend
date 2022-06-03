@@ -27,6 +27,10 @@
         public const table_name = 'boards';
         protected $table = self::table_name;
 
+        public const field_kanban_id = 'kanban_id';
+        public const field_board_title_id = 'board_title_id';
+
+
         #[OA\Property(
             property: 'fillable',
             type: 'array',
@@ -35,8 +39,8 @@
             items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
-            'kanban_id',
-            'board_title_id',
+            self::field_kanban_id,
+            self::field_board_title_id,
         ];
 
         #[OA\Property(
@@ -47,15 +51,15 @@
             items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
-            'kanban_id',
-            'board_title_id',
+            self::field_kanban_id,
+            self::field_board_title_id,
         ];
 
         
         protected $casts = 
         [
-            'kanban_id' => 'integer',
-            'board_title_id' => 'integer'
+            self::field_kanban_id => 'integer',
+            self::field_board_title_id => 'integer'
         ];
     }
 ?>
