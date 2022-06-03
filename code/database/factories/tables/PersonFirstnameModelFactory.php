@@ -35,7 +35,7 @@
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingPersonFirstnameModelFactory());
+                self::setTestingFactory( new TestingPersonFirstnameModelFactory() );
             }
 
             return self::$testingFactory;
@@ -45,7 +45,7 @@
          * @param TestingPersonFirstnameModelFactory $fakeFactory
          * @return void
          */
-        public static final function setTestingFactory( TestingPersonFirstnameModelFactory $fakeFactory )
+        public static final function setTestingFactory( TestingPersonFirstnameModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }

@@ -45,7 +45,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
          * @param TestingAddressRoadNameModelFactory $fakeFactory
          * @return void
          */
-        public static final function setTestingFactory( TestingAddressRoadNameModelFactory $fakeFactory )
+        public static final function setTestingFactory( TestingAddressRoadNameModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }

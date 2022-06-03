@@ -35,7 +35,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingCountryModelFactory());
+                self::setTestingFactory( new TestingCountryModelFactory() );
             }
 
             return self::$testingFactory;
@@ -45,7 +45,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
          * @param TestingCountryModelFactory $fakeFactory
          * @return void
          */
-        public static final function setTestingFactory( TestingCountryModelFactory $fakeFactory )
+        public static final function setTestingFactory( TestingCountryModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }

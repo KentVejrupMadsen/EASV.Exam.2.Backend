@@ -26,17 +26,24 @@
         private static $debug   = false;
         private static ?TestingConfigurationModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingConfigurationModelFactory
+         */
         public static final function getTestingFactory(): TestingConfigurationModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingConfigurationModelFactory());
+                self::setTestingFactory( new TestingConfigurationModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingConfigurationModelFactory $fakeFactory )
+        /**
+         * @param TestingConfigurationModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingConfigurationModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }

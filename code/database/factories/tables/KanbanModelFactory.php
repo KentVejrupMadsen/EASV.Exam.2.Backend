@@ -35,7 +35,7 @@
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingKanbanModelFactory());
+                self::setTestingFactory( new TestingKanbanModelFactory() );
             }
 
             return self::$testingFactory;
@@ -45,7 +45,7 @@
          * @param TestingKanbanModelFactory $fakeFactory
          * @return void
          */
-        public static final function setTestingFactory( TestingKanbanModelFactory $fakeFactory )
+        public static final function setTestingFactory( TestingKanbanModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }

@@ -27,6 +27,9 @@
         private static $debug   = false;
         private static ?TestingRecaptchaModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingRecaptchaModelFactory
+         */
         public static final function getTestingFactory(): TestingRecaptchaModelFactory
         {
             if( is_null( self::$testingFactory ) )
@@ -37,7 +40,11 @@
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingRecaptchaModelFactory $fakeFactory )
+        /**
+         * @param TestingRecaptchaModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingRecaptchaModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }
