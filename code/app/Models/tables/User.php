@@ -7,6 +7,7 @@
      */
     namespace App\Models\tables;
 
+    // External
     use Illuminate\Database\Eloquent\Factories\HasFactory;
 
     use Illuminate\Foundation\Auth\User
@@ -14,8 +15,12 @@
 
     use Illuminate\Notifications\Notifiable;
     use Laravel\Sanctum\HasApiTokens;
+
     use OpenApi\Attributes
         as OA;
+
+    // Internal
+    use App\Models\templates\BaseModel;
 
 
     /**
@@ -45,13 +50,11 @@
         #[OA\Property( type: 'string' )]
         public const field_password = 'password';
 
-
         #[OA\Property( type: 'string' )]
         public const field_created_at = 'created_at';
 
         #[OA\Property( type: 'string' )]
         public const field_updated_at = 'updated_at';
-
 
         #[OA\Property( type: 'string' )]
         public const field_settings = 'settings';
@@ -62,10 +65,10 @@
         #[OA\Property( type: 'string' )]
         public const field_verified_at = 'email_verified_at';
 
-
         use HasApiTokens,
             HasFactory,
             Notifiable;
+
 
         #[OA\Property(
             property: 'fillable',
@@ -104,17 +107,17 @@
         
         protected $casts = 
         [
-            self::field_username          => 'string',
-            self::field_name              => 'string',
+            self::field_username          => BaseModel::typeString,
+            self::field_name              => BaseModel::typeString,
 
-            self::field_email_id          => 'integer',
-            self::field_password          => 'string',
+            self::field_email_id          => BaseModel::typeInteger,
+            self::field_password          => BaseModel::typeString,
 
             self::field_verified_at       => 'datetime',
             self::field_created_at        => 'datetime',
             self::field_updated_at        => 'datetime',
 
-            self::field_settings          => 'array'
+            self::field_settings          => BaseModel::typeArray
         ];
     }
 ?>

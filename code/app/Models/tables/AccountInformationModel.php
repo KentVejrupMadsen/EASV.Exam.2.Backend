@@ -10,6 +10,7 @@
     // Internal Libraries
     use App\Models\templates\BaseModel;
 
+    // External libraries
     use OpenApi\Attributes
         as OA;
 
