@@ -70,27 +70,18 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        'kanban_id' => 0,
-                        'board_title_id' => 0,
-                        'body' => '{}',
-                        'created_at' => $this->faker
-                                             ->dateTime,
-                        'updated_at' => $this->faker
-                                             ->dateTime
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {
                 return
-                    [
-                        'kanban_id'      => 0,
-                        'board_title_id' => 0,
-                        'body'           => null,
-                        'created_at'     => Carbon::now(),
-                        'updated_at'     => Carbon::now()
-                    ];
+                [
+                    'kanban_id'      => 0,
+                    'board_title_id' => 0,
+                    'body'           => null,
+                    'created_at'     => Carbon::now(),
+                    'updated_at'     => Carbon::now()
+                ];
             }
         }
     }

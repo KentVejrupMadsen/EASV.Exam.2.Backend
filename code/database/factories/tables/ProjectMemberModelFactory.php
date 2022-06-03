@@ -70,13 +70,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        //
-                        'project_id' => 0,
-                        'account_id' => 0,
-                        'member_group_id' => 0
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

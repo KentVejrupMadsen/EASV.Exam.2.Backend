@@ -70,16 +70,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        //
-                        'kanban_title_id' => 0,
-                        'project_id' => 0,
-                        'created_at' => $this->faker
-                            ->dateTime,
-                        'updated_at' => $this->faker
-                            ->dateTime
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

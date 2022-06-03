@@ -98,24 +98,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                [
-                    'username'          => $this->faker
-                                                ->unique()
-                                                ->userName,
-
-                    'email_id'          => 0,
-                    'email_verified_at' => $this->fakeIsVerified(),
-
-                    'password'          => $this->generatePassword(),
-
-                    'created_at'        => $this->faker
-                                                ->dateTime,
-
-                    'updated_at'        => $this->faker
-                                                ->dateTime,
-                    'settings' => '{ }'
-                ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

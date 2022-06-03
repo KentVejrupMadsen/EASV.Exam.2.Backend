@@ -70,20 +70,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                [
-                    //
-                    'account_information_id' => 0,
-                    'road_name_id'           => 0,
-
-                    'road_number' => $this->faker
-                                          ->randomDigit(),
-
-                    'levels' => Str::random(3),
-
-                    'country_id'  => 0,
-                    'zip_code_id' => 0
-                ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

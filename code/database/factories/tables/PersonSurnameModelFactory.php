@@ -61,11 +61,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                [
-                    //
-                    'content' => $this->faker->unique()->lastName
-                ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

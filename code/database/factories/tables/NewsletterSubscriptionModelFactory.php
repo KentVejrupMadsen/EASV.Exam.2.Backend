@@ -69,12 +69,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        //
-                        'email_id' => 1,
-                        'options' => '{ }'
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

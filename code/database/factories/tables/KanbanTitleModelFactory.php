@@ -68,12 +68,7 @@
         {
             if($this->getDebugState())
             {
-                return
-                    [
-                        'content'=> $this->faker
-                            ->unique()
-                            ->jobTitle
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

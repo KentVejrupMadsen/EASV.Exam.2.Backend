@@ -70,19 +70,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        //
-                        'account_owner_id' => 0,
-                        'project_title_id' => 0,
-                        'description' => $this->faker
-                                              ->realText,
-                        'tags' => '{ }',
-                        'created_at' => $this->faker
-                                             ->dateTime,
-                        'updated_at' => $this->faker
-                                             ->dateTime
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

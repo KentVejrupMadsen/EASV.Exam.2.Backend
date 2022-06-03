@@ -68,16 +68,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                [
-                    'area_name' => $this->faker
-                                        ->unique()
-                                        ->city,
-                    'zip_number' => $this->faker
-                                         ->unique()
-                                         ->numerify,
-                    'country_id' => 0
-                ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

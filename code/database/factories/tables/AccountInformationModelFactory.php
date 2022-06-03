@@ -82,13 +82,7 @@
          */
         protected function fakeDefinition(): array
         {
-            return
-            [
-                'account_id' => 0,
-                'settings'   => '{ }',
-                'created_at' => $this->faker->dateTime,
-                'updated_at' => $this->faker->dateTime
-            ];
+            return self::getTestingFactory()->definition();
         }
 
 

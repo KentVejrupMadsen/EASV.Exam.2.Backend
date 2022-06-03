@@ -66,12 +66,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                [
-                    'content' => $this->faker
-                                      ->unique()
-                                      ->realText(50)
-                ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

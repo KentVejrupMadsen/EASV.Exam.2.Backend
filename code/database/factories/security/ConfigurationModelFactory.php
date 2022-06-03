@@ -23,9 +23,7 @@
     {
         // Variables
         protected $model        = ConfigurationModel::class;
-
         private static $debug   = false;
-
         private static ?TestingConfigurationModelFactory $testingFactory = null;
 
         public static final function getTestingFactory(): TestingConfigurationModelFactory

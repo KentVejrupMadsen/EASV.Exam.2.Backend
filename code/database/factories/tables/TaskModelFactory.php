@@ -68,12 +68,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        'board_id' => 0,
-                        'content'  => $this->faker
-                                           ->realText
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

@@ -68,16 +68,7 @@
         {
             if($this->getDebugState())
             {
-                return
-                    [
-                        'country_name' => $this->faker
-                                               ->unique()
-                                               ->country,
-
-                        'country_acronym' => $this->faker
-                                                  ->unique()
-                                                  ->countryCode
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

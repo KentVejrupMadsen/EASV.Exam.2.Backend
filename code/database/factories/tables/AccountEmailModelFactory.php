@@ -81,12 +81,7 @@
          */
         protected function fakeDefinition(): array
         {
-            return
-            [
-                'content' =>  $this -> faker
-                                    -> unique()
-                                    -> safeEmail
-            ];
+            return self::getTestingFactory()->definition();
         }
 
 
