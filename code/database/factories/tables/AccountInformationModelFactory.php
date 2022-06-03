@@ -86,10 +86,10 @@
         {
             return
             [
-                'account_id' => 0,
-                'settings'   => null,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
+                AccountInformationModel::field_account => 0,
+                AccountInformationModel::field_settings   => null,
+                AccountInformationModel::field_created_at => Carbon::now(),
+                AccountInformationModel::field_updated_at => Carbon::now()
             ];
         }
     }

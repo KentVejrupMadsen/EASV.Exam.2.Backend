@@ -27,6 +27,7 @@
 
         private static ?TestingPersonSurnameModelFactory $testingFactory = null;
 
+
         // Accessors
         /**
          * @return TestingPersonSurnameModelFactory
@@ -74,12 +75,10 @@
          */
         protected final function DefaultDefinition(): array
         {
-
             return
-                [
-                    //
-                    'content' => null
-                ];
+            [
+                PersonSurnameModel::field_content => null
+            ];
         }
 
 

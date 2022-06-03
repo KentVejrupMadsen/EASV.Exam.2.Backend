@@ -78,8 +78,8 @@
         {
             return
             [
-                'board_id' => 0,
-                'content'  => null
+                TaskModel::field_board_id => 0,
+                TaskModel::field_content => null
             ];
         }
 

@@ -77,15 +77,16 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    //
-                    'account_owner_id' => 0,
-                    'project_title_id' => 0,
-                    'description' => null,
-                    'tags' => null,
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now()
-                ];
+            [
+                ProjectModel::field_account_owner_id => 0,
+                ProjectModel::field_project_title_id => 0,
+
+                ProjectModel::field_description => null,
+                ProjectModel::field_tags => null,
+
+                ProjectModel::field_created_at => Carbon::now(),
+                ProjectModel::field_updated_at => Carbon::now()
+            ];
         }
 
 

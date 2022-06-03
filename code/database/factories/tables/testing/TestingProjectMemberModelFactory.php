@@ -8,7 +8,6 @@
     namespace Database\Factories\tables\testing;
 
     // External libraries
-    use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -33,9 +32,9 @@
             return
             [
                     //
-                'project_id' => 0,
-                'account_id' => 0,
-                'member_group_id' => 0
+                ProjectMemberModel::project_id => 0,
+                ProjectMemberModel::account_id => 0,
+                ProjectMemberModel::member_group_id => 0
             ];
         }
     }

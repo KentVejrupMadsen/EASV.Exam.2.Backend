@@ -30,7 +30,7 @@
         {
             return
             [
-                'content' => $this -> faker -> unique() -> realText(50)
+                BoardTitleModel::field_content => $this->faker->unique()->realText(50)
             ];
         }
     }
