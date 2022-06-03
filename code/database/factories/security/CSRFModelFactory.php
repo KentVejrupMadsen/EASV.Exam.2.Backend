@@ -30,7 +30,9 @@
 
         private static ?TestingCSRFModelFactory $testingFactory = null;
 
-
+        /**
+         * @return TestingCSRFModelFactory
+         */
         public static final function getTestingFactory(): TestingCSRFModelFactory
         {
             if( is_null( self::$testingFactory ) )
@@ -41,7 +43,11 @@
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingCSRFModelFactory $fakeFactory )
+        /**
+         * @param TestingCSRFModelFactory $fakeFactory
+         * @return void
+         */
+        public static final function setTestingFactory( TestingCSRFModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }

@@ -46,7 +46,7 @@
          * @param TestingBoardModelFactory $fakeFactory
          * @return void
          */
-        public static final function setTestingFactory( TestingBoardModelFactory $fakeFactory )
+        public static final function setTestingFactory( TestingBoardModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }

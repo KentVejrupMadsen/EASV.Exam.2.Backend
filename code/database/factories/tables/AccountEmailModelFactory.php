@@ -45,7 +45,7 @@
          * @param TestingAccountEmailModelFactory $fakeFactory
          * @return void
          */
-        public static final function setTestingFactory( TestingAccountEmailModelFactory $fakeFactory )
+        public static final function setTestingFactory( TestingAccountEmailModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }

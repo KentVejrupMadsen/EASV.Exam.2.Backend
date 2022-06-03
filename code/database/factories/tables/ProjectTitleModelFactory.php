@@ -35,7 +35,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingProjectTitleModelFactory());
+                self::setTestingFactory( new TestingProjectTitleModelFactory() );
             }
 
             return self::$testingFactory;
@@ -45,7 +45,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
          * @param TestingProjectTitleModelFactory $fakeFactory
          * @return void
          */
-        public static final function setTestingFactory( TestingProjectTitleModelFactory $fakeFactory )
+        public static final function setTestingFactory( TestingProjectTitleModelFactory $fakeFactory ): void
         {
             self::$testingFactory = $fakeFactory;
         }
