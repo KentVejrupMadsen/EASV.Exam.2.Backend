@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace Database\Factories\tables;
+    namespace Database\Factories\tables\testing;
 
     // External libraries
     use Carbon\Carbon;
