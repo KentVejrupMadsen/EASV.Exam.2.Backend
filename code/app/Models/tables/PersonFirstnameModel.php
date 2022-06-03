@@ -7,8 +7,10 @@
      */
     namespace App\Models\tables;
 
+    // Internal
     use App\Models\templates\ExtensionLabelModel;
 
+    // External
     use OpenApi\Attributes
         as OA;
 
