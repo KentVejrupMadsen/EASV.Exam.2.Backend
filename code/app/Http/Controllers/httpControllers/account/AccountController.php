@@ -42,56 +42,80 @@
             }
         }
 
+        //
         private static $controller = null;
 
 
-        // Variables
-        private const conflict = 409;
-
         // implement output
+        /**
+         * @return bool
+         */
         public final function hasImplementedCSV(): bool
         {
-            // TODO: Implement hasImplementedCSV() method.
-            return true;
+            return false;
         }
 
+        /**
+         * @return bool
+         */
         public final function hasImplementedJSON(): bool
         {
-            // TODO: Implement hasImplementedJSON() method.
             return true;
         }
 
+
+        /**
+         * @return bool
+         */
         public final function hasImplementedXML(): bool
         {
-            // TODO: Implement hasImplementedXML() method.
             return true;
         }
 
+
+        /**
+         * @param Request $request
+         * @return array|null
+         */
         public final function pipelineTowardCSV( Request $request ): ?array
         {
-            // TODO: Implement pipelineTowardCSV() method.
+
             return null;
         }
 
+
+        /**
+         * @param Request $request
+         * @return array|null
+         */
         public final function pipelineTowardJSON( Request $request ): ?array
         {
-            // TODO: Implement pipelineTowardJSON() method.
+
             return null;
         }
 
+
+        /**
+         * @param Request $request
+         * @return array|null
+         */
         public final function pipelineTowardXML( Request $request ): ?array
         {
-            // TODO: Implement pipelineTowardXML() method.
+
             return null;
         }
 
         /**
          * @return JsonResponse
          */
-        #[OA\Get(path: '/api/1.0.0/accounts/account/me')]
-        #[OA\Parameter(name:'Authorization', description: 'has to be included in the header of the request', in: 'header')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Get( path: '/api/1.0.0/accounts/account/me' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function me(): JsonResponse
         {
             $currentUser = Auth::user();
@@ -103,9 +127,11 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Get(path: '/api/1.0.0/accounts/account/read')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Get( path: '/api/1.0.0/accounts/account/read' )]
+        #[OA\Response( response: '200',
+                       description: 'The data')]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function read( Request $request ): JsonResponse
         {
 
@@ -118,8 +144,10 @@
          * @return JsonResponse
          */
         #[OA\Post( path: 'api/1.0.0/accounts/account/login' )]
-        #[OA\Response( response: '200', description: 'The data' )]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function login( Request $request ): JsonResponse
         {
 
@@ -132,9 +160,13 @@
          * @return void
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/logout' )]
-        #[OA\Parameter(name:'Authorization', description: 'has to be included in the header of the request', in: 'header')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function logout( Request $request )
         {
 
@@ -145,9 +177,11 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post(path: '/api/1.0.0/accounts/account/create')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Post( path: '/api/1.0.0/accounts/account/create' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function create( Request $request ): JsonResponse
         {
 
@@ -161,9 +195,13 @@
          */
 
         #[OA\Patch( path: '/api/1.0.0/accounts/account/update' )]
-        #[OA\Parameter(name:'Authorization', description: 'has to be included in the header of the request', in: 'header')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function update( Request $request ): JsonResponse
         {
 
@@ -176,10 +214,14 @@
          * @return JsonResponse
          */
 
-        #[OA\Delete(path: '/api/1.0.0/accounts/account/delete')]
-        #[OA\Parameter(name:'Authorization', description: 'has to be included in the header of the request', in: 'header')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Delete( path: '/api/1.0.0/accounts/account/delete' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function delete( Request $request ): JsonResponse
         {
 
@@ -192,10 +234,14 @@
          * @return JsonResponse
          */
 
-        #[OA\Post(path: '/api/1.0.0/accounts/account/verify')]
-        #[OA\Parameter(name:'Authorization', description: 'has to be included in the header of the request', in: 'header')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Post( path: '/api/1.0.0/accounts/account/verify' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        #[OA\Response( response: '200',
+                       description: 'The data')]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function verify( Request $request ): JsonResponse
         {
 
@@ -211,6 +257,9 @@
             return [];
         }
 
+        
+        // Accessors
+            // Setters
         /**
          * @param AccountController $controller
          * @return void
@@ -220,6 +269,7 @@
             self::$controller = $controller;
         }
 
+            // Getters
         /**
          * @return AccountController
          */
