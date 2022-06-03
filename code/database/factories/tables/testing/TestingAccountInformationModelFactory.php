@@ -22,26 +22,7 @@
         extends Factory
     {
         protected $model        = AccountInformationModel::class;
-        private static $debug   = false;
 
-
-        // Accessor
-        /**
-         * @return bool
-         */
-        public final function getDebugState(): bool
-        {
-            return self::$debug;
-        }
-
-        /**
-         * @param bool $value
-         * @return void
-         */
-        public final function setDebugState( bool $value ): void
-        {
-            self::$debug = $value;
-        }
 
 
         /**

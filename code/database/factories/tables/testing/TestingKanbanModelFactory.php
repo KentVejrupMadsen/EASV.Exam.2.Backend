@@ -18,31 +18,12 @@
     /**
      *
      */
-    class KanbanModelFactory
+    class TestingKanbanModelFactory
         extends Factory
     {
         // Variables
-        private static $debug   = false;
         protected $model        = KanbanModel::class;
 
-
-        // Accessor
-        /**
-         * @return bool
-         */
-        public final function getDebugState(): bool
-        {
-            return self::$debug;
-        }
-
-        /**
-         * @param bool $value
-         * @return void
-         */
-        public final function setDebugState( bool $value ): void
-        {
-            self::$debug = $value;
-        }
 
 
         //
