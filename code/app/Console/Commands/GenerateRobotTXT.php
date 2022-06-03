@@ -12,7 +12,7 @@
         protected $description = 'generates the robot.txt file to be parsed by google crawlers';
 
 
-        public final function handle()
+        public final function handle(): int
         {
             return 0;
         }

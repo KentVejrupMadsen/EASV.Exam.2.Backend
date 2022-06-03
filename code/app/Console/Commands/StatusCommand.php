@@ -12,7 +12,7 @@
         protected $description = 'retrieve the current state of the system';
 
 
-        public final function handle()
+        public final function handle(): int
         {
             return 0;
         }

@@ -12,7 +12,7 @@
         protected $description = 'generates a openapi file to make the specification file';
 
 
-        public final function handle()
+        public final function handle(): int
         {
             return 0;
         }

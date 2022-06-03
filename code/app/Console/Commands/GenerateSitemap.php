@@ -12,7 +12,7 @@
         protected $description = 'generates a sitemap for search engines to crawl';
 
 
-        public final function handle()
+        public final function handle(): int
         {
             return 0;
         }
