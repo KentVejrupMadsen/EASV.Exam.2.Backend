@@ -4,7 +4,7 @@
     use Illuminate\Console\Command;
 
 
-    class GenerateOpenAPICommand
+    class GenerateRobotTXT
         extends Command
     {
         /**
@@ -12,7 +12,7 @@
          *
          * @var string
          */
-        protected $signature = 'generate:openapi';
+        protected $signature = 'generate:name';
 
         /**
          * The console command description.
