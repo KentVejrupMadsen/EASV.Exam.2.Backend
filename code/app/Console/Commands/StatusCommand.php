@@ -5,6 +5,9 @@
     use Illuminate\Console\Command;
 
 
+    /**
+     *
+     */
     final class StatusCommand
         extends Command
     {
@@ -12,6 +15,9 @@
         protected $description = 'retrieve the current state of the system';
 
 
+        /**
+         * @return int
+         */
         public final function handle(): int
         {
             return 0;

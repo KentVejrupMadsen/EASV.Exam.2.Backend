@@ -5,6 +5,9 @@
     use Illuminate\Console\Command;
 
 
+    /**
+     *
+     */
     final class GenerateSitemap
         extends Command
     {
@@ -12,6 +15,9 @@
         protected $description = 'generates a sitemap for search engines to crawl';
 
 
+        /**
+         * @return int
+         */
         public final function handle(): int
         {
             return 0;
