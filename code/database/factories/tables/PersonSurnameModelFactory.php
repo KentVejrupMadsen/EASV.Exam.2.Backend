@@ -10,6 +10,7 @@
     // External libraries
     use Database\Factories\tables\testing\TestingPersonSurnameModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
+    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\PersonSurnameModel;

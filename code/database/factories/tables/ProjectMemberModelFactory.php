@@ -14,6 +14,7 @@
 
     // Internal libraries
     use App\Models\tables\ProjectMemberModel;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**

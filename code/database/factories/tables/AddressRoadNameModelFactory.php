@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\AddressRoadNameModel;
+use Database\Factories\templates\FactoryTemplate;
 
 
     /**
