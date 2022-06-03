@@ -34,7 +34,7 @@
             type: 'array',
             maximum: 1,
             minimum: 1,
-            items: new OA\Items(type: 'string'))]
+            items: new OA\Items( type: 'string' ) )]
         protected $fillable =
         [
             self::field_content

@@ -7,11 +7,10 @@
      */
     namespace App\Models\tables;
 
+    // Internal libraries
     use App\Models\templates\BaseModel;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
+    // External libraries
     use OpenApi\Attributes
         as OA;
 

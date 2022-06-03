@@ -24,5 +24,12 @@
     {
         use HasFactory;
 
-    };
+        public const typeString = 'string';
+        public const typeInteger = 'integer';
+        public const typeDouble = 'double';
+        public const typeFloat = 'float';
+        public const typeArray = 'array';
+
+        // Various use cases of datetime
+    }
 ?>
