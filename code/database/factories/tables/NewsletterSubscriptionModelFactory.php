@@ -29,16 +29,23 @@
 
         private static ?TestingNewsletterSubscriptionModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingNewsletterSubscriptionModelFactory
+         */
         public static final function getTestingFactory(): TestingNewsletterSubscriptionModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingNewsletterSubscriptionModelFactory());
+                self::setTestingFactory( new TestingNewsletterSubscriptionModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
+        /**
+         * @param TestingNewsletterSubscriptionModelFactory $fakeFactory
+         * @return void
+         */
         public static final function setTestingFactory( TestingNewsletterSubscriptionModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;

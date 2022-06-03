@@ -28,16 +28,23 @@
 
         private static ?TestingMemberGroupModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingMemberGroupModelFactory
+         */
         public static final function getTestingFactory(): TestingMemberGroupModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingMemberGroupModelFactory());
+                self::setTestingFactory( new TestingMemberGroupModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
+        /**
+         * @param TestingMemberGroupModelFactory $fakeFactory
+         * @return void
+         */
         public static final function setTestingFactory( TestingMemberGroupModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;

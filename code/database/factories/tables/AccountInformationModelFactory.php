@@ -28,6 +28,9 @@
 
         private static ?TestingAccountInformationModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingAccountInformationModelFactory
+         */
         public static final function getTestingFactory(): TestingAccountInformationModelFactory
         {
             if( is_null( self::$testingFactory ) )
@@ -38,6 +41,10 @@
             return self::$testingFactory;
         }
 
+        /**
+         * @param TestingAccountInformationModelFactory $fakeFactory
+         * @return void
+         */
         public static final function setTestingFactory( TestingAccountInformationModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;

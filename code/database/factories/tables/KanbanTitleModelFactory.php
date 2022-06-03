@@ -28,6 +28,9 @@
 
         private static ?TestingKanbanTitleModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingKanbanTitleModelFactory
+         */
         public static final function getTestingFactory(): TestingKanbanTitleModelFactory
         {
             if( is_null( self::$testingFactory ) )
@@ -38,6 +41,10 @@
             return self::$testingFactory;
         }
 
+        /**
+         * @param TestingKanbanTitleModelFactory $fakeFactory
+         * @return void
+         */
         public static final function setTestingFactory( TestingKanbanTitleModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;
