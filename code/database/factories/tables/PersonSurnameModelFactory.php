@@ -25,9 +25,9 @@
         protected $model        = PersonSurnameModel::class;
         private static $debug   = false;
 
-
         private static ?TestingPersonSurnameModelFactory $testingFactory = null;
 
+        // Accessors
         /**
          * @return TestingPersonSurnameModelFactory
          */
@@ -50,19 +50,29 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessors
+        /**
+         * @return bool
+         */
         public final function getDebugState(): bool
         {
             return self::$debug;
         }
 
+        /**
+         * @param bool $value
+         * @return void
+         */
         public final function setDebugState( bool $value ): void
         {
             self::$debug = $value;
         }
 
 
-        protected function DefaultDefinition(): array
+        // Definitions
+        /**
+         * @return null[]
+         */
+        protected final function DefaultDefinition(): array
         {
 
             return
@@ -72,9 +82,12 @@
                 ];
         }
 
-        protected function TestDefinition(): array
-        {
 
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
             return self::getTestingFactory()->definition();
         }
     }

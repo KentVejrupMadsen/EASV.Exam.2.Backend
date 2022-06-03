@@ -25,9 +25,9 @@
         private static $debug   = false;
         protected $model        = BoardTitleModel::class;
 
-
         private static ?TestingBoardTitleModelFactory $testingFactory = null;
 
+        // Accessors
         /**
          * @return TestingBoardTitleModelFactory
          */
@@ -50,7 +50,6 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessors
         /**
          * @return bool
          */
@@ -69,15 +68,21 @@
         }
 
 
-        protected function TestDefinition(): array
+        // Definitions
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
-
             return self::getTestingFactory()->definition();
         }
 
+
+        /**
+         * @return null[]
+         */
         protected final function DefaultDefinition(): array
         {
-
             return
                 [
                     'content' => null

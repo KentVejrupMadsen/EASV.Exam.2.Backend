@@ -23,11 +23,11 @@
     {
         protected $model        = AccountEmailModel::class;
         private static $debug   = false;
-
-
+        
         private static ?TestingAccountEmailModelFactory $testingFactory = null;
 
 
+        // Accessor
         /**
          * @return TestingAccountEmailModelFactory
          */
@@ -50,7 +50,6 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessor
         /**
          * @return bool
          */
@@ -68,10 +67,11 @@
             self::$debug = $value;
         }
 
+        // Definitions
         /**
          * @return null[]
          */
-        protected function DefaultDefinition(): array
+        protected final function DefaultDefinition(): array
         {
             return
             [
@@ -79,7 +79,10 @@
             ];
         }
 
-        protected function TestDefinition(): array
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
             return self::getTestingFactory()->definition();
         }

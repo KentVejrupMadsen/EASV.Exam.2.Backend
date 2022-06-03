@@ -28,6 +28,7 @@
 
         private static ?TestingProjectTitleModelFactory $testingFactory = null;
 
+        // Accessors
         /**
          * @return TestingProjectTitleModelFactory
          */
@@ -69,12 +70,12 @@
         }
 
 
+        // Definitions
         /**
          * @return null[]
          */
         protected final function DefaultDefinition(): array
         {
-
             return
                 [
                     'content' => null

@@ -25,9 +25,10 @@
         protected $model        = AccountInformationModel::class;
         private static $debug   = false;
 
-
         private static ?TestingAccountInformationModelFactory $testingFactory = null;
 
+
+        // Accessor
         /**
          * @return TestingAccountInformationModelFactory
          */
@@ -50,7 +51,6 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessor
         /**
          * @return bool
          */
@@ -69,10 +69,11 @@
         }
 
 
+        // Definitions
         /**
          * @return array
          */
-        protected function TestDefinition(): array
+        protected final function TestDefinition(): array
         {
             return self::getTestingFactory()->definition();
         }

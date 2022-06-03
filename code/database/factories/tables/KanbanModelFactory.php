@@ -28,6 +28,7 @@
 
         private static ?TestingKanbanModelFactory $testingFactory = null;
 
+        // Accessor
         /**
          * @return TestingKanbanModelFactory
          */
@@ -51,7 +52,6 @@
         }
 
 
-        // Accessor
         /**
          * @return bool
          */
@@ -69,15 +69,19 @@
             self::$debug = $value;
         }
 
-        protected function TestDefinition(): array
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
-
             return self::getTestingFactory()->definition();
         }
 
+        /**
+         * @return array
+         */
         protected final function DefaultDefinition(): array
         {
-
             return
                 [
                     //

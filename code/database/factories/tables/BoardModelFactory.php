@@ -26,9 +26,9 @@
         protected $model        = BoardModel::class;
         private static $debug   = false;
 
-
         private static ?TestingBoardModelFactory $testingFactory = null;
 
+        // Accessors
         /**
          * @return TestingBoardModelFactory
          */
@@ -51,7 +51,6 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessors
         /**
          * @return bool
          */
@@ -70,12 +69,18 @@
         }
 
 
-        protected function TestDefinition(): array
+        // Defintions
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
-
             return self::getTestingFactory()->definition();
         }
 
+        /**
+         * @return array
+         */
         protected final function DefaultDefinition(): array
         {
 

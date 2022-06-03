@@ -26,9 +26,10 @@
         protected $model        = AddressModel::class;
         private static $debug   = false;
 
-
         private static ?TestingAddressModelFactory $testingFactory = null;
 
+
+        // Accessor
         /**
          * @return TestingAddressModelFactory
          */
@@ -51,7 +52,6 @@
             self::$testingFactory = $fakeFactory;
         }
 
-        // Accessor
         /**
          * @return bool
          */
@@ -70,11 +70,18 @@
         }
 
 
-        protected function TestDefinition(): array
+        // Definitions
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
         {
             return self::getTestingFactory()->definition();
         }
 
+        /**
+         * @return array
+         */
         protected final function DefaultDefinition(): array
         {
 
