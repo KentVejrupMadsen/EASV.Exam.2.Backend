@@ -27,7 +27,9 @@
             $search_directory = $currentPath . '/app';
 
             $result = Generator::scan( [$search_directory] );
-            Storage::disk( 'local' )->put( 'swagger.yaml', $result->toYaml() );
+
+            Storage::disk( 'local' )->put( 'swagger.yaml',
+                                           $result->toYaml() );
 
             $this->info( 'operation is complete' );
             return 0;
