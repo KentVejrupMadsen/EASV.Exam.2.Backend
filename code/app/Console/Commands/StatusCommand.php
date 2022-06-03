@@ -1,18 +1,18 @@
 <?php
     namespace App\Console\Commands;
 
-    // External Libraries
+    // External libraries
     use Illuminate\Console\Command;
 
 
     /**
      *
      */
-    final class GenerateSitemap
+    final class StatusCommand
         extends Command
     {
-        protected $signature = 'generate:sitemap';
-        protected $description = 'generates a sitemap for search engines to crawl';
+        protected $signature = 'status:status';
+        protected $description = 'retrieve the current state of the system';
 
 
         /**
