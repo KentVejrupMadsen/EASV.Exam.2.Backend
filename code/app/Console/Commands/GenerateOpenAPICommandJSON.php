@@ -27,7 +27,7 @@
             $search_directory = $currentPath . '/app';
 
             $result = Generator::scan( [$search_directory] );
-            
+
             Storage::disk( 'local' )->put( 'swagger.json',
                                             $result->toJson() );
 
