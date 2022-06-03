@@ -69,28 +69,29 @@
         }
 
 
-        //
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public final function definition(): array
+        protected final function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+            return self::getTestingFactory()->definition();
+        }
+
+
+        /**
+         * @return array
+         */
+        protected final function DefaultDefinition(): array
+        {
+            return
                 [
-                        //
-                    'success'  => false,
-                    'score'    => 0.0,
-                    'at_date'  => Carbon::now(),
-                    'hostname' => null,
-                    'error'    => null
+                    //
+                    RecaptchaModel::field_success  => false,
+                    RecaptchaModel::field_score    => 0.0,
+                    RecaptchaModel::field_at_date  => Carbon::now(),
+                    RecaptchaModel::field_hostname => null,
+                    RecaptchaModel::field_error    => null
                 ];
-            }
         }
     }
 ?>

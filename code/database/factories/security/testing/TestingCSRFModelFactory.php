@@ -8,8 +8,6 @@
     namespace Database\Factories\security\testing;
 
     // External libraries
-    use Carbon\Carbon;
-
     use Illuminate\Database\Eloquent\Factories\Factory;
     use Illuminate\Support\Str;
 
@@ -24,8 +22,7 @@
         extends Factory
     {
         // Variables
-        protected $model        = CSRFModel::class;
-
+        protected $model = CSRFModel::class;
 
 
         //
@@ -36,15 +33,14 @@
         {
             return
                 [
-                    'assigned_to'  => $this->faker->ipv4,
-                    'secure_token' => Str::random( 32 ),
-                    'secret_token' => Str::random( 32 ),
+                    CSRFModel::field_assigned_to  => $this->faker->ipv4,
+                    CSRFModel::field_secure_token => Str::random( 32 ),
+                    CSRFModel::field_secret_token => Str::random( 32 ),
+                    CSRFModel::field_issued       => $this->faker->time,
+                    CSRFModel::field_accessed     => $this->faker->time,
 
-                    'issued'       => $this->faker->time,
-                    'accessed'     => $this->faker->time,
-
-                    'activated'    => $this->faker->boolean,
-                    'invalidated'  => $this->faker->boolean
+                    CSRFModel::field_activated    => $this->faker->boolean,
+                    CSRFModel::field_invalidated  => $this->faker->boolean
                 ];
         }
     }

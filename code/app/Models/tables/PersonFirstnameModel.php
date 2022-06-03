@@ -22,5 +22,7 @@
         #[OA\Property( type: 'string' )]
         public const table_name = 'person_name_first';
         protected $table = self::table_name;
+
+        public const field_content = ExtensionLabelModel::field_content;
     }
 ?>

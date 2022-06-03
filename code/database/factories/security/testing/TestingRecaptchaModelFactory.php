@@ -8,7 +8,6 @@
     namespace Database\Factories\security\testing;
 
     // External libraries
-    use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -25,7 +24,6 @@
         protected $model        = RecaptchaModel::class;
 
 
-        //
         /**
          * @return array|mixed[]
          */
@@ -34,11 +32,11 @@
             return
             [
                     //
-                'success'  => $this->faker->boolean,
-                'score'    => $this->faker->randomFloat(1, 0, 1),
-                'at_date'  => $this->faker->time,
-                'hostname' => $this->faker->unique()->domainName,
-                'error'    => $this->faker->text(50)
+                RecaptchaModel::field_success  => $this->faker->boolean,
+                RecaptchaModel::field_score => $this->faker->randomFloat(1, 0, 1),
+                RecaptchaModel::field_at_date  => $this->faker->time,
+                RecaptchaModel::field_hostname => $this->faker->unique()->domainName,
+                RecaptchaModel::field_error    => $this->faker->text(50)
             ];
         }
     }

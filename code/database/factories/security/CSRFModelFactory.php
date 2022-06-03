@@ -71,29 +71,29 @@
         }
 
 
-        //
         /**
-         * @return array|mixed[]
+         * @return array
          */
-        public function definition(): array
+        protected final function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return $this::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+            return $this::getTestingFactory()->definition();
+        }
+
+        /**
+         * @return array
+         */
+        protected final function DefaultDefinition(): array
+        {
+            return
                 [
-                    'assigned_to'  => null,
-                    'secure_token' => Str::random( 32 ),
-                    'secret_token' => Str::random( 32 ),
-                    'issued'       => Carbon::now(),
-                    'accessed'     => null,
-                    'activated'    => false,
-                    'invalidated'  => false
+                    CSRFModel::field_assigned_to  => null,
+                    CSRFModel::field_secure_token => Str::random( 32 ),
+                    CSRFModel::field_secret_token => Str::random( 32 ),
+                    CSRFModel::field_issued       => Carbon::now(),
+                    CSRFModel::field_accessed     => null,
+                    CSRFModel::field_activated    => false,
+                    CSRFModel::field_invalidated  => false
                 ];
-            }
         }
     }
 ?>

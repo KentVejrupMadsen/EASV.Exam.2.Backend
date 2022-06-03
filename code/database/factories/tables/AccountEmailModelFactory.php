@@ -21,9 +21,9 @@
     class AccountEmailModelFactory
         extends FactoryTemplate
     {
-        protected $model        = AccountEmailModel::class;
-        private static $debug   = false;
-        
+        protected $model = AccountEmailModel::class;
+        private static $debug = false;
+
         private static ?TestingAccountEmailModelFactory $testingFactory = null;
 
 

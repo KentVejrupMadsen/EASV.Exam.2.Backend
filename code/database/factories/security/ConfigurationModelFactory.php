@@ -69,23 +69,26 @@
 
 
         /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+
+            return self::getTestingFactory()->definition();
+        }
+
+
+        /**
          * @return null[]
          */
-        public function definition(): array
+        protected final function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+            return
                 [
                     //
-                    'key'   => null,
-                    'value' => null
+                    ConfigurationModel::field_key   => null,
+                    ConfigurationModel::field_value => null
                 ];
-            }
         }
     }
 ?>

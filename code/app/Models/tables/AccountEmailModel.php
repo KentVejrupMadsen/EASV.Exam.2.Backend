@@ -22,6 +22,7 @@
     {
         #[OA\Property( type: 'string' )]
         public const table_name = 'account_emails';
+        public const field_content = ExtensionLabelModel::field_content;
 
         protected $table = self::table_name;
     }
