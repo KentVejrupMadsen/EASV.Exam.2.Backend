@@ -27,13 +27,12 @@
         /**
          * @return array
          */
-        public function definition(): array
+        public final function definition(): array
         {
             return
             [
-                    //
-                'email_id' => 1,
-                'options' => ''
+                NewsletterSubscriptionModel::field_email_id => 1,
+                NewsletterSubscriptionModel::field_options => ''
             ];
         }
     }

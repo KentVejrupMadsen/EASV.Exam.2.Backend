@@ -11,6 +11,7 @@
 
     // Internal libraries
     use App\Models\tables\ZipCodeModel;
+
     use Database\Factories\tables\testing\TestingZipCodeModelFactory;
     use Database\Factories\templates\FactoryTemplate;
 
@@ -22,8 +23,8 @@
         extends FactoryTemplate
     {
         // Variables
-        protected $model        = ZipCodeModel::class;
-        private static $debug   = false;
+        protected $model = ZipCodeModel::class;
+        private static $debug = false;
 
 
         private static ?TestingZipCodeModelFactory $testingFactory = null;
@@ -76,9 +77,9 @@
         {
             return
                 [
-                    'area_name'  => null,
-                    'zip_number' => 0,
-                    'country_id' => 0
+                    ZipCodeModel::field_area_name=> null,
+                    ZipCodeModel::field_zip_number => 0,
+                    ZipCodeModel::field_country_id => 0
                 ];
         }
 

@@ -92,7 +92,7 @@
         {
             return
             [
-                'content' => null
+                AccountEmailModel::field_content => null
             ];
         }
 

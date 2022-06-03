@@ -27,22 +27,6 @@
 
         private static ?TestingPersonSurnameModelFactory $testingFactory = null;
 
-        private static ?TestingPersonSurnameModelFactory $testingFactory = null;
-
-        public static final function getTestingFactory(): TestingPersonSurnameModelFactory
-        {
-            if( is_null( self::$testingFactory ) )
-            {
-                self::setTestingFactory(new TestingPersonSurnameModelFactory());
-            }
-
-            return self::$testingFactory;
-        }
-
-        public static final function setTestingFactory( TestingPersonSurnameModelFactory $fakeFactory )
-        {
-            self::$testingFactory = $fakeFactory;
-        }
 
         // Accessors
         /**
@@ -91,12 +75,10 @@
          */
         protected final function DefaultDefinition(): array
         {
-
             return
-                [
-                    //
-                    'content' => null
-                ];
+            [
+                PersonSurnameModel::field_content => null
+            ];
         }
 
 

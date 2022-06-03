@@ -84,11 +84,11 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
+            [
                     //
-                    ConfigurationModel::field_key   => null,
-                    ConfigurationModel::field_value => null
-                ];
+                ConfigurationModel::field_key   => null,
+                ConfigurationModel::field_value => null
+            ];
         }
     }
 ?>

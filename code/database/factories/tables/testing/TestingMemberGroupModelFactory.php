@@ -21,8 +21,7 @@
         extends Factory
     {
         // Variables
-        protected $model        = MemberGroupModel::class;
-
+        protected $model = MemberGroupModel::class;
 
         //
         /**
@@ -32,7 +31,7 @@
         {
             return
             [
-                'content' => $this->faker->unique()->text(45)
+                MemberGroupModel::field_content => $this->faker->unique()->text(45)
             ];
         }
     }

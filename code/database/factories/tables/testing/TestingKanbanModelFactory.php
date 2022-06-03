@@ -8,7 +8,6 @@
     namespace Database\Factories\tables\testing;
 
     // External libraries
-    use Carbon\Carbon;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -32,10 +31,10 @@
         {
             return
             [
-                'kanban_title_id' => 0,
-                'project_id' => 0,
-                'created_at' => $this->faker->dateTime,
-                'updated_at' => $this->faker->dateTime
+                KanbanModel::field_kanban_title_id => 0,
+                KanbanModel::field_project_id => 0,
+                KanbanModel::field_created_at => $this->faker->dateTime,
+                KanbanModel::field_updated_at => $this->faker->dateTime
             ];
         }
     }

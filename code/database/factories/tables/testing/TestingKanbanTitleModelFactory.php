@@ -21,8 +21,7 @@
         extends Factory
     {
         // Variables
-        protected $model        = KanbanTitleModel::class;
-
+        protected $model = KanbanTitleModel::class;
 
 
         /**
@@ -32,7 +31,7 @@
         {
             return
             [
-                'content' => $this->faker->unique()->jobTitle
+                KanbanTitleModel::field_content => $this->faker->unique()->jobTitle
             ];
         }
     }

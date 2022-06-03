@@ -93,10 +93,9 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    //
-                    'content' => null
-                ];
+            [
+                PersonFirstnameModel::field_content => null
+            ];
         }
 
         /**
@@ -104,7 +103,6 @@
          */
         protected final function TestDefinition(): array
         {
-
             return self::getTestingFactory()->definition();
         }
     }

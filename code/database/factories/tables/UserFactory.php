@@ -95,20 +95,19 @@
          */
         protected final function DefaultDefinition(): array
         {
-
             return
-                [
-                    'username'          => null,
-                    'email_id'          => 0,
+            [
+                User::field_username => null,
 
-                    'email_verified_at' => null,
-                    'password'          => null,
+                User::field_email_id    => 0,
+                User::field_verified_at => null,
 
-                    'created_at'        => Carbon::now(),
-                    'updated_at'        => Carbon::now(),
+                User::field_password    => null,
 
-                    'settings' => '{ }'
-                ];
+                User::field_created_at  => Carbon::now(),
+                User::field_updated_at  => Carbon::now(),
+                User::field_settings    => '{ }'
+            ];
         }
 
 
