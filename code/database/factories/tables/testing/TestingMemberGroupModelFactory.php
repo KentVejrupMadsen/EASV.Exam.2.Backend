@@ -30,20 +30,10 @@
          */
         public final function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
+            return
                 [
                     'content' => $this->faker->unique()->text(45)
                 ];
-            }
-            else
-            {
-                return
-                [
-                    'content' => null
-                ];
-            }
         }
     }
 ?>

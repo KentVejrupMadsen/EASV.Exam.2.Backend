@@ -30,23 +30,12 @@
          */
         public function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
-                    [
-                        'board_id' => 0,
-                        'content'  => $this->faker
-                                           ->realText
-                    ];
-            }
-            else
-            {
-                return
-                    [
-                        'board_id' => 0,
-                        'content'  => null
-                    ];
-            }
+            return
+                [
+                    'board_id' => 0,
+                    'content'  => $this->faker
+                        ->realText
+                ];
         }
     }
 ?>

@@ -28,22 +28,13 @@
         //
         public final function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
+
+            return
                 [
                     'content' => $this->faker
-                                      ->unique()
-                                      ->realText(50)
+                        ->unique()
+                        ->realText(50)
                 ];
-            }
-            else
-            {
-                return
-                    [
-                        'content' => null
-                    ];
-            };
         }
     }
 ?>

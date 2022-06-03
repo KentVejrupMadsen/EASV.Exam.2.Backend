@@ -30,27 +30,16 @@
          */
         public final function definition(): array
         {
-            if($this->getDebugState())
-            {
-                return
-                    [
-                        'country_name' => $this->faker
-                                               ->unique()
-                                               ->country,
+            return
+                [
+                    'country_name' => $this->faker
+                        ->unique()
+                        ->country,
 
-                        'country_acronym' => $this->faker
-                                                  ->unique()
-                                                  ->countryCode
-                    ];
-            }
-            else
-            {
-                return
-                    [
-                        'country_name'    => null,
-                        'country_acronym' => null
-                    ];
-            }
+                    'country_acronym' => $this->faker
+                        ->unique()
+                        ->countryCode
+                ];
         }
     }
 ?>

@@ -32,36 +32,20 @@
          */
         public final function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
+            return
                 [
                     //
                     'account_information_id' => 0,
                     'road_name_id'           => 0,
 
                     'road_number' => $this->faker
-                                          ->randomDigit(),
+                        ->randomDigit(),
 
                     'levels' => Str::random(3),
 
                     'country_id'  => 0,
                     'zip_code_id' => 0
                 ];
-            }
-            else
-            {
-                return
-                [
-                        //
-                    'account_information_id' => 0,
-                    'road_name_id'           => 0,
-                    'road_number'            => 0,
-                    'levels'                 => 'UNKN',
-                    'country_id'             => 0,
-                    'zip_code_id'            => 0
-                ];
-            }
         }
     }
 ?>

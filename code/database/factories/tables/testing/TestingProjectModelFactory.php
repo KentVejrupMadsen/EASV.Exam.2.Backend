@@ -32,35 +32,19 @@
          */
         public final function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
-                    [
-                        //
-                        'account_owner_id' => 0,
-                        'project_title_id' => 0,
-                        'description' => $this->faker
-                                              ->realText,
-                        'tags' => '{ }',
-                        'created_at' => $this->faker
-                                             ->dateTime,
-                        'updated_at' => $this->faker
-                                             ->dateTime
-                    ];
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'account_owner_id' => 0,
-                        'project_title_id' => 0,
-                        'description' => null,
-                        'tags' => null,
-                        'created_at' => Carbon::now(),
-                        'updated_at' => Carbon::now()
-                    ];
-            }
+            return
+                [
+                    //
+                    'account_owner_id' => 0,
+                    'project_title_id' => 0,
+                    'description' => $this->faker
+                        ->realText,
+                    'tags' => '{ }',
+                    'created_at' => $this->faker
+                        ->dateTime,
+                    'updated_at' => $this->faker
+                        ->dateTime
+                ];
         }
     }
 ?>

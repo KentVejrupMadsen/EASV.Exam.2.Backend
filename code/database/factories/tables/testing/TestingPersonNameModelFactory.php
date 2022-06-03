@@ -31,28 +31,14 @@
          */
         public final function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
-                    [
-                        //
-                        'account_information_id'    => 0,
-                        'person_name_first_id'      => 0,
-                        'person_name_lastname_id'   => 0,
-                        'person_name_middlename'    => '{ }'
-                    ];
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'account_information_id'    => 0,
-                        'person_name_first_id'      => 0,
-                        'person_name_lastname_id'   => 0,
-                        'person_name_middlename'    => '{ }'
-                    ];
-            }
+            return
+                [
+                    //
+                    'account_information_id'    => 0,
+                    'person_name_first_id'      => 0,
+                    'person_name_lastname_id'   => 0,
+                    'person_name_middlename'    => '{ }'
+                ];
         }
     }
 ?>

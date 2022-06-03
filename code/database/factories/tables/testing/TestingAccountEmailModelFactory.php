@@ -20,7 +20,7 @@
     class TestingAccountEmailModelFactory
         extends Factory
     {
-        protected $model        = AccountEmailModel::class;
+        protected $model = AccountEmailModel::class;
 
 
 
@@ -29,40 +29,12 @@
          */
         public final function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return $this->fakeDefinition();
-            }
-            else
-            {
-                return $this->normalDefinition();
-            }
-        }
-
-
-        /**
-         * @return null[]
-         */
-        protected function fakeDefinition(): array
-        {
             return
-            [
-                'content' =>  $this -> faker
-                                    -> unique()
-                                    -> safeEmail
-            ];
-        }
-
-
-        /**
-         * @return null[]
-         */
-        protected function normalDefinition(): array
-        {
-            return
-            [
-                'content' => null
-            ];
+                [
+                    'content' =>  $this -> faker
+                                        -> unique()
+                                        -> safeEmail
+                ];
         }
     }
 ?>

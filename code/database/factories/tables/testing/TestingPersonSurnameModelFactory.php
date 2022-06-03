@@ -30,22 +30,11 @@
          */
         public final function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
+            return
                 [
                     //
                     'content' => $this->faker->unique()->lastName
                 ];
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'content' => null
-                    ];
-            }
         }
     }
 ?>

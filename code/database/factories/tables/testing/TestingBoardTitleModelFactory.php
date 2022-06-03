@@ -21,31 +21,19 @@
         extends Factory
     {
         // Variables
-        private static $debug   = false;
-
-
+        protected $model = BoardTitleModel::class;
 
         /**
          * @return array|mixed[]
          */
         public function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
-                    [
-                        'content' => $this->faker
-                                          ->unique()
-                                          ->realText(50)
-                    ];
-            }
-            else
-            {
-                return
-                    [
-                        'content' => null
-                    ];
-            }
+            return
+                [
+                    'content' => $this -> faker
+                                       -> unique()
+                                       -> realText(50)
+                ];
         }
     }
 ?>

@@ -32,30 +32,16 @@
          */
         public function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
-                    [
-                        //
-                        'kanban_title_id' => 0,
-                        'project_id' => 0,
-                        'created_at' => $this->faker
-                            ->dateTime,
-                        'updated_at' => $this->faker
-                            ->dateTime
-                    ];
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'kanban_title_id'   => 0,
-                        'project_id'        => 0,
-                        'created_at'        => Carbon::now(),
-                        'updated_at'        => Carbon::now()
-                    ];
-            }
+            return
+                [
+                    //
+                    'kanban_title_id' => 0,
+                    'project_id' => 0,
+                    'created_at' => $this->faker
+                        ->dateTime,
+                    'updated_at' => $this->faker
+                        ->dateTime
+                ];
         }
     }
 ?>

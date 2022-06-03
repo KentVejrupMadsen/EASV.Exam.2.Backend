@@ -24,29 +24,18 @@
         protected $model        = AddressRoadNameModel::class;
 
 
-
         /**
          * @return array
          */
         public final function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
+            return
                 [
-                        //
+                    //
                     'content' => $this->faker
-                                      ->unique()
-                                      ->streetName
+                        ->unique()
+                        ->streetName
                 ];
-            }
-            else
-            {
-                return
-                [
-                    'content' => null
-                ];
-            }
         }
     }
 ?>

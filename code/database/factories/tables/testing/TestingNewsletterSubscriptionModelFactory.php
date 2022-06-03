@@ -31,24 +31,12 @@
          */
         public function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
-                    [
-                        //
-                        'email_id' => 1,
-                        'options' => '{ }'
-                    ];
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'email_id' => 0,
-                        'options' => null
-                    ];
-            }
+            return
+                [
+                    //
+                    'email_id' => 1,
+                    'options' => '{ }'
+                ];
         }
     }
 ?>

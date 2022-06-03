@@ -24,8 +24,7 @@
     {
         // Variables
         protected $model        = User::class;
-
-
+        
 
         /**
          * @return \DateTime|null
@@ -60,13 +59,12 @@
          */
         public final function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return
+
+            return
                 [
                     'username'          => $this->faker
-                                                ->unique()
-                                                ->userName,
+                        ->unique()
+                        ->userName,
 
                     'email_id'          => 0,
                     'email_verified_at' => $this->fakeIsVerified(),
@@ -74,29 +72,12 @@
                     'password'          => $this->generatePassword(),
 
                     'created_at'        => $this->faker
-                                                ->dateTime,
+                        ->dateTime,
 
                     'updated_at'        => $this->faker
-                                                ->dateTime,
+                        ->dateTime,
                     'settings' => '{ }'
                 ];
-            }
-            else
-            {
-                return
-                [
-                    'username'          => null,
-                    'email_id'          => 0,
-
-                    'email_verified_at' => null,
-                    'password'          => null,
-
-                    'created_at'        => Carbon::now(),
-                    'updated_at'        => Carbon::now(),
-
-                    'settings' => '{ }'
-                ];
-            }
         }
 
     }

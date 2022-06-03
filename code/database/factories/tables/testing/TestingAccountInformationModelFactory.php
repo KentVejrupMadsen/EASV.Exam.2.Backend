@@ -30,44 +30,13 @@
          */
         public final function definition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return $this->fakeDefinition();
-            }
-            else
-            {
-                return $this->normalDefinition();
-            }
-        }
-
-
-        /**
-         * @return array
-         */
-        protected function fakeDefinition(): array
-        {
             return
-            [
-                'account_id' => 0,
-                'settings'   => '{ }',
-                'created_at' => $this->faker->dateTime,
-                'updated_at' => $this->faker->dateTime
-            ];
-        }
-
-
-        /**
-         * @return array
-         */
-        protected function normalDefinition(): array
-        {
-            return
-            [
-                'account_id' => 0,
-                'settings'   => null,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ];
+                [
+                    'account_id' => 0,
+                    'settings'   => '{ }',
+                    'created_at' => $this->faker->dateTime,
+                    'updated_at' => $this->faker->dateTime
+                ];
         }
     }
 ?>
