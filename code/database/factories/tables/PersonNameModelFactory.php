@@ -61,28 +61,22 @@
             self::$debug = $value;
         }
 
-
-        //
-        /**
-         * @return array
-         */
-        public final function definition(): array
+        protected function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'account_information_id'    => 0,
-                        'person_name_first_id'      => 0,
-                        'person_name_lastname_id'   => 0,
-                        'person_name_middlename'    => '{ }'
-                    ];
-            }
+            return
+                [
+                    //
+                    'account_information_id'    => 0,
+                    'person_name_first_id'      => 0,
+                    'person_name_lastname_id'   => 0,
+                    'person_name_middlename'    => '{ }'
+                ];
+        }
+
+        protected function TestDefinition(): array
+        {
+
+            return self::getTestingFactory()->definition();
         }
     }
 ?>

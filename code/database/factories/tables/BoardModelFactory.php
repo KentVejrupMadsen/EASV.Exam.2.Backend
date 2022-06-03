@@ -70,19 +70,16 @@
         }
 
 
-        //
-        /**
-         * @return array
-         */
-        public function definition(): array
+        protected function TestDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+
+            return self::getTestingFactory()->definition();
+        }
+
+        protected final function DefaultDefinition(): array
+        {
+
+            return
                 [
                     'kanban_id'      => 0,
                     'board_title_id' => 0,
@@ -90,7 +87,6 @@
                     'created_at'     => Carbon::now(),
                     'updated_at'     => Carbon::now()
                 ];
-            }
         }
     }
 ?>

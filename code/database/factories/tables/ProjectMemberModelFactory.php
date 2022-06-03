@@ -70,26 +70,21 @@
         }
 
 
-        //
-        /**
-         * @return array
-         */
-        public final function definition(): array
+        protected function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
-                    [
-                        //
-                        'project_id' => 0,
-                        'account_id' => 0,
-                        'member_group_id' => 0
-                    ];
-            }
+            return
+                [
+                    //
+                    'project_id' => 0,
+                    'account_id' => 0,
+                    'member_group_id' => 0
+                ];
+        }
+
+        protected function TestDefinition(): array
+        {
+
+            return self::getTestingFactory()->definition();
         }
     }
 ?>

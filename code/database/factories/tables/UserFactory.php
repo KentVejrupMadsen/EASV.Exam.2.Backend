@@ -27,9 +27,10 @@
         protected $model        = User::class;
         private static $debug   = false;
 
-
         private static ?TestingUserFactory $testingFactory = null;
 
+
+        // Accessor
         /**
          * @return TestingUserFactory
          */
@@ -71,46 +72,14 @@
         }
 
 
-        /**
-         * @return \DateTime|null
-         */
-        protected function fakeIsVerified(): ?\DateTime
-        {
-            if( $this->faker->boolean )
-            {
-                return $this->faker->dateTime;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        protected function generatePassword(): ?string
-        {
-            if( $this->getDebugState() )
-            {
-                return Hash::make( $this->faker->realTextBetween( 8, 16 ) );
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-
+        // Definitions
         /**
          * @return array
          */
-        public final function definition(): array
+        protected final function DefaultDefinition(): array
         {
-            if( $this->getDebugState() )
-            {
-                return self::getTestingFactory()->definition();
-            }
-            else
-            {
-                return
+
+            return
                 [
                     'username'          => null,
                     'email_id'          => 0,
@@ -123,7 +92,16 @@
 
                     'settings' => '{ }'
                 ];
-            }
+        }
+
+
+        /**
+         * @return array
+         */
+        protected final function TestDefinition(): array
+        {
+
+            return self::getTestingFactory()->definition();
         }
 
     }

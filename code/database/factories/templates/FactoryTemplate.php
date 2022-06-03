@@ -9,7 +9,7 @@
 
     use Illuminate\Database\Eloquent\Factories\Factory;
 
-    
+
     /**
      *
      */
@@ -18,6 +18,21 @@
     {
         public abstract function getDebugState(): bool;
         public abstract function setDebugState( bool $value ): void;
+
+        public final function definition()
+        {
+            if( $this->getDebugState() )
+            {
+                return $this->TestDefinition();
+            }
+            else
+            {
+                return $this->DefaultDefinition();
+            }
+        }
+
+        protected abstract function TestDefinition(): array;
+        protected abstract function DefaultDefinition(): array;
     }
 
 ?>
