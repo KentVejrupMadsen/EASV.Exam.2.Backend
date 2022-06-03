@@ -3,6 +3,10 @@
 
     // External Libraries
     use Illuminate\Console\Command;
+    use Illuminate\Support\Facades\Storage;
+
+    use OpenApi\Generator;
+
 
 
     /**
@@ -19,6 +23,15 @@
          */
         public final function handle(): int
         {
+            $currentPath = getcwd();
+            $this->info( $currentPath );
+
+            $search_directory = $currentPath . '/app';
+
+            $result = Generator::scan( [$search_directory] );
+            Storage::disk( 'local' )->put( 'swagger.json', $result->toJson() );
+
+            $this->info( 'operation is complete' );
             return 0;
         }
     }
