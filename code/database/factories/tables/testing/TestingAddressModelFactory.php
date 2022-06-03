@@ -5,42 +5,25 @@
      * Description:
      * TODO: Make description
      */
-    namespace Database\Factories\security;
+    namespace Database\Factories\tables;
 
     // External libraries
-    use Carbon\Carbon;
-    use Database\Factories\security\testing\TestingRecaptchaModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
-    use App\Models\security\RecaptchaModel;
+    use App\Models\tables\AddressModel;
+    use Illuminate\Support\Str;
 
 
     /**
      *
      */
-    class RecaptchaModelFactory
+    class TestingAddressModelFactory
         extends Factory
     {
         // Variables
-        protected $model        = RecaptchaModel::class;
+        protected $model        = AddressModel::class;
         private static $debug   = false;
-        private static ?TestingRecaptchaModelFactory $testingFactory = null;
-
-        public static final function getTestingFactory(): TestingRecaptchaModelFactory
-        {
-            if( is_null( self::$testingFactory ) )
-            {
-                self::setTestingFactory( new TestingRecaptchaModelFactory() );
-            }
-
-            return self::$testingFactory;
-        }
-
-        public static final function setTestingFactory( TestingRecaptchaModelFactory $fakeFactory )
-        {
-            self::$testingFactory = $fakeFactory;
-        }
 
 
         // Accessor
@@ -70,18 +53,32 @@
         {
             if( $this->getDebugState() )
             {
-                return self::getTestingFactory()->definition();
+                return
+                [
+                    //
+                    'account_information_id' => 0,
+                    'road_name_id'           => 0,
+
+                    'road_number' => $this->faker
+                                          ->randomDigit(),
+
+                    'levels' => Str::random(3),
+
+                    'country_id'  => 0,
+                    'zip_code_id' => 0
+                ];
             }
             else
             {
                 return
                 [
                         //
-                    'success'  => false,
-                    'score'    => 0.0,
-                    'at_date'  => Carbon::now(),
-                    'hostname' => null,
-                    'error'    => null
+                    'account_information_id' => 0,
+                    'road_name_id'           => 0,
+                    'road_number'            => 0,
+                    'levels'                 => 'UNKN',
+                    'country_id'             => 0,
+                    'zip_code_id'            => 0
                 ];
             }
         }

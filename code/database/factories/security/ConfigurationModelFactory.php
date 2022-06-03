@@ -69,17 +69,16 @@
         {
             if( $this->getDebugState() )
             {
-                $model = self::getTestingFactory()->definition();
-                return $model;
+                return self::getTestingFactory()->definition();
             }
             else
             {
                 return
-                    [
-                        //
-                        'key'   => null,
-                        'value' => null
-                    ];
+                [
+                    //
+                    'key'   => null,
+                    'value' => null
+                ];
             }
         }
     }

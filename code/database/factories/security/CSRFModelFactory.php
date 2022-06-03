@@ -73,20 +73,20 @@
         {
             if( $this->getDebugState() )
             {
-
+                return $this::getTestingFactory()->definition();
             }
             else
             {
                 return
-                    [
-                        'assigned_to'  => null,
-                        'secure_token' => Str::random( 32 ),
-                        'secret_token' => Str::random( 32 ),
-                        'issued'       => Carbon::now(),
-                        'accessed'     => null,
-                        'activated'    => false,
-                        'invalidated'  => false
-                    ];
+                [
+                    'assigned_to'  => null,
+                    'secure_token' => Str::random( 32 ),
+                    'secret_token' => Str::random( 32 ),
+                    'issued'       => Carbon::now(),
+                    'accessed'     => null,
+                    'activated'    => false,
+                    'invalidated'  => false
+                ];
             }
         }
     }
