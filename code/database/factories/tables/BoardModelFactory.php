@@ -9,6 +9,7 @@
 
     // External libraries
     use Carbon\Carbon;
+    use Database\Factories\tables\testing\TestingBoardModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -18,13 +19,30 @@
     /**
      *
      */
-    final class BoardModelFactory
+    class BoardModelFactory
         extends Factory
     {
         // Variables
         protected $model        = BoardModel::class;
         private static $debug   = false;
 
+
+        private static ?TestingBoardModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingBoardModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingBoardModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingBoardModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessors
         /**
@@ -53,27 +71,18 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        'kanban_id' => 0,
-                        'board_title_id' => 0,
-                        'body' => '{}',
-                        'created_at' => $this->faker
-                                             ->dateTime,
-                        'updated_at' => $this->faker
-                                             ->dateTime
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {
                 return
-                    [
-                        'kanban_id'      => 0,
-                        'board_title_id' => 0,
-                        'body'           => null,
-                        'created_at'     => Carbon::now(),
-                        'updated_at'     => Carbon::now()
-                    ];
+                [
+                    'kanban_id'      => 0,
+                    'board_title_id' => 0,
+                    'body'           => null,
+                    'created_at'     => Carbon::now(),
+                    'updated_at'     => Carbon::now()
+                ];
             }
         }
     }

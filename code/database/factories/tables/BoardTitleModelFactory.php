@@ -8,6 +8,7 @@
     namespace Database\Factories\tables;
 
     // External libraries
+    use Database\Factories\tables\testing\TestingBoardTitleModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -17,13 +18,30 @@
     /**
      *
      */
-    final class BoardTitleModelFactory
+    class BoardTitleModelFactory
         extends Factory
     {
         // Variables
         private static $debug   = false;
         protected $model        = BoardTitleModel::class;
 
+
+        private static ?TestingBoardTitleModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingBoardTitleModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingBoardTitleModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingBoardTitleModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessors
         /**
@@ -51,12 +69,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        'content' => $this->faker
-                                          ->unique()
-                                          ->realText(50)
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

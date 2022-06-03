@@ -8,6 +8,7 @@
     namespace Database\Factories\tables;
 
     // External libraries
+    use Database\Factories\tables\testing\TestingNewsletterSubscriptionModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -17,7 +18,7 @@
     /**
      *
      */
-    final class NewsletterSubscriptionModelFactory
+    class NewsletterSubscriptionModelFactory
         extends Factory
     {
 
@@ -25,6 +26,23 @@
         protected $model        = NewsletterSubscriptionModel::class;
         private static $debug   = false;
 
+
+        private static ?TestingNewsletterSubscriptionModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingNewsletterSubscriptionModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingNewsletterSubscriptionModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingNewsletterSubscriptionModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Access
         /**
@@ -52,12 +70,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        //
-                        'email_id' => 1,
-                        'options' => '{ }'
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

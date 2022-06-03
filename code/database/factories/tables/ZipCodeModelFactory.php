@@ -8,6 +8,7 @@
     namespace Database\Factories\tables;
 
     // External libraries
+    use Database\Factories\tables\testing\TestingZipCodeModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -17,13 +18,30 @@
     /**
      *
      */
-    final class ZipCodeModelFactory
+    class ZipCodeModelFactory
         extends Factory
     {
         // Variables
         protected $model        = ZipCodeModel::class;
         private static $debug   = false;
 
+
+        private static ?TestingZipCodeModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingZipCodeModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingZipCodeModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingZipCodeModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessors
         /**
@@ -51,16 +69,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                [
-                    'area_name' => $this->faker
-                                        ->unique()
-                                        ->city,
-                    'zip_number' => $this->faker
-                                         ->unique()
-                                         ->numerify,
-                    'country_id' => 0
-                ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

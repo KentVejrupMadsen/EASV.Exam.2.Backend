@@ -9,6 +9,7 @@
 
     // External libraries
     use Carbon\Carbon;
+    use Database\Factories\tables\testing\TestingKanbanModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -18,12 +19,29 @@
     /**
      *
      */
-    final class KanbanModelFactory
+    class KanbanModelFactory
         extends Factory
     {
         // Variables
         private static $debug   = false;
         protected $model        = KanbanModel::class;
+
+        private static ?TestingKanbanModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingKanbanModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingKanbanModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingKanbanModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
 
         // Accessor
@@ -53,16 +71,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        //
-                        'kanban_title_id' => 0,
-                        'project_id' => 0,
-                        'created_at' => $this->faker
-                            ->dateTime,
-                        'updated_at' => $this->faker
-                            ->dateTime
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

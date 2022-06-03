@@ -8,6 +8,7 @@
     namespace Database\Factories\tables;
 
     // External libraries
+    use Database\Factories\tables\testing\TestingAccountEmailModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -17,12 +18,29 @@
     /**
      *
      */
-    final class AccountEmailModelFactory
+    class AccountEmailModelFactory
         extends Factory
     {
         protected $model        = AccountEmailModel::class;
         private static $debug   = false;
 
+
+        private static ?TestingAccountEmailModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingAccountEmailModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingAccountEmailModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingAccountEmailModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessor
         /**
@@ -64,12 +82,7 @@
          */
         protected function fakeDefinition(): array
         {
-            return
-            [
-                'content' =>  $this -> faker
-                                    -> unique()
-                                    -> safeEmail
-            ];
+            return self::getTestingFactory()->definition();
         }
 
 

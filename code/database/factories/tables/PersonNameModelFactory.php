@@ -8,7 +8,8 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\tables\testing\TestingPersonNameModelFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\PersonNameModel;
@@ -17,12 +18,30 @@
     /**
      *
      */
-    final class PersonNameModelFactory
+    class PersonNameModelFactory
         extends Factory
     {
         // Variables
         protected $model        = PersonNameModel::class;
         private static $debug   = false;
+
+
+        private static ?TestingPersonNameModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingPersonNameModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingPersonNameModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingPersonNameModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessors
         public final function getDebugState(): bool
@@ -44,14 +63,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        //
-                        'account_information_id'    => 0,
-                        'person_name_first_id'      => 0,
-                        'person_name_lastname_id'   => 0,
-                        'person_name_middlename'    => '{ }'
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {

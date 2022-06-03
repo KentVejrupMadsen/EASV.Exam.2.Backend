@@ -11,18 +11,35 @@
     use App\Models\security\ConfigurationModel;
 
     // External libraries
+    use Database\Factories\security\testing\TestingConfigurationModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
 
     /**
      *
      */
-    final class ConfigurationModelFactory
+    class ConfigurationModelFactory
         extends Factory
     {
         // Variables
         protected $model        = ConfigurationModel::class;
         private static $debug   = false;
+        private static ?TestingConfigurationModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingConfigurationModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingConfigurationModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingConfigurationModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
 
         // Accessor
@@ -45,27 +62,22 @@
 
 
         /**
-         * @return array|mixed[]|null[]
+         * @return null[]
          */
         public function definition(): array
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        //
-                        'key'   => $this->faker->text,
-                        'value' => '{ }'
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {
                 return
-                    [
-                        //
-                        'key'   => null,
-                        'value' => null
-                    ];
+                [
+                    //
+                    'key'   => null,
+                    'value' => null
+                ];
             }
         }
     }

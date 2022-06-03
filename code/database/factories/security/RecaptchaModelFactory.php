@@ -9,6 +9,7 @@
 
     // External libraries
     use Carbon\Carbon;
+    use Database\Factories\security\testing\TestingRecaptchaModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -18,12 +19,28 @@
     /**
      *
      */
-    final class RecaptchaModelFactory
+    class RecaptchaModelFactory
         extends Factory
     {
         // Variables
         protected $model        = RecaptchaModel::class;
         private static $debug   = false;
+        private static ?TestingRecaptchaModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingRecaptchaModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory( new TestingRecaptchaModelFactory() );
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingRecaptchaModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
 
         // Accessor
@@ -53,27 +70,19 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                    [
-                        //
-                        'success'  => $this->faker->boolean,
-                        'score'    => $this->faker->randomFloat(1, 0, 1),
-                        'at_date'  => $this->faker->time,
-                        'hostname' => $this->faker->unique()->domainName,
-                        'error'    => $this->faker->text(50)
-                    ];
+                return self::getTestingFactory()->definition();
             }
             else
             {
                 return
-                    [
+                [
                         //
-                        'success'  => false,
-                        'score'    => 0.0,
-                        'at_date'  => Carbon::now(),
-                        'hostname' => null,
-                        'error'    => null
-                    ];
+                    'success'  => false,
+                    'score'    => 0.0,
+                    'at_date'  => Carbon::now(),
+                    'hostname' => null,
+                    'error'    => null
+                ];
             }
         }
     }

@@ -9,6 +9,7 @@
 
     // External libraries
     use Carbon\Carbon;
+    use Database\Factories\tables\testing\TestingUserFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -19,13 +20,30 @@
     /**
      *
      */
-    final class UserFactory
+    class UserFactory
         extends Factory
     {
         // Variables
         protected $model        = User::class;
         private static $debug   = false;
 
+
+        private static ?TestingUserFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingUserFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingUserFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingUserFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
 
         // Accessor
         /**
@@ -81,24 +99,7 @@
         {
             if( $this->getDebugState() )
             {
-                return
-                [
-                    'username'          => $this->faker
-                                                ->unique()
-                                                ->userName,
-
-                    'email_id'          => 0,
-                    'email_verified_at' => $this->fakeIsVerified(),
-
-                    'password'          => $this->generatePassword(),
-
-                    'created_at'        => $this->faker
-                                                ->dateTime,
-
-                    'updated_at'        => $this->faker
-                                                ->dateTime,
-                    'settings' => '{ }'
-                ];
+                return self::getTestingFactory()->definition();
             }
             else
             {
