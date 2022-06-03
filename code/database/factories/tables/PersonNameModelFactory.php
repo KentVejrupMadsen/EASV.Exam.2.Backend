@@ -24,6 +24,24 @@
         protected $model        = PersonNameModel::class;
         private static $debug   = false;
 
+
+        private static ?TestingConfigurationModelFactory $testingFactory = null;
+
+        public static final function getTestingFactory(): TestingConfigurationModelFactory
+        {
+            if( is_null( self::$testingFactory ) )
+            {
+                self::setTestingFactory(new TestingConfigurationModelFactory());
+            }
+
+            return self::$testingFactory;
+        }
+
+        public static final function setTestingFactory( TestingConfigurationModelFactory $fakeFactory )
+        {
+            self::$testingFactory = $fakeFactory;
+        }
+
         // Accessors
         public final function getDebugState(): bool
         {
