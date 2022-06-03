@@ -28,16 +28,23 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
         private static ?TestingAddressRoadNameModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingAddressRoadNameModelFactory
+         */
         public static final function getTestingFactory(): TestingAddressRoadNameModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingAddressRoadNameModelFactory());
+                self::setTestingFactory( new TestingAddressRoadNameModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
+        /**
+         * @param TestingAddressRoadNameModelFactory $fakeFactory
+         * @return void
+         */
         public static final function setTestingFactory( TestingAddressRoadNameModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;

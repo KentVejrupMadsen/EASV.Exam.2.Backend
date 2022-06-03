@@ -29,6 +29,9 @@
 
         private static ?TestingAddressModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingAddressModelFactory
+         */
         public static final function getTestingFactory(): TestingAddressModelFactory
         {
             if( is_null( self::$testingFactory ) )
@@ -39,6 +42,10 @@
             return self::$testingFactory;
         }
 
+        /**
+         * @param TestingAddressModelFactory $fakeFactory
+         * @return void
+         */
         public static final function setTestingFactory( TestingAddressModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;

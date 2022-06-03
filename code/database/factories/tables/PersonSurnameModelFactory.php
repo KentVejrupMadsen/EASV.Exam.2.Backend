@@ -28,16 +28,23 @@
 
         private static ?TestingPersonSurnameModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingPersonSurnameModelFactory
+         */
         public static final function getTestingFactory(): TestingPersonSurnameModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingPersonSurnameModelFactory());
+                self::setTestingFactory( new TestingPersonSurnameModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
+        /**
+         * @param TestingPersonSurnameModelFactory $fakeFactory
+         * @return void
+         */
         public static final function setTestingFactory( TestingPersonSurnameModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;

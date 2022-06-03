@@ -28,6 +28,9 @@
 
         private static ?TestingZipCodeModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingZipCodeModelFactory
+         */
         public static final function getTestingFactory(): TestingZipCodeModelFactory
         {
             if( is_null( self::$testingFactory ) )
@@ -38,6 +41,10 @@
             return self::$testingFactory;
         }
 
+        /**
+         * @param TestingZipCodeModelFactory $fakeFactory
+         * @return void
+         */
         public static final function setTestingFactory( TestingZipCodeModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;

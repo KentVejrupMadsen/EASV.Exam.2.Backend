@@ -27,6 +27,10 @@
 
         private static ?TestingAccountEmailModelFactory $testingFactory = null;
 
+
+        /**
+         * @return TestingAccountEmailModelFactory
+         */
         public static final function getTestingFactory(): TestingAccountEmailModelFactory
         {
             if( is_null( self::$testingFactory ) )
@@ -37,6 +41,10 @@
             return self::$testingFactory;
         }
 
+        /**
+         * @param TestingAccountEmailModelFactory $fakeFactory
+         * @return void
+         */
         public static final function setTestingFactory( TestingAccountEmailModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;

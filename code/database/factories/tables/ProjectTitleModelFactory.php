@@ -28,6 +28,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
         private static ?TestingProjectTitleModelFactory $testingFactory = null;
 
+        /**
+         * @return TestingProjectTitleModelFactory
+         */
         public static final function getTestingFactory(): TestingProjectTitleModelFactory
         {
             if( is_null( self::$testingFactory ) )
@@ -38,6 +41,10 @@ use Illuminate\Database\Eloquent\Factories\Factory;
             return self::$testingFactory;
         }
 
+        /**
+         * @param TestingProjectTitleModelFactory $fakeFactory
+         * @return void
+         */
         public static final function setTestingFactory( TestingProjectTitleModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;
