@@ -24,8 +24,6 @@
         public final function handle(): int
         {
             $currentPath = getcwd();
-            $this->info( $currentPath );
-
             $search_directory = $currentPath . '/app';
 
             $result = Generator::scan( [$search_directory] );
