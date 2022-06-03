@@ -83,13 +83,12 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    //
-                    'kanban_title_id'   => 0,
-                    'project_id'        => 0,
-                    'created_at'        => Carbon::now(),
-                    'updated_at'        => Carbon::now()
-                ];
+            [
+                KanbanModel::field_kanban_title_id   => 0,
+                KanbanModel::field_project_id        => 0,
+                KanbanModel::field_created_at        => Carbon::now(),
+                KanbanModel::field_updated_at        => Carbon::now()
+            ];
         }
     }
 ?>

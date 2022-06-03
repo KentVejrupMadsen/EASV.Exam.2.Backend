@@ -85,11 +85,10 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    //
-                    'email_id' => 0,
-                    'options' => null
-                ];
+            [
+                NewsletterSubscriptionModel::field_email_id => 0,
+                NewsletterSubscriptionModel::field_options => null
+            ];
         }
     }
 ?>

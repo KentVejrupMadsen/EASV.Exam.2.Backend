@@ -82,10 +82,10 @@
         protected final function DefaultDefinition(): array
         {
             return
-                [
-                    'country_name'    => null,
-                    'country_acronym' => null
-                ];
+            [
+                CountryModel::field_country_name    => null,
+                CountryModel::field_country_acronym => null
+            ];
         }
     }
 ?>

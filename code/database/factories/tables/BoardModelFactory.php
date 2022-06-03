@@ -86,11 +86,11 @@
 
             return
                 [
-                    'kanban_id'      => 0,
-                    'board_title_id' => 0,
-                    'body'           => null,
-                    'created_at'     => Carbon::now(),
-                    'updated_at'     => Carbon::now()
+                    BoardModel::field_kanban_id      => 0,
+                    BoardModel::field_board_title_id => 0,
+                    BoardModel::field_body           => null,
+                    BoardModel::field_created_at     => Carbon::now(),
+                    BoardModel::field_updated_at     => Carbon::now()
                 ];
         }
     }
