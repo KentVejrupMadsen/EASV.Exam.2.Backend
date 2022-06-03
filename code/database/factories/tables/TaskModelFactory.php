@@ -13,6 +13,7 @@
 
     // Internal libraries
     use App\Models\tables\TaskModel;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**

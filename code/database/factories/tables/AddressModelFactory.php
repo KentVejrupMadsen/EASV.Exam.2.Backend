@@ -14,6 +14,7 @@
     // Internal libraries
     use App\Models\tables\AddressModel;
     use Illuminate\Support\Str;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**

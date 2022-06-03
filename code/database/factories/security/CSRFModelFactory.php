@@ -11,7 +11,7 @@
     use Carbon\Carbon;
 
     use Database\Factories\security\testing\TestingCSRFModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
+
     use Illuminate\Support\Str;
 
     // Internal libraries

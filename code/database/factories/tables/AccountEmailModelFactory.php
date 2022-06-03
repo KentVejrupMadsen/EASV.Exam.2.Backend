@@ -9,17 +9,17 @@
 
     // External libraries
     use Database\Factories\tables\testing\TestingAccountEmailModelFactory;
-    use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\AccountEmailModel;
+    use Database\Factories\templates\FactoryTemplate;
 
 
     /**
      *
      */
     class AccountEmailModelFactory
-        extends Factory
+        extends FactoryTemplate
     {
         protected $model        = AccountEmailModel::class;
         private static $debug   = false;

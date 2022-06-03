@@ -11,6 +11,7 @@
     use Carbon\Carbon;
     use Database\Factories\tables\testing\TestingBoardModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
+    use Database\Factories\templates\FactoryTemplate;
 
     // Internal libraries
     use App\Models\tables\BoardModel;
