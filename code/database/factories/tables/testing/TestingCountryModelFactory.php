@@ -32,8 +32,8 @@
         {
             return
             [
-                'country_name'    => $this->faker->unique()->country,
-                'country_acronym' => $this->faker->unique()->countryCode
+                CountryModel::field_country_name    => $this->faker->unique()->country,
+                CountryModel::field_country_acronym => $this->faker->unique()->countryCode
             ];
         }
     }

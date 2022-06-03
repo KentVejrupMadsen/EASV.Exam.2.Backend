@@ -35,12 +35,12 @@
             return
             [
                 //
-                'account_information_id' => 0,
-                'road_name_id'           => 0,
-                'road_number' => $this->faker->randomDigit(),
-                'levels' => Str::random(3),
-                'country_id'  => 0,
-                'zip_code_id' => 0
+                AddressModel::field_account_information_id => 0,
+                AddressModel::field_road_name_id           => 0,
+                AddressModel::field_road_number => $this->faker->randomDigit(),
+                AddressModel::field_levels => Str::random(3),
+                AddressModel::field_country_id  => 0,
+                AddressModel::field_zip_code_id => 0
             ];
         }
     }

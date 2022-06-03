@@ -28,7 +28,7 @@
         {
             return
             [
-                'content' => $this->faker->unique()->realText(50)
+                ProjectTitleModel::field_content => $this->faker->unique()->realText(50)
             ];
         }
     }
