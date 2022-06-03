@@ -1,6 +1,7 @@
 <?php
     namespace App\Console\Commands;
 
+    // External Libraries
     use Illuminate\Console\Command;
 
 
@@ -8,7 +9,6 @@
         extends Command
     {
         protected $signature = 'generate:sitemap';
-
         protected $description = 'generates a sitemap for search engines to crawl';
 
 
