@@ -8,7 +8,8 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\tables\testing\TestingPersonNameModelFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\PersonNameModel;
@@ -25,19 +26,19 @@
         private static $debug   = false;
 
 
-        private static ?TestingConfigurationModelFactory $testingFactory = null;
+        private static ?TestingPersonNameModelFactory $testingFactory = null;
 
-        public static final function getTestingFactory(): TestingConfigurationModelFactory
+        public static final function getTestingFactory(): TestingPersonNameModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingConfigurationModelFactory());
+                self::setTestingFactory(new TestingPersonNameModelFactory());
             }
 
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingConfigurationModelFactory $fakeFactory )
+        public static final function setTestingFactory( TestingPersonNameModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;
         }

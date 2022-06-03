@@ -8,6 +8,7 @@
     namespace Database\Factories\tables;
 
     // External libraries
+    use Database\Factories\tables\testing\TestingKanbanTitleModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -25,19 +26,19 @@
         private static $debug   = false;
 
 
-        private static ?TestingConfigurationModelFactory $testingFactory = null;
+        private static ?TestingKanbanTitleModelFactory $testingFactory = null;
 
-        public static final function getTestingFactory(): TestingConfigurationModelFactory
+        public static final function getTestingFactory(): TestingKanbanTitleModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingConfigurationModelFactory());
+                self::setTestingFactory(new TestingKanbanTitleModelFactory());
             }
 
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingConfigurationModelFactory $fakeFactory )
+        public static final function setTestingFactory( TestingKanbanTitleModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;
         }

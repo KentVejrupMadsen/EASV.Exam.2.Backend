@@ -8,6 +8,7 @@
     namespace Database\Factories\tables;
 
     // External libraries
+    use Database\Factories\tables\testing\TestingAccountEmailModelFactory;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
@@ -24,19 +25,19 @@
         private static $debug   = false;
 
 
-        private static ?TestingConfigurationModelFactory $testingFactory = null;
+        private static ?TestingAccountEmailModelFactory $testingFactory = null;
 
-        public static final function getTestingFactory(): TestingConfigurationModelFactory
+        public static final function getTestingFactory(): TestingAccountEmailModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingConfigurationModelFactory());
+                self::setTestingFactory( new TestingAccountEmailModelFactory() );
             }
 
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingConfigurationModelFactory $fakeFactory )
+        public static final function setTestingFactory( TestingAccountEmailModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;
         }

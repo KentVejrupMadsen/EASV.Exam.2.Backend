@@ -8,7 +8,8 @@
     namespace Database\Factories\tables;
 
     // External libraries
-    use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\tables\testing\TestingCountryModelFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
     // Internal libraries
     use App\Models\tables\CountryModel;
@@ -25,19 +26,19 @@
         private static $debug   = false;
 
 
-        private static ?TestingConfigurationModelFactory $testingFactory = null;
+        private static ?TestingCountryModelFactory $testingFactory = null;
 
-        public static final function getTestingFactory(): TestingConfigurationModelFactory
+        public static final function getTestingFactory(): TestingCountryModelFactory
         {
             if( is_null( self::$testingFactory ) )
             {
-                self::setTestingFactory(new TestingConfigurationModelFactory());
+                self::setTestingFactory(new TestingCountryModelFactory());
             }
 
             return self::$testingFactory;
         }
 
-        public static final function setTestingFactory( TestingConfigurationModelFactory $fakeFactory )
+        public static final function setTestingFactory( TestingCountryModelFactory $fakeFactory )
         {
             self::$testingFactory = $fakeFactory;
         }
