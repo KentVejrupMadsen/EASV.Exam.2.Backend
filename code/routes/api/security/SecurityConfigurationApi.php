@@ -11,33 +11,57 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\security\SecurityConfigurationController;
+    use App\Http\Controllers\RouteController;
 
 
-    const ConfigurationRoute = 'configuration';
-
-    const ConfigurationCreateRoute = 'create';
-    const ConfigurationDeleteRoute = 'delete';
-    const ConfigurationReadRoute   = 'read';
-    const ConfigurationUpdateRoute = 'update';
-
-
-    function SecurityConfigurationApi(): void
+    /**
+     *
+     */
+    class SecurityConfigurationApi
+        extends RouteController
     {
-        Route::prefix( ConfigurationRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( SecurityConfigurationController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( ConfigurationCreateRoute, 'publicCreate' );
-                        Route::delete( ConfigurationDeleteRoute, 'publicDelete' );
-                        Route::get( ConfigurationReadRoute, 'publicRead' );
-                        Route::patch( ConfigurationUpdateRoute, 'publicUpdate' );
-                    }
-                );
-            }
-        );
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+        // variables
+        private const route = 'configuration';
+
+        private const create_route = ACTION_CREATE;
+        private const delete_route = ACTION_DELETE;
+        private const read_route   = ACTION_READ;
+        private const update_route = ACTION_UPDATE;
+
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( SecurityConfigurationController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( self::create_route, 'publicCreate' );
+                    Route::delete( self::delete_route, 'publicDelete' );
+                    Route::get( self::read_route, 'publicRead' );
+                    Route::patch( self::update_route, 'publicUpdate' );
+                }
+            );
+        }
+    }
+
+
+    /**
+     * @return void
+     */
+    function MakeSecurityConfigurationApi(): void
+    {
+        $api = new SecurityConfigurationApi();
+        $api->run();
     }
 ?>

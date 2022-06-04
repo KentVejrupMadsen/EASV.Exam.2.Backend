@@ -11,33 +11,57 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\BoardController;
+    use App\Http\Controllers\RouteController;
 
 
-    const BoardRoute       = 'board';
-
-    const BoardCreateRoute = 'create';
-    const BoardDeleteRoute = 'delete';
-    const BoardReadRoute   = 'read';
-    const BoardUpdateRoute = 'update';
-
-
-    function BoardApi(): void
+    /**
+     *
+     */
+    class BoardApi
+        extends RouteController
     {
-        Route::prefix( BoardRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( BoardController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( BoardCreateRoute, 'create' );
-                        Route::delete( BoardDeleteRoute, 'delete' );
-                        Route::get( BoardReadRoute, 'read' );
-                        Route::patch( BoardUpdateRoute, 'update' );
-                    }
-                );
-            }
-        );
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+        //
+        private const route       = 'board';
+
+        private const create_route = ACTION_CREATE;
+        private const delete_route = ACTION_DELETE;
+        private const read_route   = ACTION_READ;
+        private const update_route = ACTION_UPDATE;
+
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( BoardController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( self::create_route, 'create' );
+                    Route::delete( self::delete_route, 'delete' );
+                    Route::get( self::read_route, 'read' );
+                    Route::patch( self::update_route, 'update' );
+                }
+            );
+        }
+    }
+
+
+    /**
+     * @return void
+     */
+    function MakeBoardApi(): void
+    {
+        $api = new BoardApi();
+        $api->run();
     }
 ?>

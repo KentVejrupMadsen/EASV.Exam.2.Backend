@@ -10,32 +10,57 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\ProjectController;
-
-    const projectRoute = 'project';
-
-    const projectCreateRoute = 'create';
-    const projectDeleteRoute = 'delete';
-    const projectReadRoute   = 'read';
-    const projectUpdateRoute = 'update';
+    use App\Http\Controllers\RouteController;
 
 
-    function ProjectApi(): void
+    /**
+     *
+     */
+    class ProjectApi
+        extends RouteController
     {
-        Route::prefix( projectRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( ProjectController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( projectCreateRoute, 'create' );
-                        Route::delete( projectDeleteRoute, 'delete' );
-                        Route::get( projectReadRoute, 'read' );
-                        Route::patch( projectUpdateRoute, 'update' );
-                    }
-                );
-            }
-        );
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+        // Variables
+        private const route = 'project';
+
+        private const create_route = ACTION_CREATE;
+        private const delete_route = ACTION_DELETE;
+        private const read_route   = ACTION_READ;
+        private const update_route = ACTION_UPDATE;
+
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( ProjectController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( self::create_route, 'create' );
+                    Route::delete( self::delete_route, 'delete' );
+                    Route::get( self::read_route, 'read' );
+                    Route::patch( self::update_route, 'update' );
+                }
+            );
+        }
+    }
+
+
+    /**
+     * @return void
+     */
+    function MakeProjectApi(): void
+    {
+        $api = new ProjectApi();
+        $api->run();
     }
 ?>

@@ -22,6 +22,10 @@
     const CURRENT_VERSION = '1.0.0';
     const VersionUrl = '/' . CURRENT_VERSION;
 
+    const ACTION_CREATE = 'create';
+    const ACTION_UPDATE = 'update';
+    const ACTION_DELETE = 'delete';
+    const ACTION_READ = 'read';
 
     function ApiRoutes()
     {

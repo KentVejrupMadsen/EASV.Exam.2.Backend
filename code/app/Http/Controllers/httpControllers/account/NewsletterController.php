@@ -101,9 +101,11 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post(path: '/api/1.0.0/accounts/newsletter/create')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Post( path: '/api/1.0.0/accounts/newsletter/create')]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function create( Request $request )
         {
 
@@ -115,9 +117,11 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Patch(path: '/api/1.0.0/accounts/newsletter/update')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Patch( path: '/api/1.0.0/accounts/newsletter/update' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function update( Request $request ): JsonResponse
         {
 
@@ -129,9 +133,11 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Delete(path: '/api/1.0.0/accounts/newsletter/delete')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Delete( path: '/api/1.0.0/accounts/newsletter/delete' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function delete( Request $request ): JsonResponse
         {
 
