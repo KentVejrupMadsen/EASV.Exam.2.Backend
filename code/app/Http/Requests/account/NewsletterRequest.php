@@ -7,11 +7,13 @@
      */
     namespace App\Http\Requests\account;
 
-    use App\Http\Requests\template\RequestDefaults;
+    // external
     use Illuminate\Foundation\Http\FormRequest;
-
     use OpenApi\Attributes
         as OA;
+
+    // Internal
+    use App\Http\Requests\template\RequestDefaults;
 
 
     /**
