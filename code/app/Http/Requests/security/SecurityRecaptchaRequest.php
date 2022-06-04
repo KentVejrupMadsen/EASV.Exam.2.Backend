@@ -7,11 +7,12 @@
      */
     namespace App\Http\Requests\security;
 
-    use App\Http\Requests\template\RequestDefaults;
     use Illuminate\Foundation\Http\FormRequest;
-
     use OpenApi\Attributes
         as OA;
+
+    // internal libraries
+    use App\Http\Requests\template\RequestDefaults;
 
 
     /**
