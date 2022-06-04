@@ -23,7 +23,7 @@
     use App\Http\Requests\security\SecurityCSRFRequest;
 
     use App\Models\security\CSRFModel;
-    use App\Factory\SecurityCSRFMigrator;
+    use App\Migrator\SecurityCSRFMigrator;
 
     use App\Http\Controllers\formatControllers\json\CSRFResponseJSONFactory;
 

@@ -187,9 +187,11 @@
         /**
          * 
          */
-        #[OA\Delete(path: '/api/1.0.0/tools/project/delete')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Delete( path: '/api/1.0.0/tools/project/delete' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function public_delete( ToolsProjectRequest $request )
         {
 

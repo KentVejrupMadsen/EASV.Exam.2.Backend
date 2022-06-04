@@ -20,7 +20,6 @@
 
     // Internal libraries
     use App\Http\Controllers\templates\ControllerOption;
-
     use App\Models\tables\AccountEmailModel;
     use App\Http\Requests\options\StateRequest;
 

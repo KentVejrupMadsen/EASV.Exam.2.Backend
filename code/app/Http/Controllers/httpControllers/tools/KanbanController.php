@@ -136,9 +136,11 @@
         /**
          * 
          */
-        #[OA\Patch(path: '/api/1.0.0/tools/kanban/update')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Patch( path: '/api/1.0.0/tools/kanban/update' )]
+        #[OA\Response( response: '200',
+                       description: 'The data')]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function public_update( ToolsKanbanRequest $request )
         {
 
@@ -159,9 +161,11 @@
         /**
          * 
          */
-        #[OA\Delete(path: '/api/1.0.0/tools/kanban/delete')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Delete( path: '/api/1.0.0/tools/kanban/delete' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function public_delete( ToolsKanbanRequest $request )
         {
 
@@ -183,9 +187,11 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/1.0.0/tools/kanban/read')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Get( path: '/api/1.0.0/tools/kanban/read' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function public_read( ToolsKanbanRequest $request )
         {
 

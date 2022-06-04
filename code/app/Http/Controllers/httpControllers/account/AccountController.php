@@ -8,8 +8,6 @@
     namespace App\Http\Controllers\httpControllers\account;
 
     // External Libraries
-    use App\Factory\AccountMigrator;
-    use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
@@ -21,6 +19,8 @@
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Http\Controllers\formatControllers\json\AccountResponseJSONFactory;
     use App\Http\Requests\account\AccountRequest;
+    use App\Migrator\AccountMigrator;
+    use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
 
     use App\Models\tables\User;
 

@@ -146,16 +146,17 @@
         public final function public_create( ToolsBoardRequest $request )
         {
 
-            return $this->create();
+            return $this->create( $request );
         }
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function create( Request $request )
         {
 
+            return null;
         }
 
 
@@ -175,20 +176,24 @@
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function update( Request $request )
         {
-            
+
+
+            return null;
         }
 
 
         /**
          * 
          */
-        #[OA\Delete(path: '/api/1.0.0/tools/board/delete')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Delete( path: '/api/1.0.0/tools/board/delete' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function public_delete( ToolsBoardRequest $request )
         {
 
@@ -197,11 +202,13 @@
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function delete( Request $request )
         {
-            
+
+
+            return null;
         }
 
 
