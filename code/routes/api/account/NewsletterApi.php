@@ -26,10 +26,10 @@
 
         private const route = 'newsletter';
 
-        private const create_route =  'create';
-        private const read_route   =  'read';
-        private const update_route =  'update';
-        private const delete_route =  'delete';
+        private const create_route =  ACTION_CREATE;
+        private const read_route   =  ACTION_READ;
+        private const update_route =  ACTION_UPDATE;
+        private const delete_route =  ACTION_DELETE;
 
 
         /**
@@ -41,10 +41,10 @@
             (
                 function(): void
                 {
-                    Route::post( self::create_route, ACTION_CREATE );
-                    Route::get( self::read_route, ACTION_READ );
-                    Route::patch( self::update_route, ACTION_UPDATE );
-                    Route::delete( self::delete_route, ACTION_DELETE );
+                    Route::post( self::create_route, 'public_create' );
+                    Route::get( self::read_route, 'public_read' );
+                    Route::patch( self::update_route, 'public_update' );
+                    Route::delete( self::delete_route, 'public_delete' );
                 }
             );
         }
