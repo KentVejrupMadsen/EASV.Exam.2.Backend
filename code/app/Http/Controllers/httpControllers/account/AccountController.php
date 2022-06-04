@@ -8,8 +8,6 @@
     namespace App\Http\Controllers\httpControllers\account;
 
     // External Libraries
-    use App\Http\Controllers\formatControllers\json\AccountResponseJSONFactory;
-
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
@@ -19,6 +17,9 @@
 
     // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Http\Controllers\formatControllers\json\AccountResponseJSONFactory;
+    use App\Http\Requests\account\AccountRequest;
+
     use App\Models\tables\User;
 
 
@@ -32,6 +33,7 @@
         public function __construct( bool $makeSingleton = false )
         {
             parent::__construct();
+
 
             if( $makeSingleton )
             {
@@ -72,10 +74,10 @@
 
 
         /**
-         * @param Request $request
+         * @param array $request
          * @return array|null
          */
-        public final function pipelineTowardCSV( Request $request ): ?array
+        public final function pipelineTowardCSV( Array $request ): ?array
         {
 
             return null;
@@ -83,10 +85,10 @@
 
 
         /**
-         * @param Request $request
-         * @return array|null
+         * @param array $request
+         * @return JsonResponse|null
          */
-        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
+        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
 
 
@@ -95,10 +97,10 @@
 
 
         /**
-         * @param Request $request
+         * @param array $request
          * @return array|null
          */
-        public final function pipelineTowardXML( Request $request ): ?array
+        public final function pipelineTowardXML( Array $request ): ?array
         {
 
             return null;
@@ -106,7 +108,7 @@
 
 
         /**
-         * @param SecurityProtectedRequest $request
+         * @param AccountRequest $request
          * @return JsonResponse
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/me' )]
@@ -117,57 +119,65 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function me(  $request ): JsonResponse
+        public final function me( AccountRequest $request ): JsonResponse
         {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
+
             $currentUser = Auth::user();
-            return response()->json($currentUser, 200);
+
+            return $this->Pipeline( $content_type, $response );
         }
 
 
         /**
-         * @param Request $request
-         * @return JsonResponse
+         * @param AccountRequest $request
+         * @return null
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/read' )]
         #[OA\Response( response: '200',
                        description: 'The data')]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_read( Request $request ): JsonResponse
+        public final function public_read( AccountRequest $request )
         {
 
-            return Response()->json( null, 200 );
+            return $this->read( $request );
         }
 
         /**
          * @param Request $request
-         * @return JsonResponse
+         * @return null
          */
-        public final function read( Request $request ): JsonResponse
+        public final function read( Request $request )
         {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return Response()->json( null, 200 );
+            return $this->Pipeline( $content_type, $response );
         }
 
 
         /**
          * @param Request $request
-         * @return JsonResponse
+         * @return JsonResponse|null
          */
         #[OA\Post( path: 'api/1.0.0/accounts/account/login' )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function login( Request $request ): JsonResponse
+        public final function login( Request $request )
         {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return Response()->json(null, 200);
+            return $this->Pipeline( $content_type, $response );
         }
 
 
-        /** Renders the current bearer token invalid
-         * @param SecurityProtectedRequest $request
+        /**
+         * @param AccountRequest $request
          * @return null
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/logout' )]
@@ -178,10 +188,12 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function logout( SecurityProtectedRequest $request )
+        public final function logout( AccountRequest $request )
         {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return null;
+            return $this->Pipeline( $content_type, $response );
         }
 
 
@@ -194,24 +206,31 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_create( Request $request ): JsonResponse
+        public final function public_create( Request $request )
         {
 
-            return response()->json(null, 200);
-        }
-
-        public final function create( Request $request ): JsonResponse
-        {
-
-            return response()->json(null, 200);
+            return $this->create( $request );
         }
 
 
         /**
-         * @param SecurityProtectedRequest $request
+         * @param Request $request
          * @return JsonResponse
          */
-        public final function public_update( SecurityProtectedRequest $request ): JsonResponse
+        public final function create( Request $request )
+        {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
+
+            return $this->Pipeline( $content_type, $response );
+        }
+
+
+        /**
+         * @param AccountRequest $request
+         * @return JsonResponse
+         */
+        public final function public_update( AccountRequest $request )
         {
             return $this->update( $request );
         }
@@ -228,18 +247,19 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function update( Request $request ): JsonResponse
+        public final function update( Request $request )
         {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return Response()->json( null, 200 );
+            return $this->Pipeline( $content_type, $response );
         }
 
 
         /**
-         * @param Request $request
-         * @return JsonResponse
+         * @param AccountRequest $request
+         * @return JsonResponse|null
          */
-
         #[OA\Delete( path: '/api/1.0.0/accounts/account/delete' )]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
@@ -248,18 +268,7 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function delete( Request $request ): JsonResponse
-        {
-
-            return Response()->json( null, 200 );
-        }
-
-
-        /**
-         * @param SecurityProtectedRequest $request
-         * @return JsonResponse
-         */
-        public final function public_delete( SecurityProtectedRequest $request ): JsonResponse
+        public final function public_delete( AccountRequest $request )
         {
 
             return $this->delete( $request );
@@ -267,8 +276,21 @@
 
 
         /**
-         * @param SecurityProtectedRequest $request
-         * @return JsonResponse
+         * @param Request $request
+         * @return JsonResponse|null
+         */
+        public final function delete( Request $request )
+        {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
+
+            return $this->Pipeline( $content_type, $response );
+        }
+
+
+        /**
+         * @param AccountRequest $request
+         * @return null
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/verify' )]
         #[OA\Parameter( name:'Authorization',
@@ -278,10 +300,12 @@
                        description: 'The data')]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function verify( SecurityProtectedRequest $request ): JsonResponse
+        public final function verify( AccountRequest $request )
         {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return Response()->json( null, 200 );
+            return $this->Pipeline( $content_type, $response );
         }
 
 
