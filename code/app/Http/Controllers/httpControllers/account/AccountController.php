@@ -19,8 +19,10 @@
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Http\Controllers\formatControllers\json\AccountResponseJSONFactory;
     use App\Http\Requests\account\AccountRequest;
-    use App\Migrator\AccountMigrator;
     use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
+    use App\Migrator\AccountMigrator;
+    use App\Migrator\PersonEmailMigrator;
+
 
     use App\Models\tables\User;
 
@@ -43,8 +45,8 @@
         }
 
         // Variables
-        private static ?AccountController $controller = null;
-        private static ?AccountResponseJSONFactory $responseFactory = null;
+        private static ?AccountController           $controller = null;
+        private static ?AccountResponseJSONFactory  $responseFactory = null;
 
 
         // implement output
@@ -245,6 +247,19 @@
             {
                 $personContainer = $form[ 'person' ];
 
+                $emailConstructor = PersonEmailMigrator::getSingleton();
+                $mailModel = null;
+
+                if( !$emailConstructor->hasEmailContainer( $personContainer[ 'email' ] ) )
+                {
+                    $mailModel = $emailConstructor->createEmail( $personContainer[ 'email' ] );
+                }
+                else
+                {
+                    $mailModel = $emailConstructor->retrieveEmail( $personContainer[ 'email' ] );
+                }
+
+                return $mailModel;
             }
 
             return $this->Pipeline( $content_type, $response );
