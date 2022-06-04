@@ -11,22 +11,34 @@
     use App\Http\Controllers\RouteController;
 
 
-    const stateRoute = 'state';
+    /**
+     *
+     */
+    class StateApi
+        extends RouteController
+    {
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+        private const route = 'state';
+
+        protected function execute()
+        {
+            Route::controller( StateController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( 'email', 'publicState' );
+                }
+            );
+        }
+    }
 
     function MakeStateApi(): void
     {
-        Route::prefix( stateRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( StateController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( 'email', 'publicState' );
-                    }
-                );
-            }
-        );
+        $api = new StateApi();
+        $api->run();
     }
 ?>

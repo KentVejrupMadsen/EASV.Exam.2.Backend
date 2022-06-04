@@ -10,23 +10,40 @@
     use App\Http\Controllers\httpControllers\options\FindController;
     use App\Http\Controllers\RouteController;
 
-    const findRoute = 'find';
 
+    class FindApi
+        extends RouteController
+    {
+        private const route = 'find';
+
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( FindController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( 'email', 'publicFind' );
+                }
+            );
+        }
+
+    }
 
     function MakeFindApi(): void
     {
-        Route::prefix( findRoute  )->group
-        (
-            function(): void
-            {
-                Route::controller( FindController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( 'email', 'publicFind' );
-                    }
-                );
-            }
-        );
+        $api = new FindApi();
+        $api->run();
     }
 ?>
