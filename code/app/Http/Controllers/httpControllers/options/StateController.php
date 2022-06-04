@@ -51,7 +51,8 @@
          * @return void
          */
         #[OA\Post( path: '/api/1.0.0/options/state/email' )]
-        #[OA\Response( response: '200', description: 'validates if the requested email is existing in the database as a json response.' ) ]
+        #[OA\Response( response: '200',
+                       description: 'validates if the requested email is existing in the database as a json response.' ) ]
         public final function publicState( StateRequest $request )
         {
 
@@ -63,7 +64,7 @@
          * @param StateController $controller
          * @return void
          */
-        public static final function setSingleton( StateController $controller )
+        public static final function setSingleton( StateController $controller ): void
         {
             self::$controller = $controller;
         }

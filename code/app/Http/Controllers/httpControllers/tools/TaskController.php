@@ -8,7 +8,6 @@
     namespace App\Http\Controllers\httpControllers\tools;
 
     // External
-    use App\Http\Requests\tools\ToolsKanbanRequest;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
@@ -17,6 +16,7 @@
 
     // Internal
     use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Http\Requests\tools\ToolsKanbanRequest;
 
 
     #[OA\Schema()]
