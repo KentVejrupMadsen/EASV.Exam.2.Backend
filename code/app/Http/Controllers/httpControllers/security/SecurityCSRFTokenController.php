@@ -146,7 +146,7 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicUpdate( SecurityCSRFRequest $Request ): JsonResponse
+        public final function publicUpdate( SecurityCSRFRequest $Request ): JsonResponse
         {
             return $this->update( $Request );
         }
@@ -156,7 +156,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        public function update( Request $request ): JsonResponse
+        public final function update( Request $request ): JsonResponse
         {
             $array = [];
 
@@ -191,7 +191,7 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicDelete( SecurityCSRFRequest $Request ): JsonResponse
+        public final function publicDelete( SecurityCSRFRequest $Request ): JsonResponse
         {
             return Response()->json( [], 200 );
         }

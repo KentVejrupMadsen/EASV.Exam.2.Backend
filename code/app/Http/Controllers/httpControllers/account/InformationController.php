@@ -24,6 +24,9 @@
 
 
     #[OA\Schema()]
+    /**
+     *
+     */
     class InformationController
         extends ControllerPipeline
     {
@@ -50,8 +53,7 @@
          */
         public final function hasImplementedCSV(): bool
         {
-            // TODO: Implement hasImplementedCSV() method.
-            return true;
+            return false;
         }
 
         /**
@@ -59,8 +61,7 @@
          */
         public final function hasImplementedJSON(): bool
         {
-            // TODO: Implement hasImplementedJSON() method.
-            return true;
+            return false;
         }
 
 
@@ -69,8 +70,7 @@
          */
         public final function hasImplementedXML(): bool
         {
-            // TODO: Implement hasImplementedXML() method.
-            return true;
+            return false;
         }
 
 
@@ -80,7 +80,12 @@
          */
         public final function pipelineTowardCSV( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardCSV() method.
+            if( !$this->hasImplementedCSV() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -91,7 +96,12 @@
          */
         public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
-            // TODO: Implement pipelineTowardJSON() method.
+            if( !$this->hasImplementedJSON() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -102,7 +112,12 @@
          */
         public final function pipelineTowardXML( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardXML() method.
+            if( !$this->hasImplementedXML() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -116,7 +131,7 @@
         public final function public_read( Request $request )
         {
 
-            return null;
+            return $this->read( $request );
         }
 
         /**
@@ -141,7 +156,7 @@
                        description: 'content not found' )]
         public final function public_create( Request $request )
         {
-            return null;
+            return $this->create( $request );
         }
 
         /**
@@ -166,7 +181,7 @@
         public final function public_update( Request $request )
         {
 
-            return null;
+            return $this->update( $request );
         }
 
         /**
@@ -182,7 +197,7 @@
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         #[OA\Delete( path: '/api/1.0.0/accounts/information/delete' )]
         #[OA\Response( response: '200',
@@ -192,7 +207,7 @@
         public final function public_delete( Request $request )
         {
 
-            return null;
+            return $this->delete( $request );
         }
 
         /**

@@ -52,7 +52,7 @@
                        description: 'content not found')]
         public final function publicRead( SecurityCSRFRequest $Request )
         {
-            $this->read( $Request );
+            return $this->read( $Request );
         }
 
 
@@ -67,7 +67,7 @@
                        description: 'content not found' )]
         public final function publicUpdate( SecurityCSRFRequest $Request )
         {
-            $this->update( $Request );
+            return $this->update( $Request );
         }
 
 
@@ -80,7 +80,7 @@
         #[OA\Response(response: '404', description: 'content not found')]
         public final function publicCreate( SecurityCSRFRequest $Request )
         {
-            $this->create( $Request );
+            return $this->create( $Request );
         }
 
 
@@ -93,47 +93,52 @@
         #[OA\Response(response: '404', description: 'content not found')]
         public final function publicDelete( SecurityCSRFRequest $Request )
         {
-            $this->delete( $Request );
+            return $this->delete( $Request );
         }
 
         //
+
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function read( Request $request )
         {
 
+            return null;
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function create( Request $request )
         {
 
+            return null;
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function update( Request $request )
         {
 
+            return null;
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function delete( Request $request )
         {
 
+            return null;
         }
 
 
