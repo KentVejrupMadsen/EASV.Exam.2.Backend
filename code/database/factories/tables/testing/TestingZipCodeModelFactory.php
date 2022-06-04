@@ -22,7 +22,7 @@
     {
         // Variables
         protected $model        = ZipCodeModel::class;
-        
+
 
         /**
          * @return array
