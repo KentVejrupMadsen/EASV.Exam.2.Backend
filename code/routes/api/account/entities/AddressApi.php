@@ -8,33 +8,53 @@
     use Illuminate\Support\Facades\Route;
 
     use App\Http\Controllers\httpControllers\account\entities\PersonAddressController;
+    use \App\Http\Controllers\RouteController;
 
 
-    const AddressRoute = 'address';
-
-    const AddressReadRoute   = 'read';
-    const AddressCreateRoute = 'create';
-    const AddressUpdateRoute =  'update';
-    const AddressDeleteRoute =  'delete';
-
-
-    function AddressApi(): void
+    class AddressApi
+        extends RouteController
     {
-        Route::prefix( AddressRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( PersonAddressController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::get( AddressReadRoute, 'read' );
-                        Route::post( AddressCreateRoute, 'create' );
-                        Route::patch( AddressUpdateRoute, 'update' );
-                        Route::delete( AddressDeleteRoute, 'delete');
-                    }
-                );
-            }
-        );
+        public function __construct()
+        {
+
+        }
+
+        private const Route = 'address';
+
+        private const read_route   = 'read';
+        private const create_route = 'create';
+        private const update_route =  'update';
+        private const delete_route =  'delete';
+
+        public final function execute()
+        {
+            $this->AddressApi();
+        }
+
+        private function AddressApi(): void
+        {
+            Route::prefix( self::Route )->group
+            (
+                function(): void
+                {
+                    Route::controller( PersonAddressController::class )->group
+                    (
+                        function(): void
+                        {
+                            Route::get( self::read_route, 'read' );
+                            Route::post( self::create_route, 'create' );
+                            Route::patch( self::update_route, 'update' );
+                            Route::delete( self::delete_route, 'delete');
+                        }
+                    );
+                }
+            );
+        }
+    }
+
+    function MakeAddressApi()
+    {
+        $api = new AddressApi();
+        $api->execute();
     }
 ?>

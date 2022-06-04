@@ -22,7 +22,7 @@
         (
             function()
             {
-                AddressApi();
+                MakeAddressApi();
                 EmailApi();
                 NameApi();
             }

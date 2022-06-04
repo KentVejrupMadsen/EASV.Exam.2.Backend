@@ -10,6 +10,7 @@
     // Alias constants
 
 
+
     // Requiring all the routes
     require_once 'api/ApiRoutes.php';
 ?>
