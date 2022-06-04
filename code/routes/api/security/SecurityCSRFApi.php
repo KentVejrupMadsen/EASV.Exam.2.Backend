@@ -10,37 +10,61 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\security\SecurityCSRFTokenController;
+    use App\Http\Controllers\RouteController;
 
 
-    const csrfRoute = 'csrf';
-
-    const CSRFAccessRoute = 'access';
-    const CSRFCreateRoute = 'create';
-    const CSRFDeleteRoute = 'delete';
-    const CSRFReadRoute   = 'read';
-    const CSRFResetRoute  = 'reset';
-    const CSRFUpdateRoute = 'update';
-
-
-    function SecurityCSRFApi(): void
+    /**
+     *
+     */
+    class SecurityCSRFApi
+        extends RouteController
     {
-        Route::prefix( csrfRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( SecurityCSRFTokenController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( CSRFAccessRoute, 'access' );
-                        Route::get( CSRFCreateRoute, 'publicCreate' );
-                        Route::delete( CSRFDeleteRoute, 'publicDelete' );
-                        Route::get( CSRFReadRoute,'publicRead' );
-                        Route::patch( CSRFResetRoute, 'reset' );
-                        Route::patch( CSRFUpdateRoute, 'publicUpdate' );
-                    }
-                );
-            }
-        );
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+        // Variables
+        private const route = 'csrf';
+
+        private const access_route = 'access';
+        private const create_route = ACTION_CREATE;
+        private const delete_Route = ACTION_DELETE;
+        private const read_route   = ACTION_READ;
+        private const reset_route  = 'reset';
+        private const update_route = ACTION_UPDATE;
+
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( SecurityCSRFTokenController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( self::access_route, 'access' );
+                    Route::get( self::create_route, 'publicCreate' );
+                    Route::delete( self::delete_Route, 'publicDelete' );
+                    Route::get( self::read_route,'publicRead' );
+                    Route::patch( self::reset_route, 'reset' );
+                    Route::patch( self::update_route, 'publicUpdate' );
+                }
+            );
+        }
+    }
+
+
+    /**
+     * @return void
+     */
+    function MakeSecurityCSRFApi(): void
+    {
+        $model = new SecurityCSRFApi();
+        $model->run();
     }
 ?>

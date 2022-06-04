@@ -8,24 +8,45 @@
     use Illuminate\Support\Facades\Route;
 
     use App\Http\Controllers\httpControllers\options\FindController;
+    use App\Http\Controllers\RouteController;
 
-    const findRoute = 'find';
 
-
-    function FindApi(): void
+    /**
+     *
+     */
+    class FindApi
+        extends RouteController
     {
-        Route::prefix( findRoute  )->group
-        (
-            function(): void
-            {
-                Route::controller( FindController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( 'email', 'publicFind' );
-                    }
-                );
-            }
-        );
+        private const route = 'find';
+
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( FindController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( 'email', 'publicFind' );
+                }
+            );
+        }
+
+    }
+
+    function MakeFindApi(): void
+    {
+        $api = new FindApi();
+        $api->run();
     }
 ?>
