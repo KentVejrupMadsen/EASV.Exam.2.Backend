@@ -35,6 +35,9 @@
             }
         }
 
+        private static $controller = null;
+
+        // Code
         public final function hasImplementedCSV(): bool
         {
             // TODO: Implement hasImplementedCSV() method.
@@ -138,18 +141,26 @@
             
         }
 
-        private static $controller = null;
 
+        // Accessors
+        /**
+         * @param $controller
+         * @return void
+         */
         public static final function setSingleton( $controller )
         {
             self::$controller = $controller;
         }
 
+
+        /**
+         * @return null
+         */
         public static final function getSingleton()
         {
-            if(is_null(self::$controller))
+            if( is_null( self::$controller ) )
             {
-                self::setSingleton(new KanbanController());
+                self::setSingleton( new KanbanController() );
             }
 
             return self::$controller;
