@@ -10,32 +10,60 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
-
-    const EmailRoute  = 'email';
-
-    const EmailRouteRead   = 'read';
-    const EmailRouteCreate = 'create';
-    const EmailRouteUpdate = 'update';
-    const EmailRouteDelete = 'delete';
+    use App\Http\Controllers\RouteController;
 
 
-    function EmailApi(): void
+    class EmailApi
+        extends RouteController
     {
-        Route::prefix( EmailRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( PersonEmailController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::get( EmailRouteRead, 'read' );
-                        Route::post( EmailRouteCreate, 'create' );
-                        Route::patch( EmailRouteUpdate, 'update' );
-                        Route::delete( EmailRouteDelete, 'delete' );
-                    }
-                );
-            }
-        );
+        public function __construct()
+        {
+
+        }
+
+        private const route  = 'email';
+
+        private const route_read   = 'read';
+        private const route_create = 'create';
+        private const route_update = 'update';
+        private const route_delete = 'delete';
+
+        /**
+         * @return void
+         */
+        public final function execute()
+        {
+            $this->EmailApi();
+        }
+
+        /**
+         *
+         */
+        private function EmailApi()
+        {
+            Route::prefix( self::route )->group
+            (
+                function(): void
+                {
+                    Route::controller( PersonEmailController::class )->group
+                    (
+                        function(): void
+                        {
+                            Route::get( self::route_read, 'read' );
+                            Route::post( self::route_create, 'create' );
+                            Route::patch( self::route_update, 'update' );
+                            Route::delete( self::route_delete, 'delete' );
+                        }
+                    );
+                }
+            );
+        }
+    }
+
+
+    function MakeEmailApi(): void
+    {
+        $router = new EmailApi();
+        $router->execute();
     }
 ?>

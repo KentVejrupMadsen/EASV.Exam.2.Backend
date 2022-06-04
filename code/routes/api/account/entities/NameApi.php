@@ -10,32 +10,48 @@
 
     // Internal library
     use App\Http\Controllers\httpControllers\account\entities\PersonNameController;
+    use App\Http\Controllers\RouteController;
 
-    const NameRoute = 'name';
 
-    const NameReadRoute = 'read';
-    const NameCreateRoute = 'create';
-    const NameUpdateRoute = 'update';
-    const NameDeleteRoute = 'delete';
+    class NameApi
+        extends RouteController
+    {
+        const route = 'name';
+
+        const read_route = 'read';
+
+        const create_route = 'create';
+        const update_route = 'update';
+        const delete_route = 'delete';
+
+        private function make()
+        {
+            Route::prefix( self::read_route )->group
+            (
+                function(): void
+                {
+                    Route::controller( PersonNameController::class )->group
+                    (
+                        function(): void
+                        {
+                            Route::get( self::read_route, 'read' );
+                            Route::post( self::create_route,'create' );
+                            Route::patch( self::update_route, 'update' );
+                            Route::delete( self::delete_route, 'delete' );
+                        }
+                    );
+                }
+            );
+        }
+
+        public final function execute()
+        {
+            $this->make();
+        }
+    }
 
 
     function NameApi(): void
     {
-        Route::prefix( NameRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( PersonNameController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::get( NameReadRoute, 'read' );
-                        Route::post( NameCreateRoute,'create' );
-                        Route::patch( NameUpdateRoute, 'update' );
-                        Route::delete( NameDeleteRoute, 'delete' );
-                    }
-                );
-            }
-        );
     }
 ?>

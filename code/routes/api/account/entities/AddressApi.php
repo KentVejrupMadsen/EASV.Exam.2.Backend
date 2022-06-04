@@ -8,7 +8,7 @@
     use Illuminate\Support\Facades\Route;
 
     use App\Http\Controllers\httpControllers\account\entities\PersonAddressController;
-    use \App\Http\Controllers\RouteController;
+    use App\Http\Controllers\RouteController;
 
 
     class AddressApi
@@ -23,14 +23,20 @@
 
         private const read_route   = 'read';
         private const create_route = 'create';
-        private const update_route =  'update';
-        private const delete_route =  'delete';
+        private const update_route = 'update';
+        private const delete_route = 'delete';
 
+        /**
+         * @return void
+         */
         public final function execute()
         {
             $this->AddressApi();
         }
 
+        /**
+         * @return void
+         */
         private function AddressApi(): void
         {
             Route::prefix( self::Route )->group
