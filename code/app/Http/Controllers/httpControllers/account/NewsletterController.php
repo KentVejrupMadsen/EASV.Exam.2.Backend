@@ -90,6 +90,12 @@
         #[OA\Get( path: '/api/1.0.0/accounts/newsletter/read' )]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
+        public final function public_read( Request $request ): JsonResponse
+        {
+
+            return Response()->json();
+        }
+
         public final function read( Request $request ): JsonResponse
         {
 
@@ -106,6 +112,12 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        public final function public_create( Request $request )
+        {
+
+            return Response()->json(null, 200);
+        }
+
         public final function create( Request $request )
         {
 
@@ -122,6 +134,12 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        public final function public_update( Request $request ): JsonResponse
+        {
+
+            return Response()->json(null, 200);
+        }
+
         public final function update( Request $request ): JsonResponse
         {
 
@@ -138,6 +156,12 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        public final function public_delete( Request $request ): JsonResponse
+        {
+
+            return Response()->json(null, 200);
+        }
+
         public final function delete( Request $request ): JsonResponse
         {
 
