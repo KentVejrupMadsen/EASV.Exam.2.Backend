@@ -41,7 +41,7 @@
                 self::setSingleton( $this );
             }
         }
-        
+
         // Variables
         private static ?NewsletterController $controller = null;
 

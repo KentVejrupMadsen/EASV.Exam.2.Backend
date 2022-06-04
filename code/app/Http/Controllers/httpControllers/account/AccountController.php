@@ -8,6 +8,7 @@
     namespace App\Http\Controllers\httpControllers\account;
 
     // External Libraries
+    use App\Factory\AccountConstructor;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,6 @@
         public function __construct( bool $makeSingleton = false )
         {
             parent::__construct();
-
 
             if( $makeSingleton )
             {
@@ -237,6 +237,11 @@
             $content_type = $request->header( 'Content-Type' );
             $response = [];
 
+            $form = $request->input( 'account' );
+            $security = $request->input( 'account.security.password' );
+
+
+
             return $this->Pipeline( $content_type, $response );
         }
 
@@ -377,6 +382,14 @@
         public final static function setResponseFactory( ?AccountResponseJSONFactory $responseFactory ): void
         {
             self::$responseFactory = $responseFactory;
+        }
+
+        /**
+         * @return AccountConstructor|null
+         */
+        public static function getConstructor(): ?AccountConstructor
+        {
+            return AccountConstructor::getSingleton();
         }
     }
 ?>
