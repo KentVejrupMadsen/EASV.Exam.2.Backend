@@ -10,33 +10,57 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\TaskController;
+    use App\Http\Controllers\RouteController;
 
 
-    const taskRoute = 'task';
-
-    const taskCreateRoute = 'create';
-    const taskDeleteRoute = 'delete';
-    const taskReadRoute   = 'read';
-    const taskUpdateRoute = 'update';
-
-
-    function TaskApi(): void
+    /**
+     *
+     */
+    class TaskApi
+        extends RouteController
     {
-        Route::prefix( taskRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( TaskController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( taskCreateRoute, 'create' );
-                        Route::delete( taskDeleteRoute, 'delete' );
-                        Route::get( taskReadRoute, 'read' );
-                        Route::patch( taskUpdateRoute, 'update' );
-                    }
-                );
-            }
-        );
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+        // Variables
+        private const route = 'task';
+
+        private const create_route = ACTION_CREATE;
+        private const delete_route = ACTION_DELETE;
+        private const read_route   = ACTION_READ;
+        private const update_route = ACTION_UPDATE;
+
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( TaskController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( self::create_route, 'create' );
+                    Route::delete( self::delete_route, 'delete' );
+                    Route::get( self::read_route, 'read' );
+                    Route::patch( self::update_route, 'update' );
+                }
+            );
+        }
+    }
+
+
+    /**
+     * @return void
+     */
+    function MakeTaskApi(): void
+    {
+        $api = new TaskApi();
+        $api->run();
     }
 ?>

@@ -10,55 +10,53 @@
 
     // External libraries
     use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\RouteController;
 
 
-    //
-    const data_route = 'account';
-
-    const AccountCreateRoute  =  'create';
-    const AccountDeleteRoute  =  'delete';
-
-    const AccountMeRoute      =  'me';
-    const AccountLoginRoute   =  'login';
-    const AccountLogoutRoute  =  'logout';
-    const AccountUpdateRoute  =  'update';
-    const AccountVerifyRoute  =  'verify';
-    const AccountReadRoute    = 'read';
-
-
-    function AccountApi(): void
+    class AccountApi
+        extends RouteController
     {
-        Route::prefix( data_route )->group
-        (
-            function(): void
-            {
-                Route::controller( AccountController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( AccountCreateRoute, 'create' );
-                        Route::post( AccountLoginRoute, 'login' );
-                        Route::get( AccountReadRoute, 'read' );
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
 
-                        RequiresAuthentication();
-                    }
-                );
-            }
-        );
+        private const route = 'account';
+
+        private const create_route  =  ACTION_CREATE;
+        private const delete_route  =  ACTION_DELETE;
+
+        private const me_route      =  'me';
+        private const login_route   =  'login';
+        private const logout_route  =  'logout';
+        private const update_route  =  ACTION_UPDATE;
+        private const verify_route  =  'verify';
+        private const read_route    =  ACTION_READ;
+
+
+        protected final function execute()
+        {
+            Route::controller( AccountController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( self::create_route, 'create' );
+                    Route::post( self::login_route, 'login' );
+                    Route::get( self::read_route, 'read' );
+                    Route::delete( self::delete_route, 'public_delete' );
+                    Route::get( self::logout_route, 'logout' );
+                    Route::get( self::me_route, 'me' );
+                    Route::patch( self::update_route, 'public_update' );
+                    Route::post( self::verify_route, 'verify' );
+                }
+            );
+        }
     }
 
-    function RequiresAuthentication(): void
+    function MakeAccountApi()
     {
-        Route::middleware( MIDSANC )->group
-        (
-            function(): void
-            {
-                Route::delete( AccountDeleteRoute, 'delete' );
-                Route::get( AccountLogoutRoute, 'logout' );
-                Route::get( AccountMeRoute, 'me' );
-                Route::patch( AccountUpdateRoute, 'update' );
-                Route::post( AccountVerifyRoute, 'verify' );
-            }
-        );
+        $api = new AccountApi();
+        $api->run();
     }
+
 ?>

@@ -10,32 +10,47 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
-
-    const EmailRoute  = 'email';
-
-    const EmailRouteRead   = 'read';
-    const EmailRouteCreate = 'create';
-    const EmailRouteUpdate = 'update';
-    const EmailRouteDelete = 'delete';
+    use App\Http\Controllers\RouteController;
 
 
-    function EmailApi(): void
+    class EmailApi
+        extends RouteController
     {
-        Route::prefix( EmailRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( PersonEmailController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::get( EmailRouteRead, 'read' );
-                        Route::post( EmailRouteCreate, 'create' );
-                        Route::patch( EmailRouteUpdate, 'update' );
-                        Route::delete( EmailRouteDelete, 'delete' );
-                    }
-                );
-            }
-        );
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+        private const route  = 'email';
+
+        private const route_read   = ACTION_READ;
+        private const route_create = ACTION_CREATE;
+        private const route_update = ACTION_UPDATE;
+        private const route_delete = ACTION_DELETE;
+
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( PersonEmailController::class )->group
+            (
+                function(): void
+                {
+                    Route::get( self::route_read, 'read' );
+                    Route::post( self::route_create, 'create' );
+                    Route::patch( self::route_update, 'update' );
+                    Route::delete( self::route_delete, 'delete' );
+                }
+            );
+        }
+    }
+
+
+    function MakeEmailApi(): void
+    {
+        $router = new EmailApi();
+        $router->run();
     }
 ?>

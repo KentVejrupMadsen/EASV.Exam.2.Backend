@@ -8,32 +8,51 @@
     use Illuminate\Support\Facades\Route;
 
     use App\Http\Controllers\httpControllers\account\entities\PersonAddressController;
-
-    const AddressRoute = 'address';
-
-    const AddressReadRoute   = 'read';
-    const AddressCreateRoute = 'create';
-    const AddressUpdateRoute =  'update';
-    const AddressDeleteRoute =  'delete';
+    use App\Http\Controllers\RouteController;
 
 
-    function AddressApi(): void
+    /**
+     *
+     */
+    class AddressApi
+        extends RouteController
     {
-        Route::prefix( AddressRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( PersonAddressController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::get( AddressReadRoute, 'read' );
-                        Route::post( AddressCreateRoute, 'create' );
-                        Route::patch( AddressUpdateRoute, 'update' );
-                        Route::delete( AddressDeleteRoute, 'delete');
-                    }
-                );
-            }
-        );
+        //
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+
+        // Variables
+        private const route = 'address';
+
+        private const read_route   = ACTION_READ;
+        private const create_route = ACTION_CREATE;
+        private const update_route = ACTION_UPDATE;
+        private const delete_route = ACTION_DELETE;
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( PersonAddressController::class )->group
+            (
+                function(): void
+                {
+                    Route::get( self::read_route, 'read' );
+                    Route::post( self::create_route, 'create' );
+                    Route::patch( self::update_route, 'update' );
+                    Route::delete( self::delete_route, 'delete');
+                }
+            );
+        }
+    }
+
+    function MakeAddressApi(): void
+    {
+        $api = new AddressApi();
+        $api->run();
     }
 ?>

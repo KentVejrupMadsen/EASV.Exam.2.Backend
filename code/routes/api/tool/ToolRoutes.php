@@ -22,10 +22,10 @@
         (
             function()
             {
-                BoardApi();
-                KanbanApi();
-                ProjectApi();
-                TaskApi();
+                MakeBoardApi();
+                MakeKanbanApi();
+                MakeProjectApi();
+                MakeTaskApi();
             }
         );
     }

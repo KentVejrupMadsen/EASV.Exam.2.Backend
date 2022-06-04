@@ -10,32 +10,49 @@
 
     // Internal library
     use App\Http\Controllers\httpControllers\account\entities\PersonNameController;
-
-    const NameRoute = 'name';
-
-    const NameReadRoute = 'read';
-    const NameCreateRoute = 'create';
-    const NameUpdateRoute = 'update';
-    const NameDeleteRoute = 'delete';
+    use App\Http\Controllers\RouteController;
 
 
-    function NameApi(): void
+    /**
+     *
+     */
+    class NameApi
+        extends RouteController
     {
-        Route::prefix( NameRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( PersonNameController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::get( NameReadRoute, 'read' );
-                        Route::post( NameCreateRoute,'create' );
-                        Route::patch( NameUpdateRoute, 'update' );
-                        Route::delete( NameDeleteRoute, 'delete' );
-                    }
-                );
-            }
-        );
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+        const route = 'name';
+
+        const read_route = ACTION_READ;
+        const create_route = ACTION_CREATE;
+        const update_route = ACTION_UPDATE;
+        const delete_route = ACTION_DELETE;
+
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( PersonNameController::class )->group
+            (
+                function(): void
+                {
+                    Route::get( self::read_route, 'read' );
+                    Route::post( self::create_route,'create' );
+                    Route::patch( self::update_route, 'update' );
+                    Route::delete( self::delete_route, 'delete' );
+                }
+            );
+        }
+    }
+
+    function MakeNameApi(): void
+    {
+        $name = new NameApi();
+        $name->run();
     }
 ?>

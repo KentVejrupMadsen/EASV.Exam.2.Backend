@@ -13,8 +13,8 @@
     require_once 'EmailApi.php';
     require_once 'NameApi.php';
 
-
     const EntityRoute = 'entities';
+
 
     function EntitiesRoutes()
     {
@@ -22,9 +22,9 @@
         (
             function()
             {
-                AddressApi();
-                EmailApi();
-                NameApi();
+                MakeAddressApi();
+                MakeEmailApi();
+                MakeNameApi();
             }
         );
     }

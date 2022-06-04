@@ -16,8 +16,10 @@
     abstract class AccountProtectedRequest
         extends FormRequest
     {
-
-        protected function requireLoginGuard(): bool
+        /**
+         * @return bool
+         */
+        protected final function requireLoginGuard(): bool
         {
             if( is_null( $this->bearerToken() ) )
             {
@@ -28,7 +30,10 @@
         }
 
 
-        protected function requireVerifiedAccountGaurd(): bool
+        /**
+         * @return bool
+         */
+        protected final function requireVerifiedAccount(): bool
         {
             if( is_null( $this->user()->email_verfied_at ) )
             {
