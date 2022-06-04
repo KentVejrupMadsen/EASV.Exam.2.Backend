@@ -12,6 +12,8 @@
     use OpenApi\Attributes
         as OA;
 
+    use App\Http\Requests\template\RequestDefaults;
+
 
     /**
      *
@@ -20,13 +22,22 @@
     class PersonAddressRequest
         extends AccountProtectedRequest
     {
+
         /**
          * @return bool
          */
         public final function authorize(): bool
         {
-            return false;
+            $retVal = false;
+
+            if( $this->accepts( RequestDefaults::getAllowedFormats() ) )
+            {
+                $retVal = true;
+            }
+
+            return $retVal;
         }
+
 
         /**
          * @return array

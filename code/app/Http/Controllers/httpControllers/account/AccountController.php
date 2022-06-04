@@ -91,8 +91,9 @@
          * @param Request $request
          * @return array|null
          */
-        public final function pipelineTowardJSON( Request $request ): ?array
+        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
         {
+
 
             return null;
         }
