@@ -62,7 +62,7 @@
             return null;
         }
 
-        public final function pipelineTowardJSON( Request $request ): ?array
+        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
         {
             // TODO: Implement pipelineTowardJSON() method.
             return null;
@@ -83,6 +83,12 @@
         #[OA\Get(path: '/api/1.0.0/accounts/entities/email/read')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
+        public function public_read( Request $request ): ?AccountEmailModel
+        {
+            abort( 300 );
+        }
+
+
         public function read( Request $request ): ?AccountEmailModel
         {
             abort( 300 );
@@ -92,7 +98,12 @@
         #[OA\Delete(path: '/api/1.0.0/accounts/entities/email/delete')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
-        public function delete( Request $request ): bool
+        public function public_delete( Request $request )
+        {
+            return $this->delete( $request );
+        }
+
+        public function delete( Request $request )
         {
 
             return false;
@@ -106,7 +117,13 @@
         #[OA\Post(path: '/api/1.0.0/accounts/entities/email/create')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
-        public final function create( Request $request ): JsonResponse
+        public final function public_create( Request $request )
+        {
+            return $this->create( $request );
+        }
+
+
+        public final function create( Request $request )
         {
 
             return Response()->json(null, 200);
@@ -120,6 +137,11 @@
         #[OA\Patch(path: '/api/1.0.0/accounts/entities/email/update')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
+        public final function public_update( Request $request ): JsonResponse
+        {
+            return Response()->json(null, 200);
+        }
+
         public final function update( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);

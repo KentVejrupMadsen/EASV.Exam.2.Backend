@@ -38,10 +38,10 @@
             (
                 function(): void
                 {
-                    Route::get( self::route_read, 'read' );
-                    Route::post( self::route_create, 'create' );
-                    Route::patch( self::route_update, 'update' );
-                    Route::delete( self::route_delete, 'delete' );
+                    Route::get( self::route_read, 'public_read' );
+                    Route::post( self::route_create, 'public_create' );
+                    Route::patch( self::route_update, 'public_update' );
+                    Route::delete( self::route_delete, 'public_delete' );
                 }
             );
         }

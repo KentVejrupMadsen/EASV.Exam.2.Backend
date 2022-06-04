@@ -9,6 +9,7 @@
 
     use App\Http\Requests\template\AccountProtectedRequest;
 
+    use App\Http\Requests\template\RequestDefaults;
     use OpenApi\Attributes
         as OA;
 
@@ -20,9 +21,16 @@
         /**
          * @return bool
          */
-        public function authorize(): bool
+        public final function authorize(): bool
         {
-            return false;
+            $retVal = false;
+
+            if( $this->accepts( RequestDefaults::getAllowedFormats() ) )
+            {
+                $retVal = true;
+            }
+
+            return $retVal;
         }
 
 
