@@ -43,7 +43,7 @@
         //
         /**
          * @param SecurityCSRFRequest $Request
-         * @return void
+         * @return null
          */
         #[OA\Get( path: '/api/1.0.0/securities/recaptcha/read' )]
         #[OA\Response( response: '200',
@@ -68,7 +68,7 @@
 
         /**
          * @param SecurityCSRFRequest $Request
-         * @return void
+         * @return null
          */
         #[OA\Patch( path: '/api/1.0.0/securities/recaptcha/update' )]
         #[OA\Response( response: '200',
@@ -94,11 +94,13 @@
 
         /**
          * @param SecurityCSRFRequest $Request
-         * @return void
+         * @return null
          */
-        #[OA\Post(path: '/api/1.0.0/securities/recaptcha/create' )]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Post( path: '/api/1.0.0/securities/recaptcha/create' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function publicCreate( SecurityCSRFRequest $Request )
         {
             return $this->create( $Request );
@@ -117,11 +119,13 @@
 
         /**
          * @param SecurityCSRFRequest $Request
-         * @return void
+         * @return null
          */
-        #[OA\Delete(path: '/api/1.0.0/securities/recaptcha/delete' )]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Delete( path: '/api/1.0.0/securities/recaptcha/delete' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function publicDelete( SecurityCSRFRequest $Request )
         {
             return $this->delete( $Request );
