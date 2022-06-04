@@ -40,9 +40,9 @@
             (
                 function(): void
                 {
-                    Route::post( self::create_route, 'create' );
+                    Route::post( self::create_route, 'public_create' );
                     Route::post( self::login_route, 'login' );
-                    Route::get( self::read_route, 'read' );
+                    Route::get( self::read_route, 'public_read' );
                     Route::delete( self::delete_route, 'public_delete' );
                     Route::get( self::logout_route, 'logout' );
                     Route::get( self::me_route, 'me' );
