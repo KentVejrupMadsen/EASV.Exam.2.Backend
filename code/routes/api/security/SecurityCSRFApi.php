@@ -12,35 +12,57 @@
     use App\Http\Controllers\httpControllers\security\SecurityCSRFTokenController;
     use App\Http\Controllers\RouteController;
 
-    const csrfRoute = 'csrf';
 
-    const CSRFAccessRoute = 'access';
-    const CSRFCreateRoute = 'create';
-    const CSRFDeleteRoute = 'delete';
-    const CSRFReadRoute   = 'read';
-    const CSRFResetRoute  = 'reset';
-    const CSRFUpdateRoute = 'update';
+    /**
+     *
+     */
+    class SecurityCSRFApi
+        extends RouteController
+    {
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
+        private const route = 'csrf';
+
+        private const access_route = 'access';
+        private const create_route = 'create';
+        private const delete_Route = 'delete';
+        private const read_route   = 'read';
+        private const reset_route  = 'reset';
+        private const update_route = 'update';
+
+        /**
+         * @return void
+         */
+        protected function execute()
+        {
+            Route::controller( SecurityCSRFTokenController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( self::access_route, 'access' );
+                    Route::get( self::create_route, 'publicCreate' );
+                    Route::delete( self::delete_Route, 'publicDelete' );
+                    Route::get( self::read_route,'publicRead' );
+                    Route::patch( self::reset_route, 'reset' );
+                    Route::patch( self::update_route, 'publicUpdate' );
+                }
+            );
+        }
+    }
 
 
+    /**
+     * @return void
+     */
     function MakeSecurityCSRFApi(): void
     {
-        Route::prefix( csrfRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( SecurityCSRFTokenController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( CSRFAccessRoute, 'access' );
-                        Route::get( CSRFCreateRoute, 'publicCreate' );
-                        Route::delete( CSRFDeleteRoute, 'publicDelete' );
-                        Route::get( CSRFReadRoute,'publicRead' );
-                        Route::patch( CSRFResetRoute, 'reset' );
-                        Route::patch( CSRFUpdateRoute, 'publicUpdate' );
-                    }
-                );
-            }
-        );
+        $model = new SecurityCSRFApi();
+        $model->run();
     }
 ?>
