@@ -14,31 +14,50 @@
     use App\Http\Controllers\RouteController;
 
 
-    const ConfigurationRoute = 'configuration';
+    /**
+     *
+     */
+    class SecurityConfigurationApi
+        extends RouteController
+    {
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
 
-    const ConfigurationCreateRoute = 'create';
-    const ConfigurationDeleteRoute = 'delete';
-    const ConfigurationReadRoute   = 'read';
-    const ConfigurationUpdateRoute = 'update';
+        private const route = 'configuration';
+
+        private const create_route = 'create';
+        private const delete_route = 'delete';
+        private const read_route   = 'read';
+        private const update_route = 'update';
 
 
+        /**
+         * @return void
+         */
+        protected function execute()
+        {
+            Route::controller( SecurityConfigurationController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( self::create_route, 'publicCreate' );
+                    Route::delete( self::delete_route, 'publicDelete' );
+                    Route::get( self::read_route, 'publicRead' );
+                    Route::patch( self::update_route, 'publicUpdate' );
+                }
+            );
+        }
+    }
+
+
+    /**
+     * @return void
+     */
     function MakeSecurityConfigurationApi(): void
     {
-        Route::prefix( ConfigurationRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( SecurityConfigurationController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( ConfigurationCreateRoute, 'publicCreate' );
-                        Route::delete( ConfigurationDeleteRoute, 'publicDelete' );
-                        Route::get( ConfigurationReadRoute, 'publicRead' );
-                        Route::patch( ConfigurationUpdateRoute, 'publicUpdate' );
-                    }
-                );
-            }
-        );
+        $api = new SecurityConfigurationApi();
+        $api->run();
     }
 ?>
