@@ -6,10 +6,8 @@
      * TODO: Make description
      */
     // Constants
-    const MIDDLEWARE_SANCTUM = 'auth:sanctum';
 
-    // Short constants
-    define('MIDSANC', MIDDLEWARE_SANCTUM);
+    // Alias constants
 
 
     // Requiring all the routes

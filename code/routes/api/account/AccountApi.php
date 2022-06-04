@@ -23,9 +23,12 @@
     const AccountLogoutRoute  =  'logout';
     const AccountUpdateRoute  =  'update';
     const AccountVerifyRoute  =  'verify';
-    const AccountReadRoute    = 'read';
+    const AccountReadRoute    =  'read';
 
 
+    /**
+     * @return void
+     */
     function AccountApi(): void
     {
         Route::prefix( data_route )->group
@@ -36,28 +39,24 @@
                 (
                     function(): void
                     {
-                        Route::post( AccountCreateRoute, 'create' );
-                        Route::post( AccountLoginRoute, 'login' );
-                        Route::get( AccountReadRoute, 'read' );
-
-                        RequiresAuthentication();
+                        Route::post( AccountCreateRoute,
+                                     'create' );
+                        Route::post( AccountLoginRoute,
+                                    'login' );
+                        Route::get( AccountReadRoute,
+                                    'read' );
+                        Route::delete( AccountDeleteRoute,
+                                      'public_delete' );
+                        Route::get( AccountLogoutRoute,
+                                    'logout' );
+                        Route::get( AccountMeRoute,
+                                    'me' );
+                        Route::patch( AccountUpdateRoute,
+                                      'public_update' );
+                        Route::post( AccountVerifyRoute,
+                                    'verify' );
                     }
                 );
-            }
-        );
-    }
-
-    function RequiresAuthentication(): void
-    {
-        Route::middleware( MIDSANC )->group
-        (
-            function(): void
-            {
-                Route::delete( AccountDeleteRoute, 'delete' );
-                Route::get( AccountLogoutRoute, 'logout' );
-                Route::get( AccountMeRoute, 'me' );
-                Route::patch( AccountUpdateRoute, 'update' );
-                Route::post( AccountVerifyRoute, 'verify' );
             }
         );
     }

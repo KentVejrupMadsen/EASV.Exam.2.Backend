@@ -9,6 +9,7 @@
 
     use App\Http\Controllers\httpControllers\account\entities\PersonAddressController;
 
+
     const AddressRoute = 'address';
 
     const AddressReadRoute   = 'read';

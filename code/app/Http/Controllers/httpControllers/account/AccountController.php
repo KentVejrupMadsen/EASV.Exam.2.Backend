@@ -107,9 +107,10 @@
 
             return null;
         }
-        
+
 
         /**
+         * @param SecurityProtectedRequest $request
          * @return JsonResponse
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/me' )]
@@ -120,7 +121,7 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function me(): JsonResponse
+        public final function me( SecurityProtectedRequest $request ): JsonResponse
         {
             $currentUser = Auth::user();
             return response()->json($currentUser, 200);
@@ -194,7 +195,6 @@
         }
 
 
-
         /**
          * @param SecurityProtectedRequest $request
          * @return JsonResponse
@@ -219,7 +219,7 @@
         public final function update( Request $request ): JsonResponse
         {
 
-            return Response()->json(null, 200);
+            return Response()->json( null, 200 );
         }
 
 
@@ -250,15 +250,14 @@
         public final function public_delete( SecurityProtectedRequest $request ): JsonResponse
         {
 
-            return $this->delete();
+            return $this->delete( $request );
         }
 
 
         /**
-         * @param Request $request
+         * @param SecurityProtectedRequest $request
          * @return JsonResponse
          */
-
         #[OA\Post( path: '/api/1.0.0/accounts/account/verify' )]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
@@ -267,7 +266,7 @@
                        description: 'The data')]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function verify( Request $request ): JsonResponse
+        public final function verify( SecurityProtectedRequest $request ): JsonResponse
         {
 
             return Response()->json( null, 200 );

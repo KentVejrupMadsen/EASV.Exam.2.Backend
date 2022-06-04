@@ -9,8 +9,8 @@
 
     use App\Http\Controllers\httpControllers\options\StateController;
 
-    const stateRoute = 'state';
 
+    const stateRoute = 'state';
 
     function StateApi(): void
     {
