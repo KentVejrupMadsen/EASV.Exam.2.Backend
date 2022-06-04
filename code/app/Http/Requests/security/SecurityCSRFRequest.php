@@ -8,12 +8,12 @@
     namespace App\Http\Requests\security;
 
     // external libraries
+    use Illuminate\Foundation\Http\FormRequest;
     use OpenApi\Attributes
         as OA;
 
     // Internal libraries
     use App\Http\Requests\template\RequestDefaults;
-    use Illuminate\Foundation\Http\FormRequest;
 
 
     /**
