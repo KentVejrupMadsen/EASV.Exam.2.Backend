@@ -10,7 +10,7 @@
     /**
      *
      */
-    class PersonNameConstructor
+    class AccountMigrator
     {
         public function __construct()
         {
@@ -25,25 +25,25 @@
             return null;
         }
 
-        private static ?PersonNameConstructor $singleton =  null;
+        private static ?AccountMigrator $singleton =  null;
 
         /**
-         * @return PersonNameConstructor|null
+         * @return AccountMigrator|null
          */
-        public static function getSingleton(): ?PersonNameConstructor
+        public static function getSingleton(): ?AccountMigrator
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new PersonNameConstructor() );
+                self::setSingleton( new AccountMigrator() );
             }
 
             return self::$singleton;
         }
 
         /**
-         * @param PersonNameConstructor|null $singleton
+         * @param AccountMigrator|null $singleton
          */
-        public static function setSingleton( ?PersonNameConstructor $singleton ): void
+        public static function setSingleton( ?AccountMigrator $singleton ): void
         {
             self::$singleton = $singleton;
         }

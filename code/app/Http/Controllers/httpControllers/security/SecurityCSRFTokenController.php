@@ -23,7 +23,7 @@
     use App\Http\Requests\security\SecurityCSRFRequest;
 
     use App\Models\security\CSRFModel;
-    use App\Factory\SecurityCSRFConstructor;
+    use App\Factory\SecurityCSRFMigrator;
 
     use App\Http\Controllers\formatControllers\json\CSRFResponseJSONFactory;
 
@@ -62,7 +62,7 @@
 
         private ?RedisCacheCSRFController $cache = null;
         private ?CSRFResponseJSONFactory $jsonFactory = null;
-        private ?SecurityCSRFConstructor $constructor = null;
+        private ?SecurityCSRFMigrator $constructor = null;
 
 
         // Functions that the routes interacts with
@@ -246,13 +246,13 @@
         }
 
         /**
-         * @return SecurityCSRFConstructor
+         * @return SecurityCSRFMigrator
          */
-        public final function getConstructor(): SecurityCSRFConstructor
+        public final function getConstructor(): SecurityCSRFMigrator
         {
             if( is_null( $this->constructor ) )
             {
-                $this->setConstructor( SecurityCSRFConstructor::getFactory() );
+                $this->setConstructor( SecurityCSRFMigrator::getFactory() );
             }
 
             return $this->constructor;

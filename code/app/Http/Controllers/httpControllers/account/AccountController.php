@@ -8,7 +8,8 @@
     namespace App\Http\Controllers\httpControllers\account;
 
     // External Libraries
-    use App\Factory\AccountConstructor;
+    use App\Factory\AccountMigrator;
+    use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
@@ -240,7 +241,11 @@
             $form = $request->input( 'account' );
             $security = $request->input( 'account.security.password' );
 
+            if( PersonEmailController::hasAccountEmailContainer( $request ) )
+            {
+                $personContainer = $form[ 'person' ];
 
+            }
 
             return $this->Pipeline( $content_type, $response );
         }
@@ -385,11 +390,11 @@
         }
 
         /**
-         * @return AccountConstructor|null
+         * @return AccountMigrator|null
          */
-        public static function getConstructor(): ?AccountConstructor
+        public static function getConstructor(): ?AccountMigrator
         {
-            return AccountConstructor::getSingleton();
+            return AccountMigrator::getSingleton();
         }
     }
 ?>

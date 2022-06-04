@@ -10,35 +10,36 @@
     /**
      *
      */
-    class PersonEmailConstructor
+    class PersonEmailMigrator
     {
         public function __construct()
         {
 
         }
 
-        //
 
-        private static ?PersonEmailConstructor $singleton =  null;
+
+        // Variables
+        private static ?PersonEmailMigrator $singleton =  null;
 
         /**
-         * @return PersonEmailConstructor|null
+         * @return PersonEmailMigrator|null
          */
-        public static function getSingleton(): ?PersonEmailConstructor
+        public static function getSingleton(): ?PersonEmailMigrator
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new PersonEmailConstructor() );
+                self::setSingleton( new PersonEmailMigrator() );
             }
 
             return self::$singleton;
         }
 
         /**
-         * @param PersonEmailConstructor|null $singleton
+         * @param PersonEmailMigrator|null $singleton
          * @return void
          */
-        public static function setSingleton( ?PersonEmailConstructor $singleton ): void
+        public static function setSingleton( ?PersonEmailMigrator $singleton ): void
         {
             self::$singleton = $singleton;
         }
