@@ -8,6 +8,8 @@
     namespace App\Http\Controllers\httpControllers\account;
 
     // External Libraries
+    use App\Http\Controllers\formatControllers\json\AccountResponseJSONFactory;
+    use App\Http\Requests\security\SecurityProtectedRequest;
     use Carbon\Carbon;
 
     use Illuminate\Http\JsonResponse;
@@ -44,6 +46,7 @@
 
         //
         private static $controller = null;
+        private static ?AccountResponseJSONFactory $responseFactory = null;
 
 
         // implement output
@@ -104,6 +107,7 @@
 
             return null;
         }
+        
 
         /**
          * @return JsonResponse
@@ -156,8 +160,8 @@
 
 
         /** Renders the current bearer token invalid
-         * @param Request $request
-         * @return void
+         * @param SecurityProtectedRequest $request
+         * @return null
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/logout' )]
         #[OA\Parameter( name:'Authorization',
@@ -167,9 +171,10 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function logout( Request $request )
+        public final function logout( SecurityProtectedRequest $request )
         {
 
+            return null;
         }
 
 
@@ -189,11 +194,20 @@
         }
 
 
+
+        /**
+         * @param SecurityProtectedRequest $request
+         * @return JsonResponse
+         */
+        public final function public_update( SecurityProtectedRequest $request ): JsonResponse
+        {
+            return $this->update( $request );
+        }
+
         /**
          * @param Request $request
          * @return JsonResponse
          */
-
         #[OA\Patch( path: '/api/1.0.0/accounts/account/update' )]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
@@ -226,6 +240,17 @@
         {
 
             return Response()->json( null, 200 );
+        }
+
+
+        /**
+         * @param SecurityProtectedRequest $request
+         * @return JsonResponse
+         */
+        public final function public_delete( SecurityProtectedRequest $request ): JsonResponse
+        {
+
+            return $this->delete();
         }
 
 
@@ -283,5 +308,25 @@
             return self::$controller;
         }
 
+        /**
+         * @return AccountResponseJSONFactory|null
+         */
+        public final static function getResponseFactory(): ?AccountResponseJSONFactory
+        {
+            if( is_null( self::$responseFactory ) )
+            {
+                self::setResponseFactory( AccountResponseJSONFactory::getSingleton() );
+            }
+
+            return self::$responseFactory;
+        }
+
+        /**
+         * @param AccountResponseJSONFactory|null $responseFactory
+         */
+        public final static function setResponseFactory( ?AccountResponseJSONFactory $responseFactory ): void
+        {
+            self::$responseFactory = $responseFactory;
+        }
     }
 ?>
