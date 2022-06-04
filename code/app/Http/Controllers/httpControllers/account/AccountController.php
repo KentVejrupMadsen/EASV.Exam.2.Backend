@@ -8,6 +8,8 @@
     namespace App\Http\Controllers\httpControllers\account;
 
     // External Libraries
+    use App\Models\tables\AccountEmailModel;
+    use Carbon\Carbon;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
@@ -222,33 +224,59 @@
         #[OA\Post( path: '/api/1.0.0/accounts/account/create' )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
-        #[OA\Response( response: '404',
+        #[OA\Response( response: '201',
+                       description: 'Account created' )]
+        #[OA\Response( response: '400',
+                       description: 'Bad Request - an account already exist with the given parameters' )]
+        #[OA\Response( response: '540',
                        description: 'content not found' )]
         public final function public_create( Request $request )
         {
-
             return $this->create( $request );
         }
 
 
         /**
+         * @param array $InputKeys
+         * @param AccountEmailModel $mailForm
+         * @param string $password
+         * @return array
+         */
+        private function createForm( array $InputKeys, AccountEmailModel $mailForm, string $password ): array
+        {
+            return
+            [
+                User::field_username => $InputKeys[ 'username' ],
+                User::field_password => $password,
+                User::field_email_id => $mailForm['id'],
+                User::field_created_at => Carbon::now(),
+                User::field_updated_at => Carbon::now(),
+                User::field_settings => '{}'
+            ];
+        }
+
+
+        /**
          * @param Request $request
-         * @return JsonResponse
+         * @return JsonResponse|null
          */
         public final function create( Request $request )
         {
             $content_type = $request->header( 'Content-Type' );
             $response = [];
+            $accountMigrator = self::getConstructor();
 
             $form = $request->input( 'account' );
-            $security = $request->input( 'account.security.password' );
+            $securityPassword = $request->input( 'account.security.password' );
+
+            // Make private function
+            $mailModel = null;
 
             if( PersonEmailController::hasAccountEmailContainer( $request ) )
             {
                 $personContainer = $form[ 'person' ];
 
                 $emailConstructor = PersonEmailMigrator::getSingleton();
-                $mailModel = null;
 
                 if( !$emailConstructor->hasEmailContainer( $personContainer[ 'email' ] ) )
                 {
@@ -257,10 +285,23 @@
                 else
                 {
                     $mailModel = $emailConstructor->retrieveEmail( $personContainer[ 'email' ] );
-                }
 
-                return $mailModel;
+                    if( $accountMigrator->validateEmailIsUsedWithId( $mailModel->id ) )
+                    {
+                        abort( 400, message: 'the given email is already taken by another account');
+                    }
+                }
             }
+
+
+            if( $accountMigrator->validateUsernameIsUsed( $form[ 'username' ] ) )
+            {
+                abort( 400, message: 'the given username is already taken by another account' );
+            }
+
+            $account = $accountMigrator->createAccountForm(
+                $this::createForm( $form, $mailModel, $securityPassword )
+            );
 
             return $this->Pipeline( $content_type, $response );
         }
@@ -268,15 +309,6 @@
 
         /**
          * @param AccountRequest $request
-         * @return JsonResponse
-         */
-        public final function public_update( AccountRequest $request )
-        {
-            return $this->update( $request );
-        }
-
-        /**
-         * @param Request $request
          * @return JsonResponse
          */
         #[OA\Patch( path: '/api/1.0.0/accounts/account/update' )]
@@ -287,6 +319,15 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        public final function public_update( AccountRequest $request )
+        {
+            return $this->update( $request );
+        }
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function update( Request $request )
         {
             $content_type = $request->header( 'Content-Type' );
@@ -407,7 +448,7 @@
         /**
          * @return AccountMigrator|null
          */
-        public static function getConstructor(): ?AccountMigrator
+        public static final function getConstructor(): ?AccountMigrator
         {
             return AccountMigrator::getSingleton();
         }
