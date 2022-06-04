@@ -20,7 +20,7 @@
      *
      */
     #[OA\Schema()]
-    class AccountPublicRequest
+    class AccountRequest
         extends PublicRequest
     {
         /**
