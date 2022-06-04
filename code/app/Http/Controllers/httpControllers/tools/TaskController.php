@@ -35,39 +35,58 @@
             }
         }
 
+        //
+        private static ?TaskController $controller = null;
+
+        //
+        /**
+         * @return bool
+         */
         public final function hasImplementedCSV(): bool
         {
-            // TODO: Implement hasImplementedCSV() method.
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public final function hasImplementedJSON(): bool
         {
-            // TODO: Implement hasImplementedJSON() method.
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public final function hasImplementedXML(): bool
         {
-            // TODO: Implement hasImplementedXML() method.
             return true;
         }
 
-        public final function pipelineTowardCSV( Request $request ): ?array
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardCSV( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardCSV() method.
             return null;
         }
 
-        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
+        /**
+         * @param array $request
+         * @return JsonResponse|null
+         */
+        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
-            // TODO: Implement pipelineTowardJSON() method.
             return null;
         }
 
-        public final function pipelineTowardXML( Request $request ): ?array
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardXML( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardXML() method.
             return null;
         }
 
@@ -75,9 +94,11 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post(path: '/api/1.0.0/tools/task/create' )]
-        #[OA\Response( response: '200', description: 'create a new task for a kanban board' )]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Post( path: '/api/1.0.0/tools/task/create' )]
+        #[OA\Response( response: '200',
+                       description: 'create a new task for a kanban board' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function public_create( Request $request ): JsonResponse
         {
 
@@ -85,6 +106,10 @@
             return Response()->json(null, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function create( Request $request ): JsonResponse
         {
 
@@ -107,6 +132,10 @@
             return Response()->json(null, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function read( Request $request ): JsonResponse
         {
 
@@ -129,6 +158,10 @@
             return Response()->json(null, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function update( Request $request ): JsonResponse
         {
 
@@ -150,23 +183,32 @@
             return Response()->json(null, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function delete( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
         }
 
-        private static $controller = null;
-
-        public static final function setSingleton( TaskController $controller )
+        /**
+         * @param TaskController $controller
+         * @return void
+         */
+        public static final function setSingleton( TaskController $controller ): void
         {
             self::$controller = $controller;
         }
 
+        /**
+         * @return TaskController
+         */
         public static final function getSingleton(): TaskController
         {
-            if(is_null(self::$controller))
+            if( is_null( self::$controller ) )
             {
-                self::setSingleton(new TaskController());
+                self::setSingleton( new TaskController() );
             }
 
             return self::$controller;

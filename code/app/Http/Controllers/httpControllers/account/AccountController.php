@@ -9,21 +9,16 @@
 
     // External Libraries
     use App\Http\Controllers\formatControllers\json\AccountResponseJSONFactory;
-    use App\Http\Requests\security\SecurityProtectedRequest;
-    use Carbon\Carbon;
 
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
-    use Illuminate\Support\Facades\Hash;
-    use Illuminate\Support\Str;
 
     use OpenApi\Attributes
         as OA;
 
     // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-
     use App\Models\tables\User;
 
 
@@ -44,8 +39,8 @@
             }
         }
 
-        //
-        private static $controller = null;
+        // Variables
+        private static ?AccountController $controller = null;
         private static ?AccountResponseJSONFactory $responseFactory = null;
 
 
@@ -144,6 +139,10 @@
             return Response()->json( null, 200 );
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function read( Request $request ): JsonResponse
         {
 

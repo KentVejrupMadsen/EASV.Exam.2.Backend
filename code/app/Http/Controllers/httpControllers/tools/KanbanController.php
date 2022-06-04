@@ -35,42 +35,61 @@
             }
         }
 
-        private static $controller = null;
+        // Variables
+        private static ?KanbanController $controller = null;
+
 
         // Code
+        /**
+         * @return bool
+         */
         public final function hasImplementedCSV(): bool
         {
-            // TODO: Implement hasImplementedCSV() method.
+
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public final function hasImplementedJSON(): bool
         {
-            // TODO: Implement hasImplementedJSON() method.
+
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public final function hasImplementedXML(): bool
         {
-            // TODO: Implement hasImplementedXML() method.
             return true;
         }
 
-        public final function pipelineTowardCSV( Request $request ): ?array
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardCSV( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardCSV() method.
             return null;
         }
 
-        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
+        /**
+         * @param array $request
+         * @return JsonResponse|null
+         */
+        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
-            // TODO: Implement pipelineTowardJSON() method.
             return null;
         }
 
-        public final function pipelineTowardXML( Request $request ): ?array
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardXML( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardXML() method.
             return null;
         }
 
@@ -85,6 +104,10 @@
 
         }
 
+        /**
+         * @param Request $request
+         * @return void
+         */
         public final function create( Request $request )
         {
             
@@ -102,6 +125,10 @@
 
         }
 
+        /**
+         * @param Request $request
+         * @return void
+         */
         public final function update( Request $request )
         {
             
@@ -119,6 +146,10 @@
 
         }
 
+        /**
+         * @param Request $request
+         * @return void
+         */
         public final function delete( Request $request )
         {
             
@@ -136,6 +167,10 @@
 
         }
 
+        /**
+         * @param Request $request
+         * @return void
+         */
         public final function read( Request $request )
         {
             
@@ -144,19 +179,19 @@
 
         // Accessors
         /**
-         * @param $controller
+         * @param KanbanController $controller
          * @return void
          */
-        public static final function setSingleton( $controller )
+        public static final function setSingleton( KanbanController $controller ): void
         {
             self::$controller = $controller;
         }
 
 
         /**
-         * @return null
+         * @return KanbanController
          */
-        public static final function getSingleton()
+        public static final function getSingleton(): KanbanController
         {
             if( is_null( self::$controller ) )
             {

@@ -36,14 +36,21 @@
             }
         }
 
+        // Variables
+        private static ?SecurityRecaptchaController $controller = null;
+
+
+        //
         /**
          * @param SecurityCSRFRequest $Request
          * @return void
          */
-        #[OA\Get(path: '/api/1.0.0/securities/recaptcha/read' )]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public function publicRead( SecurityCSRFRequest $Request )
+        #[OA\Get( path: '/api/1.0.0/securities/recaptcha/read' )]
+        #[OA\Response( response: '200',
+                       description: 'The data')]
+        #[OA\Response( response: '404',
+                       description: 'content not found')]
+        public final function publicRead( SecurityCSRFRequest $Request )
         {
             $this->read( $Request );
         }
@@ -53,10 +60,12 @@
          * @param SecurityCSRFRequest $Request
          * @return void
          */
-        #[OA\Patch(path: '/api/1.0.0/securities/recaptcha/update' )]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public function publicUpdate( SecurityCSRFRequest $Request )
+        #[OA\Patch( path: '/api/1.0.0/securities/recaptcha/update' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function publicUpdate( SecurityCSRFRequest $Request )
         {
             $this->update( $Request );
         }
@@ -69,7 +78,7 @@
         #[OA\Post(path: '/api/1.0.0/securities/recaptcha/create' )]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
-        public function publicCreate( SecurityCSRFRequest $Request )
+        public final function publicCreate( SecurityCSRFRequest $Request )
         {
             $this->create( $Request );
         }
@@ -82,7 +91,7 @@
         #[OA\Delete(path: '/api/1.0.0/securities/recaptcha/delete' )]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
-        public function publicDelete( SecurityCSRFRequest $Request )
+        public final function publicDelete( SecurityCSRFRequest $Request )
         {
             $this->delete( $Request );
         }
@@ -94,7 +103,7 @@
          */
         public final function read( Request $request )
         {
-            // TODO: Implement read() method.
+
         }
 
 
@@ -104,7 +113,7 @@
          */
         public final function create( Request $request )
         {
-            // TODO: Implement create() method.
+
         }
 
 
@@ -114,7 +123,7 @@
          */
         public final function update( Request $request )
         {
-            // TODO: Implement update() method.
+
         }
 
 
@@ -124,17 +133,24 @@
          */
         public final function delete( Request $request )
         {
-            // TODO: Implement delete() method.
+
         }
 
-        private static $controller = null;
 
-        public static final function setSingleton( SecurityRecaptchaController $controller )
+        // Accessors
+        /**
+         * @param SecurityRecaptchaController $controller
+         * @return void
+         */
+        public static final function setSingleton( SecurityRecaptchaController $controller ): void
         {
             self::$controller = $controller;
         }
 
-        public static final function getSingleton()
+        /**
+         * @return SecurityRecaptchaController
+         */
+        public static final function getSingleton(): SecurityRecaptchaController
         {
             if( is_null( self::$controller ) )
             {

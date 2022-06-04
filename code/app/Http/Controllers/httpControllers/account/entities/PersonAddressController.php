@@ -16,8 +16,8 @@
 
     // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Models\tables\AddressModel;
     use App\Http\Requests\account\entities\PersonAddressRequest;
+    use App\Models\tables\AddressModel;
 
 
     /**
@@ -40,37 +40,65 @@
             }
         }
 
+        // variables
+        private static ?PersonAddressController $controller = null;
+
+
         //
+        /**
+         * @return bool
+         */
         public final function hasImplementedCSV(): bool
         {
             return false;
         }
 
+        /**
+         * @return bool
+         */
         public final function hasImplementedJSON(): bool
         {
 
             return true;
         }
 
+
+        /**
+         * @return bool
+         */
         public final function hasImplementedXML(): bool
         {
 
             return false;
         }
 
-        public final function pipelineTowardCSV( Request $request ): ?array
+
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardCSV( Array $request ): ?array
         {
 
             return null;
         }
 
-        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
+        /**
+         * @param array $request
+         * @return JsonResponse|null
+         */
+        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
 
             return null;
         }
 
-        public final function pipelineTowardXML( Request $request ): ?array
+
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardXML( Array $request ): ?array
         {
 
             return null;
@@ -88,9 +116,11 @@
         }
 
 
-        #[OA\Get(path: '/api/1.0.0/accounts/entities/address/read')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/address/read' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function public_read( PersonAddressRequest $request )
         {
 
@@ -99,12 +129,14 @@
 
 
         /**
-         * @param Request $request
-         * @return bool
+         * @param PersonAddressRequest $request
+         * @return false
          */
-        #[OA\Delete(path: '/api/1.0.0/accounts/entities/address/delete')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/address/delete' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public function public_delete( PersonAddressRequest $request )
         {
 
@@ -125,9 +157,11 @@
         /**
          * 
          */
-        #[OA\Post(path: '/api/1.0.0/accounts/entities/address/create')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/address/create' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function public_create( PersonAddressRequest $request )
         {
             return $this->create( $request );
@@ -166,9 +200,10 @@
         }
 
 
-        //
-        private static $controller = null;
-
+        // Accessors
+        /**
+         * @return PersonAddressController
+         */
         public static function getSingleton(): PersonAddressController
         {
             if( is_null( self::$controller ) )
@@ -179,6 +214,10 @@
             return self::$controller;
         }
 
+        /**
+         * @param PersonAddressController $controller
+         * @return void
+         */
         protected final static function setSingleton( PersonAddressController $controller )
         {
             self::$controller = $controller;
