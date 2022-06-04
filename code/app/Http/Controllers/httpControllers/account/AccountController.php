@@ -121,8 +121,12 @@
                        description: 'content not found' )]
         public final function me( AccountRequest $request ): JsonResponse
         {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
+
             $currentUser = Auth::user();
-            return response()->json($currentUser, 200);
+
+            return $this->Pipeline( $content_type, $response );
         }
 
 
@@ -147,14 +151,16 @@
          */
         public final function read( Request $request )
         {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return null;
+            return $this->Pipeline( $content_type, $response );
         }
 
 
         /**
          * @param Request $request
-         * @return JsonResponse
+         * @return JsonResponse|null
          */
         #[OA\Post( path: 'api/1.0.0/accounts/account/login' )]
         #[OA\Response( response: '200',
@@ -163,8 +169,10 @@
                        description: 'content not found' )]
         public final function login( Request $request )
         {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return Response()->json(null, 200);
+            return $this->Pipeline( $content_type, $response );
         }
 
 
@@ -182,8 +190,10 @@
                        description: 'content not found' )]
         public final function logout( AccountRequest $request )
         {
+            $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return null;
+            return $this->Pipeline( $content_type, $response );
         }
 
 
@@ -210,8 +220,9 @@
         public final function create( Request $request )
         {
             $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return $this->Pipeline( $content_type, null );
+            return $this->Pipeline( $content_type, $response );
         }
 
 
@@ -239,8 +250,9 @@
         public final function update( Request $request )
         {
             $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return $this->Pipeline( $content_type, null );
+            return $this->Pipeline( $content_type, $response );
         }
 
 
@@ -270,8 +282,9 @@
         public final function delete( Request $request )
         {
             $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return $this->Pipeline( $content_type, null );
+            return $this->Pipeline( $content_type, $response );
         }
 
 
@@ -290,8 +303,9 @@
         public final function verify( AccountRequest $request )
         {
             $content_type = $request->header( 'Content-Type' );
+            $response = [];
 
-            return $this->Pipeline( $content_type, null );
+            return $this->Pipeline( $content_type, $response );
         }
 
 
