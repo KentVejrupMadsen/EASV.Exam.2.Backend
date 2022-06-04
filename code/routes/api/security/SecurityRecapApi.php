@@ -29,10 +29,10 @@
         // Variable
         const route = 'recaptcha';
 
-        const create_route =  'create';
-        const delete_route =  'delete';
-        const read_route   =  'read';
-        const update_route =  'update';
+        const create_route =  ACTION_CREATE;
+        const delete_route =  ACTION_DELETE;
+        const read_route   =  ACTION_READ;
+        const update_route =  ACTION_UPDATE;
 
 
         /**

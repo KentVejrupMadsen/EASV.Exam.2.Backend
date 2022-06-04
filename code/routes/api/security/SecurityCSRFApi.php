@@ -31,11 +31,11 @@
         private const route = 'csrf';
 
         private const access_route = 'access';
-        private const create_route = 'create';
-        private const delete_Route = 'delete';
-        private const read_route   = 'read';
+        private const create_route = ACTION_CREATE;
+        private const delete_Route = ACTION_DELETE;
+        private const read_route   = ACTION_READ;
         private const reset_route  = 'reset';
-        private const update_route = 'update';
+        private const update_route = ACTION_UPDATE;
 
 
         /**

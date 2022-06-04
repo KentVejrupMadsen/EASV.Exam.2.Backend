@@ -23,10 +23,10 @@
 
         private const route  = 'email';
 
-        private const route_read   = 'read';
-        private const route_create = 'create';
-        private const route_update = 'update';
-        private const route_delete = 'delete';
+        private const route_read   = ACTION_READ;
+        private const route_create = ACTION_CREATE;
+        private const route_update = ACTION_UPDATE;
+        private const route_delete = ACTION_DELETE;
 
 
         /**

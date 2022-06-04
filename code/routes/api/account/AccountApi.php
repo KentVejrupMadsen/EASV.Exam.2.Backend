@@ -23,15 +23,15 @@
 
         private const route = 'account';
 
-        private const create_route  =  'create';
-        private const delete_route  =  'delete';
+        private const create_route  =  ACTION_CREATE;
+        private const delete_route  =  ACTION_DELETE;
 
         private const me_route      =  'me';
         private const login_route   =  'login';
         private const logout_route  =  'logout';
-        private const update_route  =  'update';
+        private const update_route  =  ACTION_UPDATE;
         private const verify_route  =  'verify';
-        private const read_route    =  'read';
+        private const read_route    =  ACTION_READ;
 
 
         protected final function execute()

@@ -41,10 +41,10 @@
             (
                 function(): void
                 {
-                    Route::post( self::create_route, 'create' );
-                    Route::get( self::read_route, 'read' );
-                    Route::patch( self::update_route, 'update' );
-                    Route::delete( self::delete_route, 'delete' );
+                    Route::post( self::create_route, ACTION_CREATE );
+                    Route::get( self::read_route, ACTION_READ );
+                    Route::patch( self::update_route, ACTION_UPDATE );
+                    Route::delete( self::delete_route, ACTION_DELETE );
                 }
             );
         }

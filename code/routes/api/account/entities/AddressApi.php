@@ -27,10 +27,10 @@
         // Variables
         private const route = 'address';
 
-        private const read_route   = 'read';
-        private const create_route = 'create';
-        private const update_route = 'update';
-        private const delete_route = 'delete';
+        private const read_route   = ACTION_READ;
+        private const create_route = ACTION_CREATE;
+        private const update_route = ACTION_UPDATE;
+        private const delete_route = ACTION_DELETE;
 
         /**
          * @return void

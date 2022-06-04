@@ -26,10 +26,10 @@
 
         const route = 'name';
 
-        const read_route = 'read';
-        const create_route = 'create';
-        const update_route = 'update';
-        const delete_route = 'delete';
+        const read_route = ACTION_READ;
+        const create_route = ACTION_CREATE;
+        const update_route = ACTION_UPDATE;
+        const delete_route = ACTION_DELETE;
 
 
         /**

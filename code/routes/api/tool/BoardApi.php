@@ -31,10 +31,10 @@
         //
         private const route       = 'board';
 
-        private const create_route = 'create';
-        private const delete_route = 'delete';
-        private const read_route   = 'read';
-        private const update_route = 'update';
+        private const create_route = ACTION_CREATE;
+        private const delete_route = ACTION_DELETE;
+        private const read_route   = ACTION_READ;
+        private const update_route = ACTION_UPDATE;
 
 
         /**
