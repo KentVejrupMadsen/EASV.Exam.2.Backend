@@ -29,7 +29,7 @@
         /**
          * @return void
          */
-        public final function execute()
+        public final function execute(): void
         {
             $this->AddressApi();
         }
@@ -58,7 +58,7 @@
         }
     }
 
-    function MakeAddressApi()
+    function MakeAddressApi(): void
     {
         $api = new AddressApi();
         $api->execute();

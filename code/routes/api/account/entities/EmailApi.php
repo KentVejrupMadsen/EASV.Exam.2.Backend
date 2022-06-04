@@ -31,7 +31,7 @@
         /**
          * @return void
          */
-        public final function execute()
+        public final function execute(): void
         {
             $this->EmailApi();
         }
@@ -39,7 +39,7 @@
         /**
          *
          */
-        private function EmailApi()
+        private function EmailApi(): void
         {
             Route::prefix( self::route )->group
             (

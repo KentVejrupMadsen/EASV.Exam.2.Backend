@@ -23,7 +23,7 @@
         const update_route = 'update';
         const delete_route = 'delete';
 
-        private function make()
+        private function make(): void
         {
             Route::prefix( self::read_route )->group
             (
@@ -43,14 +43,16 @@
             );
         }
 
-        public final function execute()
+        public final function execute(): void
         {
             $this->make();
         }
     }
 
 
-    function NameApi(): void
+    function MakeNameApi(): void
     {
+        $name = new NameApi();
+        $name->execute();
     }
 ?>
