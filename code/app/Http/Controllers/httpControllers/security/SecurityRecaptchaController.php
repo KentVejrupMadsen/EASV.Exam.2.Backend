@@ -55,6 +55,16 @@
             return $this->read( $Request );
         }
 
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function read( Request $request )
+        {
+
+            return null;
+        }
+
 
         /**
          * @param SecurityCSRFRequest $Request
@@ -72,6 +82,17 @@
 
 
         /**
+         * @param Request $request
+         * @return null
+         */
+        public final function update( Request $request )
+        {
+
+            return null;
+        }
+
+
+        /**
          * @param SecurityCSRFRequest $Request
          * @return void
          */
@@ -81,6 +102,16 @@
         public final function publicCreate( SecurityCSRFRequest $Request )
         {
             return $this->create( $Request );
+        }
+
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function create( Request $request )
+        {
+
+            return null;
         }
 
 
@@ -95,41 +126,6 @@
         {
             return $this->delete( $Request );
         }
-
-        //
-
-        /**
-         * @param Request $request
-         * @return null
-         */
-        public final function read( Request $request )
-        {
-
-            return null;
-        }
-
-
-        /**
-         * @param Request $request
-         * @return null
-         */
-        public final function create( Request $request )
-        {
-
-            return null;
-        }
-
-
-        /**
-         * @param Request $request
-         * @return null
-         */
-        public final function update( Request $request )
-        {
-
-            return null;
-        }
-
 
         /**
          * @param Request $request
