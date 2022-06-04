@@ -9,6 +9,7 @@
 
     use App\Http\Requests\template\PublicRequest;
 
+    use App\Http\Requests\template\RequestDefaults;
     use OpenApi\Attributes
         as OA;
 
@@ -25,7 +26,14 @@
          */
         public final function authorize(): bool
         {
-            return false;
+            $retVal = false;
+
+            if( $this->accepts( RequestDefaults::getAllowedFormats() ) )
+            {
+                $retVal = true;
+            }
+
+            return $retVal;
         }
 
 
