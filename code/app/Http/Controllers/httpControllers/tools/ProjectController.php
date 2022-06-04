@@ -10,11 +10,13 @@
     // External Libraries
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
+
     use OpenApi\Attributes
         as OA;
 
     // Internal code
     use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Http\Requests\tools\ToolsProjectRequest;
 
 
     #[OA\Schema()]
@@ -34,39 +36,58 @@
             }
         }
 
+        // Variables
+        private static ?ProjectController $controller = null;
+
+
+        /**
+         * @return bool
+         */
         public final function hasImplementedCSV(): bool
         {
-            // TODO: Implement hasImplementedCSV() method.
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public final function hasImplementedJSON(): bool
         {
-            // TODO: Implement hasImplementedJSON() method.
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public final function hasImplementedXML(): bool
         {
-            // TODO: Implement hasImplementedXML() method.
             return true;
         }
 
-        public final function pipelineTowardCSV( Request $request ): ?array
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardCSV( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardCSV() method.
             return null;
         }
 
-        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
+        /**
+         * @param array $request
+         * @return JsonResponse|null
+         */
+        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
-            // TODO: Implement pipelineTowardJSON() method.
             return null;
         }
 
-        public final function pipelineTowardXML( Request $request ): ?array
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardXML( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardXML() method.
             return null;
         }
 
@@ -74,14 +95,20 @@
         /**
          * 
          */
-        #[OA\Post(path: '/api/1.0.0/tools/project/create')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public final function public_create( Request $request )
+        #[OA\Post( path: '/api/1.0.0/tools/project/create' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function public_create( ToolsProjectRequest $request )
         {
             
         }
 
+        /**
+         * @param Request $request
+         * @return void
+         */
         public final function create( Request $request )
         {
 
@@ -91,14 +118,20 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/1.0.0/tools/project/read')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public final function public_read( Request $request )
+        #[OA\Get( path: '/api/1.0.0/tools/project/read' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function public_read( ToolsProjectRequest $request )
         {
             
         }
 
+        /**
+         * @param Request $request
+         * @return void
+         */
         public final function read( Request $request )
         {
 
@@ -108,14 +141,20 @@
         /**
          * 
          */
-        #[OA\Patch(path: '/api/1.0.0/tools/project/update')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public final function public_update( Request $request )
+        #[OA\Patch( path: '/api/1.0.0/tools/project/update' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function public_update( ToolsProjectRequest $request )
         {
             
         }
 
+        /**
+         * @param Request $request
+         * @return void
+         */
         public final function update( Request $request )
         {
 
@@ -128,24 +167,25 @@
         #[OA\Delete(path: '/api/1.0.0/tools/project/delete')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
-        public final function public_delete( Request $request )
+        public final function public_delete( ToolsProjectRequest $request )
         {
             
         }
 
+        /**
+         * @param Request $request
+         * @return void
+         */
         public final function delete( Request $request )
         {
 
         }
 
-
-        private static $controller = null;
-
         /**
          * @param ProjectController $controller
          * @return void
          */
-        public static final function setSingleton( ProjectController $controller )
+        public static final function setSingleton( ProjectController $controller ): void
         {
             self::$controller = $controller;
         }

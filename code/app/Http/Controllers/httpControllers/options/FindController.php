@@ -43,24 +43,32 @@
 
 
         // Variables
-        private const conflict = 409;
+        private static ?FindController $controller = null;
 
 
         #[OA\Post( path: '/api/1.0.0/options/find/email' )]
-        #[OA\Response( response: '200', description: 'validates if the requested email is existing in the database as a json response.' ) ]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Response( response: '200',
+                       description: 'validates if the requested email is existing in the database as a json response.' ) ]
+        #[OA\Response( response: '404',
+                       description: 'content not found')]
         public function publicFind( FindRequest $request )
         {
 
         }
 
-        private static $controller = null;
-
-        public static final function setSingleton( FindController $controller )
+        // Accessor
+        /**
+         * @param FindController $controller
+         * @return void
+         */
+        public static final function setSingleton( FindController $controller ): void
         {
             self::$controller = $controller;
         }
 
+        /**
+         * @return FindController
+         */
         public static final function getSingleton(): FindController
         {
             if( is_null( self::$controller ) )

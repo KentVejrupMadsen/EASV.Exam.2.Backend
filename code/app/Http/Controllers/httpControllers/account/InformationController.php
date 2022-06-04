@@ -13,10 +13,6 @@
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
-    use Illuminate\Support\Facades\Auth;
-    use Illuminate\Support\Facades\Hash;
-    use Illuminate\Support\Str;
-
     use OpenApi\Attributes
         as OA;
 
@@ -44,39 +40,67 @@
             }
         }
 
+        // Variables
+        private static ?InformationController $controller = null;
+
 
         // implement output
+        /**
+         * @return bool
+         */
         public final function hasImplementedCSV(): bool
         {
             // TODO: Implement hasImplementedCSV() method.
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public final function hasImplementedJSON(): bool
         {
             // TODO: Implement hasImplementedJSON() method.
             return true;
         }
 
+
+        /**
+         * @return bool
+         */
         public final function hasImplementedXML(): bool
         {
             // TODO: Implement hasImplementedXML() method.
             return true;
         }
 
-        public final function pipelineTowardCSV( Request $request ): ?array
+
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardCSV( Array $request ): ?array
         {
             // TODO: Implement pipelineTowardCSV() method.
             return null;
         }
 
-        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
+
+        /**
+         * @param array $request
+         * @return JsonResponse|null
+         */
+        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
             // TODO: Implement pipelineTowardJSON() method.
             return null;
         }
 
-        public final function pipelineTowardXML( Request $request ): ?array
+
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardXML( Array $request ): ?array
         {
             // TODO: Implement pipelineTowardXML() method.
             return null;
@@ -86,14 +110,19 @@
          * @param Request $request
          * @return null
          */
-        #[OA\Get(path: '/api/1.0.0/accounts/information/read')]
-        #[OA\Response(response: '200', description: 'The data')]
+        #[OA\Get( path: '/api/1.0.0/accounts/information/read' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
         public final function public_read( Request $request )
         {
 
             return null;
         }
 
+        /**
+         * @param Request $request
+         * @return null
+         */
         public final function read( Request $request )
         {
 
@@ -103,16 +132,22 @@
 
         /**
          * @param Request $request
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         * @return null
          */
-        #[OA\Post(path: '/api/1.0.0/accounts/information/create')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Post( path: '/api/1.0.0/accounts/information/create' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function public_create( Request $request )
         {
             return null;
         }
 
+        /**
+         * @param Request $request
+         * @return null
+         */
         public final function create( Request $request )
         {
             return null;
@@ -121,17 +156,23 @@
 
         /**
          * @param Request $request
-         * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+         * @return null
          */
-        #[OA\Patch(path: '/api/1.0.0/accounts/information/update')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Patch( path: '/api/1.0.0/accounts/information/update' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found')]
         public final function public_update( Request $request )
         {
 
             return null;
         }
 
+        /**
+         * @param Request $request
+         * @return null
+         */
         public final function update( Request $request )
         {
 
@@ -143,28 +184,40 @@
          * @param Request $request
          * @return void
          */
-        #[OA\Delete(path: '/api/1.0.0/accounts/information/delete')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Delete( path: '/api/1.0.0/accounts/information/delete' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function public_delete( Request $request )
         {
 
             return null;
         }
 
+        /**
+         * @param Request $request
+         * @return null
+         */
         public final function delete( Request $request )
         {
 
             return null;
         }
 
-        private static $controller = null;
-
-        public static final function setSingleton( InformationController $controller )
+        // Accessor
+        /**
+         * @param InformationController $controller
+         * @return void
+         */
+        public static final function setSingleton( InformationController $controller ): void
         {
             self::$controller = $controller;
         }
 
+        /**
+         * @return InformationController
+         */
         public static final function getSingleton(): InformationController
         {
             if( is_null( self::$controller ) )

@@ -44,40 +44,60 @@
 
 
         // Variables
-        private const conflict = 409;
+        private static ?NewsletterController $controller = null;
 
         // implement output
+
+        /**
+         * @return bool
+         */
         public final function hasImplementedCSV(): bool
         {
-            // TODO: Implement hasImplementedCSV() method.
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public final function hasImplementedJSON(): bool
         {
-            // TODO: Implement hasImplementedJSON() method.
             return true;
         }
 
+        /**
+         * @return bool
+         */
         public final function hasImplementedXML(): bool
         {
-            // TODO: Implement hasImplementedXML() method.
+
             return true;
         }
 
-        public final function pipelineTowardCSV( Request $request ): ?array
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardCSV( array $request ): ?array
         {
             // TODO: Implement pipelineTowardCSV() method.
             return null;
         }
 
-        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
+        /**
+         * @param array $request
+         * @return JsonResponse|null
+         */
+        public final function pipelineTowardJSON( array $request ): ?JsonResponse
         {
             // TODO: Implement pipelineTowardJSON() method.
             return null;
         }
 
-        public final function pipelineTowardXML( Request $request ): ?array
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardXML( array $request ): ?array
         {
             // TODO: Implement pipelineTowardXML() method.
             return null;
@@ -96,6 +116,10 @@
             return Response()->json();
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function read( Request $request ): JsonResponse
         {
 
@@ -140,6 +164,10 @@
             return Response()->json(null, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function update( Request $request ): JsonResponse
         {
 
@@ -162,19 +190,28 @@
             return Response()->json(null, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function delete( Request $request ): JsonResponse
         {
 
             return Response()->json(null, 200);
         }
 
-        private static $controller = null;
-
+        /**
+         * @param NewsletterController $controller
+         * @return void
+         */
         public static final function setSingleton( NewsletterController $controller )
         {
             self::$controller = $controller;
         }
 
+        /**
+         * @return NewsletterController
+         */
         public static final function getSingleton(): NewsletterController
         {
             if( is_null( self::$controller ) )
@@ -184,6 +221,5 @@
 
             return self::$controller;
         }
-
     }
 ?>
