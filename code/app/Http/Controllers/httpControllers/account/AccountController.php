@@ -69,7 +69,8 @@
          */
         public final function hasImplementedXML(): bool
         {
-            return true;
+
+            return false;
         }
 
 
@@ -79,6 +80,11 @@
          */
         public final function pipelineTowardCSV( Array $request ): ?array
         {
+            if( !$this->hasImplementedCSV() )
+            {
+                // Not implemented
+                abort( 501 );
+            }
 
             return null;
         }
@@ -90,7 +96,11 @@
          */
         public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
-
+            if( !$this->hasImplementedJSON() )
+            {
+                // Not implemented
+                abort(501);
+            }
 
             return null;
         }
@@ -102,6 +112,11 @@
          */
         public final function pipelineTowardXML( Array $request ): ?array
         {
+            if( !$this->hasImplementedXML() )
+            {
+                // Not implemented
+                abort( 501 );
+            }
 
             return null;
         }

@@ -45,7 +45,7 @@
          */
         public final function hasImplementedCSV(): bool
         {
-            return true;
+            return false;
         }
 
         /**
@@ -53,7 +53,7 @@
          */
         public final function hasImplementedJSON(): bool
         {
-            return true;
+            return false;
         }
 
         /**
@@ -61,7 +61,7 @@
          */
         public final function hasImplementedXML(): bool
         {
-            return true;
+            return false;
         }
 
         /**
@@ -70,6 +70,12 @@
          */
         public final function pipelineTowardCSV( Array $request ): ?array
         {
+            if( !$this->hasImplementedCSV() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -79,6 +85,12 @@
          */
         public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
+            if( !$this->hasImplementedJSON() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -88,6 +100,12 @@
          */
         public final function pipelineTowardXML( Array $request ): ?array
         {
+            if( !$this->hasImplementedXML() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -104,7 +122,7 @@
         {
 
 
-            return Response()->json(null, 200);
+            return $this->create( $request );
         }
 
         /**
@@ -120,7 +138,7 @@
 
 
         /**
-         * @param Request $request
+         * @param ToolsKanbanRequest $request
          * @return JsonResponse
          */
         #[OA\Get(path:'/api/1.0.0/tools/task/read')]
@@ -130,7 +148,7 @@
         {
 
 
-            return Response()->json(null, 200);
+            return $this->read( $request );
         }
 
         /**
@@ -158,7 +176,7 @@
         {
 
 
-            return Response()->json(null, 200);
+            return $this->update( $request );
         }
 
         /**
@@ -184,7 +202,7 @@
                        description: 'content not found' )]
         public final function public_delete( ToolsKanbanRequest $request ): JsonResponse
         {
-            return Response()->json(null, 200);
+            return $this->delete( $request );
         }
 
         /**

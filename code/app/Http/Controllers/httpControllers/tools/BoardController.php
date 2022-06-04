@@ -45,8 +45,7 @@
          */
         public final function hasImplementedCSV(): bool
         {
-
-            return true;
+            return false;
         }
 
         /**
@@ -54,8 +53,7 @@
          */
         public final function hasImplementedJSON(): bool
         {
-
-            return true;
+            return false;
         }
 
         /**
@@ -63,8 +61,7 @@
          */
         public final function hasImplementedXML(): bool
         {
-
-            return true;
+            return false;
         }
 
         /**
@@ -73,6 +70,11 @@
          */
         public final function pipelineTowardCSV( Array $request ): ?array
         {
+            if( !$this->hasImplementedCSV() )
+            {
+                // Not implemented
+                abort(501);
+            }
 
             return null;
         }
@@ -83,6 +85,11 @@
          */
         public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
+            if( !$this->hasImplementedJSON() )
+            {
+                // Not implemented
+                abort(501);
+            }
 
             return null;
         }
@@ -93,6 +100,11 @@
          */
         public final function pipelineTowardXML( Array $request ): ?array
         {
+            if( !$this->hasImplementedXML() )
+            {
+                // Not implemented
+                abort(501);
+            }
 
             return null;
         }
@@ -109,6 +121,7 @@
         public final function public_read( ToolsBoardRequest $request )
         {
 
+            return $this->read( $request );
         }
 
         /**
@@ -117,7 +130,8 @@
          */
         public final function read( Request $request )
         {
-            
+
+            return null;
         }
 
 
@@ -132,6 +146,7 @@
         public final function public_create( ToolsBoardRequest $request )
         {
 
+            return $this->create();
         }
 
         /**
@@ -155,6 +170,7 @@
         public final function public_update( ToolsBoardRequest $request )
         {
 
+            return $this->update( $request );
         }
 
         /**
@@ -176,6 +192,7 @@
         public final function public_delete( ToolsBoardRequest $request )
         {
 
+            return $this->delete( $request );
         }
 
         /**
@@ -186,6 +203,7 @@
         {
             
         }
+
 
         // Accessors
         /**

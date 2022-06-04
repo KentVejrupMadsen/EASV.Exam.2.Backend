@@ -41,19 +41,18 @@
                 self::setSingleton( $this );
             }
         }
-
-
+        
         // Variables
         private static ?NewsletterController $controller = null;
 
-        // implement output
 
+        // implement output
         /**
          * @return bool
          */
         public final function hasImplementedCSV(): bool
         {
-            return true;
+            return false;
         }
 
         /**
@@ -61,7 +60,7 @@
          */
         public final function hasImplementedJSON(): bool
         {
-            return true;
+            return false;
         }
 
         /**
@@ -70,7 +69,7 @@
         public final function hasImplementedXML(): bool
         {
 
-            return true;
+            return false;
         }
 
         /**
@@ -79,7 +78,12 @@
          */
         public final function pipelineTowardCSV( array $request ): ?array
         {
-            // TODO: Implement pipelineTowardCSV() method.
+            if( !$this->hasImplementedCSV() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -89,7 +93,12 @@
          */
         public final function pipelineTowardJSON( array $request ): ?JsonResponse
         {
-            // TODO: Implement pipelineTowardJSON() method.
+            if( !$this->hasImplementedJSON() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -99,7 +108,12 @@
          */
         public final function pipelineTowardXML( array $request ): ?array
         {
-            // TODO: Implement pipelineTowardXML() method.
+            if( !$this->hasImplementedXML() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 

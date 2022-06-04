@@ -50,7 +50,7 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicRead( SecurityConfigurationRequest $Request )
+        public final function publicRead( SecurityConfigurationRequest $Request )
         {
             $this->read( $Request );
         }
@@ -65,9 +65,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicUpdate( SecurityConfigurationRequest $Request )
+        public final function publicUpdate( SecurityConfigurationRequest $Request )
         {
-            $this->update( $Request );
+            return $this->update( $Request );
         }
 
 
@@ -80,9 +80,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicCreate( SecurityConfigurationRequest $Request )
+        public final function publicCreate( SecurityConfigurationRequest $Request )
         {
-            $this->create( $Request );
+            return $this->create( $Request );
         }
 
 
@@ -95,49 +95,53 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicDelete( SecurityConfigurationRequest $Request )
+        public final function publicDelete( SecurityConfigurationRequest $Request )
         {
-            $this->delete( $Request );
+            return $this->delete( $Request );
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function read( Request $request )
         {
 
+            return null;
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function create( Request $request )
         {
 
+            return null;
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function update( Request $request )
         {
 
+            return null;
         }
 
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function delete( Request $request )
         {
 
+            return null;
         }
 
 

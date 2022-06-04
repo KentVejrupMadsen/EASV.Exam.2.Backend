@@ -46,7 +46,7 @@
          */
         public final function hasImplementedCSV(): bool
         {
-            return true;
+            return false;
         }
 
         /**
@@ -54,7 +54,6 @@
          */
         public final function hasImplementedJSON(): bool
         {
-            // TODO: Implement hasImplementedJSON() method.
             return true;
         }
 
@@ -63,8 +62,7 @@
          */
         public final function hasImplementedXML(): bool
         {
-            // TODO: Implement hasImplementedXML() method.
-            return true;
+            return false;
         }
 
         /**
@@ -73,7 +71,12 @@
          */
         public final function pipelineTowardCSV( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardCSV() method.
+            if( !$this->hasImplementedCSV() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -83,7 +86,12 @@
          */
         public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
-            // TODO: Implement pipelineTowardJSON() method.
+            if( !$this->hasImplementedJSON() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -93,7 +101,12 @@
          */
         public final function pipelineTowardXML( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardXML() method.
+            if( !$this->hasImplementedXML() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -107,27 +120,39 @@
         #[OA\Get(path: '/api/1.0.0/accounts/entities/email/read')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
-        public function public_read( Request $request ): ?AccountEmailModel
+        public final function public_read( Request $request ): ?AccountEmailModel
         {
-            abort( 300 );
+            return $this->read( $request );
         }
 
 
-        public function read( Request $request ): ?AccountEmailModel
+        /**
+         * @param Request $request
+         * @return AccountEmailModel|null
+         */
+        public final function read( Request $request ): ?AccountEmailModel
         {
-            abort( 300 );
+            return null;
         }
 
 
+        /**
+         * @param Request $request
+         * @return false
+         */
         #[OA\Delete(path: '/api/1.0.0/accounts/entities/email/delete')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
-        public function public_delete( Request $request )
+        public final function public_delete( Request $request )
         {
             return $this->delete( $request );
         }
 
-        public function delete( Request $request )
+        /**
+         * @param Request $request
+         * @return false
+         */
+        public final function delete( Request $request )
         {
 
             return false;
@@ -147,6 +172,10 @@
         }
 
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function create( Request $request )
         {
 
@@ -163,12 +192,17 @@
         #[OA\Response(response: '404', description: 'content not found')]
         public final function public_update( Request $request ): JsonResponse
         {
-            return Response()->json(null, 200);
+            return $this->update( $request );
         }
 
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function update( Request $request ): JsonResponse
         {
-            return Response()->json(null, 200);
+            return Response()->json( null, 200 );
         }
 
 
