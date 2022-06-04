@@ -30,15 +30,15 @@
 
 
         /**
-         * @param Request $request
+         * @param string $header
          * @param array $values
          * @return JsonResponse|null
          */
-        public final function pipeline( Request $request, array $values )
+        public final function Pipeline( string $header, array $values )
         {
             $result = null;
 
-            switch( $request->header( 'Content-Type' ) )
+            switch( $header )
             {
                 case 'application/json':
                         $result = $this->pipelineTowardJSON( $values );
