@@ -43,22 +43,35 @@
         }
 
         // Variables
-        private const conflict = 409;
+        private static ?StateController $controller = null;
 
+
+        /**
+         * @param StateRequest $request
+         * @return void
+         */
         #[OA\Post( path: '/api/1.0.0/options/state/email' )]
-        #[OA\Response( response: '200', description: 'validates if the requested email is existing in the database as a json response.' ) ]
+        #[OA\Response( response: '200',
+                       description: 'validates if the requested email is existing in the database as a json response.' ) ]
         public final function publicState( StateRequest $request )
         {
 
         }
 
-        private static $controller = null;
 
-        public static final function setSingleton( StateController $controller )
+        // Accessors
+        /**
+         * @param StateController $controller
+         * @return void
+         */
+        public static final function setSingleton( StateController $controller ): void
         {
             self::$controller = $controller;
         }
 
+        /**
+         * @return StateController
+         */
         public static final function getSingleton(): StateController
         {
             if( is_null( self::$controller ) )

@@ -39,69 +39,106 @@
             }
         }
 
-        public final function hasImplementedCSV(): bool
-        {
-            // TODO: Implement hasImplementedCSV() method.
-            return true;
-        }
-
-        public final function hasImplementedJSON(): bool
-        {
-            // TODO: Implement hasImplementedJSON() method.
-            return true;
-        }
-
-        public final function hasImplementedXML(): bool
-        {
-            // TODO: Implement hasImplementedXML() method.
-            return true;
-        }
-
-        public final function pipelineTowardCSV( Request $request ): ?array
-        {
-            // TODO: Implement pipelineTowardCSV() method.
-            return null;
-        }
-
-        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
-        {
-            // TODO: Implement pipelineTowardJSON() method.
-            return null;
-        }
-
-        public final function pipelineTowardXML( Request $request ): ?array
-        {
-            // TODO: Implement pipelineTowardXML() method.
-            return null;
-        }
+        // Variables
+        private static ?PersonNameController $controller = null;
 
         // Code
+        /**
+         * @return bool
+         */
+        public final function hasImplementedCSV(): bool
+        {
+
+            return true;
+        }
+
+        /**
+         * @return bool
+         */
+        public final function hasImplementedJSON(): bool
+        {
+
+            return true;
+        }
+
+        /**
+         * @return bool
+         */
+        public final function hasImplementedXML(): bool
+        {
+
+            return true;
+        }
+
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardCSV( Array $request ): ?array
+        {
+
+            return null;
+        }
+
+        /**
+         * @param array $request
+         * @return JsonResponse|null
+         */
+        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
+        {
+
+            return null;
+        }
+
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardXML( Array $request ): ?array
+        {
+
+            return null;
+        }
+
+
         /**
          * @param Request $request
          * @return JsonResponse
          */
         #[OA\Get( path: '/api/1.0.0/accounts/entities/name/read' )]
-        #[OA\Response( response: '200', description: 'reads a specific person name entity values from the database table' )]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Response( response: '200',
+                       description: 'reads a specific person name entity values from the database table' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public function public_read( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public function read( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
         }
 
 
-        #[OA\Delete( path: '/api/1.0.0/accounts/entities/name/delete')]
-        #[OA\Response( response: '200', description: 'deletes a specific person name entity from the database table')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/name/delete' )]
+        #[OA\Response( response: '200',
+                       description: 'deletes a specific person name entity from the database table')]
+        #[OA\Response( response: '404',
+                       description: 'content not found')]
         public function public_delete( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public function delete( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
@@ -109,16 +146,23 @@
 
 
         /**
-         * 
+         * @param Request $request
+         * @return JsonResponse
          */
-        #[OA\Post(path: '/api/1.0.0/accounts/entities/name/create')]
-        #[OA\Response(response: '200', description: 'creates a specific person name entity by inserting it into the database')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/name/create' )]
+        #[OA\Response( response: '200',
+                       description: 'creates a specific person name entity by inserting it into the database')]
+        #[OA\Response( response: '404',
+                       description: 'content not found')]
         public final function public_create( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function create( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
@@ -137,19 +181,29 @@
             return Response()->json(null, 200);
         }
 
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function update( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);
         }
 
 
-        private static $controller = null;
-
-        public static final function setSingleton( PersonNameController $controller )
+        // accessors
+        /**
+         * @param PersonNameController $controller
+         * @return void
+         */
+        public static final function setSingleton( PersonNameController $controller ): void
         {
             self::$controller = $controller;
         }
 
+        /**
+         * @return PersonNameController
+         */
         public static final function getSingleton(): PersonNameController
         {
             if( is_null( self::$controller ) )

@@ -8,7 +8,6 @@
     namespace App\Http\Controllers\templates;
 
     use Illuminate\Http\JsonResponse;
-    use Illuminate\Http\Request;
 
 
     /**
@@ -17,10 +16,10 @@
     interface ControllerPipelineInterface
     {
         /**
-         * @param Request $request
+         * @param array $request
          * @return JsonResponse|null
          */
-        public function pipelineTowardJSON( Request $request ): ?JsonResponse;
+        public function pipelineTowardJSON( array $request ): ?JsonResponse;
 
         /**
          * @return bool
@@ -29,10 +28,10 @@
 
 
         /**
-         * @param Request $request
+         * @param array $request
          * @return array|null
          */
-        public function pipelineTowardXML( Request $request ): ?array;
+        public function pipelineTowardXML( array $request ): ?array;
 
         /**
          * @return bool
@@ -41,10 +40,10 @@
 
 
         /**
-         * @param Request $request
+         * @param array $request
          * @return array|null
          */
-        public function pipelineTowardCSV( Request $request ): ?array;
+        public function pipelineTowardCSV( array $request ): ?array;
 
         /**
          * @return bool

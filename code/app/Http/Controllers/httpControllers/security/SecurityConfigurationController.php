@@ -38,7 +38,7 @@
         }
 
         // Variables
-        private static $controller = null;
+        private static ?SecurityConfigurationController $controller = null;
 
         // Functions that the routes interacts with
         /**
@@ -147,7 +147,7 @@
          * @param SecurityConfigurationController $controller
          * @return void
          */
-        public static final function setSingleton( SecurityConfigurationController $controller )
+        public static final function setSingleton( SecurityConfigurationController $controller ): void
         {
             self::$controller = $controller;
         }

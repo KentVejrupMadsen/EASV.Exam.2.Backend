@@ -31,16 +31,17 @@
 
         /**
          * @param Request $request
+         * @param array $values
          * @return JsonResponse|null
          */
-        public final function pipeline( Request $request )
+        public final function pipeline( Request $request, array $values )
         {
             $result = null;
 
             switch( $request->header( 'Content-Type' ) )
             {
                 case 'application/json':
-                        $result = $this->pipelineTowardJSON( $request );
+                        $result = $this->pipelineTowardJSON( $values );
                     break;
 
                 default:

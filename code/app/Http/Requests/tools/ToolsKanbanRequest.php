@@ -16,6 +16,9 @@
         as OA;
 
 
+    /**
+     *
+     */
     #[OA\Schema]
     class ToolsKanbanRequest
         extends AccountProtectedRequest
