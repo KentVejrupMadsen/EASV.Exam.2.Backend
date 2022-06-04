@@ -13,31 +13,54 @@
     use App\Http\Controllers\RouteController;
 
 
-    const taskRoute = 'task';
+    /**
+     *
+     */
+    class TaskApi
+        extends RouteController
+    {
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
 
-    const taskCreateRoute = 'create';
-    const taskDeleteRoute = 'delete';
-    const taskReadRoute   = 'read';
-    const taskUpdateRoute = 'update';
+        // Variables
+        private const route = 'task';
+
+        private const create_route = 'create';
+        private const delete_route = 'delete';
+        private const read_route   = 'read';
+        private const update_route = 'update';
 
 
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( TaskController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( self::create_route, 'create' );
+                    Route::delete( self::delete_route, 'delete' );
+                    Route::get( self::read_route, 'read' );
+                    Route::patch( self::update_route, 'update' );
+                }
+            );
+        }
+    }
+
+
+    /**
+     * @return void
+     */
     function MakeTaskApi(): void
     {
-        Route::prefix( taskRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( TaskController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( taskCreateRoute, 'create' );
-                        Route::delete( taskDeleteRoute, 'delete' );
-                        Route::get( taskReadRoute, 'read' );
-                        Route::patch( taskUpdateRoute, 'update' );
-                    }
-                );
-            }
-        );
+        $api = new TaskApi();
+        $api->run();
     }
 ?>
