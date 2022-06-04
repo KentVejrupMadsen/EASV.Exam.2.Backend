@@ -59,5 +59,10 @@
         }
     }
 
+    function MakeAccountApi()
+    {
+        $api = new AccountApi();
+        $api->execute();
+    }
 
 ?>

@@ -23,8 +23,8 @@
         (
             function(): void
             {
-                AccountApi();
-                NewsletterApi();
+                MakeAccountApi();
+                MakeNewsletterApi();
                 EntitiesRoutes();
             }
         );

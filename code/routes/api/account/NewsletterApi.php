@@ -16,6 +16,11 @@
     class NewsletterApi
         extends RouteController
     {
+        public function __construct()
+        {
+
+        }
+
         private const route = 'newsletter';
 
         private const create_route =  'create';
@@ -55,5 +60,11 @@
                 }
             );
         }
+    };
+
+    function MakeNewsletterApi()
+    {
+        $newsletter = new NewsletterApi();
+        $newsletter->execute();
     }
 ?>
