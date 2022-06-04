@@ -8,6 +8,7 @@
     namespace App\Http\Controllers\httpControllers\tools;
 
     // External Libraries
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use OpenApi\Attributes
         as OA;
@@ -57,7 +58,7 @@
             return null;
         }
 
-        public final function pipelineTowardJSON( Request $request ): ?array
+        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
         {
             // TODO: Implement pipelineTowardJSON() method.
             return null;

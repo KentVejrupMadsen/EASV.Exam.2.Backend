@@ -9,7 +9,7 @@
 
     use App\Http\Requests\template\AccountProtectedRequest;
     use App\Http\Requests\template\RequestDefaults;
-    
+
     use OpenApi\Attributes
         as OA;
 

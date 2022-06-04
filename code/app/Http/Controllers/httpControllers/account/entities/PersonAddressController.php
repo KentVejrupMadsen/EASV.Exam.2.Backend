@@ -39,6 +39,7 @@
             }
         }
 
+        //
         public final function hasImplementedCSV(): bool
         {
             // TODO: Implement hasImplementedCSV() method.
@@ -63,7 +64,7 @@
             return null;
         }
 
-        public final function pipelineTowardJSON( Request $request ): ?array
+        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
         {
             // TODO: Implement pipelineTowardJSON() method.
             return null;

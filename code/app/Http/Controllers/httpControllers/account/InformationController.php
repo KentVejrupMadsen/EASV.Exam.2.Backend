@@ -10,7 +10,9 @@
     // External libraries
     use Carbon\Carbon;
 
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
+
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Str;
@@ -68,7 +70,7 @@
             return null;
         }
 
-        public final function pipelineTowardJSON( Request $request ): ?array
+        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
         {
             // TODO: Implement pipelineTowardJSON() method.
             return null;
