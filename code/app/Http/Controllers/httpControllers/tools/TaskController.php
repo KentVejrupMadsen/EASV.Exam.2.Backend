@@ -8,6 +8,7 @@
     namespace App\Http\Controllers\httpControllers\tools;
 
     // External
+    use App\Http\Requests\tools\ToolsKanbanRequest;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
@@ -99,7 +100,7 @@
                        description: 'create a new task for a kanban board' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_create( Request $request ): JsonResponse
+        public final function public_create( ToolsKanbanRequest $request ): JsonResponse
         {
 
 
@@ -124,8 +125,8 @@
          */
         #[OA\Get(path:'/api/1.0.0/tools/task/read')]
         #[OA\Response( response: '200', description: 'read the content of a task' )]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public final function public_read( Request $request ): JsonResponse
+        #[OA\Response( response: '404', description: 'content not found')]
+        public final function public_read( ToolsKanbanRequest $request ): JsonResponse
         {
 
 
@@ -145,13 +146,15 @@
 
 
         /**
-         * @param Request $request
+         * @param ToolsKanbanRequest $request
          * @return JsonResponse
          */
         #[OA\Patch( path: '/api/1.0.0/tools/task/update' )]
-        #[OA\Response( response: '200', description: 'updates the information for a specific task' )]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public final function public_update( Request $request ): JsonResponse
+        #[OA\Response( response: '200',
+                       description: 'updates the information for a specific task' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function public_update( ToolsKanbanRequest $request ): JsonResponse
         {
 
 
@@ -170,15 +173,16 @@
         }
 
 
-
         /**
-         * @param Request $request
+         * @param ToolsKanbanRequest $request
          * @return JsonResponse
          */
         #[OA\Delete( path: '/api/1.0.0/tools/task/delete' )]
-        #[OA\Response( response: '200', description: 'Delete a specific tasks. ' )]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public final function public_delete( Request $request ): JsonResponse
+        #[OA\Response( response: '200',
+                       description: 'Delete a specific tasks.' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function public_delete( ToolsKanbanRequest $request ): JsonResponse
         {
             return Response()->json(null, 200);
         }
@@ -192,6 +196,7 @@
             return Response()->json(null, 200);
         }
 
+        // Accessor
         /**
          * @param TaskController $controller
          * @return void

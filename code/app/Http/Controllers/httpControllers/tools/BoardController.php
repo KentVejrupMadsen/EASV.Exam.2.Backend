@@ -16,6 +16,7 @@
 
     // Internal
     use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Http\Requests\tools\ToolsBoardRequest;
 
 
     #[OA\Schema()]
@@ -44,7 +45,7 @@
          */
         public final function hasImplementedCSV(): bool
         {
-            // TODO: Implement hasImplementedCSV() method.
+
             return true;
         }
 
@@ -53,7 +54,7 @@
          */
         public final function hasImplementedJSON(): bool
         {
-            // TODO: Implement hasImplementedJSON() method.
+
             return true;
         }
 
@@ -62,7 +63,7 @@
          */
         public final function hasImplementedXML(): bool
         {
-            // TODO: Implement hasImplementedXML() method.
+
             return true;
         }
 
@@ -72,7 +73,7 @@
          */
         public final function pipelineTowardCSV( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardCSV() method.
+
             return null;
         }
 
@@ -82,7 +83,7 @@
          */
         public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
-            // TODO: Implement pipelineTowardJSON() method.
+
             return null;
         }
 
@@ -92,7 +93,7 @@
          */
         public final function pipelineTowardXML( Array $request ): ?array
         {
-            // TODO: Implement pipelineTowardXML() method.
+
             return null;
         }
         
@@ -100,10 +101,12 @@
         /**
          * 
          */
-        #[OA\Get(path: '/api/1.0.0/tools/board/read')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public final function public_read( Request $request )
+        #[OA\Get( path: '/api/1.0.0/tools/board/read' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function public_read( ToolsBoardRequest $request )
         {
 
         }
@@ -121,10 +124,12 @@
         /**
          * 
          */
-        #[OA\Post(path: '/api/1.0.0/tools/board/create')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public final function public_create( Request $request )
+        #[OA\Post( path: '/api/1.0.0/tools/board/create' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function public_create( ToolsBoardRequest $request )
         {
 
         }
@@ -142,10 +147,12 @@
         /**
          * 
          */
-        #[OA\Patch(path: '/api/1.0.0/tools/board/update')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public final function public_update( Request $request )
+        #[OA\Patch( path: '/api/1.0.0/tools/board/update' )]
+        #[OA\Response( response: '200',
+                       description: 'The data')]
+        #[OA\Response( response: '404',
+                       description: 'content not found')]
+        public final function public_update( ToolsBoardRequest $request )
         {
 
         }
@@ -166,7 +173,7 @@
         #[OA\Delete(path: '/api/1.0.0/tools/board/delete')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
-        public final function public_delete( Request $request )
+        public final function public_delete( ToolsBoardRequest $request )
         {
 
         }
@@ -185,7 +192,7 @@
          * @param BoardController $controller
          * @return void
          */
-        public static final function setSingleton( BoardController $controller )
+        public static final function setSingleton( BoardController $controller ): void
         {
             self::$controller = $controller;
         }
