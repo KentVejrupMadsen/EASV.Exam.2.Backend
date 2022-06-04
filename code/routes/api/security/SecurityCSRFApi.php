@@ -27,6 +27,7 @@
             $this->setRoute( self::route );
         }
 
+        // Variables
         private const route = 'csrf';
 
         private const access_route = 'access';
@@ -36,10 +37,11 @@
         private const reset_route  = 'reset';
         private const update_route = 'update';
 
+
         /**
          * @return void
          */
-        protected function execute()
+        protected final function execute(): void
         {
             Route::controller( SecurityCSRFTokenController::class )->group
             (

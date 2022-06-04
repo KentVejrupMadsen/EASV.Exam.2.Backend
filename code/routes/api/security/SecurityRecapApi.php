@@ -26,6 +26,7 @@
             $this->setRoute( self::route );
         }
 
+        // Variable
         const route = 'recaptcha';
 
         const create_route =  'create';
@@ -37,7 +38,7 @@
         /**
          * @return void
          */
-        protected function execute(): void
+        protected final function execute(): void
         {
             Route::controller( SecurityRecaptchaController::class )->group
             (
@@ -52,11 +53,10 @@
         }
     }
 
-
     /**
      * @return void
      */
-    function MakeSecurityRecapApi()
+    function MakeSecurityRecapApi(): void
     {
         $api = new SecurityRecapApi();
         $api->run();

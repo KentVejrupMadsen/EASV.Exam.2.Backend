@@ -20,11 +20,15 @@
     class SecurityConfigurationApi
         extends RouteController
     {
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setRoute( self::route );
         }
 
+        // variables
         private const route = 'configuration';
 
         private const create_route = 'create';
@@ -36,7 +40,7 @@
         /**
          * @return void
          */
-        protected function execute()
+        protected final function execute(): void
         {
             Route::controller( SecurityConfigurationController::class )->group
             (

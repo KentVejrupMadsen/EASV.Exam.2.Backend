@@ -14,31 +14,54 @@
     use App\Http\Controllers\RouteController;
 
 
-    const BoardRoute       = 'board';
+    /**
+     *
+     */
+    class BoardApi
+        extends RouteController
+    {
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
 
-    const BoardCreateRoute = 'create';
-    const BoardDeleteRoute = 'delete';
-    const BoardReadRoute   = 'read';
-    const BoardUpdateRoute = 'update';
+        //
+        private const route       = 'board';
+
+        private const create_route = 'create';
+        private const delete_route = 'delete';
+        private const read_route   = 'read';
+        private const update_route = 'update';
 
 
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( BoardController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( self::create_route, 'create' );
+                    Route::delete( self::delete_route, 'delete' );
+                    Route::get( self::read_route, 'read' );
+                    Route::patch( self::update_route, 'update' );
+                }
+            );
+        }
+    }
+
+
+    /**
+     * @return void
+     */
     function MakeBoardApi(): void
     {
-        Route::prefix( BoardRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( BoardController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( BoardCreateRoute, 'create' );
-                        Route::delete( BoardDeleteRoute, 'delete' );
-                        Route::get( BoardReadRoute, 'read' );
-                        Route::patch( BoardUpdateRoute, 'update' );
-                    }
-                );
-            }
-        );
+        $api = new BoardApi();
+        $api->run();
     }
 ?>

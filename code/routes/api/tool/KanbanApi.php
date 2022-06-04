@@ -13,31 +13,54 @@
     use App\Http\Controllers\RouteController;
 
 
-    const KanbanRoute = 'kanban';
+    /**
+     *
+     */
+    class KanbanApi
+        extends RouteController
+    {
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
 
-    const KanbanCreateRoute = 'create';
-    const KanbanDeleteRoute = 'delete';
-    const KanbanReadRoute   = 'read';
-    const KanbanUpdateRoute = 'update';
+        // Variables
+        private const route = 'kanban';
+
+        private const create_route = 'create';
+        private const delete_route = 'delete';
+        private const read_route   = 'read';
+        private const update_route = 'update';
 
 
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            Route::controller( KanbanController::class )->group
+            (
+                function(): void
+                {
+                    Route::post( self::create_route, 'create' );
+                    Route::delete( self::delete_route, 'delete' );
+                    Route::get( self::read_route, 'read' );
+                    Route::patch( self::update_route, 'update' );
+                }
+            );
+        }
+    }
+
+
+    /**
+     * @return void
+     */
     function MakeKanbanApi(): void
     {
-        Route::prefix( KanbanRoute )->group
-        (
-            function(): void
-            {
-                Route::controller( KanbanController::class )->group
-                (
-                    function(): void
-                    {
-                        Route::post( KanbanCreateRoute, 'create' );
-                        Route::delete( KanbanDeleteRoute, 'delete' );
-                        Route::get( KanbanReadRoute, 'read' );
-                        Route::patch( KanbanUpdateRoute, 'update' );
-                    }
-                );
-            }
-        );
+        $api = new KanbanApi();
+        $api->run();
     }
 ?>
