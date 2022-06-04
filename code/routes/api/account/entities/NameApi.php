@@ -13,9 +13,17 @@
     use App\Http\Controllers\RouteController;
 
 
+    /**
+     *
+     */
     class NameApi
         extends RouteController
     {
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
         const route = 'name';
 
         const read_route = 'read';
@@ -23,36 +31,28 @@
         const update_route = 'update';
         const delete_route = 'delete';
 
-        private function make(): void
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
         {
-            Route::prefix( self::read_route )->group
+            Route::controller( PersonNameController::class )->group
             (
                 function(): void
                 {
-                    Route::controller( PersonNameController::class )->group
-                    (
-                        function(): void
-                        {
-                            Route::get( self::read_route, 'read' );
-                            Route::post( self::create_route,'create' );
-                            Route::patch( self::update_route, 'update' );
-                            Route::delete( self::delete_route, 'delete' );
-                        }
-                    );
+                    Route::get( self::read_route, 'read' );
+                    Route::post( self::create_route,'create' );
+                    Route::patch( self::update_route, 'update' );
+                    Route::delete( self::delete_route, 'delete' );
                 }
             );
         }
-
-        public final function execute(): void
-        {
-            $this->make();
-        }
     }
-
 
     function MakeNameApi(): void
     {
         $name = new NameApi();
-        $name->execute();
+        $name->run();
     }
 ?>

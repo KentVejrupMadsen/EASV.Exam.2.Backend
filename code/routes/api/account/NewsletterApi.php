@@ -13,12 +13,15 @@
     use App\Http\Controllers\RouteController;
 
 
+    /**
+     *
+     */
     class NewsletterApi
         extends RouteController
     {
         public function __construct()
         {
-
+            $this->setRoute( self::route );
         }
 
         private const route = 'newsletter';
@@ -32,39 +35,25 @@
         /**
          * @return void
          */
-        public function execute(): void
+        protected function execute(): void
         {
-            $this->newsletterApi();
-        }
-
-
-        /**
-         *
-         */
-        private function newsletterApi(): void
-        {
-            Route::prefix( self::route )->group
+            Route::controller( NewsletterController::class )->group
             (
                 function(): void
                 {
-                    Route::controller( NewsletterController::class )->group
-                    (
-                        function(): void
-                        {
-                            Route::post( self::create_route, 'create' );
-                            Route::get( self::read_route, 'read' );
-                            Route::patch( self::update_route, 'update' );
-                            Route::delete( self::delete_route, 'delete' );
-                        }
-                    );
+                    Route::post( self::create_route, 'create' );
+                    Route::get( self::read_route, 'read' );
+                    Route::patch( self::update_route, 'update' );
+                    Route::delete( self::delete_route, 'delete' );
                 }
             );
         }
+
     };
 
     function MakeNewsletterApi()
     {
         $newsletter = new NewsletterApi();
-        $newsletter->execute();
+        $newsletter->run();
     }
 ?>

@@ -16,6 +16,11 @@
     class AccountApi
         extends RouteController
     {
+        public function __construct()
+        {
+            $this->setRoute( self::route );
+        }
+
         private const route = 'account';
 
         private const create_route  =  'create';
@@ -29,40 +34,29 @@
         private const read_route    =  'read';
 
 
-        private function make()
+        protected final function execute()
         {
-            Route::prefix( self::route )->group
+            Route::controller( AccountController::class )->group
             (
                 function(): void
                 {
-                    Route::controller( AccountController::class )->group
-                    (
-                        function(): void
-                        {
-                            Route::post( self::create_route, 'create' );
-                            Route::post( self::login_route, 'login' );
-                            Route::get( self::read_route, 'read' );
-                            Route::delete( self::delete_route, 'public_delete' );
-                            Route::get( self::logout_route, 'logout' );
-                            Route::get( self::me_route, 'me' );
-                            Route::patch( self::update_route, 'public_update' );
-                            Route::post( self::verify_route, 'verify' );
-                        }
-                    );
+                    Route::post( self::create_route, 'create' );
+                    Route::post( self::login_route, 'login' );
+                    Route::get( self::read_route, 'read' );
+                    Route::delete( self::delete_route, 'public_delete' );
+                    Route::get( self::logout_route, 'logout' );
+                    Route::get( self::me_route, 'me' );
+                    Route::patch( self::update_route, 'public_update' );
+                    Route::post( self::verify_route, 'verify' );
                 }
             );
-        }
-
-        public final function execute()
-        {
-            $this->make();
         }
     }
 
     function MakeAccountApi()
     {
         $api = new AccountApi();
-        $api->execute();
+        $api->run();
     }
 
 ?>

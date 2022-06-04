@@ -7,6 +7,7 @@
      */
     namespace App\Http\Controllers;
 
+    use Illuminate\Support\Facades\Route;
 
     /**
      * 
@@ -16,7 +17,21 @@
         // Variables
         private ?string $route = null;
 
-        public abstract function execute();
+
+        protected function baseRoot(): void
+        {
+            Route::prefix( $this->route )->group
+            (
+                $this->execute()
+            );
+        }
+
+        protected abstract function execute();
+
+        public final function run()
+        {
+            $this->baseRoot();
+        }
 
         /**
          * @return string|null

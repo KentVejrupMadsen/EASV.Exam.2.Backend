@@ -18,7 +18,7 @@
     {
         public function __construct()
         {
-
+            $this->setRoute( self::route );
         }
 
         private const route  = 'email';
@@ -28,33 +28,20 @@
         private const route_update = 'update';
         private const route_delete = 'delete';
 
+
         /**
          * @return void
          */
-        public final function execute(): void
+        protected final function execute(): void
         {
-            $this->EmailApi();
-        }
-
-        /**
-         *
-         */
-        private function EmailApi(): void
-        {
-            Route::prefix( self::route )->group
+            Route::controller( PersonEmailController::class )->group
             (
                 function(): void
                 {
-                    Route::controller( PersonEmailController::class )->group
-                    (
-                        function(): void
-                        {
-                            Route::get( self::route_read, 'read' );
-                            Route::post( self::route_create, 'create' );
-                            Route::patch( self::route_update, 'update' );
-                            Route::delete( self::route_delete, 'delete' );
-                        }
-                    );
+                    Route::get( self::route_read, 'read' );
+                    Route::post( self::route_create, 'create' );
+                    Route::patch( self::route_update, 'update' );
+                    Route::delete( self::route_delete, 'delete' );
                 }
             );
         }
@@ -64,6 +51,6 @@
     function MakeEmailApi(): void
     {
         $router = new EmailApi();
-        $router->execute();
+        $router->run();
     }
 ?>
