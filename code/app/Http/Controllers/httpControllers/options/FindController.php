@@ -61,7 +61,7 @@
          * @param FindController $controller
          * @return void
          */
-        public static final function setSingleton( FindController $controller )
+        public static final function setSingleton( FindController $controller ): void
         {
             self::$controller = $controller;
         }
