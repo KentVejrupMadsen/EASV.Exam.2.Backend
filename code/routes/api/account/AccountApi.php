@@ -40,19 +40,24 @@
                         Route::post( AccountLoginRoute, 'login' );
                         Route::get( AccountReadRoute, 'read' );
 
-                        Route::middleware( MIDSANC )->group
-                        (
-                            function(): void
-                            {
-                                Route::delete( AccountDeleteRoute, 'delete' );
-                                Route::get( AccountLogoutRoute, 'logout' );
-                                Route::get( AccountMeRoute, 'me' );
-                                Route::patch( AccountUpdateRoute, 'update' );
-                                Route::post( AccountVerifyRoute, 'verify' );
-                            }
-                        );
+                        RequiresAuthentication();
                     }
                 );
+            }
+        );
+    }
+
+    function RequiresAuthentication(): void
+    {
+        Route::middleware( MIDSANC )->group
+        (
+            function(): void
+            {
+                Route::delete( AccountDeleteRoute, 'delete' );
+                Route::get( AccountLogoutRoute, 'logout' );
+                Route::get( AccountMeRoute, 'me' );
+                Route::patch( AccountUpdateRoute, 'update' );
+                Route::post( AccountVerifyRoute, 'verify' );
             }
         );
     }
