@@ -7,6 +7,7 @@
      */
     namespace App\Http\Requests\security;
 
+    use App\Http\Requests\template\RequestDefaults;
     use Illuminate\Foundation\Http\FormRequest;
 
     use OpenApi\Attributes
@@ -35,13 +36,20 @@
          */
         public final function authorize(): bool
         {
+            $retVal = false;
+
             if( $this->denyAccess() )
             {
-                return false;
+                return $retVal;
+            }
+
+            if( $this->accepts( RequestDefaults::getAllowedFormats() ) )
+            {
+                $retVal = true;
             }
 
             //
-            return true;
+            return $retVal;
         }
 
 
