@@ -78,6 +78,13 @@
         #[OA\Post(path: '/api/1.0.0/tools/task/create' )]
         #[OA\Response( response: '200', description: 'create a new task for a kanban board' )]
         #[OA\Response(response: '404', description: 'content not found')]
+        public final function public_create( Request $request ): JsonResponse
+        {
+
+
+            return Response()->json(null, 200);
+        }
+
         public final function create( Request $request ): JsonResponse
         {
 
@@ -93,6 +100,13 @@
         #[OA\Get(path:'/api/1.0.0/tools/task/read')]
         #[OA\Response( response: '200', description: 'read the content of a task' )]
         #[OA\Response(response: '404', description: 'content not found')]
+        public final function public_read( Request $request ): JsonResponse
+        {
+
+
+            return Response()->json(null, 200);
+        }
+
         public final function read( Request $request ): JsonResponse
         {
 
@@ -108,12 +122,20 @@
         #[OA\Patch( path: '/api/1.0.0/tools/task/update' )]
         #[OA\Response( response: '200', description: 'updates the information for a specific task' )]
         #[OA\Response(response: '404', description: 'content not found')]
+        public final function public_update( Request $request ): JsonResponse
+        {
+
+
+            return Response()->json(null, 200);
+        }
+
         public final function update( Request $request ): JsonResponse
         {
 
 
             return Response()->json(null, 200);
         }
+
 
 
         /**
@@ -123,6 +145,11 @@
         #[OA\Delete( path: '/api/1.0.0/tools/task/delete' )]
         #[OA\Response( response: '200', description: 'Delete a specific tasks. ' )]
         #[OA\Response(response: '404', description: 'content not found')]
+        public final function public_delete( Request $request ): JsonResponse
+        {
+            return Response()->json(null, 200);
+        }
+
         public final function delete( Request $request ): JsonResponse
         {
             return Response()->json(null, 200);

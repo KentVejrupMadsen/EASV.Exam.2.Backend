@@ -76,9 +76,14 @@
         #[OA\Post(path: '/api/1.0.0/tools/project/group/create')]
         #[OA\Response(response: '200', description: 'The ')]
         #[OA\Response(response: '404', description: 'content not found')]
-        public final function create( Request $request )
+        public final function public_create( Request $request )
         {
             
+        }
+
+        public final function create( Request $request )
+        {
+
         }
 
 
@@ -88,9 +93,14 @@
         #[OA\Get(path: '/api/1.0.0/tools/project/group/read')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
-        public final function read( Request $request )
+        public final function public_read( Request $request )
         {
             
+        }
+
+        public final function read( Request $request )
+        {
+
         }
 
 
@@ -100,6 +110,11 @@
         #[OA\Patch(path: '/api/1.0.0/tools/project/group/update')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
+        public final function public_update( Request $request )
+        {
+
+        }
+
         public final function update( Request $request )
         {
             
@@ -112,6 +127,11 @@
         #[OA\Delete(path: '/api/1.0.0/tools/project/group/delete')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
+        public final function public_delete( Request $request )
+        {
+
+        }
+
         public final function delete( Request $request )
         {
             
