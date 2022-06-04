@@ -22,7 +22,10 @@
         {
             Route::prefix( $this->route )->group
             (
-                $this->execute()
+                function()
+                {
+                    $this->execute();
+                }
             );
         }
 

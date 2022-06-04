@@ -10,6 +10,7 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
+    use App\Http\Controllers\RouteController;
 
 
     const RecaptchaRoute = 'recaptcha';
@@ -20,7 +21,7 @@
     const RecaptchaUpdateRoute =  'update';
 
 
-    function SecurityRecapApi(): void
+    function MakeSecurityRecapApi(): void
     {
         Route::prefix( RecaptchaRoute )->group
         (

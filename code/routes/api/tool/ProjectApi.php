@@ -10,6 +10,7 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\ProjectController;
+    use App\Http\Controllers\RouteController;
 
     const projectRoute = 'project';
 
@@ -19,7 +20,7 @@
     const projectUpdateRoute = 'update';
 
 
-    function ProjectApi(): void
+    function MakeProjectApi(): void
     {
         Route::prefix( projectRoute )->group
         (

@@ -20,9 +20,9 @@
         (
             function(): void
             {
-                SecurityCSRFApi();
-                SecurityConfigurationApi();
-                SecurityRecapApi();
+                MakeSecurityCSRFApi();
+                MakeSecurityConfigurationApi();
+                MakeSecurityRecapApi();
             }
         );
     }

@@ -11,6 +11,7 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\security\SecurityConfigurationController;
+    use App\Http\Controllers\RouteController;
 
 
     const ConfigurationRoute = 'configuration';
@@ -21,7 +22,7 @@
     const ConfigurationUpdateRoute = 'update';
 
 
-    function SecurityConfigurationApi(): void
+    function MakeSecurityConfigurationApi(): void
     {
         Route::prefix( ConfigurationRoute )->group
         (

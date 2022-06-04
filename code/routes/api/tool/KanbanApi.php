@@ -10,6 +10,7 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\KanbanController;
+    use App\Http\Controllers\RouteController;
 
 
     const KanbanRoute = 'kanban';
@@ -20,7 +21,7 @@
     const KanbanUpdateRoute = 'update';
 
 
-    function KanbanApi(): void
+    function MakeKanbanApi(): void
     {
         Route::prefix( KanbanRoute )->group
         (

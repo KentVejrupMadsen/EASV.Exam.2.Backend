@@ -10,7 +10,7 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\security\SecurityCSRFTokenController;
-
+    use App\Http\Controllers\RouteController;
 
     const csrfRoute = 'csrf';
 
@@ -22,7 +22,7 @@
     const CSRFUpdateRoute = 'update';
 
 
-    function SecurityCSRFApi(): void
+    function MakeSecurityCSRFApi(): void
     {
         Route::prefix( csrfRoute )->group
         (

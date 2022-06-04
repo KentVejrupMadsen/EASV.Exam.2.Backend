@@ -11,6 +11,7 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\BoardController;
+    use App\Http\Controllers\RouteController;
 
 
     const BoardRoute       = 'board';
@@ -21,7 +22,7 @@
     const BoardUpdateRoute = 'update';
 
 
-    function BoardApi(): void
+    function MakeBoardApi(): void
     {
         Route::prefix( BoardRoute )->group
         (

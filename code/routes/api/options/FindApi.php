@@ -8,11 +8,12 @@
     use Illuminate\Support\Facades\Route;
 
     use App\Http\Controllers\httpControllers\options\FindController;
+    use App\Http\Controllers\RouteController;
 
     const findRoute = 'find';
 
 
-    function FindApi(): void
+    function MakeFindApi(): void
     {
         Route::prefix( findRoute  )->group
         (

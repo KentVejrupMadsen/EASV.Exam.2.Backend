@@ -8,11 +8,12 @@
     use Illuminate\Support\Facades\Route;
 
     use App\Http\Controllers\httpControllers\options\StateController;
+    use App\Http\Controllers\RouteController;
 
 
     const stateRoute = 'state';
 
-    function StateApi(): void
+    function MakeStateApi(): void
     {
         Route::prefix( stateRoute )->group
         (

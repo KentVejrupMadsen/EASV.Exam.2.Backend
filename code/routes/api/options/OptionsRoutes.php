@@ -19,8 +19,8 @@
         (
             function()
             {
-                FindApi();
-                StateApi();
+                MakeFindApi();
+                MakeStateApi();
             }
         );
     }

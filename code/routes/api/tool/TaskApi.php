@@ -10,6 +10,7 @@
 
     // Internal libraries
     use App\Http\Controllers\httpControllers\tools\TaskController;
+    use App\Http\Controllers\RouteController;
 
 
     const taskRoute = 'task';
@@ -20,7 +21,7 @@
     const taskUpdateRoute = 'update';
 
 
-    function TaskApi(): void
+    function MakeTaskApi(): void
     {
         Route::prefix( taskRoute )->group
         (
