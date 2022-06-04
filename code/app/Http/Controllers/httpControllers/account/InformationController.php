@@ -10,7 +10,9 @@
     // External libraries
     use Carbon\Carbon;
 
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
+
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Str;
@@ -68,7 +70,7 @@
             return null;
         }
 
-        public final function pipelineTowardJSON( Request $request ): ?array
+        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
         {
             // TODO: Implement pipelineTowardJSON() method.
             return null;
@@ -86,6 +88,12 @@
          */
         #[OA\Get(path: '/api/1.0.0/accounts/information/read')]
         #[OA\Response(response: '200', description: 'The data')]
+        public final function public_read( Request $request )
+        {
+
+            return null;
+        }
+
         public final function read( Request $request )
         {
 
@@ -100,6 +108,11 @@
         #[OA\Post(path: '/api/1.0.0/accounts/information/create')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
+        public final function public_create( Request $request )
+        {
+            return null;
+        }
+
         public final function create( Request $request )
         {
             return null;
@@ -113,6 +126,12 @@
         #[OA\Patch(path: '/api/1.0.0/accounts/information/update')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
+        public final function public_update( Request $request )
+        {
+
+            return null;
+        }
+
         public final function update( Request $request )
         {
 
@@ -127,6 +146,12 @@
         #[OA\Delete(path: '/api/1.0.0/accounts/information/delete')]
         #[OA\Response(response: '200', description: 'The data')]
         #[OA\Response(response: '404', description: 'content not found')]
+        public final function public_delete( Request $request )
+        {
+
+            return null;
+        }
+
         public final function delete( Request $request )
         {
 

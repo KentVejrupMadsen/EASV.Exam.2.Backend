@@ -48,11 +48,11 @@
                 function(): void
                 {
                     Route::post( self::access_route, 'access' );
-                    Route::get( self::create_route, 'publicCreate' );
-                    Route::delete( self::delete_Route, 'publicDelete' );
-                    Route::get( self::read_route,'publicRead' );
+                    Route::get( self::create_route, 'public_create' );
+                    Route::delete( self::delete_Route, 'public_delete' );
+                    Route::get( self::read_route,'public_read' );
                     Route::patch( self::reset_route, 'reset' );
-                    Route::patch( self::update_route, 'publicUpdate' );
+                    Route::patch( self::update_route, 'public_update' );
                 }
             );
         }

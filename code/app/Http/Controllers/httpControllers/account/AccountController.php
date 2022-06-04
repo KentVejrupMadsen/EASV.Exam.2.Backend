@@ -91,8 +91,9 @@
          * @param Request $request
          * @return array|null
          */
-        public final function pipelineTowardJSON( Request $request ): ?array
+        public final function pipelineTowardJSON( Request $request ): ?JsonResponse
         {
+
 
             return null;
         }
@@ -121,7 +122,7 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function me( SecurityProtectedRequest $request ): JsonResponse
+        public final function me(  $request ): JsonResponse
         {
             $currentUser = Auth::user();
             return response()->json($currentUser, 200);
@@ -137,6 +138,12 @@
                        description: 'The data')]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        public final function public_read( Request $request ): JsonResponse
+        {
+
+            return Response()->json( null, 200 );
+        }
+
         public final function read( Request $request ): JsonResponse
         {
 
@@ -188,6 +195,12 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        public final function public_create( Request $request ): JsonResponse
+        {
+
+            return response()->json(null, 200);
+        }
+
         public final function create( Request $request ): JsonResponse
         {
 

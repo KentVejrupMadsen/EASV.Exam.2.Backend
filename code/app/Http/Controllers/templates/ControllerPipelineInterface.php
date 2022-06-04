@@ -7,6 +7,7 @@
      */
     namespace App\Http\Controllers\templates;
 
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
 
@@ -17,9 +18,9 @@
     {
         /**
          * @param Request $request
-         * @return array|null
+         * @return JsonResponse|null
          */
-        public function pipelineTowardJSON( Request $request ): ?array;
+        public function pipelineTowardJSON( Request $request ): ?JsonResponse;
 
         /**
          * @return bool
