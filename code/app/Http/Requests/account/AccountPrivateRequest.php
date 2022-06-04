@@ -7,13 +7,13 @@
      */
     namespace App\Http\Requests\account;
 
-    use App\Http\Requests\template\AccountProtectedRequest;
-
-    use App\Http\Requests\template\RequestDefaults;
-    
+    // External
     use OpenApi\Attributes
         as OA;
 
+    // Internal
+    use App\Http\Requests\template\AccountProtectedRequest;
+    use App\Http\Requests\template\RequestDefaults;
 
     /**
      *

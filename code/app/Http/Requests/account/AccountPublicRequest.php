@@ -7,9 +7,11 @@
      */
     namespace App\Http\Requests\account;
 
+    // Internal
     use App\Http\Requests\template\PublicRequest;
-
     use App\Http\Requests\template\RequestDefaults;
+
+    // External
     use OpenApi\Attributes
         as OA;
 
