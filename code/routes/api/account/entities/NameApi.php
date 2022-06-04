@@ -19,7 +19,6 @@
         const route = 'name';
 
         const read_route = 'read';
-
         const create_route = 'create';
         const update_route = 'update';
         const delete_route = 'delete';
