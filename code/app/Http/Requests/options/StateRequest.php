@@ -7,11 +7,13 @@
      */
     namespace App\Http\Requests\options;
 
-    use App\Http\Requests\template\PublicRequest;
-
-    use App\Http\Requests\template\RequestDefaults;
+    // external libraries
     use OpenApi\Attributes
         as OA;
+
+    // Internal libraries
+    use App\Http\Requests\template\PublicRequest;
+    use App\Http\Requests\template\RequestDefaults;
 
 
     /**

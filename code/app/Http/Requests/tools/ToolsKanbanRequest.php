@@ -7,11 +7,14 @@
      */
     namespace App\Http\Requests\tools;
 
+    // internal libraries
     use App\Http\Requests\template\AccountProtectedRequest;
     use App\Http\Requests\template\RequestDefaults;
 
+    // external libraries
     use OpenApi\Attributes
         as OA;
+
 
     #[OA\Schema]
     class ToolsKanbanRequest
