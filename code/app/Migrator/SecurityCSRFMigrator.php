@@ -1,5 +1,5 @@
 <?php
-    namespace App\Factory;
+    namespace App\Migrator;
 
     use Carbon\Carbon;
     use Illuminate\Support\Str;
@@ -7,7 +7,9 @@
     use App\Models\security\CSRFModel;
 
 
-
+    /**
+     *
+     */
     class SecurityCSRFMigrator
     {
         public function __construct()

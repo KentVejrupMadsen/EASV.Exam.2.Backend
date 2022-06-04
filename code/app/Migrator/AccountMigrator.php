@@ -1,5 +1,5 @@
 <?php
-    namespace App\Factory;
+    namespace App\Migrator;
 
     use Carbon\Carbon;
     use Illuminate\Support\Str;
