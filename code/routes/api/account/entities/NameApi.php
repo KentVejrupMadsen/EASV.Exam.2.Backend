@@ -19,11 +19,16 @@
     class NameApi
         extends RouteController
     {
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setRoute( self::route );
+            $this->setSecurityMiddleware( SanctumMiddleware );
         }
 
+        //
         const route = 'name';
 
         const read_route = ACTION_READ;
@@ -50,6 +55,9 @@
         }
     }
 
+    /**
+     * @return void
+     */
     function MakeNameApi(): void
     {
         $name = new NameApi();

@@ -13,14 +13,21 @@
     use App\Http\Controllers\RouteController;
 
 
+    /**
+     *
+     */
     class AccountApi
         extends RouteController
     {
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setRoute( self::route );
         }
 
+        // Variables
         private const route = 'account';
 
         private const create_route  =  ACTION_CREATE;
@@ -34,7 +41,10 @@
         private const read_route    =  ACTION_READ;
 
 
-        protected final function execute()
+        /**
+         * @return void
+         */
+        protected final function execute(): void
         {
             Route::controller( AccountController::class )->group
             (
@@ -42,6 +52,20 @@
                 {
                     Route::post( self::create_route, 'public_create' );
                     Route::post( self::login_route, 'login' );
+                    $this->secureRoutes();
+                }
+            );
+        }
+
+        /**
+         * @return void
+         */
+        protected final function secureRoutes(): void
+        {
+            Route::middleware( SanctumMiddleware )->group
+            (
+                function()
+                {
                     Route::get( self::read_route, 'public_read' );
                     Route::delete( self::delete_route, 'public_delete' );
                     Route::get( self::logout_route, 'logout' );
@@ -53,10 +77,13 @@
         }
     }
 
+
+    /**
+     * @return void
+     */
     function MakeAccountApi()
     {
         $api = new AccountApi();
         $api->run();
     }
-
 ?>

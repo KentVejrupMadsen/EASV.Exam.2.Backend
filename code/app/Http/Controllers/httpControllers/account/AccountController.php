@@ -8,6 +8,7 @@
     namespace App\Http\Controllers\httpControllers\account;
 
     // External Libraries
+    use Carbon\Carbon;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
@@ -18,11 +19,20 @@
     // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Http\Controllers\formatControllers\json\AccountResponseJSONFactory;
+    use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
+
     use App\Http\Requests\account\AccountRequest;
 
+    use App\Migrators\AccountMigrator;
+    use App\Migrators\PersonEmailMigrator;
+
     use App\Models\tables\User;
+    use App\Models\tables\AccountEmailModel;
 
 
+    /**
+     *
+     */
     #[OA\Schema()]
     class AccountController
         extends ControllerPipeline
@@ -34,7 +44,6 @@
         {
             parent::__construct();
 
-
             if( $makeSingleton )
             {
                 self::setSingleton( $this );
@@ -42,8 +51,9 @@
         }
 
         // Variables
-        private static ?AccountController $controller = null;
-        private static ?AccountResponseJSONFactory $responseFactory = null;
+        private static ?AccountController           $controller = null;
+        private static ?AccountResponseJSONFactory  $responseFactory = null;
+        private const contentType = 'Content-Type';
 
 
         // implement output
@@ -69,7 +79,16 @@
          */
         public final function hasImplementedXML(): bool
         {
-            return true;
+
+            return false;
+        }
+
+        /**
+         * @return string
+         */
+        protected function defaultToContent(): string
+        {
+            return 'application/json';
         }
 
 
@@ -79,6 +98,11 @@
          */
         public final function pipelineTowardCSV( Array $request ): ?array
         {
+            if( !$this->hasImplementedCSV() )
+            {
+                // Not implemented
+                abort( 501 );
+            }
 
             return null;
         }
@@ -90,9 +114,13 @@
          */
         public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
+            if( !$this->hasImplementedJSON() )
+            {
+                // Not implemented
+                abort(501);
+            }
 
-
-            return null;
+            return Response()->json( $request );
         }
 
 
@@ -102,6 +130,11 @@
          */
         public final function pipelineTowardXML( Array $request ): ?array
         {
+            if( !$this->hasImplementedXML() )
+            {
+                // Not implemented
+                abort( 501 );
+            }
 
             return null;
         }
@@ -121,10 +154,17 @@
                        description: 'content not found' )]
         public final function me( AccountRequest $request ): JsonResponse
         {
-            $content_type = $request->header( 'Content-Type' );
+            $content_type = $request->header( $this->getContentType() );
+
+            if( !isset( $content_type ) )
+            {
+                $content_type = $this->defaultToContent();
+            }
+
             $response = [];
 
-            $currentUser = Auth::user();
+            $currentUser = $request->user();
+            $response[ 'account' ] = $currentUser;
 
             return $this->Pipeline( $content_type, $response );
         }
@@ -139,6 +179,9 @@
                        description: 'The data')]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_read( AccountRequest $request )
         {
 
@@ -151,7 +194,7 @@
          */
         public final function read( Request $request )
         {
-            $content_type = $request->header( 'Content-Type' );
+            $content_type = $request->header( $this->getContentType() );
             $response = [];
 
             return $this->Pipeline( $content_type, $response );
@@ -162,14 +205,28 @@
          * @param Request $request
          * @return JsonResponse|null
          */
-        #[OA\Post( path: 'api/1.0.0/accounts/account/login' )]
+        #[OA\Post( path: '/api/1.0.0/accounts/account/login',
+                   requestBody:
+                        new OA\RequestBody
+                        (
+                            description: '',
+                            required: true,
+                            content: 'application/json',
+                        ),
+                   tags: ['login', 'authentication'] )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function login( Request $request )
         {
-            $content_type = $request->header( 'Content-Type' );
+            $content_type = $request->header( $this->getContentType() );
+
+            if( !isset( $content_type ) )
+            {
+                $content_type = $this->defaultToContent();
+            }
+
             $response = [];
 
             return $this->Pipeline( $content_type, $response );
@@ -181,17 +238,35 @@
          * @return null
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/logout' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function logout( AccountRequest $request )
+        #[OA\SecurityScheme( securityScheme: 'account_logout',
+                             type: 'http',
+                             name: 'authorization',
+                             in: 'header',
+                             bearerFormat: 'JWT',
+                             scheme: 'Bearer' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function logout( Request $request )
         {
-            $content_type = $request->header( 'Content-Type' );
+            $content_type = $request->header( $this->getContentType() );
+
+            if( !isset( $content_type ) )
+            {
+                $content_type = $this->defaultToContent();
+            }
+
             $response = [];
+
+            $user = $request->user();
+            $user->currentAccessToken()->delete();
+
+            $response[ 'issued' ] = Carbon::now();
+            $response[ 'message' ] = 'tokens revoked';
 
             return $this->Pipeline( $content_type, $response );
         }
@@ -201,26 +276,106 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/account/create' )]
-        #[OA\Response( response: '200',
-                       description: 'The data' )]
-        #[OA\Response( response: '404',
+        #[OA\Post( path: '/api/1.0.0/accounts/account/create',
+            requestBody:
+                new OA\RequestBody
+                (
+                    description: '',
+                    required: true,
+                    content: 'application/json',
+                ),
+            tags: ['create', 'authentication'] )]
+        #[OA\Response( response: '201',
+                       description: 'Account created' )]
+        #[OA\Response( response: '400',
+                       description: 'Bad Request - an account already exist with the given parameters' )]
+        #[OA\Response( response: '540',
                        description: 'content not found' )]
         public final function public_create( Request $request )
         {
-
             return $this->create( $request );
         }
 
 
         /**
+         * @param array $InputKeys
+         * @param AccountEmailModel $mailForm
+         * @param string $password
+         * @return array
+         */
+        private function createForm( array $InputKeys,
+                                     AccountEmailModel $mailForm,
+                                     string $password ): array
+        {
+            return
+            [
+                User::field_username => $InputKeys[ User::field_username ],
+                User::field_password => $password,
+                User::field_email_id => $mailForm[ 'id' ],
+                User::field_created_at => Carbon::now(),
+                User::field_updated_at => Carbon::now(),
+                User::field_settings => array()
+            ];
+        }
+
+
+        /**
          * @param Request $request
-         * @return JsonResponse
+         * @return JsonResponse|null
          */
         public final function create( Request $request )
         {
-            $content_type = $request->header( 'Content-Type' );
+            $content_type = $request->header( $this->getContentType() );
+
+            if( !isset( $content_type ) )
+            {
+                $content_type = $this->defaultToContent();
+            }
+
             $response = [];
+            $accountMigrator = self::getConstructor();
+
+            $form = $request->input( 'account' );
+            $securityPassword = $request->input( 'account.security.password' );
+
+            // Make private function
+            $mailModel = null;
+
+            if( PersonEmailController::hasAccountEmailContainer( $request ) )
+            {
+                $personContainer = $form[ 'person' ];
+
+                $emailConstructor = PersonEmailMigrator::getSingleton();
+
+                if( !$emailConstructor->hasEmailContainer( $personContainer[ 'email' ] ) )
+                {
+                    $mailModel = $emailConstructor->createEmail( $personContainer[ 'email' ] );
+                }
+                else
+                {
+                    $mailModel = $emailConstructor->retrieveEmail( $personContainer[ 'email' ] );
+
+                    if( $accountMigrator->validateEmailIsUsedWithId( $mailModel->id ) )
+                    {
+                        abort( 400, message: 'the given email is already taken by another account');
+                    }
+                }
+            }
+
+            if( $accountMigrator->validateUsernameIsUsed( $form[ User::field_username ] ) )
+            {
+                abort( 400, message: 'the given username is already taken by another account' );
+            }
+
+            $account = $accountMigrator->createAccountForm(
+                $this::createForm( $form, $mailModel, $securityPassword )
+            );
+
+            $token = $accountMigrator->issueBearerToken( $account );
+
+            $response[ 'username' ] = $account->username;
+            $response[ 'bearer_token' ] = $token;
+
 
             return $this->Pipeline( $content_type, $response );
         }
@@ -228,15 +383,6 @@
 
         /**
          * @param AccountRequest $request
-         * @return JsonResponse
-         */
-        public final function public_update( AccountRequest $request )
-        {
-            return $this->update( $request );
-        }
-
-        /**
-         * @param Request $request
          * @return JsonResponse
          */
         #[OA\Patch( path: '/api/1.0.0/accounts/account/update' )]
@@ -247,9 +393,30 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\SecurityScheme( securityScheme: 'account_update',
+                             type: 'http',
+                             name: 'authorization',
+                             in: 'header',
+                             bearerFormat: 'JWT',
+                             scheme: 'Bearer' )]
+        public final function public_update( AccountRequest $request )
+        {
+            return $this->update( $request );
+        }
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function update( Request $request )
         {
-            $content_type = $request->header( 'Content-Type' );
+            $content_type = $request->header( $this->getContentType() );
+
+            if( !isset( $content_type ) )
+            {
+                $content_type = $this->defaultToContent();
+            }
+
             $response = [];
 
             return $this->Pipeline( $content_type, $response );
@@ -268,6 +435,13 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\SecurityScheme( securityScheme: 'account_deletion',
+                             type: 'http',
+                             description: '',
+                             name: 'authorization',
+                             in: 'header',
+                             bearerFormat: 'JWT',
+                             scheme: 'Bearer' )]
         public final function public_delete( AccountRequest $request )
         {
 
@@ -281,7 +455,13 @@
          */
         public final function delete( Request $request )
         {
-            $content_type = $request->header( 'Content-Type' );
+            $content_type = $request->header( $this->getContentType() );
+
+            if( !isset( $content_type ) )
+            {
+                $content_type = $this->defaultToContent();
+            }
+
             $response = [];
 
             return $this->Pipeline( $content_type, $response );
@@ -302,7 +482,13 @@
                        description: 'content not found' )]
         public final function verify( AccountRequest $request )
         {
-            $content_type = $request->header( 'Content-Type' );
+            $content_type = $request->header( $this->getContentType() );
+
+            if( !isset( $content_type ) )
+            {
+                $content_type = $this->defaultToContent();
+            }
+
             $response = [];
 
             return $this->Pipeline( $content_type, $response );
@@ -362,6 +548,22 @@
         public final static function setResponseFactory( ?AccountResponseJSONFactory $responseFactory ): void
         {
             self::$responseFactory = $responseFactory;
+        }
+
+        /**
+         * @return AccountMigrator|null
+         */
+        public static final function getConstructor(): ?AccountMigrator
+        {
+            return AccountMigrator::getSingleton();
+        }
+
+        /**
+         * @return string
+         */
+        protected final function getContentType(): string
+        {
+            return self::contentType;
         }
     }
 ?>

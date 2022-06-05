@@ -23,6 +23,14 @@
     class AccountRequest
         extends PublicRequest
     {
+        private function allowedMethods()
+        {
+            return $this->isMethod( 'DELETE' ) |
+                   $this->isMethod( 'GET' )    |
+                   $this->isMethod( 'PATCH' )  |
+                   $this->isMethod( 'POST' );
+        }
+
         /**
          * @return bool
          */
@@ -33,6 +41,11 @@
             if( $this->accepts( RequestDefaults::getAllowedFormats() ) )
             {
                 $retVal = true;
+            }
+
+            if( !$this->allowedMethods() )
+            {
+                abort( 405, 'is not a valid http method' );
             }
 
             return $retVal;

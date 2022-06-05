@@ -40,104 +40,119 @@
         // Variables
         private static ?SecurityConfigurationController $controller = null;
 
+
         // Functions that the routes interacts with
         /**
          * @param SecurityConfigurationRequest $Request
-         * @return void
+         * @return null
          */
         #[OA\Get( path: '/api/1.0.0/securities/configuration/read' )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicRead( SecurityConfigurationRequest $Request )
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function publicRead( SecurityConfigurationRequest $Request )
         {
-            $this->read( $Request );
+            return $this->read( $Request );
+        }
+
+
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function read( Request $request )
+        {
+
+            return null;
         }
 
 
         /**
          * @param SecurityConfigurationRequest $Request
-         * @return void
+         * @return null
          */
         #[OA\Patch( path: '/api/1.0.0/securities/configuration/update' )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicUpdate( SecurityConfigurationRequest $Request )
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function publicUpdate( SecurityConfigurationRequest $Request )
         {
-            $this->update( $Request );
+            return $this->update( $Request );
+        }
+
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function update( Request $request )
+        {
+
+            return null;
         }
 
 
         /**
          * @param SecurityConfigurationRequest $Request
-         * @return void
+         * @return null
          */
         #[OA\Post( path: '/api/1.0.0/securities/configuration/create' )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicCreate( SecurityConfigurationRequest $Request )
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function publicCreate( SecurityConfigurationRequest $Request )
         {
-            $this->create( $Request );
+            return $this->create( $Request );
+        }
+
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function create( Request $request )
+        {
+
+            return null;
         }
 
 
         /**
          * @param SecurityConfigurationRequest $Request
-         * @return void
+         * @return null
          */
         #[OA\Delete( path: '/api/1.0.0/securities/configuration/delete' )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicDelete( SecurityConfigurationRequest $Request )
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function publicDelete( SecurityConfigurationRequest $Request )
         {
-            $this->delete( $Request );
+            return $this->delete( $Request );
         }
 
 
         /**
          * @param Request $request
-         * @return void
-         */
-        public final function read( Request $request )
-        {
-
-        }
-
-
-        /**
-         * @param Request $request
-         * @return void
-         */
-        public final function create( Request $request )
-        {
-
-        }
-
-
-        /**
-         * @param Request $request
-         * @return void
-         */
-        public final function update( Request $request )
-        {
-
-        }
-
-
-        /**
-         * @param Request $request
-         * @return void
+         * @return null
          */
         public final function delete( Request $request )
         {
 
+            return null;
         }
 
 

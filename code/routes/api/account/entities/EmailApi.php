@@ -13,12 +13,19 @@
     use App\Http\Controllers\RouteController;
 
 
+    /**
+     *
+     */
     class EmailApi
         extends RouteController
     {
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setRoute( self::route );
+            $this->setSecurityMiddleware( SanctumMiddleware );
         }
 
         private const route  = 'email';
@@ -47,7 +54,9 @@
         }
     }
 
-
+    /**
+     * @return void
+     */
     function MakeEmailApi(): void
     {
         $router = new EmailApi();

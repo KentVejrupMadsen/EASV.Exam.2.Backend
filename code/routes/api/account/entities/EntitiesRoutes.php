@@ -5,27 +5,47 @@
      * Description:
      * TODO: Make description
      */
-    // External library
-    use Illuminate\Support\Facades\Route;
-
     // Internally
     require_once 'AddressApi.php';
     require_once 'EmailApi.php';
     require_once 'NameApi.php';
 
-    const EntityRoute = 'entities';
+    use App\Http\Controllers\NodesController;
 
 
-    function EntitiesRoutes()
+    /**
+     *
+     */
+    class EntitiesRoutes
+        extends NodesController
     {
-        Route::prefix( EntityRoute )->group
-        (
-            function()
-            {
-                MakeAddressApi();
-                MakeEmailApi();
-                MakeNameApi();
-            }
-        );
+        const EntityRoute = 'entities';
+
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setNodeRouteName( self::EntityRoute );
+        }
+
+        /**
+         * @return void
+         */
+        protected function execute(): void
+        {
+            MakeAddressApi();
+            MakeEmailApi();
+            MakeNameApi();
+        }
+    }
+
+    /**
+     * @return void
+     */
+    function MakeEntitiesRoutes()
+    {
+        $routes = new EntitiesRoutes();
+        $routes->run();
     }
 ?>

@@ -10,23 +10,42 @@
     require_once 'ProjectApi.php';
     require_once 'TaskApi.php';
 
-    use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\NodesController;
 
-    const ToolRoute = 'tools';
 
+    /**
+     *
+     */
+    class ToolRoutes
+        extends NodesController
+    {
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setNodeRouteName( self::ToolRoute );
+        }
+
+        const ToolRoute = 'tools';
+
+
+        /**
+         * @return void
+         */
+        protected final function execute(): void
+        {
+            MakeBoardApi();
+            MakeKanbanApi();
+            MakeProjectApi();
+            MakeTaskApi();
+        }
+    }
 
     //
-    function ToolRoutes(): void
+    function makeToolRoutes(): void
     {
-        Route::prefix( ToolRoute )->group
-        (
-            function()
-            {
-                MakeBoardApi();
-                MakeKanbanApi();
-                MakeProjectApi();
-                MakeTaskApi();
-            }
-        );
+        $tool = new ToolRoutes();
+        $tool->run();
     }
 ?>

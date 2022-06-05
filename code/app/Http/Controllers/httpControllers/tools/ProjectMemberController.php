@@ -47,7 +47,7 @@
          */
         public final function hasImplementedCSV(): bool
         {
-            return true;
+            return false;
         }
 
         /**
@@ -55,7 +55,7 @@
          */
         public final function hasImplementedJSON(): bool
         {
-            return true;
+            return false;
         }
 
         /**
@@ -63,7 +63,7 @@
          */
         public final function hasImplementedXML(): bool
         {
-            return true;
+            return false;
         }
 
         /**
@@ -72,6 +72,12 @@
          */
         public final function pipelineTowardCSV( Array $request ): ?array
         {
+            if( !$this->hasImplementedCSV() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -81,6 +87,12 @@
          */
         public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
+            if( !$this->hasImplementedJSON() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
 
@@ -90,6 +102,12 @@
          */
         public final function pipelineTowardXML( Array $request ): ?array
         {
+            if( !$this->hasImplementedXML() )
+            {
+                // Not implemented
+                abort(501);
+            }
+
             return null;
         }
         
@@ -101,9 +119,12 @@
                        description: 'The' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_create( ToolsProjectMemberRequest $request )
         {
-            
+            return $this->create( $request );
         }
 
         /**
@@ -113,6 +134,7 @@
         public final function create( Request $request )
         {
 
+            return null;
         }
 
 
@@ -124,18 +146,23 @@
                        description: 'The data')]
         #[OA\Response( response: '404',
                        description: 'content not found')]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_read( ToolsProjectMemberRequest $request )
         {
-            
+
+            return $this->read( $request );
         }
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function read( Request $request )
         {
 
+            return null;
         }
 
 
@@ -147,18 +174,23 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_update( ToolsProjectMemberRequest $request )
         {
 
+            return $this->update( $request );
         }
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function update( Request $request )
         {
-            
+
+            return null;
         }
 
 
@@ -170,9 +202,13 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_delete( ToolsProjectMemberRequest $request )
         {
 
+            return $this->delete( $request );
         }
 
         /**
@@ -181,7 +217,8 @@
          */
         public final function delete( Request $request )
         {
-            
+
+            return null;
         }
 
 

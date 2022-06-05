@@ -43,7 +43,7 @@
         //
         /**
          * @param SecurityCSRFRequest $Request
-         * @return void
+         * @return null
          */
         #[OA\Get( path: '/api/1.0.0/securities/recaptcha/read' )]
         #[OA\Response( response: '200',
@@ -52,13 +52,23 @@
                        description: 'content not found')]
         public final function publicRead( SecurityCSRFRequest $Request )
         {
-            $this->read( $Request );
+            return $this->read( $Request );
+        }
+
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function read( Request $request )
+        {
+
+            return null;
         }
 
 
         /**
          * @param SecurityCSRFRequest $Request
-         * @return void
+         * @return null
          */
         #[OA\Patch( path: '/api/1.0.0/securities/recaptcha/update' )]
         #[OA\Response( response: '200',
@@ -67,73 +77,68 @@
                        description: 'content not found' )]
         public final function publicUpdate( SecurityCSRFRequest $Request )
         {
-            $this->update( $Request );
-        }
-
-
-        /**
-         * @param SecurityCSRFRequest $Request
-         * @return void
-         */
-        #[OA\Post(path: '/api/1.0.0/securities/recaptcha/create' )]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public final function publicCreate( SecurityCSRFRequest $Request )
-        {
-            $this->create( $Request );
-        }
-
-
-        /**
-         * @param SecurityCSRFRequest $Request
-         * @return void
-         */
-        #[OA\Delete(path: '/api/1.0.0/securities/recaptcha/delete' )]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
-        public final function publicDelete( SecurityCSRFRequest $Request )
-        {
-            $this->delete( $Request );
-        }
-
-        //
-        /**
-         * @param Request $request
-         * @return void
-         */
-        public final function read( Request $request )
-        {
-
+            return $this->update( $Request );
         }
 
 
         /**
          * @param Request $request
-         * @return void
-         */
-        public final function create( Request $request )
-        {
-
-        }
-
-
-        /**
-         * @param Request $request
-         * @return void
+         * @return null
          */
         public final function update( Request $request )
         {
 
+            return null;
         }
 
 
         /**
+         * @param SecurityCSRFRequest $Request
+         * @return null
+         */
+        #[OA\Post( path: '/api/1.0.0/securities/recaptcha/create' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function publicCreate( SecurityCSRFRequest $Request )
+        {
+            return $this->create( $Request );
+        }
+
+        /**
          * @param Request $request
-         * @return void
+         * @return null
+         */
+        public final function create( Request $request )
+        {
+
+            return null;
+        }
+
+
+        /**
+         * @param SecurityCSRFRequest $Request
+         * @return null
+         */
+        #[OA\Delete( path: '/api/1.0.0/securities/recaptcha/delete' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function publicDelete( SecurityCSRFRequest $Request )
+        {
+            return $this->delete( $Request );
+        }
+
+        /**
+         * @param Request $request
+         * @return null
          */
         public final function delete( Request $request )
         {
 
+            return null;
         }
 
 
