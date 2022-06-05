@@ -132,7 +132,13 @@
 
         #[OA\Get( path: '/api/1.0.0/accounts/entities/address/read' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -151,7 +157,13 @@
          */
         #[OA\Delete( path: '/api/1.0.0/accounts/entities/address/delete' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -179,7 +191,13 @@
          */
         #[OA\Post( path: '/api/1.0.0/accounts/entities/address/create' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -206,7 +224,13 @@
          */
         #[OA\Patch( path: '/api/1.0.0/accounts/entities/address/update' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',

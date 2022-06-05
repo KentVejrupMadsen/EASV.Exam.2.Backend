@@ -285,7 +285,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -305,7 +313,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -325,7 +341,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -345,7 +369,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -366,7 +398,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -386,7 +426,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -417,6 +465,13 @@
         "/api/1.0.0/accounts/entities/email/update": {
             "patch": {
                 "operationId": "a2a11c6f0ca4c97d3db042b9e88acbb0",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "The data"
