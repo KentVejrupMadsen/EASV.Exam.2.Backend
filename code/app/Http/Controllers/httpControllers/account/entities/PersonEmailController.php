@@ -123,9 +123,14 @@
          * @param Request $request
          * @return AccountEmailModel|null
          */
-        #[OA\Get(path: '/api/1.0.0/accounts/entities/email/read')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/email/read' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_read( Request $request ): ?AccountEmailModel
         {
             return $this->read( $request );
@@ -146,9 +151,14 @@
          * @param Request $request
          * @return false
          */
-        #[OA\Delete(path: '/api/1.0.0/accounts/entities/email/delete')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/email/delete' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_delete( Request $request )
         {
             return $this->delete( $request );
@@ -169,9 +179,14 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post(path: '/api/1.0.0/accounts/entities/email/create')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/email/create' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_create( Request $request )
         {
             return $this->create( $request );

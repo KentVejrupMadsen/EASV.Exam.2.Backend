@@ -118,6 +118,9 @@
                        description: 'create a new task for a kanban board' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_create( ToolsKanbanRequest $request )
         {
 
@@ -146,6 +149,9 @@
                        description: 'read the content of a task' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_read( ToolsKanbanRequest $request )
         {
 
@@ -174,6 +180,9 @@
                        description: 'updates the information for a specific task' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_update( ToolsKanbanRequest $request )
         {
 
@@ -203,6 +212,9 @@
                        description: 'Delete a specific tasks.' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_delete( ToolsKanbanRequest $request )
         {
             return $this->delete( $request );
