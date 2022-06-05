@@ -44,7 +44,7 @@
             MakeOptionsRoutes();
 
             MakeSecurityRoutes();
-            StatusRoutes();
+            MakeStatusRoutes();
 
             makeToolRoutes();
         }
@@ -57,7 +57,7 @@
      */
     function ApiRoutes(): void
     {
-        $node = new ApiNode();
+        $node = new ApiRoutes();
         $node->run();
     }
 
