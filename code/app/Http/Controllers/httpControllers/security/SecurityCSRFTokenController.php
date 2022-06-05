@@ -23,7 +23,7 @@
     use App\Http\Requests\security\SecurityCSRFRequest;
 
     use App\Models\security\CSRFModel;
-    use App\Factory\SecurityCSRFConstructor;
+    use App\Migrator\SecurityCSRFMigrator;
 
     use App\Http\Controllers\formatControllers\json\CSRFResponseJSONFactory;
 
@@ -62,7 +62,7 @@
 
         private ?RedisCacheCSRFController $cache = null;
         private ?CSRFResponseJSONFactory $jsonFactory = null;
-        private ?SecurityCSRFConstructor $constructor = null;
+        private ?SecurityCSRFMigrator $constructor = null;
 
 
         // Functions that the routes interacts with
@@ -146,7 +146,7 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicUpdate( SecurityCSRFRequest $Request ): JsonResponse
+        public final function publicUpdate( SecurityCSRFRequest $Request ): JsonResponse
         {
             return $this->update( $Request );
         }
@@ -156,7 +156,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        public function update( Request $request ): JsonResponse
+        public final function update( Request $request ): JsonResponse
         {
             $array = [];
 
@@ -191,7 +191,7 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicDelete( SecurityCSRFRequest $Request ): JsonResponse
+        public final function publicDelete( SecurityCSRFRequest $Request ): JsonResponse
         {
             return Response()->json( [], 200 );
         }
@@ -246,13 +246,13 @@
         }
 
         /**
-         * @return SecurityCSRFConstructor
+         * @return SecurityCSRFMigrator
          */
-        public final function getConstructor(): SecurityCSRFConstructor
+        public final function getConstructor(): SecurityCSRFMigrator
         {
             if( is_null( $this->constructor ) )
             {
-                $this->setConstructor( SecurityCSRFConstructor::getFactory() );
+                $this->setConstructor( SecurityCSRFMigrator::getFactory() );
             }
 
             return $this->constructor;

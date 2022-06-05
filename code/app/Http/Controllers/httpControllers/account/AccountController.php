@@ -8,6 +8,8 @@
     namespace App\Http\Controllers\httpControllers\account;
 
     // External Libraries
+    use App\Models\tables\AccountEmailModel;
+    use Carbon\Carbon;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
@@ -19,6 +21,10 @@
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Http\Controllers\formatControllers\json\AccountResponseJSONFactory;
     use App\Http\Requests\account\AccountRequest;
+    use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
+    use App\Migrator\AccountMigrator;
+    use App\Migrator\PersonEmailMigrator;
+
 
     use App\Models\tables\User;
 
@@ -34,7 +40,6 @@
         {
             parent::__construct();
 
-
             if( $makeSingleton )
             {
                 self::setSingleton( $this );
@@ -42,8 +47,8 @@
         }
 
         // Variables
-        private static ?AccountController $controller = null;
-        private static ?AccountResponseJSONFactory $responseFactory = null;
+        private static ?AccountController           $controller = null;
+        private static ?AccountResponseJSONFactory  $responseFactory = null;
 
 
         // implement output
@@ -69,7 +74,8 @@
          */
         public final function hasImplementedXML(): bool
         {
-            return true;
+
+            return false;
         }
 
 
@@ -79,6 +85,11 @@
          */
         public final function pipelineTowardCSV( Array $request ): ?array
         {
+            if( !$this->hasImplementedCSV() )
+            {
+                // Not implemented
+                abort( 501 );
+            }
 
             return null;
         }
@@ -90,9 +101,13 @@
          */
         public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
+            if( !$this->hasImplementedJSON() )
+            {
+                // Not implemented
+                abort(501);
+            }
 
-
-            return null;
+            return Response()->json( $request );
         }
 
 
@@ -102,6 +117,11 @@
          */
         public final function pipelineTowardXML( Array $request ): ?array
         {
+            if( !$this->hasImplementedXML() )
+            {
+                // Not implemented
+                abort( 501 );
+            }
 
             return null;
         }
@@ -188,10 +208,15 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function logout( AccountRequest $request )
+        public final function logout( Request $request )
         {
             $content_type = $request->header( 'Content-Type' );
             $response = [];
+
+            return Response()->json($request->user());
+
+            $response[ 'issued' ] = Carbon::now();
+            $response[ 'message' ] = 'tokens revoked';
 
             return $this->Pipeline( $content_type, $response );
         }
@@ -202,25 +227,91 @@
          * @return JsonResponse
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/create' )]
-        #[OA\Response( response: '200',
-                       description: 'The data' )]
-        #[OA\Response( response: '404',
+        #[OA\Response( response: '201',
+                       description: 'Account created' )]
+        #[OA\Response( response: '400',
+                       description: 'Bad Request - an account already exist with the given parameters' )]
+        #[OA\Response( response: '540',
                        description: 'content not found' )]
         public final function public_create( Request $request )
         {
-
             return $this->create( $request );
         }
 
 
         /**
+         * @param array $InputKeys
+         * @param AccountEmailModel $mailForm
+         * @param string $password
+         * @return array
+         */
+        private function createForm( array $InputKeys,
+                                     AccountEmailModel $mailForm,
+                                     string $password ): array
+        {
+            return
+            [
+                User::field_username => $InputKeys[ User::field_username ],
+                User::field_password => $password,
+                User::field_email_id => $mailForm[ 'id' ],
+                User::field_created_at => Carbon::now(),
+                User::field_updated_at => Carbon::now(),
+                User::field_settings => '{}'
+            ];
+        }
+
+
+        /**
          * @param Request $request
-         * @return JsonResponse
+         * @return JsonResponse|null
          */
         public final function create( Request $request )
         {
             $content_type = $request->header( 'Content-Type' );
             $response = [];
+            $accountMigrator = self::getConstructor();
+
+            $form = $request->input( 'account' );
+            $securityPassword = $request->input( 'account.security.password' );
+
+            // Make private function
+            $mailModel = null;
+
+            if( PersonEmailController::hasAccountEmailContainer( $request ) )
+            {
+                $personContainer = $form[ 'person' ];
+
+                $emailConstructor = PersonEmailMigrator::getSingleton();
+
+                if( !$emailConstructor->hasEmailContainer( $personContainer[ 'email' ] ) )
+                {
+                    $mailModel = $emailConstructor->createEmail( $personContainer[ 'email' ] );
+                }
+                else
+                {
+                    $mailModel = $emailConstructor->retrieveEmail( $personContainer[ 'email' ] );
+
+                    if( $accountMigrator->validateEmailIsUsedWithId( $mailModel->id ) )
+                    {
+                        abort( 400, message: 'the given email is already taken by another account');
+                    }
+                }
+            }
+
+            if( $accountMigrator->validateUsernameIsUsed( $form[ User::field_username ] ) )
+            {
+                abort( 400, message: 'the given username is already taken by another account' );
+            }
+
+            $account = $accountMigrator->createAccountForm(
+                $this::createForm( $form, $mailModel, $securityPassword )
+            );
+
+            $token = $accountMigrator->issueBearerToken( $account );
+
+            $response[ 'username' ] = $account->username;
+            $response[ 'bearer_token' ] = $token;
+
 
             return $this->Pipeline( $content_type, $response );
         }
@@ -228,15 +319,6 @@
 
         /**
          * @param AccountRequest $request
-         * @return JsonResponse
-         */
-        public final function public_update( AccountRequest $request )
-        {
-            return $this->update( $request );
-        }
-
-        /**
-         * @param Request $request
          * @return JsonResponse
          */
         #[OA\Patch( path: '/api/1.0.0/accounts/account/update' )]
@@ -247,6 +329,15 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        public final function public_update( AccountRequest $request )
+        {
+            return $this->update( $request );
+        }
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
         public final function update( Request $request )
         {
             $content_type = $request->header( 'Content-Type' );
@@ -362,6 +453,14 @@
         public final static function setResponseFactory( ?AccountResponseJSONFactory $responseFactory ): void
         {
             self::$responseFactory = $responseFactory;
+        }
+
+        /**
+         * @return AccountMigrator|null
+         */
+        public static final function getConstructor(): ?AccountMigrator
+        {
+            return AccountMigrator::getSingleton();
         }
     }
 ?>

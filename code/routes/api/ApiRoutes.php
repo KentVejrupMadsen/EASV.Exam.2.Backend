@@ -27,6 +27,8 @@
     const ACTION_DELETE = 'delete';
     const ACTION_READ = 'read';
 
+    const SanctumMiddleware = 'auth:sanctum';
+
     function ApiRoutes()
     {
         Route::prefix( VersionUrl )->group

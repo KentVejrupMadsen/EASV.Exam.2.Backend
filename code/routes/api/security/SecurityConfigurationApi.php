@@ -26,6 +26,7 @@
         public function __construct()
         {
             $this->setRoute( self::route );
+            $this->setSecurityMiddleware( SanctumMiddleware );
         }
 
         // variables
