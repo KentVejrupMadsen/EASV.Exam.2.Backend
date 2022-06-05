@@ -5,13 +5,12 @@
      * Description:
      * TODO: Make description
      */
-    // External library
-    use Illuminate\Support\Facades\Route;
-
     // Internally
     require_once 'AddressApi.php';
     require_once 'EmailApi.php';
     require_once 'NameApi.php';
+
+    use App\Http\Controllers\NodesController;
 
     const EntityRoute = 'entities';
 

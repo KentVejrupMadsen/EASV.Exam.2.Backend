@@ -5,10 +5,10 @@
      * Description:
      * TODO: Make description
      */
-    // External
-    use Illuminate\Support\Facades\Route;
 
     // Internal
+    use App\Http\Controllers\NodesController;
+
     require_once 'account/AccountRoutes.php';
     require_once 'HomeApi.php';
 
@@ -18,10 +18,6 @@
     require_once 'security/SecurityRoutes.php';
     require_once 'status/StatusRoutes.php';
 
-
-    const CURRENT_VERSION = '1.0.0';
-    const VersionUrl = '/' . CURRENT_VERSION;
-
     const ACTION_CREATE = 'create';
     const ACTION_UPDATE = 'update';
     const ACTION_DELETE = 'delete';
@@ -29,23 +25,40 @@
 
     const SanctumMiddleware = 'auth:sanctum';
 
-    function ApiRoutes()
+    class ApiRoutes
+        extends NodesController
     {
-        Route::prefix( VersionUrl )->group
-        (
-            function()
-            {
-                AccountRoutes();
-                HomeApi();
+        private const CURRENT_VERSION = '1.0.0';
+        private const VersionUrl = '/' . self::CURRENT_VERSION;
 
-                OptionsRoutes();
+        public function __construct()
+        {
+            $this->setNodeRouteName( self::VersionUrl );
+        }
 
-                SecurityRoutes();
-                StatusRoutes();
+        protected function execute(): void
+        {
+            AccountRoutes();
+            HomeApi();
 
-                ToolRoutes();
-            }
-        );
+            MakeOptionsRoutes();
+
+            MakeSecurityRoutes();
+            StatusRoutes();
+
+            makeToolRoutes();
+        }
+
+    }
+
+
+    /**
+     * @return void
+     */
+    function ApiRoutes(): void
+    {
+        $node = new ApiNode();
+        $node->run();
     }
 
     ApiRoutes();

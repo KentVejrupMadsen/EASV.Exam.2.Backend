@@ -8,6 +8,7 @@
     use Illuminate\Support\Facades\Route;
 
     use App\Http\Controllers\httpControllers\status\HealthController;
+    use App\Http\Controllers\NodesController;
 
     const statusRoute = 'status';
 

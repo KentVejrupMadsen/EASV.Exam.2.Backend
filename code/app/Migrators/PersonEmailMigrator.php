@@ -1,5 +1,5 @@
 <?php
-    namespace App\Migrator;
+    namespace App\Migrators;
 
     use App\Models\tables\AccountEmailModel;
     use Carbon\Carbon;

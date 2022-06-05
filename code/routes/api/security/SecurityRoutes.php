@@ -9,21 +9,31 @@
     require_once 'SecurityConfigurationApi.php';
     require_once 'SecurityRecapApi.php';
 
-    use Illuminate\Support\Facades\Route;
-
-    const SecurityRoute = 'securities';
+    use App\Http\Controllers\NodesController;
 
 
-    function SecurityRoutes(): void
+    class SecurityRoutes
+        extends NodesController
     {
-        Route::prefix( SecurityRoute )->group
-        (
-            function(): void
-            {
-                MakeSecurityCSRFApi();
-                MakeSecurityConfigurationApi();
-                MakeSecurityRecapApi();
-            }
-        );
+        const SecurityRoute = 'securities';
+
+        public function __construct()
+        {
+            $this->setNodeRouteName( self::SecurityRoute );
+        }
+
+        protected function execute(): void
+        {
+            MakeSecurityCSRFApi();
+            MakeSecurityConfigurationApi();
+            MakeSecurityRecapApi();
+        }
+    }
+
+
+    function MakeSecurityRoutes(): void
+    {
+        $routes = new SecurityRoutes();
+        $routes->run();
     }
 ?>

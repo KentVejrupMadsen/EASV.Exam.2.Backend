@@ -16,6 +16,8 @@
 
     const accounts_route = 'accounts';
 
+    use App\Http\Controllers\NodesController;
+
 
     function AccountRoutes(): void
     {
