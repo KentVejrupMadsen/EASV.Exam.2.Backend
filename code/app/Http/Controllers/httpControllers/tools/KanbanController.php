@@ -19,6 +19,9 @@
     use App\Http\Requests\tools\ToolsKanbanRequest;
 
 
+    /**
+     *
+     */
     #[OA\Schema()]
     class KanbanController
         extends ControllerPipeline
@@ -115,7 +118,13 @@
          */
         #[OA\Post( path: '/api/1.0.0/tools/kanban/create' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                         description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -129,7 +138,7 @@
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function create( Request $request )
         {
@@ -143,7 +152,13 @@
          */
         #[OA\Patch( path: '/api/1.0.0/tools/kanban/update' )]
         #[OA\Response( response: '200',
-                       description: 'The data')]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -171,7 +186,13 @@
          */
         #[OA\Delete( path: '/api/1.0.0/tools/kanban/delete' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -200,7 +221,13 @@
          */
         #[OA\Get( path: '/api/1.0.0/tools/kanban/read' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',

@@ -47,7 +47,13 @@
          */
         #[OA\Get( path: '/api/1.0.0/securities/recaptcha/read' )]
         #[OA\Response( response: '200',
-                       description: 'The data')]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found')]
         public final function publicRead( SecurityCSRFRequest $Request )
@@ -72,7 +78,13 @@
          */
         #[OA\Patch( path: '/api/1.0.0/securities/recaptcha/update' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function publicUpdate( SecurityCSRFRequest $Request )
@@ -98,7 +110,13 @@
          */
         #[OA\Post( path: '/api/1.0.0/securities/recaptcha/create' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                        [
+                            new OA\JsonContent(),
+                            new OA\XmlContent()
+                        ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function publicCreate( SecurityCSRFRequest $Request )
@@ -123,7 +141,13 @@
          */
         #[OA\Delete( path: '/api/1.0.0/securities/recaptcha/delete' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function publicDelete( SecurityCSRFRequest $Request )

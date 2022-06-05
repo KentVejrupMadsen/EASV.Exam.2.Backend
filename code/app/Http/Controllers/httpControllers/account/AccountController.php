@@ -149,7 +149,13 @@
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function me( AccountRequest $request ): JsonResponse
@@ -176,7 +182,13 @@
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/read' )]
         #[OA\Response( response: '200',
-                       description: 'The data')]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -215,7 +227,13 @@
                         ),
                    tags: ['login', 'authentication'] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function login( Request $request )
@@ -239,7 +257,13 @@
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/logout' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\SecurityScheme( securityScheme: 'account_logout',
@@ -286,7 +310,13 @@
                 ),
             tags: ['create', 'authentication'] )]
         #[OA\Response( response: '201',
-                       description: 'Account created' )]
+                       description: 'Account created',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '400',
                        description: 'Bad Request - an account already exist with the given parameters' )]
         #[OA\Response( response: '540',
@@ -390,7 +420,13 @@
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\SecurityScheme( securityScheme: 'account_update',
@@ -432,7 +468,13 @@
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\SecurityScheme( securityScheme: 'account_deletion',
@@ -477,7 +519,13 @@
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
         #[OA\Response( response: '200',
-                       description: 'The data')]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function verify( AccountRequest $request )

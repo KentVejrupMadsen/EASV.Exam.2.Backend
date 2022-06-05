@@ -19,6 +19,9 @@
     use App\Http\Requests\tools\ToolsBoardRequest;
 
 
+    /**
+     *
+     */
     #[OA\Schema()]
     class BoardController
         extends ControllerPipeline
@@ -143,7 +146,13 @@
          */
         #[OA\Post( path: '/api/1.0.0/tools/board/create' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -171,7 +180,13 @@
          */
         #[OA\Patch( path: '/api/1.0.0/tools/board/update' )]
         #[OA\Response( response: '200',
-                       description: 'The data')]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found')]
         #[OA\Parameter( name:'Authorization',
@@ -200,7 +215,13 @@
          */
         #[OA\Delete( path: '/api/1.0.0/tools/board/delete' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
