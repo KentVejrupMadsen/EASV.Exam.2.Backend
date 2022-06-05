@@ -25,17 +25,28 @@
 
     const SanctumMiddleware = 'auth:sanctum';
 
+
+    /**
+     *
+     */
     class ApiRoutes
         extends NodesController
     {
         private const CURRENT_VERSION = '1.0.0';
         private const VersionUrl = '/' . self::CURRENT_VERSION;
 
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setNodeRouteName( self::VersionUrl );
         }
 
+
+        /**
+         * @return void
+         */
         protected function execute(): void
         {
             MakeAccountRoutes();

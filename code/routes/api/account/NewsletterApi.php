@@ -19,6 +19,9 @@
     class NewsletterApi
         extends RouteController
     {
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setRoute( self::route );
@@ -49,8 +52,11 @@
             );
         }
 
-    };
+    }
 
+    /**
+     * @return void
+     */
     function MakeNewsletterApi()
     {
         $newsletter = new NewsletterApi();

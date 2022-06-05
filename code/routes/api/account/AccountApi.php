@@ -77,10 +77,13 @@
         }
     }
 
+
+    /**
+     * @return void
+     */
     function MakeAccountApi()
     {
         $api = new AccountApi();
         $api->run();
     }
-
 ?>

@@ -12,6 +12,7 @@
 
     use App\Http\Controllers\NodesController;
 
+
     /**
      *
      */
@@ -20,11 +21,17 @@
     {
         const options_route = 'options';
 
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setNodeRouteName( self::options_route );
         }
 
+        /**
+         * @return void
+         */
         protected function execute(): void
         {
             MakeFindApi();
@@ -32,6 +39,9 @@
         }
     }
 
+    /**
+     * @return void
+     */
     function MakeOptionsRoutes(): void
     {
         $routes = new OptionsRoutes();

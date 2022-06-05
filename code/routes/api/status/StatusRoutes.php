@@ -10,7 +10,7 @@
     use App\Http\Controllers\httpControllers\status\HealthController;
     use App\Http\Controllers\NodesController;
 
-    
+
     /**
      *
      */

@@ -11,17 +11,25 @@
 
     use App\Http\Controllers\NodesController;
 
-
+    /**
+     *
+     */
     class SecurityRoutes
         extends NodesController
     {
         const SecurityRoute = 'securities';
 
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setNodeRouteName( self::SecurityRoute );
         }
 
+        /**
+         * @return void
+         */
         protected function execute(): void
         {
             MakeSecurityCSRFApi();
@@ -31,6 +39,9 @@
     }
 
 
+    /**
+     * @return void
+     */
     function MakeSecurityRoutes(): void
     {
         $routes = new SecurityRoutes();

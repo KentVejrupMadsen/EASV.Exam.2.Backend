@@ -23,11 +23,17 @@
     {
         const accounts_route = 'accounts';
 
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setNodeRouteName( self::accounts_route );
         }
 
+        /**
+         * @return void
+         */
         protected function execute(): void
         {
             MakeAccountApi();
