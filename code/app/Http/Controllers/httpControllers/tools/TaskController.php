@@ -19,6 +19,9 @@
     use App\Http\Requests\tools\ToolsKanbanRequest;
 
 
+    /**
+     *
+     */
     #[OA\Schema()]
     class TaskController
         extends ControllerPipeline
@@ -115,7 +118,13 @@
          */
         #[OA\Post( path: '/api/1.0.0/tools/task/create' )]
         #[OA\Response( response: '200',
-                       description: 'create a new task for a kanban board' )]
+                       description: 'create a new task for a kanban board',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -146,7 +155,13 @@
          */
         #[OA\Get( path: '/api/1.0.0/tools/task/read' )]
         #[OA\Response( response: '200',
-                       description: 'read the content of a task' )]
+                       description: 'read the content of a task',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -177,7 +192,13 @@
          */
         #[OA\Patch( path: '/api/1.0.0/tools/task/update' )]
         #[OA\Response( response: '200',
-                       description: 'updates the information for a specific task' )]
+                       description: 'updates the information for a specific task',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -209,7 +230,13 @@
          */
         #[OA\Delete( path: '/api/1.0.0/tools/task/delete' )]
         #[OA\Response( response: '200',
-                       description: 'Delete a specific tasks.' )]
+                       description: 'Delete a specific tasks.',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',

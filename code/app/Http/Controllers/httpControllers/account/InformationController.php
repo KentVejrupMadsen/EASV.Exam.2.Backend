@@ -22,10 +22,10 @@
     use App\Http\Requests\account\InformationRequest;
 
 
-    #[OA\Schema()]
     /**
      *
      */
+    #[OA\Schema()]
     class InformationController
         extends ControllerPipeline
     {
