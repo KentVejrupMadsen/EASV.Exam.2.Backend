@@ -107,7 +107,7 @@
                 abort(501);
             }
 
-            return null;
+            return Response()->json( $request );
         }
 
 
@@ -208,10 +208,15 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function logout( AccountRequest $request )
+        public final function logout( Request $request )
         {
             $content_type = $request->header( 'Content-Type' );
             $response = [];
+
+            return Response()->json($request->user());
+
+            $response[ 'issued' ] = Carbon::now();
+            $response[ 'message' ] = 'tokens revoked';
 
             return $this->Pipeline( $content_type, $response );
         }
@@ -222,8 +227,6 @@
          * @return JsonResponse
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/create' )]
-        #[OA\Response( response: '200',
-                       description: 'The data' )]
         #[OA\Response( response: '201',
                        description: 'Account created' )]
         #[OA\Response( response: '400',
@@ -242,13 +245,15 @@
          * @param string $password
          * @return array
          */
-        private function createForm( array $InputKeys, AccountEmailModel $mailForm, string $password ): array
+        private function createForm( array $InputKeys,
+                                     AccountEmailModel $mailForm,
+                                     string $password ): array
         {
             return
             [
-                User::field_username => $InputKeys[ 'username' ],
+                User::field_username => $InputKeys[ User::field_username ],
                 User::field_password => $password,
-                User::field_email_id => $mailForm['id'],
+                User::field_email_id => $mailForm[ 'id' ],
                 User::field_created_at => Carbon::now(),
                 User::field_updated_at => Carbon::now(),
                 User::field_settings => '{}'
@@ -293,8 +298,7 @@
                 }
             }
 
-
-            if( $accountMigrator->validateUsernameIsUsed( $form[ 'username' ] ) )
+            if( $accountMigrator->validateUsernameIsUsed( $form[ User::field_username ] ) )
             {
                 abort( 400, message: 'the given username is already taken by another account' );
             }
@@ -302,6 +306,12 @@
             $account = $accountMigrator->createAccountForm(
                 $this::createForm( $form, $mailModel, $securityPassword )
             );
+
+            $token = $accountMigrator->issueBearerToken( $account );
+
+            $response[ 'username' ] = $account->username;
+            $response[ 'bearer_token' ] = $token;
+
 
             return $this->Pipeline( $content_type, $response );
         }
