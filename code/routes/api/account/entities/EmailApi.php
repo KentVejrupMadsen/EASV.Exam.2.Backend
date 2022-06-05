@@ -19,6 +19,7 @@
         public function __construct()
         {
             $this->setRoute( self::route );
+            $this->setSecurityMiddleware( SanctumMiddleware );
         }
 
         private const route  = 'email';

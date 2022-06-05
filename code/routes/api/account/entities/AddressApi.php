@@ -21,6 +21,7 @@
         public function __construct()
         {
             $this->setRoute( self::route );
+            $this->setSecurityMiddleware( SanctumMiddleware );
         }
 
 
@@ -31,6 +32,7 @@
         private const create_route = ACTION_CREATE;
         private const update_route = ACTION_UPDATE;
         private const delete_route = ACTION_DELETE;
+
 
         /**
          * @return void

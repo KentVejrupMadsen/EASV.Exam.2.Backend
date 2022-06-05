@@ -2,6 +2,7 @@
     namespace App\Migrator;
 
     use Carbon\Carbon;
+    use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Str;
 
     use App\Models\tables\User;
@@ -30,7 +31,7 @@
             $m = User::factory()->create(
                 [
                     User::field_username => $form[ 'username' ],
-                    User::field_password => $form[ 'password' ],
+                    User::field_password => Hash::make( $form[ 'password' ] ),
                     User::field_email_id => $form[ 'email_id' ],
                     User::field_settings => []
                 ]
@@ -39,6 +40,21 @@
             return $m;
         }
 
+
+        /**
+         * @param User $account
+         * @return string
+         */
+        public final function issueBearerToken( User $account ): string
+        {
+            return $account->createToken( 'account-migrator-issue-bearer-token' )->plainTextToken;
+        }
+
+
+        /**
+         * @param int $id
+         * @return bool
+         */
         public final function validateEmailIsUsedWithId( int $id ): bool
         {
             $retVal = false;
