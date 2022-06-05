@@ -25,6 +25,9 @@
     use App\Models\tables\NewsletterSubscriptionModel;
 
 
+    /**
+     *
+     */
     #[OA\Schema()]
     class NewsletterController
         extends ControllerPipeline
@@ -122,8 +125,16 @@
          * @return JsonResponse
          */
         #[OA\Get( path: '/api/1.0.0/accounts/newsletter/read' )]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Response( response: '200',
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
         public final function public_read( Request $request ): JsonResponse
         {
 
@@ -147,7 +158,13 @@
          */
         #[OA\Post( path: '/api/1.0.0/accounts/newsletter/create')]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function public_create( Request $request )
@@ -169,7 +186,13 @@
          */
         #[OA\Patch( path: '/api/1.0.0/accounts/newsletter/update' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function public_update( Request $request ): JsonResponse
@@ -195,7 +218,13 @@
          */
         #[OA\Delete( path: '/api/1.0.0/accounts/newsletter/delete' )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function public_delete( Request $request ): JsonResponse
