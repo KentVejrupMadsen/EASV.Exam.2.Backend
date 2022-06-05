@@ -8,7 +8,6 @@
     namespace App\Http\Controllers\httpControllers\account;
 
     // External Libraries
-    use App\Models\tables\AccountEmailModel;
     use Carbon\Carbon;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
@@ -20,13 +19,15 @@
     // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Http\Controllers\formatControllers\json\AccountResponseJSONFactory;
-    use App\Http\Requests\account\AccountRequest;
     use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
-    use App\Migrator\AccountMigrator;
-    use App\Migrator\PersonEmailMigrator;
 
+    use App\Http\Requests\account\AccountRequest;
+
+    use App\Migrators\AccountMigrator;
+    use App\Migrators\PersonEmailMigrator;
 
     use App\Models\tables\User;
+    use App\Models\tables\AccountEmailModel;
 
 
     #[OA\Schema()]
@@ -213,7 +214,8 @@
             $content_type = $request->header( 'Content-Type' );
             $response = [];
 
-            return Response()->json($request->user());
+            $user = $request->user();
+            $user->currentAccessToken()->delete();
 
             $response[ 'issued' ] = Carbon::now();
             $response[ 'message' ] = 'tokens revoked';
