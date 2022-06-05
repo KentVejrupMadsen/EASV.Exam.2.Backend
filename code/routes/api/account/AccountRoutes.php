@@ -8,28 +8,40 @@
     // External libraries
     use Illuminate\Support\Facades\Route;
 
-
     require_once 'entities/EntitiesRoutes.php';
     require_once 'NewsletterApi.php';
     require_once 'AccountApi.php';
 
-
-    const accounts_route = 'accounts';
-
     use App\Http\Controllers\NodesController;
 
 
-    function AccountRoutes(): void
+    /**
+     *
+     */
+    class AccountRoutes
+        extends NodesController
     {
-        Route::prefix( accounts_route )->group
-        (
-            function(): void
-            {
-                MakeAccountApi();
-                MakeNewsletterApi();
-                EntitiesRoutes();
-            }
-        );
+        const accounts_route = 'accounts';
 
+        public function __construct()
+        {
+            $this->setNodeRouteName( self::accounts_route );
+        }
+
+        protected function execute(): void
+        {
+            MakeAccountApi();
+            MakeNewsletterApi();
+            MakeEntitiesRoutes();
+        }
+    }
+
+    /**
+     * @return void
+     */
+    function MakeAccountRoutes(): void
+    {
+        $routes = new AccountRoutes();
+        $routes->run();
     }
 ?>

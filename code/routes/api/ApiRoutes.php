@@ -38,7 +38,7 @@
 
         protected function execute(): void
         {
-            AccountRoutes();
+            MakeAccountRoutes();
             HomeApi();
 
             MakeOptionsRoutes();
