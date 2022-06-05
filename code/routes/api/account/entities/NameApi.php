@@ -55,6 +55,9 @@
         }
     }
 
+    /**
+     * @return void
+     */
     function MakeNameApi(): void
     {
         $name = new NameApi();

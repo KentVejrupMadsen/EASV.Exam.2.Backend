@@ -10,18 +10,41 @@
     require_once 'FindApi.php';
     require_once 'StateApi.php';
 
+    use App\Http\Controllers\NodesController;
 
-    const options_route = 'options';
 
-    function OptionsRoutes(): void
+    /**
+     *
+     */
+    class OptionsRoutes
+        extends NodesController
     {
-        Route::prefix( options_route )->group
-        (
-            function()
-            {
-                MakeFindApi();
-                MakeStateApi();
-            }
-        );
+        const options_route = 'options';
+
+        /**
+         *
+         */
+        public function __construct()
+        {
+            $this->setNodeRouteName( self::options_route );
+        }
+
+        /**
+         * @return void
+         */
+        protected function execute(): void
+        {
+            MakeFindApi();
+            MakeStateApi();
+        }
+    }
+
+    /**
+     * @return void
+     */
+    function MakeOptionsRoutes(): void
+    {
+        $routes = new OptionsRoutes();
+        $routes->run();
     }
 ?>

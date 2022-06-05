@@ -17,7 +17,9 @@
     class AddressApi
         extends RouteController
     {
-        //
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setRoute( self::route );
@@ -46,12 +48,15 @@
                     Route::get( self::read_route, 'public_read' );
                     Route::post( self::create_route, 'public_create' );
                     Route::patch( self::update_route, 'public_update' );
-                    Route::delete( self::delete_route, 'public_delete');
+                    Route::delete( self::delete_route, 'public_delete' );
                 }
             );
         }
     }
 
+    /**
+     * @return void
+     */
     function MakeAddressApi(): void
     {
         $api = new AddressApi();

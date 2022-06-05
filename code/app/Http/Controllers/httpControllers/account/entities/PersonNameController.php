@@ -122,6 +122,9 @@
                        description: 'reads a specific person name entity values from the database table' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_read( Request $request ): JsonResponse
         {
             return $this->read( $request );
@@ -139,9 +142,12 @@
 
         #[OA\Delete( path: '/api/1.0.0/accounts/entities/name/delete' )]
         #[OA\Response( response: '200',
-                       description: 'deletes a specific person name entity from the database table')]
+                       description: 'deletes a specific person name entity from the database table' )]
         #[OA\Response( response: '404',
                        description: 'content not found')]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_delete( Request $request ): JsonResponse
         {
             return $this->delete( $request );
@@ -163,9 +169,12 @@
          */
         #[OA\Post( path: '/api/1.0.0/accounts/entities/name/create' )]
         #[OA\Response( response: '200',
-                       description: 'creates a specific person name entity by inserting it into the database')]
+                       description: 'creates a specific person name entity by inserting it into the database' )]
         #[OA\Response( response: '404',
-                       description: 'content not found')]
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_create( Request $request ): JsonResponse
         {
             return $this->create( $request );
@@ -186,8 +195,13 @@
          * @return JsonResponse
          */
         #[OA\Patch( path: '/api/1.0.0/accounts/entities/name/update' )]
-        #[OA\Response( response: '200', description: 'updates the person entities name with a new name' )]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Response( response: '200',
+                       description: 'updates the person entities name with a new name' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_update( Request $request ): JsonResponse
         {
             return $this->update( $request );

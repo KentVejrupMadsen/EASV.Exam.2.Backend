@@ -17,6 +17,9 @@
     class StateApi
         extends RouteController
     {
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setRoute( self::route );
@@ -24,6 +27,10 @@
 
         private const route = 'state';
 
+
+        /**
+         * @return void
+         */
         protected function execute()
         {
             Route::controller( StateController::class )->group

@@ -13,9 +13,15 @@
     use App\Http\Controllers\RouteController;
 
 
+    /**
+     *
+     */
     class AccountApi
         extends RouteController
     {
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setRoute( self::route );
@@ -35,7 +41,10 @@
         private const read_route    =  ACTION_READ;
 
 
-        protected final function execute()
+        /**
+         * @return void
+         */
+        protected final function execute(): void
         {
             Route::controller( AccountController::class )->group
             (
@@ -48,6 +57,9 @@
             );
         }
 
+        /**
+         * @return void
+         */
         protected final function secureRoutes(): void
         {
             Route::middleware( SanctumMiddleware )->group
@@ -65,10 +77,13 @@
         }
     }
 
+
+    /**
+     * @return void
+     */
     function MakeAccountApi()
     {
         $api = new AccountApi();
         $api->run();
     }
-
 ?>

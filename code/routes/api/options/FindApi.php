@@ -44,6 +44,10 @@
 
     }
 
+
+    /**
+     * @return void
+     */
     function MakeFindApi(): void
     {
         $api = new FindApi();
