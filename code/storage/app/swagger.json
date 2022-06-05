@@ -36,7 +36,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -56,7 +64,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -76,7 +92,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -96,7 +120,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -116,7 +148,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -136,7 +176,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -156,7 +204,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     }
                 }
             }
@@ -173,7 +229,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -193,7 +257,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -213,7 +285,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -226,7 +306,15 @@
                 "operationId": "447f5060aa95a2d3e5024ce593f2c1f3",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -239,7 +327,15 @@
                 "operationId": "adcf4744b0d0fd4b9de556fe76af3130",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -252,7 +348,15 @@
                 "operationId": "1e7890a3eb7eee296929234e202f1907",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -265,7 +369,15 @@
                 "operationId": "b6bcc759abff267003457229e6c2e16c",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -494,7 +606,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "reads a specific person name entity values from the database table"
+                        "description": "reads a specific person name entity values from the database table",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -514,7 +634,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "deletes a specific person name entity from the database table"
+                        "description": "deletes a specific person name entity from the database table",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -534,7 +662,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "creates a specific person name entity by inserting it into the database"
+                        "description": "creates a specific person name entity by inserting it into the database",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -554,7 +690,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "updates the person entities name with a new name"
+                        "description": "updates the person entities name with a new name",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -590,7 +734,15 @@
                 "operationId": "26c87c50b6b698a08e3eb8ea386024fd",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -603,7 +755,15 @@
                 "operationId": "43e4176a2a3c448d0092503975905adb",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -616,7 +776,15 @@
                 "operationId": "0fe6763e017a22cda2cf355b7b6e0822",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -629,7 +797,15 @@
                 "operationId": "f302cfaf4b1c814a56d49df544c2cf88",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -642,7 +818,15 @@
                 "operationId": "68b2f372ce7e188bb071a7c5fc32ce0d",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -655,7 +839,15 @@
                 "operationId": "6afa39961cfb7b2d2bbc1ce726566e4f",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -675,7 +867,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -695,7 +895,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -715,7 +923,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -735,7 +951,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -748,7 +972,15 @@
                 "operationId": "0ca673d55bab6494c13345d7b5a21713",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -761,7 +993,15 @@
                 "operationId": "10ee50b5e9ab7aa2fb0ff535c1e9bcfa",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -774,7 +1014,15 @@
                 "operationId": "0721dc07f01dae7d7997f4a62493b57c",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -787,7 +1035,15 @@
                 "operationId": "acf5106395661b211e4f235a6e941c9c",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -827,7 +1083,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -847,7 +1111,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -867,7 +1139,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -887,7 +1167,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -907,7 +1195,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -927,7 +1223,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -947,7 +1251,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -967,7 +1279,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -987,7 +1307,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1007,7 +1335,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1027,7 +1363,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1047,7 +1391,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The"
+                        "description": "The",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1067,7 +1419,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1087,7 +1447,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1107,7 +1475,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1127,7 +1503,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "create a new task for a kanban board"
+                        "description": "create a new task for a kanban board",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1147,7 +1531,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "read the content of a task"
+                        "description": "read the content of a task",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1167,7 +1559,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "updates the information for a specific task"
+                        "description": "updates the information for a specific task",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1187,7 +1587,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Delete a specific tasks."
+                        "description": "Delete a specific tasks.",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -2675,13 +3083,29 @@
         },
         "responses": {
             "200": {
-                "description": "The data"
+                "description": "The data",
+                "content": {
+                    "application/json": {
+                        "schema": {}
+                    },
+                    "application/xml": {
+                        "schema": {}
+                    }
+                }
             },
             "404": {
                 "description": "content not found"
             },
             "201": {
-                "description": "Account created"
+                "description": "Account created",
+                "content": {
+                    "application/json": {
+                        "schema": {}
+                    },
+                    "application/xml": {
+                        "schema": {}
+                    }
+                }
             },
             "400": {
                 "description": "Bad Request - an account already exist with the given parameters"
