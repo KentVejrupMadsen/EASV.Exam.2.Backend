@@ -126,7 +126,7 @@
 
         /**
          * @param Request $request
-         * @return void
+         * @return null
          */
         public final function read( Request $request )
         {
