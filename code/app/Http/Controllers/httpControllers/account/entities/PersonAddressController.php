@@ -135,6 +135,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_read( PersonAddressRequest $request )
         {
 
@@ -151,6 +154,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public function public_delete( PersonAddressRequest $request )
         {
 
@@ -176,6 +182,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_create( PersonAddressRequest $request )
         {
             return $this->create( $request );
@@ -195,9 +204,14 @@
         /**
          * 
          */
-        #[OA\Patch(path: '/api/1.0.0/accounts/entities/address/update')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/address/update' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_update( PersonAddressRequest $request ): JsonResponse
         {
             return $this->update( $request );

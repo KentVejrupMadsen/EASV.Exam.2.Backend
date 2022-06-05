@@ -127,6 +127,9 @@
         #[OA\Get( path: '/api/1.0.0/accounts/information/read' )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_read( Request $request )
         {
 
@@ -153,6 +156,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_create( Request $request )
         {
             return $this->create( $request );
@@ -177,6 +183,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found')]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_update( Request $request )
         {
 
@@ -203,6 +212,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_delete( Request $request )
         {
 

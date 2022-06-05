@@ -13,9 +13,15 @@
     use App\Http\Controllers\RouteController;
 
 
+    /**
+     *
+     */
     class EmailApi
         extends RouteController
     {
+        /**
+         *
+         */
         public function __construct()
         {
             $this->setRoute( self::route );
@@ -48,7 +54,9 @@
         }
     }
 
-
+    /**
+     * @return void
+     */
     function MakeEmailApi(): void
     {
         $router = new EmailApi();

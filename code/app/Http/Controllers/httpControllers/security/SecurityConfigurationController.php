@@ -51,6 +51,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function publicRead( SecurityConfigurationRequest $Request )
         {
             return $this->read( $Request );
@@ -77,6 +80,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function publicUpdate( SecurityConfigurationRequest $Request )
         {
             return $this->update( $Request );
@@ -102,6 +108,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function publicCreate( SecurityConfigurationRequest $Request )
         {
             return $this->create( $Request );
@@ -127,6 +136,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function publicDelete( SecurityConfigurationRequest $Request )
         {
             return $this->delete( $Request );

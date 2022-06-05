@@ -119,6 +119,9 @@
                        description: 'The' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_create( ToolsProjectMemberRequest $request )
         {
             return $this->create( $request );
@@ -143,6 +146,9 @@
                        description: 'The data')]
         #[OA\Response( response: '404',
                        description: 'content not found')]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_read( ToolsProjectMemberRequest $request )
         {
 
@@ -168,6 +174,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_update( ToolsProjectMemberRequest $request )
         {
 
@@ -193,6 +202,9 @@
                        description: 'The data' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_delete( ToolsProjectMemberRequest $request )
         {
 

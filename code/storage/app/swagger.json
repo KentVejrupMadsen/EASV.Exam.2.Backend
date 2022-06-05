@@ -7,9 +7,1133 @@
       "url" : "https://github.com/KentVejrupMadsen",
       "email" : "kent.vejrup.madsen@protonmail.com"
     },
-    "license" : {
-      "name" : "MIT License",
-      "url" : "https://github.com/KentVejrupMadsen/Kanban-Project-Backend/blob/main/License.md"
+    "servers": [
+        {
+            "url": "https://kanban.goalpioneers.com/api/1.0.0",
+            "description": "public available server"
+        },
+        {
+            "url": "http://localhost:8000/api/1.0.0",
+            "description": "local development server"
+        }
+    ],
+    "paths": {
+        "/api/1.0.0/accounts/account/me": {
+            "get": {
+                "operationId": "c0bab5220530bfa07223c74f6f214cb2",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/account/read": {
+            "get": {
+                "operationId": "121077445940ac8019248752b6ede69c",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/account/logout": {
+            "get": {
+                "operationId": "cf3e4f718e9cb3d650efb0d62d647eec",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/account/update": {
+            "patch": {
+                "operationId": "70dd13b0ed7285230395b950e6d0e0a3",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/account/delete": {
+            "delete": {
+                "operationId": "f832cada551424587743343b2b5e6723",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/account/verify": {
+            "post": {
+                "operationId": "7c0f062fae9f153af1d3c7b6f80e6d9e",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/information/read": {
+            "get": {
+                "operationId": "ea305e1cc3e03cdcdb90ca069c2614c6",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/information/create": {
+            "post": {
+                "operationId": "49ebaed678ed332bbec20c5deef04e1e",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/information/update": {
+            "patch": {
+                "operationId": "7e48e391ba10dd50c952622e9ca231a5",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/information/delete": {
+            "delete": {
+                "operationId": "f9fc08be44f6d51f141efe15823ac082",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/newsletter/read": {
+            "get": {
+                "operationId": "447f5060aa95a2d3e5024ce593f2c1f3",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/newsletter/create": {
+            "post": {
+                "operationId": "adcf4744b0d0fd4b9de556fe76af3130",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/newsletter/update": {
+            "patch": {
+                "operationId": "1e7890a3eb7eee296929234e202f1907",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/newsletter/delete": {
+            "delete": {
+                "operationId": "b6bcc759abff267003457229e6c2e16c",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/address/read": {
+            "get": {
+                "operationId": "27b4ec67ec6d9468a65918c6388ffb43",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/address/delete": {
+            "delete": {
+                "operationId": "305c01028309618efa05180a8244651f",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/address/create": {
+            "post": {
+                "operationId": "d836d4d133c825c1d4fa59fb5c1c726e",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/address/update": {
+            "patch": {
+                "operationId": "55b8e1bb00c920678c3f1275393ece53",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/email/read": {
+            "get": {
+                "summary": "Pipeline function:",
+                "operationId": "d616fa2a99fe38bef5e566640786669a",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/email/delete": {
+            "delete": {
+                "operationId": "7463dcf946e990dd2d52b18de4be045b",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/email/create": {
+            "post": {
+                "operationId": "3593f15ae3f1470864cdb1a8914e2804",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/email/update": {
+            "patch": {
+                "operationId": "a2a11c6f0ca4c97d3db042b9e88acbb0",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/name/read": {
+            "get": {
+                "operationId": "d6ea504f5f8b2d7bcdf265aa69fc116e",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "reads a specific person name entity values from the database table"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/name/delete": {
+            "delete": {
+                "operationId": "46874addfd17ebb1e1566d2e0dc24afc",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "deletes a specific person name entity from the database table"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/name/create": {
+            "post": {
+                "operationId": "6e17dd036d5e9ded9ba662442b321631",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "creates a specific person name entity by inserting it into the database"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/entities/name/update": {
+            "patch": {
+                "operationId": "618f54cf35cd557426767ccfbe57c09b",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "updates the person entities name with a new name"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/options/find/email": {
+            "post": {
+                "operationId": "cdb466a47aae7fdafa82ff89c5b519cc",
+                "responses": {
+                    "200": {
+                        "description": "validates if the requested email is existing in the database as a json response."
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/options/state/email": {
+            "post": {
+                "operationId": "6cb689dd782f6a330daee9cade2dd995",
+                "responses": {
+                    "200": {
+                        "description": "validates if the requested email is existing in the database as a json response."
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/csrf/access": {
+            "post": {
+                "operationId": "26c87c50b6b698a08e3eb8ea386024fd",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/csrf/read": {
+            "get": {
+                "operationId": "43e4176a2a3c448d0092503975905adb",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/csrf/create": {
+            "get": {
+                "operationId": "0fe6763e017a22cda2cf355b7b6e0822",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/csrf/update": {
+            "patch": {
+                "operationId": "f302cfaf4b1c814a56d49df544c2cf88",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/csrf/reset": {
+            "get": {
+                "operationId": "68b2f372ce7e188bb071a7c5fc32ce0d",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/csrf/delete": {
+            "delete": {
+                "operationId": "6afa39961cfb7b2d2bbc1ce726566e4f",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/configuration/read": {
+            "get": {
+                "operationId": "62c56ffb7f2b03488c2c043d68fa84f3",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/configuration/update": {
+            "patch": {
+                "operationId": "e34df4ff721ce5c9bf3eae2b23b68a90",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/configuration/create": {
+            "post": {
+                "operationId": "cd6b3110866b696180f33f29299ccdaf",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/configuration/delete": {
+            "delete": {
+                "operationId": "2af51c2259d3fbd150653754c219b227",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/recaptcha/read": {
+            "get": {
+                "operationId": "0ca673d55bab6494c13345d7b5a21713",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/recaptcha/update": {
+            "patch": {
+                "operationId": "10ee50b5e9ab7aa2fb0ff535c1e9bcfa",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/recaptcha/create": {
+            "post": {
+                "operationId": "0721dc07f01dae7d7997f4a62493b57c",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/securities/recaptcha/delete": {
+            "delete": {
+                "operationId": "acf5106395661b211e4f235a6e941c9c",
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/board/read": {
+            "get": {
+                "operationId": "82aceb60963a81d9a06b4297118ce15e",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/board/create": {
+            "post": {
+                "operationId": "e739d17aebe07014f834c32303e43e8c",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/board/update": {
+            "patch": {
+                "operationId": "694b57af69dc2ecbb8a2feda4d6410e7",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/board/delete": {
+            "delete": {
+                "operationId": "ab94a4abf9f7dd92c798568b6ec245e1",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/kanban/create": {
+            "post": {
+                "operationId": "c3d01eac11e8ab25d944eec208db69ac",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/kanban/update": {
+            "patch": {
+                "operationId": "12c2ae667d22b2aae942f1f5be663661",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/kanban/delete": {
+            "delete": {
+                "operationId": "237a0d891a742614f22895c66b5004f9",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/kanban/read": {
+            "get": {
+                "operationId": "dd33daff5fc6dcd2933e4f0eb0387583",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/project/create": {
+            "post": {
+                "operationId": "ee31804041ad9f9b4b1bb3400613dec0",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/project/read": {
+            "get": {
+                "operationId": "0319e7eea99710b62563e93ea422caae",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/project/update": {
+            "patch": {
+                "operationId": "e6b37c44707519392cacea3057242690",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/project/delete": {
+            "delete": {
+                "operationId": "8fa14f4b614299b8c634db192c86614c",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/project/group/create": {
+            "post": {
+                "operationId": "bc95e2cdede40804b5cbb44553306b30",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/project/group/read": {
+            "get": {
+                "operationId": "18acb0cac60ae4d3e86a758bc31e4eab",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/project/group/update": {
+            "patch": {
+                "operationId": "0043828634c876a2a66974e288e0bbfc",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/project/group/delete": {
+            "delete": {
+                "operationId": "c3f2cbfd8da4de93adfb44de9b06b76f",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The data"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/task/create": {
+            "post": {
+                "operationId": "3740b6719abc26ea8ebca2eed42f7b62",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "create a new task for a kanban board"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/task/read": {
+            "get": {
+                "operationId": "2c4be5ae0d1af6d3808028977f4093ce",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "read the content of a task"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/task/update": {
+            "patch": {
+                "operationId": "4a0df3ff2ef01c359593af31c903e369",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "updates the information for a specific task"
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/tools/task/delete": {
+            "delete": {
+                "operationId": "af51d18d812723fb47baaa951c9debde",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete a specific tasks."
+                    },
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        }
     },
     "components": {
         "schemas": {
@@ -36,8 +1160,7 @@
             "ProjectController": {},
             "ProjectMemberController": {},
             "TaskController": {},
-            "AccountPrivateRequest": {},
-            "AccountPublicRequest": {},
+            "AccountRequest": {},
             "InformationRequest": {},
             "NewsletterRequest": {},
             "PersonAddressRequest": {},
@@ -607,6 +1730,18 @@
                                 "enum": [
                                     "project_id"
                                 ]
+                            },
+                            "field_created_at": {
+                                "type": "string",
+                                "enum": [
+                                    "created_at"
+                                ]
+                            },
+                            "field_updated_at": {
+                                "type": "string",
+                                "enum": [
+                                    "updated_at"
+                                ]
                             }
                         }
                     }
@@ -896,6 +2031,18 @@
                                 "enum": [
                                     "tags"
                                 ]
+                            },
+                            "field_created_at": {
+                                "type": "string",
+                                "enum": [
+                                    "created_at"
+                                ]
+                            },
+                            "field_updated_at": {
+                                "type": "string",
+                                "enum": [
+                                    "updated_at"
+                                ]
                             }
                         }
                     }
@@ -1070,25 +2217,25 @@
                                 "maximum": 1,
                                 "minimum": 1
                             },
-                            "table_name": {
+                            "field_table_name": {
                                 "type": "string",
                                 "enum": [
                                     "zip_codes"
                                 ]
                             },
-                            "area_name": {
+                            "field_area_name": {
                                 "type": "string",
                                 "enum": [
                                     "area_name"
                                 ]
                             },
-                            "zip_number": {
+                            "field_zip_number": {
                                 "type": "string",
                                 "enum": [
                                     "zip_number"
                                 ]
                             },
-                            "country_id": {
+                            "field_country_id": {
                                 "type": "string",
                                 "enum": [
                                     "country_id"
@@ -1463,6 +2610,47 @@
                         }
                     }
                 ]
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "The data"
+            },
+            "404": {
+                "description": "content not found"
+            },
+            "201": {
+                "description": "Account created"
+            },
+            "400": {
+                "description": "Bad Request - an account already exist with the given parameters"
+            },
+            "540": {
+                "description": "content not found"
+            }
+        },
+        "securitySchemes": {
+            "account_logout": {
+                "type": "http",
+                "name": "authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "Bearer"
+            },
+            "account_update": {
+                "type": "http",
+                "name": "authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "Bearer"
+            },
+            "account_deletion": {
+                "type": "http",
+                "description": "",
+                "name": "authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "Bearer"
             }
         }
       }

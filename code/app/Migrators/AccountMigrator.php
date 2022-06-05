@@ -1,5 +1,5 @@
 <?php
-    namespace App\Migrator;
+    namespace App\Migrators;
 
     use Carbon\Carbon;
     use Illuminate\Support\Facades\Hash;
@@ -13,6 +13,9 @@
      */
     class AccountMigrator
     {
+        /**
+         *
+         */
         public function __construct()
         {
 
@@ -30,10 +33,10 @@
         {
             $m = User::factory()->create(
                 [
-                    User::field_username => $form[ 'username' ],
-                    User::field_password => Hash::make( $form[ 'password' ] ),
+                    User::field_username => $form[ User::field_username ],
+                    User::field_password => Hash::make( $form[ User::field_password ] ),
                     User::field_email_id => $form[ 'email_id' ],
-                    User::field_settings => []
+                    User::field_settings => array()
                 ]
             );
 
@@ -75,7 +78,7 @@
         public final function validateUsernameIsUsed( string $username ): bool
         {
             $retVal = false;
-            $account = User::where('username', $username)->first();
+            $account = User::where( 'username', $username )->first();
 
             if( isset( $account ) )
             {
