@@ -110,15 +110,15 @@
         }
 
         /**
-         * @param Request $request
-         * @return JsonResponse
+         * @param ToolsKanbanRequest $request
+         * @return null
          */
         #[OA\Post( path: '/api/1.0.0/tools/task/create' )]
         #[OA\Response( response: '200',
                        description: 'create a new task for a kanban board' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_create( ToolsKanbanRequest $request ): JsonResponse
+        public final function public_create( ToolsKanbanRequest $request )
         {
 
 
@@ -127,13 +127,13 @@
 
         /**
          * @param Request $request
-         * @return JsonResponse
+         * @return null
          */
-        public final function create( Request $request ): JsonResponse
+        public final function create( Request $request )
         {
 
 
-            return Response()->json(null, 200);
+            return null;
         }
 
 
@@ -141,10 +141,12 @@
          * @param ToolsKanbanRequest $request
          * @return JsonResponse
          */
-        #[OA\Get(path:'/api/1.0.0/tools/task/read')]
-        #[OA\Response( response: '200', description: 'read the content of a task' )]
-        #[OA\Response( response: '404', description: 'content not found')]
-        public final function public_read( ToolsKanbanRequest $request ): JsonResponse
+        #[OA\Get( path: '/api/1.0.0/tools/task/read' )]
+        #[OA\Response( response: '200',
+                       description: 'read the content of a task' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function public_read( ToolsKanbanRequest $request )
         {
 
 
@@ -155,7 +157,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        public final function read( Request $request ): JsonResponse
+        public final function read( Request $request )
         {
 
 
@@ -165,14 +167,14 @@
 
         /**
          * @param ToolsKanbanRequest $request
-         * @return JsonResponse
+         * @return null
          */
         #[OA\Patch( path: '/api/1.0.0/tools/task/update' )]
         #[OA\Response( response: '200',
                        description: 'updates the information for a specific task' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_update( ToolsKanbanRequest $request ): JsonResponse
+        public final function public_update( ToolsKanbanRequest $request )
         {
 
 
@@ -181,13 +183,14 @@
 
         /**
          * @param Request $request
-         * @return JsonResponse
+         * @return null
          */
-        public final function update( Request $request ): JsonResponse
+        public final function update( Request $request )
         {
 
 
-            return Response()->json(null, 200);
+
+            return null;
         }
 
 
@@ -200,7 +203,7 @@
                        description: 'Delete a specific tasks.' )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_delete( ToolsKanbanRequest $request ): JsonResponse
+        public final function public_delete( ToolsKanbanRequest $request )
         {
             return $this->delete( $request );
         }
@@ -209,9 +212,10 @@
          * @param Request $request
          * @return JsonResponse
          */
-        public final function delete( Request $request ): JsonResponse
+        public final function delete( Request $request )
         {
-            return Response()->json(null, 200);
+
+            return null;
         }
 
         // Accessor

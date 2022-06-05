@@ -40,10 +40,11 @@
         // Variables
         private static ?SecurityConfigurationController $controller = null;
 
+
         // Functions that the routes interacts with
         /**
          * @param SecurityConfigurationRequest $Request
-         * @return void
+         * @return null
          */
         #[OA\Get( path: '/api/1.0.0/securities/configuration/read' )]
         #[OA\Response( response: '200',
@@ -52,52 +53,7 @@
                        description: 'content not found' )]
         public final function publicRead( SecurityConfigurationRequest $Request )
         {
-            $this->read( $Request );
-        }
-
-
-        /**
-         * @param SecurityConfigurationRequest $Request
-         * @return void
-         */
-        #[OA\Patch( path: '/api/1.0.0/securities/configuration/update' )]
-        #[OA\Response( response: '200',
-                       description: 'The data' )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        public final function publicUpdate( SecurityConfigurationRequest $Request )
-        {
-            return $this->update( $Request );
-        }
-
-
-        /**
-         * @param SecurityConfigurationRequest $Request
-         * @return void
-         */
-        #[OA\Post( path: '/api/1.0.0/securities/configuration/create' )]
-        #[OA\Response( response: '200',
-                       description: 'The data' )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        public final function publicCreate( SecurityConfigurationRequest $Request )
-        {
-            return $this->create( $Request );
-        }
-
-
-        /**
-         * @param SecurityConfigurationRequest $Request
-         * @return void
-         */
-        #[OA\Delete( path: '/api/1.0.0/securities/configuration/delete' )]
-        #[OA\Response( response: '200',
-                       description: 'The data' )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        public final function publicDelete( SecurityConfigurationRequest $Request )
-        {
-            return $this->delete( $Request );
+            return $this->read( $Request );
         }
 
 
@@ -113,6 +69,45 @@
 
 
         /**
+         * @param SecurityConfigurationRequest $Request
+         * @return null
+         */
+        #[OA\Patch( path: '/api/1.0.0/securities/configuration/update' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function publicUpdate( SecurityConfigurationRequest $Request )
+        {
+            return $this->update( $Request );
+        }
+
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function update( Request $request )
+        {
+
+            return null;
+        }
+
+
+        /**
+         * @param SecurityConfigurationRequest $Request
+         * @return null
+         */
+        #[OA\Post( path: '/api/1.0.0/securities/configuration/create' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function publicCreate( SecurityConfigurationRequest $Request )
+        {
+            return $this->create( $Request );
+        }
+
+        /**
          * @param Request $request
          * @return null
          */
@@ -124,13 +119,17 @@
 
 
         /**
-         * @param Request $request
+         * @param SecurityConfigurationRequest $Request
          * @return null
          */
-        public final function update( Request $request )
+        #[OA\Delete( path: '/api/1.0.0/securities/configuration/delete' )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function publicDelete( SecurityConfigurationRequest $Request )
         {
-
-            return null;
+            return $this->delete( $Request );
         }
 
 

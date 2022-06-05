@@ -10,6 +10,7 @@
     // External Libraries
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
+
     use OpenApi\Attributes
         as OA;
 
@@ -40,6 +41,11 @@
 
         // Variables
         private static ?PersonEmailController $controller = null;
+
+        public static function hasAccountEmailContainer( Request $request )
+        {
+            return $request->has( 'account.person.email' );
+        }
 
         /**
          * @return bool

@@ -18,7 +18,6 @@
 
     // Internal libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-
     use App\Models\tables\AccountInformationModel;
     use App\Http\Requests\account\InformationRequest;
 
