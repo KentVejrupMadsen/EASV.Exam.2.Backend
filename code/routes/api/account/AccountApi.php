@@ -21,6 +21,7 @@
             $this->setRoute( self::route );
         }
 
+        // Variables
         private const route = 'account';
 
         private const create_route  =  ACTION_CREATE;
@@ -42,6 +43,17 @@
                 {
                     Route::post( self::create_route, 'public_create' );
                     Route::post( self::login_route, 'login' );
+                    $this->secureRoutes();
+                }
+            );
+        }
+
+        protected final function secureRoutes(): void
+        {
+            Route::middleware( SanctumMiddleware )->group
+            (
+                function()
+                {
                     Route::get( self::read_route, 'public_read' );
                     Route::delete( self::delete_route, 'public_delete' );
                     Route::get( self::logout_route, 'logout' );
