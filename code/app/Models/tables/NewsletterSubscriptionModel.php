@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Newsletter Subscription Model',
+                 description: '',
+                 type: 'model' )]
     class NewsletterSubscriptionModel
         extends ExtensionNoTimestampModel
     {

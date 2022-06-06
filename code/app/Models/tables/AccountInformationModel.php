@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Account Information Model',
+                 description: '',
+                 type: 'model' )]
     class AccountInformationModel
         extends BaseModel
     {

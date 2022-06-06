@@ -31,7 +31,9 @@
     /**
      * 
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Security CSRF Token Controller',
+                 description: '',
+                 type: 'controller' )]
     class SecurityCSRFTokenController
         extends CrudController
     {

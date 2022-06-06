@@ -22,7 +22,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Board Controller',
+                 description: '',
+                 type: 'controller' )]
     class BoardController
         extends ControllerPipeline
     {

@@ -15,7 +15,9 @@
         as OA;
 
 
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Board Title Model',
+                 description: '',
+                 type: 'model' )]
     class BoardTitleModel
         extends ExtensionLabelModel
     {

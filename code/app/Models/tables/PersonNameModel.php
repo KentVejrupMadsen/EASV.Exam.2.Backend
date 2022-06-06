@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Person Name Model',
+                 description: '',
+                 type: 'model' )]
     class PersonNameModel
         extends BaseModel
     {

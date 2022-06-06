@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Project Member Model',
+                 description: '',
+                 type: 'model' )]
     class ProjectMemberModel 
         extends ExtensionNoTimestampModel
     {

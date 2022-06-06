@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Zip Code Model',
+                 description: '',
+                 type: 'model' )]
     class ZipCodeModel
         extends ExtensionNoTimestampModel
     {

@@ -1923,7 +1923,11 @@
     "components": {
         "schemas": {
             "CSRFResponseJSONFactory": {},
-            "AccountController": {},
+            "AccountController": {
+                "title": "Account Controller",
+                "description": "",
+                "type": "controller"
+            },
             "InformationController": {},
             "NewsletterController": {},
             "PersonAddressController": {

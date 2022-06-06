@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Kanban Title Model',
+                 description: '',
+                 type: 'model' )]
     class KanbanTitleModel 
         extends ExtensionLabelModel
     {

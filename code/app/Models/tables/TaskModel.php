@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Task Model',
+                 description: '',
+                 type: 'model' )]
     class TaskModel
         extends ExtensionNoTimestampModel
     {
