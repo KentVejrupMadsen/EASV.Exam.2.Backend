@@ -13,7 +13,9 @@
         as OA;
 
 
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Project View Model',
+                 description: '',
+                 type: 'view' )]
     class ProjectViewModel
         extends ModelView
     {

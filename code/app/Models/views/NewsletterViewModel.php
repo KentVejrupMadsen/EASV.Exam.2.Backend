@@ -13,7 +13,9 @@
         as OA;
 
 
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Newsletter View Model',
+                 description: '',
+                 type: 'view' )]
     class NewsletterViewModel
         extends ModelView
     {

@@ -13,7 +13,9 @@
         as OA;
 
 
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Zip Code View short model',
+                 description: '',
+                 type: 'view' )]
     class ZipCodeViewShortModel
         extends ModelView
     {
