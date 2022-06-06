@@ -53,6 +53,7 @@
         // Variables
         private static ?AccountController           $controller = null;
         private static ?AccountResponseJSONFactory  $responseFactory = null;
+
         private const contentType = 'Content-Type';
 
 
@@ -144,7 +145,8 @@
          * @param AccountRequest $request
          * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/account/me' )]
+        #[OA\Get( path: '/api/1.0.0/accounts/account/me',
+                  tags: ['1.0.0', 'account', 'authentication'] )]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
@@ -152,8 +154,8 @@
                        description: 'The data',
                        content:
                        [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
+                           new OA\JsonContent(example: "<<<JSON"),
+                           new OA\XmlContent(example: "")
                        ]
         )]
         #[OA\Response( response: '404',
@@ -180,13 +182,16 @@
          * @param AccountRequest $request
          * @return null
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/account/read' )]
+        #[OA\Get( path: '/api/1.0.0/accounts/account/read',
+                  tags: ['1.0.0', 'account'] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
                        [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
+                           new OA\JsonContent(
+                               examples: "<<<JSON " ),
+                           new OA\XmlContent(
+                               examples: "<<<XML " )
                        ]
         )]
         #[OA\Response( response: '404',
@@ -218,14 +223,8 @@
          * @return JsonResponse|null
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/login',
-                   requestBody:
-                        new OA\RequestBody
-                        (
-                            description: '',
-                            required: true,
-                            content: 'application/json',
-                        ),
-                   tags: ['login', 'authentication'] )]
+                   tags: [ '1.0.0', 'account', 'authentication' ]
+        )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -255,7 +254,18 @@
          * @param AccountRequest $request
          * @return null
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/account/logout' )]
+        #[OA\Get( path: '/api/1.0.0/accounts/account/logout',
+                  tags:[ '1.0.0', 'account', 'authentication' ]
+        )]
+        #[OA\SecurityScheme( securityScheme: 'account_logout',
+                             type: 'http',
+                             name: 'authorization',
+                             in: 'header',
+                             bearerFormat: 'JWT',
+                             scheme: 'Bearer' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -266,15 +276,6 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        #[OA\SecurityScheme( securityScheme: 'account_logout',
-                             type: 'http',
-                             name: 'authorization',
-                             in: 'header',
-                             bearerFormat: 'JWT',
-                             scheme: 'Bearer' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
         public final function logout( Request $request )
         {
             $content_type = $request->header( $this->getContentType() );
@@ -301,14 +302,8 @@
          * @return JsonResponse
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/create',
-            requestBody:
-                new OA\RequestBody
-                (
-                    description: '',
-                    required: true,
-                    content: 'application/json',
-                ),
-            tags: ['create', 'authentication'] )]
+            tags: [ '1.0.0', 'account', 'authentication' ]
+        )]
         #[OA\Response( response: '201',
                        description: 'Account created',
                        content:
@@ -415,10 +410,17 @@
          * @param AccountRequest $request
          * @return JsonResponse
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/account/update' )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/account/update',
+                    tags: ['1.0.0', 'account' ] )]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
+        #[OA\SecurityScheme( securityScheme: 'account_update',
+                             type: 'http',
+                             name: 'authorization',
+                             in: 'header',
+                             bearerFormat: 'JWT',
+                             scheme: 'Bearer' )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -429,12 +431,6 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        #[OA\SecurityScheme( securityScheme: 'account_update',
-                             type: 'http',
-                             name: 'authorization',
-                             in: 'header',
-                             bearerFormat: 'JWT',
-                             scheme: 'Bearer' )]
         public final function public_update( AccountRequest $request )
         {
             return $this->update( $request );
@@ -463,10 +459,18 @@
          * @param AccountRequest $request
          * @return JsonResponse|null
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/account/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/account/delete',
+                     tags: ['1.0.0', 'account'] )]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
+        #[OA\SecurityScheme( securityScheme: 'account_deletion',
+                             type: 'http',
+                             description: '',
+                             name: 'authorization',
+                             in: 'header',
+                             bearerFormat: 'JWT',
+                             scheme: 'Bearer' )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -477,13 +481,6 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        #[OA\SecurityScheme( securityScheme: 'account_deletion',
-                             type: 'http',
-                             description: '',
-                             name: 'authorization',
-                             in: 'header',
-                             bearerFormat: 'JWT',
-                             scheme: 'Bearer' )]
         public final function public_delete( AccountRequest $request )
         {
 
@@ -514,7 +511,8 @@
          * @param AccountRequest $request
          * @return null
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/account/verify' )]
+        #[OA\Post( path: '/api/1.0.0/accounts/account/verify',
+                   tags: [ '1.0.0', 'account', 'authentication' ] )]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]

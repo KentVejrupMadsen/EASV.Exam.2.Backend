@@ -10,6 +10,7 @@
     use OpenApi\Attributes
         as OA;
 
+
     #[OA\Info( version: '1.0.0-alpha',
                title: 'kanban_project_backend_api' ) ]
 
@@ -25,6 +26,32 @@
 
     #[OA\Server( url: 'http://localhost:8000/api/1.0.0',
                  description: 'local development server' )]
+
+
+    #[OA\Tag( name:"1.0.0",
+              description: "" )]
+
+    #[OA\Tag( name:"account",
+              description: "" )]
+
+    #[OA\Tag( name:"account-additional",
+              description: "" )]
+
+    #[OA\Tag( name:"account-options",
+              description: "" )]
+
+    #[OA\Tag( name:"newsletter",
+              description: "" )]
+
+    #[OA\Tag( name:"tools",
+              description: "" )]
+
+    #[OA\Tag( name:"security",
+              description: "" )]
+
+    #[OA\Tag( name:"authentication",
+              description: "" )]
+
     final class OpenApi
         extends Controller
     {

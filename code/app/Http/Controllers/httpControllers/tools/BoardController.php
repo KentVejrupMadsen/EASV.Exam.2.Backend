@@ -116,7 +116,7 @@
         /**
          * 
          */
-        #[OA\Get( path: '/api/1.0.0/tools/board/read' )]
+        #[OA\Get( path: '/api/1.0.0/tools/board/read', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
@@ -144,7 +144,7 @@
         /**
          * 
          */
-        #[OA\Post( path: '/api/1.0.0/tools/board/create' )]
+        #[OA\Post( path: '/api/1.0.0/tools/board/create', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -178,7 +178,7 @@
         /**
          * 
          */
-        #[OA\Patch( path: '/api/1.0.0/tools/board/update' )]
+        #[OA\Patch( path: '/api/1.0.0/tools/board/update', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -213,7 +213,7 @@
         /**
          * 
          */
-        #[OA\Delete( path: '/api/1.0.0/tools/board/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/tools/board/delete', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:

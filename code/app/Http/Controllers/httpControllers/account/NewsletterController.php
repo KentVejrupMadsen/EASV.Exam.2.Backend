@@ -124,7 +124,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/newsletter/read' )]
+        #[OA\Get( path: '/api/1.0.0/accounts/newsletter/read', tags: [ '1.0.0', 'newsletter' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -156,7 +156,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/newsletter/create')]
+        #[OA\Post( path: '/api/1.0.0/accounts/newsletter/create', tags: [ '1.0.0', 'newsletter' ])]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -184,7 +184,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/newsletter/update' )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/newsletter/update', tags: [ '1.0.0', 'newsletter' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -216,7 +216,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/newsletter/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/newsletter/delete', tags: [ '1.0.0', 'newsletter' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
