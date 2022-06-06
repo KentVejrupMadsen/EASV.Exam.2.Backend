@@ -302,13 +302,6 @@
          * @return JsonResponse
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/create',
-            requestBody:
-                new OA\RequestBody
-                (
-                    description: '',
-                    required: true,
-                    content: 'application/json',
-                ),
             tags: [ '1.0.0', 'account', 'authentication' ]
         )]
         #[OA\Response( response: '201',

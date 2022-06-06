@@ -139,6 +139,35 @@
                 }
             }
         },
+        "/api/1.0.0/accounts/account/create": {
+            "post": {
+                "tags": [
+                    "1.0.0",
+                    "account",
+                    "authentication"
+                ],
+                "operationId": "aad533bcd63625a1775284f06134073a",
+                "responses": {
+                    "201": {
+                        "description": "Account created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request - an account already exist with the given parameters"
+                    },
+                    "540": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
         "/api/1.0.0/accounts/account/update": {
             "patch": {
                 "tags": [
@@ -3351,25 +3380,6 @@
                         }
                     }
                 ]
-            }
-        },
-        "responses": {
-            "201": {
-                "description": "Account created",
-                "content": {
-                    "application/json": {
-                        "schema": {}
-                    },
-                    "application/xml": {
-                        "schema": {}
-                    }
-                }
-            },
-            "400": {
-                "description": "Bad Request - an account already exist with the given parameters"
-            },
-            "540": {
-                "description": "content not found"
             }
         },
         "securitySchemes": {
