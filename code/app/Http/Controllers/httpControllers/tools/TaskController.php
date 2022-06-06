@@ -116,7 +116,7 @@
          * @param ToolsKanbanRequest $request
          * @return null
          */
-        #[OA\Post( path: '/api/1.0.0/tools/task/create' )]
+        #[OA\Post( path: '/api/1.0.0/tools/task/create', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'create a new task for a kanban board',
                        content:
@@ -153,7 +153,7 @@
          * @param ToolsKanbanRequest $request
          * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/tools/task/read' )]
+        #[OA\Get( path: '/api/1.0.0/tools/task/read', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'read the content of a task',
                        content:
@@ -190,7 +190,7 @@
          * @param ToolsKanbanRequest $request
          * @return null
          */
-        #[OA\Patch( path: '/api/1.0.0/tools/task/update' )]
+        #[OA\Patch( path: '/api/1.0.0/tools/task/update', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'updates the information for a specific task',
                        content:
@@ -228,7 +228,7 @@
          * @param ToolsKanbanRequest $request
          * @return JsonResponse
          */
-        #[OA\Delete( path: '/api/1.0.0/tools/task/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/tools/task/delete', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'Delete a specific tasks.',
                        content:

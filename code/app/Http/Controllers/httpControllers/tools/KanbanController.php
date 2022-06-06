@@ -116,7 +116,7 @@
         /**
          * 
          */
-        #[OA\Post( path: '/api/1.0.0/tools/kanban/create' )]
+        #[OA\Post( path: '/api/1.0.0/tools/kanban/create', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -150,7 +150,7 @@
         /**
          * 
          */
-        #[OA\Patch( path: '/api/1.0.0/tools/kanban/update' )]
+        #[OA\Patch( path: '/api/1.0.0/tools/kanban/update', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -184,7 +184,7 @@
         /**
          * 
          */
-        #[OA\Delete( path: '/api/1.0.0/tools/kanban/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/tools/kanban/delete', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -219,7 +219,7 @@
         /**
          * 
          */
-        #[OA\Get( path: '/api/1.0.0/tools/kanban/read' )]
+        #[OA\Get( path: '/api/1.0.0/tools/kanban/read', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
