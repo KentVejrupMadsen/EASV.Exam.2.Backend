@@ -70,7 +70,7 @@
          * @param SecurityCSRFRequest $request
          * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/securities/csrf/access' )]
+        #[OA\Post( path: '/api/1.0.0/securities/csrf/access', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -92,7 +92,7 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/securities/csrf/read' )]
+        #[OA\Get( path: '/api/1.0.0/securities/csrf/read', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -123,7 +123,7 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/securities/csrf/create' )]
+        #[OA\Get( path: '/api/1.0.0/securities/csrf/create', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -159,7 +159,7 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Patch( path: '/api/1.0.0/securities/csrf/update' )]
+        #[OA\Patch( path: '/api/1.0.0/securities/csrf/update', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -192,7 +192,7 @@
          * @param SecurityCSRFRequest $request
          * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/securities/csrf/reset' )]
+        #[OA\Get( path: '/api/1.0.0/securities/csrf/reset', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -216,7 +216,7 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Delete( path: '/api/1.0.0/securities/csrf/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/securities/csrf/delete', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
