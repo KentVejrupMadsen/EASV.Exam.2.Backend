@@ -26,6 +26,10 @@
     "paths": {
         "/api/1.0.0/accounts/account/me": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "account"
+                ],
                 "operationId": "c0bab5220530bfa07223c74f6f214cb2",
                 "parameters": [
                     {
@@ -39,10 +43,12 @@
                         "description": "The data",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {},
+                                "example": "<<<JSON"
                             },
                             "application/xml": {
-                                "schema": {}
+                                "schema": {},
+                                "example": ""
                             }
                         }
                     },
@@ -54,6 +60,10 @@
         },
         "/api/1.0.0/accounts/account/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "account"
+                ],
                 "operationId": "121077445940ac8019248752b6ede69c",
                 "parameters": [
                     {
@@ -62,6 +72,20 @@
                         "description": "has to be included in the header of the request"
                     }
                 ],
+                "responses": {
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/account/login": {
+            "post": {
+                "tags": [
+                    "1.0.0",
+                    "account"
+                ],
+                "operationId": "e832983ffa2b58622abe013f6731bc5e",
                 "responses": {
                     "200": {
                         "description": "The data",
@@ -82,6 +106,10 @@
         },
         "/api/1.0.0/accounts/account/logout": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "account"
+                ],
                 "operationId": "cf3e4f718e9cb3d650efb0d62d647eec",
                 "parameters": [
                     {
@@ -110,6 +138,10 @@
         },
         "/api/1.0.0/accounts/account/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "account"
+                ],
                 "operationId": "70dd13b0ed7285230395b950e6d0e0a3",
                 "parameters": [
                     {
@@ -138,6 +170,10 @@
         },
         "/api/1.0.0/accounts/account/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "account"
+                ],
                 "operationId": "f832cada551424587743343b2b5e6723",
                 "parameters": [
                     {
@@ -166,6 +202,10 @@
         },
         "/api/1.0.0/accounts/account/verify": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "account"
+                ],
                 "operationId": "7c0f062fae9f153af1d3c7b6f80e6d9e",
                 "parameters": [
                     {
@@ -3082,20 +3122,6 @@
             }
         },
         "responses": {
-            "200": {
-                "description": "The data",
-                "content": {
-                    "application/json": {
-                        "schema": {}
-                    },
-                    "application/xml": {
-                        "schema": {}
-                    }
-                }
-            },
-            "404": {
-                "description": "content not found"
-            },
             "201": {
                 "description": "Account created",
                 "content": {
@@ -3138,5 +3164,31 @@
                 "scheme": "Bearer"
             }
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "1.0.0",
+            "description": ""
+        },
+        {
+            "name": "account",
+            "description": ""
+        },
+        {
+            "name": "account-additional",
+            "description": ""
+        },
+        {
+            "name": "tools",
+            "description": ""
+        },
+        {
+            "name": "security",
+            "description": ""
+        },
+        {
+            "name": "authentication",
+            "description": ""
+        }
+    ]
 }
