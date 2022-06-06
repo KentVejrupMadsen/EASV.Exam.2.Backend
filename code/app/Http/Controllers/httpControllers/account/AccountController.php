@@ -146,7 +146,7 @@
          * @return JsonResponse
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/me',
-                  tags: ['1.0.0', 'account'] )]
+                  tags: ['1.0.0', 'account', 'authentication'] )]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
@@ -223,7 +223,7 @@
          * @return JsonResponse|null
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/login',
-                   tags: [ '1.0.0', 'account' ]
+                   tags: [ '1.0.0', 'account', 'authentication' ]
         )]
         #[OA\Response( response: '200',
                        description: 'The data',
@@ -255,7 +255,7 @@
          * @return null
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/logout',
-                  tags:[ '1.0.0', 'account' ]
+                  tags:[ '1.0.0', 'account', 'authentication' ]
         )]
         #[OA\SecurityScheme( securityScheme: 'account_logout',
                              type: 'http',
@@ -309,7 +309,7 @@
                     required: true,
                     content: 'application/json',
                 ),
-            tags: [ '1.0.0', 'account' ]
+            tags: [ '1.0.0', 'account', 'authentication' ]
         )]
         #[OA\Response( response: '201',
                        description: 'Account created',
@@ -519,7 +519,7 @@
          * @return null
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/verify',
-                   tags: [ '1.0.0', 'account' ] )]
+                   tags: [ '1.0.0', 'account', 'authentication' ] )]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
