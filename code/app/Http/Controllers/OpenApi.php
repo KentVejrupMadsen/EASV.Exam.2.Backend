@@ -37,6 +37,12 @@
     #[OA\Tag( name:"account-additional",
               description: "" )]
 
+    #[OA\Tag( name:"account-options",
+              description: "" )]
+
+    #[OA\Tag( name:"newsletter",
+              description: "" )]
+
     #[OA\Tag( name:"tools",
               description: "" )]
 

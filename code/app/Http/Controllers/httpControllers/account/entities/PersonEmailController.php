@@ -123,7 +123,7 @@
          * @param Request $request
          * @return AccountEmailModel|null
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/entities/email/read' )]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/email/read', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -157,7 +157,7 @@
          * @param Request $request
          * @return false
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/entities/email/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/email/delete', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -191,7 +191,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/entities/email/create' )]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/email/create', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
@@ -220,7 +220,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/entities/email/update' )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/email/update', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
