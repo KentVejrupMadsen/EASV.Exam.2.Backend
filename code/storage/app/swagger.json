@@ -146,13 +146,28 @@
                     "account",
                     "authentication"
                 ],
+                "description": "",
                 "operationId": "aad533bcd63625a1775284f06134073a",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": "{\r\n\t\"account\":\r\n\t{\r\n\t\t\"username\":\"username\",\r\n\t\t\"security\":\r\n\t\t{\r\n\t\t\t\"password\":\"password\",\r\n\t\t\t\"confirm\":\"password\"\r\n\t\t},\r\n\t\t\"person\":\r\n\t\t{\r\n\t\t\t\"email\":\"email@gmail.com\"\r\n\t\t}\r\n\t}\r\n}"
+                        },
+                        "application/xml": {
+                            "schema": {}
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Account created",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {},
+                                "example": "{\r\n\t\"username\": \"username\",\r\n\t\"bearer_token\": \"integer|bearer-token-string-herexxxxxx\"\r\n}"
                             },
                             "application/xml": {
                                 "schema": {}
