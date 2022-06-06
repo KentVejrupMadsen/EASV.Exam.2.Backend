@@ -45,9 +45,15 @@
          * @param SecurityCSRFRequest $Request
          * @return null
          */
-        #[OA\Get( path: '/api/1.0.0/securities/recaptcha/read' )]
+        #[OA\Get( path: '/api/1.0.0/securities/recaptcha/read', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data')]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found')]
         public final function publicRead( SecurityCSRFRequest $Request )
@@ -70,9 +76,15 @@
          * @param SecurityCSRFRequest $Request
          * @return null
          */
-        #[OA\Patch( path: '/api/1.0.0/securities/recaptcha/update' )]
+        #[OA\Patch( path: '/api/1.0.0/securities/recaptcha/update', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function publicUpdate( SecurityCSRFRequest $Request )
@@ -96,9 +108,15 @@
          * @param SecurityCSRFRequest $Request
          * @return null
          */
-        #[OA\Post( path: '/api/1.0.0/securities/recaptcha/create' )]
+        #[OA\Post( path: '/api/1.0.0/securities/recaptcha/create', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                        [
+                            new OA\JsonContent(),
+                            new OA\XmlContent()
+                        ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function publicCreate( SecurityCSRFRequest $Request )
@@ -121,9 +139,15 @@
          * @param SecurityCSRFRequest $Request
          * @return null
          */
-        #[OA\Delete( path: '/api/1.0.0/securities/recaptcha/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/securities/recaptcha/delete', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function publicDelete( SecurityCSRFRequest $Request )

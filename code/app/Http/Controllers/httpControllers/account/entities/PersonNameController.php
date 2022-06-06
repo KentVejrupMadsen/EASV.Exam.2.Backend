@@ -117,9 +117,15 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/entities/name/read' )]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/name/read', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'reads a specific person name entity values from the database table' )]
+                       description: 'reads a specific person name entity values from the database table',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -140,9 +146,15 @@
         }
 
 
-        #[OA\Delete( path: '/api/1.0.0/accounts/entities/name/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/name/delete', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'deletes a specific person name entity from the database table' )]
+                       description: 'deletes a specific person name entity from the database table',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found')]
         #[OA\Parameter( name:'Authorization',
@@ -167,9 +179,15 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/entities/name/create' )]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/name/create', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'creates a specific person name entity by inserting it into the database' )]
+                       description: 'creates a specific person name entity by inserting it into the database',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -194,9 +212,15 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/entities/name/update' )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/name/update', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'updates the person entities name with a new name' )]
+                       description: 'updates the person entities name with a new name',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',

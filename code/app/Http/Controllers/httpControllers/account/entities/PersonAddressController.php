@@ -130,9 +130,15 @@
         }
 
 
-        #[OA\Get( path: '/api/1.0.0/accounts/entities/address/read' )]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/address/read', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -149,9 +155,15 @@
          * @param PersonAddressRequest $request
          * @return false
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/entities/address/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/address/delete', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -177,9 +189,15 @@
         /**
          * 
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/entities/address/create' )]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/address/create', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -204,9 +222,15 @@
         /**
          * 
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/entities/address/update' )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/address/update', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',

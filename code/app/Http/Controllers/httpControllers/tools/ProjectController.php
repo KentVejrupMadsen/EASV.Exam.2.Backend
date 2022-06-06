@@ -19,6 +19,9 @@
     use App\Http\Requests\tools\ToolsProjectRequest;
 
 
+    /**
+     *
+     */
     #[OA\Schema()]
     class ProjectController
         extends ControllerPipeline
@@ -112,9 +115,15 @@
         /**
          * 
          */
-        #[OA\Post( path: '/api/1.0.0/tools/project/create' )]
+        #[OA\Post( path: '/api/1.0.0/tools/project/create', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -140,9 +149,15 @@
         /**
          * 
          */
-        #[OA\Get( path: '/api/1.0.0/tools/project/read' )]
+        #[OA\Get( path: '/api/1.0.0/tools/project/read', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -168,9 +183,15 @@
         /**
          * 
          */
-        #[OA\Patch( path: '/api/1.0.0/tools/project/update' )]
+        #[OA\Patch( path: '/api/1.0.0/tools/project/update', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -196,9 +217,15 @@
         /**
          * 
          */
-        #[OA\Delete( path: '/api/1.0.0/tools/project/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/tools/project/delete', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',

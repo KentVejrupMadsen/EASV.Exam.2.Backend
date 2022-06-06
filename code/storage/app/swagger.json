@@ -20,6 +20,11 @@
     "paths": {
         "/api/1.0.0/accounts/account/me": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "account",
+                    "authentication"
+                ],
                 "operationId": "c0bab5220530bfa07223c74f6f214cb2",
                 "parameters": [
                     {
@@ -30,7 +35,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": "<<<JSON"
+                            },
+                            "application/xml": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -40,6 +55,10 @@
         },
         "/api/1.0.0/accounts/account/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "account"
+                ],
                 "operationId": "121077445940ac8019248752b6ede69c",
                 "parameters": [
                     {
@@ -49,8 +68,31 @@
                     }
                 ],
                 "responses": {
+                    "404": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/accounts/account/login": {
+            "post": {
+                "tags": [
+                    "1.0.0",
+                    "account",
+                    "authentication"
+                ],
+                "operationId": "e832983ffa2b58622abe013f6731bc5e",
+                "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -60,6 +102,11 @@
         },
         "/api/1.0.0/accounts/account/logout": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "account",
+                    "authentication"
+                ],
                 "operationId": "cf3e4f718e9cb3d650efb0d62d647eec",
                 "parameters": [
                     {
@@ -70,7 +117,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -78,8 +133,41 @@
                 }
             }
         },
+        "/api/1.0.0/accounts/account/create": {
+            "post": {
+                "tags": [
+                    "1.0.0",
+                    "account",
+                    "authentication"
+                ],
+                "operationId": "aad533bcd63625a1775284f06134073a",
+                "responses": {
+                    "201": {
+                        "description": "Account created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request - an account already exist with the given parameters"
+                    },
+                    "540": {
+                        "description": "content not found"
+                    }
+                }
+            }
+        },
         "/api/1.0.0/accounts/account/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "account"
+                ],
                 "operationId": "70dd13b0ed7285230395b950e6d0e0a3",
                 "parameters": [
                     {
@@ -90,7 +178,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -100,6 +196,10 @@
         },
         "/api/1.0.0/accounts/account/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "account"
+                ],
                 "operationId": "f832cada551424587743343b2b5e6723",
                 "parameters": [
                     {
@@ -110,7 +210,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -120,6 +228,11 @@
         },
         "/api/1.0.0/accounts/account/verify": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "account",
+                    "authentication"
+                ],
                 "operationId": "7c0f062fae9f153af1d3c7b6f80e6d9e",
                 "parameters": [
                     {
@@ -130,7 +243,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -140,6 +261,11 @@
         },
         "/api/1.0.0/accounts/information/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "account",
+                    "account-additional"
+                ],
                 "operationId": "ea305e1cc3e03cdcdb90ca069c2614c6",
                 "parameters": [
                     {
@@ -150,13 +276,26 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     }
                 }
             }
         },
         "/api/1.0.0/accounts/information/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "account",
+                    "account-additional"
+                ],
                 "operationId": "49ebaed678ed332bbec20c5deef04e1e",
                 "parameters": [
                     {
@@ -167,7 +306,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -177,6 +324,11 @@
         },
         "/api/1.0.0/accounts/information/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "account",
+                    "account-additional"
+                ],
                 "operationId": "7e48e391ba10dd50c952622e9ca231a5",
                 "parameters": [
                     {
@@ -187,7 +339,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -197,6 +357,11 @@
         },
         "/api/1.0.0/accounts/information/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "account",
+                    "account-additional"
+                ],
                 "operationId": "f9fc08be44f6d51f141efe15823ac082",
                 "parameters": [
                     {
@@ -207,7 +372,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -217,10 +390,22 @@
         },
         "/api/1.0.0/accounts/newsletter/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "newsletter"
+                ],
                 "operationId": "447f5060aa95a2d3e5024ce593f2c1f3",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -230,10 +415,22 @@
         },
         "/api/1.0.0/accounts/newsletter/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "newsletter"
+                ],
                 "operationId": "adcf4744b0d0fd4b9de556fe76af3130",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -243,10 +440,22 @@
         },
         "/api/1.0.0/accounts/newsletter/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "newsletter"
+                ],
                 "operationId": "1e7890a3eb7eee296929234e202f1907",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -256,10 +465,22 @@
         },
         "/api/1.0.0/accounts/newsletter/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "newsletter"
+                ],
                 "operationId": "b6bcc759abff267003457229e6c2e16c",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -269,6 +490,10 @@
         },
         "/api/1.0.0/accounts/entities/address/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "operationId": "27b4ec67ec6d9468a65918c6388ffb43",
                 "parameters": [
                     {
@@ -279,7 +504,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -289,6 +522,10 @@
         },
         "/api/1.0.0/accounts/entities/address/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "operationId": "305c01028309618efa05180a8244651f",
                 "parameters": [
                     {
@@ -299,7 +536,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -309,6 +554,10 @@
         },
         "/api/1.0.0/accounts/entities/address/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "operationId": "d836d4d133c825c1d4fa59fb5c1c726e",
                 "parameters": [
                     {
@@ -319,7 +568,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -329,6 +586,10 @@
         },
         "/api/1.0.0/accounts/entities/address/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "operationId": "55b8e1bb00c920678c3f1275393ece53",
                 "parameters": [
                     {
@@ -339,7 +600,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -349,6 +618,10 @@
         },
         "/api/1.0.0/accounts/entities/email/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "summary": "Pipeline function:",
                 "operationId": "d616fa2a99fe38bef5e566640786669a",
                 "parameters": [
@@ -360,7 +633,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -370,6 +651,10 @@
         },
         "/api/1.0.0/accounts/entities/email/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "operationId": "7463dcf946e990dd2d52b18de4be045b",
                 "parameters": [
                     {
@@ -380,7 +665,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -390,6 +683,10 @@
         },
         "/api/1.0.0/accounts/entities/email/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "operationId": "3593f15ae3f1470864cdb1a8914e2804",
                 "parameters": [
                     {
@@ -410,7 +707,18 @@
         },
         "/api/1.0.0/accounts/entities/email/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "operationId": "a2a11c6f0ca4c97d3db042b9e88acbb0",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "has to be included in the header of the request"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "The data"
@@ -423,6 +731,10 @@
         },
         "/api/1.0.0/accounts/entities/name/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "operationId": "d6ea504f5f8b2d7bcdf265aa69fc116e",
                 "parameters": [
                     {
@@ -433,7 +745,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "reads a specific person name entity values from the database table"
+                        "description": "reads a specific person name entity values from the database table",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -443,6 +763,10 @@
         },
         "/api/1.0.0/accounts/entities/name/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "operationId": "46874addfd17ebb1e1566d2e0dc24afc",
                 "parameters": [
                     {
@@ -453,7 +777,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "deletes a specific person name entity from the database table"
+                        "description": "deletes a specific person name entity from the database table",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -463,6 +795,10 @@
         },
         "/api/1.0.0/accounts/entities/name/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "operationId": "6e17dd036d5e9ded9ba662442b321631",
                 "parameters": [
                     {
@@ -473,7 +809,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "creates a specific person name entity by inserting it into the database"
+                        "description": "creates a specific person name entity by inserting it into the database",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -483,6 +827,10 @@
         },
         "/api/1.0.0/accounts/entities/name/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "account-additional"
+                ],
                 "operationId": "618f54cf35cd557426767ccfbe57c09b",
                 "parameters": [
                     {
@@ -493,7 +841,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "updates the person entities name with a new name"
+                        "description": "updates the person entities name with a new name",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -503,6 +859,10 @@
         },
         "/api/1.0.0/options/find/email": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "account-options"
+                ],
                 "operationId": "cdb466a47aae7fdafa82ff89c5b519cc",
                 "responses": {
                     "200": {
@@ -516,6 +876,10 @@
         },
         "/api/1.0.0/options/state/email": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "account-options"
+                ],
                 "operationId": "6cb689dd782f6a330daee9cade2dd995",
                 "responses": {
                     "200": {
@@ -526,10 +890,22 @@
         },
         "/api/1.0.0/securities/csrf/access": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "26c87c50b6b698a08e3eb8ea386024fd",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -539,10 +915,22 @@
         },
         "/api/1.0.0/securities/csrf/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "43e4176a2a3c448d0092503975905adb",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -552,10 +940,22 @@
         },
         "/api/1.0.0/securities/csrf/create": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "0fe6763e017a22cda2cf355b7b6e0822",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -565,10 +965,22 @@
         },
         "/api/1.0.0/securities/csrf/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "f302cfaf4b1c814a56d49df544c2cf88",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -578,10 +990,22 @@
         },
         "/api/1.0.0/securities/csrf/reset": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "68b2f372ce7e188bb071a7c5fc32ce0d",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -591,10 +1015,22 @@
         },
         "/api/1.0.0/securities/csrf/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "6afa39961cfb7b2d2bbc1ce726566e4f",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -604,6 +1040,10 @@
         },
         "/api/1.0.0/securities/configuration/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "62c56ffb7f2b03488c2c043d68fa84f3",
                 "parameters": [
                     {
@@ -614,7 +1054,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -624,6 +1072,10 @@
         },
         "/api/1.0.0/securities/configuration/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "e34df4ff721ce5c9bf3eae2b23b68a90",
                 "parameters": [
                     {
@@ -634,7 +1086,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -644,6 +1104,10 @@
         },
         "/api/1.0.0/securities/configuration/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "cd6b3110866b696180f33f29299ccdaf",
                 "parameters": [
                     {
@@ -654,7 +1118,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -664,6 +1136,10 @@
         },
         "/api/1.0.0/securities/configuration/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "2af51c2259d3fbd150653754c219b227",
                 "parameters": [
                     {
@@ -674,7 +1150,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -684,10 +1168,22 @@
         },
         "/api/1.0.0/securities/recaptcha/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "0ca673d55bab6494c13345d7b5a21713",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -697,10 +1193,22 @@
         },
         "/api/1.0.0/securities/recaptcha/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "10ee50b5e9ab7aa2fb0ff535c1e9bcfa",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -710,10 +1218,22 @@
         },
         "/api/1.0.0/securities/recaptcha/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "0721dc07f01dae7d7997f4a62493b57c",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -723,10 +1243,22 @@
         },
         "/api/1.0.0/securities/recaptcha/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "security"
+                ],
                 "operationId": "acf5106395661b211e4f235a6e941c9c",
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -736,6 +1268,10 @@
         },
         "/api/1.0.0/tools/board/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "82aceb60963a81d9a06b4297118ce15e",
                 "parameters": [
                     {
@@ -756,6 +1292,10 @@
         },
         "/api/1.0.0/tools/board/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "e739d17aebe07014f834c32303e43e8c",
                 "parameters": [
                     {
@@ -766,7 +1306,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -776,6 +1324,10 @@
         },
         "/api/1.0.0/tools/board/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "694b57af69dc2ecbb8a2feda4d6410e7",
                 "parameters": [
                     {
@@ -786,7 +1338,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -796,6 +1356,10 @@
         },
         "/api/1.0.0/tools/board/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "ab94a4abf9f7dd92c798568b6ec245e1",
                 "parameters": [
                     {
@@ -806,7 +1370,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -816,6 +1388,10 @@
         },
         "/api/1.0.0/tools/kanban/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "c3d01eac11e8ab25d944eec208db69ac",
                 "parameters": [
                     {
@@ -826,7 +1402,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -836,6 +1420,10 @@
         },
         "/api/1.0.0/tools/kanban/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "12c2ae667d22b2aae942f1f5be663661",
                 "parameters": [
                     {
@@ -846,7 +1434,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -856,6 +1452,10 @@
         },
         "/api/1.0.0/tools/kanban/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "237a0d891a742614f22895c66b5004f9",
                 "parameters": [
                     {
@@ -866,7 +1466,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -876,6 +1484,10 @@
         },
         "/api/1.0.0/tools/kanban/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "dd33daff5fc6dcd2933e4f0eb0387583",
                 "parameters": [
                     {
@@ -886,7 +1498,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -896,6 +1516,10 @@
         },
         "/api/1.0.0/tools/project/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "ee31804041ad9f9b4b1bb3400613dec0",
                 "parameters": [
                     {
@@ -906,7 +1530,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -916,6 +1548,10 @@
         },
         "/api/1.0.0/tools/project/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "0319e7eea99710b62563e93ea422caae",
                 "parameters": [
                     {
@@ -926,7 +1562,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -936,6 +1580,10 @@
         },
         "/api/1.0.0/tools/project/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "e6b37c44707519392cacea3057242690",
                 "parameters": [
                     {
@@ -946,7 +1594,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -956,6 +1612,10 @@
         },
         "/api/1.0.0/tools/project/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "8fa14f4b614299b8c634db192c86614c",
                 "parameters": [
                     {
@@ -966,7 +1626,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -976,6 +1644,10 @@
         },
         "/api/1.0.0/tools/project/group/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "bc95e2cdede40804b5cbb44553306b30",
                 "parameters": [
                     {
@@ -986,7 +1658,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The"
+                        "description": "The",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -996,6 +1676,10 @@
         },
         "/api/1.0.0/tools/project/group/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "18acb0cac60ae4d3e86a758bc31e4eab",
                 "parameters": [
                     {
@@ -1006,7 +1690,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1016,6 +1708,10 @@
         },
         "/api/1.0.0/tools/project/group/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "0043828634c876a2a66974e288e0bbfc",
                 "parameters": [
                     {
@@ -1026,7 +1722,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1036,6 +1740,10 @@
         },
         "/api/1.0.0/tools/project/group/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "c3f2cbfd8da4de93adfb44de9b06b76f",
                 "parameters": [
                     {
@@ -1046,7 +1754,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The data"
+                        "description": "The data",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1056,6 +1772,10 @@
         },
         "/api/1.0.0/tools/task/create": {
             "post": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "3740b6719abc26ea8ebca2eed42f7b62",
                 "parameters": [
                     {
@@ -1066,7 +1786,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "create a new task for a kanban board"
+                        "description": "create a new task for a kanban board",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1076,6 +1804,10 @@
         },
         "/api/1.0.0/tools/task/read": {
             "get": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "2c4be5ae0d1af6d3808028977f4093ce",
                 "parameters": [
                     {
@@ -1086,7 +1818,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "read the content of a task"
+                        "description": "read the content of a task",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1096,6 +1836,10 @@
         },
         "/api/1.0.0/tools/task/update": {
             "patch": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "4a0df3ff2ef01c359593af31c903e369",
                 "parameters": [
                     {
@@ -1106,7 +1850,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "updates the information for a specific task"
+                        "description": "updates the information for a specific task",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -1116,6 +1868,10 @@
         },
         "/api/1.0.0/tools/task/delete": {
             "delete": {
+                "tags": [
+                    "1.0.0",
+                    "tools"
+                ],
                 "operationId": "af51d18d812723fb47baaa951c9debde",
                 "parameters": [
                     {
@@ -1126,7 +1882,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Delete a specific tasks."
+                        "description": "Delete a specific tasks.",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            },
+                            "application/xml": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "content not found"
@@ -2612,23 +3376,6 @@
                 ]
             }
         },
-        "responses": {
-            "200": {
-                "description": "The data"
-            },
-            "404": {
-                "description": "content not found"
-            },
-            "201": {
-                "description": "Account created"
-            },
-            "400": {
-                "description": "Bad Request - an account already exist with the given parameters"
-            },
-            "540": {
-                "description": "content not found"
-            }
-        },
         "securitySchemes": {
             "account_logout": {
                 "type": "http",
@@ -2653,853 +3400,39 @@
                 "scheme": "Bearer"
             }
         }
-      }
     },
-    "/api/1.0.0/accounts/account/read" : {
-      "get" : {
-        "operationId" : "c128ead99184f983bc1eb63ac342fa35",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
+    "tags": [
+        {
+            "name": "1.0.0",
+            "description": ""
+        },
+        {
+            "name": "account",
+            "description": ""
+        },
+        {
+            "name": "account-additional",
+            "description": ""
+        },
+        {
+            "name": "account-options",
+            "description": ""
+        },
+        {
+            "name": "newsletter",
+            "description": ""
+        },
+        {
+            "name": "tools",
+            "description": ""
+        },
+        {
+            "name": "security",
+            "description": ""
+        },
+        {
+            "name": "authentication",
+            "description": ""
         }
-      }
-    },
-    "api/1.0.0/accounts/account/login" : {
-      "post" : {
-        "operationId" : "839764e42feb4c6ba1c5f87feb62a1b7",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/account/logout" : {
-      "get" : {
-        "summary" : "Renders the current bearer token invalid",
-        "operationId" : "cf3e4f718e9cb3d650efb0d62d647eec",
-        "parameters" : [ {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "has to be included in the header of the request",
-          "required" : false,
-          "style" : "simple",
-          "explode" : false
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/account/create" : {
-      "post" : {
-        "operationId" : "61c2976977d7f6b7c5c65ce1bbd19ff6",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/account/update" : {
-      "patch" : {
-        "operationId" : "e0e62aab11fd1619bdc7b633ae8f2d8e",
-        "parameters" : [ {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "has to be included in the header of the request",
-          "required" : false,
-          "style" : "simple",
-          "explode" : false
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/account/delete" : {
-      "delete" : {
-        "operationId" : "4c45de4f369fe6055861500d11543e16",
-        "parameters" : [ {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "has to be included in the header of the request",
-          "required" : false,
-          "style" : "simple",
-          "explode" : false
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/account/verify" : {
-      "post" : {
-        "operationId" : "7c0f062fae9f153af1d3c7b6f80e6d9e",
-        "parameters" : [ {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "has to be included in the header of the request",
-          "required" : false,
-          "style" : "simple",
-          "explode" : false
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/information/read" : {
-      "get" : {
-        "operationId" : "75ba96e1883d5cfefaf1e2109b95fac1",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/information/create" : {
-      "post" : {
-        "operationId" : "a252f4d44fa835ced3c227746011163c",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/information/update" : {
-      "patch" : {
-        "operationId" : "e637f37960c699d93379be1a023eea8c",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/information/delete" : {
-      "delete" : {
-        "operationId" : "ccc7b6bf9af8de60d82e6a9881bf4541",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/newsletter/read" : {
-      "get" : {
-        "operationId" : "9cca3f6aa7562b92bc265a51125b678c",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/newsletter/create" : {
-      "post" : {
-        "operationId" : "46d8bf329c5f0a287f6ca3565a040ae3",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/newsletter/update" : {
-      "patch" : {
-        "operationId" : "1825fd364a609e05056bd7a5feda9dd4",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/newsletter/delete" : {
-      "delete" : {
-        "operationId" : "09379bd4975a2cb2184ae8d37fb2aa68",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/address/read" : {
-      "get" : {
-        "operationId" : "fd4e2feea00197c6c904c040d45bd5f6",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/address/delete" : {
-      "delete" : {
-        "operationId" : "883df642a5ce23a85168f2f57be1ecf8",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/address/create" : {
-      "post" : {
-        "operationId" : "e1371cc4adc6543107732c16d3e4983f",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/address/update" : {
-      "patch" : {
-        "operationId" : "0a9376cfb4a6a1e2bcfee0174faf6a2d",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/email/read" : {
-      "get" : {
-        "summary" : "Pipeline function:",
-        "operationId" : "b1897fef8d56fcbd57aa5c38fd93b281",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/email/delete" : {
-      "delete" : {
-        "operationId" : "7cf4ba90d92d16253de0777fb8b30c1a",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/email/create" : {
-      "post" : {
-        "operationId" : "a1fa0d97268195047bc4bc0992b694b0",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/email/update" : {
-      "patch" : {
-        "operationId" : "ad54aa0147731715dad151084f2753e0",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/name/read" : {
-      "get" : {
-        "operationId" : "4830ae4207fd890a43a99d7bbea20991",
-        "responses" : {
-          "200" : {
-            "description" : "reads a specific person name entity values from the database table"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/name/delete" : {
-      "delete" : {
-        "operationId" : "bb8d9c328687cb4120cba4ac27cfd5de",
-        "responses" : {
-          "200" : {
-            "description" : "deletes a specific person name entity from the database table"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/name/create" : {
-      "post" : {
-        "operationId" : "37fd6f6071a5ebc67756f0617731a540",
-        "responses" : {
-          "200" : {
-            "description" : "creates a specific person name entity by inserting it into the database"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/accounts/entities/name/update" : {
-      "patch" : {
-        "operationId" : "00d80efb62ab09b6278970d5bbc4bd8e",
-        "responses" : {
-          "200" : {
-            "description" : "updates the person entities name with a new name"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/options/find/email" : {
-      "post" : {
-        "operationId" : "cdb466a47aae7fdafa82ff89c5b519cc",
-        "responses" : {
-          "200" : {
-            "description" : "validates if the requested email is existing in the database as a json response."
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/options/state/email" : {
-      "post" : {
-        "operationId" : "6cb689dd782f6a330daee9cade2dd995",
-        "responses" : {
-          "200" : {
-            "description" : "validates if the requested email is existing in the database as a json response."
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/csrf/access" : {
-      "post" : {
-        "operationId" : "26c87c50b6b698a08e3eb8ea386024fd",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/csrf/read" : {
-      "get" : {
-        "operationId" : "43e4176a2a3c448d0092503975905adb",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/csrf/create" : {
-      "get" : {
-        "operationId" : "0fe6763e017a22cda2cf355b7b6e0822",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/csrf/update" : {
-      "patch" : {
-        "operationId" : "f302cfaf4b1c814a56d49df544c2cf88",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/csrf/reset" : {
-      "get" : {
-        "operationId" : "68b2f372ce7e188bb071a7c5fc32ce0d",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/csrf/delete" : {
-      "delete" : {
-        "operationId" : "6afa39961cfb7b2d2bbc1ce726566e4f",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/configuration/read" : {
-      "get" : {
-        "operationId" : "62c56ffb7f2b03488c2c043d68fa84f3",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/configuration/update" : {
-      "patch" : {
-        "operationId" : "e34df4ff721ce5c9bf3eae2b23b68a90",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/configuration/create" : {
-      "post" : {
-        "operationId" : "cd6b3110866b696180f33f29299ccdaf",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/configuration/delete" : {
-      "delete" : {
-        "operationId" : "2af51c2259d3fbd150653754c219b227",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/recaptcha/read" : {
-      "get" : {
-        "operationId" : "0ca673d55bab6494c13345d7b5a21713",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/recaptcha/update" : {
-      "patch" : {
-        "operationId" : "10ee50b5e9ab7aa2fb0ff535c1e9bcfa",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/recaptcha/create" : {
-      "post" : {
-        "operationId" : "0721dc07f01dae7d7997f4a62493b57c",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/securities/recaptcha/delete" : {
-      "delete" : {
-        "operationId" : "acf5106395661b211e4f235a6e941c9c",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/board/read" : {
-      "get" : {
-        "operationId" : "7a0677940b0bafc6dde00f24cd5fb3c5",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/board/create" : {
-      "post" : {
-        "operationId" : "1fa9997a967cc43b2c88080651308ebb",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/board/update" : {
-      "patch" : {
-        "operationId" : "730913f236fdd17a5576943881f4ef84",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/board/delete" : {
-      "delete" : {
-        "operationId" : "ebc9ff915c5616cc9085b6b49242c342",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/kanban/create" : {
-      "post" : {
-        "operationId" : "a805b07e7001511accd48a089e7d57fb",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/kanban/update" : {
-      "patch" : {
-        "operationId" : "baa7d78e5fffbd0c42cf321a997c0801",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/kanban/delete" : {
-      "delete" : {
-        "operationId" : "8e449789c4665faa5ad52200601c2f2a",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/kanban/read" : {
-      "get" : {
-        "operationId" : "8ad08295af3d762cfc1c92ed9d2ac7ed",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/project/create" : {
-      "post" : {
-        "operationId" : "9c339d650a5474d26e6b501d3afcedcc",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/project/read" : {
-      "get" : {
-        "operationId" : "743c64065c9c31db18ad4857fd919cf1",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/project/update" : {
-      "patch" : {
-        "operationId" : "0d0dfd0242dd4eeb6e0d7f45a1be0932",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/project/delete" : {
-      "delete" : {
-        "operationId" : "51eb6cbd176190e23fbae26af1e635ed",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/project/group/create" : {
-      "post" : {
-        "operationId" : "e4e59fcc0d17e2e4fcd7ab059c07d8fa",
-        "responses" : {
-          "200" : {
-            "description" : "The "
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/project/group/read" : {
-      "get" : {
-        "operationId" : "49e8b4a97837fcaf57606a3213c5dfa3",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/project/group/update" : {
-      "patch" : {
-        "operationId" : "0fa9c48ece22c411e3c2d70bb78bc37d",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/project/group/delete" : {
-      "delete" : {
-        "operationId" : "39eae3e9e292961a1d35dca9e20a488e",
-        "responses" : {
-          "200" : {
-            "description" : "The data"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/task/create" : {
-      "post" : {
-        "operationId" : "784f1fa5438c06078f3f9660138bd1d6",
-        "responses" : {
-          "200" : {
-            "description" : "create a new task for a kanban board"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/task/read" : {
-      "get" : {
-        "operationId" : "02a3e45a0df008dd656e8f902460e26e",
-        "responses" : {
-          "200" : {
-            "description" : "read the content of a task"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/task/update" : {
-      "patch" : {
-        "operationId" : "54cf5df0c32f6d1794b4b4fa963cc1d0",
-        "responses" : {
-          "200" : {
-            "description" : "updates the information for a specific task"
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    },
-    "/api/1.0.0/tools/task/delete" : {
-      "delete" : {
-        "operationId" : "6d3cfa766991ce07ae80439739aea6b6",
-        "responses" : {
-          "200" : {
-            "description" : "Delete a specific tasks. "
-          },
-          "404" : {
-            "description" : "content not found"
-          }
-        }
-      }
-    }
+    ]
 }

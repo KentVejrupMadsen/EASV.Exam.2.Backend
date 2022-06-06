@@ -114,9 +114,15 @@
         /**
          * 
          */
-        #[OA\Post( path: '/api/1.0.0/tools/project/group/create' )]
+        #[OA\Post( path: '/api/1.0.0/tools/project/group/create', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The' )]
+                       description: 'The',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -141,9 +147,15 @@
         /**
          * 
          */
-        #[OA\Get( path: '/api/1.0.0/tools/project/group/read' )]
+        #[OA\Get( path: '/api/1.0.0/tools/project/group/read', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data')]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found')]
         #[OA\Parameter( name:'Authorization',
@@ -169,9 +181,15 @@
         /**
          * 
          */
-        #[OA\Patch( path: '/api/1.0.0/tools/project/group/update' )]
+        #[OA\Patch( path: '/api/1.0.0/tools/project/group/update', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -197,9 +215,15 @@
         /**
          * 
          */
-        #[OA\Delete( path: '/api/1.0.0/tools/project/group/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/tools/project/group/delete', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',

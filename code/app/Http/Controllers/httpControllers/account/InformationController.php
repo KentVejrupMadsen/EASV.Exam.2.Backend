@@ -22,10 +22,10 @@
     use App\Http\Requests\account\InformationRequest;
 
 
-    #[OA\Schema()]
     /**
      *
      */
+    #[OA\Schema()]
     class InformationController
         extends ControllerPipeline
     {
@@ -124,9 +124,15 @@
          * @param Request $request
          * @return null
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/information/read' )]
+        #[OA\Get( path: '/api/1.0.0/accounts/information/read', tags: [ '1.0.0', 'account', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
@@ -151,9 +157,15 @@
          * @param Request $request
          * @return null
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/information/create' )]
+        #[OA\Post( path: '/api/1.0.0/accounts/information/create', tags: [ '1.0.0', 'account', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -178,9 +190,15 @@
          * @param Request $request
          * @return null
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/information/update' )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/information/update', tags: [ '1.0.0', 'account', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found')]
         #[OA\Parameter( name:'Authorization',
@@ -207,9 +225,15 @@
          * @param Request $request
          * @return null
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/information/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/information/delete', tags: [ '1.0.0', 'account', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',

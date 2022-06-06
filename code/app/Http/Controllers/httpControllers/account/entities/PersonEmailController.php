@@ -123,9 +123,15 @@
          * @param Request $request
          * @return AccountEmailModel|null
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/entities/email/read' )]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/email/read', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -151,9 +157,15 @@
          * @param Request $request
          * @return false
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/entities/email/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/email/delete', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
@@ -179,7 +191,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/entities/email/create' )]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/email/create', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
@@ -208,9 +220,14 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Patch(path: '/api/1.0.0/accounts/entities/email/update')]
-        #[OA\Response(response: '200', description: 'The data')]
-        #[OA\Response(response: '404', description: 'content not found')]
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/email/update', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Response( response: '200',
+                       description: 'The data' )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
         public final function public_update( Request $request ): JsonResponse
         {
             return $this->update( $request );

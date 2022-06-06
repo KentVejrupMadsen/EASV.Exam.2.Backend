@@ -23,7 +23,7 @@
     use App\Http\Requests\security\SecurityCSRFRequest;
 
     use App\Models\security\CSRFModel;
-    use App\Migrator\SecurityCSRFMigrator;
+    use App\Migrators\SecurityCSRFMigrator;
 
     use App\Http\Controllers\formatControllers\json\CSRFResponseJSONFactory;
 
@@ -70,9 +70,15 @@
          * @param SecurityCSRFRequest $request
          * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/securities/csrf/access' )]
+        #[OA\Post( path: '/api/1.0.0/securities/csrf/access', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function access( SecurityCSRFRequest $request ): JsonResponse
@@ -86,9 +92,15 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/securities/csrf/read' )]
+        #[OA\Get( path: '/api/1.0.0/securities/csrf/read', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public function publicRead( SecurityCSRFRequest $Request ): JsonResponse
@@ -111,9 +123,15 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/securities/csrf/create' )]
+        #[OA\Get( path: '/api/1.0.0/securities/csrf/create', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public function publicCreate( SecurityCSRFRequest $Request ): JsonResponse
@@ -141,9 +159,15 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Patch( path: '/api/1.0.0/securities/csrf/update' )]
+        #[OA\Patch( path: '/api/1.0.0/securities/csrf/update', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function publicUpdate( SecurityCSRFRequest $Request ): JsonResponse
@@ -168,9 +192,15 @@
          * @param SecurityCSRFRequest $request
          * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/securities/csrf/reset' )]
+        #[OA\Get( path: '/api/1.0.0/securities/csrf/reset', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function reset( SecurityCSRFRequest $request ): JsonResponse
@@ -186,9 +216,15 @@
          * @param SecurityCSRFRequest $Request
          * @return JsonResponse
          */
-        #[OA\Delete( path: '/api/1.0.0/securities/csrf/delete' )]
+        #[OA\Delete( path: '/api/1.0.0/securities/csrf/delete', tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data' )]
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
         public final function publicDelete( SecurityCSRFRequest $Request ): JsonResponse
