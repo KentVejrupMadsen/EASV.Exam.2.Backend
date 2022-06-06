@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Cross-Site Request Forgery Model',
+                 description: '',
+                 type: 'model' )]
     class CSRFModel
         extends ExtensionNoTimestampModel
     {

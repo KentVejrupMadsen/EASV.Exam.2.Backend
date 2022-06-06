@@ -15,7 +15,7 @@
 
     #[OA\Schema( title: 'Account View Model',
                  description: '',
-                 type: 'view' )]
+                 type: ModelView::class )]
     class AccountViewModel
         extends ModelView
     {

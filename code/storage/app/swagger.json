@@ -3173,7 +3173,9 @@
                 ]
             },
             "ModelView": {
-                "type": "object",
+                "title": "View",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/BaseModel"
@@ -3188,7 +3190,9 @@
                 ]
             },
             "AccountViewModel": {
-                "type": "object",
+                "title": "Account View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3222,7 +3226,9 @@
                 ]
             },
             "AddressViewModel": {
-                "type": "object",
+                "title": "Address View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3256,7 +3262,9 @@
                 ]
             },
             "BoardViewModel": {
-                "type": "object",
+                "title": "Board View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3290,7 +3298,9 @@
                 ]
             },
             "KanbanViewModel": {
-                "type": "object",
+                "title": "Kanban View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3324,7 +3334,9 @@
                 ]
             },
             "NewsletterViewModel": {
-                "type": "object",
+                "title": "Newsletter View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3358,7 +3370,9 @@
                 ]
             },
             "PersonNameViewModel": {
-                "type": "object",
+                "title": "Person Name View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3392,7 +3406,9 @@
                 ]
             },
             "ProjectViewModel": {
-                "type": "object",
+                "title": "Project View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3426,7 +3442,9 @@
                 ]
             },
             "ZipCodeViewFullModel": {
-                "type": "object",
+                "title": "Zip Code View Full model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3460,38 +3478,7 @@
                 ]
             },
             "ZipCodeViewShortModel": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 4,
-                                "minimum": 4
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "zip_codes_view_short"
-                                ]
-                            }
-                        }
-                    }
-                ]
+                "$ref": "#/components/schemas/ModelView"
             }
         },
         "securitySchemes": {

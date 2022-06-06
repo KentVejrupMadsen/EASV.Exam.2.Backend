@@ -15,7 +15,7 @@
 
     #[OA\Schema( title: 'Address View Model',
                  description: '',
-                 type: 'view' )]
+                 type: ModelView::class )]
     class AddressViewModel
         extends ModelView
     {

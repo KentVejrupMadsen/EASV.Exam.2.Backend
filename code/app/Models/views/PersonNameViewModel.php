@@ -15,7 +15,7 @@
 
     #[OA\Schema( title: 'Person Name View Model',
                  description: '',
-                 type: 'view' )]
+                 type: ModelView::class )]
     class PersonNameViewModel
         extends ModelView
     {
