@@ -51,12 +51,6 @@
 
 
         //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 5,
-            minimum: 5,
-            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             self::field_success,
@@ -67,12 +61,6 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             self::field_hostname,

@@ -24,12 +24,7 @@
         public const table_name = 'addresses_view';
         protected $table  = self::table_name;
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 7,
-            minimum: 7,
-            items: new OA\Items(type: 'string'))]
+
         protected $fillable =
         [
             'id',
@@ -42,12 +37,6 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             'id',

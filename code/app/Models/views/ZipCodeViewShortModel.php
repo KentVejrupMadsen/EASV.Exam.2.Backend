@@ -25,12 +25,6 @@
         protected $table = self::table_name;
 
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 4,
-            minimum: 4,
-            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             'id',
@@ -39,12 +33,7 @@
             'country_acronym'
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items(type: 'string'))]
+
         protected $hidden =
         [
             'id',

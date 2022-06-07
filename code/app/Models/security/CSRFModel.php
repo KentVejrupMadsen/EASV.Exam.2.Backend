@@ -61,12 +61,6 @@
 
 
         //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 8,
-            minimum: 8,
-            items: new OA\Items( type: 'string' ))]
         protected $fillable = 
         [
             self::field_identity,
@@ -79,12 +73,7 @@
             self::field_secret_token
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items( type: 'string' ))]
+        
         protected $hidden = 
         [
             self::field_identity,

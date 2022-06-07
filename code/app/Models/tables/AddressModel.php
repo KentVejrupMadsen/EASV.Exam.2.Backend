@@ -55,12 +55,6 @@
         public const field_zip_code_id = 'zip_code_id';
 
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 6,
-            minimum: 6,
-            items: new OA\Items( type: 'string' ) )]
         protected $fillable =
         [
             self::field_account_information_id,
@@ -72,12 +66,6 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 4,
-            minimum: 4,
-            items: new OA\Items( type: 'string' ) ) ]
         protected $hidden =
         [
             self::field_account_information_id,

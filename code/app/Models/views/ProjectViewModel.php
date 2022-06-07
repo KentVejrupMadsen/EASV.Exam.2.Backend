@@ -24,12 +24,7 @@
         public const table_name = 'projects_view';
         protected $table = self::table_name;
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 7,
-            minimum: 7,
-            items: new OA\Items(type: 'string'))]
+
         protected $fillable =
         [
             'id',
@@ -42,12 +37,6 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             'id',

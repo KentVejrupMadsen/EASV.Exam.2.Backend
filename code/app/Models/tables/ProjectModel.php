@@ -53,12 +53,6 @@
 
 
         //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 4,
-            minimum: 4,
-            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             self::field_account_owner_id,
@@ -68,12 +62,6 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
             self::field_account_owner_id,

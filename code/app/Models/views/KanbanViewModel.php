@@ -24,12 +24,7 @@
         public const table_name = 'kanbans_view';
         protected $table = self::table_name;
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 5,
-            minimum: 5,
-            items: new OA\Items(type: 'string'))]
+
         protected $fillable =
         [
             'id',
@@ -39,12 +34,7 @@
             'updated_at'
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+
         protected $hidden =
         [
             'id',

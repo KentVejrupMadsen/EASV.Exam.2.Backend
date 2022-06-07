@@ -45,12 +45,6 @@
 
 
         //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             self::field_area_name,
@@ -59,12 +53,6 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             self::field_country_id

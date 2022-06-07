@@ -73,12 +73,6 @@
             Notifiable;
 
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 9,
-            minimum: 9,
-            items: new OA\Items(type: 'string'))]
         protected $fillable = 
         [
             self::field_username,
@@ -93,12 +87,6 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 4,
-            minimum: 4,
-            items: new OA\Items(type: 'string'))]
         protected $hidden = 
         [
             self::field_password,

@@ -42,12 +42,6 @@ use App\Models\templates\ExtensionNoTimestampModel;
 
 
         //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
         protected $fillable =
         [
             self::field_key,
@@ -55,12 +49,6 @@ use App\Models\templates\ExtensionNoTimestampModel;
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items(type: 'string'))]
         protected $hidden =
         [
             self::field_value
