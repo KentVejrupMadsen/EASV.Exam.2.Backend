@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Security Recaptcha Request',
+                 description: '',
+                 type: 'request' )]
     class SecurityRecaptchaRequest
         extends FormRequest
     {
@@ -31,6 +33,7 @@
 
             return $ret;
         }
+
 
         /**
          * @return bool

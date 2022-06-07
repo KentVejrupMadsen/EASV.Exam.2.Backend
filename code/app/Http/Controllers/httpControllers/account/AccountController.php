@@ -305,11 +305,20 @@
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/create',
                    description: '',
-                   tags: [ '1.0.0', 'account', 'authentication' ]
+                   tags: [ '1.0.0', 'account', 'authentication' ],
+                   externalDocs: new OA\ExternalDocumentation( description: '',
+                                                               url:'https://github.com/KentVejrupMadsen/Kanban-Project-Backend'),
+                   deprecated: false
         )]
-        #[OA\RequestBody( description: '',
+        #[OA\RequestBody( request: 'post',
+                          description: '',
                           required: true,
-                          content: [ new OA\JsonContent(
+                          content: [ new OA\JsonContent( readonly: false,
+                              title:'create account',
+                              description:'',
+                              readonly: false,
+                              writeonly: true,
+                              format:'json',
                               example:
 '{
 	"account":
@@ -326,12 +335,15 @@
 		}
 	}
 }' ),
-                                     new OA\XmlContent() ])]
+                                     new OA\XmlContent()
+            ],
+        )]
         #[OA\Response( response: '201',
                        description: 'Account created',
                        content:
                        [
-                           new OA\JsonContent( example:
+                           new OA\JsonContent(
+                               example:
 '{
 	"username": "username",
 	"bearer_token": "integer|bearer-token-string-herexxxxxx"

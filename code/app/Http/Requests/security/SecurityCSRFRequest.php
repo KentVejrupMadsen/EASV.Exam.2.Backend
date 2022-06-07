@@ -19,7 +19,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Security CSRF Request',
+                 description: '',
+                 type: 'request' )]
     class SecurityCSRFRequest
         extends FormRequest
     {

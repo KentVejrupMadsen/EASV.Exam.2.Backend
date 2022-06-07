@@ -147,20 +147,11 @@
                     "authentication"
                 ],
                 "description": "",
-                "operationId": "aad533bcd63625a1775284f06134073a",
-                "requestBody": {
+                "externalDocs": {
                     "description": "",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {},
-                            "example": "{\r\n\t\"account\":\r\n\t{\r\n\t\t\"username\":\"username\",\r\n\t\t\"security\":\r\n\t\t{\r\n\t\t\t\"password\":\"password\",\r\n\t\t\t\"confirm\":\"password\"\r\n\t\t},\r\n\t\t\"person\":\r\n\t\t{\r\n\t\t\t\"email\":\"email@gmail.com\"\r\n\t\t}\r\n\t}\r\n}"
-                        },
-                        "application/xml": {
-                            "schema": {}
-                        }
-                    }
+                    "url": "https://github.com/KentVejrupMadsen/Kanban-Project-Backend"
                 },
+                "operationId": "aad533bcd63625a1775284f06134073a",
                 "responses": {
                     "201": {
                         "description": "Account created",
@@ -180,7 +171,8 @@
                     "540": {
                         "description": "content not found"
                     }
-                }
+                },
+                "deprecated": false
             }
         },
         "/api/1.0.0/accounts/account/update": {
@@ -2019,7 +2011,9 @@
             "ToolsProjectRequest": {},
             "ToolsTaskRequest": {},
             "AccountState": {
-                "type": "object",
+                "title": "Account States Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionNoTimestampModel"
@@ -2083,7 +2077,9 @@
                 ]
             },
             "CSRFModel": {
-                "type": "object",
+                "title": "Cross-Site Request Forgery Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionNoTimestampModel"
@@ -2165,7 +2161,9 @@
                 ]
             },
             "ConfigurationModel": {
-                "type": "object",
+                "title": "Configuration Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionNoTimestampModel"
@@ -2211,7 +2209,9 @@
                 ]
             },
             "RecaptchaModel": {
-                "type": "object",
+                "title": "Recaptcha Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionNoTimestampModel"
@@ -3190,292 +3190,28 @@
                 ]
             },
             "AccountViewModel": {
-                "title": "Account View Model",
-                "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 9,
-                                "minimum": 9
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 5,
-                                "minimum": 5
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "accounts_view"
-                                ]
-                            }
-                        }
-                    }
-                ]
+                "$ref": "#/components/schemas/ModelView"
             },
             "AddressViewModel": {
-                "title": "Address View Model",
-                "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 7,
-                                "minimum": 7
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "addresses_view"
-                                ]
-                            }
-                        }
-                    }
-                ]
+                "$ref": "#/components/schemas/ModelView"
             },
             "BoardViewModel": {
-                "title": "Board View Model",
-                "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 6,
-                                "minimum": 6
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "boards_view"
-                                ]
-                            }
-                        }
-                    }
-                ]
+                "$ref": "#/components/schemas/ModelView"
             },
             "KanbanViewModel": {
-                "title": "Kanban View Model",
-                "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 5,
-                                "minimum": 5
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "kanbans_view"
-                                ]
-                            }
-                        }
-                    }
-                ]
+                "$ref": "#/components/schemas/ModelView"
             },
             "NewsletterViewModel": {
-                "title": "Newsletter View Model",
-                "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "newsletter_view"
-                                ]
-                            }
-                        }
-                    }
-                ]
+                "$ref": "#/components/schemas/ModelView"
             },
             "PersonNameViewModel": {
-                "title": "Person Name View Model",
-                "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 5,
-                                "minimum": 5
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "person_names_view"
-                                ]
-                            }
-                        }
-                    }
-                ]
+                "$ref": "#/components/schemas/ModelView"
             },
             "ProjectViewModel": {
-                "title": "Project View Model",
-                "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 7,
-                                "minimum": 7
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "projects_view"
-                                ]
-                            }
-                        }
-                    }
-                ]
+                "$ref": "#/components/schemas/ModelView"
             },
             "ZipCodeViewFullModel": {
-                "title": "Zip Code View Full model",
-                "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 5,
-                                "minimum": 5
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "zip_codes_view_full"
-                                ]
-                            }
-                        }
-                    }
-                ]
+                "$ref": "#/components/schemas/ModelView"
             },
             "ZipCodeViewShortModel": {
                 "$ref": "#/components/schemas/ModelView"

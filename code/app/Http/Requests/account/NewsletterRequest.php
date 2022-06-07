@@ -19,7 +19,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Newsletter Request',
+                 description: '',
+                 type: 'request' )]
     class NewsletterRequest
         extends FormRequest
     {

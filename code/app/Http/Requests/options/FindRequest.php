@@ -19,7 +19,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Find Request',
+                 description: '',
+                 type: 'request' )]
     class FindRequest
         extends PublicRequest
     {

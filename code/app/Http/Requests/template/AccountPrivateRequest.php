@@ -7,6 +7,7 @@
      */
     namespace App\Http\Requests\template;
 
+    //
     use Illuminate\Foundation\Http\FormRequest;
 
 

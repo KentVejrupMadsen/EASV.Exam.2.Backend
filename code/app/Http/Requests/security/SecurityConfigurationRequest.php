@@ -19,7 +19,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Security Configuration Request',
+                 description: '',
+                 type: 'request' )]
     class SecurityConfigurationRequest
         extends AccountProtectedRequest
     {

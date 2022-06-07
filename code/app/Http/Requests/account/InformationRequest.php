@@ -19,7 +19,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Information Request',
+                 description: '',
+                 type: 'request' )]
     class InformationRequest
         extends AccountProtectedRequest
     {

@@ -19,7 +19,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Person Name Request',
+                 description: '',
+                 type: 'request' )]
     class PersonNameRequest
         extends AccountProtectedRequest
     {
@@ -37,6 +39,7 @@
 
             return $retVal;
         }
+
 
         /**
          * @return array

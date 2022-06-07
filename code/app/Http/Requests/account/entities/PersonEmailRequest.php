@@ -19,7 +19,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Person Email Request',
+                 description: '',
+                 type: 'request' )]
     class PersonEmailRequest
         extends AccountProtectedRequest
     {
