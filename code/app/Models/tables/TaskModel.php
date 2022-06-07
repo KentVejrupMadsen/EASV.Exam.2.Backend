@@ -65,8 +65,8 @@
          */
         protected $casts = 
         [
-            self::field_board_id => 'integer',
-            self::field_content  => 'string'
+            self::field_board_id => self::typeInteger,
+            self::field_content  => self::typeString
         ];
     }
 ?>

@@ -69,9 +69,9 @@
          */
         protected $casts =
         [
-            self::field_area_name  => 'string',
-            self::field_zip_number => 'string',
-            self::field_country_id => 'integer'
+            self::field_area_name  => self::typeString,
+            self::field_zip_number => self::typeInteger,
+            self::field_country_id => self::typeInteger
         ];
     }
 ?>

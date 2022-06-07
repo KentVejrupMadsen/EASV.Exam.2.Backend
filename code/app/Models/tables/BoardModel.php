@@ -63,10 +63,10 @@
          */
         protected $casts = 
         [
-            self::field_kanban_id       => 'integer',
-            self::field_board_title_id  => 'integer',
-            self::field_created_at      => 'datetime',
-            self::field_updated_at      => 'datetime'
+            self::field_kanban_id       => self::typeInteger,
+            self::field_board_title_id  => self::typeInteger,
+            self::field_created_at      => self::typeDatetime,
+            self::field_updated_at      => self::typeDatetime
         ];
     }
 ?>

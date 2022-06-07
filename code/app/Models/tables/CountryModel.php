@@ -57,8 +57,8 @@
          */
         protected $casts =
         [
-            self::field_country_name    => 'string',
-            self::field_country_acronym => 'string'
+            self::field_country_name    => self::typeString,
+            self::field_country_acronym => self::typeString
         ];
     }
 ?>

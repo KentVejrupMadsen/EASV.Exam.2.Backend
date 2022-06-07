@@ -71,8 +71,8 @@
          */
         protected $casts = 
         [
-            self::field_kanban_title_id   => 'integer',
-            self::field_project_id        => 'integer'
+            self::field_kanban_title_id   => self::typeInteger,
+            self::field_project_id        => self::typeInteger
         ];
     }
 ?>

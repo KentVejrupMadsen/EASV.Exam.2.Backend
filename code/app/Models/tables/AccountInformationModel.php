@@ -71,9 +71,9 @@
          */
         protected $casts =
         [
-            self::field_account     => 'integer',
-            self::field_created_at  => 'datetime',
-            self::field_updated_at  => 'datetime',
+            self::field_account     => self::typeInteger,
+            self::field_created_at  => self::typeDatetime,
+            self::field_updated_at  => self::typeDatetime,
         ];
     }
 ?>

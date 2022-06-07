@@ -76,10 +76,10 @@
          */
         protected $casts =
         [
-            self::field_account_information_id  => 'integer',
-            self::field_person_name_first_id    => 'integer',
-            self::field_person_name_lastname_id => 'integer',
-            self::field_person_name_middlename  => 'array',
+            self::field_account_information_id  => self::typeInteger,
+            self::field_person_name_first_id    => self::typeInteger,
+            self::field_person_name_lastname_id => self::typeInteger,
+            self::field_person_name_middlename  => self::typeArray,
         ];
     }
 ?>

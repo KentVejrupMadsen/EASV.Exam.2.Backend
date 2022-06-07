@@ -64,7 +64,7 @@
          */
         protected $casts =
         [
-            self::field_email_id => 'integer'
+            self::field_email_id => self::typeInteger
         ];
     }
 ?>

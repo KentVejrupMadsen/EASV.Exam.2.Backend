@@ -27,6 +27,8 @@
         public const typeDouble = 'double';
         public const typeFloat = 'float';
         public const typeArray = 'array';
+        public const typeBoolean = 'boolean';
+        public const typeDatetime = 'datetime';
 
         // Various use cases of datetime
     }

@@ -79,10 +79,10 @@
          */
         protected $casts = 
         [
-            self::field_account_owner_id  => 'integer',
-            self::field_project_title_id  => 'integer',
-            self::field_description       => 'string',
-            self::field_tags              => 'string'
+            self::field_account_owner_id  => self::typeInteger,
+            self::field_project_title_id  => self::typeInteger,
+            self::field_description       => self::typeString,
+            self::field_tags              => self::typeString
         ];
     }
 ?>

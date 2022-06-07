@@ -114,9 +114,9 @@
             self::field_email_id          => BaseModel::typeInteger,
             self::field_password          => BaseModel::typeString,
 
-            self::field_verified_at       => 'datetime',
-            self::field_created_at        => 'datetime',
-            self::field_updated_at        => 'datetime',
+            self::field_verified_at       => BaseModel::typeDatetime,
+            self::field_created_at        => BaseModel::typeDatetime,
+            self::field_updated_at        => BaseModel::typeDatetime,
 
             self::field_settings          => BaseModel::typeArray
         ];

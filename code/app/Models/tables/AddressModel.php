@@ -85,13 +85,12 @@
          */
         protected $casts =
         [
-            self::field_account_information_id => 'integer',
-            self::field_road_name_id           => 'integer',
-            self::field_road_number            => 'integer',
-            self::field_levels                 => 'string',
-            self::field_country_id             => 'integer',
-            self::field_zip_code_id            => 'integer'
+            self::field_account_information_id => self::typeInteger,
+            self::field_road_name_id           => self::typeInteger,
+            self::field_road_number            => self::typeInteger,
+            self::field_levels                 => self::typeString,
+            self::field_country_id             => self::typeInteger,
+            self::field_zip_code_id            => self::typeInteger
         ];
-
     }
 ?>
