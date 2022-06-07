@@ -27,17 +27,23 @@
         public const table_name = 'zip_codes_view_full';
         protected $table = self::table_name;
 
+        protected const field_id = 'id';
+        protected const field_area_name = 'area_name';
+        protected const field_post_code = 'zip_number';
+        protected const field_country_name = 'country_name';
+        protected const field_country_acronym = 'country_acronym';
+
 
         /**
          * @var string[]
          */
         protected $fillable =
         [
-            'id',
-            'area_name',
-            'zip_number',
-            'country_name',
-            'country_acronym'
+            self::field_id,
+            self::field_area_name,
+            self::field_post_code,
+            self::field_country_name,
+            self::field_country_acronym
         ];
 
 
@@ -46,7 +52,7 @@
          */
         protected $hidden =
         [
-            'id',
+            self::field_id
         ];
 
 
@@ -55,14 +61,14 @@
          */
         protected $casts =
         [
-            'id'         => self::typeInteger,
+            self::field_id         => self::typeInteger,
 
-            'area_name'  => self::typeString,
+            self::field_area_name  => self::typeString,
 
-            'zip_number' => self::typeInteger,
+            self::field_post_code  => self::typeInteger,
 
-            'country_name'      => self::typeString,
-            'country_acronym'   => self::typeString
+            self::field_country_name      => self::typeString,
+            self::field_country_acronym   => self::typeString
         ];
     }
 ?>
