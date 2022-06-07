@@ -59,15 +59,15 @@
          */
         protected $casts =
         [
-            'id'                     => 'integer',
-            'account_information_id' => 'integer',
+            'id'                     => self::typeInteger,
+            'account_information_id' => self::typeInteger,
 
-            'road_name'       => 'string',
-            'road_number'     => 'integer',
-            'levels'          => 'string',
-            'address_country' => 'string',
+            'road_name'       => self::typeString,
+            'road_number'     => self::typeInteger,
+            'levels'          => self::typeString,
+            'address_country' => self::typeString,
 
-            'zip_code_id' => 'integer'
+            'zip_code_id' => self::typeInteger
         ];
     }
 ?>

@@ -53,9 +53,9 @@
          */
         protected $casts =
         [
-            'id'        => 'integer',
-            'email'     => 'string',
-            'options'   => 'array'
+            'id'        => self::typeInteger,
+            'email'     => self::typeString,
+            'options'   => self::typeArray
         ];
     }
 ?>

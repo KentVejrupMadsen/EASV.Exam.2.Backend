@@ -57,14 +57,14 @@
          */
         protected $casts =
         [
-            'id'        => 'integer',
-            'kanban_id' => 'integer',
+            'id'        => self::typeInteger,
+            'kanban_id' => self::typeInteger,
 
-            'board_title'   => 'string',
-            'body'          => 'array',
+            'board_title'   => self::typeString,
+            'body'          => self::typeArray,
 
-            'created_at'    => 'timestamp',
-            'updated_at'    => 'timestamp'
+            'created_at'    => self::typeTimestamp,
+            'updated_at'    => self::typeTimestamp
         ];
     }
 ?>

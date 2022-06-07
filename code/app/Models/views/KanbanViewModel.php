@@ -56,13 +56,13 @@
          */
         protected $casts =
         [
-            'id'            => 'integer',
+            'id'            => self::typeInteger,
 
-            'project_id'    => 'integer',
-            'kanban_title'  => 'string',
+            'project_id'    => self::typeInteger,
+            'kanban_title'  => self::typeString,
 
-            'created_at'    => 'timestamp',
-            'updated_at'    => 'timestamp'
+            'created_at'    => self::typeTimestamp,
+            'updated_at'    => self::typeTimestamp
         ];
     }
 ?>

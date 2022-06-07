@@ -55,14 +55,14 @@
          */
         protected $casts =
         [
-            'id' => 'integer',
+            'id'         => self::typeInteger,
 
-            'area_name'  => 'string',
+            'area_name'  => self::typeString,
 
-            'zip_number' => 'integer',
+            'zip_number' => self::typeInteger,
 
-            'country_name'      => 'string',
-            'country_acronym'   => 'string'
+            'country_name'      => self::typeString,
+            'country_acronym'   => self::typeString
         ];
     }
 ?>

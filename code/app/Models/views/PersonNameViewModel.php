@@ -56,12 +56,12 @@
          */
         protected $casts =
         [
-            'id' => 'integer',
-            'account_information_id' => 'integer',
+            'id'                     => self::typeInteger,
+            'account_information_id' => self::typeInteger,
 
-            'person_first_name'      => 'string',
-            'person_name_middlename' => 'array',
-            'person_last_name'       => 'string'
+            'person_first_name'      => self::typeString,
+            'person_name_middlename' => self::typeArray,
+            'person_last_name'       => self::typeString
         ];
     }
 ?>

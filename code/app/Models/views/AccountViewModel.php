@@ -63,17 +63,17 @@
          */
         protected $casts =
         [
-            'id'        => 'integer',
-            'username'  => 'string',
+            'id'        => self::typeInteger,
+            'username'  => self::typeString,
 
-            'email'     => 'string',
-            'email_verified_at' =>'timestamp',
+            'email'     => self::typeString,
+            'email_verified_at' => self::typeTimestamp,
 
-            'password'       => 'string',
-            'remember_token' => 'string',
-            'created_at'     => 'timestamp',
-            'updated_at'     => 'timestamp',
-            'settings'       => 'array'
+            'password'       => self::typeString,
+            'remember_token' => self::typeString,
+            'created_at'     => self::typeTimestamp,
+            'updated_at'     => self::typeTimestamp,
+            'settings'       => self::typeArray
         ];
     }
 ?>

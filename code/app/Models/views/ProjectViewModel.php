@@ -58,16 +58,16 @@
          */
         protected $casts =
         [
-            'id'                => 'integer',
-            'account_owner_id'  => 'integer',
+            'id'                => self::typeInteger,
+            'account_owner_id'  => self::typeInteger,
 
-            'project_title' => 'string',
-            'description'   => 'string',
+            'project_title' => self::typeString,
+            'description'   => self::typeString,
 
-            'tags' => 'array',
+            'tags' => self::typeArray,
 
-            'created_at' => 'timestamp',
-            'updated_at' => 'timestamp'
+            'created_at' => self::typeTimestamp,
+            'updated_at' => self::typeTimestamp
         ];
     }
 ?>
