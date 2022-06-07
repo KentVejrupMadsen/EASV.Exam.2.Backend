@@ -27,15 +27,19 @@
         public const table_name = 'newsletter_view';
         protected $table = self::table_name;
 
+        protected const field_id = 'id';
+        protected const field_email = 'email';
+        protected const field_options = 'options';
 
+        
         /**
          * @var string[]
          */
         protected $fillable =
         [
-            'id',
-            'email',
-            'options'
+            self::field_id,
+            self::field_email,
+            self::field_options
         ];
 
 
@@ -44,7 +48,7 @@
          */
         protected $hidden =
         [
-            'id',
+            self::field_id
         ];
 
 
@@ -53,9 +57,9 @@
          */
         protected $casts =
         [
-            'id'        => self::typeInteger,
-            'email'     => self::typeString,
-            'options'   => self::typeArray
+            self::field_id        => self::typeInteger,
+            self::field_email     => self::typeString,
+            self::field_options   => self::typeArray
         ];
     }
 ?>
