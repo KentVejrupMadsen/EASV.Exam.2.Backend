@@ -31,7 +31,7 @@
         protected const field_email = 'email';
         protected const field_options = 'options';
 
-        
+
         /**
          * @var string[]
          */

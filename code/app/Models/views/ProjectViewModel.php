@@ -27,19 +27,26 @@
         public const table_name = 'projects_view';
         protected $table = self::table_name;
 
+        protected const field_id = 'id';
+        protected const field_account_owner_id = 'account_owner_id';
+        protected const field_project_title = 'project_title';
+        protected const field_description = 'description';
+        protected const field_tags = 'tags';
+        protected const field_created_at = 'created_at';
+        protected const field_updated_at = 'updated_at';
 
         /**
          * @var string[]
          */
         protected $fillable =
         [
-            'id',
-            'account_owner_id',
-            'project_title',
-            'description',
-            'tags',
-            'created_at',
-            'updated_at'
+            self::field_id,
+            self::field_account_owner_id,
+            self::field_project_title,
+            self::field_description,
+            self::field_tags,
+            self::field_created_at,
+            self::field_updated_at
         ];
 
 
@@ -48,8 +55,8 @@
          */
         protected $hidden =
         [
-            'id',
-            'account_owner_id'
+            self::field_id,
+            self::field_account_owner_id
         ];
 
 
@@ -58,16 +65,16 @@
          */
         protected $casts =
         [
-            'id'                => self::typeInteger,
-            'account_owner_id'  => self::typeInteger,
+            self::field_id                => self::typeInteger,
+            self::field_account_owner_id  => self::typeInteger,
 
-            'project_title' => self::typeString,
-            'description'   => self::typeString,
+            self::field_project_title => self::typeString,
+            self::field_description   => self::typeString,
 
-            'tags' => self::typeArray,
+            self::field_tags => self::typeArray,
 
-            'created_at' => self::typeTimestamp,
-            'updated_at' => self::typeTimestamp
+            self::field_created_at => self::typeTimestamp,
+            self::field_updated_at => self::typeTimestamp
         ];
     }
 ?>

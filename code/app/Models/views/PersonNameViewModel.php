@@ -27,17 +27,24 @@
         public const table_name = 'person_names_view';
         protected $table = self::table_name;
 
+        protected const field_id = 'id';
+        protected const field_account_information_id = 'account_information_id';
+
+        protected const field_person_first_name = 'person_first_name';
+        protected const field_person_name_middlename = 'person_name_middlename';
+        protected const field_person_last_name = 'person_last_name';
+
 
         /**
          * @var string[]
          */
         protected $fillable =
         [
-            'id',
-            'account_information_id',
-            'person_first_name',
-            'person_name_middlename',
-            'person_last_name'
+            self::field_id,
+            self::field_account_information_id,
+            self::field_person_first_name,
+            self::field_person_name_middlename,
+            self::field_person_last_name
         ];
 
 
@@ -46,8 +53,8 @@
          */
         protected $hidden =
         [
-            'id',
-            'account_information_id'
+            self::field_id,
+            self::field_account_information_id,
         ];
 
 
@@ -56,12 +63,12 @@
          */
         protected $casts =
         [
-            'id'                     => self::typeInteger,
-            'account_information_id' => self::typeInteger,
+            self::field_id                     => self::typeInteger,
+            self::field_account_information_id => self::typeInteger,
 
-            'person_first_name'      => self::typeString,
-            'person_name_middlename' => self::typeArray,
-            'person_last_name'       => self::typeString
+            self::field_person_first_name      => self::typeString,
+            self::field_person_name_middlename => self::typeArray,
+            self::field_person_last_name       => self::typeString
         ];
     }
 ?>
