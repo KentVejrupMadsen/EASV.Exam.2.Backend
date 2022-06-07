@@ -8,6 +8,7 @@
     namespace App\Models\security;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
 
     // External libraries
@@ -20,7 +21,7 @@
      */
     #[OA\Schema( title: 'Cross-Site Request Forgery Model',
                  description: '',
-                 type: 'model',
+                 type: BaseModel::model_type,
                  deprecated: false)]
     class CSRFModel
         extends ExtensionNoTimestampModel

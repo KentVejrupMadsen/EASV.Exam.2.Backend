@@ -21,7 +21,7 @@
      */
     #[OA\Schema( title: 'Kanban Title Model',
                  description: '',
-                 type: BaseModel::class,
+                 type: BaseModel::model_type,
                  deprecated: false )]
     class KanbanTitleModel 
         extends ExtensionLabelModel

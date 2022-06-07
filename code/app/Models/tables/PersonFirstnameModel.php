@@ -21,7 +21,7 @@
      */
     #[OA\Schema( title: 'Person Firstname Model',
                  description: '',
-                 type: BaseModel::class,
+                 type: BaseModel::model_type,
                  deprecated: false )]
     class PersonFirstnameModel
         extends ExtensionLabelModel

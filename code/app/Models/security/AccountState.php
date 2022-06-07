@@ -7,6 +7,7 @@
      */
     namespace App\Models\security;
 
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
 
     use OpenApi\Attributes
@@ -18,7 +19,7 @@
      */
     #[OA\Schema( title: 'Account States Model',
                  description: '',
-                 type: 'model',
+                 type: BaseModel::model_type,
                  deprecated: false )]
     class AccountState
         extends ExtensionNoTimestampModel

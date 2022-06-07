@@ -28,7 +28,7 @@
      */
     #[OA\Schema( title: 'Account Model',
                  description: '',
-                 type: BaseModel::class,
+                 type: BaseModel::model_type,
                  deprecated: false )]
     class User 
         extends Authenticatable

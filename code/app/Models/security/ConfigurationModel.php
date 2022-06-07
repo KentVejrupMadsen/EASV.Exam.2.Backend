@@ -8,7 +8,8 @@
     namespace App\Models\security;
 
     // Internal libraries
-    use App\Models\templates\ExtensionNoTimestampModel;
+use App\Models\templates\BaseModel;
+use App\Models\templates\ExtensionNoTimestampModel;
 
     // External libraries
     use OpenApi\Attributes
@@ -20,7 +21,7 @@
      */
     #[OA\Schema( title: 'Configuration Model',
                  description: '',
-                 type: 'model',
+                 type: BaseModel::model_type,
                  deprecated: false )]
     class ConfigurationModel
         extends ExtensionNoTimestampModel

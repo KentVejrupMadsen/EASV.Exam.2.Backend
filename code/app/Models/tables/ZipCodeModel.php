@@ -21,7 +21,7 @@
      */
     #[OA\Schema( title: 'Zip Code Model',
                  description: '',
-                 type: BaseModel::class,
+                 type: BaseModel::model_type,
                  deprecated: false )]
     class ZipCodeModel
         extends ExtensionNoTimestampModel

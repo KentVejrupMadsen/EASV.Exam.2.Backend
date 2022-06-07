@@ -23,7 +23,7 @@
      */
     #[OA\Schema( title: 'Address Model',
                  description: '',
-                 type: BaseModel::class,
+                 type: BaseModel::model_type,
                  deprecated: false )]
     class AddressModel
         extends BaseModel

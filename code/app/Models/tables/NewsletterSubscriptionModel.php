@@ -21,7 +21,7 @@
      */
     #[OA\Schema( title: 'Newsletter Subscription Model',
                  description: '',
-                 type: BaseModel::class,
+                 type: BaseModel::model_type,
                  deprecated: false )]
     class NewsletterSubscriptionModel
         extends ExtensionNoTimestampModel

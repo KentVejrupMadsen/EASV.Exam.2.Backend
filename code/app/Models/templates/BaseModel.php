@@ -11,20 +11,16 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-    use OpenApi\Attributes
-        as OA;
-
 
     /**
      *
      */
-    #[OA\Schema( title: 'table',
-                 type: 'table',
-                 deprecated: false )]
     abstract class BaseModel
         extends Model
     {
         use HasFactory;
+
+        public const model_type = 'table';
 
         public const typeString = 'string';
         public const typeInteger = 'integer';

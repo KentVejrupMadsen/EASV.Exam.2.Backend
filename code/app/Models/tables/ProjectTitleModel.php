@@ -21,7 +21,7 @@
      */
     #[OA\Schema( title: 'Project Title Model',
                  description: '',
-                 type: BaseModel::class,
+                 type: BaseModel::model_type,
                  deprecated: false )]
     class ProjectTitleModel
         extends ExtensionLabelModel
