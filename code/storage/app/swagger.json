@@ -1994,17 +1994,61 @@
                 "description": "",
                 "type": "controller"
             },
-            "AccountRequest": {},
-            "InformationRequest": {},
-            "NewsletterRequest": {},
-            "PersonAddressRequest": {},
-            "PersonEmailRequest": {},
-            "PersonNameRequest": {},
-            "FindRequest": {},
-            "StateRequest": {},
-            "SecurityCSRFRequest": {},
-            "SecurityConfigurationRequest": {},
-            "SecurityRecaptchaRequest": {},
+            "AccountRequest": {
+                "title": "Account Request",
+                "description": "",
+                "type": "request"
+            },
+            "InformationRequest": {
+                "title": "Information Request",
+                "description": "",
+                "type": "request"
+            },
+            "NewsletterRequest": {
+                "title": "Newsletter Request",
+                "description": "",
+                "type": "request"
+            },
+            "PersonAddressRequest": {
+                "title": "Person Address Request",
+                "description": "",
+                "type": "request"
+            },
+            "PersonEmailRequest": {
+                "title": "Person Email Request",
+                "description": "",
+                "type": "request"
+            },
+            "PersonNameRequest": {
+                "title": "Person Name Request",
+                "description": "",
+                "type": "request"
+            },
+            "FindRequest": {
+                "title": "Find Request",
+                "description": "",
+                "type": "request"
+            },
+            "StateRequest": {
+                "title": "State Request",
+                "description": "",
+                "type": "request"
+            },
+            "SecurityCSRFRequest": {
+                "title": "Security CSRF Request",
+                "description": "",
+                "type": "request"
+            },
+            "SecurityConfigurationRequest": {
+                "title": "Security Configuration Request",
+                "description": "",
+                "type": "request"
+            },
+            "SecurityRecaptchaRequest": {
+                "title": "Security Recaptcha Request",
+                "description": "",
+                "type": "request"
+            },
             "ToolsBoardRequest": {},
             "ToolsKanbanRequest": {},
             "ToolsProjectMemberRequest": {},
