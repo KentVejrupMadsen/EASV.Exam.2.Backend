@@ -24,7 +24,9 @@
     use App\Http\Controllers\templates\ControllerOption;
 
 
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Find Controller',
+                 description: '',
+                 type: 'controller' )]
     class FindController
         extends ControllerOption
     {

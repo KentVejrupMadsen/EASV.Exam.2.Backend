@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Country Model',
+                 description: '',
+                 type: 'model')]
     class CountryModel
         extends ExtensionNoTimestampModel
     {

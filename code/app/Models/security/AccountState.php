@@ -16,7 +16,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema(title: 'Account States Model',
+                description: '',
+                type: 'model')]
     class AccountState
         extends ExtensionNoTimestampModel
     {

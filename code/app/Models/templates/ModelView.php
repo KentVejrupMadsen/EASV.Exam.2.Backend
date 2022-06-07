@@ -14,7 +14,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'View',
+                 description: '',
+                 type: 'view' )]
     abstract class ModelView
         extends BaseModel
     {

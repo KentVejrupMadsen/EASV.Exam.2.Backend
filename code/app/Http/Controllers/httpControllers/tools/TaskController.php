@@ -22,7 +22,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Task Controller',
+                 description: '',
+                 type: 'controller' )]
     class TaskController
         extends ControllerPipeline
     {

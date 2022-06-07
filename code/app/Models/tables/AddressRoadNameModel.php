@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Address Road Name Model',
+                 description: '',
+                 type: 'model' )]
     class AddressRoadNameModel
         extends ExtensionLabelModel
     {

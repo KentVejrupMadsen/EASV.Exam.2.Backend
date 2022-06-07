@@ -21,7 +21,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Security Configuration Controller',
+                 description: '',
+                 type: 'controller' )]
     class SecurityConfigurationController
         extends CrudController
     {

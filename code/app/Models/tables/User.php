@@ -26,7 +26,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Account Model',
+                 description: '',
+                 type: 'model' )]
     class User 
         extends Authenticatable
     {

@@ -22,7 +22,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Project Controller',
+                 description: '',
+                 type: 'controller' )]
     class ProjectController
         extends ControllerPipeline
     {

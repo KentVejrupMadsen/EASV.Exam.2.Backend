@@ -25,7 +25,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Account Information Controller',
+                 description: '',
+                 type: 'controller')]
     class InformationController
         extends ControllerPipeline
     {

@@ -28,7 +28,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Newsletter Controller',
+                 description: '',
+                 type: 'controller')]
     class NewsletterController
         extends ControllerPipeline
     {

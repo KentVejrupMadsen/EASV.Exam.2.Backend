@@ -21,7 +21,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Address Model',
+                 description: '',
+                 type: 'model' )]
     class AddressModel
         extends BaseModel
     {

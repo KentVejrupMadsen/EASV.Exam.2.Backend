@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Configuration Model',
+                 description: '',
+                 type: 'model' )]
     class ConfigurationModel
         extends ExtensionNoTimestampModel
     {
