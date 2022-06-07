@@ -8,6 +8,7 @@
     namespace App\Http\Requests\account\entities;
 
     // External
+    use App\Http\Requests\template\BaseRequest;
     use OpenApi\Attributes
         as OA;
 
@@ -21,7 +22,7 @@
      */
     #[OA\Schema( title: 'Person Address Request',
                  description: '',
-                 type: 'request',
+                 type: BaseRequest::model_type,
                  deprecated: false )]
     class PersonAddressRequest
         extends AccountProtectedRequest

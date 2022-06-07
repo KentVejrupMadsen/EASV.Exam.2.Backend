@@ -27,11 +27,11 @@
         public const table_name = 'zip_codes_view_short';
         protected $table = self::table_name;
 
-
         protected const field_id = 'id';
         protected const field_area_name = 'area_name';
         protected const field_post_code = 'zip_number';
         protected const field_country_acronym = 'country_acronym';
+
 
         /**
          * @var string[]

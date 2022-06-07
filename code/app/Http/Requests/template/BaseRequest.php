@@ -14,7 +14,7 @@
     /**
      *
      */
-    abstract class AccountPrivateRequest
+    abstract class BaseRequest
         extends FormRequest
     {
         public const model_type = 'request';

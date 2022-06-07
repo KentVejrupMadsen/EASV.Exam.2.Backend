@@ -17,6 +17,8 @@
     abstract class PublicRequest
         extends FormRequest
     {
+        public const model_type = 'request';
+
         /**
          * @return bool
          */

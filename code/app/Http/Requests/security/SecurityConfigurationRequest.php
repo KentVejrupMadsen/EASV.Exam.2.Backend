@@ -8,6 +8,7 @@
     namespace App\Http\Requests\security;
 
     // external
+    use App\Http\Requests\template\BaseRequest;
     use OpenApi\Attributes
         as OA;
 
@@ -21,7 +22,7 @@
      */
     #[OA\Schema( title: 'Security Configuration Request',
                  description: '',
-                 type: 'request',
+                 type: BaseRequest::model_type,
                  deprecated: false )]
     class SecurityConfigurationRequest
         extends AccountProtectedRequest

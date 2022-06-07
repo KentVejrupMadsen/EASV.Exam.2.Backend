@@ -17,6 +17,9 @@
     abstract class AccountProtectedRequest
         extends FormRequest
     {
+
+        public const model_type = 'request';
+
         /**
          * @return bool
          */
