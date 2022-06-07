@@ -54,7 +54,9 @@
         #[OA\Property( type: 'string' )]
         public const field_zip_code_id = 'zip_code_id';
 
-
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_account_information_id,
@@ -66,6 +68,9 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_account_information_id,
@@ -75,6 +80,9 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_account_information_id => 'integer',

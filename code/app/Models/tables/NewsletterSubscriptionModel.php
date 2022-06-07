@@ -40,7 +40,9 @@
         #[OA\Property( type: 'string' )]
         public const field_options  = 'options';
 
-
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_email_id,
@@ -48,12 +50,18 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_email_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_email_id => 'integer'

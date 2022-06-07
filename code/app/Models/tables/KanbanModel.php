@@ -46,7 +46,9 @@
         public const field_updated_at      = 'updated_at';
 
 
-        //
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::field_kanban_title_id,
@@ -54,13 +56,19 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::field_kanban_title_id,
             self::field_project_id
         ];
 
-        
+
+        /**
+         * @var string[]
+         */
         protected $casts = 
         [
             self::field_kanban_title_id   => 'integer',

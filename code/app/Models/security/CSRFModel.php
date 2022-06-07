@@ -60,7 +60,9 @@
         protected $table = self::table_name;
 
 
-        //
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::field_identity,
@@ -73,7 +75,10 @@
             self::field_secret_token
         ];
 
-        
+
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::field_identity,
@@ -81,7 +86,10 @@
             self::field_secret_token
         ];
 
-        
+
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_identity      => 'integer',

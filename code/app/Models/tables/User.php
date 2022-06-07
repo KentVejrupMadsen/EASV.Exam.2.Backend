@@ -68,11 +68,15 @@
         #[OA\Property( type: 'string' )]
         public const field_verified_at = 'email_verified_at';
 
+        //
         use HasApiTokens,
             HasFactory,
             Notifiable;
 
 
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::field_username,
@@ -87,6 +91,9 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::field_password,
@@ -95,7 +102,10 @@
             self::field_verified_at
         ];
 
-        
+
+        /**
+         * @var array
+         */
         protected $casts = 
         [
             self::field_username          => BaseModel::typeString,

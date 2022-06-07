@@ -35,7 +35,9 @@
         public const field_created_at = 'created_at';
         public const field_updated_at = 'updated_at';
 
-
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::field_kanban_id,
@@ -46,19 +48,25 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::field_kanban_id,
             self::field_board_title_id,
         ];
 
-        
+
+        /**
+         * @var string[]
+         */
         protected $casts = 
         [
-            self::field_kanban_id => 'integer',
-            self::field_board_title_id => 'integer',
-            self::field_created_at => 'datetime',
-            self::field_updated_at => 'datetime'
+            self::field_kanban_id       => 'integer',
+            self::field_board_title_id  => 'integer',
+            self::field_created_at      => 'datetime',
+            self::field_updated_at      => 'datetime'
         ];
     }
 ?>

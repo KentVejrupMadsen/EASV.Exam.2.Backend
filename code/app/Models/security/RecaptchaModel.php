@@ -50,7 +50,9 @@
         public const field_error     = 'error';
 
 
-        //
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_success,
@@ -61,6 +63,9 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_hostname,
@@ -68,6 +73,9 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_success     => 'boolean',

@@ -41,7 +41,9 @@
         public const field_content = 'content';
 
 
-        //
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::field_board_id,
@@ -49,12 +51,18 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::field_board_id,
         ];
 
-        
+
+        /**
+         * @var string[]
+         */
         protected $casts = 
         [
             self::field_board_id => 'integer',

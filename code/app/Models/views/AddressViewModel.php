@@ -13,6 +13,9 @@
         as OA;
 
 
+    /**
+     *
+     */
     #[OA\Schema( title: 'Address View Model',
                  description: '',
                  type: ModelView::model_view,
@@ -25,6 +28,9 @@
         protected $table  = self::table_name;
 
 
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             'id',
@@ -37,6 +43,9 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             'id',
@@ -45,6 +54,9 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             'id'                     => 'integer',

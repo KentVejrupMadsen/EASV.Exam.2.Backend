@@ -41,7 +41,9 @@ use App\Models\templates\ExtensionNoTimestampModel;
         public const field_value = 'value';
 
 
-        //
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_key,
@@ -49,12 +51,18 @@ use App\Models\templates\ExtensionNoTimestampModel;
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_value
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_key   => 'string',

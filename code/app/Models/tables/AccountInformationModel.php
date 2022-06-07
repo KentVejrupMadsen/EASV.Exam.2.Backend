@@ -46,7 +46,9 @@
         public const field_settings = 'settings';
 
 
-        //
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_account,
@@ -55,12 +57,18 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_account,
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_account     => 'integer',

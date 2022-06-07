@@ -41,7 +41,10 @@
         #[OA\Property( type: 'string' )]
         public const field_country_acronym = 'country_acronym';
 
-        //
+
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_country_name,
@@ -49,6 +52,9 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_country_name    => 'string',

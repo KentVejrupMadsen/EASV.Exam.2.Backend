@@ -48,7 +48,9 @@
         public const field_archived              = 'archived';
 
 
-        //
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_account_id,
@@ -59,13 +61,18 @@
         ];
 
 
-
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_account_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_account_id          => 'integer',

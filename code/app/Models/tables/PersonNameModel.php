@@ -48,7 +48,9 @@
         public const field_person_name_middlename  = 'person_name_middlename';
 
 
-        //
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_account_information_id,
@@ -58,6 +60,9 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_account_information_id,
@@ -66,6 +71,9 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_account_information_id  => 'integer',

@@ -44,7 +44,9 @@
         public const field_country_id = 'country_id';
 
 
-        //
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_area_name,
@@ -53,12 +55,18 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_country_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_area_name  => 'string',
