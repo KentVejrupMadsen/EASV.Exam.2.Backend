@@ -27,18 +27,24 @@
         public const table_name = 'boards_view';
         protected $table = self::table_name;
 
+        protected const field_id = 'id';
+        protected const field_kanban_id = 'kanban_id';
+        protected const field_board_title = 'board_title';
+        protected const field_body = 'body';
+        protected const field_created_at = 'created_at';
+        protected const field_updated_at = 'updated_at';
 
         /**
          * @var string[]
          */
         protected $fillable =
         [
-            'id',
-            'kanban_id',
-            'board_title',
-            'body',
-            'created_at',
-            'updated_at'
+            self::field_id,
+            self::field_kanban_id,
+            self::field_board_title,
+            self::field_body,
+            self::field_created_at,
+            self::field_updated_at
         ];
 
 
@@ -47,8 +53,8 @@
          */
         protected $hidden =
         [
-            'id',
-            'kanban_id',
+            self::field_id,
+            self::field_kanban_id
         ];
 
 
@@ -57,14 +63,14 @@
          */
         protected $casts =
         [
-            'id'        => self::typeInteger,
-            'kanban_id' => self::typeInteger,
+            self::field_id        => self::typeInteger,
+            self::field_kanban_id => self::typeInteger,
 
-            'board_title'   => self::typeString,
-            'body'          => self::typeArray,
+            self::field_board_title   => self::typeString,
+            self::field_body          => self::typeArray,
 
-            'created_at'    => self::typeTimestamp,
-            'updated_at'    => self::typeTimestamp
+            self::field_created_at    => self::typeTimestamp,
+            self::field_updated_at    => self::typeTimestamp
         ];
     }
 ?>
