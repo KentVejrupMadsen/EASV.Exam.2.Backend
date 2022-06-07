@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Account Email Model',
+                 description: '',
+                 type: 'model' )]
     class AccountEmailModel 
         extends ExtensionLabelModel
     {

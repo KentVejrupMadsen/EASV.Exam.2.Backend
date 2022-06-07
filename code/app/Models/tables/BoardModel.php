@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Board Model',
+                 description: '',
+                 type: 'model' )]
     class BoardModel
         extends BaseModel
     {

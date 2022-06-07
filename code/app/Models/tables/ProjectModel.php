@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Project Model',
+                 description: '',
+                 type: 'model')]
     class ProjectModel 
         extends BaseModel
     {

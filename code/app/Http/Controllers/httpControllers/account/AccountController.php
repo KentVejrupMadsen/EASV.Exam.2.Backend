@@ -33,7 +33,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Account Controller',
+                 description: '',
+                 type: 'controller' )]
     class AccountController
         extends ControllerPipeline
     {
@@ -302,13 +304,38 @@
          * @return JsonResponse
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/create',
-            tags: [ '1.0.0', 'account', 'authentication' ]
+                   description: '',
+                   tags: [ '1.0.0', 'account', 'authentication' ]
         )]
+        #[OA\RequestBody( description: '',
+                          required: true,
+                          content: [ new OA\JsonContent(
+                              example:
+'{
+	"account":
+	{
+		"username":"username",
+		"security":
+		{
+			"password":"password",
+			"confirm":"password"
+		},
+		"person":
+		{
+			"email":"email@gmail.com"
+		}
+	}
+}' ),
+                                     new OA\XmlContent() ])]
         #[OA\Response( response: '201',
                        description: 'Account created',
                        content:
                        [
-                           new OA\JsonContent(),
+                           new OA\JsonContent( example:
+'{
+	"username": "username",
+	"bearer_token": "integer|bearer-token-string-herexxxxxx"
+}'),
                            new OA\XmlContent()
                        ]
         )]

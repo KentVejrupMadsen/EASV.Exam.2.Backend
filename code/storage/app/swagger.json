@@ -140,13 +140,28 @@
                     "account",
                     "authentication"
                 ],
+                "description": "",
                 "operationId": "aad533bcd63625a1775284f06134073a",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": "{\r\n\t\"account\":\r\n\t{\r\n\t\t\"username\":\"username\",\r\n\t\t\"security\":\r\n\t\t{\r\n\t\t\t\"password\":\"password\",\r\n\t\t\t\"confirm\":\"password\"\r\n\t\t},\r\n\t\t\"person\":\r\n\t\t{\r\n\t\t\t\"email\":\"email@gmail.com\"\r\n\t\t}\r\n\t}\r\n}"
+                        },
+                        "application/xml": {
+                            "schema": {}
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Account created",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {},
+                                "example": "{\r\n\t\"username\": \"username\",\r\n\t\"bearer_token\": \"integer|bearer-token-string-herexxxxxx\"\r\n}"
                             },
                             "application/xml": {
                                 "schema": {}
@@ -1901,29 +1916,86 @@
     },
     "components": {
         "schemas": {
-            "CSRFResponseJSONFactory": {},
-            "AccountController": {},
-            "InformationController": {},
-            "NewsletterController": {},
+            "AccountController": {
+                "title": "Account Controller",
+                "description": "",
+                "type": "controller"
+            },
+            "InformationController": {
+                "title": "Account Information Controller",
+                "description": "",
+                "type": "controller"
+            },
+            "NewsletterController": {
+                "title": "Newsletter Controller",
+                "description": "",
+                "type": "controller"
+            },
             "PersonAddressController": {
-                "description": "Account Email controller. That are used when getting \"ask\" by a computer for data."
+                "title": "Person Address Controller",
+                "description": "",
+                "type": "controller"
             },
             "PersonEmailController": {
-                "description": "Account Email controller. That are used when getting \"ask\" by a computer for data."
+                "title": "Person Email Controller",
+                "description": "",
+                "type": "controller"
             },
             "PersonNameController": {
-                "description": "Account Email controller. That are used when getting \"ask\" by a computer for data."
+                "title": "Person Name Controller",
+                "description": "",
+                "type": "controller"
             },
-            "FindController": {},
-            "StateController": {},
-            "SecurityCSRFTokenController": {},
-            "SecurityConfigurationController": {},
-            "SecurityRecaptchaController": {},
-            "BoardController": {},
-            "KanbanController": {},
-            "ProjectController": {},
-            "ProjectMemberController": {},
-            "TaskController": {},
+            "FindController": {
+                "title": "Find Controller",
+                "description": "",
+                "type": "controller"
+            },
+            "StateController": {
+                "title": "State Controller",
+                "description": "",
+                "type": "controller"
+            },
+            "SecurityCSRFTokenController": {
+                "title": "Security CSRF Token Controller",
+                "description": "",
+                "type": "controller"
+            },
+            "SecurityConfigurationController": {
+                "title": "Security Configuration Controller",
+                "description": "",
+                "type": "controller"
+            },
+            "SecurityRecaptchaController": {
+                "title": "Security Recaptcha Controller",
+                "description": "",
+                "type": "controller"
+            },
+            "BoardController": {
+                "title": "Board Controller",
+                "description": "",
+                "type": "controller"
+            },
+            "KanbanController": {
+                "title": "Kanban Controller",
+                "description": "",
+                "type": "controller"
+            },
+            "ProjectController": {
+                "title": "Project Controller",
+                "description": "",
+                "type": "controller"
+            },
+            "ProjectMemberController": {
+                "title": "Project Member Controller",
+                "description": "",
+                "type": "controller"
+            },
+            "TaskController": {
+                "title": "Task Controller",
+                "description": "",
+                "type": "controller"
+            },
             "AccountRequest": {},
             "InformationRequest": {},
             "NewsletterRequest": {},
@@ -2197,7 +2269,9 @@
                 ]
             },
             "AccountEmailModel": {
-                "type": "object",
+                "title": "Account Email Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionLabelModel"
@@ -2215,7 +2289,9 @@
                 ]
             },
             "AccountInformationModel": {
-                "type": "object",
+                "title": "Account Information Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/BaseModel"
@@ -2273,7 +2349,9 @@
                 ]
             },
             "AddressModel": {
-                "type": "object",
+                "title": "Address Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/BaseModel"
@@ -2346,7 +2424,9 @@
                 ]
             },
             "AddressRoadNameModel": {
-                "type": "object",
+                "title": "Address Road Name Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionLabelModel"
@@ -2364,7 +2444,9 @@
                 ]
             },
             "BoardModel": {
-                "type": "object",
+                "title": "Board Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/BaseModel"
@@ -2398,7 +2480,9 @@
                 ]
             },
             "BoardTitleModel": {
-                "type": "object",
+                "title": "Board Title Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionLabelModel"
@@ -2416,7 +2500,9 @@
                 ]
             },
             "CountryModel": {
-                "type": "object",
+                "title": "Country Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionNoTimestampModel"
@@ -2454,7 +2540,9 @@
                 ]
             },
             "KanbanModel": {
-                "type": "object",
+                "title": "Kanban Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/BaseModel"
@@ -2512,7 +2600,9 @@
                 ]
             },
             "KanbanTitleModel": {
-                "type": "object",
+                "title": "Kanban Title Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionLabelModel"
@@ -2530,7 +2620,9 @@
                 ]
             },
             "MemberGroupModel": {
-                "type": "object",
+                "title": "Member Group Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionLabelModel"
@@ -2548,7 +2640,9 @@
                 ]
             },
             "NewsletterSubscriptionModel": {
-                "type": "object",
+                "title": "Newsletter Subscription Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionNoTimestampModel"
@@ -2594,7 +2688,9 @@
                 ]
             },
             "PersonFirstnameModel": {
-                "type": "object",
+                "title": "Perspn Firstname Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionLabelModel"
@@ -2612,7 +2708,9 @@
                 ]
             },
             "PersonNameModel": {
-                "type": "object",
+                "title": "Person Name Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/BaseModel"
@@ -2673,7 +2771,9 @@
                 ]
             },
             "PersonSurnameModel": {
-                "type": "object",
+                "title": "Person Surname Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionLabelModel"
@@ -2691,7 +2791,9 @@
                 ]
             },
             "ProjectMemberModel": {
-                "type": "object",
+                "title": "Project Member Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionNoTimestampModel"
@@ -2743,7 +2845,9 @@
                 ]
             },
             "ProjectModel": {
-                "type": "object",
+                "title": "Project Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/BaseModel"
@@ -2813,7 +2917,9 @@
                 ]
             },
             "ProjectTitleModel": {
-                "type": "object",
+                "title": "Project Title Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionLabelModel"
@@ -2831,7 +2937,9 @@
                 ]
             },
             "TaskModel": {
-                "type": "object",
+                "title": "Task Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionNoTimestampModel"
@@ -2877,6 +2985,8 @@
                 ]
             },
             "User": {
+                "title": "Account Model",
+                "description": "",
                 "properties": {
                     "fillable": {
                         "type": "array",
@@ -2955,10 +3065,12 @@
                         ]
                     }
                 },
-                "type": "object"
+                "type": "model"
             },
             "ZipCodeModel": {
-                "type": "object",
+                "title": "Zip Code Model",
+                "description": "",
+                "type": "model",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ExtensionNoTimestampModel"
@@ -3055,7 +3167,9 @@
                 ]
             },
             "ModelView": {
-                "type": "object",
+                "title": "View",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/BaseModel"
@@ -3070,7 +3184,9 @@
                 ]
             },
             "AccountViewModel": {
-                "type": "object",
+                "title": "Account View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3104,7 +3220,9 @@
                 ]
             },
             "AddressViewModel": {
-                "type": "object",
+                "title": "Address View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3138,7 +3256,9 @@
                 ]
             },
             "BoardViewModel": {
-                "type": "object",
+                "title": "Board View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3172,7 +3292,9 @@
                 ]
             },
             "KanbanViewModel": {
-                "type": "object",
+                "title": "Kanban View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3206,7 +3328,9 @@
                 ]
             },
             "NewsletterViewModel": {
-                "type": "object",
+                "title": "Newsletter View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3240,7 +3364,9 @@
                 ]
             },
             "PersonNameViewModel": {
-                "type": "object",
+                "title": "Person Name View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3274,7 +3400,9 @@
                 ]
             },
             "ProjectViewModel": {
-                "type": "object",
+                "title": "Project View Model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3308,7 +3436,9 @@
                 ]
             },
             "ZipCodeViewFullModel": {
-                "type": "object",
+                "title": "Zip Code View Full model",
+                "description": "",
+                "type": "view",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ModelView"
@@ -3342,38 +3472,7 @@
                 ]
             },
             "ZipCodeViewShortModel": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 4,
-                                "minimum": 4
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "zip_codes_view_short"
-                                ]
-                            }
-                        }
-                    }
-                ]
+                "$ref": "#/components/schemas/ModelView"
             }
         },
         "securitySchemes": {

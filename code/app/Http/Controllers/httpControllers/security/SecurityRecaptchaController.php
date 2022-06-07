@@ -21,7 +21,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Security Recaptcha Controller',
+                 description: '',
+                 type: 'controller' )]
     class SecurityRecaptchaController
         extends CrudController
     {

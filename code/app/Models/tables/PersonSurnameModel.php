@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Person Surname Model',
+                 description: '',
+                 type: 'model' )]
     class PersonSurnameModel
         extends ExtensionLabelModel
     {

@@ -22,7 +22,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Kanban Controller',
+                description: '',
+                type: 'controller' )]
     class KanbanController
         extends ControllerPipeline
     {

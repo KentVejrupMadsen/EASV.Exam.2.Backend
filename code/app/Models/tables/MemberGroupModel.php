@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Member Group Model',
+                 description: '',
+                 type: 'model' )]
     class MemberGroupModel 
         extends ExtensionLabelModel
     {

@@ -14,10 +14,13 @@
     use OpenApi\Attributes
         as OA;
 
+
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Perspn Firstname Model',
+                 description: '',
+                 type: 'model' )]
     class PersonFirstnameModel
         extends ExtensionLabelModel
     {
