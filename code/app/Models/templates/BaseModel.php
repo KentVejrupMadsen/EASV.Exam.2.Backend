@@ -18,7 +18,9 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'table',
+                 type: 'table',
+                 deprecated: false )]
     abstract class BaseModel
         extends Model
     {

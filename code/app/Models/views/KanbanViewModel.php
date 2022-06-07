@@ -15,7 +15,8 @@
 
     #[OA\Schema( title: 'Kanban View Model',
                  description: '',
-                 type: ModelView::class )]
+                 type: ModelView::class,
+                 deprecated: false )]
     class KanbanViewModel
         extends ModelView
     {

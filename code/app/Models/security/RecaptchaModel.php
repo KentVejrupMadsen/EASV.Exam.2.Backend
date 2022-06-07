@@ -20,7 +20,8 @@
      */
     #[OA\Schema( title: 'Recaptcha Model',
                  description: '',
-                 type: 'model' )]
+                 type: 'model',
+                 deprecated: false )]
     class RecaptchaModel
         extends ExtensionNoTimestampModel
     {

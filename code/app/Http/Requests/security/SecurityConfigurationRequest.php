@@ -21,7 +21,8 @@
      */
     #[OA\Schema( title: 'Security Configuration Request',
                  description: '',
-                 type: 'request' )]
+                 type: 'request',
+                 deprecated: false )]
     class SecurityConfigurationRequest
         extends AccountProtectedRequest
     {

@@ -20,7 +20,8 @@
      */
     #[OA\Schema( title: 'Person Name Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::class,
+                 deprecated: false )]
     class PersonNameModel
         extends BaseModel
     {

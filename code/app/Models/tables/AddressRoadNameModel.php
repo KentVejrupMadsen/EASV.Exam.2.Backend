@@ -8,6 +8,7 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionLabelModel;
 
     // External libraries
@@ -20,7 +21,8 @@
      */
     #[OA\Schema( title: 'Address Road Name Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::class,
+                 deprecated: false )]
     class AddressRoadNameModel
         extends ExtensionLabelModel
     {

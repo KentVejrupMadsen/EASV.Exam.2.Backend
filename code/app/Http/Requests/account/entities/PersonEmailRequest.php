@@ -21,7 +21,8 @@
      */
     #[OA\Schema( title: 'Person Email Request',
                  description: '',
-                 type: 'request' )]
+                 type: 'request',
+                 deprecated: false )]
     class PersonEmailRequest
         extends AccountProtectedRequest
     {

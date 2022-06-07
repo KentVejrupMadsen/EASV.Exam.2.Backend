@@ -20,7 +20,8 @@
      */
     #[OA\Schema( title: 'Account Information Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::class,
+                 deprecated: false )]
     class AccountInformationModel
         extends BaseModel
     {

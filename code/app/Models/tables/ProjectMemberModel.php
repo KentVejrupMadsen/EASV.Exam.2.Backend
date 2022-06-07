@@ -8,6 +8,7 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
 
     // External libraries
@@ -20,7 +21,8 @@
      */
     #[OA\Schema( title: 'Project Member Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::class,
+                 deprecated: false )]
     class ProjectMemberModel 
         extends ExtensionNoTimestampModel
     {

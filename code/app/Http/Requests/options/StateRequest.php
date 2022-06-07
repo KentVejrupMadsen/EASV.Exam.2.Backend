@@ -21,7 +21,8 @@
      */
     #[OA\Schema( title: 'State Request',
                  description: '',
-                 type: 'request' )]
+                 type: 'request',
+                 deprecated: false )]
     class StateRequest
         extends PublicRequest
     {

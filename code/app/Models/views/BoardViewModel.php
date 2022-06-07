@@ -15,7 +15,8 @@
 
     #[OA\Schema( title: 'Board View Model',
                  description: '',
-                 type: ModelView::class )]
+                 type: ModelView::class,
+                 deprecated: false )]
     class BoardViewModel
         extends ModelView
     {

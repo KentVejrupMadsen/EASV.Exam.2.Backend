@@ -21,7 +21,8 @@
      */
     #[OA\Schema( title: 'Information Request',
                  description: '',
-                 type: 'request' )]
+                 type: 'request',
+                 deprecated: false )]
     class InformationRequest
         extends AccountProtectedRequest
     {

@@ -15,7 +15,8 @@
 
     #[OA\Schema( title: 'Zip Code View Full model',
                  description: '',
-                 type: ModelView::class )]
+                 type: ModelView::class,
+                 deprecated: false )]
     class ZipCodeViewFullModel
         extends ModelView
     {

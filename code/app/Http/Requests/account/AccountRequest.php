@@ -21,7 +21,8 @@
      */
     #[OA\Schema( title: 'Account Request',
                  description: '',
-                 type: 'request' )]
+                 type: 'request',
+                 deprecated: false )]
     class AccountRequest
         extends PublicRequest
     {

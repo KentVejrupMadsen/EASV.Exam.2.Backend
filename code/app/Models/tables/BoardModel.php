@@ -20,7 +20,8 @@
      */
     #[OA\Schema( title: 'Board Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::class,
+                 deprecated: false )]
     class BoardModel
         extends BaseModel
     {

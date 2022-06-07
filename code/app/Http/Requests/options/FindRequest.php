@@ -21,7 +21,8 @@
      */
     #[OA\Schema( title: 'Find Request',
                  description: '',
-                 type: 'request' )]
+                 type: 'request',
+                 deprecated: false )]
     class FindRequest
         extends PublicRequest
     {

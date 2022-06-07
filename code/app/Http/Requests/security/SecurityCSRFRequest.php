@@ -21,7 +21,8 @@
      */
     #[OA\Schema( title: 'Security CSRF Request',
                  description: '',
-                 type: 'request' )]
+                 type: 'request',
+                 deprecated: false )]
     class SecurityCSRFRequest
         extends FormRequest
     {

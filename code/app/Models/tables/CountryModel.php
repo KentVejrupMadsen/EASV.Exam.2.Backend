@@ -8,7 +8,9 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
+
 
     // External libraries
     use OpenApi\Attributes
@@ -20,7 +22,8 @@
      */
     #[OA\Schema( title: 'Country Model',
                  description: '',
-                 type: 'model')]
+                 type: BaseModel::class,
+                 deprecated: false )]
     class CountryModel
         extends ExtensionNoTimestampModel
     {

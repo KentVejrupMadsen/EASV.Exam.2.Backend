@@ -20,7 +20,8 @@
      */
     #[OA\Schema( title: 'Configuration Model',
                  description: '',
-                 type: 'model' )]
+                 type: 'model',
+                 deprecated: false )]
     class ConfigurationModel
         extends ExtensionNoTimestampModel
     {

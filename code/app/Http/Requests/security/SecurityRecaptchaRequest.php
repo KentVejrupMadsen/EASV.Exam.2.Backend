@@ -20,7 +20,8 @@
      */
     #[OA\Schema( title: 'Security Recaptcha Request',
                  description: '',
-                 type: 'request' )]
+                 type: 'request',
+                 deprecated: false )]
     class SecurityRecaptchaRequest
         extends FormRequest
     {

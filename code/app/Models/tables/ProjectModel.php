@@ -20,7 +20,8 @@
      */
     #[OA\Schema( title: 'Project Model',
                  description: '',
-                 type: 'model')]
+                 type: BaseModel::class,
+                 deprecated: false )]
     class ProjectModel 
         extends BaseModel
     {

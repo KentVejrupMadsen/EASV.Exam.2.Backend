@@ -20,7 +20,8 @@
      */
     #[OA\Schema( title: 'Kanban Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::class,
+                 deprecated: false )]
     class KanbanModel 
         extends BaseModel
     {
