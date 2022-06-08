@@ -13,7 +13,7 @@
                     "english", "javascript", "cookies", "mysql", "crud", "rest", "api",
                     "sanctum", "blade"
     ],
-    "homepage": "https://kanban-project-backend-xvkk6.ondigitalocean.app/",
+    "homepage": "https://kanban.goalpioneers.com",
     "license": "MIT",
     "authors":
     [
@@ -31,8 +31,6 @@
     "require":
     {
         "php": "^8.1.0",
-        "ext-mysqli": "*",
-        "ext-pdo": "*",
         "google/recaptcha": "^1.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.2",
