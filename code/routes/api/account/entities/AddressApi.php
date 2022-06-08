@@ -3,9 +3,10 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * Serves the routes for the address model.
-     * so the client can interact with their associated 'address model'
-     * though the address controller.
+        Serves the routes for the address model.
+        so the client can interact with their associated 'address model'
+        though the address controller. it's boundried so the client can only
+        view, update and delete they own data.
      */
     // External libraries
     use Illuminate\Support\Facades\Route;
