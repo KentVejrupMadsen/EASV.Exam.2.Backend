@@ -16,7 +16,7 @@
 
 
     // Internal libraries
-    use App\Http\Controllers\cacheControllers\security\RedisCacheCSRFController;
+    use app\cache\Controllers\security\RedisCacheCSRFController;
     use App\Http\Controllers\templates\ControllerMessages;
     use App\Http\Controllers\templates\CrudController;
 

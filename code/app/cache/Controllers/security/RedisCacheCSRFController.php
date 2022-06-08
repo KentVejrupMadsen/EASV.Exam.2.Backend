@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\cacheControllers\security;
+    namespace app\cache\Controllers\security;
 
     // External libraries
     use Illuminate\Support\Facades\Redis;
