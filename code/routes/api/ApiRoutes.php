@@ -18,10 +18,11 @@
     require_once 'security/SecurityRoutes.php';
     require_once 'status/StatusRoutes.php';
 
+    // Constants used multiple times
     const ACTION_CREATE = 'create';
     const ACTION_UPDATE = 'update';
     const ACTION_DELETE = 'delete';
-    const ACTION_READ = 'read';
+    const ACTION_READ   = 'read';
 
     const SanctumMiddleware = 'auth:sanctum';
 
