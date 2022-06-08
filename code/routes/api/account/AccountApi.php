@@ -6,14 +6,14 @@
      * Serves the routes for the account models.
      */
     // Internal libraries
-    use App\Http\Controllers\httpControllers\account\AccountController;
+use App\Http\Controllers\httpControllers\account\AccountController;
+use App\Routes\Controllers\RouteController;
+use Illuminate\Support\Facades\Route;
 
-    // External libraries
-    use Illuminate\Support\Facades\Route;
-    use App\Http\Controllers\RouteController;
+// External libraries
 
 
-    /**
+/**
      *
      */
     class AccountApi

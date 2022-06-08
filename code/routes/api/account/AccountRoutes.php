@@ -10,10 +10,10 @@
     require_once 'NewsletterApi.php';
     require_once 'AccountApi.php';
 
-    use App\Http\Controllers\NodesController;
+use App\Routes\Controllers\NodesController;
 
 
-    /**
+/**
      *
      */
     class AccountRoutes

@@ -10,10 +10,10 @@
     require_once 'EmailApi.php';
     require_once 'NameApi.php';
 
-    use App\Http\Controllers\NodesController;
+use App\Routes\Controllers\NodesController;
 
 
-    /**
+/**
      *
      */
     class EntitiesRoutes

@@ -5,13 +5,13 @@
      * Description:
      *
      */
-    use Illuminate\Support\Facades\Route;
 
-    use App\Http\Controllers\httpControllers\options\StateController;
-    use App\Http\Controllers\RouteController;
+use App\Http\Controllers\httpControllers\options\StateController;
+use App\Routes\Controllers\RouteController;
+use Illuminate\Support\Facades\Route;
 
 
-    /**
+/**
      *
      */
     class StateApi

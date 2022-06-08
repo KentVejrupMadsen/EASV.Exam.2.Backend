@@ -10,10 +10,10 @@
     require_once 'SecurityConfigurationApi.php';
     require_once 'SecurityRecapApi.php';
 
-    use App\Http\Controllers\NodesController;
+use App\Routes\Controllers\NodesController;
 
 
-    /**
+/**
      *
      */
     class SecurityRoutes

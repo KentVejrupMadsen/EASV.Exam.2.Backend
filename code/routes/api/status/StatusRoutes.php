@@ -5,13 +5,13 @@
      * Description:
      *
      */
-    use Illuminate\Support\Facades\Route;
 
-    use App\Http\Controllers\httpControllers\status\HealthController;
-    use App\Http\Controllers\NodesController;
+use App\Http\Controllers\httpControllers\status\HealthController;
+use App\Routes\Controllers\NodesController;
+use Illuminate\Support\Facades\Route;
 
 
-    /**
+/**
      *
      */
     class StatusRoutes

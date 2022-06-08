@@ -9,14 +9,14 @@
         view, update and delete they own data.
      */
     // External library
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\httpControllers\account\entities\PersonNameController;
+use App\Routes\Controllers\RouteController;
+use Illuminate\Support\Facades\Route;
 
-    // Internal library
-    use App\Http\Controllers\httpControllers\account\entities\PersonNameController;
-    use App\Http\Controllers\RouteController;
+// Internal library
 
 
-    /**
+/**
      *
      */
     class NameApi

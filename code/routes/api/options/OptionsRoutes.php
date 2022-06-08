@@ -9,10 +9,10 @@
     require_once 'FindApi.php';
     require_once 'StateApi.php';
 
-    use App\Http\Controllers\NodesController;
+use App\Routes\Controllers\NodesController;
 
 
-    /**
+/**
      *
      */
     class OptionsRoutes

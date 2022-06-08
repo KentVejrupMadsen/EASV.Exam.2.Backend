@@ -6,14 +6,14 @@
      *
      */
     // External libraries
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\httpControllers\tools\TaskController;
+use App\Routes\Controllers\RouteController;
+use Illuminate\Support\Facades\Route;
 
-    // Internal libraries
-    use App\Http\Controllers\httpControllers\tools\TaskController;
-    use App\Http\Controllers\RouteController;
+// Internal libraries
 
 
-    /**
+/**
      *
      */
     class TaskApi

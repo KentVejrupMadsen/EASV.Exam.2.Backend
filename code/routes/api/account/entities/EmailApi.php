@@ -8,14 +8,14 @@
           interact with his / her own data and view it 'specifically'.
      */
     // External libraries
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
+use App\Routes\Controllers\RouteController;
+use Illuminate\Support\Facades\Route;
 
-    // Internal libraries
-    use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
-    use App\Http\Controllers\RouteController;
+// Internal libraries
 
 
-    /**
+/**
      *
      */
     class EmailApi

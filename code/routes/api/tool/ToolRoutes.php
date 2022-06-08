@@ -11,10 +11,10 @@
     require_once 'ProjectApi.php';
     require_once 'TaskApi.php';
 
-    use App\Http\Controllers\NodesController;
+use App\Routes\Controllers\NodesController;
 
 
-    /**
+/**
      *
      */
     class ToolRoutes
