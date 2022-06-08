@@ -26,7 +26,7 @@
 
     #[OA\Schema( title: 'Find Controller',
                  description: '',
-                 type: 'controller' )]
+                 type: self::model_type )]
     class FindController
         extends ControllerOption
     {

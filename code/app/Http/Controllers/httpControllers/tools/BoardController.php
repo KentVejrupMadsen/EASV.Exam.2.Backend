@@ -24,7 +24,7 @@
      */
     #[OA\Schema( title: 'Board Controller',
                  description: '',
-                 type: 'controller' )]
+                 type: self::model_type )]
     class BoardController
         extends ControllerPipeline
     {

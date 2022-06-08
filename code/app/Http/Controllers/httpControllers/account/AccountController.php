@@ -35,7 +35,7 @@
      */
     #[OA\Schema( title: 'Account Controller',
                  description: '',
-                 type: 'controller' )]
+                 type: self::model_type )]
     class AccountController
         extends ControllerPipeline
     {

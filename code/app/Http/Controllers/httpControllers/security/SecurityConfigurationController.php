@@ -23,7 +23,7 @@
      */
     #[OA\Schema( title: 'Security Configuration Controller',
                  description: '',
-                 type: 'controller' )]
+                 type: self::model_type )]
     class SecurityConfigurationController
         extends CrudController
     {

@@ -24,7 +24,7 @@
      */
     #[OA\Schema( title: 'Task Controller',
                  description: '',
-                 type: 'controller' )]
+                 type: self::model_type )]
     class TaskController
         extends ControllerPipeline
     {

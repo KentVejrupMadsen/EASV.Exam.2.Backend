@@ -23,7 +23,7 @@
      */
     #[OA\Schema( title: 'Security Recaptcha Controller',
                  description: '',
-                 type: 'controller' )]
+                 type: self::model_type )]
     class SecurityRecaptchaController
         extends CrudController
     {

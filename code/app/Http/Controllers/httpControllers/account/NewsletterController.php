@@ -30,7 +30,7 @@
      */
     #[OA\Schema( title: 'Newsletter Controller',
                  description: '',
-                 type: 'controller')]
+                 type: self::model_type)]
     class NewsletterController
         extends ControllerPipeline
     {

@@ -24,7 +24,7 @@
      */
     #[OA\Schema( title: 'Kanban Controller',
                 description: '',
-                type: 'controller' )]
+                type: self::model_type )]
     class KanbanController
         extends ControllerPipeline
     {

@@ -28,7 +28,7 @@
      */
     #[OA\Schema( title: 'Account Information Controller',
                  description: '',
-                 type: 'controller')]
+                 type: self::model_type )]
     class InformationController
         extends ControllerPipeline
     {

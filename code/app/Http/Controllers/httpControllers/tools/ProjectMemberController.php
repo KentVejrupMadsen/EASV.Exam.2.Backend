@@ -24,7 +24,7 @@
      */
     #[OA\Schema( title: 'Project Member Controller',
                  description: '',
-                 type: 'controller' )]
+                 type: self::model_type )]
     class ProjectMemberController
         extends ControllerPipeline
     {

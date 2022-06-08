@@ -25,7 +25,7 @@
      */
     #[OA\Schema( title: 'Person Address Controller',
                  description: '',
-                 type: 'controller')]
+                 type: self::model_type)]
     class PersonAddressController
         extends ControllerPipeline
     {

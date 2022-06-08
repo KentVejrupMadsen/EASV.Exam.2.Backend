@@ -26,7 +26,7 @@
 
     #[OA\Schema( title: 'State Controller',
                  description: '',
-                 type: 'controller' )]
+                 type: self::model_type )]
     class StateController
         extends ControllerOption
     {

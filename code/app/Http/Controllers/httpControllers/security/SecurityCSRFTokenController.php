@@ -33,7 +33,7 @@
      */
     #[OA\Schema( title: 'Security CSRF Token Controller',
                  description: '',
-                 type: 'controller' )]
+                 type: self::model_type )]
     class SecurityCSRFTokenController
         extends CrudController
     {

@@ -24,7 +24,7 @@
      */
     #[OA\Schema( title: 'Person Email Controller',
                  description: '',
-                 type: 'controller' )]
+                 type: self::model_type )]
     class PersonEmailController
         extends ControllerPipeline
     {
