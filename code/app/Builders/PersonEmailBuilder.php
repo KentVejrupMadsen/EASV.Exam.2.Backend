@@ -1,5 +1,5 @@
 <?php
-    namespace App\Migrators;
+    namespace App\Builders;
 
     use App\Models\tables\AccountEmailModel;
     use Carbon\Carbon;
@@ -11,7 +11,7 @@
     /**
      *
      */
-    class PersonEmailMigrator
+    class PersonEmailBuilder
     {
         public function __construct()
         {
@@ -47,26 +47,26 @@
 
 
         // Variables
-        private static ?PersonEmailMigrator $singleton =  null;
+        private static ?PersonEmailBuilder $singleton =  null;
 
         /**
-         * @return PersonEmailMigrator|null
+         * @return PersonEmailBuilder|null
          */
-        public static function getSingleton(): ?PersonEmailMigrator
+        public static function getSingleton(): ?PersonEmailBuilder
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new PersonEmailMigrator() );
+                self::setSingleton( new PersonEmailBuilder() );
             }
 
             return self::$singleton;
         }
 
         /**
-         * @param PersonEmailMigrator|null $singleton
+         * @param PersonEmailBuilder|null $singleton
          * @return void
          */
-        public static function setSingleton( ?PersonEmailMigrator $singleton ): void
+        public static function setSingleton( ?PersonEmailBuilder $singleton ): void
         {
             self::$singleton = $singleton;
         }

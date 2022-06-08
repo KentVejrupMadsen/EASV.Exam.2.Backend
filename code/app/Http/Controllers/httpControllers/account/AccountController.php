@@ -23,8 +23,8 @@
 
     use App\Http\Requests\account\AccountRequest;
 
-    use App\Migrators\AccountMigrator;
-    use App\Migrators\PersonEmailMigrator;
+    use App\Builders\AccountBuilder;
+    use App\Builders\PersonEmailBuilder;
 
     use App\Models\tables\User;
     use App\Models\tables\AccountEmailModel;
@@ -409,7 +409,7 @@
             {
                 $personContainer = $form[ 'person' ];
 
-                $emailConstructor = PersonEmailMigrator::getSingleton();
+                $emailConstructor = PersonEmailBuilder::getSingleton();
 
                 if( !$emailConstructor->hasEmailContainer( $personContainer[ 'email' ] ) )
                 {
@@ -636,11 +636,11 @@
         }
 
         /**
-         * @return AccountMigrator|null
+         * @return AccountBuilder|null
          */
-        public static final function getConstructor(): ?AccountMigrator
+        public static final function getConstructor(): ?AccountBuilder
         {
-            return AccountMigrator::getSingleton();
+            return AccountBuilder::getSingleton();
         }
 
         /**

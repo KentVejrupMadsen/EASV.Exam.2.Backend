@@ -1,5 +1,5 @@
 <?php
-    namespace App\Migrators;
+    namespace App\Builders;
 
     use Carbon\Carbon;
     use Illuminate\Support\Facades\Hash;
@@ -11,7 +11,7 @@
     /**
      *
      */
-    class AccountMigrator
+    class AccountBuilder
     {
         /**
          *
@@ -22,7 +22,7 @@
         }
 
         // Variables
-        private static ?AccountMigrator $singleton =  null;
+        private static ?AccountBuilder $singleton =  null;
 
 
         /**
@@ -90,22 +90,22 @@
 
         // Accessors
         /**
-         * @return AccountMigrator|null
+         * @return AccountBuilder|null
          */
-        public static function getSingleton(): ?AccountMigrator
+        public static function getSingleton(): ?AccountBuilder
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new AccountMigrator() );
+                self::setSingleton( new AccountBuilder() );
             }
 
             return self::$singleton;
         }
 
         /**
-         * @param AccountMigrator|null $singleton
+         * @param AccountBuilder|null $singleton
          */
-        public static function setSingleton( ?AccountMigrator $singleton ): void
+        public static function setSingleton( ?AccountBuilder $singleton ): void
         {
             self::$singleton = $singleton;
         }

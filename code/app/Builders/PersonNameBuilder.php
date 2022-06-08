@@ -1,5 +1,5 @@
 <?php
-    namespace App\Migrators;
+    namespace App\Builders;
 
     use Carbon\Carbon;
     use Illuminate\Support\Str;
@@ -10,33 +10,35 @@
     /**
      *
      */
-    class PersonAddressMigrator
+    class PersonNameBuilder
     {
         public function __construct()
         {
 
         }
 
+
+
         // Variables
-        private static ?AccountMigrator $singleton =  null;
+        private static ?PersonNameBuilder $singleton =  null;
 
         /**
-         * @return AccountMigrator|null
+         * @return PersonNameBuilder|null
          */
-        public static function getSingleton(): ?AccountMigrator
+        public static function getSingleton(): ?PersonNameBuilder
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new AccountMigrator() );
+                self::setSingleton( new PersonNameBuilder() );
             }
 
             return self::$singleton;
         }
 
         /**
-         * @param AccountMigrator|null $singleton
+         * @param PersonNameBuilder|null $singleton
          */
-        public static function setSingleton( ?AccountMigrator $singleton ): void
+        public static function setSingleton( ?PersonNameBuilder $singleton ): void
         {
             self::$singleton = $singleton;
         }

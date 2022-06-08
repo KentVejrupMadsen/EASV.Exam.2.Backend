@@ -1,5 +1,5 @@
 <?php
-    namespace App\Migrators;
+    namespace App\Builders;
 
     use Carbon\Carbon;
     use Illuminate\Support\Str;
@@ -10,7 +10,7 @@
     /**
      *
      */
-    class SecurityCSRFMigrator
+    class SecurityCSRFBuilder
     {
         public function __construct()
         {
@@ -301,23 +301,23 @@
         }
 
         /**
-         * @return SecurityCSRFMigrator
+         * @return SecurityCSRFBuilder
          */
-        public final static function getFactory(): SecurityCSRFMigrator
+        public final static function getFactory(): SecurityCSRFBuilder
         {
             if( is_null( self::$factory ) )
             {
-                self::setFactory( new SecurityCSRFMigrator() );
+                self::setFactory( new SecurityCSRFBuilder() );
             }
 
             return self::$factory;
         }
 
         /**
-         * @param SecurityCSRFMigrator $factory
+         * @param SecurityCSRFBuilder $factory
          * @return void
          */
-        protected final static function setFactory(SecurityCSRFMigrator $factory ): void
+        protected final static function setFactory(SecurityCSRFBuilder $factory ): void
         {
             self::$factory = $factory;
         }
