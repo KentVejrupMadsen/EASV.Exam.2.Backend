@@ -28,12 +28,12 @@
         }
 
         // Variable
-        const route = 'recaptcha';
+        private const route = 'recaptcha';
 
-        const create_route =  ACTION_CREATE;
-        const delete_route =  ACTION_DELETE;
-        const read_route   =  ACTION_READ;
-        const update_route =  ACTION_UPDATE;
+        private const create_route =  ACTION_CREATE;
+        private const delete_route =  ACTION_DELETE;
+        private const read_route   =  ACTION_READ;
+        private const update_route =  ACTION_UPDATE;
 
 
         /**

@@ -81,7 +81,7 @@
     /**
      * @return void
      */
-    function MakeAccountApi()
+    function MakeAccountApi(): void
     {
         $api = new AccountApi();
         $api->run();

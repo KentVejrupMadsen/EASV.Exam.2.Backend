@@ -3,10 +3,9 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * 
-     */
-    use Illuminate\Support\Facades\Route;
 
+     */
+    // Internal libraries
     require_once 'FindApi.php';
     require_once 'StateApi.php';
 
@@ -19,7 +18,7 @@
     class OptionsRoutes
         extends NodesController
     {
-        const options_route = 'options';
+        private const options_route = 'options';
 
         /**
          *

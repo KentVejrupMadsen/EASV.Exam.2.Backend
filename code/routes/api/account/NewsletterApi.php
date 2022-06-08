@@ -57,7 +57,7 @@
     /**
      * @return void
      */
-    function MakeNewsletterApi()
+    function MakeNewsletterApi(): void
     {
         $newsletter = new NewsletterApi();
         $newsletter->run();

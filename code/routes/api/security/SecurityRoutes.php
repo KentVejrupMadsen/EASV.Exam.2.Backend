@@ -5,11 +5,13 @@
      * Description:
      *
      */
+    // Internal Libraries
     require_once 'SecurityCSRFApi.php';
     require_once 'SecurityConfigurationApi.php';
     require_once 'SecurityRecapApi.php';
 
     use App\Http\Controllers\NodesController;
+
 
     /**
      *
@@ -17,7 +19,7 @@
     class SecurityRoutes
         extends NodesController
     {
-        const SecurityRoute = 'securities';
+        private const SecurityRoute = 'securities';
 
         /**
          *

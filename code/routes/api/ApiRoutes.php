@@ -32,9 +32,6 @@
     class ApiRoutes
         extends NodesController
     {
-        private const CURRENT_VERSION = '1.0.0';
-        private const VersionUrl = '/' . self::CURRENT_VERSION;
-
         /**
          *
          */
@@ -42,6 +39,10 @@
         {
             $this->setNodeRouteName( self::VersionUrl );
         }
+
+        // Variables
+        private const CURRENT_VERSION = '1.0.0';
+        private const VersionUrl = '/' . self::CURRENT_VERSION;
 
 
         /**
@@ -72,5 +73,6 @@
         $node->run();
     }
 
+    // Route Entry -> Starts the routing process
     ApiRoutes();
 ?>

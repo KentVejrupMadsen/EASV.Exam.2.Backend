@@ -3,7 +3,7 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     *
+        Setups a 'node route'. It makes the route prefix for account entities.
      */
     // Internally
     require_once 'AddressApi.php';
@@ -19,7 +19,7 @@
     class EntitiesRoutes
         extends NodesController
     {
-        const EntityRoute = 'entities';
+        private const EntityRoute = 'entities';
 
         /**
          *

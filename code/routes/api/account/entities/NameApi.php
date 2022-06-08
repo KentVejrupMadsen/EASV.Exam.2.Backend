@@ -31,13 +31,13 @@
             $this->setSecurityMiddleware( SanctumMiddleware );
         }
 
-        //
-        const route = 'name';
+        // Variables
+        private const route = 'name';
 
-        const read_route = ACTION_READ;
-        const create_route = ACTION_CREATE;
-        const update_route = ACTION_UPDATE;
-        const delete_route = ACTION_DELETE;
+        private const read_route = ACTION_READ;
+        private const create_route = ACTION_CREATE;
+        private const update_route = ACTION_UPDATE;
+        private const delete_route = ACTION_DELETE;
 
 
         /**

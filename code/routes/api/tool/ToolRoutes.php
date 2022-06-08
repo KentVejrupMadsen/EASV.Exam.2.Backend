@@ -5,6 +5,7 @@
      * Description:
      * TODO: Make description
      */
+    // Internal libraries
     require_once 'BoardApi.php';
     require_once 'KanbanApi.php';
     require_once 'ProjectApi.php';
@@ -27,7 +28,7 @@
             $this->setNodeRouteName( self::ToolRoute );
         }
 
-        const ToolRoute = 'tools';
+        private const ToolRoute = 'tools';
 
 
         /**

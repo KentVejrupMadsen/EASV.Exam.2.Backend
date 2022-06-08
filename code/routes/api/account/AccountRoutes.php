@@ -3,11 +3,9 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     *
+        Setups a 'node route'. It makes the route prefix for accounts.
      */
-    // External libraries
-    use Illuminate\Support\Facades\Route;
-
+    // Internal libraries
     require_once 'entities/EntitiesRoutes.php';
     require_once 'NewsletterApi.php';
     require_once 'AccountApi.php';
@@ -21,7 +19,7 @@
     class AccountRoutes
         extends NodesController
     {
-        const accounts_route = 'accounts';
+        private const accounts_route = 'accounts';
 
         /**
          *

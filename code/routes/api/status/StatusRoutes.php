@@ -17,13 +17,17 @@
     class StatusRoutes
         extends NodesController
     {
-        const statusRoute = 'status';
-
         public function __construct()
         {
             $this->setNodeRouteName( self::statusRoute );
         }
 
+        //
+        private const statusRoute = 'status';
+
+        /**
+         * @return void
+         */
         protected function execute(): void
         {
             Route::controller( HealthController::class )->group

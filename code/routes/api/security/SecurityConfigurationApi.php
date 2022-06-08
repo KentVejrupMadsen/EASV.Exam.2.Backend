@@ -5,7 +5,6 @@
      * Description:
      *
      */
-
     // External libraries
     use Illuminate\Support\Facades\Route;
 
