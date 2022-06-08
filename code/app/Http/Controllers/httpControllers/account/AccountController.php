@@ -18,7 +18,7 @@
 
     // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Controllers\formatControllers\json\AccountResponseJSONFactory;
+    use App\Http\Controllers\formatters\json\AccountResponseJSONFactory;
     use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
 
     use App\Http\Requests\account\AccountRequest;

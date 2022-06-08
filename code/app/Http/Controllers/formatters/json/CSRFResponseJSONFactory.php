@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\formatControllers\json;
+    namespace App\Http\Controllers\formatters\json;
 
     // External libraries
     use Illuminate\Http\JsonResponse;

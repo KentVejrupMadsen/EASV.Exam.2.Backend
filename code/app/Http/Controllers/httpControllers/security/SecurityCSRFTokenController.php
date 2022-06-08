@@ -25,7 +25,7 @@
     use App\Models\security\CSRFModel;
     use App\Builders\SecurityCSRFBuilder;
 
-    use App\Http\Controllers\formatControllers\json\CSRFResponseJSONFactory;
+    use App\Http\Controllers\formatters\json\CSRFResponseJSONFactory;
 
 
     /**
