@@ -4,9 +4,9 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\httpControllers\options;
+    namespace App\Http\Controllers\models\options;
 
-    // External libraries
+    // External
     use Carbon\Carbon;
 
     use Illuminate\Http\Request;
@@ -18,16 +18,16 @@
     use OpenApi\Attributes
         as OA;
 
-    // Internal libraries
-    use App\Http\Controllers\templates\ControllerOption;
+    // Internal
     use App\Models\tables\AccountEmailModel;
-    use App\Http\Requests\options\StateRequest;
+    use App\Http\Requests\options\FindRequest;
+    use App\Http\Controllers\templates\ControllerOption;
 
 
-    #[OA\Schema( title: 'State Controller',
+    #[OA\Schema( title: 'Find Controller',
                  description: '',
                  type: self::model_type )]
-    class StateController
+    class FindController
         extends ControllerOption
     {
         /**
@@ -43,45 +43,42 @@
             }
         }
 
+
         // Variables
-        private static ?StateController $controller = null;
+        private static ?FindController $controller = null;
 
 
-        /**
-         * @param StateRequest $request
-         * @return void
-         */
-        #[OA\Post( path: '/api/1.0.0/options/state/email', tags: [ '1.0.0', 'account-options' ] )]
+        #[OA\Post( path: '/api/1.0.0/options/find/email', tags: [ '1.0.0', 'account-options' ] )]
         #[OA\Response( response: '200',
                        description: 'validates if the requested email is existing in the database as a json response.' ) ]
-        public final function publicState( StateRequest $request )
+        #[OA\Response( response: '404',
+                       description: 'content not found')]
+        public function publicFind( FindRequest $request )
         {
 
         }
 
-
-        // Accessors
+        // Accessor
         /**
-         * @param StateController $controller
+         * @param FindController $controller
          * @return void
          */
-        public static final function setSingleton( StateController $controller ): void
+        public static final function setSingleton( FindController $controller ): void
         {
             self::$controller = $controller;
         }
 
         /**
-         * @return StateController
+         * @return FindController
          */
-        public static final function getSingleton(): StateController
+        public static final function getSingleton(): FindController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new StateController() );
+                self::setSingleton( new FindController() );
             }
 
             return self::$controller;
         }
-
     }
 ?>

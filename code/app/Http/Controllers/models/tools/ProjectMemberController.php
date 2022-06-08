@@ -3,36 +3,35 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     *
+     * TODO: Make description
      */
-    namespace App\Http\Controllers\httpControllers\account\entities;
+    namespace App\Http\Controllers\models\tools;
 
-    // External libraries
+    // External Libraries
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
     use OpenApi\Attributes
         as OA;
 
-    // Internal Libraries
+    // Internal libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\account\entities\PersonAddressRequest;
-    use App\Models\tables\AddressModel;
+    use App\Http\Requests\tools\ToolsProjectMemberRequest;
 
 
     /**
-     * Account Email controller. That are used when getting "ask" by a computer for data.
+     *
      */
-    #[OA\Schema( title: 'Person Address Controller',
+    #[OA\Schema( title: 'Project Member Controller',
                  description: '',
-                 type: self::model_type)]
-    class PersonAddressController
+                 type: self::model_type )]
+    class ProjectMemberController
         extends ControllerPipeline
     {
         /**
          * @param bool $makeSingleton
          */
-        public function __construct( bool $makeSingleton = false )
+        public final function __construct( bool $makeSingleton = false )
         {
             parent::__construct();
 
@@ -42,11 +41,9 @@
             }
         }
 
-        // variables
-        private static ?PersonAddressController $controller = null;
+        // Variables
+        private static ?ProjectMemberController $controller = null;
 
-
-        //
         /**
          * @return bool
          */
@@ -60,10 +57,8 @@
          */
         public final function hasImplementedJSON(): bool
         {
-
-            return true;
+            return false;
         }
-
 
         /**
          * @return bool
@@ -72,7 +67,6 @@
         {
             return false;
         }
-
 
         /**
          * @param array $request
@@ -98,12 +92,11 @@
             if( !$this->hasImplementedJSON() )
             {
                 // Not implemented
-                abort( 501 );
+                abort(501);
             }
 
             return null;
         }
-
 
         /**
          * @param array $request
@@ -119,22 +112,13 @@
 
             return null;
         }
-
-        // Code
+        
         /**
-         * @param Request $request
-         * @return JsonResponse
+         * 
          */
-        public final function read( Request $request ): JsonResponse
-        {
-
-            return Response()->json(null, 200);
-        }
-
-
-        #[OA\Get( path: '/api/1.0.0/accounts/entities/address/read', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Post( path: '/api/1.0.0/tools/project/group/create', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data',
+                       description: 'The',
                        content:
                        [
                            new OA\JsonContent(),
@@ -146,18 +130,60 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_read( PersonAddressRequest $request )
+        public final function public_create( ToolsProjectMemberRequest $request )
+        {
+            return $this->create( $request );
+        }
+
+        /**
+         * @param Request $request
+         * @return void
+         */
+        public final function create( Request $request )
+        {
+
+            return null;
+        }
+
+
+        /**
+         * 
+         */
+        #[OA\Get( path: '/api/1.0.0/tools/project/group/read', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Response( response: '200',
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found')]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_read( ToolsProjectMemberRequest $request )
         {
 
             return $this->read( $request );
         }
 
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function read( Request $request )
+        {
+
+            return null;
+        }
+
 
         /**
-         * @param PersonAddressRequest $request
-         * @return false
+         * 
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/entities/address/delete', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Patch( path: '/api/1.0.0/tools/project/group/update', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -171,7 +197,41 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public function public_delete( PersonAddressRequest $request )
+        public final function public_update( ToolsProjectMemberRequest $request )
+        {
+
+            return $this->update( $request );
+        }
+
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function update( Request $request )
+        {
+
+            return null;
+        }
+
+
+        /**
+         * 
+         */
+        #[OA\Delete( path: '/api/1.0.0/tools/project/group/delete', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Response( response: '200',
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_delete( ToolsProjectMemberRequest $request )
         {
 
             return $this->delete( $request );
@@ -179,102 +239,36 @@
 
         /**
          * @param Request $request
-         * @return false
+         * @return void
          */
         public final function delete( Request $request )
         {
 
-            return false;
-        }
-
-
-        /**
-         * 
-         */
-        #[OA\Post( path: '/api/1.0.0/accounts/entities/address/create', tags: [ '1.0.0', 'account-additional' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function public_create( PersonAddressRequest $request )
-        {
-            return $this->create( $request );
-        }
-
-        /**
-         * @param Request $request
-         * @return JsonResponse|null
-         */
-        public final function create( Request $request ): ?JsonResponse
-        {
             return null;
-        }
-
-
-
-        /**
-         * 
-         */
-        #[OA\Patch( path: '/api/1.0.0/accounts/entities/address/update', tags: [ '1.0.0', 'account-additional' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function public_update( PersonAddressRequest $request ): JsonResponse
-        {
-            return $this->update( $request );
-        }
-
-
-        /**
-         * @param Request $request
-         * @return JsonResponse
-         */
-        public final function update( Request $request ): JsonResponse
-        {
-            return Response()->json( null, 200 );
         }
 
 
         // Accessors
         /**
-         * @return PersonAddressController
+         * @param ProjectMemberController $controller
+         * @return void
          */
-        public static function getSingleton(): PersonAddressController
+        public static final function setSingleton( ProjectMemberController $controller ): void
         {
-            if( is_null( self::$controller ) )
-            {
-                self::setSingleton( new PersonAddressController() );
-            }
-
-            return self::$controller;
+            self::$controller = $controller;
         }
 
         /**
-         * @param PersonAddressController $controller
-         * @return void
+         * @return ProjectMemberController
          */
-        protected final static function setSingleton( PersonAddressController $controller )
+        public static final function getSingleton(): ProjectMemberController
         {
-            self::$controller = $controller;
+            if( is_null( self::$controller ) )
+            {
+                self::setSingleton( new ProjectMemberController() );
+            }
+
+            return self::$controller;
         }
     }
 ?>

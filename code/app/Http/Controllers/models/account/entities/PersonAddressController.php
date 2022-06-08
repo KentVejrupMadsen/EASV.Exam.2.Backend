@@ -3,35 +3,30 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     *
      */
-    namespace App\Http\Controllers\httpControllers\account;
+    namespace App\Http\Controllers\models\account\entities;
 
-    // External Libraries
-    use Carbon\Carbon;
-
+    // External libraries
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Auth;
-    use Illuminate\Support\Facades\Hash;
-    use Illuminate\Support\Str;
 
     use OpenApi\Attributes
         as OA;
 
-    // internal Libraries
+    // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\account\NewsletterRequest;
-    use App\Models\tables\NewsletterSubscriptionModel;
+    use App\Http\Requests\account\entities\PersonAddressRequest;
+    use App\Models\tables\AddressModel;
 
 
     /**
-     *
+     * Account Email controller. That are used when getting "ask" by a computer for data.
      */
-    #[OA\Schema( title: 'Newsletter Controller',
+    #[OA\Schema( title: 'Person Address Controller',
                  description: '',
                  type: self::model_type)]
-    class NewsletterController
+    class PersonAddressController
         extends ControllerPipeline
     {
         /**
@@ -47,11 +42,11 @@
             }
         }
 
-        // Variables
-        private static ?NewsletterController $controller = null;
+        // variables
+        private static ?PersonAddressController $controller = null;
 
 
-        // implement output
+        //
         /**
          * @return bool
          */
@@ -65,23 +60,25 @@
          */
         public final function hasImplementedJSON(): bool
         {
-            return false;
+
+            return true;
         }
+
 
         /**
          * @return bool
          */
         public final function hasImplementedXML(): bool
         {
-
             return false;
         }
+
 
         /**
          * @param array $request
          * @return array|null
          */
-        public final function pipelineTowardCSV( array $request ): ?array
+        public final function pipelineTowardCSV( Array $request ): ?array
         {
             if( !$this->hasImplementedCSV() )
             {
@@ -96,22 +93,23 @@
          * @param array $request
          * @return JsonResponse|null
          */
-        public final function pipelineTowardJSON( array $request ): ?JsonResponse
+        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
         {
             if( !$this->hasImplementedJSON() )
             {
                 // Not implemented
-                abort(501);
+                abort( 501 );
             }
 
             return null;
         }
 
+
         /**
          * @param array $request
          * @return array|null
          */
-        public final function pipelineTowardXML( array $request ): ?array
+        public final function pipelineTowardXML( Array $request ): ?array
         {
             if( !$this->hasImplementedXML() )
             {
@@ -122,27 +120,7 @@
             return null;
         }
 
-        /**
-         * @param Request $request
-         * @return JsonResponse
-         */
-        #[OA\Get( path: '/api/1.0.0/accounts/newsletter/read', tags: [ '1.0.0', 'newsletter' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        public final function public_read( Request $request ): JsonResponse
-        {
-
-            return Response()->json();
-        }
-
+        // Code
         /**
          * @param Request $request
          * @return JsonResponse
@@ -150,15 +128,11 @@
         public final function read( Request $request ): JsonResponse
         {
 
-            return Response()->json();
+            return Response()->json(null, 200);
         }
 
 
-        /**
-         * @param Request $request
-         * @return JsonResponse
-         */
-        #[OA\Post( path: '/api/1.0.0/accounts/newsletter/create', tags: [ '1.0.0', 'newsletter' ])]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/address/read', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -169,24 +143,21 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_create( Request $request )
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_read( PersonAddressRequest $request )
         {
 
-            return Response()->json(null, 200);
-        }
-
-        public final function create( Request $request )
-        {
-
-            return Response()->json(null, 200);
+            return $this->read( $request );
         }
 
 
         /**
-         * @param Request $request
-         * @return JsonResponse
+         * @param PersonAddressRequest $request
+         * @return false
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/newsletter/update', tags: [ '1.0.0', 'newsletter' ] )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/address/delete', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -197,11 +168,81 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_update( Request $request ): JsonResponse
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public function public_delete( PersonAddressRequest $request )
         {
 
-            return Response()->json(null, 200);
+            return $this->delete( $request );
         }
+
+        /**
+         * @param Request $request
+         * @return false
+         */
+        public final function delete( Request $request )
+        {
+
+            return false;
+        }
+
+
+        /**
+         * 
+         */
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/address/create', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Response( response: '200',
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_create( PersonAddressRequest $request )
+        {
+            return $this->create( $request );
+        }
+
+        /**
+         * @param Request $request
+         * @return JsonResponse|null
+         */
+        public final function create( Request $request ): ?JsonResponse
+        {
+            return null;
+        }
+
+
+
+        /**
+         * 
+         */
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/address/update', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Response( response: '200',
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_update( PersonAddressRequest $request ): JsonResponse
+        {
+            return $this->update( $request );
+        }
+
 
         /**
          * @param Request $request
@@ -209,62 +250,31 @@
          */
         public final function update( Request $request ): JsonResponse
         {
-
-            return Response()->json(null, 200);
+            return Response()->json( null, 200 );
         }
 
 
+        // Accessors
         /**
-         * @param Request $request
-         * @return JsonResponse
+         * @return PersonAddressController
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/newsletter/delete', tags: [ '1.0.0', 'newsletter' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        public final function public_delete( Request $request ): JsonResponse
-        {
-
-            return Response()->json(null, 200);
-        }
-
-        /**
-         * @param Request $request
-         * @return JsonResponse
-         */
-        public final function delete( Request $request ): JsonResponse
-        {
-
-            return Response()->json(null, 200);
-        }
-
-        /**
-         * @param NewsletterController $controller
-         * @return void
-         */
-        public static final function setSingleton( NewsletterController $controller )
-        {
-            self::$controller = $controller;
-        }
-
-        /**
-         * @return NewsletterController
-         */
-        public static final function getSingleton(): NewsletterController
+        public static function getSingleton(): PersonAddressController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new NewsletterController() );
+                self::setSingleton( new PersonAddressController() );
             }
 
             return self::$controller;
+        }
+
+        /**
+         * @param PersonAddressController $controller
+         * @return void
+         */
+        protected final static function setSingleton( PersonAddressController $controller )
+        {
+            self::$controller = $controller;
         }
     }
 ?>

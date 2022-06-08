@@ -5,33 +5,39 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\httpControllers\tools;
+    namespace App\Http\Controllers\models\account;
 
-    // External
+    // External Libraries
+    use Carbon\Carbon;
+
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Hash;
+    use Illuminate\Support\Str;
 
     use OpenApi\Attributes
         as OA;
 
-    // Internal
+    // internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\tools\ToolsBoardRequest;
+    use App\Http\Requests\account\NewsletterRequest;
+    use App\Models\tables\NewsletterSubscriptionModel;
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Board Controller',
+    #[OA\Schema( title: 'Newsletter Controller',
                  description: '',
-                 type: self::model_type )]
-    class BoardController
+                 type: self::model_type)]
+    class NewsletterController
         extends ControllerPipeline
     {
         /**
          * @param bool $makeSingleton
          */
-        public final function __construct( bool $makeSingleton = false )
+        public function __construct( bool $makeSingleton = false )
         {
             parent::__construct();
 
@@ -42,9 +48,10 @@
         }
 
         // Variables
-        private static ?BoardController $controller = null;
+        private static ?NewsletterController $controller = null;
 
 
+        // implement output
         /**
          * @return bool
          */
@@ -66,6 +73,7 @@
          */
         public final function hasImplementedXML(): bool
         {
+
             return false;
         }
 
@@ -73,7 +81,7 @@
          * @param array $request
          * @return array|null
          */
-        public final function pipelineTowardCSV( Array $request ): ?array
+        public final function pipelineTowardCSV( array $request ): ?array
         {
             if( !$this->hasImplementedCSV() )
             {
@@ -88,7 +96,7 @@
          * @param array $request
          * @return JsonResponse|null
          */
-        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
+        public final function pipelineTowardJSON( array $request ): ?JsonResponse
         {
             if( !$this->hasImplementedJSON() )
             {
@@ -103,7 +111,7 @@
          * @param array $request
          * @return array|null
          */
-        public final function pipelineTowardXML( Array $request ): ?array
+        public final function pipelineTowardXML( array $request ): ?array
         {
             if( !$this->hasImplementedXML() )
             {
@@ -113,40 +121,12 @@
 
             return null;
         }
-        
-
-        /**
-         * 
-         */
-        #[OA\Get( path: '/api/1.0.0/tools/board/read', tags: [ '1.0.0', 'tools' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data' )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function public_read( ToolsBoardRequest $request )
-        {
-
-            return $this->read( $request );
-        }
 
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
-        public final function read( Request $request )
-        {
-
-            return null;
-        }
-
-
-        /**
-         * 
-         */
-        #[OA\Post( path: '/api/1.0.0/tools/board/create', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Get( path: '/api/1.0.0/accounts/newsletter/read', tags: [ '1.0.0', 'newsletter' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -157,65 +137,56 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function public_create( ToolsBoardRequest $request )
+        public final function public_read( Request $request ): JsonResponse
         {
 
-            return $this->create( $request );
+            return Response()->json();
         }
 
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
+        public final function read( Request $request ): JsonResponse
+        {
+
+            return Response()->json();
+        }
+
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
+        #[OA\Post( path: '/api/1.0.0/accounts/newsletter/create', tags: [ '1.0.0', 'newsletter' ])]
+        #[OA\Response( response: '200',
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function public_create( Request $request )
+        {
+
+            return Response()->json(null, 200);
+        }
+
         public final function create( Request $request )
         {
 
-            return null;
+            return Response()->json(null, 200);
         }
 
-
-        /**
-         * 
-         */
-        #[OA\Patch( path: '/api/1.0.0/tools/board/update', tags: [ '1.0.0', 'tools' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Response( response: '404',
-                       description: 'content not found')]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function public_update( ToolsBoardRequest $request )
-        {
-
-            return $this->update( $request );
-        }
 
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
-        public final function update( Request $request )
-        {
-
-
-            return null;
-        }
-
-
-        /**
-         * 
-         */
-        #[OA\Delete( path: '/api/1.0.0/tools/board/delete', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/newsletter/update', tags: [ '1.0.0', 'newsletter' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -226,45 +197,71 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function public_delete( ToolsBoardRequest $request )
+        public final function public_update( Request $request ): JsonResponse
         {
 
-            return $this->delete( $request );
+            return Response()->json(null, 200);
         }
 
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
-        public final function delete( Request $request )
+        public final function update( Request $request ): JsonResponse
         {
 
-
-            return null;
+            return Response()->json(null, 200);
         }
 
 
-        // Accessors
         /**
-         * @param BoardController $controller
+         * @param Request $request
+         * @return JsonResponse
+         */
+        #[OA\Delete( path: '/api/1.0.0/accounts/newsletter/delete', tags: [ '1.0.0', 'newsletter' ] )]
+        #[OA\Response( response: '200',
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        public final function public_delete( Request $request ): JsonResponse
+        {
+
+            return Response()->json(null, 200);
+        }
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
+        public final function delete( Request $request ): JsonResponse
+        {
+
+            return Response()->json(null, 200);
+        }
+
+        /**
+         * @param NewsletterController $controller
          * @return void
          */
-        public static final function setSingleton( BoardController $controller ): void
+        public static final function setSingleton( NewsletterController $controller )
         {
             self::$controller = $controller;
         }
 
         /**
-         * @return BoardController
+         * @return NewsletterController
          */
-        public static final function getSingleton(): BoardController
+        public static final function getSingleton(): NewsletterController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new BoardController() );
+                self::setSingleton( new NewsletterController() );
             }
 
             return self::$controller;

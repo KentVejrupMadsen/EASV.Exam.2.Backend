@@ -5,34 +5,36 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\httpControllers\security;
+    namespace App\Http\Controllers\models\tools;
 
-    // External libraries
+    // External Libraries
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
     use OpenApi\Attributes
         as OA;
 
-    // Internal Libraries
-    use App\Http\Controllers\templates\CrudController;
-    use App\Http\Requests\security\SecurityConfigurationRequest;
+    // Internal code
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Http\Requests\tools\ToolsProjectRequest;
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Security Configuration Controller',
+    #[OA\Schema( title: 'Project Controller',
                  description: '',
                  type: self::model_type )]
-    class SecurityConfigurationController
-        extends CrudController
+    class ProjectController
+        extends ControllerPipeline
     {
-        //
         /**
          * @param bool $makeSingleton
          */
-        public function __construct( bool $makeSingleton = false )
+        public final function __construct( bool $makeSingleton = false )
         {
+            parent::__construct();
+
             if( $makeSingleton )
             {
                 self::setSingleton( $this );
@@ -40,84 +42,82 @@
         }
 
         // Variables
-        private static ?SecurityConfigurationController $controller = null;
+        private static ?ProjectController $controller = null;
 
 
-        // Functions that the routes interacts with
         /**
-         * @param SecurityConfigurationRequest $Request
-         * @return null
+         * @return bool
          */
-        #[OA\Get( path: '/api/1.0.0/securities/configuration/read', tags: [ '1.0.0', 'security' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function publicRead( SecurityConfigurationRequest $Request )
+        public final function hasImplementedCSV(): bool
         {
-            return $this->read( $Request );
+            return false;
         }
 
+        /**
+         * @return bool
+         */
+        public final function hasImplementedJSON(): bool
+        {
+            return false;
+        }
 
         /**
-         * @param Request $request
-         * @return null
+         * @return bool
          */
-        public final function read( Request $request )
+        public final function hasImplementedXML(): bool
         {
+            return false;
+        }
+
+        /**
+         * @param array $request
+         * @return array|null
+         */
+        public final function pipelineTowardCSV( Array $request ): ?array
+        {
+            if( !$this->hasImplementedCSV() )
+            {
+                // Not implemented
+                abort(501);
+            }
+            return null;
+        }
+
+        /**
+         * @param array $request
+         * @return JsonResponse|null
+         */
+        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
+        {
+            if( !$this->hasImplementedJSON() )
+            {
+                // Not implemented
+                abort(501);
+            }
 
             return null;
         }
 
-
         /**
-         * @param SecurityConfigurationRequest $Request
-         * @return null
+         * @param array $request
+         * @return array|null
          */
-        #[OA\Patch( path: '/api/1.0.0/securities/configuration/update', tags: [ '1.0.0', 'security' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function publicUpdate( SecurityConfigurationRequest $Request )
+        public final function pipelineTowardXML( Array $request ): ?array
         {
-            return $this->update( $Request );
-        }
-
-        /**
-         * @param Request $request
-         * @return null
-         */
-        public final function update( Request $request )
-        {
+            if( !$this->hasImplementedXML() )
+            {
+                // Not implemented
+                abort(501);
+            }
 
             return null;
         }
 
-
+        
         /**
-         * @param SecurityConfigurationRequest $Request
-         * @return null
+         * 
          */
-        #[OA\Post( path: '/api/1.0.0/securities/configuration/create', tags: [ '1.0.0', 'security' ] )]
+        #[OA\Post( path: '/api/1.0.0/tools/project/create', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -131,9 +131,10 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function publicCreate( SecurityConfigurationRequest $Request )
+        public final function public_create( ToolsProjectRequest $request )
         {
-            return $this->create( $Request );
+
+            return $this->create( $request );
         }
 
         /**
@@ -148,10 +149,9 @@
 
 
         /**
-         * @param SecurityConfigurationRequest $Request
-         * @return null
+         * 
          */
-        #[OA\Delete( path: '/api/1.0.0/securities/configuration/delete', tags: [ '1.0.0', 'security' ] )]
+        #[OA\Get( path: '/api/1.0.0/tools/project/read', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -165,11 +165,79 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function publicDelete( SecurityConfigurationRequest $Request )
+        public final function public_read( ToolsProjectRequest $request )
         {
-            return $this->delete( $Request );
+
+            return $this->read( $request );
         }
 
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function read( Request $request )
+        {
+
+            return null;
+        }
+
+
+        /**
+         * 
+         */
+        #[OA\Patch( path: '/api/1.0.0/tools/project/update', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Response( response: '200',
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_update( ToolsProjectRequest $request )
+        {
+
+            return $this->update( $request );
+        }
+
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function update( Request $request )
+        {
+
+            return null;
+        }
+
+
+        /**
+         * 
+         */
+        #[OA\Delete( path: '/api/1.0.0/tools/project/delete', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Response( response: '200',
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_delete( ToolsProjectRequest $request )
+        {
+
+            return $this->delete( $request );
+        }
 
         /**
          * @param Request $request
@@ -181,27 +249,23 @@
             return null;
         }
 
-
-        // Accessors
-            // Setters
         /**
-         * @param SecurityConfigurationController $controller
+         * @param ProjectController $controller
          * @return void
          */
-        public static final function setSingleton( SecurityConfigurationController $controller ): void
+        public static final function setSingleton( ProjectController $controller ): void
         {
             self::$controller = $controller;
         }
 
-            // Getters
         /**
-         * @return SecurityConfigurationController
+         * @return ProjectController
          */
-        public static final function getSingleton(): SecurityConfigurationController
+        public static final function getSingleton(): ProjectController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new SecurityConfigurationController() );
+                self::setSingleton( new ProjectController() );
             }
 
             return self::$controller;

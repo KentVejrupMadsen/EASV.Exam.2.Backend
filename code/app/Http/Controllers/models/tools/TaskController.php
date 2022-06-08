@@ -5,27 +5,27 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\httpControllers\tools;
+    namespace App\Http\Controllers\models\tools;
 
-    // External Libraries
+    // External
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
     use OpenApi\Attributes
         as OA;
 
-    // Internal libraries
+    // Internal
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\tools\ToolsProjectMemberRequest;
+    use App\Http\Requests\tools\ToolsKanbanRequest;
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Project Member Controller',
+    #[OA\Schema( title: 'Task Controller',
                  description: '',
                  type: self::model_type )]
-    class ProjectMemberController
+    class TaskController
         extends ControllerPipeline
     {
         /**
@@ -41,9 +41,10 @@
             }
         }
 
-        // Variables
-        private static ?ProjectMemberController $controller = null;
+        //
+        private static ?TaskController $controller = null;
 
+        //
         /**
          * @return bool
          */
@@ -112,13 +113,14 @@
 
             return null;
         }
-        
+
         /**
-         * 
+         * @param ToolsKanbanRequest $request
+         * @return null
          */
-        #[OA\Post( path: '/api/1.0.0/tools/project/group/create', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Post( path: '/api/1.0.0/tools/task/create', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The',
+                       description: 'create a new task for a kanban board',
                        content:
                        [
                            new OA\JsonContent(),
@@ -130,62 +132,32 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_create( ToolsProjectMemberRequest $request )
+        public final function public_create( ToolsKanbanRequest $request )
         {
+
+
             return $this->create( $request );
-        }
-
-        /**
-         * @param Request $request
-         * @return void
-         */
-        public final function create( Request $request )
-        {
-
-            return null;
-        }
-
-
-        /**
-         * 
-         */
-        #[OA\Get( path: '/api/1.0.0/tools/project/group/read', tags: [ '1.0.0', 'tools' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Response( response: '404',
-                       description: 'content not found')]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function public_read( ToolsProjectMemberRequest $request )
-        {
-
-            return $this->read( $request );
         }
 
         /**
          * @param Request $request
          * @return null
          */
-        public final function read( Request $request )
+        public final function create( Request $request )
         {
+
 
             return null;
         }
 
 
         /**
-         * 
+         * @param ToolsKanbanRequest $request
+         * @return JsonResponse
          */
-        #[OA\Patch( path: '/api/1.0.0/tools/project/group/update', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Get( path: '/api/1.0.0/tools/task/read', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data',
+                       description: 'read the content of a task',
                        content:
                        [
                            new OA\JsonContent(),
@@ -197,8 +169,46 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_update( ToolsProjectMemberRequest $request )
+        public final function public_read( ToolsKanbanRequest $request )
         {
+
+
+            return $this->read( $request );
+        }
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
+        public final function read( Request $request )
+        {
+
+
+            return Response()->json(null, 200);
+        }
+
+
+        /**
+         * @param ToolsKanbanRequest $request
+         * @return null
+         */
+        #[OA\Patch( path: '/api/1.0.0/tools/task/update', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Response( response: '200',
+                       description: 'updates the information for a specific task',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_update( ToolsKanbanRequest $request )
+        {
+
 
             return $this->update( $request );
         }
@@ -210,16 +220,19 @@
         public final function update( Request $request )
         {
 
+
+
             return null;
         }
 
 
         /**
-         * 
+         * @param ToolsKanbanRequest $request
+         * @return JsonResponse
          */
-        #[OA\Delete( path: '/api/1.0.0/tools/project/group/delete', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Delete( path: '/api/1.0.0/tools/task/delete', tags: [ '1.0.0', 'tools' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data',
+                       description: 'Delete a specific tasks.',
                        content:
                        [
                            new OA\JsonContent(),
@@ -231,15 +244,14 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_delete( ToolsProjectMemberRequest $request )
+        public final function public_delete( ToolsKanbanRequest $request )
         {
-
             return $this->delete( $request );
         }
 
         /**
          * @param Request $request
-         * @return void
+         * @return JsonResponse
          */
         public final function delete( Request $request )
         {
@@ -247,25 +259,24 @@
             return null;
         }
 
-
-        // Accessors
+        // Accessor
         /**
-         * @param ProjectMemberController $controller
+         * @param TaskController $controller
          * @return void
          */
-        public static final function setSingleton( ProjectMemberController $controller ): void
+        public static final function setSingleton( TaskController $controller ): void
         {
             self::$controller = $controller;
         }
 
         /**
-         * @return ProjectMemberController
+         * @return TaskController
          */
-        public static final function getSingleton(): ProjectMemberController
+        public static final function getSingleton(): TaskController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new ProjectMemberController() );
+                self::setSingleton( new TaskController() );
             }
 
             return self::$controller;

@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\httpControllers\tools;
+    namespace App\Http\Controllers\models\account\entities;
 
     // External Libraries
     use Illuminate\Http\JsonResponse;
@@ -14,24 +14,24 @@
     use OpenApi\Attributes
         as OA;
 
-    // Internal code
+    // Internal libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\tools\ToolsProjectRequest;
+    use App\Models\tables\AccountEmailModel;
 
 
     /**
-     *
+     * Account Email controller. That are used when getting "ask" by a computer for data.
      */
-    #[OA\Schema( title: 'Project Controller',
+    #[OA\Schema( title: 'Person Name Controller',
                  description: '',
                  type: self::model_type )]
-    class ProjectController
+    class PersonNameController
         extends ControllerPipeline
     {
         /**
          * @param bool $makeSingleton
          */
-        public final function __construct( bool $makeSingleton = false )
+        public function __construct( bool $makeSingleton = false )
         {
             parent::__construct();
 
@@ -42,9 +42,9 @@
         }
 
         // Variables
-        private static ?ProjectController $controller = null;
+        private static ?PersonNameController $controller = null;
 
-
+        // Code
         /**
          * @return bool
          */
@@ -58,7 +58,7 @@
          */
         public final function hasImplementedJSON(): bool
         {
-            return false;
+            return true;
         }
 
         /**
@@ -80,6 +80,7 @@
                 // Not implemented
                 abort(501);
             }
+
             return null;
         }
 
@@ -113,47 +114,14 @@
             return null;
         }
 
-        
-        /**
-         * 
-         */
-        #[OA\Post( path: '/api/1.0.0/tools/project/create', tags: [ '1.0.0', 'tools' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function public_create( ToolsProjectRequest $request )
-        {
-
-            return $this->create( $request );
-        }
 
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
-        public final function create( Request $request )
-        {
-
-            return null;
-        }
-
-
-        /**
-         * 
-         */
-        #[OA\Get( path: '/api/1.0.0/tools/project/read', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/name/read', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data',
+                       description: 'reads a specific person name entity values from the database table',
                        content:
                        [
                            new OA\JsonContent(),
@@ -165,29 +133,24 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_read( ToolsProjectRequest $request )
+        public final function public_read( Request $request ): JsonResponse
         {
-
             return $this->read( $request );
         }
 
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
-        public final function read( Request $request )
+        public final function read( Request $request ): JsonResponse
         {
-
-            return null;
+            return Response()->json(null, 200);
         }
 
 
-        /**
-         * 
-         */
-        #[OA\Patch( path: '/api/1.0.0/tools/project/update', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/name/delete', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data',
+                       description: 'deletes a specific person name entity from the database table',
                        content:
                        [
                            new OA\JsonContent(),
@@ -195,77 +158,109 @@
                        ]
         )]
         #[OA\Response( response: '404',
-                       description: 'content not found' )]
+                       description: 'content not found')]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_update( ToolsProjectRequest $request )
+        public final function public_delete( Request $request ): JsonResponse
         {
-
-            return $this->update( $request );
-        }
-
-        /**
-         * @param Request $request
-         * @return null
-         */
-        public final function update( Request $request )
-        {
-
-            return null;
-        }
-
-
-        /**
-         * 
-         */
-        #[OA\Delete( path: '/api/1.0.0/tools/project/delete', tags: [ '1.0.0', 'tools' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function public_delete( ToolsProjectRequest $request )
-        {
-
             return $this->delete( $request );
         }
 
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
-        public final function delete( Request $request )
+        public final function delete( Request $request ): JsonResponse
         {
+            return Response()->json(null, 200);
+        }
 
-            return null;
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/name/create', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Response( response: '200',
+                       description: 'creates a specific person name entity by inserting it into the database',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_create( Request $request ): JsonResponse
+        {
+            return $this->create( $request );
         }
 
         /**
-         * @param ProjectController $controller
+         * @param Request $request
+         * @return JsonResponse
+         */
+        public final function create( Request $request ): JsonResponse
+        {
+            return Response()->json(null, 200);
+        }
+
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/name/update', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Response( response: '200',
+                       description: 'updates the person entities name with a new name',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_update( Request $request ): JsonResponse
+        {
+            return $this->update( $request );
+        }
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
+        public final function update( Request $request ): JsonResponse
+        {
+            return Response()->json(null, 200);
+        }
+
+
+        // accessors
+        /**
+         * @param PersonNameController $controller
          * @return void
          */
-        public static final function setSingleton( ProjectController $controller ): void
+        public static final function setSingleton( PersonNameController $controller ): void
         {
             self::$controller = $controller;
         }
 
         /**
-         * @return ProjectController
+         * @return PersonNameController
          */
-        public static final function getSingleton(): ProjectController
+        public static final function getSingleton(): PersonNameController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new ProjectController() );
+                self::setSingleton( new PersonNameController() );
             }
 
             return self::$controller;

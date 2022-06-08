@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\httpControllers\security;
+    namespace App\Http\Controllers\models\security;
 
     // External libraries
     use Illuminate\Http\JsonResponse;

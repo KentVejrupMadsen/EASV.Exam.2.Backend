@@ -5,9 +5,11 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\httpControllers\tools;
+    namespace App\Http\Controllers\models\account;
 
-    // External Libraries
+    // External libraries
+    use Carbon\Carbon;
+
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
@@ -16,22 +18,24 @@
 
     // Internal libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\tools\ToolsKanbanRequest;
+
+    use App\Models\tables\AccountInformationModel;
+    use App\Http\Requests\account\InformationRequest;
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Kanban Controller',
-                description: '',
-                type: self::model_type )]
-    class KanbanController
+    #[OA\Schema( title: 'Account Information Controller',
+                 description: '',
+                 type: self::model_type )]
+    class InformationController
         extends ControllerPipeline
     {
         /**
          * @param bool $makeSingleton
          */
-        public final function __construct( bool $makeSingleton = false )
+        public function __construct( bool $makeSingleton = false )
         {
             parent::__construct();
 
@@ -42,10 +46,10 @@
         }
 
         // Variables
-        private static ?KanbanController $controller = null;
+        private static ?InformationController $controller = null;
 
 
-        // Code
+        // implement output
         /**
          * @return bool
          */
@@ -62,6 +66,7 @@
             return false;
         }
 
+
         /**
          * @return bool
          */
@@ -69,6 +74,7 @@
         {
             return false;
         }
+
 
         /**
          * @param array $request
@@ -85,6 +91,7 @@
             return null;
         }
 
+
         /**
          * @param array $request
          * @return JsonResponse|null
@@ -99,6 +106,7 @@
 
             return null;
         }
+
 
         /**
          * @param array $request
@@ -116,9 +124,10 @@
         }
 
         /**
-         * 
+         * @param Request $request
+         * @return null
          */
-        #[OA\Post( path: '/api/1.0.0/tools/kanban/create', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Get( path: '/api/1.0.0/accounts/information/read', tags: [ '1.0.0', 'account', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -127,22 +136,20 @@
                            new OA\XmlContent()
                        ]
         )]
-        #[OA\Response( response: '404',
-                        description: 'content not found' )]
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_create( ToolsKanbanRequest $request )
+        public final function public_read( Request $request )
         {
 
-            return $this->create( $request );
+            return $this->read( $request );
         }
 
         /**
          * @param Request $request
          * @return null
          */
-        public final function create( Request $request )
+        public final function read( Request $request )
         {
 
             return null;
@@ -150,9 +157,10 @@
 
 
         /**
-         * 
+         * @param Request $request
+         * @return null
          */
-        #[OA\Patch( path: '/api/1.0.0/tools/kanban/update', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Post( path: '/api/1.0.0/accounts/information/create', tags: [ '1.0.0', 'account', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -166,7 +174,40 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_update( ToolsKanbanRequest $request )
+        public final function public_create( Request $request )
+        {
+            return $this->create( $request );
+        }
+
+        /**
+         * @param Request $request
+         * @return null
+         */
+        public final function create( Request $request )
+        {
+            return null;
+        }
+
+
+        /**
+         * @param Request $request
+         * @return null
+         */
+        #[OA\Patch( path: '/api/1.0.0/accounts/information/update', tags: [ '1.0.0', 'account', 'account-additional' ] )]
+        #[OA\Response( response: '200',
+                       description: 'The data',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found')]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_update( Request $request )
         {
 
             return $this->update( $request );
@@ -184,9 +225,10 @@
 
 
         /**
-         * 
+         * @param Request $request
+         * @return null
          */
-        #[OA\Delete( path: '/api/1.0.0/tools/kanban/delete', tags: [ '1.0.0', 'tools' ] )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/information/delete', tags: [ '1.0.0', 'account', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -200,12 +242,11 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_delete( ToolsKanbanRequest $request )
+        public final function public_delete( Request $request )
         {
 
             return $this->delete( $request );
         }
-
 
         /**
          * @param Request $request
@@ -217,62 +258,28 @@
             return null;
         }
 
-
+        // Accessor
         /**
-         * 
-         */
-        #[OA\Get( path: '/api/1.0.0/tools/kanban/read', tags: [ '1.0.0', 'tools' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Response( response: '404',
-                       description: 'content not found' )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function public_read( ToolsKanbanRequest $request )
-        {
-
-            return $this->read( $request );
-        }
-
-        /**
-         * @param Request $request
-         * @return null
-         */
-        public final function read( Request $request )
-        {
-            return null;
-        }
-
-
-        // Accessors
-        /**
-         * @param KanbanController $controller
+         * @param InformationController $controller
          * @return void
          */
-        public static final function setSingleton( KanbanController $controller ): void
+        public static final function setSingleton( InformationController $controller ): void
         {
             self::$controller = $controller;
         }
 
-
         /**
-         * @return KanbanController
+         * @return InformationController
          */
-        public static final function getSingleton(): KanbanController
+        public static final function getSingleton(): InformationController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new KanbanController() );
+                self::setSingleton( new InformationController() );
             }
 
             return self::$controller;
         }
+
     }
 ?>
