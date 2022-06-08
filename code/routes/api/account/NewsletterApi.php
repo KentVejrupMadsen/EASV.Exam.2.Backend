@@ -3,7 +3,7 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     * Serves the route for the newsletter model.
      */
     // External libraries
     use Illuminate\Support\Facades\Route;
