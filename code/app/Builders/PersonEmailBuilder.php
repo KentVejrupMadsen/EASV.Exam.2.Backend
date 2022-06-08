@@ -1,4 +1,10 @@
 <?php
+    /**
+     * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Description:
+     *
+     */
     namespace App\Builders;
 
     use App\Models\tables\AccountEmailModel;
