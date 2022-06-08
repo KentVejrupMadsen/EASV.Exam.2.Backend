@@ -5,7 +5,7 @@
      * Description:
      *
      */
-    namespace App\Http\Controllers\models\account\entities;
+    namespace App\Http\Controllers\schemas\account\entities;
 
     // External libraries
     use Illuminate\Http\JsonResponse;

@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\models\account\entities;
+    namespace App\Http\Controllers\schemas\account\entities;
 
     // External Libraries
     use Illuminate\Http\JsonResponse;

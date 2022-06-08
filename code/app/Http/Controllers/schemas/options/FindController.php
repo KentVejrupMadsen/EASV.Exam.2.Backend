@@ -4,7 +4,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\models\options;
+    namespace App\Http\Controllers\schemas\options;
 
     // External
     use Carbon\Carbon;

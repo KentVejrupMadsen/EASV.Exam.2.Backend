@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\models\tools;
+    namespace App\Http\Controllers\schemas\tools;
 
     // External
     use Illuminate\Http\JsonResponse;

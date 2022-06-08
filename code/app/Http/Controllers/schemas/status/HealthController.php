@@ -1,5 +1,5 @@
 <?php
-    namespace App\Http\Controllers\models\status;
+    namespace App\Http\Controllers\schemas\status;
 
     use Illuminate\Routing\Controller
         as BaseController;

@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\models\account;
+    namespace App\Http\Controllers\schemas\account;
 
     // External libraries
     use Carbon\Carbon;

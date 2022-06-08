@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\models\account;
+    namespace App\Http\Controllers\schemas\account;
 
     // External Libraries
     use Carbon\Carbon;
@@ -19,7 +19,7 @@
     // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Http\Controllers\formatters\json\AccountResponseJSONFactory;
-    use App\Http\Controllers\models\account\entities\PersonEmailController;
+    use App\Http\Controllers\schemas\account\entities\PersonEmailController;
 
     use App\Http\Requests\account\AccountRequest;
 
