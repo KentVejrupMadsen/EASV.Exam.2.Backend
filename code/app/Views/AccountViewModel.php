@@ -42,33 +42,71 @@
         protected const field_id = 'id';
 
         #[OA\Property( title: 'field column username',
-                       type: 'string', readonly: true, writeOnly: false,
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_username = 'username';
 
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_email = 'email';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: true,
+                       deprecated: false )]
         protected const field_email_verified_at = 'email_verified_at';
 
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_password = 'password';
 
-        #[OA\Property( title: '',  type: 'string', readonly: true, writeOnly: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: true,
+                       deprecated: false )]
         protected const field_remember_token = 'remember_token';
 
 
-        #[OA\Property( title: '',  type: 'string', readonly: true, writeOnly: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_created_at = 'created_at';
 
-        #[OA\Property( title: '',  type: 'string', readonly: true, writeOnly: false )]
+
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_updated_at = 'updated_at';
 
-        #[OA\Property( title: '',  type: 'array', readonly: true, writeOnly: false )]
+        #[OA\Property( title: '',
+                       type: 'array',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_settings = 'settings';
 
 
