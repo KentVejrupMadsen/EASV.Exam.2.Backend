@@ -23,22 +23,22 @@
     class ZipCodeViewShortModel
         extends ModelView
     {
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         public const table_name = 'zip_codes_view_short';
         protected $table = self::table_name;
 
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_id = 'id';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_area_name = 'area_name';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_post_code = 'zip_number';
 
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_country_acronym = 'country_acronym';
 
 
