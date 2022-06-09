@@ -23,27 +23,27 @@
     class BoardViewModel
         extends ModelView
     {
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         public const table_name = 'boards_view';
         protected $table = self::table_name;
 
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_id = 'id';
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_kanban_id = 'kanban_id';
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_board_title = 'board_title';
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_body = 'body';
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_created_at = 'created_at';
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_updated_at = 'updated_at';
 
         /**
