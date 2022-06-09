@@ -13,9 +13,13 @@
         as OA;
 
 
+    /**
+     *
+     */
     #[OA\Schema( title: 'Zip Code View Full model',
                  description: '',
-                 type: ModelView::class )]
+                 type: ModelView::model_view,
+                 deprecated: false )]
     class ZipCodeViewFullModel
         extends ModelView
     {
@@ -23,43 +27,48 @@
         public const table_name = 'zip_codes_view_full';
         protected $table = self::table_name;
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 5,
-            minimum: 5,
-            items: new OA\Items(type: 'string'))]
+        protected const field_id = 'id';
+        protected const field_area_name = 'area_name';
+        protected const field_post_code = 'zip_number';
+        protected const field_country_name = 'country_name';
+        protected const field_country_acronym = 'country_acronym';
+
+
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
-            'id',
-            'area_name',
-            'zip_number',
-            'country_name',
-            'country_acronym'
+            self::field_id,
+            self::field_area_name,
+            self::field_post_code,
+            self::field_country_name,
+            self::field_country_acronym
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
-            'id',
+            self::field_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            'id' => 'integer',
+            self::field_id         => self::typeInteger,
 
-            'area_name'  => 'string',
+            self::field_area_name  => self::typeString,
 
-            'zip_number' => 'integer',
+            self::field_post_code  => self::typeInteger,
 
-            'country_name'      => 'string',
-            'country_acronym'   => 'string'
+            self::field_country_name      => self::typeString,
+            self::field_country_acronym   => self::typeString
         ];
     }
 ?>

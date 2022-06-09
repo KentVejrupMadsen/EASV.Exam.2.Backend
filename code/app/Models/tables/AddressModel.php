@@ -23,7 +23,8 @@
      */
     #[OA\Schema( title: 'Address Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class AddressModel
         extends BaseModel
     {
@@ -53,13 +54,9 @@
         #[OA\Property( type: 'string' )]
         public const field_zip_code_id = 'zip_code_id';
 
-
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 6,
-            minimum: 6,
-            items: new OA\Items( type: 'string' ) )]
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_account_information_id,
@@ -71,12 +68,9 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 4,
-            minimum: 4,
-            items: new OA\Items( type: 'string' ) ) ]
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_account_information_id,
@@ -86,15 +80,17 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            self::field_account_information_id => 'integer',
-            self::field_road_name_id           => 'integer',
-            self::field_road_number            => 'integer',
-            self::field_levels                 => 'string',
-            self::field_country_id             => 'integer',
-            self::field_zip_code_id            => 'integer'
+            self::field_account_information_id => self::typeInteger,
+            self::field_road_name_id           => self::typeInteger,
+            self::field_road_number            => self::typeInteger,
+            self::field_levels                 => self::typeString,
+            self::field_country_id             => self::typeInteger,
+            self::field_zip_code_id            => self::typeInteger
         ];
-
     }
 ?>

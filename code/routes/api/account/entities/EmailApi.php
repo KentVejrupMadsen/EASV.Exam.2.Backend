@@ -3,17 +3,19 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+          Serves the routes for the email api. so the client can interact with their associated
+          email models though the email controller. It's a boundried api so the user can only
+          interact with his / her own data and view it 'specifically'.
      */
     // External libraries
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
+use App\Routes\Controllers\RouteController;
+use Illuminate\Support\Facades\Route;
 
-    // Internal libraries
-    use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
-    use App\Http\Controllers\RouteController;
+// Internal libraries
 
 
-    /**
+/**
      *
      */
     class EmailApi

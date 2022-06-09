@@ -9,6 +9,7 @@
 
     // internal libraries
     use App\Http\Requests\template\AccountProtectedRequest;
+    use App\Http\Requests\template\BaseRequest;
     use App\Http\Requests\template\RequestDefaults;
 
     // external libraries
@@ -16,7 +17,10 @@
         as OA;
 
 
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Tools Board Request',
+                 description: '',
+                 type: BaseRequest::model_type,
+                 deprecated: false )]
     class ToolsBoardRequest
         extends AccountProtectedRequest
     {

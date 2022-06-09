@@ -8,6 +8,7 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
 
     // External libraries
@@ -20,7 +21,8 @@
      */
     #[OA\Schema( title: 'Zip Code Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class ZipCodeModel
         extends ExtensionNoTimestampModel
     {
@@ -42,13 +44,9 @@
         public const field_country_id = 'country_id';
 
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_area_name,
@@ -57,23 +55,23 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_country_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            self::field_area_name  => 'string',
-            self::field_zip_number => 'string',
-            self::field_country_id => 'integer'
+            self::field_area_name  => self::typeString,
+            self::field_zip_number => self::typeInteger,
+            self::field_country_id => self::typeInteger
         ];
     }
 ?>

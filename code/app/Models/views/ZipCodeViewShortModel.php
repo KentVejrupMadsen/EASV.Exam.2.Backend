@@ -13,9 +13,13 @@
         as OA;
 
 
+    /**
+     *
+     */
     #[OA\Schema( title: 'Zip Code View short model',
                  description: '',
-                 type: ModelView::class )]
+                 type: ModelView::model_view,
+                 deprecated: false )]
     class ZipCodeViewShortModel
         extends ModelView
     {
@@ -23,41 +27,44 @@
         public const table_name = 'zip_codes_view_short';
         protected $table = self::table_name;
 
+        protected const field_id = 'id';
+        protected const field_area_name = 'area_name';
+        protected const field_post_code = 'zip_number';
+        protected const field_country_acronym = 'country_acronym';
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 4,
-            minimum: 4,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
-            'id',
-            'area_name',
-            'zip_number',
-            'country_acronym'
+            self::field_id,
+            self::field_area_name,
+            self::field_post_code,
+            self::field_country_acronym
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
-            'id',
+            self::field_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            'id' => 'integer',
+            self::field_id => self::typeInteger,
 
-            'area_name'     => 'string',
-            'zip_number'    => 'integer',
+            self::field_area_name     => self::typeString,
+            self::field_post_code    => self::typeInteger,
 
-            'country_acronym' => 'string'
+            self::field_country_acronym => self::typeString
         ];
     }
 ?>

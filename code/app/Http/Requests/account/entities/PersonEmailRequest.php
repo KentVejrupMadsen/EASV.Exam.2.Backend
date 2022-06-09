@@ -8,6 +8,7 @@
     namespace App\Http\Requests\account\entities;
 
     // External
+    use App\Http\Requests\template\BaseRequest;
     use OpenApi\Attributes
         as OA;
 
@@ -19,7 +20,10 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Person Email Request',
+                 description: '',
+                 type: BaseRequest::model_type,
+                 deprecated: false )]
     class PersonEmailRequest
         extends AccountProtectedRequest
     {

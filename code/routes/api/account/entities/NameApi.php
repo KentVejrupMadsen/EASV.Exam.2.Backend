@@ -3,17 +3,20 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+        Serves the routes for the name model.
+        so the client can interact with their associated 'name models'
+        though the person name controller. it's boundried so the client can only
+        view, update and delete they own data.
      */
     // External library
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\httpControllers\account\entities\PersonNameController;
+use App\Routes\Controllers\RouteController;
+use Illuminate\Support\Facades\Route;
 
-    // Internal library
-    use App\Http\Controllers\httpControllers\account\entities\PersonNameController;
-    use App\Http\Controllers\RouteController;
+// Internal library
 
 
-    /**
+/**
      *
      */
     class NameApi
@@ -28,13 +31,13 @@
             $this->setSecurityMiddleware( SanctumMiddleware );
         }
 
-        //
-        const route = 'name';
+        // Variables
+        private const route = 'name';
 
-        const read_route = ACTION_READ;
-        const create_route = ACTION_CREATE;
-        const update_route = ACTION_UPDATE;
-        const delete_route = ACTION_DELETE;
+        private const read_route = ACTION_READ;
+        private const create_route = ACTION_CREATE;
+        private const update_route = ACTION_UPDATE;
+        private const delete_route = ACTION_DELETE;
 
 
         /**

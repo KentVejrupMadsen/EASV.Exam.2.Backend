@@ -8,6 +8,7 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
 
     // External libraries
@@ -20,7 +21,8 @@
      */
     #[OA\Schema( title: 'Project Member Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class ProjectMemberModel 
         extends ExtensionNoTimestampModel
     {
@@ -41,13 +43,9 @@
         public const member_group_id = 'member_group_id';
 
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::project_id,
@@ -56,12 +54,9 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::project_id,
@@ -69,12 +64,15 @@
             self::member_group_id
         ];
 
-        
+
+        /**
+         * @var array
+         */
         protected $casts = 
         [
-            self::project_id        => 'integer',
-            self::account_id        => 'integer',
-            self::member_group_id   => 'integer'
+            self::project_id        => self::typeInteger,
+            self::account_id        => self::typeInteger,
+            self::member_group_id   => self::typeInteger
         ];
     }
 ?>

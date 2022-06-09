@@ -7,6 +7,7 @@
      */
     namespace App\Http\Requests\security;
 
+    use App\Http\Requests\template\BaseRequest;
     use Illuminate\Foundation\Http\FormRequest;
     use OpenApi\Attributes
         as OA;
@@ -18,7 +19,10 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Security Recaptcha Request',
+                 description: '',
+                 type: BaseRequest::model_type,
+                 deprecated: false )]
     class SecurityRecaptchaRequest
         extends FormRequest
     {
@@ -31,6 +35,7 @@
 
             return $ret;
         }
+
 
         /**
          * @return bool

@@ -3,17 +3,17 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     *
      */
     // External libraries
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
+use App\Routes\Controllers\RouteController;
+use Illuminate\Support\Facades\Route;
 
-    // Internal libraries
-    use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
-    use App\Http\Controllers\RouteController;
+// Internal libraries
 
 
-    /**
+/**
      *
      */
     class SecurityRecapApi
@@ -28,12 +28,12 @@
         }
 
         // Variable
-        const route = 'recaptcha';
+        private const route = 'recaptcha';
 
-        const create_route =  ACTION_CREATE;
-        const delete_route =  ACTION_DELETE;
-        const read_route   =  ACTION_READ;
-        const update_route =  ACTION_UPDATE;
+        private const create_route =  ACTION_CREATE;
+        private const delete_route =  ACTION_DELETE;
+        private const read_route   =  ACTION_READ;
+        private const update_route =  ACTION_UPDATE;
 
 
         /**

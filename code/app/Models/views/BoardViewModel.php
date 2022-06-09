@@ -13,9 +13,13 @@
         as OA;
 
 
+    /**
+     *
+     */
     #[OA\Schema( title: 'Board View Model',
                  description: '',
-                 type: ModelView::class )]
+                 type: ModelView::model_view,
+                 deprecated: false )]
     class BoardViewModel
         extends ModelView
     {
@@ -23,45 +27,50 @@
         public const table_name = 'boards_view';
         protected $table = self::table_name;
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 6,
-            minimum: 6,
-            items: new OA\Items(type: 'string'))]
+        protected const field_id = 'id';
+        protected const field_kanban_id = 'kanban_id';
+        protected const field_board_title = 'board_title';
+        protected const field_body = 'body';
+        protected const field_created_at = 'created_at';
+        protected const field_updated_at = 'updated_at';
+
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
-            'id',
-            'kanban_id',
-            'board_title',
-            'body',
-            'created_at',
-            'updated_at'
+            self::field_id,
+            self::field_kanban_id,
+            self::field_board_title,
+            self::field_body,
+            self::field_created_at,
+            self::field_updated_at
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
-            'id',
-            'kanban_id',
+            self::field_id,
+            self::field_kanban_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            'id'        => 'integer',
-            'kanban_id' => 'integer',
+            self::field_id        => self::typeInteger,
+            self::field_kanban_id => self::typeInteger,
 
-            'board_title'   => 'string',
-            'body'          => 'array',
+            self::field_board_title   => self::typeString,
+            self::field_body          => self::typeArray,
 
-            'created_at'    => 'timestamp',
-            'updated_at'    => 'timestamp'
+            self::field_created_at    => self::typeTimestamp,
+            self::field_updated_at    => self::typeTimestamp
         ];
     }
 ?>

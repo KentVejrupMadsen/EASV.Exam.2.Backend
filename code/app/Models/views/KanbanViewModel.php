@@ -13,9 +13,13 @@
         as OA;
 
 
+    /**
+     *
+     */
     #[OA\Schema( title: 'Kanban View Model',
                  description: '',
-                 type: ModelView::class )]
+                 type: ModelView::model_view,
+                 deprecated: false )]
     class KanbanViewModel
         extends ModelView
     {
@@ -23,43 +27,49 @@
         public const table_name = 'kanbans_view';
         protected $table = self::table_name;
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 5,
-            minimum: 5,
-            items: new OA\Items(type: 'string'))]
+        protected const field_id = 'id';
+        protected const field_project_id = 'project_id';
+        protected const field_kanban_title = 'kanban_title';
+
+        protected const field_created_at = 'created_at';
+        protected const field_updated_at = 'updated_at';
+
+
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
-            'id',
-            'project_id',
-            'kanban_title',
-            'created_at',
-            'updated_at'
+            self::field_id,
+            self::field_project_id,
+            self::field_kanban_title,
+            self::field_created_at,
+            self::field_updated_at
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
-            'id',
-            'project_id'
+            self::field_id,
+            self::field_project_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            'id'            => 'integer',
+            self::field_id            => self::typeInteger,
 
-            'project_id'    => 'integer',
-            'kanban_title'  => 'string',
+            self::field_project_id    => self::typeInteger,
+            self::field_kanban_title  => self::typeString,
 
-            'created_at'    => 'timestamp',
-            'updated_at'    => 'timestamp'
+            self::field_created_at    => self::typeTimestamp,
+            self::field_updated_at    => self::typeTimestamp
         ];
     }
 ?>

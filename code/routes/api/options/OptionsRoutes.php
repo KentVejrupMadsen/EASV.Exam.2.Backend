@@ -3,23 +3,22 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
-     */
-    use Illuminate\Support\Facades\Route;
 
+     */
+    // Internal libraries
     require_once 'FindApi.php';
     require_once 'StateApi.php';
 
-    use App\Http\Controllers\NodesController;
+use App\Routes\Controllers\NodesController;
 
 
-    /**
+/**
      *
      */
     class OptionsRoutes
         extends NodesController
     {
-        const options_route = 'options';
+        private const options_route = 'options';
 
         /**
          *
