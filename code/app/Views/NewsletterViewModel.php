@@ -23,18 +23,38 @@
     class NewsletterViewModel
         extends ModelView
     {
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         public const table_name = 'newsletter_view';
         protected $table = self::table_name;
 
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_id = 'id';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_email = 'email';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_options = 'options';
 
 
