@@ -23,32 +23,72 @@
     class ProjectViewModel
         extends ModelView
     {
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         public const table_name = 'projects_view';
         protected $table = self::table_name;
 
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_id = 'id';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_account_owner_id = 'account_owner_id';
 
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_project_title = 'project_title';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_description = 'description';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_tags = 'tags';
 
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_created_at = 'created_at';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_updated_at = 'updated_at';
 
         /**
