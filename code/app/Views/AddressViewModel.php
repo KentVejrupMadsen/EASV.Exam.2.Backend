@@ -23,30 +23,30 @@
     class AddressViewModel
         extends ModelView
     {
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title: '',  type: 'string' )]
         public const table_name = 'addresses_view';
         protected $table  = self::table_name;
 
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',  type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_id = 'id';
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',  type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_account_information_id = 'account_information_id';
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',  type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_road_name = 'road_name';
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',  type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_road_number = 'road_number';
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',  type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_levels = 'levels';
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',  type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_address_country = 'address_country';
 
-        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',  type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_zip_code_id = 'zip_code_id';
 
 
