@@ -23,32 +23,32 @@
     class ProjectViewModel
         extends ModelView
     {
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         public const table_name = 'projects_view';
         protected $table = self::table_name;
 
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_id = 'id';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_account_owner_id = 'account_owner_id';
 
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_project_title = 'project_title';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_description = 'description';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_tags = 'tags';
 
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_created_at = 'created_at';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false, deprecated: false )]
         protected const field_updated_at = 'updated_at';
 
         /**
