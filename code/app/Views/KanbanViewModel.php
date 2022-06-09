@@ -27,11 +27,20 @@
         public const table_name = 'kanbans_view';
         protected $table = self::table_name;
 
+
+        #[OA\Property( type: 'string' )]
         protected const field_id = 'id';
+
+        #[OA\Property( type: 'string' )]
         protected const field_project_id = 'project_id';
+
+        #[OA\Property( type: 'string' )]
         protected const field_kanban_title = 'kanban_title';
 
+        #[OA\Property( type: 'string' )]
         protected const field_created_at = 'created_at';
+
+        #[OA\Property( type: 'string' )]
         protected const field_updated_at = 'updated_at';
 
 

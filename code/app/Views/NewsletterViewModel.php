@@ -27,8 +27,14 @@
         public const table_name = 'newsletter_view';
         protected $table = self::table_name;
 
+
+        #[OA\Property( type: 'string' )]
         protected const field_id = 'id';
+
+        #[OA\Property( type: 'string' )]
         protected const field_email = 'email';
+
+        #[OA\Property( type: 'string' )]
         protected const field_options = 'options';
 
 

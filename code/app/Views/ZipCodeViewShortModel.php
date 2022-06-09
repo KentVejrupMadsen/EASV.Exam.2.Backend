@@ -27,9 +27,18 @@
         public const table_name = 'zip_codes_view_short';
         protected $table = self::table_name;
 
+
+        #[OA\Property( type: 'string' )]
         protected const field_id = 'id';
+
+        #[OA\Property( type: 'string' )]
         protected const field_area_name = 'area_name';
+
+        #[OA\Property( type: 'string' )]
         protected const field_post_code = 'zip_number';
+
+
+        #[OA\Property( type: 'string' )]
         protected const field_country_acronym = 'country_acronym';
 
 

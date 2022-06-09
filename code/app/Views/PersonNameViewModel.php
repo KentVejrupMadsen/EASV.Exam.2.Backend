@@ -27,11 +27,21 @@
         public const table_name = 'person_names_view';
         protected $table = self::table_name;
 
+
+        #[OA\Property( type: 'string' )]
         protected const field_id = 'id';
+
+        #[OA\Property( type: 'string' )]
         protected const field_account_information_id = 'account_information_id';
 
+
+        #[OA\Property( type: 'string' )]
         protected const field_person_first_name = 'person_first_name';
+
+        #[OA\Property( type: 'string' )]
         protected const field_person_name_middlename = 'person_name_middlename';
+
+        #[OA\Property( type: 'string' )]
         protected const field_person_last_name = 'person_last_name';
 
 

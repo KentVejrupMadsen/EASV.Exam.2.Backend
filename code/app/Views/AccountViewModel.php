@@ -23,22 +23,52 @@
     class AccountViewModel
         extends ModelView
     {
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title: 'accounts view',
+                       type: 'table name',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         public const table_name = 'accounts_view';
         protected $table = self::table_name;
 
+
+        #[OA\Property( title: 'identity',
+                       type: 'unsigned integer',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_id = 'id';
+
+        #[OA\Property( title: 'field column username',
+                       type: 'string', readonly: true, writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_username = 'username';
 
+
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false )]
         protected const field_email = 'email';
+
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false )]
         protected const field_email_verified_at = 'email_verified_at';
 
+
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false )]
         protected const field_password = 'password';
+
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false )]
         protected const field_remember_token = 'remember_token';
 
+
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false )]
         protected const field_created_at = 'created_at';
+
+        #[OA\Property( type: 'string', readonly: true, writeOnly: false )]
         protected const field_updated_at = 'updated_at';
 
+        #[OA\Property( type: 'array', readonly: true, writeOnly: false )]
         protected const field_settings = 'settings';
 
 
