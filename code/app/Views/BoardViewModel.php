@@ -23,27 +23,62 @@
     class BoardViewModel
         extends ModelView
     {
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         public const table_name = 'boards_view';
         protected $table = self::table_name;
 
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: 'identity',
+                       type: 'unsigned integer',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_id = 'id';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_kanban_id = 'kanban_id';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_board_title = 'board_title';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_body = 'body';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_created_at = 'created_at';
 
-        #[OA\Property( title: '', type: 'string', readonly: true, writeOnly: false, deprecated: false )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_updated_at = 'updated_at';
 
         /**

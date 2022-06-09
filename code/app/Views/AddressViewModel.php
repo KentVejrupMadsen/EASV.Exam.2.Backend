@@ -32,8 +32,8 @@
         protected $table  = self::table_name;
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'identity',
+                       type: 'unsigned integer',
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
