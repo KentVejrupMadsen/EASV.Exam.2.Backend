@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Models\views;
+    namespace App\Views;
 
     use App\Models\templates\ModelView;
 
@@ -23,16 +23,69 @@
     class AddressViewModel
         extends ModelView
     {
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readOnly: true,
+                       writeOnly: false,
+                       deprecated: false )]
         public const table_name = 'addresses_view';
         protected $table  = self::table_name;
 
+
+        #[OA\Property( title: 'identity',
+                       type: 'unsigned integer',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_id = 'id';
+
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_account_information_id = 'account_information_id';
+
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_road_name = 'road_name';
+
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_road_number = 'road_number';
+
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_levels = 'levels';
+
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_address_country = 'address_country';
+
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_zip_code_id = 'zip_code_id';
 
 

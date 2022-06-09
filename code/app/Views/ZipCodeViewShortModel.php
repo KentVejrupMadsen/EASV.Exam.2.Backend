@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Models\views;
+    namespace App\Views;
 
     use App\Models\templates\ModelView;
 
@@ -23,13 +23,47 @@
     class ZipCodeViewShortModel
         extends ModelView
     {
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         public const table_name = 'zip_codes_view_short';
         protected $table = self::table_name;
 
+
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_id = 'id';
+
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_area_name = 'area_name';
+
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_post_code = 'zip_number';
+
+
+        #[OA\Property( title: '',
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         protected const field_country_acronym = 'country_acronym';
 
 
