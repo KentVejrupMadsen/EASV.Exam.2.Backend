@@ -24,11 +24,11 @@
         extends ModelView
     {
         #[OA\Property( title: '',
-            type: 'string',
-            readonly: true,
-            writeOnly: false,
-            nullable: false,
-            deprecated: false )]
+                       type: 'string',
+                       readonly: true,
+                       writeOnly: false,
+                       nullable: false,
+                       deprecated: false )]
         public const table_name = 'kanbans_view';
         protected $table = self::table_name;
 
