@@ -11,24 +11,26 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-    use OpenApi\Attributes
-        as OA;
-
 
     /**
      *
      */
-    #[OA\Schema()]
     abstract class BaseModel
         extends Model
     {
         use HasFactory;
+
+        public const model_type = 'table';
 
         public const typeString = 'string';
         public const typeInteger = 'integer';
         public const typeDouble = 'double';
         public const typeFloat = 'float';
         public const typeArray = 'array';
+        public const typeBoolean = 'boolean';
+
+        public const typeDatetime = 'datetime';
+        public const typeTimestamp = 'timestamp';
 
         // Various use cases of datetime
     }

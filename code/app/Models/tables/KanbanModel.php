@@ -18,7 +18,10 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Kanban Model',
+                 description: '',
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class KanbanModel 
         extends BaseModel
     {
@@ -43,36 +46,33 @@
         public const field_updated_at      = 'updated_at';
 
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::field_kanban_title_id,
             self::field_project_id
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::field_kanban_title_id,
             self::field_project_id
         ];
 
-        
+
+        /**
+         * @var string[]
+         */
         protected $casts = 
         [
-            self::field_kanban_title_id   => 'integer',
-            self::field_project_id        => 'integer'
+            self::field_kanban_title_id   => self::typeInteger,
+            self::field_project_id        => self::typeInteger
         ];
     }
 ?>

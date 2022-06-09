@@ -7,6 +7,7 @@
      */
     namespace App\Models\security;
 
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
 
     use OpenApi\Attributes
@@ -16,7 +17,10 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Account States Model',
+                 description: '',
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class AccountState
         extends ExtensionNoTimestampModel
     {
@@ -44,13 +48,9 @@
         public const field_archived              = 'archived';
 
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_account_id,
@@ -61,25 +61,25 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_account_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            self::field_account_id          => 'integer',
-            self::field_deactivated         => 'boolean',
-            self::field_writeable_disabled  => 'boolean',
-            self::field_locked              => 'boolean',
-            self::field_archived            => 'boolean'
+            self::field_account_id          => self::typeInteger,
+            self::field_deactivated         => self::typeBoolean,
+            self::field_writeable_disabled  => self::typeBoolean,
+            self::field_locked              => self::typeBoolean,
+            self::field_archived            => self::typeBoolean
         ];
     }
 ?>

@@ -8,6 +8,7 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionLabelModel;
 
     // External libraries
@@ -15,7 +16,10 @@
         as OA;
 
 
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Board Title Model',
+                 description: '',
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class BoardTitleModel
         extends ExtensionLabelModel
     {

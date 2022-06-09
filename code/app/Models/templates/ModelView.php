@@ -7,18 +7,14 @@
      */
     namespace App\Models\templates;
 
-    use OpenApi\Attributes
-        as OA;
-
 
     /**
      *
      */
-    #[OA\Schema()]
     abstract class ModelView
         extends BaseModel
     {
-        #[OA\Property(type: 'boolean')]
         public $timestamps = false;
+        public const model_view = 'view';
     }
 ?>

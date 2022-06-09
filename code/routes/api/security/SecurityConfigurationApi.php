@@ -3,18 +3,17 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     *
      */
-
     // External libraries
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\httpControllers\security\SecurityConfigurationController;
+use App\Routes\Controllers\RouteController;
+use Illuminate\Support\Facades\Route;
 
-    // Internal libraries
-    use App\Http\Controllers\httpControllers\security\SecurityConfigurationController;
-    use App\Http\Controllers\RouteController;
+// Internal libraries
 
 
-    /**
+/**
      *
      */
     class SecurityConfigurationApi

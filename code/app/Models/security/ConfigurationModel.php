@@ -8,7 +8,8 @@
     namespace App\Models\security;
 
     // Internal libraries
-    use App\Models\templates\ExtensionNoTimestampModel;
+use App\Models\templates\BaseModel;
+use App\Models\templates\ExtensionNoTimestampModel;
 
     // External libraries
     use OpenApi\Attributes
@@ -18,7 +19,10 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Configuration Model',
+                 description: '',
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class ConfigurationModel
         extends ExtensionNoTimestampModel
     {
@@ -37,13 +41,9 @@
         public const field_value = 'value';
 
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_key,
@@ -51,18 +51,18 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_value
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_key   => 'string',

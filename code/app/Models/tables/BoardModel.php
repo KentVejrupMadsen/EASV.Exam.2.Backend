@@ -18,7 +18,10 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Board Model',
+                 description: '',
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class BoardModel
         extends BaseModel
     {
@@ -32,13 +35,9 @@
         public const field_created_at = 'created_at';
         public const field_updated_at = 'updated_at';
 
-
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::field_kanban_id,
@@ -48,25 +47,26 @@
             self::field_updated_at
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::field_kanban_id,
             self::field_board_title_id,
         ];
 
-        
+
+        /**
+         * @var string[]
+         */
         protected $casts = 
         [
-            self::field_kanban_id => 'integer',
-            self::field_board_title_id => 'integer',
-            self::field_created_at => 'datetime',
-            self::field_updated_at => 'datetime'
+            self::field_kanban_id       => self::typeInteger,
+            self::field_board_title_id  => self::typeInteger,
+            self::field_created_at      => self::typeDatetime,
+            self::field_updated_at      => self::typeDatetime
         ];
     }
 ?>

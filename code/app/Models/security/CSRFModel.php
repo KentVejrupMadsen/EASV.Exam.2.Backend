@@ -8,6 +8,7 @@
     namespace App\Models\security;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
 
     // External libraries
@@ -18,7 +19,10 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Cross-Site Request Forgery Model',
+                 description: '',
+                 type: BaseModel::model_type,
+                 deprecated: false)]
     class CSRFModel
         extends ExtensionNoTimestampModel
     {
@@ -56,13 +60,9 @@
         protected $table = self::table_name;
 
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 8,
-            minimum: 8,
-            items: new OA\Items( type: 'string' ))]
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::field_identity,
@@ -75,12 +75,10 @@
             self::field_secret_token
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items( type: 'string' ))]
+
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::field_identity,
@@ -88,7 +86,10 @@
             self::field_secret_token
         ];
 
-        
+
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_identity      => 'integer',

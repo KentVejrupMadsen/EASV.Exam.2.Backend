@@ -8,16 +8,21 @@
     namespace App\Models\tables;
 
     // Internal
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionLabelModel;
 
     // External
     use OpenApi\Attributes
         as OA;
 
+
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Person Firstname Model',
+                 description: '',
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class PersonFirstnameModel
         extends ExtensionLabelModel
     {

@@ -8,6 +8,7 @@
     namespace App\Http\Requests\account;
 
     // External
+    use App\Http\Requests\template\BaseRequest;
     use OpenApi\Attributes
         as OA;
 
@@ -19,16 +20,19 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Account Request',
+                 description: '',
+                 type: BaseRequest::model_type,
+                 deprecated: false )]
     class AccountRequest
         extends PublicRequest
     {
-        private function allowedMethods()
+        /**
+         * @return bool
+         */
+        private function allowedMethods(): bool
         {
-            return $this->isMethod( 'DELETE' ) |
-                   $this->isMethod( 'GET' )    |
-                   $this->isMethod( 'PATCH' )  |
-                   $this->isMethod( 'POST' );
+            return $this->CRUDRoutes();
         }
 
         /**
@@ -38,11 +42,19 @@
         {
             $retVal = false;
 
+            // Is Https connection
+            if( $this->RequireSecureConnection() )
+            {
+                $retVal = true;
+            }
+
+            // retrieves which formats are allowed. application/json, application/xml etc.
             if( $this->accepts( RequestDefaults::getAllowedFormats() ) )
             {
                 $retVal = true;
             }
 
+            // which http methods are allowed
             if( !$this->allowedMethods() )
             {
                 abort( 405, 'is not a valid http method' );

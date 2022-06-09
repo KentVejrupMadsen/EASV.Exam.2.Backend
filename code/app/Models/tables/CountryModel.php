@@ -8,7 +8,9 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
+
 
     // External libraries
     use OpenApi\Attributes
@@ -18,7 +20,10 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Country Model',
+                 description: '',
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class CountryModel
         extends ExtensionNoTimestampModel
     {
@@ -36,13 +41,10 @@
         #[OA\Property( type: 'string' )]
         public const field_country_acronym = 'country_acronym';
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_country_name,
@@ -50,10 +52,13 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            self::field_country_name    => 'string',
-            self::field_country_acronym => 'string'
+            self::field_country_name    => self::typeString,
+            self::field_country_acronym => self::typeString
         ];
     }
 ?>

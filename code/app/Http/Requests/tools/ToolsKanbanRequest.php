@@ -9,6 +9,7 @@
 
     // internal libraries
     use App\Http\Requests\template\AccountProtectedRequest;
+    use App\Http\Requests\template\BaseRequest;
     use App\Http\Requests\template\RequestDefaults;
 
     // external libraries
@@ -19,7 +20,10 @@
     /**
      *
      */
-    #[OA\Schema]
+    #[OA\Schema( title: 'Tools Kanban Request',
+                 description: '',
+                 type: BaseRequest::model_type,
+                 deprecated: false )]
     class ToolsKanbanRequest
         extends AccountProtectedRequest
     {

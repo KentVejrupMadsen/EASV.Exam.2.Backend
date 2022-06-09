@@ -14,27 +14,18 @@
     /**
      *
      */
-    #[OA\Schema()]
     abstract class ExtensionLabelModel
         extends BaseModel
     {
         // Variables
             // Model
-        #[OA\Property(type: 'boolean')]
         public $timestamps = false;
 
             // Constants
-        #[OA\Property(type:'string')]
         public const field_content = 'content';
 
 
         //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items( type: 'string' ) )]
         protected $fillable =
         [
             self::field_content

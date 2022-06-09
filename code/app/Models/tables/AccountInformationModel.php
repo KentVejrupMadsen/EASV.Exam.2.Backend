@@ -18,7 +18,10 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Account Information Model',
+                 description: '',
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class AccountInformationModel
         extends BaseModel
     {
@@ -43,13 +46,9 @@
         public const field_settings = 'settings';
 
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_account,
@@ -57,23 +56,24 @@
             self::field_updated_at
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_account,
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            self::field_account     => 'integer',
-            self::field_created_at  => 'datetime',
-            self::field_updated_at  => 'datetime',
+            self::field_account     => self::typeInteger,
+            self::field_created_at  => self::typeDatetime,
+            self::field_updated_at  => self::typeDatetime,
         ];
     }
 ?>

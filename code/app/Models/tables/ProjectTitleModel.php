@@ -8,16 +8,21 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionLabelModel;
 
     // External libraries
     use OpenApi\Attributes
         as OA;
 
+
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Project Title Model',
+                 description: '',
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class ProjectTitleModel
         extends ExtensionLabelModel
     {

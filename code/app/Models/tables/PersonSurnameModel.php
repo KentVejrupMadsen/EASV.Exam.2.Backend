@@ -8,6 +8,7 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionLabelModel;
 
     // External libraries
@@ -18,7 +19,10 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Person Surname Model',
+                 description: '',
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class PersonSurnameModel
         extends ExtensionLabelModel
     {
