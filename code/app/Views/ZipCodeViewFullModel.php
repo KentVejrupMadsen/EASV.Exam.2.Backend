@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Models\views;
+    namespace App\Views;
 
     use App\Models\templates\ModelView;
 
@@ -16,20 +16,21 @@
     /**
      *
      */
-    #[OA\Schema( title: 'Zip Code View short model',
+    #[OA\Schema( title: 'Zip Code View Full model',
                  description: '',
                  type: ModelView::model_view,
                  deprecated: false )]
-    class ZipCodeViewShortModel
+    class ZipCodeViewFullModel
         extends ModelView
     {
         #[OA\Property( type: 'string' )]
-        public const table_name = 'zip_codes_view_short';
+        public const table_name = 'zip_codes_view_full';
         protected $table = self::table_name;
 
         protected const field_id = 'id';
         protected const field_area_name = 'area_name';
         protected const field_post_code = 'zip_number';
+        protected const field_country_name = 'country_name';
         protected const field_country_acronym = 'country_acronym';
 
 
@@ -41,6 +42,7 @@
             self::field_id,
             self::field_area_name,
             self::field_post_code,
+            self::field_country_name,
             self::field_country_acronym
         ];
 
@@ -59,12 +61,14 @@
          */
         protected $casts =
         [
-            self::field_id => self::typeInteger,
+            self::field_id         => self::typeInteger,
 
-            self::field_area_name     => self::typeString,
-            self::field_post_code    => self::typeInteger,
+            self::field_area_name  => self::typeString,
 
-            self::field_country_acronym => self::typeString
+            self::field_post_code  => self::typeInteger,
+
+            self::field_country_name      => self::typeString,
+            self::field_country_acronym   => self::typeString
         ];
     }
 ?>

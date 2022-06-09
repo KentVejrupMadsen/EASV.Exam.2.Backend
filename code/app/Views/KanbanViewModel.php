@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Models\views;
+    namespace App\Views;
 
     use App\Models\templates\ModelView;
 
@@ -16,24 +16,24 @@
     /**
      *
      */
-    #[OA\Schema( title: 'Project View Model',
+    #[OA\Schema( title: 'Kanban View Model',
                  description: '',
                  type: ModelView::model_view,
                  deprecated: false )]
-    class ProjectViewModel
+    class KanbanViewModel
         extends ModelView
     {
         #[OA\Property( type: 'string' )]
-        public const table_name = 'projects_view';
+        public const table_name = 'kanbans_view';
         protected $table = self::table_name;
 
         protected const field_id = 'id';
-        protected const field_account_owner_id = 'account_owner_id';
-        protected const field_project_title = 'project_title';
-        protected const field_description = 'description';
-        protected const field_tags = 'tags';
+        protected const field_project_id = 'project_id';
+        protected const field_kanban_title = 'kanban_title';
+
         protected const field_created_at = 'created_at';
         protected const field_updated_at = 'updated_at';
+
 
         /**
          * @var string[]
@@ -41,10 +41,8 @@
         protected $fillable =
         [
             self::field_id,
-            self::field_account_owner_id,
-            self::field_project_title,
-            self::field_description,
-            self::field_tags,
+            self::field_project_id,
+            self::field_kanban_title,
             self::field_created_at,
             self::field_updated_at
         ];
@@ -56,7 +54,7 @@
         protected $hidden =
         [
             self::field_id,
-            self::field_account_owner_id
+            self::field_project_id
         ];
 
 
@@ -65,16 +63,13 @@
          */
         protected $casts =
         [
-            self::field_id                => self::typeInteger,
-            self::field_account_owner_id  => self::typeInteger,
+            self::field_id            => self::typeInteger,
 
-            self::field_project_title => self::typeString,
-            self::field_description   => self::typeString,
+            self::field_project_id    => self::typeInteger,
+            self::field_kanban_title  => self::typeString,
 
-            self::field_tags => self::typeArray,
-
-            self::field_created_at => self::typeTimestamp,
-            self::field_updated_at => self::typeTimestamp
+            self::field_created_at    => self::typeTimestamp,
+            self::field_updated_at    => self::typeTimestamp
         ];
     }
 ?>

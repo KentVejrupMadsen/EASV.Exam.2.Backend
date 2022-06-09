@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Models\views;
+    namespace App\Views;
 
     use App\Models\templates\ModelView;
 
@@ -16,20 +16,21 @@
     /**
      *
      */
-    #[OA\Schema( title: 'Newsletter View Model',
+    #[OA\Schema( title: 'Zip Code View short model',
                  description: '',
                  type: ModelView::model_view,
                  deprecated: false )]
-    class NewsletterViewModel
+    class ZipCodeViewShortModel
         extends ModelView
     {
         #[OA\Property( type: 'string' )]
-        public const table_name = 'newsletter_view';
+        public const table_name = 'zip_codes_view_short';
         protected $table = self::table_name;
 
         protected const field_id = 'id';
-        protected const field_email = 'email';
-        protected const field_options = 'options';
+        protected const field_area_name = 'area_name';
+        protected const field_post_code = 'zip_number';
+        protected const field_country_acronym = 'country_acronym';
 
 
         /**
@@ -38,8 +39,9 @@
         protected $fillable =
         [
             self::field_id,
-            self::field_email,
-            self::field_options
+            self::field_area_name,
+            self::field_post_code,
+            self::field_country_acronym
         ];
 
 
@@ -57,9 +59,12 @@
          */
         protected $casts =
         [
-            self::field_id        => self::typeInteger,
-            self::field_email     => self::typeString,
-            self::field_options   => self::typeArray
+            self::field_id => self::typeInteger,
+
+            self::field_area_name     => self::typeString,
+            self::field_post_code    => self::typeInteger,
+
+            self::field_country_acronym => self::typeString
         ];
     }
 ?>
