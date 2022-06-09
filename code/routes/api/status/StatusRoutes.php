@@ -3,27 +3,31 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     *
      */
-    use Illuminate\Support\Facades\Route;
 
-    use App\Http\Controllers\httpControllers\status\HealthController;
-    use App\Http\Controllers\NodesController;
+use App\Http\Controllers\httpControllers\status\HealthController;
+use App\Routes\Controllers\NodesController;
+use Illuminate\Support\Facades\Route;
 
 
-    /**
+/**
      *
      */
     class StatusRoutes
         extends NodesController
     {
-        const statusRoute = 'status';
-
         public function __construct()
         {
             $this->setNodeRouteName( self::statusRoute );
         }
 
+        //
+        private const statusRoute = 'status';
+
+        /**
+         * @return void
+         */
         protected function execute(): void
         {
             Route::controller( HealthController::class )->group

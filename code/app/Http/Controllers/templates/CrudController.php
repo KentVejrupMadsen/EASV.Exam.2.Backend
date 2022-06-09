@@ -17,6 +17,8 @@
     abstract class CrudController
         extends Controller
     {
+        protected const model_type = 'controller';
+
         //
         public abstract function read( Request $request );
 

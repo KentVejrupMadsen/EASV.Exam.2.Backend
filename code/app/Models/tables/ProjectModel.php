@@ -20,7 +20,8 @@
      */
     #[OA\Schema( title: 'Project Model',
                  description: '',
-                 type: 'model')]
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class ProjectModel 
         extends BaseModel
     {
@@ -51,13 +52,9 @@
         public const field_updated_at = 'updated_at';
 
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 4,
-            minimum: 4,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::field_account_owner_id,
@@ -67,25 +64,25 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::field_account_owner_id,
             self::field_project_title_id
         ];
 
-        
+
+        /**
+         * @var string[]
+         */
         protected $casts = 
         [
-            self::field_account_owner_id  => 'integer',
-            self::field_project_title_id  => 'integer',
-            self::field_description       => 'string',
-            self::field_tags              => 'string'
+            self::field_account_owner_id  => self::typeInteger,
+            self::field_project_title_id  => self::typeInteger,
+            self::field_description       => self::typeString,
+            self::field_tags              => self::typeString
         ];
     }
 ?>

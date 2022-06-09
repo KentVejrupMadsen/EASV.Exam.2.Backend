@@ -141,20 +141,11 @@
                     "authentication"
                 ],
                 "description": "",
-                "operationId": "aad533bcd63625a1775284f06134073a",
-                "requestBody": {
+                "externalDocs": {
                     "description": "",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {},
-                            "example": "{\r\n\t\"account\":\r\n\t{\r\n\t\t\"username\":\"username\",\r\n\t\t\"security\":\r\n\t\t{\r\n\t\t\t\"password\":\"password\",\r\n\t\t\t\"confirm\":\"password\"\r\n\t\t},\r\n\t\t\"person\":\r\n\t\t{\r\n\t\t\t\"email\":\"email@gmail.com\"\r\n\t\t}\r\n\t}\r\n}"
-                        },
-                        "application/xml": {
-                            "schema": {}
-                        }
-                    }
+                    "url": "https://github.com/KentVejrupMadsen/Kanban-Project-Backend"
                 },
+                "operationId": "aad533bcd63625a1775284f06134073a",
                 "responses": {
                     "201": {
                         "description": "Account created",
@@ -174,7 +165,8 @@
                     "540": {
                         "description": "content not found"
                     }
-                }
+                },
+                "deprecated": false
             }
         },
         "/api/1.0.0/accounts/account/update": {
@@ -1996,1014 +1988,713 @@
                 "description": "",
                 "type": "controller"
             },
-            "AccountRequest": {},
-            "InformationRequest": {},
-            "NewsletterRequest": {},
-            "PersonAddressRequest": {},
-            "PersonEmailRequest": {},
-            "PersonNameRequest": {},
-            "FindRequest": {},
-            "StateRequest": {},
-            "SecurityCSRFRequest": {},
-            "SecurityConfigurationRequest": {},
-            "SecurityRecaptchaRequest": {},
+            "AccountRequest": {
+                "title": "Account Request",
+                "description": "",
+                "type": "request",
+                "deprecated": false
+            },
+            "InformationRequest": {
+                "title": "Information Request",
+                "description": "",
+                "type": "request",
+                "deprecated": false
+            },
+            "NewsletterRequest": {
+                "title": "Newsletter Request",
+                "description": "",
+                "type": "request",
+                "deprecated": false
+            },
+            "PersonAddressRequest": {
+                "title": "Person Address Request",
+                "description": "",
+                "type": "request",
+                "deprecated": false
+            },
+            "PersonEmailRequest": {
+                "title": "Person Email Request",
+                "description": "",
+                "type": "request",
+                "deprecated": false
+            },
+            "PersonNameRequest": {
+                "title": "Person Name Request",
+                "description": "",
+                "type": "request",
+                "deprecated": false
+            },
+            "FindRequest": {
+                "title": "Find Request",
+                "description": "",
+                "type": "request",
+                "deprecated": false
+            },
+            "StateRequest": {
+                "title": "State Request",
+                "description": "",
+                "type": "request",
+                "deprecated": false
+            },
+            "SecurityCSRFRequest": {
+                "title": "Security CSRF Request",
+                "description": "",
+                "type": "request",
+                "deprecated": false
+            },
+            "SecurityConfigurationRequest": {
+                "title": "Security Configuration Request",
+                "description": "",
+                "type": "request",
+                "deprecated": false
+            },
+            "SecurityRecaptchaRequest": {
+                "title": "Security Recaptcha Request",
+                "description": "",
+                "type": "request",
+                "deprecated": false
+            },
             "ToolsBoardRequest": {},
             "ToolsKanbanRequest": {},
             "ToolsProjectMemberRequest": {},
             "ToolsProjectRequest": {},
             "ToolsTaskRequest": {},
             "AccountState": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                "title": "Account States Model",
+                "description": "",
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "account_states"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "account_states"
-                                ]
-                            },
-                            "field_account_id": {
-                                "type": "string",
-                                "enum": [
-                                    "account_id"
-                                ]
-                            },
-                            "field_deactivated": {
-                                "type": "string",
-                                "enum": [
-                                    "deactivated"
-                                ]
-                            },
-                            "field_writeable_disabled": {
-                                "type": "string",
-                                "enum": [
-                                    "writeable_disabled"
-                                ]
-                            },
-                            "field_locked": {
-                                "type": "string",
-                                "enum": [
-                                    "locked"
-                                ]
-                            },
-                            "field_archived": {
-                                "type": "string",
-                                "enum": [
-                                    "archived"
-                                ]
-                            }
-                        }
+                    "field_account_id": {
+                        "type": "string",
+                        "enum": [
+                            "account_id"
+                        ]
+                    },
+                    "field_deactivated": {
+                        "type": "string",
+                        "enum": [
+                            "deactivated"
+                        ]
+                    },
+                    "field_writeable_disabled": {
+                        "type": "string",
+                        "enum": [
+                            "writeable_disabled"
+                        ]
+                    },
+                    "field_locked": {
+                        "type": "string",
+                        "enum": [
+                            "locked"
+                        ]
+                    },
+                    "field_archived": {
+                        "type": "string",
+                        "enum": [
+                            "archived"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "CSRFModel": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                "title": "Cross-Site Request Forgery Model",
+                "description": "",
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "security_csrf_token"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 8,
-                                "minimum": 8
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "security_csrf_token"
-                                ]
-                            },
-                            "field_assigned_to": {
-                                "type": "string",
-                                "enum": [
-                                    "assigned_to"
-                                ]
-                            },
-                            "field_issued": {
-                                "type": "string",
-                                "enum": [
-                                    "issued"
-                                ]
-                            },
-                            "field_accessed": {
-                                "type": "string",
-                                "enum": [
-                                    "accessed"
-                                ]
-                            },
-                            "field_activated": {
-                                "type": "string",
-                                "enum": [
-                                    "activated"
-                                ]
-                            },
-                            "field_invalidated": {
-                                "type": "string",
-                                "enum": [
-                                    "invalidated"
-                                ]
-                            },
-                            "field_secret_token": {
-                                "type": "string",
-                                "enum": [
-                                    "secret_token"
-                                ]
-                            },
-                            "field_secure_token": {
-                                "type": "string",
-                                "enum": [
-                                    "secure_token"
-                                ]
-                            },
-                            "field_identity": {
-                                "type": "string",
-                                "enum": [
-                                    "id"
-                                ]
-                            }
-                        }
+                    "field_assigned_to": {
+                        "type": "string",
+                        "enum": [
+                            "assigned_to"
+                        ]
+                    },
+                    "field_issued": {
+                        "type": "string",
+                        "enum": [
+                            "issued"
+                        ]
+                    },
+                    "field_accessed": {
+                        "type": "string",
+                        "enum": [
+                            "accessed"
+                        ]
+                    },
+                    "field_activated": {
+                        "type": "string",
+                        "enum": [
+                            "activated"
+                        ]
+                    },
+                    "field_invalidated": {
+                        "type": "string",
+                        "enum": [
+                            "invalidated"
+                        ]
+                    },
+                    "field_secret_token": {
+                        "type": "string",
+                        "enum": [
+                            "secret_token"
+                        ]
+                    },
+                    "field_secure_token": {
+                        "type": "string",
+                        "enum": [
+                            "secure_token"
+                        ]
+                    },
+                    "field_identity": {
+                        "type": "string",
+                        "enum": [
+                            "id"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "ConfigurationModel": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                "title": "Configuration Model",
+                "description": "",
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "security_configuration"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "security_configuration"
-                                ]
-                            },
-                            "field_key": {
-                                "type": "string",
-                                "enum": [
-                                    "key"
-                                ]
-                            },
-                            "field_value": {
-                                "type": "string",
-                                "enum": [
-                                    "value"
-                                ]
-                            }
-                        }
+                    "field_key": {
+                        "type": "string",
+                        "enum": [
+                            "key"
+                        ]
+                    },
+                    "field_value": {
+                        "type": "string",
+                        "enum": [
+                            "value"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "RecaptchaModel": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                "title": "Recaptcha Model",
+                "description": "",
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "security_recaptcha"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 5,
-                                "minimum": 5
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "security_recaptcha"
-                                ]
-                            },
-                            "field_success": {
-                                "type": "string",
-                                "enum": [
-                                    "success"
-                                ]
-                            },
-                            "field_score": {
-                                "type": "string",
-                                "enum": [
-                                    "score"
-                                ]
-                            },
-                            "field_at_date": {
-                                "type": "string",
-                                "enum": [
-                                    "at_date"
-                                ]
-                            },
-                            "field_hostname": {
-                                "type": "string",
-                                "enum": [
-                                    "hostname"
-                                ]
-                            },
-                            "field_error": {
-                                "type": "string",
-                                "enum": [
-                                    "error"
-                                ]
-                            }
-                        }
+                    "field_success": {
+                        "type": "string",
+                        "enum": [
+                            "success"
+                        ]
+                    },
+                    "field_score": {
+                        "type": "string",
+                        "enum": [
+                            "score"
+                        ]
+                    },
+                    "field_at_date": {
+                        "type": "string",
+                        "enum": [
+                            "at_date"
+                        ]
+                    },
+                    "field_hostname": {
+                        "type": "string",
+                        "enum": [
+                            "hostname"
+                        ]
+                    },
+                    "field_error": {
+                        "type": "string",
+                        "enum": [
+                            "error"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "AccountEmailModel": {
                 "title": "Account Email Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionLabelModel"
-                    },
-                    {
-                        "properties": {
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "account_emails"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "account_emails"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "AccountInformationModel": {
                 "title": "Account Information Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/BaseModel"
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "account_information_options"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "account_information_options"
-                                ]
-                            },
-                            "field_account": {
-                                "type": "string",
-                                "enum": [
-                                    "account_id"
-                                ]
-                            },
-                            "field_created_at": {
-                                "type": "string",
-                                "enum": [
-                                    "created_at"
-                                ]
-                            },
-                            "field_updated_at": {
-                                "type": "string",
-                                "enum": [
-                                    "updated_at"
-                                ]
-                            },
-                            "field_settings": {
-                                "type": "string",
-                                "enum": [
-                                    "settings"
-                                ]
-                            }
-                        }
+                    "field_account": {
+                        "type": "string",
+                        "enum": [
+                            "account_id"
+                        ]
+                    },
+                    "field_created_at": {
+                        "type": "string",
+                        "enum": [
+                            "created_at"
+                        ]
+                    },
+                    "field_updated_at": {
+                        "type": "string",
+                        "enum": [
+                            "updated_at"
+                        ]
+                    },
+                    "field_settings": {
+                        "type": "string",
+                        "enum": [
+                            "settings"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "AddressModel": {
                 "title": "Address Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/BaseModel"
+                "properties": {
+                    "timestamps": {
+                        "type": "boolean"
                     },
-                    {
-                        "properties": {
-                            "timestamps": {
-                                "type": "boolean"
-                            },
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 6,
-                                "minimum": 6
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 4,
-                                "minimum": 4
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "addresses"
-                                ]
-                            },
-                            "field_account_information_id": {
-                                "type": "string",
-                                "enum": [
-                                    "account_information_id"
-                                ]
-                            },
-                            "field_road_name_id": {
-                                "type": "string",
-                                "enum": [
-                                    "road_name_id"
-                                ]
-                            },
-                            "field_road_number": {
-                                "type": "string",
-                                "enum": [
-                                    "road_number"
-                                ]
-                            },
-                            "field_levels": {
-                                "type": "string",
-                                "enum": [
-                                    "levels"
-                                ]
-                            },
-                            "field_country_id": {
-                                "type": "string",
-                                "enum": [
-                                    "country_id"
-                                ]
-                            },
-                            "field_zip_code_id": {
-                                "type": "string",
-                                "enum": [
-                                    "zip_code_id"
-                                ]
-                            }
-                        }
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "addresses"
+                        ]
+                    },
+                    "field_account_information_id": {
+                        "type": "string",
+                        "enum": [
+                            "account_information_id"
+                        ]
+                    },
+                    "field_road_name_id": {
+                        "type": "string",
+                        "enum": [
+                            "road_name_id"
+                        ]
+                    },
+                    "field_road_number": {
+                        "type": "string",
+                        "enum": [
+                            "road_number"
+                        ]
+                    },
+                    "field_levels": {
+                        "type": "string",
+                        "enum": [
+                            "levels"
+                        ]
+                    },
+                    "field_country_id": {
+                        "type": "string",
+                        "enum": [
+                            "country_id"
+                        ]
+                    },
+                    "field_zip_code_id": {
+                        "type": "string",
+                        "enum": [
+                            "zip_code_id"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "AddressRoadNameModel": {
                 "title": "Address Road Name Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionLabelModel"
-                    },
-                    {
-                        "properties": {
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "address_road_names"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "address_road_names"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "BoardModel": {
                 "title": "Board Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/BaseModel"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "boards"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "boards"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "BoardTitleModel": {
                 "title": "Board Title Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionLabelModel"
-                    },
-                    {
-                        "properties": {
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "board_titles"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "board_titles"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "CountryModel": {
                 "title": "Country Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "countries"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "countries"
-                                ]
-                            },
-                            "field_country_name": {
-                                "type": "string",
-                                "enum": [
-                                    "country_name"
-                                ]
-                            },
-                            "field_country_acronym": {
-                                "type": "string",
-                                "enum": [
-                                    "country_acronym"
-                                ]
-                            }
-                        }
+                    "field_country_name": {
+                        "type": "string",
+                        "enum": [
+                            "country_name"
+                        ]
+                    },
+                    "field_country_acronym": {
+                        "type": "string",
+                        "enum": [
+                            "country_acronym"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "KanbanModel": {
                 "title": "Kanban Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/BaseModel"
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "kanbans"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "kanbans"
-                                ]
-                            },
-                            "field_kanban_title_id": {
-                                "type": "string",
-                                "enum": [
-                                    "kanban_title_id"
-                                ]
-                            },
-                            "field_project_id": {
-                                "type": "string",
-                                "enum": [
-                                    "project_id"
-                                ]
-                            },
-                            "field_created_at": {
-                                "type": "string",
-                                "enum": [
-                                    "created_at"
-                                ]
-                            },
-                            "field_updated_at": {
-                                "type": "string",
-                                "enum": [
-                                    "updated_at"
-                                ]
-                            }
-                        }
+                    "field_kanban_title_id": {
+                        "type": "string",
+                        "enum": [
+                            "kanban_title_id"
+                        ]
+                    },
+                    "field_project_id": {
+                        "type": "string",
+                        "enum": [
+                            "project_id"
+                        ]
+                    },
+                    "field_created_at": {
+                        "type": "string",
+                        "enum": [
+                            "created_at"
+                        ]
+                    },
+                    "field_updated_at": {
+                        "type": "string",
+                        "enum": [
+                            "updated_at"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "KanbanTitleModel": {
                 "title": "Kanban Title Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionLabelModel"
-                    },
-                    {
-                        "properties": {
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "kanban_titles"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "kanban_titles"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "MemberGroupModel": {
                 "title": "Member Group Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionLabelModel"
-                    },
-                    {
-                        "properties": {
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "member_groups"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "member_groups"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "NewsletterSubscriptionModel": {
                 "title": "Newsletter Subscription Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "newsletter_users"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "newsletter_users"
-                                ]
-                            },
-                            "field_email_id": {
-                                "type": "string",
-                                "enum": [
-                                    "email_id"
-                                ]
-                            },
-                            "field_options": {
-                                "type": "string",
-                                "enum": [
-                                    "options"
-                                ]
-                            }
-                        }
+                    "field_email_id": {
+                        "type": "string",
+                        "enum": [
+                            "email_id"
+                        ]
+                    },
+                    "field_options": {
+                        "type": "string",
+                        "enum": [
+                            "options"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "PersonFirstnameModel": {
-                "title": "Perspn Firstname Model",
+                "title": "Person Firstname Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionLabelModel"
-                    },
-                    {
-                        "properties": {
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "person_name_first"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "person_name_first"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "PersonNameModel": {
                 "title": "Person Name Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/BaseModel"
+                "properties": {
+                    "timestamps": {
+                        "type": "boolean"
                     },
-                    {
-                        "properties": {
-                            "timestamps": {
-                                "type": "boolean"
-                            },
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 4,
-                                "minimum": 4
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "person_name"
-                                ]
-                            },
-                            "field_account_information_id": {
-                                "type": "string",
-                                "enum": [
-                                    "account_information_id"
-                                ]
-                            },
-                            "field_person_name_first_id": {
-                                "type": "string",
-                                "enum": [
-                                    "person_name_first_id"
-                                ]
-                            },
-                            "field_person_name_lastname_id": {
-                                "type": "string",
-                                "enum": [
-                                    "person_name_lastname_id"
-                                ]
-                            },
-                            "field_person_name_middlename": {
-                                "type": "string",
-                                "enum": [
-                                    "person_name_middlename"
-                                ]
-                            }
-                        }
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "person_name"
+                        ]
+                    },
+                    "field_account_information_id": {
+                        "type": "string",
+                        "enum": [
+                            "account_information_id"
+                        ]
+                    },
+                    "field_person_name_first_id": {
+                        "type": "string",
+                        "enum": [
+                            "person_name_first_id"
+                        ]
+                    },
+                    "field_person_name_lastname_id": {
+                        "type": "string",
+                        "enum": [
+                            "person_name_lastname_id"
+                        ]
+                    },
+                    "field_person_name_middlename": {
+                        "type": "string",
+                        "enum": [
+                            "person_name_middlename"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "PersonSurnameModel": {
                 "title": "Person Surname Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionLabelModel"
-                    },
-                    {
-                        "properties": {
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "person_name_middle_and_last"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "person_name_middle_and_last"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "ProjectMemberModel": {
                 "title": "Project Member Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "project_members"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "project_members"
-                                ]
-                            },
-                            "project_id": {
-                                "type": "string",
-                                "enum": [
-                                    "project_id"
-                                ]
-                            },
-                            "account_id": {
-                                "type": "string",
-                                "enum": [
-                                    "account_id"
-                                ]
-                            },
-                            "member_group_id": {
-                                "type": "string",
-                                "enum": [
-                                    "member_group_id"
-                                ]
-                            }
-                        }
+                    "project_id": {
+                        "type": "string",
+                        "enum": [
+                            "project_id"
+                        ]
+                    },
+                    "account_id": {
+                        "type": "string",
+                        "enum": [
+                            "account_id"
+                        ]
+                    },
+                    "member_group_id": {
+                        "type": "string",
+                        "enum": [
+                            "member_group_id"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "ProjectModel": {
                 "title": "Project Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/BaseModel"
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "projects"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 4,
-                                "minimum": 4
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "projects"
-                                ]
-                            },
-                            "field_account_owner_id": {
-                                "type": "string",
-                                "enum": [
-                                    "account_owner_id"
-                                ]
-                            },
-                            "field_project_title_id": {
-                                "type": "string",
-                                "enum": [
-                                    "project_title_id"
-                                ]
-                            },
-                            "field_description": {
-                                "type": "string",
-                                "enum": [
-                                    "description"
-                                ]
-                            },
-                            "field_tags": {
-                                "type": "string",
-                                "enum": [
-                                    "tags"
-                                ]
-                            },
-                            "field_created_at": {
-                                "type": "string",
-                                "enum": [
-                                    "created_at"
-                                ]
-                            },
-                            "field_updated_at": {
-                                "type": "string",
-                                "enum": [
-                                    "updated_at"
-                                ]
-                            }
-                        }
+                    "field_account_owner_id": {
+                        "type": "string",
+                        "enum": [
+                            "account_owner_id"
+                        ]
+                    },
+                    "field_project_title_id": {
+                        "type": "string",
+                        "enum": [
+                            "project_title_id"
+                        ]
+                    },
+                    "field_description": {
+                        "type": "string",
+                        "enum": [
+                            "description"
+                        ]
+                    },
+                    "field_tags": {
+                        "type": "string",
+                        "enum": [
+                            "tags"
+                        ]
+                    },
+                    "field_created_at": {
+                        "type": "string",
+                        "enum": [
+                            "created_at"
+                        ]
+                    },
+                    "field_updated_at": {
+                        "type": "string",
+                        "enum": [
+                            "updated_at"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "ProjectTitleModel": {
                 "title": "Project Title Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionLabelModel"
-                    },
-                    {
-                        "properties": {
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "project_titles"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "project_titles"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "TaskModel": {
                 "title": "Task Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "tasks"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "tasks"
-                                ]
-                            },
-                            "field_board_id": {
-                                "type": "string",
-                                "enum": [
-                                    "board_id"
-                                ]
-                            },
-                            "field_content": {
-                                "type": "string",
-                                "enum": [
-                                    "content"
-                                ]
-                            }
-                        }
+                    "field_board_id": {
+                        "type": "string",
+                        "enum": [
+                            "board_id"
+                        ]
+                    },
+                    "field_content": {
+                        "type": "string",
+                        "enum": [
+                            "content"
+                        ]
                     }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "User": {
                 "title": "Account Model",
                 "description": "",
                 "properties": {
-                    "fillable": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "maximum": 9,
-                        "minimum": 9
-                    },
-                    "hidden": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "maximum": 4,
-                        "minimum": 4
-                    },
                     "table_name": {
                         "type": "string",
                         "enum": [
@@ -3065,414 +2756,166 @@
                         ]
                     }
                 },
-                "type": "model"
+                "type": "table",
+                "deprecated": false
             },
             "ZipCodeModel": {
                 "title": "Zip Code Model",
                 "description": "",
-                "type": "model",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ExtensionNoTimestampModel"
+                "properties": {
+                    "field_table_name": {
+                        "type": "string",
+                        "enum": [
+                            "zip_codes"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "field_table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "zip_codes"
-                                ]
-                            },
-                            "field_area_name": {
-                                "type": "string",
-                                "enum": [
-                                    "area_name"
-                                ]
-                            },
-                            "field_zip_number": {
-                                "type": "string",
-                                "enum": [
-                                    "zip_number"
-                                ]
-                            },
-                            "field_country_id": {
-                                "type": "string",
-                                "enum": [
-                                    "country_id"
-                                ]
-                            }
-                        }
-                    }
-                ]
-            },
-            "BaseModel": {},
-            "ExtensionLabelModel": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/BaseModel"
+                    "field_area_name": {
+                        "type": "string",
+                        "enum": [
+                            "area_name"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "timestamps": {
-                                "type": "boolean"
-                            },
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "field_content": {
-                                "type": "string",
-                                "enum": [
-                                    "content"
-                                ]
-                            }
-                        }
-                    }
-                ]
-            },
-            "ExtensionNoTimestampModel": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/BaseModel"
+                    "field_zip_number": {
+                        "type": "string",
+                        "enum": [
+                            "zip_number"
+                        ]
                     },
-                    {
-                        "properties": {
-                            "timestamps": {
-                                "type": "boolean"
-                            }
-                        }
+                    "field_country_id": {
+                        "type": "string",
+                        "enum": [
+                            "country_id"
+                        ]
                     }
-                ]
-            },
-            "ModelView": {
-                "title": "View",
-                "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/BaseModel"
-                    },
-                    {
-                        "properties": {
-                            "timestamps": {
-                                "type": "boolean"
-                            }
-                        }
-                    }
-                ]
+                },
+                "type": "table",
+                "deprecated": false
             },
             "AccountViewModel": {
                 "title": "Account View Model",
                 "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 9,
-                                "minimum": 9
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 5,
-                                "minimum": 5
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "accounts_view"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "accounts_view"
+                        ]
                     }
-                ]
+                },
+                "type": "view",
+                "deprecated": false
             },
             "AddressViewModel": {
                 "title": "Address View Model",
                 "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 7,
-                                "minimum": 7
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "addresses_view"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "addresses_view"
+                        ]
                     }
-                ]
+                },
+                "type": "view",
+                "deprecated": false
             },
             "BoardViewModel": {
                 "title": "Board View Model",
                 "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 6,
-                                "minimum": 6
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "boards_view"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "boards_view"
+                        ]
                     }
-                ]
+                },
+                "type": "view",
+                "deprecated": false
             },
             "KanbanViewModel": {
                 "title": "Kanban View Model",
                 "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 5,
-                                "minimum": 5
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "kanbans_view"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "kanbans_view"
+                        ]
                     }
-                ]
+                },
+                "type": "view",
+                "deprecated": false
             },
             "NewsletterViewModel": {
                 "title": "Newsletter View Model",
                 "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 3,
-                                "minimum": 3
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "newsletter_view"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "newsletter_view"
+                        ]
                     }
-                ]
+                },
+                "type": "view",
+                "deprecated": false
             },
             "PersonNameViewModel": {
                 "title": "Person Name View Model",
                 "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 5,
-                                "minimum": 5
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "person_names_view"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "person_names_view"
+                        ]
                     }
-                ]
+                },
+                "type": "view",
+                "deprecated": false
             },
             "ProjectViewModel": {
                 "title": "Project View Model",
                 "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 7,
-                                "minimum": 7
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 2,
-                                "minimum": 2
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "projects_view"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "projects_view"
+                        ]
                     }
-                ]
+                },
+                "type": "view",
+                "deprecated": false
             },
             "ZipCodeViewFullModel": {
                 "title": "Zip Code View Full model",
                 "description": "",
-                "type": "view",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ModelView"
-                    },
-                    {
-                        "properties": {
-                            "fillable": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 5,
-                                "minimum": 5
-                            },
-                            "hidden": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "maximum": 1,
-                                "minimum": 1
-                            },
-                            "table_name": {
-                                "type": "string",
-                                "enum": [
-                                    "zip_codes_view_full"
-                                ]
-                            }
-                        }
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "zip_codes_view_full"
+                        ]
                     }
-                ]
+                },
+                "type": "view",
+                "deprecated": false
             },
             "ZipCodeViewShortModel": {
-                "$ref": "#/components/schemas/ModelView"
+                "title": "Zip Code View short model",
+                "description": "",
+                "properties": {
+                    "table_name": {
+                        "type": "string",
+                        "enum": [
+                            "zip_codes_view_short"
+                        ]
+                    }
+                },
+                "type": "view",
+                "deprecated": false
             }
         },
         "securitySchemes": {

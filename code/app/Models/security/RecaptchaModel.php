@@ -8,6 +8,7 @@
     namespace App\Models\security;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
 
     // External libraries
@@ -20,7 +21,8 @@
      */
     #[OA\Schema( title: 'Recaptcha Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class RecaptchaModel
         extends ExtensionNoTimestampModel
     {
@@ -48,13 +50,9 @@
         public const field_error     = 'error';
 
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 5,
-            minimum: 5,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_success,
@@ -65,12 +63,9 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_hostname,
@@ -78,6 +73,9 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_success     => 'boolean',

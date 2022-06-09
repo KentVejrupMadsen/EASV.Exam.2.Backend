@@ -20,7 +20,8 @@
      */
     #[OA\Schema( title: 'Person Name Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class PersonNameModel
         extends BaseModel
     {
@@ -47,13 +48,9 @@
         public const field_person_name_middlename  = 'person_name_middlename';
 
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 4,
-            minimum: 4,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_account_information_id,
@@ -63,12 +60,9 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_account_information_id,
@@ -77,12 +71,15 @@
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            self::field_account_information_id  => 'integer',
-            self::field_person_name_first_id    => 'integer',
-            self::field_person_name_lastname_id => 'integer',
-            self::field_person_name_middlename  => 'array',
+            self::field_account_information_id  => self::typeInteger,
+            self::field_person_name_first_id    => self::typeInteger,
+            self::field_person_name_lastname_id => self::typeInteger,
+            self::field_person_name_middlename  => self::typeArray,
         ];
     }
 ?>

@@ -8,6 +8,7 @@
     namespace App\Models\tables;
 
     // Internal
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionLabelModel;
 
     // External
@@ -18,9 +19,10 @@
     /**
      *
      */
-    #[OA\Schema( title: 'Perspn Firstname Model',
+    #[OA\Schema( title: 'Person Firstname Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class PersonFirstnameModel
         extends ExtensionLabelModel
     {

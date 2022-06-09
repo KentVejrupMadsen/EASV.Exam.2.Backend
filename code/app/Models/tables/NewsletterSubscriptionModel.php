@@ -8,6 +8,7 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
 
     // External libraries
@@ -20,7 +21,8 @@
      */
     #[OA\Schema( title: 'Newsletter Subscription Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class NewsletterSubscriptionModel
         extends ExtensionNoTimestampModel
     {
@@ -38,33 +40,31 @@
         #[OA\Property( type: 'string' )]
         public const field_options  = 'options';
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_email_id,
             self::field_options
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
             self::field_email_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            self::field_email_id => 'integer'
+            self::field_email_id => self::typeInteger
         ];
     }
 ?>

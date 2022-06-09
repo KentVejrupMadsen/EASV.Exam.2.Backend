@@ -13,9 +13,13 @@
         as OA;
 
 
+    /**
+     *
+     */
     #[OA\Schema( title: 'Address View Model',
                  description: '',
-                 type: ModelView::class )]
+                 type: ModelView::model_view,
+                 deprecated: false )]
     class AddressViewModel
         extends ModelView
     {
@@ -23,49 +27,56 @@
         public const table_name = 'addresses_view';
         protected $table  = self::table_name;
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 7,
-            minimum: 7,
-            items: new OA\Items(type: 'string'))]
+        protected const field_id = 'id';
+        protected const field_account_information_id = 'account_information_id';
+        protected const field_road_name = 'road_name';
+        protected const field_road_number = 'road_number';
+        protected const field_levels = 'levels';
+        protected const field_address_country = 'address_country';
+        protected const field_zip_code_id = 'zip_code_id';
+
+
+
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
-            'id',
-            'account_information_id',
-            'road_name',
-            'road_number',
-            'levels',
-            'address_country',
-            'zip_code_id'
+            self::field_id,
+            self::field_account_information_id,
+            self::field_road_name,
+            self::field_road_number,
+            self::field_levels,
+            self::field_address_country,
+            self::field_zip_code_id
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
-            'id',
-            'account_information_id',
-            'zip_code_id'
+            self::field_id,
+            self::field_account_information_id,
+            self::field_zip_code_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            'id'                     => 'integer',
-            'account_information_id' => 'integer',
+            self::field_id                     => self::typeInteger,
+            self::field_account_information_id => self::typeInteger,
 
-            'road_name'       => 'string',
-            'road_number'     => 'integer',
-            'levels'          => 'string',
-            'address_country' => 'string',
+            self::field_road_name       => self::typeString,
+            self::field_road_number     => self::typeInteger,
+            self::field_levels          => self::typeString,
+            self::field_address_country => self::typeString,
 
-            'zip_code_id' => 'integer'
+            self::field_zip_code_id     => self::typeInteger
         ];
     }
 ?>

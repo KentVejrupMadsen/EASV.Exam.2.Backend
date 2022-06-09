@@ -7,6 +7,7 @@
      */
     namespace App\Http\Requests\template;
 
+    //
     use Illuminate\Foundation\Http\FormRequest;
 
 
@@ -16,6 +17,9 @@
     abstract class AccountProtectedRequest
         extends FormRequest
     {
+
+        public const model_type = 'request';
+
         /**
          * @return bool
          */

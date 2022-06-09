@@ -13,9 +13,13 @@
         as OA;
 
 
+    /**
+     *
+     */
     #[OA\Schema( title: 'Person Name View Model',
                  description: '',
-                 type: ModelView::class )]
+                 type: ModelView::model_view,
+                 deprecated: false )]
     class PersonNameViewModel
         extends ModelView
     {
@@ -23,42 +27,48 @@
         public const table_name = 'person_names_view';
         protected $table = self::table_name;
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 5,
-            minimum: 5,
-            items: new OA\Items(type: 'string'))]
+        protected const field_id = 'id';
+        protected const field_account_information_id = 'account_information_id';
+
+        protected const field_person_first_name = 'person_first_name';
+        protected const field_person_name_middlename = 'person_name_middlename';
+        protected const field_person_last_name = 'person_last_name';
+
+
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
-            'id',
-            'account_information_id',
-            'person_first_name',
-            'person_name_middlename',
-            'person_last_name'
+            self::field_id,
+            self::field_account_information_id,
+            self::field_person_first_name,
+            self::field_person_name_middlename,
+            self::field_person_last_name
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
-            'id',
-            'account_information_id'
+            self::field_id,
+            self::field_account_information_id,
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            'id' => 'integer',
-            'account_information_id' => 'integer',
+            self::field_id                     => self::typeInteger,
+            self::field_account_information_id => self::typeInteger,
 
-            'person_first_name'      => 'string',
-            'person_name_middlename' => 'array',
-            'person_last_name'       => 'string'
+            self::field_person_first_name      => self::typeString,
+            self::field_person_name_middlename => self::typeArray,
+            self::field_person_last_name       => self::typeString
         ];
     }
 ?>

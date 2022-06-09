@@ -8,6 +8,7 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionLabelModel;
 
     // External libraries
@@ -20,7 +21,8 @@
      */
     #[OA\Schema( title: 'Account Email Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class AccountEmailModel 
         extends ExtensionLabelModel
     {

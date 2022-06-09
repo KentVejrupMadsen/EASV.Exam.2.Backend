@@ -3,23 +3,23 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+        Setups a 'node route'. It makes the route prefix for account entities.
      */
     // Internally
     require_once 'AddressApi.php';
     require_once 'EmailApi.php';
     require_once 'NameApi.php';
 
-    use App\Http\Controllers\NodesController;
+use App\Routes\Controllers\NodesController;
 
 
-    /**
+/**
      *
      */
     class EntitiesRoutes
         extends NodesController
     {
-        const EntityRoute = 'entities';
+        private const EntityRoute = 'entities';
 
         /**
          *

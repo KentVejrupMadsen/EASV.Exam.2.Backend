@@ -8,6 +8,7 @@
     namespace App\Http\Requests\account;
 
     // External
+    use App\Http\Requests\template\BaseRequest;
     use OpenApi\Attributes
         as OA;
 
@@ -19,7 +20,10 @@
     /**
      *
      */
-    #[OA\Schema()]
+    #[OA\Schema( title: 'Information Request',
+                 description: '',
+                 type: BaseRequest::model_type,
+                 deprecated: false )]
     class InformationRequest
         extends AccountProtectedRequest
     {

@@ -13,9 +13,13 @@
         as OA;
 
 
+    /**
+     *
+     */
     #[OA\Schema( title: 'Project View Model',
                  description: '',
-                 type: ModelView::class )]
+                 type: ModelView::model_view,
+                 deprecated: false )]
     class ProjectViewModel
         extends ModelView
     {
@@ -23,49 +27,54 @@
         public const table_name = 'projects_view';
         protected $table = self::table_name;
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 7,
-            minimum: 7,
-            items: new OA\Items(type: 'string'))]
+        protected const field_id = 'id';
+        protected const field_account_owner_id = 'account_owner_id';
+        protected const field_project_title = 'project_title';
+        protected const field_description = 'description';
+        protected const field_tags = 'tags';
+        protected const field_created_at = 'created_at';
+        protected const field_updated_at = 'updated_at';
+
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
-            'id',
-            'account_owner_id',
-            'project_title',
-            'description',
-            'tags',
-            'created_at',
-            'updated_at'
+            self::field_id,
+            self::field_account_owner_id,
+            self::field_project_title,
+            self::field_description,
+            self::field_tags,
+            self::field_created_at,
+            self::field_updated_at
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
-            'id',
-            'account_owner_id'
+            self::field_id,
+            self::field_account_owner_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            'id'                => 'integer',
-            'account_owner_id'  => 'integer',
+            self::field_id                => self::typeInteger,
+            self::field_account_owner_id  => self::typeInteger,
 
-            'project_title' => 'string',
-            'description'   => 'string',
+            self::field_project_title => self::typeString,
+            self::field_description   => self::typeString,
 
-            'tags' => 'array',
+            self::field_tags => self::typeArray,
 
-            'created_at' => 'timestamp',
-            'updated_at' => 'timestamp'
+            self::field_created_at => self::typeTimestamp,
+            self::field_updated_at => self::typeTimestamp
         ];
     }
 ?>

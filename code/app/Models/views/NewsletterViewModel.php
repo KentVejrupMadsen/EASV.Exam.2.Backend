@@ -13,9 +13,13 @@
         as OA;
 
 
+    /**
+     *
+     */
     #[OA\Schema( title: 'Newsletter View Model',
                  description: '',
-                 type: ModelView::class )]
+                 type: ModelView::model_view,
+                 deprecated: false )]
     class NewsletterViewModel
         extends ModelView
     {
@@ -23,36 +27,39 @@
         public const table_name = 'newsletter_view';
         protected $table = self::table_name;
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 3,
-            minimum: 3,
-            items: new OA\Items(type: 'string'))]
+        protected const field_id = 'id';
+        protected const field_email = 'email';
+        protected const field_options = 'options';
+
+
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
-            'id',
-            'email',
-            'options'
+            self::field_id,
+            self::field_email,
+            self::field_options
         ];
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items(type: 'string'))]
+
+        /**
+         * @var string[]
+         */
         protected $hidden =
         [
-            'id',
+            self::field_id
         ];
 
 
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
-            'id'        => 'integer',
-            'email'     => 'string',
-            'options'   => 'array'
+            self::field_id        => self::typeInteger,
+            self::field_email     => self::typeString,
+            self::field_options   => self::typeArray
         ];
     }
 ?>

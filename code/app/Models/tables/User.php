@@ -28,7 +28,8 @@
      */
     #[OA\Schema( title: 'Account Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class User 
         extends Authenticatable
     {
@@ -67,17 +68,15 @@
         #[OA\Property( type: 'string' )]
         public const field_verified_at = 'email_verified_at';
 
+        //
         use HasApiTokens,
             HasFactory,
             Notifiable;
 
 
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 9,
-            minimum: 9,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::field_username,
@@ -92,12 +91,9 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 4,
-            minimum: 4,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::field_password,
@@ -106,7 +102,10 @@
             self::field_verified_at
         ];
 
-        
+
+        /**
+         * @var array
+         */
         protected $casts = 
         [
             self::field_username          => BaseModel::typeString,
@@ -115,9 +114,9 @@
             self::field_email_id          => BaseModel::typeInteger,
             self::field_password          => BaseModel::typeString,
 
-            self::field_verified_at       => 'datetime',
-            self::field_created_at        => 'datetime',
-            self::field_updated_at        => 'datetime',
+            self::field_verified_at       => BaseModel::typeDatetime,
+            self::field_created_at        => BaseModel::typeDatetime,
+            self::field_updated_at        => BaseModel::typeDatetime,
 
             self::field_settings          => BaseModel::typeArray
         ];

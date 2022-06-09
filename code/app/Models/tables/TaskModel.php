@@ -8,6 +8,7 @@
     namespace App\Models\tables;
 
     // Internal libraries
+    use App\Models\templates\BaseModel;
     use App\Models\templates\ExtensionNoTimestampModel;
 
     // External libraries
@@ -20,7 +21,8 @@
      */
     #[OA\Schema( title: 'Task Model',
                  description: '',
-                 type: 'model' )]
+                 type: BaseModel::model_type,
+                 deprecated: false )]
     class TaskModel
         extends ExtensionNoTimestampModel
     {
@@ -39,13 +41,9 @@
         public const field_content = 'content';
 
 
-        //
-        #[OA\Property(
-            property: 'fillable',
-            type: 'array',
-            maximum: 2,
-            minimum: 2,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $fillable = 
         [
             self::field_board_id,
@@ -53,22 +51,22 @@
         ];
 
 
-        #[OA\Property(
-            property: 'hidden',
-            type: 'array',
-            maximum: 1,
-            minimum: 1,
-            items: new OA\Items(type: 'string'))]
+        /**
+         * @var string[]
+         */
         protected $hidden = 
         [
             self::field_board_id,
         ];
 
-        
+
+        /**
+         * @var string[]
+         */
         protected $casts = 
         [
-            self::field_board_id => 'integer',
-            self::field_content  => 'string'
+            self::field_board_id => self::typeInteger,
+            self::field_content  => self::typeString
         ];
     }
 ?>

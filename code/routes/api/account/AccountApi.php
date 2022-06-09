@@ -3,17 +3,17 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     * Serves the routes for the account models.
      */
     // Internal libraries
-    use App\Http\Controllers\httpControllers\account\AccountController;
+use App\Http\Controllers\httpControllers\account\AccountController;
+use App\Routes\Controllers\RouteController;
+use Illuminate\Support\Facades\Route;
 
-    // External libraries
-    use Illuminate\Support\Facades\Route;
-    use App\Http\Controllers\RouteController;
+// External libraries
 
 
-    /**
+/**
      *
      */
     class AccountApi
@@ -81,7 +81,7 @@
     /**
      * @return void
      */
-    function MakeAccountApi()
+    function MakeAccountApi(): void
     {
         $api = new AccountApi();
         $api->run();
