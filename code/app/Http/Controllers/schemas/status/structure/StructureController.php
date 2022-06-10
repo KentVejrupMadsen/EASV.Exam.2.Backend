@@ -1,5 +1,5 @@
 <?php
-    namespace App\Http\Controllers\schemas\status;
+    namespace App\Http\Controllers\schemas\status\structure;
 
     // External
     use Illuminate\Http\JsonResponse;
@@ -11,7 +11,7 @@
     /**
      *
      */
-    class HealthController
+    class StructureController
         extends BaseController
     {
         /**
@@ -26,7 +26,7 @@
         }
 
         // Variables
-        private static ?HealthController $singleton = null;
+        private static ?StructureController $singleton = null;
 
 
         /**
@@ -40,17 +40,19 @@
 
         // Accessor
         /**
-         * @return HealthController|null
+         * @return StructureController|null
          */
-        public static function getSingleton(): ?HealthController
+        public static function getSingleton(): ?StructureController
         {
             return self::$singleton;
         }
 
+
         /**
-         * @param HealthController|null $singleton
+         * @param StructureController|null $singleton
+         * @return void
          */
-        public static function setSingleton( ?HealthController $singleton ): void
+        public static function setSingleton( ?StructureController $singleton ): void
         {
             self::$singleton = $singleton;
         }
