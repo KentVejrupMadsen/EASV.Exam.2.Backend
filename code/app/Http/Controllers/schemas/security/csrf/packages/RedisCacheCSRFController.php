@@ -5,16 +5,16 @@
      * Description:
      * TODO: Make description
      */
-    namespace app\cache\Controllers\security;
+    namespace App\Http\Controllers\schemas\security\csrf\packages;
 
     // External libraries
+    use App\Http\Controllers\Controller;
+    use App\Models\security\CSRFModel;
     use Illuminate\Support\Facades\Redis;
     use Illuminate\Support\Str;
 
 
     // Internal libraries
-    use App\Http\Controllers\Controller;
-    use App\Models\security\CSRFModel;
 
 
     /**
