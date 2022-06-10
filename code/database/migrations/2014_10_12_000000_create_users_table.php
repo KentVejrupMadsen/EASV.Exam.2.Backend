@@ -15,6 +15,7 @@
      */
     return new class extends Migration
     {
+        // constants
         private const account_mail_table = 'account_emails';
         private const account_table = 'accounts';
 

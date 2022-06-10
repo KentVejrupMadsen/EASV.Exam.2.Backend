@@ -28,7 +28,7 @@
                     $table->morphs( 'tokenable' );
                     $table->string( 'name' );
 
-                    $table->string( 'token', 64)
+                    $table->string( 'token', 64 )
                           ->unique();
 
                     $table->text( 'abilities' )
