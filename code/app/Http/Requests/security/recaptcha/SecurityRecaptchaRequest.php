@@ -5,26 +5,24 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\security;
+    namespace App\Http\Requests\security\recaptcha;
 
-    // external libraries
     use App\Http\Requests\template\BaseRequest;
-    use Illuminate\Foundation\Http\FormRequest;
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal libraries
     use App\Http\Requests\template\RequestDefaults;
+    use Illuminate\Foundation\Http\FormRequest;
+    use OpenApi\Attributes as OA;
+
+    // internal libraries
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Security CSRF Request',
+    #[OA\Schema( title: 'Security Recaptcha Request',
                  description: '',
                  type: BaseRequest::model_type,
                  deprecated: false )]
-    class SecurityCSRFRequest
+    class SecurityRecaptchaRequest
         extends FormRequest
     {
         /**
@@ -37,6 +35,7 @@
             return $ret;
         }
 
+
         /**
          * @return bool
          */
@@ -44,17 +43,11 @@
         {
             $retVal = false;
 
-            if( $this->denyAccess() )
-            {
-                return $retVal;
-            }
-
             if( $this->accepts( RequestDefaults::getAllowedFormats() ) )
             {
                 $retVal = true;
             }
 
-            //
             return $retVal;
         }
 

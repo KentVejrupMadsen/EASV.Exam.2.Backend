@@ -5,36 +5,27 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\account;
+    namespace App\Http\Requests\account\entities\name;
 
     // External
+    use App\Http\Requests\template\AccountProtectedRequest;
     use App\Http\Requests\template\BaseRequest;
-    use OpenApi\Attributes
-        as OA;
+    use App\Http\Requests\template\RequestDefaults;
+    use OpenApi\Attributes as OA;
 
     // Internal
-    use App\Http\Requests\template\PublicRequest;
-    use App\Http\Requests\template\RequestDefaults;
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Account Request',
+    #[OA\Schema( title: 'Person Name Request',
                  description: '',
                  type: BaseRequest::model_type,
                  deprecated: false )]
-    class AccountRequest
-        extends PublicRequest
+    class PersonNameRequest
+        extends AccountProtectedRequest
     {
-        /**
-         * @return bool
-         */
-        private function allowedMethods(): bool
-        {
-            return $this->CRUDRoutes();
-        }
-
         /**
          * @return bool
          */
@@ -42,22 +33,9 @@
         {
             $retVal = false;
 
-            // Is Https connection
-            if( $this->RequireSecureConnection() )
-            {
-                $retVal = true;
-            }
-
-            // retrieves which formats are allowed. application/json, application/xml etc.
             if( $this->accepts( RequestDefaults::getAllowedFormats() ) )
             {
                 $retVal = true;
-            }
-
-            // which http methods are allowed
-            if( !$this->allowedMethods() )
-            {
-                abort( 405, 'is not a valid http method' );
             }
 
             return $retVal;

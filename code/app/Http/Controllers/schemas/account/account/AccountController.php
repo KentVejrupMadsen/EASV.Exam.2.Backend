@@ -13,7 +13,7 @@
     use App\Http\Controllers\schemas\account\account\packages\AccountResponseJSONFactory;
     use App\Http\Controllers\schemas\account\entities\email\PersonEmailController;
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\account\AccountRequest;
+    use App\Http\Requests\account\account\AccountRequest;
     use App\Models\tables\AccountEmailModel;
     use App\Models\tables\User;
     use Carbon\Carbon;

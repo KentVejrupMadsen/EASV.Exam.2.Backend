@@ -5,32 +5,41 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\options;
+    namespace App\Http\Requests\security\configuration;
 
-    // external libraries
+    // external
+    use App\Http\Requests\template\AccountProtectedRequest;
     use App\Http\Requests\template\BaseRequest;
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal libraries
-    use App\Http\Requests\template\PublicRequest;
     use App\Http\Requests\template\RequestDefaults;
+    use OpenApi\Attributes as OA;
+
+    // internal
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'State Request',
+    #[OA\Schema( title: 'Security Configuration Request',
                  description: '',
                  type: BaseRequest::model_type,
                  deprecated: false )]
-    class StateRequest
-        extends PublicRequest
+    class SecurityConfigurationRequest
+        extends AccountProtectedRequest
     {
         /**
          * @return bool
          */
-        public function authorize(): bool
+        protected final function denyAccess(): bool
+        {
+            $ret = false;
+
+            return $ret;
+        }
+
+        /**
+         * @return bool
+         */
+        public final function authorize(): bool
         {
             $retVal = false;
 
@@ -42,10 +51,11 @@
             return $retVal;
         }
 
+
         /**
          * @return array
          */
-        public final function rules(): array
+        public function rules(): array
         {
             return
             [

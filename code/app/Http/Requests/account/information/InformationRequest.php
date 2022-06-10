@@ -5,27 +5,26 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\account;
+    namespace App\Http\Requests\account\information;
 
-    // external
+    // External
+    use App\Http\Requests\template\AccountProtectedRequest;
     use App\Http\Requests\template\BaseRequest;
-    use Illuminate\Foundation\Http\FormRequest;
-    use OpenApi\Attributes
-        as OA;
+    use App\Http\Requests\template\RequestDefaults;
+    use OpenApi\Attributes as OA;
 
     // Internal
-    use App\Http\Requests\template\RequestDefaults;
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Newsletter Request',
+    #[OA\Schema( title: 'Information Request',
                  description: '',
                  type: BaseRequest::model_type,
                  deprecated: false )]
-    class NewsletterRequest
-        extends FormRequest
+    class InformationRequest
+        extends AccountProtectedRequest
     {
         /**
          * @return bool

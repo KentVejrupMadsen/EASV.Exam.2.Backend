@@ -9,7 +9,7 @@
 
     // External libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\account\entities\PersonAddressRequest;
+    use App\Http\Requests\account\entities\address\PersonAddressRequest;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use OpenApi\Attributes as OA;

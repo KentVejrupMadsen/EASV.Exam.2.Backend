@@ -5,32 +5,31 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\options;
+    namespace App\Http\Requests\account\newsletter;
 
-    // external libraries
+    // external
     use App\Http\Requests\template\BaseRequest;
-    use OpenApi\Attributes
-        as OA;
-
-    // internal libraries
-    use App\Http\Requests\template\PublicRequest;
     use App\Http\Requests\template\RequestDefaults;
+    use Illuminate\Foundation\Http\FormRequest;
+    use OpenApi\Attributes as OA;
+
+    // Internal
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Find Request',
+    #[OA\Schema( title: 'Newsletter Request',
                  description: '',
                  type: BaseRequest::model_type,
                  deprecated: false )]
-    class FindRequest
-        extends PublicRequest
+    class NewsletterRequest
+        extends FormRequest
     {
         /**
          * @return bool
          */
-        public function authorize(): bool
+        public final function authorize(): bool
         {
             $retVal = false;
 
@@ -42,10 +41,11 @@
             return $retVal;
         }
 
+
         /**
          * @return array
          */
-        public function rules(): array
+        public final function rules(): array
         {
             return
             [

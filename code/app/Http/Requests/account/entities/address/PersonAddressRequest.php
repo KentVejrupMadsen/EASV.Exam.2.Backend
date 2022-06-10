@@ -5,28 +5,28 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\account;
+    namespace App\Http\Requests\account\entities\address;
 
     // External
+    use App\Http\Requests\template\AccountProtectedRequest;
     use App\Http\Requests\template\BaseRequest;
-    use OpenApi\Attributes
-        as OA;
+    use App\Http\Requests\template\RequestDefaults;
+    use OpenApi\Attributes as OA;
 
     // Internal
-    use App\Http\Requests\template\AccountProtectedRequest;
-    use App\Http\Requests\template\RequestDefaults;
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Information Request',
+    #[OA\Schema( title: 'Person Address Request',
                  description: '',
                  type: BaseRequest::model_type,
                  deprecated: false )]
-    class InformationRequest
+    class PersonAddressRequest
         extends AccountProtectedRequest
     {
+
         /**
          * @return bool
          */
@@ -46,7 +46,7 @@
         /**
          * @return array
          */
-        public final function rules(): array
+        public final function rules()
         {
             return
             [

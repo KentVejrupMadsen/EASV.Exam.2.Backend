@@ -5,36 +5,33 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\security;
+    namespace App\Http\Requests\account\account;
 
-    // external
+    // External
     use App\Http\Requests\template\BaseRequest;
-    use OpenApi\Attributes
-        as OA;
-
-    // internal
-    use App\Http\Requests\template\AccountProtectedRequest;
+    use App\Http\Requests\template\PublicRequest;
     use App\Http\Requests\template\RequestDefaults;
+    use OpenApi\Attributes as OA;
+
+    // Internal
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Security Configuration Request',
+    #[OA\Schema( title: 'Account Request',
                  description: '',
                  type: BaseRequest::model_type,
                  deprecated: false )]
-    class SecurityConfigurationRequest
-        extends AccountProtectedRequest
+    class AccountRequest
+        extends PublicRequest
     {
         /**
          * @return bool
          */
-        protected final function denyAccess(): bool
+        private function allowedMethods(): bool
         {
-            $ret = false;
-
-            return $ret;
+            return $this->CRUDRoutes();
         }
 
         /**
@@ -44,9 +41,22 @@
         {
             $retVal = false;
 
+            // Is Https connection
+            if( $this->RequireSecureConnection() )
+            {
+                $retVal = true;
+            }
+
+            // retrieves which formats are allowed. application/json, application/xml etc.
             if( $this->accepts( RequestDefaults::getAllowedFormats() ) )
             {
                 $retVal = true;
+            }
+
+            // which http methods are allowed
+            if( !$this->allowedMethods() )
+            {
+                abort( 405, 'is not a valid http method' );
             }
 
             return $retVal;
@@ -56,7 +66,7 @@
         /**
          * @return array
          */
-        public function rules(): array
+        public final function rules(): array
         {
             return
             [

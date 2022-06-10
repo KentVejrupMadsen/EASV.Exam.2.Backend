@@ -5,38 +5,27 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\security;
+    namespace App\Http\Requests\account\entities\email;
 
+    // External
+    use App\Http\Requests\template\AccountProtectedRequest;
     use App\Http\Requests\template\BaseRequest;
-    use Illuminate\Foundation\Http\FormRequest;
-    use OpenApi\Attributes
-        as OA;
-
-    // internal libraries
     use App\Http\Requests\template\RequestDefaults;
+    use OpenApi\Attributes as OA;
+
+    // Internal
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Security Recaptcha Request',
+    #[OA\Schema( title: 'Person Email Request',
                  description: '',
                  type: BaseRequest::model_type,
                  deprecated: false )]
-    class SecurityRecaptchaRequest
-        extends FormRequest
+    class PersonEmailRequest
+        extends AccountProtectedRequest
     {
-        /**
-         * @return bool
-         */
-        protected final function denyAccess(): bool
-        {
-            $ret = false;
-
-            return $ret;
-        }
-
-
         /**
          * @return bool
          */

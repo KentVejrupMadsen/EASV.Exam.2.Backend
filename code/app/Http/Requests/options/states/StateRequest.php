@@ -5,33 +5,31 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\account\entities;
+    namespace App\Http\Requests\options\states;
 
-    // External
+    // external libraries
     use App\Http\Requests\template\BaseRequest;
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal
-    use App\Http\Requests\template\AccountProtectedRequest;
+    use App\Http\Requests\template\PublicRequest;
     use App\Http\Requests\template\RequestDefaults;
+    use OpenApi\Attributes as OA;
+
+    // Internal libraries
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Person Address Request',
+    #[OA\Schema( title: 'State Request',
                  description: '',
                  type: BaseRequest::model_type,
                  deprecated: false )]
-    class PersonAddressRequest
-        extends AccountProtectedRequest
+    class StateRequest
+        extends PublicRequest
     {
-
         /**
          * @return bool
          */
-        public final function authorize(): bool
+        public function authorize(): bool
         {
             $retVal = false;
 
@@ -43,11 +41,10 @@
             return $retVal;
         }
 
-
         /**
          * @return array
          */
-        public final function rules()
+        public final function rules(): array
         {
             return
             [

@@ -5,32 +5,31 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\account\entities;
+    namespace App\Http\Requests\options\find;
 
-    // External
+    // external libraries
     use App\Http\Requests\template\BaseRequest;
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal
-    use App\Http\Requests\template\AccountProtectedRequest;
+    use App\Http\Requests\template\PublicRequest;
     use App\Http\Requests\template\RequestDefaults;
+    use OpenApi\Attributes as OA;
+
+    // internal libraries
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Person Email Request',
+    #[OA\Schema( title: 'Find Request',
                  description: '',
                  type: BaseRequest::model_type,
                  deprecated: false )]
-    class PersonEmailRequest
-        extends AccountProtectedRequest
+    class FindRequest
+        extends PublicRequest
     {
         /**
          * @return bool
          */
-        public final function authorize(): bool
+        public function authorize(): bool
         {
             $retVal = false;
 
@@ -42,11 +41,10 @@
             return $retVal;
         }
 
-
         /**
          * @return array
          */
-        public final function rules(): array
+        public function rules(): array
         {
             return
             [

@@ -8,7 +8,7 @@
 
     // External libraries
     use App\Http\Controllers\templates\ControllerOption;
-    use App\Http\Requests\options\StateRequest;
+    use App\Http\Requests\options\states\StateRequest;
     use OpenApi\Attributes as OA;
 
     // Internal libraries

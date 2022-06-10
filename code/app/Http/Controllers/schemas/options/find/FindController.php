@@ -8,7 +8,7 @@
 
     // External
     use App\Http\Controllers\templates\ControllerOption;
-    use App\Http\Requests\options\FindRequest;
+    use App\Http\Requests\options\find\FindRequest;
     use OpenApi\Attributes as OA;
 
     // Internal

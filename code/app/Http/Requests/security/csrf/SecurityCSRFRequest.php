@@ -5,28 +5,37 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Requests\account\entities;
+    namespace App\Http\Requests\security\csrf;
 
-    // External
+    // external libraries
     use App\Http\Requests\template\BaseRequest;
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal
-    use App\Http\Requests\template\AccountProtectedRequest;
     use App\Http\Requests\template\RequestDefaults;
+    use Illuminate\Foundation\Http\FormRequest;
+    use OpenApi\Attributes as OA;
+
+    // Internal libraries
 
 
     /**
      *
      */
-    #[OA\Schema( title: 'Person Name Request',
+    #[OA\Schema( title: 'Security CSRF Request',
                  description: '',
                  type: BaseRequest::model_type,
                  deprecated: false )]
-    class PersonNameRequest
-        extends AccountProtectedRequest
+    class SecurityCSRFRequest
+        extends FormRequest
     {
+        /**
+         * @return bool
+         */
+        protected final function denyAccess(): bool
+        {
+            $ret = false;
+
+            return $ret;
+        }
+
         /**
          * @return bool
          */
@@ -34,11 +43,17 @@
         {
             $retVal = false;
 
+            if( $this->denyAccess() )
+            {
+                return $retVal;
+            }
+
             if( $this->accepts( RequestDefaults::getAllowedFormats() ) )
             {
                 $retVal = true;
             }
 
+            //
             return $retVal;
         }
 

@@ -12,7 +12,7 @@
     use app\cache\Controllers\security\RedisCacheCSRFController;
     use App\Http\Controllers\schemas\security\csrf\packages\CSRFResponseJSONFactory;
     use App\Http\Controllers\templates\CrudController;
-    use App\Http\Requests\security\SecurityCSRFRequest;
+    use App\Http\Requests\security\csrf\SecurityCSRFRequest;
     use App\Models\security\CSRFModel;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
