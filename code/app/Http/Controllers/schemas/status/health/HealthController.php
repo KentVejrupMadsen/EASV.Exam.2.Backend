@@ -3,7 +3,9 @@
 
     // External
     use Illuminate\Http\JsonResponse;
-    use Illuminate\Routing\Controller as BaseController;
+
+    use Illuminate\Routing\Controller
+        as BaseController;
 
 
     /**
