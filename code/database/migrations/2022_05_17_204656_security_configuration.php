@@ -15,11 +15,15 @@
      */
     return new class extends Migration
     {
-        public function up()
+        private const security_configuration_table = 'security_configuration';
+        private const security_csrf = 'security_csrf_token';
+
+        // create tables
+        public function up(): void
         {
             //
             Schema::create(
-                'security_configuration',
+                self::security_configuration_table,
                 function ( Blueprint $table )
                 {
                     $table->id();
@@ -35,7 +39,7 @@
             );
 
             Schema::create(
-                 'security_csrf_token',
+                 self::security_csrf,
                 function( Blueprint $table )
                 {
                     $table->id();
@@ -73,11 +77,11 @@
         }
 
 
-        public function down()
+        // drop tables
+        public function down(): void
         {
-            //
-            Schema::dropIfExists( 'security_configuration' );
-            Schema::dropIfExists( 'security_csrf_token' );
+            Schema::dropIfExists( self::security_configuration_table );
+            Schema::dropIfExists( self::security_csrf );
         }
     };
 ?>

@@ -15,11 +15,13 @@
      */
     return new class extends Migration
     {
-        
-        public function up()
+        private const table_name = 'password_resets';
+
+        // create table
+        public function up(): void
         {
             Schema::create(
-                'password_resets',
+                self::table_name,
                 function( Blueprint $table )
                 {
                     $table->id();
@@ -44,10 +46,11 @@
                 }
             );
         }
-        
-        public function down()
+
+        // drop table
+        public function down(): void
         {
-            Schema::dropIfExists( 'password_resets' );
+            Schema::dropIfExists( self::table_name );
         }
     };
 ?>

@@ -15,25 +15,30 @@
      */
     return new class extends Migration
     {
-        
-        public function up()
+        private const account_mail_table = 'account_emails';
+        private const account_table = 'accounts';
+
+        // create tables
+        public function up(): void
         {
+            // for data consistency as other services also make use of an accounts email
             Schema::create( 
-                'account_emails', 
+                self::account_mail_table,
                 function ( Blueprint $table ) 
                 {
                     $table->id( 'identity' )
                           ->primary();
 
                     $table->string( 'content' )
-                          ->unique();
+                          ->unique()
+                          ->comment( 'email address. only unique mail addresses are allowed.' );
                 }
             );
 
 
             // Base information for logging in
             Schema::create( 
-                'accounts', 
+                self::account_table,
                 function( Blueprint $table )
                 {
                     $table->id( 'identity' )
@@ -70,11 +75,11 @@
             );
         }
 
-        
-        public function down()
+        // drop tables
+        public function down(): void
         {
-            Schema::dropIfExists( 'accounts' );
-            Schema::dropIfExists( 'account_emails' );
+            Schema::dropIfExists( self::account_table );
+            Schema::dropIfExists( self::account_mail_table );
         }
     };
 ?>

@@ -15,10 +15,24 @@
      */
       return new class extends Migration
       {
-            public function up()
+          private const account_information_options_table = 'account_information_options';
+
+          private const countries_table = 'countries';
+          private const zip_codes_table = 'zip_codes';
+
+          private const person_name_first_table = 'person_name_first';
+          private const person_name_middle_and_last_table = 'person_name_middle_and_last';
+          private const person_name_table = 'person_name';
+
+          private const address_road_name_table = 'address_road_names';
+          private const addresses_table = 'addresses';
+
+
+            // create tables
+            public function up(): void
             {
                   //
-                  Schema::create( 'countries',
+                  Schema::create( self::countries_table,
                         function( Blueprint $table )
                         {
                         $table->id();
@@ -34,7 +48,7 @@
                         }
                   );
 
-                  Schema::create( 'zip_codes',
+                  Schema::create( self::zip_codes_table,
                         function( Blueprint $table )
                         {
                         $table->id();
@@ -61,7 +75,7 @@
                   );
 
 
-                  Schema::create( 'account_information_options',
+                  Schema::create( self::account_information_options_table,
                         function( Blueprint $table )
                         {
                         $table->id();
@@ -84,7 +98,7 @@
                         }
                   );
 
-                  Schema::create( 'person_name_first',
+                  Schema::create( self::person_name_first_table,
                         function( Blueprint $table )
                         {
                         $table->id();
@@ -95,7 +109,7 @@
                         }
                   );
 
-                  Schema::create( 'person_name_middle_and_last',
+                  Schema::create( self::person_name_middle_and_last_table,
                         function( Blueprint $table )
                         {
                         $table->id();
@@ -106,7 +120,7 @@
                         }
                   );
 
-                  Schema::create( 'person_name',
+                  Schema::create( self::person_name_table,
                         function( Blueprint $table )
                         {
                         $table->id();
@@ -122,6 +136,7 @@
 
                         $table->bigInteger( 'person_name_lastname_id' )
                               ->unsigned()
+                              ->nullable()
                               ->comment( '' );
 
                         $table->json( 'person_name_middlename' )
@@ -144,7 +159,7 @@
                         }
                   );
 
-                  Schema::create( 'address_road_names',
+                  Schema::create( self::address_road_name_table,
                         function( Blueprint $table )
                         {
                         $table->id();
@@ -155,7 +170,7 @@
                         }
                   );
 
-                  Schema::create( 'addresses',
+                  Schema::create( self::addresses_table,
                         function( Blueprint $table )
                         {
                         $table->id();
@@ -208,13 +223,20 @@
             }
 
 
-            public function down()
+            // drop tables
+            public function down(): void
             {
-                  //
-                  Schema::dropIfExists( 'account_information_options' );
-                  Schema::dropIfExists( 'countries' );
-                  Schema::dropIfExists( 'addresses' );
-                  Schema::dropIfExists( 'zip_codes' );
+                Schema::dropIfExists( self::account_information_options_table );
+
+                Schema::dropIfExists( self::person_name_table );
+                Schema::dropIfExists( self::person_name_first_table );
+                Schema::dropIfExists( self::person_name_middle_and_last_table );
+
+                Schema::dropIfExists( self::zip_codes_table );
+                Schema::dropIfExists( self::countries_table );
+
+                Schema::dropIfExists( self::addresses_table );
+                Schema::dropIfExists( self::address_road_name_table );
             }
       };
 ?>
