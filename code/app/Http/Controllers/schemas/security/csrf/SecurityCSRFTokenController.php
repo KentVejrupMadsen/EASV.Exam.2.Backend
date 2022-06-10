@@ -5,27 +5,21 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\schemas\security;
+    namespace App\Http\Controllers\schemas\security\csrf;
 
     // External libraries
+    use App\Builders\SecurityCSRFBuilder;
+    use app\cache\Controllers\security\RedisCacheCSRFController;
+    use App\Http\Controllers\formatters\json\CSRFResponseJSONFactory;
+    use App\Http\Controllers\templates\CrudController;
+    use App\Http\Requests\security\SecurityCSRFRequest;
+    use App\Models\security\CSRFModel;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-
-    use OpenApi\Attributes
-        as OA;
+    use OpenApi\Attributes as OA;
 
 
     // Internal libraries
-    use app\cache\Controllers\security\RedisCacheCSRFController;
-    use App\Http\Controllers\templates\ControllerMessages;
-    use App\Http\Controllers\templates\CrudController;
-
-    use App\Http\Requests\security\SecurityCSRFRequest;
-
-    use App\Models\security\CSRFModel;
-    use App\Builders\SecurityCSRFBuilder;
-
-    use App\Http\Controllers\formatters\json\CSRFResponseJSONFactory;
 
 
     /**

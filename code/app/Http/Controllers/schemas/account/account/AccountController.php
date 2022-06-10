@@ -5,29 +5,23 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\schemas\account;
+    namespace App\Http\Controllers\schemas\account\account;
 
     // External Libraries
+    use App\Builders\AccountBuilder;
+    use App\Builders\PersonEmailBuilder;
+    use App\Http\Controllers\formatters\json\AccountResponseJSONFactory;
+    use App\Http\Controllers\schemas\account\entities\email\PersonEmailController;
+    use App\Http\Controllers\templates\ControllerPipeline;
+    use App\Http\Requests\account\AccountRequest;
+    use App\Models\tables\AccountEmailModel;
+    use App\Models\tables\User;
     use Carbon\Carbon;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Auth;
-
-    use OpenApi\Attributes
-        as OA;
+    use OpenApi\Attributes as OA;
 
     // Internal Libraries
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Controllers\formatters\json\AccountResponseJSONFactory;
-    use App\Http\Controllers\schemas\account\entities\PersonEmailController;
-
-    use App\Http\Requests\account\AccountRequest;
-
-    use App\Builders\AccountBuilder;
-    use App\Builders\PersonEmailBuilder;
-
-    use App\Models\tables\User;
-    use App\Models\tables\AccountEmailModel;
 
 
     /**

@@ -6,7 +6,7 @@
      * Serves the routes for the account models.
      */
     // Internal libraries
-    use App\Http\controllers\schemas\account\AccountController;
+    use App\Http\Controllers\schemas\account\account\AccountController;
     use App\Routes\Controllers\RouteController;
     use Illuminate\Support\Facades\Route;
 

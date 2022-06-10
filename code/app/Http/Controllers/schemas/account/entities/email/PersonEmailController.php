@@ -5,18 +5,16 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\schemas\account\entities;
+    namespace App\Http\Controllers\schemas\account\entities\email;
 
     // External Libraries
-    use Illuminate\Http\JsonResponse;
-    use Illuminate\Http\Request;
-
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal libraries
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Models\tables\AccountEmailModel;
+    use Illuminate\Http\JsonResponse;
+    use Illuminate\Http\Request;
+    use OpenApi\Attributes as OA;
+
+    // Internal libraries
 
 
     /**

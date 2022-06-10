@@ -5,17 +5,15 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\schemas\security;
+    namespace App\Http\Controllers\schemas\security\configuration;
 
     // External libraries
-    use Illuminate\Http\Request;
-
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal Libraries
     use App\Http\Controllers\templates\CrudController;
     use App\Http\Requests\security\SecurityConfigurationRequest;
+    use Illuminate\Http\Request;
+    use OpenApi\Attributes as OA;
+
+    // Internal Libraries
 
 
     /**

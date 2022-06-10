@@ -5,31 +5,24 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\schemas\account;
+    namespace App\Http\Controllers\schemas\account\entities\name;
 
-    // External libraries
-    use Carbon\Carbon;
-
+    // External Libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-
-    use OpenApi\Attributes
-        as OA;
+    use OpenApi\Attributes as OA;
 
     // Internal libraries
-    use App\Http\Controllers\templates\ControllerPipeline;
-
-    use App\Models\tables\AccountInformationModel;
-    use App\Http\Requests\account\InformationRequest;
 
 
     /**
-     *
+     * Account Email controller. That are used when getting "ask" by a computer for data.
      */
-    #[OA\Schema( title: 'Account Information Controller',
+    #[OA\Schema( title: 'Person Name Controller',
                  description: '',
                  type: self::model_type )]
-    class InformationController
+    class PersonNameController
         extends ControllerPipeline
     {
         /**
@@ -46,10 +39,9 @@
         }
 
         // Variables
-        private static ?InformationController $controller = null;
+        private static ?PersonNameController $controller = null;
 
-
-        // implement output
+        // Code
         /**
          * @return bool
          */
@@ -63,9 +55,8 @@
          */
         public final function hasImplementedJSON(): bool
         {
-            return false;
+            return true;
         }
-
 
         /**
          * @return bool
@@ -74,7 +65,6 @@
         {
             return false;
         }
-
 
         /**
          * @param array $request
@@ -91,7 +81,6 @@
             return null;
         }
 
-
         /**
          * @param array $request
          * @return JsonResponse|null
@@ -106,7 +95,6 @@
 
             return null;
         }
-
 
         /**
          * @param array $request
@@ -123,48 +111,15 @@
             return null;
         }
 
+
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/information/read',
-                  tags: [ '1.0.0', 'account', 'account-additional' ] )]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/name/read',
+                  tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data',
-                       content:
-                       [
-                           new OA\JsonContent(),
-                           new OA\XmlContent()
-                       ]
-        )]
-        #[OA\Parameter( name:'Authorization',
-                        description: 'has to be included in the header of the request',
-                        in: 'header' )]
-        public final function public_read( Request $request )
-        {
-
-            return $this->read( $request );
-        }
-
-        /**
-         * @param Request $request
-         * @return null
-         */
-        public final function read( Request $request )
-        {
-
-            return null;
-        }
-
-
-        /**
-         * @param Request $request
-         * @return null
-         */
-        #[OA\Post( path: '/api/1.0.0/accounts/information/create',
-                   tags: [ '1.0.0', 'account', 'account-additional' ] )]
-        #[OA\Response( response: '200',
-                       description: 'The data',
+                       description: 'reads a specific person name entity values from the database table',
                        content:
                        [
                            new OA\JsonContent(),
@@ -176,29 +131,25 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_create( Request $request )
+        public final function public_read( Request $request ): JsonResponse
         {
-            return $this->create( $request );
+            return $this->read( $request );
         }
 
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
-        public final function create( Request $request )
+        public final function read( Request $request ): JsonResponse
         {
-            return null;
+            return Response()->json(null, 200);
         }
 
 
-        /**
-         * @param Request $request
-         * @return null
-         */
-        #[OA\Patch( path: '/api/1.0.0/accounts/information/update',
-                    tags: [ '1.0.0', 'account', 'account-additional' ] )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/name/delete',
+                     tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data',
+                       description: 'deletes a specific person name entity from the database table',
                        content:
                        [
                            new OA\JsonContent(),
@@ -210,31 +161,29 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_update( Request $request )
+        public final function public_delete( Request $request ): JsonResponse
         {
-
-            return $this->update( $request );
+            return $this->delete( $request );
         }
 
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
-        public final function update( Request $request )
+        public final function delete( Request $request ): JsonResponse
         {
-
-            return null;
+            return Response()->json(null, 200);
         }
 
 
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/information/delete',
-                     tags: [ '1.0.0', 'account', 'account-additional' ] )]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/name/create',
+                   tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
-                       description: 'The data',
+                       description: 'creates a specific person name entity by inserting it into the database',
                        content:
                        [
                            new OA\JsonContent(),
@@ -246,44 +195,78 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_delete( Request $request )
+        public final function public_create( Request $request ): JsonResponse
         {
-
-            return $this->delete( $request );
+            return $this->create( $request );
         }
 
         /**
          * @param Request $request
-         * @return null
+         * @return JsonResponse
          */
-        public final function delete( Request $request )
+        public final function create( Request $request ): JsonResponse
         {
-
-            return null;
+            return Response()->json(null, 200);
         }
 
-        // Accessor
+
         /**
-         * @param InformationController $controller
+         * @param Request $request
+         * @return JsonResponse
+         */
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/name/update',
+                    tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Response( response: '200',
+                       description: 'updates the person entities name with a new name',
+                       content:
+                       [
+                           new OA\JsonContent(),
+                           new OA\XmlContent()
+                       ]
+        )]
+        #[OA\Response( response: '404',
+                       description: 'content not found' )]
+        #[OA\Parameter( name:'Authorization',
+                        description: 'has to be included in the header of the request',
+                        in: 'header' )]
+        public final function public_update( Request $request ): JsonResponse
+        {
+            return $this->update( $request );
+        }
+
+        /**
+         * @param Request $request
+         * @return JsonResponse
+         */
+        public final function update( Request $request ): JsonResponse
+        {
+            return Response()->json(null, 200);
+        }
+
+
+        // accessors
+            // setters
+        /**
+         * @param PersonNameController $controller
          * @return void
          */
-        public static final function setSingleton( InformationController $controller ): void
+        public static final function setSingleton( PersonNameController $controller ): void
         {
             self::$controller = $controller;
         }
 
+            // getters
         /**
-         * @return InformationController
+         * @return PersonNameController
          */
-        public static final function getSingleton(): InformationController
+        public static final function getSingleton(): PersonNameController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new InformationController() );
+                self::setSingleton( new PersonNameController() );
             }
 
             return self::$controller;
         }
-
     }
 ?>
