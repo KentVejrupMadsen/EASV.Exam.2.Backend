@@ -22,7 +22,8 @@
                 'account_emails', 
                 function ( Blueprint $table ) 
                 {
-                    $table->id();
+                    $table->id( 'identity' )
+                          ->primary();
 
                     $table->string( 'content' )
                           ->unique();
@@ -35,32 +36,35 @@
                 'accounts', 
                 function( Blueprint $table )
                 {
-                    $table->id();
+                    $table->id( 'identity' )
+                          ->primary();
 
                     $table->string( 'username' )
                           ->unique()
-                          ->comment('');
+                          ->comment( 'Account username used as an identifier when logging in.' );
                     
-                    $table->bigInteger( 'email_id' )
+                    $table->bigInteger( 'account_email_identity' )
                           ->unsigned()
                           ->unique()
-                          ->comment('');
+                          ->comment( 'maps to the accounts email by id and newsletter email if the account has one' );
 
                     $table->timestamp( 'email_verified_at' )
-                          ->nullable();
+                          ->nullable()
+                          ->comment( 'At what point a client has verified his account though the api.' );
 
                     $table->string( 'password' )
-                          ->comment( '' );
-                    
+                          ->comment( 'used when authenticating as a client.' );
+
+
                     $table->rememberToken();
                     $table->timestamps();
 
                     $table->json( 'settings' )
-                          ->comment( '' );
+                          ->comment( 'User settings for their account. Used by frontend.' );
 
                     // References
-                    $table->foreign( 'email_id' )
-                          ->references( 'id' )
+                    $table->foreign( 'account_email_identity' )
+                          ->references( 'identity' )
                           ->on( 'account_emails' );
                 }
             );

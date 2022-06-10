@@ -24,10 +24,10 @@
                 {
                     $table->id();
                     
-                    $table->bigInteger( 'email_id' )
+                    $table->bigInteger( 'email_identity' )
                           ->unsigned()
                           ->index()
-                          ->comment( '' );
+                          ->comment( 'Which e-mail address requested that they had forgot their password' );
 
                     $table->string( 'token' )
                           ->index()
@@ -35,22 +35,19 @@
                     
                     $table->timestamp( 'created_at' )
                           ->nullable()
-                          ->comment( '' );
+                          ->comment( 'at which point the request was created.' );
 
                     // References
-                    $table->foreign( 'email_id' )
-                          ->references( 'id' )
+                    $table->foreign( 'email_identity' )
+                          ->references( 'identity' )
                           ->on( 'account_emails' );
                 }
             );
         }
-
-
         
         public function down()
         {
             Schema::dropIfExists( 'password_resets' );
         }
     };
-
 ?>

@@ -31,10 +31,18 @@
                           ->index()
                           ->comment('');
 
-                    $table->json('options' )
+                    $table->bigInteger( 'account_id' )
+                          ->unsigned()
+                          ->nullable();
+
+                    $table->json( 'options' )
                           ->comment( '' );
 
                     //
+                    $table->foreign( 'account_id' )
+                          ->references( 'id' )
+                          ->on( 'accounts' );
+
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
                           ->on( 'account_emails' );
