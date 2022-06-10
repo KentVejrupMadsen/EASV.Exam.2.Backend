@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Views;
+    namespace App\Models\Views;
 
     use App\Models\templates\ModelView;
 
