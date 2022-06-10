@@ -26,7 +26,7 @@
                 self::table_name,
                 function( Blueprint $table )
                 {
-                    $table->id();
+                    $table->id( 'identity' );
 
                     $table->bigInteger( 'email_identity' )
                           ->unsigned()
