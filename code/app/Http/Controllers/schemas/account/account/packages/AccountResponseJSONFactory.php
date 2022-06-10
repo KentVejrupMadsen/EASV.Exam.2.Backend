@@ -5,17 +5,13 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Http\Controllers\formatters\json;
+    namespace App\Http\Controllers\schemas\account\account\packages;
 
     // External libraries
-    use Illuminate\Http\JsonResponse;
-    use Illuminate\Http\Request;
-
     use Illuminate\Routing\Controller
         as BaseController;
 
     // Internal library
-    use App\Models\tables\User;
 
 
     /**
@@ -24,8 +20,6 @@
     class AccountResponseJSONFactory
         extends BaseController
     {
-
-
         private static $singleton = null;
 
         /**

@@ -10,7 +10,7 @@
     // External libraries
     use App\Builders\SecurityCSRFBuilder;
     use app\cache\Controllers\security\RedisCacheCSRFController;
-    use App\Http\Controllers\formatters\json\CSRFResponseJSONFactory;
+    use App\Http\Controllers\schemas\security\csrf\packages\CSRFResponseJSONFactory;
     use App\Http\Controllers\templates\CrudController;
     use App\Http\Requests\security\SecurityCSRFRequest;
     use App\Models\security\CSRFModel;
