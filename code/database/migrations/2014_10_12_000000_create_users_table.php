@@ -69,7 +69,6 @@
         
         public function down()
         {
-            Schema::dropDatabaseIfExists(env('DB_DATABASE'));
             Schema::dropIfExists( 'accounts' );
             Schema::dropIfExists( 'account_emails' );
         }
