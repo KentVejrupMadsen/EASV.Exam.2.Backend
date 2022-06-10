@@ -8,11 +8,12 @@
     namespace App\Http\Controllers\schemas\security\csrf\packages;
 
     // External libraries
-    use App\Models\security\CSRFModel;
     use Illuminate\Http\JsonResponse;
-    use Illuminate\Routing\Controller as BaseController;
+    use Illuminate\Routing\Controller
+        as BaseController;
 
     // Internal library
+    use App\Models\security\CSRFModel;
 
 
     /**
