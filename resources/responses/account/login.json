@@ -1,0 +1,18 @@
+{
+  "account":
+  {
+    "username":"username",
+    "security_credentials":
+    {
+      "password":"Epc63gez"
+    }
+  },
+  "security":
+  {
+    "csrf":
+    {
+      "secure_token": "token",
+      "id": 0
+    }
+  }
+}

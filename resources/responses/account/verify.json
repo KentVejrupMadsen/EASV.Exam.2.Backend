@@ -1,0 +1,10 @@
+{
+  "security":
+  {
+    "csrf":
+    {
+      "secure_token": "token",
+      "id": 0
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "account":
+  {
+    "security_credentials":
+    {
+      "password": "new_password",
+      "confirm": "new_password"
+    },
+    "person_email": "new_email@email.tlc",
+    "person_name": "new name"
+  },
+  "security":
+  {
+    "csrf":
+    {
+      "secure_token": "token",
+      "id": 0
+    }
+  }
+}
