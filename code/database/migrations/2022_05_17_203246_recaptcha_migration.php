@@ -15,11 +15,14 @@
      */
     return new class extends Migration
     {
-        public function up()
+        private const table_name = 'security_recaptcha';
+
+        // create tables
+        public function up(): void
         {
             //
             Schema::create(
-                'security_recaptcha',
+                self::table_name,
                 function( Blueprint $table )
                 {
                     $table->id()
@@ -44,11 +47,11 @@
             );
         }
 
-        
-        public function down()
+        // drop tables
+        public function down(): void
         {
             //
-            Schema::dropIfExists( 'security_recaptcha' );
+            Schema::dropIfExists( self::table_name );
         }
     };
 ?>

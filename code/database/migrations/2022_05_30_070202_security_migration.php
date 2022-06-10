@@ -15,15 +15,20 @@
      */
     return new class extends Migration
     {
-        public function up()
+        private const table_names = 'account_states';
+        private const column_identity = 'identity';
+
+
+        // create tables
+        public function up(): void
         {
             Schema::create(
-                'account_states',
+                self::table_names,
                 function( Blueprint $table )
                 {
-                    $table->id();
+                    $table->id( self::column_identity );
 
-                    $table->bigInteger( 'account_id' )
+                    $table->bigInteger( 'account_identity' )
                           ->unsigned()
                           ->unique()
                           ->comment( '' );
@@ -45,18 +50,18 @@
                           ->comment( '' );
 
                     //
-                    $table->foreign( 'account_id' )
-                          ->references( 'id' )
+                    $table->foreign( 'account_identity' )
+                          ->references( self::column_identity )
                           ->on( 'accounts' )
                           ->onDelete( 'cascade' );
                 }
             );
         }
 
-
-        public function down()
+        // drop tables
+        public function down(): void
         {
-            Schema::dropIfExists( 'account_state' );
+            Schema::dropIfExists( self::table_names );
         }
     };
 ?>

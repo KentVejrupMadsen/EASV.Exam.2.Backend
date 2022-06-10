@@ -9,49 +9,57 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+
     /**
      *
      */
     return new class extends Migration
     {
-        /**
-         * @return void
-         */
-        public function up()
+        //
+        private const table_name = 'newsletter_users';
+
+        // create tables
+        public function up(): void
         {
             //
             Schema::create(
-                'newsletter_users',
+                self::table_name,
                 function( Blueprint $table )
                 {
                     $table->id();
 
-                    $table->bigInteger( 'email_id' )
+                    $table->bigInteger( 'email_identity' )
                           ->unsigned()
                           ->index()
-                          ->comment('');
+                          ->comment( 'which email has been assigned to the newsletter system' );
 
-                    $table->json('options' )
+                    $table->bigInteger( 'account_identity' )
+                          ->unsigned()
+                          ->nullable()
+                          ->comment( 'if the email has an account associated. the user has the ' .
+                                     'option to set it though his settings and the "newsletter" will be associated' .
+                                     'with his account' );
+
+                    $table->json( 'options' )
                           ->comment( '' );
 
                     //
-                    $table->foreign( 'email_id' )
-                          ->references( 'id' )
+                    $table->foreign( 'account_identity' )
+                          ->references( 'identity' )
+                          ->on( 'accounts' );
+
+                    $table->foreign( 'email_identity' )
+                          ->references( 'identity' )
                           ->on( 'account_emails' );
                 }
             );
         }
 
 
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
-        public function down()
+        // drop tables
+        public function down(): void
         {
-            //
-            Schema::dropIfExists( 'newsletter_users' );
+            Schema::dropIfExists( self::table_name );
         }
     };
 ?>

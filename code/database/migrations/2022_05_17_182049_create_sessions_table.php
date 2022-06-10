@@ -15,34 +15,42 @@
      */
     return new class extends Migration
     {
-        public function up()
+        private const table_name = 'sessions';
+
+        // create tables
+        public function up(): void
         {
             Schema::create(
-                'sessions',
+                self::table_name,
                 function ( Blueprint $table )
                 {
                     $table->id( 'index' );
 
                     $table->string( 'id' )
                           ->unique();
+
                     $table->foreignId( 'user_id' )
                           ->nullable()
                           ->index();
+
                     $table->ipAddress( 'ip_address' )
                           ->nullable();
+
                     $table->text( 'user_agent' )
                           ->nullable();
+
                     $table->text( 'payload' );
+
                     $table->integer( 'last_activity' )
                           ->index();
                 }
             );
         }
 
-
-        public function down()
+        // drop tables
+        public function down(): void
         {
-            Schema::dropIfExists( 'sessions' );
+            Schema::dropIfExists( self::table_name );
         }
     };
 ?>

@@ -15,19 +15,21 @@
      */
     return new class extends Migration
     {
-        
-        public function up()
+        private const table_name = 'password_resets';
+
+        // create table
+        public function up(): void
         {
             Schema::create(
-                'password_resets',
+                self::table_name,
                 function( Blueprint $table )
                 {
                     $table->id();
                     
-                    $table->bigInteger( 'email_id' )
+                    $table->bigInteger( 'email_identity' )
                           ->unsigned()
                           ->index()
-                          ->comment( '' );
+                          ->comment( 'Which e-mail address requested that they had forgot their password' );
 
                     $table->string( 'token' )
                           ->index()
@@ -35,22 +37,20 @@
                     
                     $table->timestamp( 'created_at' )
                           ->nullable()
-                          ->comment( '' );
+                          ->comment( 'at which point the request was created.' );
 
                     // References
-                    $table->foreign( 'email_id' )
-                          ->references( 'id' )
+                    $table->foreign( 'email_identity' )
+                          ->references( 'identity' )
                           ->on( 'account_emails' );
                 }
             );
         }
 
-
-        
-        public function down()
+        // drop table
+        public function down(): void
         {
-            Schema::dropIfExists( 'password_resets' );
+            Schema::dropIfExists( self::table_name );
         }
     };
-
 ?>

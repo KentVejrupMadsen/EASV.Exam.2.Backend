@@ -158,7 +158,8 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/newsletter/create', tags: [ '1.0.0', 'newsletter' ])]
+        #[OA\Post( path: '/api/1.0.0/accounts/newsletter/create',
+                   tags: [ '1.0.0', 'newsletter' ])]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -186,7 +187,8 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/newsletter/update', tags: [ '1.0.0', 'newsletter' ] )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/newsletter/update',
+                    tags: [ '1.0.0', 'newsletter' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -218,7 +220,8 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/newsletter/delete', tags: [ '1.0.0', 'newsletter' ] )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/newsletter/delete',
+                     tags: [ '1.0.0', 'newsletter' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -245,6 +248,8 @@
             return Response()->json(null, 200);
         }
 
+        // accessors
+            // Setters
         /**
          * @param NewsletterController $controller
          * @return void
@@ -254,6 +259,7 @@
             self::$controller = $controller;
         }
 
+            // Getters
         /**
          * @return NewsletterController
          */

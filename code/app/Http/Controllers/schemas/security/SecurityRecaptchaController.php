@@ -47,7 +47,8 @@
          * @param SecurityCSRFRequest $Request
          * @return null
          */
-        #[OA\Get( path: '/api/1.0.0/securities/recaptcha/read', tags: [ '1.0.0', 'security' ] )]
+        #[OA\Get( path: '/api/1.0.0/securities/recaptcha/read',
+                  tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -78,7 +79,8 @@
          * @param SecurityCSRFRequest $Request
          * @return null
          */
-        #[OA\Patch( path: '/api/1.0.0/securities/recaptcha/update', tags: [ '1.0.0', 'security' ] )]
+        #[OA\Patch( path: '/api/1.0.0/securities/recaptcha/update',
+                    tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -110,7 +112,8 @@
          * @param SecurityCSRFRequest $Request
          * @return null
          */
-        #[OA\Post( path: '/api/1.0.0/securities/recaptcha/create', tags: [ '1.0.0', 'security' ] )]
+        #[OA\Post( path: '/api/1.0.0/securities/recaptcha/create',
+                   tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -141,7 +144,8 @@
          * @param SecurityCSRFRequest $Request
          * @return null
          */
-        #[OA\Delete( path: '/api/1.0.0/securities/recaptcha/delete', tags: [ '1.0.0', 'security' ] )]
+        #[OA\Delete( path: '/api/1.0.0/securities/recaptcha/delete',
+                     tags: [ '1.0.0', 'security' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
