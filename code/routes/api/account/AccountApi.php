@@ -1,4 +1,4 @@
-<?php
+    <?php
     /**
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
@@ -6,11 +6,11 @@
      * Serves the routes for the account models.
      */
     // Internal libraries
-use App\Http\Controllers\httpControllers\account\AccountController;
-use App\Routes\Controllers\RouteController;
-use Illuminate\Support\Facades\Route;
+    use App\Http\controllers\schemas\account\AccountController;
+    use App\Routes\Controllers\RouteController;
+    use Illuminate\Support\Facades\Route;
 
-// External libraries
+    // External libraries
 
 
 /**
