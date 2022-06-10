@@ -133,7 +133,8 @@
         }
 
 
-        #[OA\Get( path: '/api/1.0.0/accounts/entities/address/read', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/address/read',
+                  tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -158,7 +159,8 @@
          * @param PersonAddressRequest $request
          * @return false
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/entities/address/delete', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/address/delete',
+                     tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -192,7 +194,8 @@
         /**
          * 
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/entities/address/create', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/address/create',
+                   tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -225,7 +228,8 @@
         /**
          * 
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/entities/address/update', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/address/update',
+                    tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -256,6 +260,7 @@
 
 
         // Accessors
+            // getters
         /**
          * @return PersonAddressController
          */
@@ -269,11 +274,12 @@
             return self::$controller;
         }
 
+            // setters
         /**
          * @param PersonAddressController $controller
          * @return void
          */
-        protected final static function setSingleton( PersonAddressController $controller )
+        protected final static function setSingleton( PersonAddressController $controller ): void
         {
             self::$controller = $controller;
         }

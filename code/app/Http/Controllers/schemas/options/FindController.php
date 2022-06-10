@@ -48,7 +48,8 @@
         private static ?FindController $controller = null;
 
 
-        #[OA\Post( path: '/api/1.0.0/options/find/email', tags: [ '1.0.0', 'account-options' ] )]
+        #[OA\Post( path: '/api/1.0.0/options/find/email',
+                   tags: [ '1.0.0', 'account-options' ] )]
         #[OA\Response( response: '200',
                        description: 'validates if the requested email is existing in the database as a json response.' ) ]
         #[OA\Response( response: '404',

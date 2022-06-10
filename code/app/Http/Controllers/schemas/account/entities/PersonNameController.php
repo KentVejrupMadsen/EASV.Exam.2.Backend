@@ -119,7 +119,8 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/entities/name/read', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/name/read',
+                  tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'reads a specific person name entity values from the database table',
                        content:
@@ -148,7 +149,8 @@
         }
 
 
-        #[OA\Delete( path: '/api/1.0.0/accounts/entities/name/delete', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/name/delete',
+                     tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'deletes a specific person name entity from the database table',
                        content:
@@ -181,7 +183,8 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/entities/name/create', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/name/create',
+                   tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'creates a specific person name entity by inserting it into the database',
                        content:
@@ -214,7 +217,8 @@
          * @param Request $request
          * @return JsonResponse
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/entities/name/update', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/name/update',
+                    tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'updates the person entities name with a new name',
                        content:
@@ -244,6 +248,7 @@
 
 
         // accessors
+            // setters
         /**
          * @param PersonNameController $controller
          * @return void
@@ -253,6 +258,7 @@
             self::$controller = $controller;
         }
 
+            // getters
         /**
          * @return PersonNameController
          */

@@ -600,7 +600,16 @@
             self::$controller = $controller;
         }
 
-            // Getters
+        /**
+         * @param AccountResponseJSONFactory|null $responseFactory
+         */
+        public final static function setResponseFactory( ?AccountResponseJSONFactory $responseFactory ): void
+        {
+            self::$responseFactory = $responseFactory;
+        }
+
+
+        // Getters
         /**
          * @return AccountController
          */
@@ -625,14 +634,6 @@
             }
 
             return self::$responseFactory;
-        }
-
-        /**
-         * @param AccountResponseJSONFactory|null $responseFactory
-         */
-        public final static function setResponseFactory( ?AccountResponseJSONFactory $responseFactory ): void
-        {
-            self::$responseFactory = $responseFactory;
         }
 
         /**

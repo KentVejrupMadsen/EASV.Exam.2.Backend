@@ -127,7 +127,8 @@
          * @param Request $request
          * @return null
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/information/read', tags: [ '1.0.0', 'account', 'account-additional' ] )]
+        #[OA\Get( path: '/api/1.0.0/accounts/information/read',
+                  tags: [ '1.0.0', 'account', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -160,7 +161,8 @@
          * @param Request $request
          * @return null
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/information/create', tags: [ '1.0.0', 'account', 'account-additional' ] )]
+        #[OA\Post( path: '/api/1.0.0/accounts/information/create',
+                   tags: [ '1.0.0', 'account', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -193,7 +195,8 @@
          * @param Request $request
          * @return null
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/information/update', tags: [ '1.0.0', 'account', 'account-additional' ] )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/information/update',
+                    tags: [ '1.0.0', 'account', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -228,7 +231,8 @@
          * @param Request $request
          * @return null
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/information/delete', tags: [ '1.0.0', 'account', 'account-additional' ] )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/information/delete',
+                     tags: [ '1.0.0', 'account', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:

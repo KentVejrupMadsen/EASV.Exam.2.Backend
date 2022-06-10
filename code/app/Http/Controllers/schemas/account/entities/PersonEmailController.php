@@ -44,11 +44,8 @@
         // Variables
         private static ?PersonEmailController $controller = null;
 
-        public static function hasAccountEmailContainer( Request $request )
-        {
-            return $request->has( 'account.person.email' );
-        }
 
+        // functions
         /**
          * @return bool
          */
