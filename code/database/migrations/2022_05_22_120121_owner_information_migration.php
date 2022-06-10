@@ -38,25 +38,23 @@
               Schema::create( self::countries_table,
                   function( Blueprint $table )
                   {
-                      $table->id( self::column_identity )
-                            ->primary();
+                      $table->id( self::column_identity );
 
                       $table->string( 'country_name' )
                             ->unique()
                             ->index()
-                            ->comment('');
+                            ->comment( 'the accurate name of a specific country in english' );
 
                       $table->string( 'country_acronym', 25 )
                             ->index()
-                            ->comment('');
-                      }
-                  );
+                            ->comment( 'the acronym for the given countries' );
+                  }
+              );
 
               Schema::create( self::zip_codes_table,
                   function( Blueprint $table )
                   {
-                      $table->id( self::column_identity )
-                            ->primary();
+                      $table->id( self::column_identity );
 
                       $table->string( 'area_name' )
                             ->index()
@@ -83,8 +81,7 @@
               Schema::create( self::account_information_options_table,
                   function( Blueprint $table )
                   {
-                      $table->id( self::column_identity )
-                            ->primary();
+                      $table->id( self::column_identity );
 
                       $table->bigInteger( 'account_identity' )
                             ->unsigned()
@@ -107,8 +104,7 @@
               Schema::create( self::person_name_first_table,
                   function( Blueprint $table )
                   {
-                        $table->id( self::column_identity )
-                              ->primary();
+                        $table->id( self::column_identity );
 
                         $table->string( 'content' )
                               ->unique()
@@ -119,8 +115,7 @@
               Schema::create( self::person_name_middle_and_last_table,
                   function( Blueprint $table )
                   {
-                      $table->id( self::column_identity )
-                            ->primary();
+                      $table->id( self::column_identity );
 
                       $table->string( 'content' )
                             ->unique()
@@ -131,8 +126,7 @@
               Schema::create( self::person_name_table,
                   function( Blueprint $table )
                   {
-                      $table->id( self::column_identity )
-                            ->primary();
+                      $table->id( self::column_identity );
 
                       $table->bigInteger( 'account_information_identity' )
                             ->unsigned()
@@ -171,8 +165,7 @@
               Schema::create( self::address_road_name_table,
                   function( Blueprint $table )
                   {
-                        $table->id( self::column_identity )
-                              ->primary();
+                        $table->id( self::column_identity );
 
                         $table->string( 'content' )
                               ->unique()
@@ -183,8 +176,7 @@
               Schema::create( self::levels_table,
                   function( Blueprint $table )
                   {
-                        $table->id( self::column_identity )
-                              ->primary();
+                        $table->id( self::column_identity );
 
                         $table->string( 'content' )
                               ->unique()
@@ -195,8 +187,7 @@
               Schema::create( self::addresses_table,
                   function( Blueprint $table )
                   {
-                        $table->id( self::column_identity )
-                              ->primary();
+                        $table->id( self::column_identity );
 
                         $table->bigInteger( 'account_information_identity' )
                               ->unsigned()

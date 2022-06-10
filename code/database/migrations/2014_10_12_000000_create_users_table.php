@@ -19,6 +19,9 @@
         private const account_mail_table = 'account_emails';
         private const account_table = 'accounts';
 
+        private const column_identity = 'identity';
+
+
         // create tables
         public function up(): void
         {
@@ -27,8 +30,7 @@
                 self::account_mail_table,
                 function ( Blueprint $table ) 
                 {
-                    $table->id( 'identity' )
-                          ->primary();
+                    $table->id( self::column_identity );
 
                     $table->string( 'content' )
                           ->unique()
@@ -42,8 +44,7 @@
                 self::account_table,
                 function( Blueprint $table )
                 {
-                    $table->id( 'identity' )
-                          ->primary();
+                    $table->id( self::column_identity );
 
                     $table->string( 'username' )
                           ->unique()
