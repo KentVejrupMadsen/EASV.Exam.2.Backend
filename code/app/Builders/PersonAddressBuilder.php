@@ -17,7 +17,11 @@
      *
      */
     class PersonAddressBuilder
+        extends Builder
     {
+        /**
+         *
+         */
         public function __construct()
         {
 
