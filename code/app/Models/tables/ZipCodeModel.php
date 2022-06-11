@@ -31,7 +31,7 @@
         protected $table = self::field_table_name;
         protected $primaryKey = self::identity;
 
-        
+
         #[OA\Property( type: 'string' )]
         protected const field_table_name = 'zip_codes';
 
@@ -43,7 +43,7 @@
         protected const field_zip_number = 'zip_number';
 
         #[OA\Property( type: 'string' )]
-        protected const field_country_id = 'country_id';
+        protected const field_country_id = 'country_identity';
 
 
         /**

@@ -54,7 +54,7 @@
         protected const field_secure_token = 'secure_token';
 
         #[OA\Property( type: 'string' )]
-        protected const field_identity = 'id';
+        protected const field_identity = self::identity;
 
             // table
         protected $table = self::table_name;
@@ -93,14 +93,14 @@
          */
         protected $casts =
         [
-            self::field_identity      => 'integer',
-            self::field_assigned_to   => 'string',
-            self::field_secure_token  => 'string',
-            self::field_secret_token  => 'string',
-            self::field_issued        => 'datetime',
-            self::field_accessed      => 'datetime',
-            self::field_activated     => 'boolean',
-            self::field_invalidated   => 'boolean'
+            self::field_identity      => self::typeInteger,
+            self::field_assigned_to   => self::typeString,
+            self::field_secure_token  => self::typeString,
+            self::field_secret_token  => self::typeString,
+            self::field_issued        => self::typeDatetime,
+            self::field_accessed      => self::typeDatetime,
+            self::field_activated     => self::typeBoolean,
+            self::field_invalidated   => self::typeBoolean
         ];
     }
 ?>

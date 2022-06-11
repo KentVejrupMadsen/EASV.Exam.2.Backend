@@ -27,10 +27,6 @@
         extends ExtensionNoTimestampModel
     {
         // Variables
-            // Table
-        protected $table = self::table_name;
-        protected $primaryKey = self::identity;
-
             // Constants
         #[OA\Property( type: 'string' )]
         protected const table_name = 'security_configuration';
@@ -40,6 +36,11 @@
 
         #[OA\Property( type: 'string' )]
         protected const field_value = 'value';
+
+
+            // Table
+        protected $table = self::table_name;
+        protected $primaryKey = self::identity;
 
 
         /**
@@ -66,8 +67,9 @@
          */
         protected $casts =
         [
-            self::field_key   => 'string',
-            self::field_value => 'array'
+            self::identity => self::typeInteger,
+            self::field_key   => self::typeString,
+            self::field_value => self::typeArray
         ];
     }
 ?>

@@ -27,14 +27,10 @@
         extends ExtensionNoTimestampModel
     {
         // Variables
-            // Table
+            // Const
         #[OA\Property( type: 'string' )]
         protected const table_name = 'security_recaptcha';
 
-        protected $table = self::table_name;
-        protected $primaryKey = self::identity;
-
-            // Const
         #[OA\Property( type: 'string' )]
         protected const field_success   = 'success';
 
@@ -51,11 +47,16 @@
         protected const field_error     = 'error';
 
 
+            // Table
+        protected $table = self::table_name;
+        protected $primaryKey = self::identity;
+
         /**
          * @var string[]
          */
         protected $fillable =
         [
+            self::identity,
             self::field_success,
             self::field_score,
             self::field_at_date,
@@ -69,6 +70,7 @@
          */
         protected $hidden =
         [
+            self::identity,
             self::field_hostname,
             self::field_error
         ];
@@ -79,11 +81,12 @@
          */
         protected $casts =
         [
-            self::field_success     => 'boolean',
-            self::field_score       => 'double',
-            self::field_at_date     => 'datetime',
-            self::field_hostname    => 'string',
-            self::field_error       => 'string'
+            self::identity          => self::typeInteger,
+            self::field_success     => self::typeBoolean,
+            self::field_score       => self::typeDouble,
+            self::field_at_date     => self::typeDatetime,
+            self::field_hostname    => self::typeString,
+            self::field_error       => self::typeString
         ];
     }
 ?>
