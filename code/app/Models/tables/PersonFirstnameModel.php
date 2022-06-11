@@ -26,7 +26,9 @@
     class PersonFirstnameModel
         extends ExtensionLabelModel
     {
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'table name',
+                       type: self::typeString,
+                       deprecated: false )]
         protected const table_name = 'person_name_first';
         protected $table = self::table_name;
 

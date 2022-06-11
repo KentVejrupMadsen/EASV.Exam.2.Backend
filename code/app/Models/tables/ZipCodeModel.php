@@ -32,16 +32,24 @@
         protected $primaryKey = self::identity;
 
             // Constants
-        #[OA\Property( type: self::typeDatabaseModel )]
+        #[OA\Property( title: '',
+                       type: self::typeDatabaseModel,
+                       deprecated: false )]
         protected const table_name = 'zip_codes';
 
-        #[OA\Property( type: self::typeString )]
+        #[OA\Property( title: '',
+                       type: self::typeString,
+                       deprecated: false )]
         protected const field_area_name = 'area_name';
 
-        #[OA\Property( type: self::typeInteger )]
+        #[OA\Property( title: '',
+                       type: self::typeInteger,
+                       deprecated: false )]
         protected const field_zip_number = 'zip_number';
 
-        #[OA\Property( type: self::typeInteger )]
+        #[OA\Property( title: '',
+                       type: self::typeInteger,
+                       deprecated: false )]
         protected const field_country_id = 'country_identity';
 
 

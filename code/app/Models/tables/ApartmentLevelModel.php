@@ -21,16 +21,16 @@
     class ApartmentLevelModel
         extends ExtensionLabelModel
     {
-        #[OA\Property( type: 'string' )]
-        protected const table_name = 'apartment_levels';
-
         // Variable
+
+            // Constant
+        #[OA\Property( title:'table name',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const table_name = 'apartment_levels';
 
             // Table
         protected $table = self::table_name;
         protected $primaryKey = self::identity;
-
-        // Constant
-
     }
 ?>
