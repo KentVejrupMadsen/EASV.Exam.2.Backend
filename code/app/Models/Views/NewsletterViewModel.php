@@ -49,7 +49,7 @@
         protected const field_email = 'email';
 
         #[OA\Property( title: 'option column',
-                       type: self::typeArray,
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,

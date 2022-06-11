@@ -58,7 +58,7 @@ use OpenApi\Attributes as OA;
         protected const field_person_first_name = 'person_first_name';
 
         #[OA\Property( title: 'person middle names column',
-                       type: self::typeArray,
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,

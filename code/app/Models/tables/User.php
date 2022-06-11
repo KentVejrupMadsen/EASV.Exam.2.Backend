@@ -68,7 +68,7 @@
         protected const field_updated_at = 'updated_at';
 
         #[OA\Property( title: 'settings column',
-                       type: self::typeArray, readOnly: false, writeOnly: false,
+                       type: self::typeString, readOnly: false, writeOnly: false,
                        deprecated: false )]
         protected const field_settings = 'settings';
 

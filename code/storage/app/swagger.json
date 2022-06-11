@@ -1407,6 +1407,7 @@
                 "title": "Account View Model",
                 "description": "",
                 "type": "view",
+                "readOnly": true,
                 "deprecated": false
             },
             "AddressViewModel": {
@@ -1414,7 +1415,7 @@
                 "description": "",
                 "properties": {
                     "table_name": {
-                        "title": "",
+                        "title": "view name",
                         "type": "string",
                         "readOnly": true,
                         "writeOnly": false,
@@ -1425,30 +1426,35 @@
                     }
                 },
                 "type": "view",
+                "readOnly": true,
                 "deprecated": false
             },
             "NewsletterViewModel": {
                 "title": "Newsletter View Model",
                 "description": "",
                 "type": "view",
+                "readOnly": true,
                 "deprecated": false
             },
             "PersonNameViewModel": {
                 "title": "Person Name View Model",
                 "description": "",
                 "type": "view",
+                "readOnly": true,
                 "deprecated": false
             },
             "ZipCodeViewFullModel": {
                 "title": "Zip Code View Full model",
                 "description": "",
                 "type": "view",
+                "readOnly": true,
                 "deprecated": false
             },
             "ZipCodeViewShortModel": {
                 "title": "Zip Code View short model",
                 "description": "",
                 "type": "view",
+                "readOnly": true,
                 "deprecated": false
             },
             "AccountState": {
@@ -1456,37 +1462,61 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "account_states"
                         ]
                     },
                     "field_account_id": {
-                        "type": "string",
+                        "title": "account column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "account_id"
+                            "account_identity"
                         ]
                     },
                     "field_deactivated": {
-                        "type": "string",
+                        "title": "deactivated column",
+                        "type": "boolean",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "deactivated"
                         ]
                     },
                     "field_writeable_disabled": {
-                        "type": "string",
+                        "title": "writeable disabled column",
+                        "type": "boolean",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "writeable_disabled"
                         ]
                     },
                     "field_locked": {
-                        "type": "string",
+                        "title": "locked column",
+                        "type": "boolean",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "locked"
                         ]
                     },
                     "field_archived": {
-                        "type": "string",
+                        "title": "archived column",
+                        "type": "boolean",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "archived"
                         ]
@@ -1500,57 +1530,93 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "security_csrf_token"
                         ]
                     },
+                    "field_identity": {
+                        "title": "identity column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
+                        "enum": [
+                            "identity"
+                        ]
+                    },
                     "field_assigned_to": {
-                        "type": "string",
+                        "title": "assigned to column",
+                        "type": "IPv4|IPv6 address",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "assigned_to"
                         ]
                     },
                     "field_issued": {
-                        "type": "string",
+                        "title": "issued column",
+                        "type": "timestamp",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "issued"
                         ]
                     },
                     "field_accessed": {
-                        "type": "string",
+                        "title": "accessed column",
+                        "type": "timestamp",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "accessed"
                         ]
                     },
                     "field_activated": {
-                        "type": "string",
+                        "title": "is activated column",
+                        "type": "boolean",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "activated"
                         ]
                     },
                     "field_invalidated": {
-                        "type": "string",
+                        "title": "is invalidated column",
+                        "type": "boolean",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "invalidated"
                         ]
                     },
                     "field_secret_token": {
+                        "title": "secret token column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "secret_token"
                         ]
                     },
                     "field_secure_token": {
+                        "title": "secure token column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "secure_token"
-                        ]
-                    },
-                    "field_identity": {
-                        "type": "string",
-                        "enum": [
-                            "id"
                         ]
                     }
                 },
@@ -1562,19 +1628,31 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "security_configuration"
                         ]
                     },
                     "field_key": {
+                        "title": "key column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "key"
                         ]
                     },
                     "field_value": {
+                        "title": "value column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "value"
                         ]
@@ -1588,37 +1666,62 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "security_recaptcha"
                         ]
                     },
                     "field_success": {
-                        "type": "string",
+                        "title": "success column",
+                        "type": "boolean",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "success"
                         ]
                     },
                     "field_score": {
-                        "type": "string",
+                        "title": "score column",
+                        "type": "number",
+                        "format": "double",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "score"
                         ]
                     },
                     "field_at_date": {
-                        "type": "string",
+                        "title": "at date column",
+                        "type": "timestamp",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "at_date"
                         ]
                     },
                     "field_hostname": {
+                        "title": "hostname column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "hostname"
                         ]
                     },
                     "field_error": {
+                        "title": "error column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "error"
                         ]
@@ -1632,7 +1735,11 @@
                 "description": "",
                 "properties": {
                     "table_name": {
-                        "type": "string",
+                        "title": "Account emails table name",
+                        "type": "database table",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "account_emails"
                         ]
@@ -1646,31 +1753,53 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "account_information_options"
                         ]
                     },
                     "field_account": {
-                        "type": "string",
+                        "title": "account column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "account_id"
+                            "account_identity"
                         ]
                     },
                     "field_created_at": {
+                        "title": "creation date column",
                         "type": "string",
+                        "format": "date-time",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "created_at"
                         ]
                     },
                     "field_updated_at": {
+                        "title": "last updated column",
                         "type": "string",
+                        "format": "date-time",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "updated_at"
                         ]
                     },
                     "field_settings": {
+                        "title": "account settings column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "settings"
                         ]
@@ -1684,45 +1813,71 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "addresses"
                         ]
                     },
                     "field_account_information_id": {
-                        "type": "string",
+                        "title": "account information column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "account_information_id"
+                            "account_information_identity"
                         ]
                     },
                     "field_road_name_id": {
-                        "type": "string",
+                        "title": "road name column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "road_name_id"
+                            "road_name_identity"
                         ]
                     },
                     "field_road_number": {
-                        "type": "string",
+                        "title": "road number column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "road_number"
                         ]
                     },
                     "field_levels": {
-                        "type": "string",
+                        "title": "apartment column",
+                        "type": "integer",
+                        "deprecated": false,
                         "enum": [
-                            "levels"
+                            "level_identity"
                         ]
                     },
                     "field_country_id": {
-                        "type": "string",
+                        "title": "country column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "country_id"
+                            "country_identity"
                         ]
                     },
                     "field_zip_code_id": {
-                        "type": "string",
+                        "title": "post code column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "zip_code_id"
+                            "zip_code_identity"
                         ]
                     }
                 },
@@ -1734,7 +1889,11 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "address_road_names"
                         ]
@@ -1748,7 +1907,11 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "apartment_levels"
                         ]
@@ -1762,19 +1925,31 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "countries"
                         ]
                     },
                     "field_country_name": {
+                        "title": "country name column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "country_name"
                         ]
                     },
                     "field_country_acronym": {
+                        "title": "country acronym column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "country_acronym"
                         ]
@@ -1788,19 +1963,41 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "newsletter_users"
                         ]
                     },
                     "field_email_id": {
-                        "type": "string",
+                        "title": "email identity column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "email_id"
+                            "email_identity"
+                        ]
+                    },
+                    "field_account_id": {
+                        "title": "account identity column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
+                        "enum": [
+                            "account_identity"
                         ]
                     },
                     "field_options": {
+                        "title": "option column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "options"
                         ]
@@ -1814,7 +2011,11 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "person_name_first"
                         ]
@@ -1828,31 +2029,51 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "person_name"
                         ]
                     },
                     "field_account_information_id": {
-                        "type": "string",
+                        "title": "account information column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "account_information_id"
+                            "account_information_identity"
                         ]
                     },
                     "field_person_name_first_id": {
-                        "type": "string",
+                        "title": "person first name column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "person_name_first_id"
+                            "person_name_first_identity"
                         ]
                     },
                     "field_person_name_lastname_id": {
-                        "type": "string",
+                        "title": "person last name column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "person_name_lastname_id"
+                            "person_name_lastname_identity"
                         ]
                     },
                     "field_person_name_middlename": {
+                        "title": "person middle name column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "person_name_middlename"
                         ]
@@ -1866,7 +2087,10 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "person name middle & last name table",
                         "type": "string",
+                        "readOnly": true,
+                        "deprecated": false,
                         "enum": [
                             "person_name_middle_and_last"
                         ]
@@ -1880,89 +2104,144 @@
                 "description": "",
                 "properties": {
                     "table_name": {
+                        "title": "account table name",
                         "type": "string",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "accounts"
                         ]
                     },
                     "field_username": {
+                        "title": "username column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "username"
                         ]
                     },
                     "field_email_id": {
-                        "type": "string",
+                        "title": "email column",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "email_id"
+                            "account_email_identity"
+                        ]
+                    },
+                    "field_verified_at": {
+                        "title": "is email verified column",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
+                        "enum": [
+                            "email_verified_at"
                         ]
                     },
                     "field_password": {
+                        "title": "password column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "password"
                         ]
                     },
                     "field_created_at": {
+                        "title": "creation date column",
                         "type": "string",
+                        "format": "date-time",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "created_at"
                         ]
                     },
                     "field_updated_at": {
+                        "title": "last updated at column",
                         "type": "string",
+                        "format": "date-time",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "updated_at"
                         ]
                     },
                     "field_settings": {
+                        "title": "settings column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "settings"
                         ]
                     },
                     "field_remember_token": {
+                        "title": "remember token column",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "remember_token"
                         ]
-                    },
-                    "field_verified_at": {
-                        "type": "string",
-                        "enum": [
-                            "email_verified_at"
-                        ]
                     }
                 },
-                "type": "account-table",
+                "type": "table-account",
                 "deprecated": false
             },
             "ZipCodeModel": {
                 "title": "Zip Code Model",
                 "description": "",
                 "properties": {
-                    "field_table_name": {
-                        "type": "string",
+                    "table_name": {
+                        "title": "table name",
+                        "type": "database table",
+                        "readOnly": true,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "zip_codes"
                         ]
                     },
                     "field_area_name": {
+                        "title": "",
                         "type": "string",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "area_name"
                         ]
                     },
                     "field_zip_number": {
-                        "type": "string",
+                        "title": "",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
                             "zip_number"
                         ]
                     },
                     "field_country_id": {
-                        "type": "string",
+                        "title": "",
+                        "type": "integer",
+                        "readOnly": false,
+                        "writeOnly": false,
+                        "deprecated": false,
                         "enum": [
-                            "country_id"
+                            "country_identity"
                         ]
                     }
                 },

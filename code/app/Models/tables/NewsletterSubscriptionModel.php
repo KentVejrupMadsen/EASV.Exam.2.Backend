@@ -54,7 +54,7 @@
         protected const field_account_id = 'account_identity';
 
         #[OA\Property( title:'option column',
-                       type: self::typeArray,
+                       type: self::typeString,
                        readOnly: false,
                        writeOnly: false,
                        deprecated: false )]

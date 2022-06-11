@@ -54,8 +54,9 @@
                        deprecated: false )]
         protected const field_updated_at = 'updated_at';
 
+
         #[OA\Property( title:'account settings column',
-                       type: self::typeArray,
+                       type: self::typeString,
                        readOnly: false,
                        writeOnly: false,
                        deprecated: false )]
