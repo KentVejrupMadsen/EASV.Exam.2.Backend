@@ -18,7 +18,7 @@
     use Laravel\Sanctum\HasApiTokens;
 
 
-/**
+    /**
      *
      */
     abstract class AccountModel
@@ -28,7 +28,9 @@
             HasFactory,
             Notifiable;
 
-        protected const model_type = 'account';
+        protected const model_type = 'account-table';
+
+        protected const identity = 'identity';
 
         protected  const typeString = 'string';
         protected const typeInteger = 'integer';

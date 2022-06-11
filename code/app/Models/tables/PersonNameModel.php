@@ -27,6 +27,7 @@
     {
         #[OA\Property( type: 'string' )]
         public const table_name = 'person_name';
+        protected $primaryKey = self::identity;
 
         // Variables
             // Table

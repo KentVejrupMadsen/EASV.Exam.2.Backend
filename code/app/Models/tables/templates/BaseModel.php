@@ -21,6 +21,7 @@
         use HasFactory;
 
         protected const model_type = 'table';
+        protected const identity = 'identity';
 
         protected  const typeString = 'string';
         protected const typeInteger = 'integer';

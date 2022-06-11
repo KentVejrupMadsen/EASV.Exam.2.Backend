@@ -46,9 +46,6 @@
         public const field_username = 'username';
 
         #[OA\Property( type: 'string' )]
-        public const field_name = 'name';
-
-        #[OA\Property( type: 'string' )]
         public const field_email_id = 'email_id';
 
         #[OA\Property( type: 'string' )]
@@ -76,7 +73,6 @@
         protected $fillable = 
         [
             self::field_username,
-            self::field_name,
             self::field_email_id,
             self::field_password,
             self::field_created_at,
@@ -104,8 +100,8 @@
          */
         protected $casts = 
         [
+
             self::field_username          => AccountModel::typeString,
-            self::field_name              => AccountModel::typeString,
 
             self::field_email_id          => AccountModel::typeInteger,
             self::field_password          => AccountModel::typeString,

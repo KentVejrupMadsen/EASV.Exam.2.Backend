@@ -31,5 +31,6 @@
         public const field_content = ExtensionLabelModel::field_content;
 
         protected $table = self::table_name;
+        protected $primaryKey = self::identity;
     }
 ?>

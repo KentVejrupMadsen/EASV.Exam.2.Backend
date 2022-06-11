@@ -29,6 +29,7 @@
         // Variables
             // Tables
         protected $table = self::field_table_name;
+        protected $primaryKey = self::identity;
 
         #[OA\Property( type: 'string' )]
         public const field_table_name = 'zip_codes';

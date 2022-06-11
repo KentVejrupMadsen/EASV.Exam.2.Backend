@@ -35,6 +35,7 @@
         public $timestamps = false;
 
         protected $table = self::table_name;
+        protected $primaryKey = self::identity;
 
         #[OA\Property( type: 'string' )]
         public const field_account_information_id = 'account_information_id';

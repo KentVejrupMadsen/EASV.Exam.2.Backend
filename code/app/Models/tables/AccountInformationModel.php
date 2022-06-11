@@ -31,6 +31,7 @@
         // Variables
             // Model
         protected $table = self::table_name;
+        protected $primaryKey = self::identity;
 
             // Constants
         #[OA\Property( type: 'string' )]

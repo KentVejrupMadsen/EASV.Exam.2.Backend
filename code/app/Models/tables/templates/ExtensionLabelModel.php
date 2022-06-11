@@ -12,11 +12,11 @@
      *
      */
     abstract class ExtensionLabelModel
-        extends BaseModel
+        extends ExtensionNoTimestampModel
     {
         // Variables
             // Model
-        public $timestamps = false;
+        protected $primaryKey = self::identity;
 
             // Constants
         protected const field_content = 'content';
@@ -30,11 +30,13 @@
             self::field_content
         ];
 
+
         /**
          * @var string[]
          */
         protected $casts =
         [
+            self::identity => 'integer',
             self::field_content => 'string'
         ];
     }
