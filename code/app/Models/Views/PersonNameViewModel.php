@@ -32,16 +32,16 @@ use OpenApi\Attributes as OA;
         protected $table = self::table_name;
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'identity column',
+                       type: self::typeInteger,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
                        deprecated: false )]
-        protected const field_id = 'id';
+        protected const field_id = 'identity';
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'account information column',
+                       type: self::typeInteger,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
@@ -49,24 +49,24 @@ use OpenApi\Attributes as OA;
         protected const field_account_information_id = 'account_information_id';
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'person first name column',
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_person_first_name = 'person_first_name';
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'person middle names column',
+                       type: self::typeArray,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_person_name_middlename = 'person_name_middlename';
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'person last name column',
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,

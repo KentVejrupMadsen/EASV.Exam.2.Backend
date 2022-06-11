@@ -32,24 +32,24 @@
         protected $table = self::table_name;
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'identities column',
+                       type: self::typeInteger,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
                        deprecated: false )]
-        protected const field_id = 'id';
+        protected const field_id = 'identity';
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'email column',
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_email = 'email';
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'option column',
+                       type: self::typeArray,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,

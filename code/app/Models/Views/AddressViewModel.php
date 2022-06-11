@@ -32,7 +32,7 @@
 
 
         #[OA\Property( title: 'identity',
-                       type: 'unsigned integer',
+                       type: self::typeInteger,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
@@ -40,7 +40,7 @@
         protected const field_id = 'id';
 
         #[OA\Property( title: '',
-                       type: 'string',
+                       type: self::typeInteger,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
@@ -48,7 +48,7 @@
         protected const field_account_information_id = 'account_information_id';
 
         #[OA\Property( title: '',
-                       type: 'string',
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
@@ -56,7 +56,7 @@
         protected const field_road_name = 'road_name';
 
         #[OA\Property( title: '',
-                       type: 'string',
+                       type: self::typeInteger,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
@@ -64,7 +64,7 @@
         protected const field_road_number = 'road_number';
 
         #[OA\Property( title: '',
-                       type: 'string',
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
@@ -72,7 +72,7 @@
         protected const field_levels = 'levels';
 
         #[OA\Property( title: '',
-                       type: 'string',
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
@@ -80,7 +80,7 @@
         protected const field_address_country = 'address_country';
 
         #[OA\Property( title: '',
-                       type: 'string',
+                       type: self::typeInteger,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,

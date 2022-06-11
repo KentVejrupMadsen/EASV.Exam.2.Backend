@@ -8,7 +8,9 @@
     namespace App\Models\Views;
 
     use App\Models\Views\templates\ModelView;
-    use OpenApi\Attributes as OA;
+    
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
@@ -32,24 +34,24 @@
         protected $table = self::table_name;
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'identity column',
+                       type: self::typeInteger,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
                        deprecated: false )]
-        protected const field_id = 'id';
+        protected const field_id = 'identity';
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'area name column',
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_area_name = 'area_name';
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'post code number column',
+                       type: self::typeInteger,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
@@ -57,8 +59,8 @@
         protected const field_post_code = 'zip_number';
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'country acronym column',
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
