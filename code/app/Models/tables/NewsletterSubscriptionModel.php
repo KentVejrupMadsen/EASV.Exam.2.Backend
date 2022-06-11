@@ -28,6 +28,8 @@
     {
         #[OA\Property( title: 'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'newsletter_users';
 
@@ -39,16 +41,22 @@
             // Const
         #[OA\Property( title:'email identity column',
                        type: self::typeInteger,
+                       readOnly: false,
+                       writeOnly: false,
                        deprecated: false )]
         protected const field_email_id = 'email_identity';
 
         #[OA\Property( title:'account identity column',
                        type: self::typeInteger,
+                       readOnly: false,
+                       writeOnly: false,
                        deprecated: false )]
         protected const field_account_id = 'account_identity';
 
         #[OA\Property( title:'option column',
                        type: self::typeArray,
+                       readOnly: false,
+                       writeOnly: false,
                        deprecated: false )]
         protected const field_options  = 'options';
 

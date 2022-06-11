@@ -31,17 +31,23 @@
             // Constant
         #[OA\Property( title:'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'countries';
 
 
         #[OA\Property( title:'country name column',
                        type: self::typeString,
+                       readOnly: false,
+                       writeOnly: false,
                        deprecated: false )]
         protected const field_country_name    = 'country_name';
 
         #[OA\Property( title: 'country acronym column',
                        type: self::typeString,
+                       readOnly: false,
+                       writeOnly: false,
                        deprecated: false )]
         protected const field_country_acronym = 'country_acronym';
 

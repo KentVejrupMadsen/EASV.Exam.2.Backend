@@ -28,22 +28,46 @@
     {
         // Variables
             // Const
-        #[OA\Property( title:'table name', type: 'string' )]
+        #[OA\Property( title:'table name',
+                       type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
+                       deprecated: false)]
         protected const table_name = 'security_recaptcha';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'success column',
+                       type: self::typeBoolean,
+                       readOnly: false,
+                       writeOnly: false,
+                       deprecated: false )]
         protected const field_success   = 'success';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'score column',
+                       type: self::typeDouble,
+                       readOnly: false,
+                       writeOnly: false,
+                       deprecated: false )]
         protected const field_score     = 'score';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'at date column',
+                       type: self::typeTimestamp,
+                       readOnly: false,
+                       writeOnly: false,
+                       deprecated: false )]
         protected const field_at_date   = 'at_date';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'hostname column',
+                       type: self::typeString,
+                       readOnly: false,
+                       writeOnly: false,
+                       deprecated: false )]
         protected const field_hostname  = 'hostname';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'error column',
+                       type: self::typeString,
+                       readOnly: false,
+                       writeOnly: false,
+                       deprecated: false )]
         protected const field_error     = 'error';
 
 

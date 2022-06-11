@@ -29,6 +29,8 @@
     {
         #[OA\Property( title:'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'person_name';
         protected $primaryKey = self::identity;
@@ -41,21 +43,29 @@
             // Constants
         #[OA\Property( title:'account information column',
                        type: self::typeInteger,
+                       readOnly: false,
+                       writeOnly: false,
                        deprecated: false )]
         protected const field_account_information_id  = 'account_information_identity';
 
         #[OA\Property( title:'person first name column',
                        type: self::typeInteger,
+                       readOnly: false,
+                       writeOnly: false,
                        deprecated: false )]
         protected const field_person_name_first_id    = 'person_name_first_identity';
 
         #[OA\Property( title:'person last name column',
                        type: self::typeInteger,
+                       readOnly: false,
+                       writeOnly: false,
                        deprecated: false )]
         protected const field_person_name_lastname_id = 'person_name_lastname_identity';
 
         #[OA\Property( title:'person middle name column',
                        type: self::typeString,
+                       readOnly: false,
+                       writeOnly: false,
                        deprecated: false )]
         protected const field_person_name_middlename  = 'person_name_middlename';
 

@@ -30,16 +30,22 @@
             // Constants
         #[OA\Property( title:'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'security_configuration';
 
         #[OA\Property( title: 'key column',
                        type: self::typeString,
+                       readOnly: false,
+                       writeOnly: false,
                        deprecated: false )]
         protected const field_key   = 'key';
 
         #[OA\Property( title: 'value column',
                        type: self::typeString,
+                       readOnly: false,
+                       writeOnly: false,
                        deprecated: false )]
         protected const field_value = 'value';
 

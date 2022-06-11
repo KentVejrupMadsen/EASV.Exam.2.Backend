@@ -30,6 +30,8 @@
             // constants
         #[OA\Property( title:'Account emails table name',
                        type: self::typeDatabaseModel,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'account_emails';
 

@@ -28,6 +28,7 @@
     {
         #[OA\Property( title:'person name middle & last name table',
                        type: self::typeString,
+                       readOnly: true,
                        deprecated: false )]
         protected const table_name = 'person_name_middle_and_last';
         protected $table = self::table_name;

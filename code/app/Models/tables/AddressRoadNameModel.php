@@ -28,6 +28,8 @@
     {
         #[OA\Property( title:'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'address_road_names';
 
