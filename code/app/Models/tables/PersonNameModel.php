@@ -12,6 +12,7 @@
 
     // External libraries
     use App\Models\tables\templates\ExtensionNoTimestampModel;
+
     use OpenApi\Attributes
             as OA;
 
@@ -36,13 +37,13 @@
 
             // Constants
         #[OA\Property( type: 'string' )]
-        protected const field_account_information_id  = 'account_information_id';
+        protected const field_account_information_id  = 'account_information_identity';
 
         #[OA\Property( type: 'string' )]
-        protected const field_person_name_first_id    = 'person_name_first_id';
+        protected const field_person_name_first_id    = 'person_name_first_identity';
 
         #[OA\Property( type: 'string' )]
-        protected const field_person_name_lastname_id = 'person_name_lastname_id';
+        protected const field_person_name_lastname_id = 'person_name_lastname_identity';
 
         #[OA\Property( type: 'string' )]
         protected const field_person_name_middlename  = 'person_name_middlename';
@@ -65,6 +66,7 @@
          */
         protected $hidden =
         [
+            self::identity,
             self::field_account_information_id,
             self::field_person_name_first_id,
             self::field_person_name_lastname_id,
@@ -76,9 +78,11 @@
          */
         protected $casts =
         [
+            self::identity => self::typeInteger,
             self::field_account_information_id  => self::typeInteger,
             self::field_person_name_first_id    => self::typeInteger,
             self::field_person_name_lastname_id => self::typeInteger,
+
             self::field_person_name_middlename  => self::typeArray,
         ];
     }

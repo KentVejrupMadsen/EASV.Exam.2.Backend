@@ -46,7 +46,7 @@
         protected const field_username = 'username';
 
         #[OA\Property( type: 'string' )]
-        protected const field_email_id = 'email_id';
+        protected const field_email_id = 'account_email_identity';
 
         #[OA\Property( type: 'string' )]
         protected const field_password = 'password';
@@ -73,13 +73,16 @@
         protected $fillable = 
         [
             self::field_username,
-            self::field_email_id,
             self::field_password,
+
+            self::field_email_id,
+            self::field_verified_at,
+
             self::field_created_at,
             self::field_updated_at,
+
             self::field_settings,
-            self::field_remember_token,
-            self::field_verified_at
+            self::field_remember_token
         ];
 
 
@@ -88,6 +91,8 @@
          */
         protected $hidden = 
         [
+            self::identity,
+
             self::field_password,
             self::field_remember_token,
             self::field_email_id,
@@ -100,17 +105,17 @@
          */
         protected $casts = 
         [
+            self::identity => self::typeInteger,
+            self::field_username          => self::typeString,
 
-            self::field_username          => AccountModel::typeString,
+            self::field_email_id          => self::typeInteger,
+            self::field_password          => self::typeString,
 
-            self::field_email_id          => AccountModel::typeInteger,
-            self::field_password          => AccountModel::typeString,
+            self::field_verified_at       => self::typeDatetime,
+            self::field_created_at        => self::typeDatetime,
+            self::field_updated_at        => self::typeDatetime,
 
-            self::field_verified_at       => AccountModel::typeDatetime,
-            self::field_created_at        => AccountModel::typeDatetime,
-            self::field_updated_at        => AccountModel::typeDatetime,
-
-            self::field_settings          => AccountModel::typeArray
+            self::field_settings          => self::typeArray
         ];
     }
 ?>
