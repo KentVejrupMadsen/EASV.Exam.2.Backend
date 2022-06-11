@@ -17,12 +17,13 @@
     #[OA\Schema( title: 'Address View Model',
                  description: '',
                  type: ModelView::model_type,
+                 readOnly: true,
                  deprecated: false )]
     class AddressViewModel
         extends ModelView
     {
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'view name',
+                       type: self::typeString,
                        readOnly: true,
                        writeOnly: false,
                        deprecated: false )]

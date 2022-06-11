@@ -17,12 +17,13 @@
     #[OA\Schema( title: 'Zip Code View short model',
                  description: '',
                  type: ModelView::model_type,
+                 readOnly: true,
                  deprecated: false )]
     class ZipCodeViewShortModel
         extends ModelView
     {
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'view name',
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,

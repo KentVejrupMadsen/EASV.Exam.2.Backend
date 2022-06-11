@@ -17,12 +17,13 @@ use OpenApi\Attributes as OA;
     #[OA\Schema( title: 'Person Name View Model',
                  description: '',
                  type: ModelView::model_type,
+                 readOnly: true,
                  deprecated: false )]
     class PersonNameViewModel
         extends ModelView
     {
-        #[OA\Property( title: '',
-                       type: 'string',
+        #[OA\Property( title: 'view name',
+                       type: self::typeString,
                        readonly: true,
                        writeOnly: false,
                        nullable: false,
