@@ -60,6 +60,7 @@
          */
         protected $fillable =
         [
+            self::identity,
             self::field_country_name,
             self::field_country_acronym
         ];
@@ -71,7 +72,6 @@
         protected $casts =
         [
             self::identity => self::typeInteger,
-
             self::field_country_name    => self::typeString,
             self::field_country_acronym => self::typeString
         ];

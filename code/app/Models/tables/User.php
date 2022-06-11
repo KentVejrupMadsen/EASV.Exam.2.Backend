@@ -86,6 +86,8 @@
          */
         protected $fillable = 
         [
+            self::identity,
+
             self::field_username,
             self::field_password,
 

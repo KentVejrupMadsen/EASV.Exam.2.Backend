@@ -37,7 +37,7 @@
                        type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
-        protected const field_id = 'id';
+        protected const field_id = 'identity';
 
         #[OA\Property( title: 'username column',
                        type: self::typeString,
@@ -98,6 +98,7 @@
         protected $fillable =
         [
             self::field_id,
+
             self::field_username,
             self::field_email,
             self::field_email_verified_at,
@@ -115,6 +116,7 @@
         protected $hidden =
         [
             self::field_id,
+
             self::field_email_verified_at,
             self::field_password,
             self::field_remember_token,
@@ -128,6 +130,7 @@
         protected $casts =
         [
             self::field_id        => self::typeInteger,
+
             self::field_username  => self::typeString,
 
             self::field_email             => self::typeString,

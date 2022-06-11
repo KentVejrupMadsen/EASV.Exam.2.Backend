@@ -18,7 +18,7 @@
                  description: '',
                  type: ModelView::model_type,
                  readOnly: true,
-                 writeOnly:false,
+                 writeOnly: false,
                  deprecated: false )]
     class NewsletterViewModel
         extends ModelView

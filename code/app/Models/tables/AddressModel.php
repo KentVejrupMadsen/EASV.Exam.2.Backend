@@ -81,6 +81,7 @@
          */
         protected $fillable =
         [
+            self::identity,
             self::field_account_information_id,
             self::field_road_name_id,
             self::field_road_number,
@@ -95,6 +96,7 @@
          */
         protected $hidden =
         [
+            self::identity,
             self::field_account_information_id,
             self::field_road_name_id,
             self::field_country_id,
@@ -107,6 +109,7 @@
          */
         protected $casts =
         [
+            self::identity                      => self::typeInteger,
             self::field_account_information_id => self::typeInteger,
             self::field_road_name_id           => self::typeInteger,
             self::field_road_number            => self::typeInteger,

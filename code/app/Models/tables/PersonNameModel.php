@@ -69,6 +69,8 @@
          */
         protected $fillable =
         [
+            self::identity,
+
             self::field_account_information_id,
             self::field_person_name_first_id,
             self::field_person_name_lastname_id,
@@ -82,6 +84,7 @@
         protected $hidden =
         [
             self::identity,
+
             self::field_account_information_id,
             self::field_person_name_first_id,
             self::field_person_name_lastname_id,
@@ -94,6 +97,7 @@
         protected $casts =
         [
             self::identity => self::typeInteger,
+
             self::field_account_information_id  => self::typeInteger,
             self::field_person_name_first_id    => self::typeInteger,
             self::field_person_name_lastname_id => self::typeInteger,

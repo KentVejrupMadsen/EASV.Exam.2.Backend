@@ -71,6 +71,8 @@
          */
         protected $fillable =
         [
+            self::identity,
+
             self::field_account_id,
             self::field_deactivated,
             self::field_writeable_disabled,
@@ -84,6 +86,8 @@
          */
         protected $hidden =
         [
+            self::identity,
+
             self::field_account_id
         ];
 
@@ -94,6 +98,7 @@
         protected $casts =
         [
             self::identity => self::typeInteger,
+
             self::field_account_id          => self::typeInteger,
             
             self::field_deactivated         => self::typeBoolean,

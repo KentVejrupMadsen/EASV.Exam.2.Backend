@@ -20,6 +20,7 @@
                  description: '',
                  type: ModelView::model_type,
                  readOnly: true,
+                 writeOnly: false,
                  deprecated: false )]
     class ZipCodeViewShortModel
         extends ModelView

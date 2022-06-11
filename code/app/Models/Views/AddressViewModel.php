@@ -30,13 +30,13 @@
         protected $table  = self::table_name;
 
 
-        #[OA\Property( title: 'identity',
+        #[OA\Property( title: 'identity column',
                        type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
-        protected const field_id = 'id';
+        protected const field_id = 'identity';
 
-        #[OA\Property( title: '',
+        #[OA\Property( title: 'account information identity column',
                        type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]

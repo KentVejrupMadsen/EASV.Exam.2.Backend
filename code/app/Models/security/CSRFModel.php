@@ -90,6 +90,7 @@
         protected $fillable = 
         [
             self::field_identity,
+
             self::field_assigned_to,
             self::field_issued,
             self::field_accessed,
@@ -106,6 +107,7 @@
         protected $hidden = 
         [
             self::field_identity,
+
             self::field_secure_token,
             self::field_secret_token
         ];
@@ -117,6 +119,7 @@
         protected $casts =
         [
             self::field_identity      => self::typeInteger,
+
             self::field_assigned_to   => self::typeString,
             self::field_secure_token  => self::typeString,
             self::field_secret_token  => self::typeString,

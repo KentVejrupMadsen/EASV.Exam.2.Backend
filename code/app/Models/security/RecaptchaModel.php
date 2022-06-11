@@ -73,6 +73,7 @@
         protected $fillable =
         [
             self::identity,
+
             self::field_success,
             self::field_score,
             self::field_at_date,
@@ -87,6 +88,7 @@
         protected $hidden =
         [
             self::identity,
+
             self::field_hostname,
             self::field_error
         ];
@@ -98,6 +100,7 @@
         protected $casts =
         [
             self::identity          => self::typeInteger,
+
             self::field_success     => self::typeBoolean,
             self::field_score       => self::typeDouble,
             self::field_at_date     => self::typeDatetime,

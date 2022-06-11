@@ -62,6 +62,8 @@
          */
         protected $fillable =
         [
+            self::identity,
+
             self::field_area_name,
             self::field_zip_number,
             self::field_country_id
@@ -74,6 +76,7 @@
         protected $hidden =
         [
             self::identity,
+
             self::field_country_id
         ];
 
@@ -84,6 +87,7 @@
         protected $casts =
         [
             self::identity => self::typeInteger,
+
             self::field_area_name  => self::typeString,
             self::field_zip_number => self::typeInteger,
             self::field_country_id => self::typeInteger

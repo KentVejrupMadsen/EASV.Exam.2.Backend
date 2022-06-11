@@ -18,6 +18,7 @@ use OpenApi\Attributes as OA;
                  description: '',
                  type: ModelView::model_type,
                  readOnly: true,
+                 writeOnly: false,
                  deprecated: false )]
     class PersonNameViewModel
         extends ModelView

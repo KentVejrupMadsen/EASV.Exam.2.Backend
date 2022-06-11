@@ -68,6 +68,7 @@
          */
         protected $fillable =
         [
+            self::identity,
             self::field_account,
             self::field_created_at,
             self::field_updated_at
@@ -79,6 +80,7 @@
          */
         protected $hidden =
         [
+            self::identity,
             self::field_account,
         ];
 

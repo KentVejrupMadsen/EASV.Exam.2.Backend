@@ -62,6 +62,7 @@
          */
         protected $fillable =
         [
+            self::identity,
             self::field_email_id,
             self::field_options,
             self::field_account_id
@@ -73,7 +74,6 @@
         protected $hidden =
         [
             self::identity,
-
             self::field_email_id,
             self::field_account_id
         ];
