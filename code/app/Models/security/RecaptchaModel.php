@@ -8,8 +8,8 @@
     namespace App\Models\security;
 
     // Internal libraries
-    use App\Models\templates\BaseModel;
-    use App\Models\templates\ExtensionNoTimestampModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionNoTimestampModel;
 
     // External libraries
     use OpenApi\Attributes
@@ -27,34 +27,36 @@
         extends ExtensionNoTimestampModel
     {
         // Variables
-            // Table
-        #[OA\Property( type: 'string' )]
-        public const table_name = 'security_recaptcha';
-
-        protected $table = self::table_name;
-
             // Const
-        #[OA\Property( type: 'string' )]
-        public const field_success   = 'success';
+        #[OA\Property( title:'table name', type: 'string' )]
+        protected const table_name = 'security_recaptcha';
 
         #[OA\Property( type: 'string' )]
-        public const field_score     = 'score';
+        protected const field_success   = 'success';
 
         #[OA\Property( type: 'string' )]
-        public const field_at_date   = 'at_date';
+        protected const field_score     = 'score';
 
         #[OA\Property( type: 'string' )]
-        public const field_hostname  = 'hostname';
+        protected const field_at_date   = 'at_date';
 
         #[OA\Property( type: 'string' )]
-        public const field_error     = 'error';
+        protected const field_hostname  = 'hostname';
 
+        #[OA\Property( type: 'string' )]
+        protected const field_error     = 'error';
+
+
+            // Table
+        protected $table = self::table_name;
+        protected $primaryKey = self::identity;
 
         /**
          * @var string[]
          */
         protected $fillable =
         [
+            self::identity,
             self::field_success,
             self::field_score,
             self::field_at_date,
@@ -68,6 +70,7 @@
          */
         protected $hidden =
         [
+            self::identity,
             self::field_hostname,
             self::field_error
         ];
@@ -78,11 +81,12 @@
          */
         protected $casts =
         [
-            self::field_success     => 'boolean',
-            self::field_score       => 'double',
-            self::field_at_date     => 'datetime',
-            self::field_hostname    => 'string',
-            self::field_error       => 'string'
+            self::identity          => self::typeInteger,
+            self::field_success     => self::typeBoolean,
+            self::field_score       => self::typeDouble,
+            self::field_at_date     => self::typeDatetime,
+            self::field_hostname    => self::typeString,
+            self::field_error       => self::typeString
         ];
     }
 ?>

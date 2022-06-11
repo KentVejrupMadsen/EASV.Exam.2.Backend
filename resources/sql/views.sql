@@ -1,5 +1,6 @@
+-- works
 create view accounts_view as
-select accounts.id,
+select accounts.identity,
        accounts.username,
        ae.content as email,
        accounts.email_verified_at,
@@ -9,93 +10,56 @@ select accounts.id,
        accounts.updated_at,
        accounts.settings
 from accounts
-         left join account_emails ae on accounts.email_id = ae.id;
+         left join account_emails ae on accounts.account_email_identity = ae.identity;
 
-
-create view projects_view as
-select projects.id,
-       projects.account_owner_id,
-       pt.content as project_title,
-       projects.description,
-       projects.tags,
-       projects.created_at,
-       projects.updated_at
-from projects
-         left join project_titles pt on projects.project_title_id = pt.id;
-
-
-create view boards_view as
-select boards.id,
-       boards.kanban_id,
-       bt.content as board_title,
-       boards.body,
-       boards.created_at,
-       boards.updated_at
-from boards
-         left join board_titles bt on boards.board_title_id = bt.id;
-
-
+-- works
 create view zip_codes_view_full as
-select zip_codes.id,
+select zip_codes.identity,
        zip_codes.area_name,
        zip_codes.zip_number,
        c.country_name,
        c.country_acronym
 from zip_codes
-         left join countries c on zip_codes.country_id = c.id;
+         left join countries c on zip_codes.country_identity = c.identity;
 
-
+-- works
 create view zip_codes_view_short as
-select zip_codes.id,
+select zip_codes.identity,
        zip_codes.area_name,
        zip_codes.zip_number,
        c.country_acronym
 from zip_codes
-         left join countries c on zip_codes.country_id = c.id;
+         left join countries c on zip_codes.country_identity = c.identity;
 
-
+-- works
 create view newsletter_view as
-select newsletter_users.id,
+select newsletter_users.identity,
        ae.content as email,
        newsletter_users.options
 from newsletter_users
-         left join account_emails ae on ae.id = newsletter_users.email_id;
+         left join account_emails ae on ae.identity = newsletter_users.email_identity;
 
+-- works
 create view person_names_view as
-select person_name.id,
-       person_name.account_information_id,
+select person_name.identity,
+       person_name.account_information_identity,
        pnf.content as person_first_name,
        person_name.person_name_middlename,
        pnmal.content as person_last_name
 from person_name
-         left join person_name_first pnf on pnf.id = person_name.person_name_first_id
-         left join person_name_middle_and_last pnmal on pnmal.id = person_name.person_name_lastname_id;
+         left join person_name_first pnf on pnf.identity = person_name.person_name_first_identity
+         left join person_name_middle_and_last pnmal on pnmal.identity = person_name.person_name_lastname_identity;
 
-create view kanbans_view as
-select kanbans.id,
-       project_id,
-       kt.content as kanban_title,
-       kanbans.created_at,
-       kanbans.updated_at
-from kanbans
-         left join kanban_titles kt on kanbans.kanban_title_id = kt.id;
-
+-- works
 create view addresses_view as
-select ad.id,
-       ad.account_information_id,
+select ad.identity,
+       ad.account_information_identity,
        arn.content as road_name,
        ad.road_number,
-       ad.levels,
+       ad.level_identity,
        c.country_name as address_country,
-       ad.zip_code_id
+       ad.zip_code_identity
 from addresses as ad
-         left join countries c on c.id = ad.country_id
-         left join address_road_names arn on arn.id = ad.road_name_id;
-
-create view project_members_view as
-select project_members.id,
-       project_members.project_id,
-       project_members.account_id,
-       mg.content as member_group
-from project_members
-         left join member_groups mg on project_members.member_group_id = mg.id;
+         left join countries c on c.identity = ad.country_identity
+         left join address_road_names arn on arn.identity = ad.road_name_identity
+         left join apartment_levels alvl on alvl.identity = ad.level_identity;

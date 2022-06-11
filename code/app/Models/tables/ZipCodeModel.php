@@ -8,8 +8,8 @@
     namespace App\Models\tables;
 
     // Internal libraries
-    use App\Models\templates\BaseModel;
-    use App\Models\templates\ExtensionNoTimestampModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionNoTimestampModel;
 
     // External libraries
     use OpenApi\Attributes
@@ -28,20 +28,29 @@
     {
         // Variables
             // Tables
-        protected $table = self::field_table_name;
-
-        #[OA\Property( type: 'string' )]
-        public const field_table_name = 'zip_codes';
+        protected $table = self::table_name;
+        protected $primaryKey = self::identity;
 
             // Constants
-        #[OA\Property( type: 'string' )]
-        public const field_area_name = 'area_name';
+        #[OA\Property( title: '',
+                       type: self::typeDatabaseModel,
+                       deprecated: false )]
+        protected const table_name = 'zip_codes';
 
-        #[OA\Property( type: 'string' )]
-        public const field_zip_number = 'zip_number';
+        #[OA\Property( title: '',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const field_area_name = 'area_name';
 
-        #[OA\Property( type: 'string' )]
-        public const field_country_id = 'country_id';
+        #[OA\Property( title: '',
+                       type: self::typeInteger,
+                       deprecated: false )]
+        protected const field_zip_number = 'zip_number';
+
+        #[OA\Property( title: '',
+                       type: self::typeInteger,
+                       deprecated: false )]
+        protected const field_country_id = 'country_identity';
 
 
         /**
@@ -60,6 +69,7 @@
          */
         protected $hidden =
         [
+            self::identity,
             self::field_country_id
         ];
 
@@ -69,6 +79,7 @@
          */
         protected $casts =
         [
+            self::identity => self::typeInteger,
             self::field_area_name  => self::typeString,
             self::field_zip_number => self::typeInteger,
             self::field_country_id => self::typeInteger

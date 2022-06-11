@@ -7,10 +7,8 @@
      */
     namespace App\Models\Views;
 
-    use App\Models\templates\ModelView;
-
-    use OpenApi\Attributes
-        as OA;
+    use App\Models\Views\templates\ModelView;
+    use OpenApi\Attributes as OA;
 
 
     /**
@@ -18,7 +16,7 @@
      */
     #[OA\Schema( title: 'Account View Model',
                  description: '',
-                 type: ModelView::model_view,
+                 type: ModelView::model_type,
                  deprecated: false )]
     class AccountViewModel
         extends ModelView

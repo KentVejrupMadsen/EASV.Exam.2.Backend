@@ -8,8 +8,8 @@
     namespace App\Models\tables;
 
     // Internal
-    use App\Models\templates\BaseModel;
-    use App\Models\templates\ExtensionLabelModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionLabelModel;
 
     // External
     use OpenApi\Attributes
@@ -26,10 +26,12 @@
     class PersonFirstnameModel
         extends ExtensionLabelModel
     {
-        #[OA\Property( type: 'string' )]
-        public const table_name = 'person_name_first';
+        #[OA\Property( title:'table name',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const table_name = 'person_name_first';
         protected $table = self::table_name;
 
-        public const field_content = ExtensionLabelModel::field_content;
+        protected const field_content = ExtensionLabelModel::field_content;
     }
 ?>

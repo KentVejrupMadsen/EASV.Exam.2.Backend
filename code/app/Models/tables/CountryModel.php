@@ -8,8 +8,8 @@
     namespace App\Models\tables;
 
     // Internal libraries
-    use App\Models\templates\BaseModel;
-    use App\Models\templates\ExtensionNoTimestampModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionNoTimestampModel;
 
 
     // External libraries
@@ -27,19 +27,28 @@
     class CountryModel
         extends ExtensionNoTimestampModel
     {
-        #[OA\Property( type: 'string' )]
-        public const table_name = 'countries';
-
         // Variable
-            // Table
-        protected $table = self::table_name;
-
             // Constant
-        #[OA\Property( type: 'string' )]
-        public const field_country_name    = 'country_name';
+        #[OA\Property( title:'table name',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const table_name = 'countries';
 
-        #[OA\Property( type: 'string' )]
-        public const field_country_acronym = 'country_acronym';
+
+        #[OA\Property( title:'country name column',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const field_country_name    = 'country_name';
+
+        #[OA\Property( title: 'country acronym column',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const field_country_acronym = 'country_acronym';
+
+
+            // Table
+        protected $table      = self::table_name;
+        protected $primaryKey = self::identity;
 
 
         /**
@@ -57,6 +66,8 @@
          */
         protected $casts =
         [
+            self::identity => self::typeInteger,
+
             self::field_country_name    => self::typeString,
             self::field_country_acronym => self::typeString
         ];

@@ -7,8 +7,8 @@
      */
     namespace App\Models\security;
 
-    use App\Models\templates\BaseModel;
-    use App\Models\templates\ExtensionNoTimestampModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionNoTimestampModel;
 
     use OpenApi\Attributes
         as OA;
@@ -24,28 +24,42 @@
     class AccountState
         extends ExtensionNoTimestampModel
     {
-        #[OA\Property( type: 'string' )]
-        public const table_name = 'account_states';
-
         // Variables
+            // Constants
+        #[OA\Property( title:'table name',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const table_name = 'account_states';
+
+        #[OA\Property( title:'account column',
+                       type: self::typeInteger,
+                       deprecated: false )]
+        protected const field_account_id            = 'account_identity';
+
+        #[OA\Property( title: 'deactivated column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
+        protected const field_deactivated           = 'deactivated';
+
+        #[OA\Property( title: 'writeable disabled column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
+        protected const field_writeable_disabled    = 'writeable_disabled';
+
+        #[OA\Property( title: 'locked column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
+        protected const field_locked                = 'locked';
+
+        #[OA\Property( title: 'archived column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
+        protected const field_archived              = 'archived';
+
+
             // Table
         protected $table = self::table_name;
-
-            // Constants
-        #[OA\Property( type: 'string' )]
-        public const field_account_id            = 'account_id';
-
-        #[OA\Property( type: 'string' )]
-        public const field_deactivated           = 'deactivated';
-
-        #[OA\Property( type: 'string' )]
-        public const field_writeable_disabled    = 'writeable_disabled';
-
-        #[OA\Property( type: 'string' )]
-        public const field_locked                = 'locked';
-
-        #[OA\Property( type: 'string' )]
-        public const field_archived              = 'archived';
+        protected $primaryKey = self::identity;
 
 
         /**
@@ -75,7 +89,9 @@
          */
         protected $casts =
         [
+            self::identity => self::typeInteger,
             self::field_account_id          => self::typeInteger,
+            
             self::field_deactivated         => self::typeBoolean,
             self::field_writeable_disabled  => self::typeBoolean,
             self::field_locked              => self::typeBoolean,

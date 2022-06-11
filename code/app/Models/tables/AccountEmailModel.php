@@ -8,8 +8,8 @@
     namespace App\Models\tables;
 
     // Internal libraries
-    use App\Models\templates\BaseModel;
-    use App\Models\templates\ExtensionLabelModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionLabelModel;
 
     // External libraries
     use OpenApi\Attributes
@@ -26,10 +26,18 @@
     class AccountEmailModel 
         extends ExtensionLabelModel
     {
-        #[OA\Property( type: 'string' )]
-        public const table_name = 'account_emails';
-        public const field_content = ExtensionLabelModel::field_content;
+        // Variables
+            // constants
+        #[OA\Property( title:'Account emails table name',
+                       type: self::typeDatabaseModel,
+                       deprecated: false )]
+        protected const table_name = 'account_emails';
 
+                // fields
+        protected const field_content = ExtensionLabelModel::field_content;
+
+            // Models
         protected $table = self::table_name;
+        protected $primaryKey = self::identity;
     }
 ?>

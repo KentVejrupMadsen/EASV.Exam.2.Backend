@@ -8,8 +8,8 @@
     namespace App\Models\security;
 
     // Internal libraries
-use App\Models\templates\BaseModel;
-use App\Models\templates\ExtensionNoTimestampModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionNoTimestampModel;
 
     // External libraries
     use OpenApi\Attributes
@@ -27,18 +27,26 @@ use App\Models\templates\ExtensionNoTimestampModel;
         extends ExtensionNoTimestampModel
     {
         // Variables
+            // Constants
+        #[OA\Property( title:'table name',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const table_name = 'security_configuration';
+
+        #[OA\Property( title: 'key column',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const field_key   = 'key';
+
+        #[OA\Property( title: 'value column',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const field_value = 'value';
+
+
             // Table
         protected $table = self::table_name;
-
-            // Constants
-        #[OA\Property( type: 'string' )]
-        public const table_name = 'security_configuration';
-
-        #[OA\Property( type: 'string' )]
-        public const field_key   = 'key';
-
-        #[OA\Property( type: 'string' )]
-        public const field_value = 'value';
+        protected $primaryKey = self::identity;
 
 
         /**
@@ -65,8 +73,9 @@ use App\Models\templates\ExtensionNoTimestampModel;
          */
         protected $casts =
         [
-            self::field_key   => 'string',
-            self::field_value => 'array'
+            self::identity => self::typeInteger,
+            self::field_key   => self::typeString,
+            self::field_value => self::typeArray
         ];
     }
 ?>
