@@ -28,7 +28,7 @@
     {
         // Variables
             // Const
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'table name', type: 'string' )]
         protected const table_name = 'security_recaptcha';
 
         #[OA\Property( type: 'string' )]

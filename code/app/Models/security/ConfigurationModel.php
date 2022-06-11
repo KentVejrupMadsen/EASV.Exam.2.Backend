@@ -28,7 +28,7 @@
     {
         // Variables
             // Constants
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'table name', type: 'string' )]
         protected const table_name = 'security_configuration';
 
         #[OA\Property( type: 'string' )]

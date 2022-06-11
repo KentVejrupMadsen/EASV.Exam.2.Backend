@@ -26,23 +26,36 @@
     {
         // Variables
             // Constants
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'table name',
+                       type: self::typeString,
+                       deprecated: false )]
         protected const table_name = 'account_states';
 
-        #[OA\Property( type: 'string' )]
-        protected  const field_account_id            = 'account_identity';
+        #[OA\Property( title:'account column',
+                       type: self::typeInteger,
+                       deprecated: false )]
+        protected const field_account_id            = 'account_identity';
 
-        #[OA\Property( type: 'string' )]
-        protected  const field_deactivated           = 'deactivated';
+        #[OA\Property( title: 'deactivated column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
+        protected const field_deactivated           = 'deactivated';
 
-        #[OA\Property( type: 'string' )]
-        protected  const field_writeable_disabled    = 'writeable_disabled';
+        #[OA\Property( title: 'writeable disabled column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
+        protected const field_writeable_disabled    = 'writeable_disabled';
 
-        #[OA\Property( type: 'string' )]
-        protected  const field_locked                = 'locked';
+        #[OA\Property( title: 'locked column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
+        protected const field_locked                = 'locked';
 
-        #[OA\Property( type: 'string' )]
-        protected  const field_archived              = 'archived';
+        #[OA\Property( title: 'archived column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
+        protected const field_archived              = 'archived';
+
 
             // Table
         protected $table = self::table_name;
