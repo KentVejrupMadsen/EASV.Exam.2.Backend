@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
-dir="$(pwd)"
-echo "works: $dir"
+debug=0
+
+if [ $debug == 1 ]
+then
+  dir="$(pwd)"
+  echo "works: $dir"
+fi
