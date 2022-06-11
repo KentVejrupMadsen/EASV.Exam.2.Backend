@@ -8,6 +8,7 @@
     namespace App\Models\tables;
 
     // External
+    use App\Models\tables\templates\AccountModel;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
 
     use Illuminate\Foundation\Auth\User
@@ -20,7 +21,7 @@
         as OA;
 
     // Internal
-    use App\Models\templates\BaseModel;
+    use App\Models\tables\templates\BaseModel;
 
 
     /**
@@ -28,10 +29,10 @@
      */
     #[OA\Schema( title: 'Account Model',
                  description: '',
-                 type: BaseModel::model_type,
+                 type: AccountModel::model_type,
                  deprecated: false )]
     class User 
-        extends Authenticatable
+        extends AccountModel
     {
         #[OA\Property( type: 'string' )]
         public const table_name = 'accounts';
@@ -68,11 +69,6 @@
         #[OA\Property( type: 'string' )]
         public const field_verified_at = 'email_verified_at';
 
-        //
-        use HasApiTokens,
-            HasFactory,
-            Notifiable;
-
 
         /**
          * @var string[]
@@ -108,17 +104,17 @@
          */
         protected $casts = 
         [
-            self::field_username          => BaseModel::typeString,
-            self::field_name              => BaseModel::typeString,
+            self::field_username          => AccountModel::typeString,
+            self::field_name              => AccountModel::typeString,
 
-            self::field_email_id          => BaseModel::typeInteger,
-            self::field_password          => BaseModel::typeString,
+            self::field_email_id          => AccountModel::typeInteger,
+            self::field_password          => AccountModel::typeString,
 
-            self::field_verified_at       => BaseModel::typeDatetime,
-            self::field_created_at        => BaseModel::typeDatetime,
-            self::field_updated_at        => BaseModel::typeDatetime,
+            self::field_verified_at       => AccountModel::typeDatetime,
+            self::field_created_at        => AccountModel::typeDatetime,
+            self::field_updated_at        => AccountModel::typeDatetime,
 
-            self::field_settings          => BaseModel::typeArray
+            self::field_settings          => AccountModel::typeArray
         ];
     }
 ?>

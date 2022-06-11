@@ -7,13 +7,11 @@
      */
     namespace App\Models\Views;
 
-    use App\Models\templates\ModelView;
-
-    use OpenApi\Attributes
-        as OA;
+    use App\Models\Views\templates\ModelView;
+use OpenApi\Attributes as OA;
 
 
-    /**
+/**
      *
      */
     #[OA\Schema( title: 'Person Name View Model',

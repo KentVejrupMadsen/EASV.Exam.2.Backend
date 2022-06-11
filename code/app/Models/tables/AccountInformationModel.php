@@ -8,7 +8,7 @@
     namespace App\Models\tables;
 
     // Internal Libraries
-    use App\Models\templates\BaseModel;
+    use App\Models\tables\templates\BaseModel;
 
     // External libraries
     use OpenApi\Attributes

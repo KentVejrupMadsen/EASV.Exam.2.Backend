@@ -8,7 +8,7 @@
     namespace App\Models\tables;
 
     // Internal libraries
-    use App\Models\templates\BaseModel;
+    use App\Models\tables\templates\BaseModel;
 
     // External libraries
     use Illuminate\Database\Eloquent\Factories\HasFactory;

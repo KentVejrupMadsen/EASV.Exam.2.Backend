@@ -8,8 +8,8 @@
     namespace App\Models\tables;
 
     // Internal
-    use App\Models\templates\BaseModel;
-    use App\Models\templates\ExtensionLabelModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionLabelModel;
 
     // External
     use OpenApi\Attributes

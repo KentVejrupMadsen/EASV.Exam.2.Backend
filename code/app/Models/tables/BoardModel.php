@@ -8,7 +8,7 @@
     namespace App\Models\tables;
 
     // Internal
-    use App\Models\templates\BaseModel;
+    use App\Models\tables\templates\BaseModel;
 
     // External
     use OpenApi\Attributes

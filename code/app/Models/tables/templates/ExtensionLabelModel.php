@@ -5,10 +5,7 @@
     * Description:
     * TODO: Make description
     */
-    namespace App\Models\templates;
-
-    use OpenApi\Attributes
-        as OA;
+    namespace App\Models\tables\templates;;
 
 
     /**
@@ -22,16 +19,20 @@
         public $timestamps = false;
 
             // Constants
-        public const field_content = 'content';
+        protected const field_content = 'content';
 
 
-        //
+        /**
+         * @var string[]
+         */
         protected $fillable =
         [
             self::field_content
         ];
 
-
+        /**
+         * @var string[]
+         */
         protected $casts =
         [
             self::field_content => 'string'
