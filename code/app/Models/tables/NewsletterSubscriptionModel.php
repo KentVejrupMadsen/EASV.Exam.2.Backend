@@ -22,6 +22,8 @@
     #[OA\Schema( title: 'Newsletter Subscription Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class NewsletterSubscriptionModel
         extends ExtensionNoTimestampModel
@@ -41,22 +43,16 @@
             // Const
         #[OA\Property( title:'email identity column',
                        type: self::typeInteger,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_email_id = 'email_identity';
 
         #[OA\Property( title:'account identity column',
                        type: self::typeInteger,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_account_id = 'account_identity';
 
         #[OA\Property( title:'option column',
                        type: self::typeString,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_options  = 'options';
 

@@ -21,6 +21,8 @@
     #[OA\Schema( title: 'Account Information Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class AccountInformationModel
         extends BaseModel
@@ -35,30 +37,22 @@
 
         #[OA\Property( title: 'account column',
                        type: self::typeInteger,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_account = 'account_identity';
 
         #[OA\Property( title: 'creation date column',
                        type: self::typeDatetime,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_created_at = 'created_at';
 
         #[OA\Property( title:'last updated column',
                        type: self::typeDatetime,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_updated_at = 'updated_at';
 
 
         #[OA\Property( title:'account settings column',
                        type: self::typeString,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_settings = 'settings';
 

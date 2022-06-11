@@ -22,6 +22,8 @@
     #[OA\Schema( title: 'Address Road Name Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class AddressRoadNameModel
         extends ExtensionLabelModel

@@ -25,6 +25,8 @@
     #[OA\Schema( title: 'Address Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class AddressModel
         extends ExtensionNoTimestampModel
@@ -40,22 +42,16 @@
 
         #[OA\Property( title: 'account information column',
                        type: self::typeInteger,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_account_information_id = 'account_information_identity';
 
         #[OA\Property( title:'road name column',
                        type: self::typeInteger,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_road_name_id = 'road_name_identity';
 
         #[OA\Property( title:'road number column',
                        type: self::typeInteger,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_road_number = 'road_number';
 
@@ -66,15 +62,11 @@
 
         #[OA\Property( title:'country column',
                        type: self::typeInteger,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_country_id = 'country_identity';
 
         #[OA\Property( title:'post code column',
                        type: self::typeInteger,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_zip_code_id = 'zip_code_identity';
 

@@ -23,6 +23,8 @@
     #[OA\Schema( title: 'Country Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class CountryModel
         extends ExtensionNoTimestampModel
@@ -39,15 +41,11 @@
 
         #[OA\Property( title:'country name column',
                        type: self::typeString,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_country_name    = 'country_name';
 
         #[OA\Property( title: 'country acronym column',
                        type: self::typeString,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_country_acronym = 'country_acronym';
 

@@ -17,6 +17,8 @@
     #[OA\Schema( title: 'Apartment Level Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class ApartmentLevelModel
         extends ExtensionLabelModel
