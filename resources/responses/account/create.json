@@ -1,0 +1,23 @@
+{
+  "account":
+  {
+    "username":"username",
+    "security_credentials":
+    {
+      "password":"password",
+      "confirm":"confirm"
+    },
+    "person":
+    {
+      "email":"email@out.tlc"
+    }
+  },
+  "security":
+  {
+    "csrf":
+    {
+      "secure_token": "token",
+      "id": 0
+    }
+  }
+}

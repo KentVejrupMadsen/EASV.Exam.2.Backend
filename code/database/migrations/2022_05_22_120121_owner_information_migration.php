@@ -15,206 +15,245 @@
      */
       return new class extends Migration
       {
-            public function up()
-            {
-                  //
-                  Schema::create( 'countries',
-                        function( Blueprint $table )
-                        {
-                        $table->id();
+          private const account_information_options_table = 'account_information_options';
 
-                        $table->string( 'country_name' )
-                              ->unique()
-                              ->index()
-                              ->comment('');
+          private const countries_table = 'countries';
+          private const zip_codes_table = 'zip_codes';
 
-                        $table->string( 'country_acronym', 25 )
-                              ->index()
-                              ->comment('');
-                        }
-                  );
+          private const person_name_first_table = 'person_name_first';
+          private const person_name_middle_and_last_table = 'person_name_middle_and_last';
+          private const person_name_table = 'person_name';
 
-                  Schema::create( 'zip_codes',
-                        function( Blueprint $table )
-                        {
-                        $table->id();
+          private const address_road_name_table = 'address_road_names';
+          private const addresses_table = 'addresses';
 
-                        $table->string( 'area_name' )
-                              ->index()
-                              ->comment( '' );
+          private const levels_table = 'apartment_levels';
 
-                        $table->integer( 'zip_number' )
-                              ->unsigned()
-                              ->index()
-                              ->comment( '' );
-
-                        $table->bigInteger( 'country_id' )
-                              ->unsigned()
-                              ->index()
-                              ->comment( '' );
-
-                        // References
-                        $table->foreign( 'country_id' )
-                              ->references( 'id' )
-                              ->on( 'countries' );
-                        }
-                  );
+          private const column_identity = 'identity';
 
 
-                  Schema::create( 'account_information_options',
-                        function( Blueprint $table )
-                        {
-                        $table->id();
+          // create tables
+          public function up(): void
+          {
+              Schema::create( self::countries_table,
+                  function( Blueprint $table )
+                  {
+                      $table->id( self::column_identity );
 
-                        $table->bigInteger( 'account_id' )
-                              ->unsigned()
-                              ->unique()
-                              ->comment( '' );
+                      $table->string( 'country_name' )
+                            ->unique()
+                            ->index()
+                            ->comment( 'the accurate name of a specific country in english' );
 
-                        $table->json( 'settings' )
-                              ->comment( '' );
+                      $table->string( 'country_acronym', 25 )
+                            ->index()
+                            ->comment( 'the acronym for the given countries' );
+                  }
+              );
 
-                        $table->timestamps();
+              Schema::create( self::zip_codes_table,
+                  function( Blueprint $table )
+                  {
+                      $table->id( self::column_identity );
+
+                      $table->string( 'area_name' )
+                            ->index()
+                            ->comment( '' );
+
+                      $table->integer( 'zip_number' )
+                            ->unsigned()
+                            ->index()
+                            ->comment( '' );
+
+                      $table->bigInteger( 'country_identity' )
+                            ->unsigned()
+                            ->index()
+                            ->comment( '' );
 
                         // References
-                        $table->foreign( 'account_id' )
-                              ->references( 'id' )
-                              ->on( 'accounts' )
-                              ->onDelete( 'CASCADE' );
-                        }
-                  );
+                      $table->foreign( 'country_identity' )
+                            ->references( self::column_identity )
+                            ->on( 'countries' );
+                  }
+              );
 
-                  Schema::create( 'person_name_first',
-                        function( Blueprint $table )
-                        {
-                        $table->id();
+
+              Schema::create( self::account_information_options_table,
+                  function( Blueprint $table )
+                  {
+                      $table->id( self::column_identity );
+
+                      $table->bigInteger( 'account_identity' )
+                            ->unsigned()
+                            ->unique()
+                            ->comment( '' );
+
+                      $table->json( 'settings' )
+                            ->comment( '' );
+
+                      $table->timestamps();
+
+                        // References
+                      $table->foreign( 'account_identity' )
+                            ->references( self::column_identity )
+                            ->on( 'accounts' )
+                            ->onDelete( 'CASCADE' );
+                  }
+              );
+
+              Schema::create( self::person_name_first_table,
+                  function( Blueprint $table )
+                  {
+                        $table->id( self::column_identity );
 
                         $table->string( 'content' )
                               ->unique()
-                              ->comment( '' );
-                        }
-                  );
+                              ->comment( 'a given persons firstname' );
+                  }
+              );
 
-                  Schema::create( 'person_name_middle_and_last',
-                        function( Blueprint $table )
-                        {
-                        $table->id();
+              Schema::create( self::person_name_middle_and_last_table,
+                  function( Blueprint $table )
+                  {
+                      $table->id( self::column_identity );
 
-                        $table->string( 'content' )
-                              ->unique()
-                              ->comment( '' );
-                        }
-                  );
+                      $table->string( 'content' )
+                            ->unique()
+                            ->comment( 'a given persons surname or middle name' );
+                  }
+              );
 
-                  Schema::create( 'person_name',
-                        function( Blueprint $table )
-                        {
-                        $table->id();
+              Schema::create( self::person_name_table,
+                  function( Blueprint $table )
+                  {
+                      $table->id( self::column_identity );
 
-                        $table->bigInteger( 'account_information_id' )
-                              ->unsigned()
-                              ->unique()
-                              ->comment( '' );
+                      $table->bigInteger( 'account_information_identity' )
+                            ->unsigned()
+                            ->unique()
+                            ->comment( '' );
 
-                        $table->bigInteger( 'person_name_first_id' )
-                              ->unsigned()
-                              ->comment( '' );
+                      $table->bigInteger( 'person_name_first_identity' )
+                            ->unsigned()
+                            ->comment( '' );
 
-                        $table->bigInteger( 'person_name_lastname_id' )
-                              ->unsigned()
-                              ->comment( '' );
+                      $table->bigInteger( 'person_name_lastname_identity' )
+                            ->unsigned()
+                            ->nullable()
+                            ->comment( '' );
 
-                        $table->json( 'person_name_middlename' )
-                              ->nullable()
-                              ->comment( '' );
+                      $table->json( 'person_name_middlename' )
+                            ->nullable()
+                            ->comment( '' );
 
                         // References
-                        $table->foreign( 'account_information_id' )
-                              ->references( 'id' )
-                              ->on( 'account_information_options' )
-                              ->onDelete( 'CASCADE' );
+                      $table->foreign( 'account_information_identity' )
+                            ->references( self::column_identity )
+                            ->on( 'account_information_options' )
+                            ->onDelete( 'CASCADE' );
 
-                        $table->foreign( 'person_name_first_id' )
-                              ->references( 'id' )
-                              ->on( 'person_name_first' );
+                      $table->foreign( 'person_name_first_identity' )
+                            ->references( self::column_identity )
+                            ->on( 'person_name_first' );
 
-                        $table->foreign( 'person_name_lastname_id' )
-                              ->references( 'id' )
-                              ->on( 'person_name_middle_and_last' );
-                        }
-                  );
+                      $table->foreign( 'person_name_lastname_identity' )
+                            ->references( self::column_identity )
+                            ->on( 'person_name_middle_and_last' );
+                  }
+              );
 
-                  Schema::create( 'address_road_names',
-                        function( Blueprint $table )
-                        {
-                        $table->id();
+              Schema::create( self::address_road_name_table,
+                  function( Blueprint $table )
+                  {
+                        $table->id( self::column_identity );
 
                         $table->string( 'content' )
                               ->unique()
-                              ->comment( '' );
-                        }
-                  );
+                              ->comment( 'A given road address name.' );
+                  }
+              );
 
-                  Schema::create( 'addresses',
-                        function( Blueprint $table )
-                        {
-                        $table->id();
+              Schema::create( self::levels_table,
+                  function( Blueprint $table )
+                  {
+                        $table->id( self::column_identity );
 
-                        $table->bigInteger( 'account_information_id' )
+                        $table->string( 'content' )
+                              ->unique()
+                              ->comment( 'which apartment level direction an given person lives in.' );
+                  }
+              );
+
+              Schema::create( self::addresses_table,
+                  function( Blueprint $table )
+                  {
+                        $table->id( self::column_identity );
+
+                        $table->bigInteger( 'account_information_identity' )
                               ->unsigned()
                               ->unique()
                               ->comment( '' );
 
-                        $table->bigInteger( 'road_name_id' )
+                        $table->bigInteger( 'road_name_identity' )
                               ->unsigned()
                               ->comment( '' );
 
                         $table->integer( 'road_number' )
                               ->comment( '' );
 
-                        $table->string( 'levels' )
-                              ->index()
-                              ->comment( '' );
+                        $table->bigInteger( 'level_identity' )
+                              ->unsigned();
 
-                        $table->bigInteger( 'country_id' )
+                        $table->bigInteger( 'country_identity' )
                               ->unsigned()
                               ->index()
                               ->comment( '' );
 
-                        $table->bigInteger( 'zip_code_id' )
+                        $table->bigInteger( 'zip_code_identity' )
                               ->unsigned()
                               ->index()
                               ->comment( '' );
 
                         // References
-                        $table->foreign( 'country_id' )
-                              ->references( 'id' )
+                        $table->foreign( 'country_identity' )
+                              ->references( self::column_identity )
                               ->on( 'countries' );
 
-                        $table->foreign( 'zip_code_id' )
-                              ->references( 'id' )
-                              ->on( 'zip_codes' );
+                        $table->foreign( 'level_identity' )
+                                ->references( self::column_identity )
+                                ->on( self::levels_table );
 
-                        $table->foreign( 'road_name_id' )
-                              ->references( 'id' )
-                              ->on( 'address_road_names' );
+                        $table->foreign( 'zip_code_identity' )
+                              ->references( self::column_identity )
+                              ->on( self::zip_codes_table );
 
-                        $table->foreign( 'account_information_id' )
-                              ->references( 'id' )
-                              ->on( 'account_information_options' )
+                        $table->foreign( 'road_name_identity' )
+                              ->references( self::column_identity )
+                              ->on( self::address_road_name_table );
+
+                        $table->foreign( 'account_information_identity' )
+                              ->references( self::column_identity )
+                              ->on( self::account_information_options_table )
                               ->onDelete( 'CASCADE' );
-                        }
-                  );
-            }
+                  }
+              );
+          }
 
 
-            public function down()
-            {
-                  //
-                  Schema::dropIfExists( 'account_information_options' );
-                  Schema::dropIfExists( 'countries' );
-                  Schema::dropIfExists( 'addresses' );
-                  Schema::dropIfExists( 'zip_codes' );
-            }
-      };
+            // drop tables
+          public function down(): void
+          {
+              Schema::dropIfExists( self::account_information_options_table );
+
+              Schema::dropIfExists( self::person_name_table );
+              Schema::dropIfExists( self::person_name_first_table );
+              Schema::dropIfExists( self::person_name_middle_and_last_table );
+
+              Schema::dropIfExists( self::zip_codes_table );
+              Schema::dropIfExists( self::countries_table );
+
+              Schema::dropIfExists( self::addresses_table );
+              Schema::dropIfExists( self::address_road_name_table );
+          }
+     };
 ?>

@@ -18,19 +18,30 @@
      *
      */
     class PersonEmailBuilder
+        extends Builder
     {
+        /**
+         *
+         */
         public function __construct()
         {
 
         }
 
+        /**
+         * @param string $email
+         * @return AccountEmailModel|null
+         */
         public final function retrieveEmail( string $email ): ?AccountEmailModel
         {
             $model = AccountEmailModel::where( 'content', $email )->first();
             return $model;
         }
 
-
+        /**
+         * @param string $email
+         * @return bool|null
+         */
         public final function hasEmailContainer( string $email ): ?bool
         {
             $retVal = false;
@@ -45,6 +56,10 @@
             return $retVal;
         }
 
+        /**
+         * @param string $email
+         * @return AccountEmailModel|null
+         */
         public final function createEmail( string $email ): ?AccountEmailModel
         {
             return AccountEmailModel::factory()->create( [ 'content' => $email ] );

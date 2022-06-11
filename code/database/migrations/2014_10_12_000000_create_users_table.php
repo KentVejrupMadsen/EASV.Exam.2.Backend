@@ -15,63 +15,73 @@
      */
     return new class extends Migration
     {
-        
-        public function up()
+        // constants
+        private const account_mail_table = 'account_emails';
+        private const account_table = 'accounts';
+
+        private const column_identity = 'identity';
+
+
+        // create tables
+        public function up(): void
         {
+            // for data consistency as other services also make use of an accounts email
             Schema::create( 
-                'account_emails', 
+                self::account_mail_table,
                 function ( Blueprint $table ) 
                 {
-                    $table->id();
+                    $table->id( self::column_identity );
 
                     $table->string( 'content' )
-                          ->unique();
+                          ->unique()
+                          ->comment( 'email address. only unique mail addresses are allowed.' );
                 }
             );
 
 
             // Base information for logging in
             Schema::create( 
-                'accounts', 
+                self::account_table,
                 function( Blueprint $table )
                 {
-                    $table->id();
+                    $table->id( self::column_identity );
 
                     $table->string( 'username' )
                           ->unique()
-                          ->comment('');
+                          ->comment( 'Account username used as an identifier when logging in.' );
                     
-                    $table->bigInteger( 'email_id' )
+                    $table->bigInteger( 'account_email_identity' )
                           ->unsigned()
                           ->unique()
-                          ->comment('');
+                          ->comment( 'maps to the accounts email by id and newsletter email if the account has one' );
 
                     $table->timestamp( 'email_verified_at' )
-                          ->nullable();
+                          ->nullable()
+                          ->comment( 'At what point a client has verified his account though the api.' );
 
                     $table->string( 'password' )
-                          ->comment( '' );
-                    
+                          ->comment( 'used when authenticating as a client.' );
+
+
                     $table->rememberToken();
                     $table->timestamps();
 
                     $table->json( 'settings' )
-                          ->comment( '' );
+                          ->comment( 'User settings for their account. Used by frontend.' );
 
                     // References
-                    $table->foreign( 'email_id' )
-                          ->references( 'id' )
+                    $table->foreign( 'account_email_identity' )
+                          ->references( 'identity' )
                           ->on( 'account_emails' );
                 }
             );
         }
 
-        
-        public function down()
+        // drop tables
+        public function down(): void
         {
-            Schema::dropDatabaseIfExists(env('DB_DATABASE'));
-            Schema::dropIfExists( 'accounts' );
-            Schema::dropIfExists( 'account_emails' );
+            Schema::dropIfExists( self::account_table );
+            Schema::dropIfExists( self::account_mail_table );
         }
     };
 ?>

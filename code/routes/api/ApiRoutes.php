@@ -7,13 +7,12 @@
      */
 
     // Internal
-use App\Routes\Controllers\NodesController;
+    use App\Routes\Controllers\NodesController;
 
-require_once 'account/AccountRoutes.php';
+    require_once 'account/AccountRoutes.php';
     require_once 'HomeApi.php';
 
     require_once 'options/OptionsRoutes.php';
-    require_once 'tool/ToolRoutes.php';
 
     require_once 'security/SecurityRoutes.php';
     require_once 'status/StatusRoutes.php';
@@ -58,10 +57,7 @@ require_once 'account/AccountRoutes.php';
 
             MakeSecurityRoutes();
             MakeStatusRoutes();
-
-            makeToolRoutes();
         }
-
     }
 
 

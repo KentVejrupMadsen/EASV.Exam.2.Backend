@@ -13,18 +13,22 @@
      *
      */
     return new class extends Migration
-    {   
-        public function up()
+    {
+        private const table_name = 'personal_access_tokens';
+
+        // create tables
+        public function up(): void
         {
             Schema::create(
-                'personal_access_tokens',
+                self::table_name,
                 function ( Blueprint $table ) 
                 {
                     $table->id();
+
                     $table->morphs( 'tokenable' );
                     $table->string( 'name' );
 
-                    $table->string( 'token', 64)
+                    $table->string( 'token', 64 )
                           ->unique();
 
                     $table->text( 'abilities' )
@@ -38,10 +42,10 @@
             );
         }
 
-        
-        public function down()
+        // drop tables
+        public function down(): void
         {
-            Schema::dropIfExists( 'personal_access_tokens' );
+            Schema::dropIfExists( self::table_name );
         }
     };
 ?>

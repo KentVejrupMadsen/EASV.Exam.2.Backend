@@ -8,8 +8,8 @@
     namespace App\Models\security;
 
     // Internal libraries
-    use App\Models\templates\BaseModel;
-    use App\Models\templates\ExtensionNoTimestampModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionNoTimestampModel;
 
     // External libraries
     use OpenApi\Attributes
@@ -22,42 +22,66 @@
     #[OA\Schema( title: 'Cross-Site Request Forgery Model',
                  description: '',
                  type: BaseModel::model_type,
-                 deprecated: false)]
+                 readOnly: false,
+                 writeOnly: false,
+                 deprecated: false )]
     class CSRFModel
         extends ExtensionNoTimestampModel
     {
         // Variables
             // Const
-        #[OA\Property( type: 'string' )]
-        public const table_name = 'security_csrf_token';
+        #[OA\Property( title: 'table name',
+                       type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
+                       deprecated: false )]
+        protected const table_name = 'security_csrf_token';
 
-        #[OA\Property( type: 'string' )]
-        public const field_assigned_to = 'assigned_to';
-
-        #[OA\Property( type: 'string' )]
-        public const field_issued   = 'issued';
-
-        #[OA\Property( type: 'string' )]
-        public const field_accessed = 'accessed';
-
-        #[OA\Property( type: 'string' )]
-        public const field_activated   = 'activated';
-
-        #[OA\Property( type: 'string' )]
-        public const field_invalidated = 'invalidated';
+        #[OA\Property( title:'identity column',
+                       type: self::typeInteger,
+                       deprecated: false )]
+        protected const field_identity = self::identity;
 
 
-        #[OA\Property( type: 'string' )]
-        public const field_secret_token = 'secret_token';
+        #[OA\Property( title:'assigned to column',
+                       type: 'IPv4|IPv6 address',
+                       deprecated: false )]
+        protected const field_assigned_to = 'assigned_to';
 
-        #[OA\Property( type: 'string' )]
-        public const field_secure_token = 'secure_token';
+        #[OA\Property( title:'issued column',
+                       type: self::typeTimestamp,
+                       deprecated: false )]
+        protected const field_issued   = 'issued';
 
-        #[OA\Property( type: 'string' )]
-        public const field_identity = 'id';
+        #[OA\Property( title:'accessed column',
+                       type: self::typeTimestamp,
+                       deprecated: false )]
+        protected const field_accessed = 'accessed';
+
+        #[OA\Property( title: 'is activated column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
+        protected const field_activated   = 'activated';
+
+        #[OA\Property( title:'is invalidated column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
+        protected const field_invalidated = 'invalidated';
+
+
+        #[OA\Property( title:'secret token column',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const field_secret_token = 'secret_token';
+
+        #[OA\Property( title:'secure token column',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const field_secure_token = 'secure_token';
 
             // table
         protected $table = self::table_name;
+        protected $primaryKey = self::identity;
 
 
         /**
@@ -66,6 +90,7 @@
         protected $fillable = 
         [
             self::field_identity,
+
             self::field_assigned_to,
             self::field_issued,
             self::field_accessed,
@@ -82,6 +107,7 @@
         protected $hidden = 
         [
             self::field_identity,
+
             self::field_secure_token,
             self::field_secret_token
         ];
@@ -92,14 +118,15 @@
          */
         protected $casts =
         [
-            self::field_identity      => 'integer',
-            self::field_assigned_to   => 'string',
-            self::field_secure_token  => 'string',
-            self::field_secret_token  => 'string',
-            self::field_issued        => 'datetime',
-            self::field_accessed      => 'datetime',
-            self::field_activated     => 'boolean',
-            self::field_invalidated   => 'boolean'
+            self::field_identity      => self::typeInteger,
+
+            self::field_assigned_to   => self::typeString,
+            self::field_secure_token  => self::typeString,
+            self::field_secret_token  => self::typeString,
+            self::field_issued        => self::typeDatetime,
+            self::field_accessed      => self::typeDatetime,
+            self::field_activated     => self::typeBoolean,
+            self::field_invalidated   => self::typeBoolean
         ];
     }
 ?>
