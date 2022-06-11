@@ -16,7 +16,7 @@
      */
     #[OA\Schema( title: 'Newsletter View Model',
                  description: '',
-                 type: ModelView::model_view,
+                 type: ModelView::model_type,
                  deprecated: false )]
     class NewsletterViewModel
         extends ModelView

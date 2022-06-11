@@ -16,7 +16,7 @@
      */
     #[OA\Schema( title: 'Zip Code View short model',
                  description: '',
-                 type: ModelView::model_view,
+                 type: ModelView::model_type,
                  deprecated: false )]
     class ZipCodeViewShortModel
         extends ModelView

@@ -16,7 +16,7 @@ use OpenApi\Attributes as OA;
      */
     #[OA\Schema( title: 'Person Name View Model',
                  description: '',
-                 type: ModelView::model_view,
+                 type: ModelView::model_type,
                  deprecated: false )]
     class PersonNameViewModel
         extends ModelView
