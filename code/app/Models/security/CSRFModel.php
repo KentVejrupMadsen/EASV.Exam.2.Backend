@@ -28,33 +28,52 @@
     {
         // Variables
             // Const
-        #[OA\Property( title:'table name', type: 'string' )]
+        #[OA\Property( title:'table name',
+                       type: self::typeString,
+                       deprecated: false )]
         protected const table_name = 'security_csrf_token';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'identity column',
+                       type: self::typeInteger,
+                       deprecated: false )]
+        protected const field_identity = self::identity;
+
+
+        #[OA\Property( title:'assigned to column',
+                       type: 'IPv4|IPv6 address',
+                       deprecated: false )]
         protected const field_assigned_to = 'assigned_to';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'issued column',
+                       type: self::typeTimestamp,
+                       deprecated: false )]
         protected const field_issued   = 'issued';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'accessed column',
+                       type: self::typeTimestamp,
+                       deprecated: false )]
         protected const field_accessed = 'accessed';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title: 'is activated column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
         protected const field_activated   = 'activated';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'is invalidated column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
         protected const field_invalidated = 'invalidated';
 
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'secret token column',
+                       type: self::typeString,
+                       deprecated: false )]
         protected const field_secret_token = 'secret_token';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'secure token column',
+                       type: self::typeString,
+                       deprecated: false )]
         protected const field_secure_token = 'secure_token';
-
-        #[OA\Property( type: 'string' )]
-        protected const field_identity = self::identity;
 
             // table
         protected $table = self::table_name;
