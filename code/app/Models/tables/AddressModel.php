@@ -29,29 +29,34 @@
     class AddressModel
         extends ExtensionNoTimestampModel
     {
+        // Variables
+            // constants
         #[OA\Property( type: 'string' )]
         protected const table_name = 'addresses';
 
-        protected $table = self::table_name;
-        protected $primaryKey = self::identity;
+        #[OA\Property( type: 'string' )]
+        protected const field_account_information_id = 'account_information_identity';
 
         #[OA\Property( type: 'string' )]
-        protected const field_account_information_id = 'account_information_id';
-
-        #[OA\Property( type: 'string' )]
-        protected const field_road_name_id = 'road_name_id';
+        protected const field_road_name_id = 'road_name_identity';
 
         #[OA\Property( type: 'string' )]
         protected const field_road_number = 'road_number';
 
         #[OA\Property( type: 'string' )]
-        protected const field_levels = 'levels';
+        protected const field_levels = 'level_identity';
 
         #[OA\Property( type: 'string' )]
-        protected const field_country_id = 'country_id';
+        protected const field_country_id = 'country_identity';
 
         #[OA\Property( type: 'string' )]
-        protected const field_zip_code_id = 'zip_code_id';
+        protected const field_zip_code_id = 'zip_code_identity';
+
+
+            // Models
+        protected $table = self::table_name;
+        protected $primaryKey = self::identity;
+
 
         /**
          * @var string[]
@@ -87,7 +92,7 @@
             self::field_account_information_id => self::typeInteger,
             self::field_road_name_id           => self::typeInteger,
             self::field_road_number            => self::typeInteger,
-            self::field_levels                 => self::typeString,
+            self::field_levels                 => self::typeInteger,
             self::field_country_id             => self::typeInteger,
             self::field_zip_code_id            => self::typeInteger
         ];

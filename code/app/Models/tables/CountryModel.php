@@ -27,20 +27,21 @@
     class CountryModel
         extends ExtensionNoTimestampModel
     {
+        // Variable
+            // Constant
         #[OA\Property( type: 'string' )]
         protected const table_name = 'countries';
 
-        // Variable
-            // Table
-        protected $table = self::table_name;
-        protected $primaryKey = self::identity;
-
-            // Constant
         #[OA\Property( type: 'string' )]
         protected const field_country_name    = 'country_name';
 
         #[OA\Property( type: 'string' )]
         protected const field_country_acronym = 'country_acronym';
+
+
+            // Table
+        protected $table      = self::table_name;
+        protected $primaryKey = self::identity;
 
 
         /**
@@ -58,6 +59,8 @@
          */
         protected $casts =
         [
+            self::identity => self::typeInteger,
+
             self::field_country_name    => self::typeString,
             self::field_country_acronym => self::typeString
         ];

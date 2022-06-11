@@ -8,13 +8,11 @@
     namespace App\Models\tables\templates;
 
     // External libraries
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
     use Illuminate\Foundation\Auth\User
         as Authenticatable;
-
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Notifications\Notifiable;
+
     use Laravel\Sanctum\HasApiTokens;
 
 
@@ -28,19 +26,19 @@
             HasFactory,
             Notifiable;
 
-        protected const model_type = 'account-table';
+        protected const model_type = 'table-account';
 
         protected const identity = 'identity';
 
         protected  const typeString = 'string';
         protected const typeInteger = 'integer';
-        protected const typeDouble = 'double';
-        protected const typeFloat = 'float';
-        protected const typeArray = 'array';
+        protected const typeDouble  = 'double';
+        protected const typeFloat   = 'float';
+        protected const typeArray   = 'array';
         protected const typeBoolean = 'boolean';
 
-        protected const typeDatetime = 'datetime';
-        protected const typeTimestamp = 'timestamp';
+        protected const typeDatetime    = 'datetime';
+        protected const typeTimestamp   = 'timestamp';
 
         // Various use cases of datetime
     }

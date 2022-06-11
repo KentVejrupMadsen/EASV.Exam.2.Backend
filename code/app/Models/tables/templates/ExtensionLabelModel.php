@@ -36,8 +36,8 @@
          */
         protected $casts =
         [
-            self::identity => 'integer',
-            self::field_content => 'string'
+            self::identity      => self::typeInteger,
+            self::field_content => self::typeString
         ];
     }
 ?>

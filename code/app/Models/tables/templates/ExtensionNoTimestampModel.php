@@ -17,6 +17,8 @@
     abstract class ExtensionNoTimestampModel
         extends BaseModel
     {
+        // Variables
+            // Model
         public $timestamps = false;
     }
 ?>

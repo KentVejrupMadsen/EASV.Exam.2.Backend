@@ -20,18 +20,18 @@
     {
         use HasFactory;
 
-        protected const model_type = 'table';
-        protected const identity = 'identity';
+        protected const model_type  = 'table';
+        protected const identity    = 'identity';
 
         protected  const typeString = 'string';
         protected const typeInteger = 'integer';
-        protected const typeDouble = 'double';
-        protected const typeFloat = 'float';
-        protected const typeArray = 'array';
+        protected const typeDouble  = 'double';
+        protected const typeFloat   = 'float';
+        protected const typeArray   = 'array';
         protected const typeBoolean = 'boolean';
 
-        protected const typeDatetime = 'datetime';
-        protected const typeTimestamp = 'timestamp';
+        protected const typeDatetime    = 'datetime';
+        protected const typeTimestamp   = 'timestamp';
 
         // Various use cases of datetime
     }

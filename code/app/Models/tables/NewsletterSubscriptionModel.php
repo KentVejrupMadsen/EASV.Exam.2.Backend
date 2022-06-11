@@ -36,10 +36,14 @@
 
             // Const
         #[OA\Property( type: 'string' )]
-        protected const field_email_id = 'email_id';
+        protected const field_email_id = 'email_identity';
+
+        #[OA\Property( type: 'string' )]
+        protected const field_account_id = 'account_identity';
 
         #[OA\Property( type: 'string' )]
         protected const field_options  = 'options';
+
 
         /**
          * @var string[]
@@ -47,25 +51,31 @@
         protected $fillable =
         [
             self::field_email_id,
-            self::field_options
+            self::field_options,
+            self::field_account_id
         ];
-
 
         /**
          * @var string[]
          */
         protected $hidden =
         [
-            self::field_email_id
+            self::identity,
+
+            self::field_email_id,
+            self::field_account_id
         ];
-
-
+        
         /**
          * @var string[]
          */
         protected $casts =
         [
-            self::field_email_id => self::typeInteger
+            self::identity => self::typeInteger,
+            self::field_email_id => self::typeInteger,
+            self::field_account_id => self::typeInteger,
+
+            self::field_options => self::typeArray
         ];
     }
 ?>
