@@ -14,6 +14,15 @@ automateDirectory="/automate"
 scriptCollectionDirectory="$currentDirectory$scriptsDirectory$automateDirectory"
 echo "$scriptCollectionDirectory"
 
+if [ -d "code" ]
+then
+  echo "in workspace enviroment"
+  cd "code"
+else
+    exit 0
+fi
+
+
 echo "running automated bash scripts"
 for file in "$scriptCollectionDirectory"/*.sh; do
   script="$(basename "$file")"
