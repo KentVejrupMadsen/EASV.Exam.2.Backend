@@ -22,6 +22,8 @@
     #[OA\Schema( title: 'Recaptcha Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class RecaptchaModel
         extends ExtensionNoTimestampModel
@@ -37,36 +39,26 @@
 
         #[OA\Property( title:'success column',
                        type: self::typeBoolean,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_success   = 'success';
 
         #[OA\Property( title:'score column',
                        type: self::typeDouble,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_score     = 'score';
 
         #[OA\Property( title:'at date column',
                        type: self::typeTimestamp,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_at_date   = 'at_date';
 
         #[OA\Property( title:'hostname column',
                        type: self::typeString,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_hostname  = 'hostname';
 
         #[OA\Property( title:'error column',
                        type: self::typeString,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_error     = 'error';
 

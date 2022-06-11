@@ -20,6 +20,8 @@
     #[OA\Schema( title: 'Account States Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class AccountState
         extends ExtensionNoTimestampModel
@@ -35,36 +37,26 @@
 
         #[OA\Property( title:'account column',
                        type: self::typeInteger,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_account_id = 'account_identity';
 
         #[OA\Property( title: 'deactivated column',
                        type: self::typeBoolean,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_deactivated = 'deactivated';
 
         #[OA\Property( title: 'writeable disabled column',
                        type: self::typeBoolean,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_writeable_disabled = 'writeable_disabled';
 
         #[OA\Property( title: 'locked column',
                        type: self::typeBoolean,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_locked = 'locked';
 
         #[OA\Property( title: 'archived column',
                        type: self::typeBoolean,
-                       readOnly: false,
-                       writeOnly: false,
                        deprecated: false )]
         protected const field_archived = 'archived';
 
