@@ -24,8 +24,6 @@ use OpenApi\Attributes as OA;
     {
         #[OA\Property( title: 'view name',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         public const table_name = 'person_names_view';
@@ -34,16 +32,12 @@ use OpenApi\Attributes as OA;
 
         #[OA\Property( title: 'identity column',
                        type: self::typeInteger,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_id = 'identity';
 
         #[OA\Property( title: 'account information column',
                        type: self::typeInteger,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_account_information_id = 'account_information_id';
@@ -51,24 +45,18 @@ use OpenApi\Attributes as OA;
 
         #[OA\Property( title: 'person first name column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_person_first_name = 'person_first_name';
 
         #[OA\Property( title: 'person middle names column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_person_name_middlename = 'person_name_middlename';
 
         #[OA\Property( title: 'person last name column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_person_last_name = 'person_last_name';

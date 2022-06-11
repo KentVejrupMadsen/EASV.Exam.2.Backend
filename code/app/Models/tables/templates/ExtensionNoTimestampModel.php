@@ -5,7 +5,7 @@
      * Description:
      * TODO: Make description
      */
-    namespace App\Models\tables\templates;;
+    namespace App\Models\tables\templates;
 
 
     /**

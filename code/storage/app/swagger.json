@@ -1406,8 +1406,101 @@
             "AccountViewModel": {
                 "title": "Account View Model",
                 "description": "",
+                "properties": {
+                    "table_name": {
+                        "title": "view name",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "accounts_view"
+                        ]
+                    },
+                    "field_id": {
+                        "title": "identity column",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "id"
+                        ]
+                    },
+                    "field_username": {
+                        "title": "username column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "username"
+                        ]
+                    },
+                    "field_email": {
+                        "title": "email column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "email"
+                        ]
+                    },
+                    "field_email_verified_at": {
+                        "title": "account verified at column",
+                        "type": "timestamp",
+                        "nullable": true,
+                        "deprecated": false,
+                        "enum": [
+                            "email_verified_at"
+                        ]
+                    },
+                    "field_password": {
+                        "title": "password column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "password"
+                        ]
+                    },
+                    "field_remember_token": {
+                        "title": "remember token column",
+                        "type": "string",
+                        "nullable": true,
+                        "deprecated": false,
+                        "enum": [
+                            "remember_token"
+                        ]
+                    },
+                    "field_created_at": {
+                        "title": "creation date column",
+                        "type": "timestamp",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "created_at"
+                        ]
+                    },
+                    "field_updated_at": {
+                        "title": "last updated at column",
+                        "type": "timestamp",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "updated_at"
+                        ]
+                    },
+                    "field_settings": {
+                        "title": "settings column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "settings"
+                        ]
+                    }
+                },
                 "type": "view",
                 "readOnly": true,
+                "writeOnly": false,
                 "deprecated": false
             },
             "AddressViewModel": {
@@ -1417,11 +1510,182 @@
                     "table_name": {
                         "title": "view name",
                         "type": "string",
-                        "readOnly": true,
-                        "writeOnly": false,
                         "deprecated": false,
                         "enum": [
                             "addresses_view"
+                        ]
+                    },
+                    "field_id": {
+                        "title": "identity",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "id"
+                        ]
+                    },
+                    "field_account_information_id": {
+                        "title": "",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "account_information_id"
+                        ]
+                    },
+                    "field_road_name": {
+                        "title": "road name column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "road_name"
+                        ]
+                    },
+                    "field_road_number": {
+                        "title": "road number column",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "road_number"
+                        ]
+                    },
+                    "field_levels": {
+                        "title": "level column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "levels"
+                        ]
+                    },
+                    "field_address_country": {
+                        "title": "country column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "address_country"
+                        ]
+                    },
+                    "field_zip_code_id": {
+                        "title": "zip code column",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "zip_code_id"
+                        ]
+                    }
+                },
+                "type": "view",
+                "readOnly": true,
+                "writeOnly": false,
+                "deprecated": false
+            },
+            "NewsletterViewModel": {
+                "title": "Newsletter View Model",
+                "description": "",
+                "properties": {
+                    "table_name": {
+                        "title": "view name",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "newsletter_view"
+                        ]
+                    },
+                    "field_id": {
+                        "title": "identities column",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "identity"
+                        ]
+                    },
+                    "field_email": {
+                        "title": "email column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "email"
+                        ]
+                    },
+                    "field_options": {
+                        "title": "option column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "options"
+                        ]
+                    }
+                },
+                "type": "view",
+                "readOnly": true,
+                "writeOnly": false,
+                "deprecated": false
+            },
+            "PersonNameViewModel": {
+                "title": "Person Name View Model",
+                "description": "",
+                "properties": {
+                    "table_name": {
+                        "title": "view name",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "person_names_view"
+                        ]
+                    },
+                    "field_id": {
+                        "title": "identity column",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "identity"
+                        ]
+                    },
+                    "field_account_information_id": {
+                        "title": "account information column",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "account_information_id"
+                        ]
+                    },
+                    "field_person_first_name": {
+                        "title": "person first name column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "person_first_name"
+                        ]
+                    },
+                    "field_person_name_middlename": {
+                        "title": "person middle names column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "person_name_middlename"
+                        ]
+                    },
+                    "field_person_last_name": {
+                        "title": "person last name column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "person_last_name"
                         ]
                     }
                 },
@@ -1429,30 +1693,120 @@
                 "readOnly": true,
                 "deprecated": false
             },
-            "NewsletterViewModel": {
-                "title": "Newsletter View Model",
-                "description": "",
-                "type": "view",
-                "readOnly": true,
-                "deprecated": false
-            },
-            "PersonNameViewModel": {
-                "title": "Person Name View Model",
-                "description": "",
-                "type": "view",
-                "readOnly": true,
-                "deprecated": false
-            },
             "ZipCodeViewFullModel": {
                 "title": "Zip Code View Full model",
                 "description": "",
+                "properties": {
+                    "table_name": {
+                        "title": "view name",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "zip_codes_view_full"
+                        ]
+                    },
+                    "field_id": {
+                        "title": "identity column",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "identity"
+                        ]
+                    },
+                    "field_area_name": {
+                        "title": "post code area name column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "area_name"
+                        ]
+                    },
+                    "field_post_code": {
+                        "title": "post code column",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "zip_number"
+                        ]
+                    },
+                    "field_country_name": {
+                        "title": "country name column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "country_name"
+                        ]
+                    },
+                    "field_country_acronym": {
+                        "title": "country acronym column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "country_acronym"
+                        ]
+                    }
+                },
                 "type": "view",
                 "readOnly": true,
+                "writeOnly": false,
                 "deprecated": false
             },
             "ZipCodeViewShortModel": {
                 "title": "Zip Code View short model",
                 "description": "",
+                "properties": {
+                    "table_name": {
+                        "title": "view name",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "zip_codes_view_short"
+                        ]
+                    },
+                    "field_id": {
+                        "title": "identity column",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "identity"
+                        ]
+                    },
+                    "field_area_name": {
+                        "title": "area name column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "area_name"
+                        ]
+                    },
+                    "field_post_code": {
+                        "title": "post code number column",
+                        "type": "integer",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "zip_number"
+                        ]
+                    },
+                    "field_country_acronym": {
+                        "title": "country acronym column",
+                        "type": "string",
+                        "nullable": false,
+                        "deprecated": false,
+                        "enum": [
+                            "country_acronym"
+                        ]
+                    }
+                },
                 "type": "view",
                 "readOnly": true,
                 "deprecated": false

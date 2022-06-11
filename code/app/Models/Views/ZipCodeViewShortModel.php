@@ -26,8 +26,6 @@
     {
         #[OA\Property( title: 'view name',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         public const table_name = 'zip_codes_view_short';
@@ -36,24 +34,18 @@
 
         #[OA\Property( title: 'identity column',
                        type: self::typeInteger,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_id = 'identity';
 
         #[OA\Property( title: 'area name column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_area_name = 'area_name';
 
         #[OA\Property( title: 'post code number column',
                        type: self::typeInteger,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_post_code = 'zip_number';
@@ -61,8 +53,6 @@
 
         #[OA\Property( title: 'country acronym column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_country_acronym = 'country_acronym';

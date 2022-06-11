@@ -18,14 +18,13 @@
                  description: '',
                  type: ModelView::model_type,
                  readOnly: true,
+                 writeOnly:false,
                  deprecated: false )]
     class NewsletterViewModel
         extends ModelView
     {
         #[OA\Property( title: 'view name',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         public const table_name = 'newsletter_view';
@@ -34,24 +33,18 @@
 
         #[OA\Property( title: 'identities column',
                        type: self::typeInteger,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_id = 'identity';
 
         #[OA\Property( title: 'email column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_email = 'email';
 
         #[OA\Property( title: 'option column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_options = 'options';

@@ -20,14 +20,13 @@
                  description: '',
                  type: ModelView::model_type,
                  readOnly: true,
+                 writeOnly: false,
                  deprecated: false )]
     class AccountViewModel
         extends ModelView
     {
         #[OA\Property( title: 'view name',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         public const table_name = 'accounts_view';
@@ -36,16 +35,12 @@
 
         #[OA\Property( title: 'identity column',
                        type: self::typeInteger,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_id = 'id';
 
         #[OA\Property( title: 'username column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_username = 'username';
@@ -53,16 +48,12 @@
 
         #[OA\Property( title: 'email column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_email = 'email';
 
         #[OA\Property( title: 'account verified at column',
                        type: self::typeTimestamp,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: true,
                        deprecated: false )]
         protected const field_email_verified_at = 'email_verified_at';
@@ -70,16 +61,12 @@
 
         #[OA\Property( title: 'password column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_password = 'password';
 
         #[OA\Property( title: 'remember token column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: true,
                        deprecated: false )]
         protected const field_remember_token = 'remember_token';
@@ -87,8 +74,6 @@
 
         #[OA\Property( title: 'creation date column',
                        type: self::typeTimestamp,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_created_at = 'created_at';
@@ -96,16 +81,12 @@
 
         #[OA\Property( title: 'last updated at column',
                        type: self::typeTimestamp,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_updated_at = 'updated_at';
 
         #[OA\Property( title: 'settings column',
                        type: self::typeString,
-                       readonly: true,
-                       writeOnly: false,
                        nullable: false,
                        deprecated: false )]
         protected const field_settings = 'settings';

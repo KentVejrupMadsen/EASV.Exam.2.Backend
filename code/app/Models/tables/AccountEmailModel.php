@@ -28,7 +28,7 @@
     {
         // Variables
             // constants
-        #[OA\Property( title:'Account emails table name',
+        #[OA\Property( title: 'Account emails table name',
                        type: self::typeDatabaseModel,
                        readOnly: true,
                        writeOnly: false,
