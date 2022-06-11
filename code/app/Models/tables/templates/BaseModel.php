@@ -33,6 +33,8 @@
         protected const typeDatetime    = 'datetime';
         protected const typeTimestamp   = 'timestamp';
 
+        protected const typeDatabaseModel = 'database table';
+
         // Various use cases of datetime
     }
 ?>

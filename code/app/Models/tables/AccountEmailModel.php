@@ -28,8 +28,12 @@
     {
         // Variables
             // constants
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( title:'Account emails table name',
+                       type: self::typeDatabaseModel,
+                       deprecated: false )]
         protected const table_name = 'account_emails';
+
+                // fields
         protected const field_content = ExtensionLabelModel::field_content;
 
             // Models

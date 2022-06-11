@@ -28,21 +28,20 @@
     {
         // Variables
             // Tables
-        protected $table = self::field_table_name;
+        protected $table = self::table_name;
         protected $primaryKey = self::identity;
 
-
-        #[OA\Property( type: 'string' )]
-        protected const field_table_name = 'zip_codes';
-
             // Constants
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: self::typeDatabaseModel )]
+        protected const table_name = 'zip_codes';
+
+        #[OA\Property( type: self::typeString )]
         protected const field_area_name = 'area_name';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: self::typeInteger )]
         protected const field_zip_number = 'zip_number';
 
-        #[OA\Property( type: 'string' )]
+        #[OA\Property( type: self::typeInteger )]
         protected const field_country_id = 'country_identity';
 
 
