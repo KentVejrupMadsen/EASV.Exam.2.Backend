@@ -8,9 +8,9 @@
     namespace App\Http\Controllers\schemas\account\account;
 
     // External Libraries
-    use App\Builders\AccountBuilder;
-    use App\Builders\PersonEmailBuilder;
+    use App\Http\Controllers\AccountBuilder;
     use App\Http\Controllers\schemas\account\account\packages\AccountResponseJSONFactory;
+    use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailBuilder;
     use App\Http\Controllers\schemas\account\entities\email\PersonEmailController;
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Http\Requests\account\account\AccountRequest;

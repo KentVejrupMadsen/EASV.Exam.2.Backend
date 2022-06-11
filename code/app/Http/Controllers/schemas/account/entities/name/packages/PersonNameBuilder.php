@@ -5,18 +5,15 @@
      * Description:
      *
      */
-    namespace App\Builders;
+    namespace App\Http\Controllers\schemas\account\entities\name\packages;
 
-    use Carbon\Carbon;
-    use Illuminate\Support\Str;
-
-    use App\Models\tables\User;
+    use App\Http\Controllers\templates\Builder;
 
 
     /**
      *
      */
-    class PersonAddressBuilder
+    class PersonNameBuilder
         extends Builder
     {
         /**
@@ -27,26 +24,28 @@
 
         }
 
+
+
         // Variables
-        private static ?AccountBuilder $singleton =  null;
+        private static ?PersonNameBuilder $singleton =  null;
 
         /**
-         * @return AccountBuilder|null
+         * @return PersonNameBuilder|null
          */
-        public static function getSingleton(): ?AccountBuilder
+        public static function getSingleton(): ?PersonNameBuilder
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new AccountBuilder() );
+                self::setSingleton( new PersonNameBuilder() );
             }
 
             return self::$singleton;
         }
 
         /**
-         * @param AccountBuilder|null $singleton
+         * @param PersonNameBuilder|null $singleton
          */
-        public static function setSingleton( ?AccountBuilder $singleton ): void
+        public static function setSingleton( ?PersonNameBuilder $singleton ): void
         {
             self::$singleton = $singleton;
         }

@@ -1,5 +1,5 @@
 <?php
-    namespace App\Builders;
+    namespace App\Http\Controllers\templates;
 
     /**
      *

@@ -5,13 +5,10 @@
      * Description:
      *
      */
-    namespace App\Builders;
+    namespace App\Http\Controllers\schemas\account\entities\email\packages;
 
     use App\Models\tables\AccountEmailModel;
-    use Carbon\Carbon;
-    use Illuminate\Support\Str;
-
-    use App\Models\tables\User;
+    use App\Http\Controllers\templates\Builder;
 
 
     /**
