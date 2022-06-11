@@ -28,7 +28,7 @@
         extends ExtensionNoTimestampModel
     {
         #[OA\Property( type: 'string' )]
-        public const table_name = 'countries';
+        protected const table_name = 'countries';
 
         // Variable
             // Table
@@ -37,10 +37,10 @@
 
             // Constant
         #[OA\Property( type: 'string' )]
-        public const field_country_name    = 'country_name';
+        protected const field_country_name    = 'country_name';
 
         #[OA\Property( type: 'string' )]
-        public const field_country_acronym = 'country_acronym';
+        protected const field_country_acronym = 'country_acronym';
 
 
         /**

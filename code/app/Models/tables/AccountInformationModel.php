@@ -26,7 +26,7 @@
         extends BaseModel
     {
         #[OA\Property( type: 'string' )]
-        public const table_name = 'account_information_options';
+        protected const table_name = 'account_information_options';
 
         // Variables
             // Model
@@ -35,16 +35,16 @@
 
             // Constants
         #[OA\Property( type: 'string' )]
-        public const field_account = 'account_id';
+        protected const field_account = 'account_id';
 
         #[OA\Property( type: 'string' )]
-        public const field_created_at = 'created_at';
+        protected const field_created_at = 'created_at';
 
         #[OA\Property( type: 'string' )]
-        public const field_updated_at = 'updated_at';
+        protected const field_updated_at = 'updated_at';
 
         #[OA\Property( type: 'string' )]
-        public const field_settings = 'settings';
+        protected const field_settings = 'settings';
 
 
         /**

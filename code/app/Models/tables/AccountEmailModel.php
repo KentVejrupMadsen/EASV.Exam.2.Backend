@@ -26,10 +26,13 @@
     class AccountEmailModel 
         extends ExtensionLabelModel
     {
+        // Variables
+            // constants
         #[OA\Property( type: 'string' )]
-        public const table_name = 'account_emails';
-        public const field_content = ExtensionLabelModel::field_content;
+        protected const table_name = 'account_emails';
+        protected const field_content = ExtensionLabelModel::field_content;
 
+            // Models
         protected $table = self::table_name;
         protected $primaryKey = self::identity;
     }

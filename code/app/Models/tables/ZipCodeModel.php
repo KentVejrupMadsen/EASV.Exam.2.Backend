@@ -32,17 +32,17 @@
         protected $primaryKey = self::identity;
 
         #[OA\Property( type: 'string' )]
-        public const field_table_name = 'zip_codes';
+        protected const field_table_name = 'zip_codes';
 
             // Constants
         #[OA\Property( type: 'string' )]
-        public const field_area_name = 'area_name';
+        protected const field_area_name = 'area_name';
 
         #[OA\Property( type: 'string' )]
-        public const field_zip_number = 'zip_number';
+        protected const field_zip_number = 'zip_number';
 
         #[OA\Property( type: 'string' )]
-        public const field_country_id = 'country_id';
+        protected const field_country_id = 'country_id';
 
 
         /**

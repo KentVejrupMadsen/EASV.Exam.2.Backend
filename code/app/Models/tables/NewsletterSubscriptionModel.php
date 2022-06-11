@@ -27,7 +27,7 @@
         extends ExtensionNoTimestampModel
     {
         #[OA\Property( type: 'string' )]
-        public const table_name = 'newsletter_users';
+        protected const table_name = 'newsletter_users';
 
         // Variables
             // Table
@@ -36,10 +36,10 @@
 
             // Const
         #[OA\Property( type: 'string' )]
-        public const field_email_id = 'email_id';
+        protected const field_email_id = 'email_id';
 
         #[OA\Property( type: 'string' )]
-        public const field_options  = 'options';
+        protected const field_options  = 'options';
 
         /**
          * @var string[]
