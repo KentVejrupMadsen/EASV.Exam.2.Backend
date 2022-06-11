@@ -17,58 +17,48 @@
     #[OA\Schema( title: 'Zip Code View Full model',
                  description: '',
                  type: ModelView::model_type,
+                 readOnly: true,
+                 writeOnly: false,
                  deprecated: false )]
     class ZipCodeViewFullModel
         extends ModelView
     {
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'view name',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         public const table_name = 'zip_codes_view_full';
         protected $table = self::table_name;
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'identity column',
+                       type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
-        protected const field_id = 'id';
+        protected const field_id = 'identity';
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'post code area name column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_area_name = 'area_name';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'post code column',
+                       type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
         protected const field_post_code = 'zip_number';
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'country name column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_country_name = 'country_name';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'country acronym column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_country_acronym = 'country_acronym';

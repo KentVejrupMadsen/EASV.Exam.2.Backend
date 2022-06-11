@@ -17,6 +17,8 @@
     #[OA\Schema( title: 'Apartment Level Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class ApartmentLevelModel
         extends ExtensionLabelModel
@@ -26,6 +28,8 @@
             // Constant
         #[OA\Property( title:'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'apartment_levels';
 

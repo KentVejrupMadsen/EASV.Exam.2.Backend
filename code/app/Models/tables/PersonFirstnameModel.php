@@ -22,12 +22,16 @@
     #[OA\Schema( title: 'Person Firstname Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class PersonFirstnameModel
         extends ExtensionLabelModel
     {
         #[OA\Property( title:'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'person_name_first';
         protected $table = self::table_name;

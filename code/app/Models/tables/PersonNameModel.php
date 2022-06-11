@@ -23,12 +23,16 @@
     #[OA\Schema( title: 'Person Name Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class PersonNameModel
         extends ExtensionNoTimestampModel
     {
         #[OA\Property( title:'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'person_name';
         protected $primaryKey = self::identity;
@@ -65,6 +69,8 @@
          */
         protected $fillable =
         [
+            self::identity,
+
             self::field_account_information_id,
             self::field_person_name_first_id,
             self::field_person_name_lastname_id,
@@ -78,6 +84,7 @@
         protected $hidden =
         [
             self::identity,
+
             self::field_account_information_id,
             self::field_person_name_first_id,
             self::field_person_name_lastname_id,
@@ -90,6 +97,7 @@
         protected $casts =
         [
             self::identity => self::typeInteger,
+
             self::field_account_information_id  => self::typeInteger,
             self::field_person_name_first_id    => self::typeInteger,
             self::field_person_name_lastname_id => self::typeInteger,

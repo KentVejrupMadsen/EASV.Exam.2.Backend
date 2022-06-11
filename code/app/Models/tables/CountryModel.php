@@ -23,6 +23,8 @@
     #[OA\Schema( title: 'Country Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class CountryModel
         extends ExtensionNoTimestampModel
@@ -31,6 +33,8 @@
             // Constant
         #[OA\Property( title:'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'countries';
 
@@ -56,6 +60,7 @@
          */
         protected $fillable =
         [
+            self::identity,
             self::field_country_name,
             self::field_country_acronym
         ];
@@ -67,7 +72,6 @@
         protected $casts =
         [
             self::identity => self::typeInteger,
-
             self::field_country_name    => self::typeString,
             self::field_country_acronym => self::typeString
         ];

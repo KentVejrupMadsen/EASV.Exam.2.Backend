@@ -22,14 +22,18 @@
     #[OA\Schema( title: 'Cross-Site Request Forgery Model',
                  description: '',
                  type: BaseModel::model_type,
-                 deprecated: false)]
+                 readOnly: false,
+                 writeOnly: false,
+                 deprecated: false )]
     class CSRFModel
         extends ExtensionNoTimestampModel
     {
         // Variables
             // Const
-        #[OA\Property( title:'table name',
+        #[OA\Property( title: 'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'security_csrf_token';
 
@@ -86,6 +90,7 @@
         protected $fillable = 
         [
             self::field_identity,
+
             self::field_assigned_to,
             self::field_issued,
             self::field_accessed,
@@ -102,6 +107,7 @@
         protected $hidden = 
         [
             self::field_identity,
+
             self::field_secure_token,
             self::field_secret_token
         ];
@@ -113,6 +119,7 @@
         protected $casts =
         [
             self::field_identity      => self::typeInteger,
+
             self::field_assigned_to   => self::typeString,
             self::field_secure_token  => self::typeString,
             self::field_secret_token  => self::typeString,

@@ -21,6 +21,8 @@
     #[OA\Schema( title: 'Account Information Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class AccountInformationModel
         extends BaseModel
@@ -28,6 +30,8 @@
         // Constants
         #[OA\Property( title:'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'account_information_options';
 
@@ -46,8 +50,9 @@
                        deprecated: false )]
         protected const field_updated_at = 'updated_at';
 
+
         #[OA\Property( title:'account settings column',
-                       type: self::typeArray,
+                       type: self::typeString,
                        deprecated: false )]
         protected const field_settings = 'settings';
 
@@ -63,6 +68,7 @@
          */
         protected $fillable =
         [
+            self::identity,
             self::field_account,
             self::field_created_at,
             self::field_updated_at
@@ -74,6 +80,7 @@
          */
         protected $hidden =
         [
+            self::identity,
             self::field_account,
         ];
 

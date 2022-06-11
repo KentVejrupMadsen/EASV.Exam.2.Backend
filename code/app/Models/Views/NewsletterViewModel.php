@@ -17,40 +17,34 @@
     #[OA\Schema( title: 'Newsletter View Model',
                  description: '',
                  type: ModelView::model_type,
+                 readOnly: true,
+                 writeOnly: false,
                  deprecated: false )]
     class NewsletterViewModel
         extends ModelView
     {
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'view name',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         public const table_name = 'newsletter_view';
         protected $table = self::table_name;
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'identities column',
+                       type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
-        protected const field_id = 'id';
+        protected const field_id = 'identity';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'email column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_email = 'email';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'option column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_options = 'options';

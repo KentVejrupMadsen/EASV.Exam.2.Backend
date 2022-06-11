@@ -22,12 +22,16 @@
     #[OA\Schema( title: 'Address Road Name Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class AddressRoadNameModel
         extends ExtensionLabelModel
     {
         #[OA\Property( title:'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'address_road_names';
 

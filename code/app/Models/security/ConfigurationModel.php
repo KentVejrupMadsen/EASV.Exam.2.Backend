@@ -22,6 +22,8 @@
     #[OA\Schema( title: 'Configuration Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class ConfigurationModel
         extends ExtensionNoTimestampModel
@@ -30,6 +32,8 @@
             // Constants
         #[OA\Property( title:'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'security_configuration';
 
@@ -54,6 +58,8 @@
          */
         protected $fillable =
         [
+            self::identity,
+
             self::field_key,
             self::field_value
         ];
@@ -64,6 +70,7 @@
          */
         protected $hidden =
         [
+            self::identity,
             self::field_value
         ];
 
@@ -74,6 +81,7 @@
         protected $casts =
         [
             self::identity => self::typeInteger,
+
             self::field_key   => self::typeString,
             self::field_value => self::typeArray
         ];

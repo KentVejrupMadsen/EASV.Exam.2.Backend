@@ -22,12 +22,16 @@
     #[OA\Schema( title: 'Newsletter Subscription Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class NewsletterSubscriptionModel
         extends ExtensionNoTimestampModel
     {
         #[OA\Property( title: 'table name',
                        type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
                        deprecated: false )]
         protected const table_name = 'newsletter_users';
 
@@ -48,7 +52,7 @@
         protected const field_account_id = 'account_identity';
 
         #[OA\Property( title:'option column',
-                       type: self::typeArray,
+                       type: self::typeString,
                        deprecated: false )]
         protected const field_options  = 'options';
 
@@ -58,6 +62,7 @@
          */
         protected $fillable =
         [
+            self::identity,
             self::field_email_id,
             self::field_options,
             self::field_account_id
@@ -69,7 +74,6 @@
         protected $hidden =
         [
             self::identity,
-
             self::field_email_id,
             self::field_account_id
         ];

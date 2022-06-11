@@ -8,7 +8,9 @@
     namespace App\Models\Views;
 
     use App\Models\Views\templates\ModelView;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
 
 
     /**
@@ -17,92 +19,74 @@
     #[OA\Schema( title: 'Account View Model',
                  description: '',
                  type: ModelView::model_type,
+                 readOnly: true,
+                 writeOnly: false,
                  deprecated: false )]
     class AccountViewModel
         extends ModelView
     {
-        #[OA\Property( title: 'accounts view',
-                       type: 'table name',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'view name',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         public const table_name = 'accounts_view';
         protected $table = self::table_name;
 
 
-        #[OA\Property( title: 'identity',
-                       type: 'unsigned integer',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'identity column',
+                       type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
-        protected const field_id = 'id';
+        protected const field_id = 'identity';
 
-        #[OA\Property( title: 'field column username',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'username column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_username = 'username';
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'email column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_email = 'email';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'account verified at column',
+                       type: self::typeTimestamp,
                        nullable: true,
                        deprecated: false )]
         protected const field_email_verified_at = 'email_verified_at';
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'password column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_password = 'password';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'remember token column',
+                       type: self::typeString,
                        nullable: true,
                        deprecated: false )]
         protected const field_remember_token = 'remember_token';
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'creation date column',
+                       type: self::typeTimestamp,
                        nullable: false,
                        deprecated: false )]
         protected const field_created_at = 'created_at';
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'last updated at column',
+                       type: self::typeTimestamp,
                        nullable: false,
                        deprecated: false )]
         protected const field_updated_at = 'updated_at';
 
-        #[OA\Property( title: '',
-                       type: 'array',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'settings column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_settings = 'settings';
@@ -114,6 +98,7 @@
         protected $fillable =
         [
             self::field_id,
+
             self::field_username,
             self::field_email,
             self::field_email_verified_at,
@@ -131,6 +116,7 @@
         protected $hidden =
         [
             self::field_id,
+
             self::field_email_verified_at,
             self::field_password,
             self::field_remember_token,
@@ -144,6 +130,7 @@
         protected $casts =
         [
             self::field_id        => self::typeInteger,
+
             self::field_username  => self::typeString,
 
             self::field_email             => self::typeString,

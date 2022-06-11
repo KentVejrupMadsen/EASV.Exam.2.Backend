@@ -22,13 +22,15 @@
     #[OA\Schema( title: 'Account Email Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class AccountEmailModel 
         extends ExtensionLabelModel
     {
         // Variables
             // constants
-        #[OA\Property( title:'Account emails table name',
+        #[OA\Property( title: 'Account emails table name',
                        type: self::typeDatabaseModel,
                        deprecated: false )]
         protected const table_name = 'account_emails';

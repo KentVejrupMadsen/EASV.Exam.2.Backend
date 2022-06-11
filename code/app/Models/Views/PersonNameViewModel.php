@@ -17,57 +17,47 @@ use OpenApi\Attributes as OA;
     #[OA\Schema( title: 'Person Name View Model',
                  description: '',
                  type: ModelView::model_type,
+                 readOnly: true,
+                 writeOnly: false,
                  deprecated: false )]
     class PersonNameViewModel
         extends ModelView
     {
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'view name',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         public const table_name = 'person_names_view';
         protected $table = self::table_name;
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'identity column',
+                       type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
-        protected const field_id = 'id';
+        protected const field_id = 'identity';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'account information column',
+                       type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
         protected const field_account_information_id = 'account_information_id';
 
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'person first name column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_person_first_name = 'person_first_name';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'person middle names column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_person_name_middlename = 'person_name_middlename';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'person last name column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_person_last_name = 'person_last_name';

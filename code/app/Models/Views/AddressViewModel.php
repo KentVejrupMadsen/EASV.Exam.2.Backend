@@ -17,71 +17,57 @@
     #[OA\Schema( title: 'Address View Model',
                  description: '',
                  type: ModelView::model_type,
+                 readOnly: true,
+                 writeOnly: false,
                  deprecated: false )]
     class AddressViewModel
         extends ModelView
     {
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readOnly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'view name',
+                       type: self::typeString,
                        deprecated: false )]
         public const table_name = 'addresses_view';
         protected $table  = self::table_name;
 
 
-        #[OA\Property( title: 'identity',
-                       type: 'unsigned integer',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'identity column',
+                       type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
-        protected const field_id = 'id';
+        protected const field_id = 'identity';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'account information identity column',
+                       type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
         protected const field_account_information_id = 'account_information_id';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'road name column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_road_name = 'road_name';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'road number column',
+                       type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
         protected const field_road_number = 'road_number';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'level column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_levels = 'levels';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'country column',
+                       type: self::typeString,
                        nullable: false,
                        deprecated: false )]
         protected const field_address_country = 'address_country';
 
-        #[OA\Property( title: '',
-                       type: 'string',
-                       readonly: true,
-                       writeOnly: false,
+        #[OA\Property( title: 'zip code column',
+                       type: self::typeInteger,
                        nullable: false,
                        deprecated: false )]
         protected const field_zip_code_id = 'zip_code_id';
