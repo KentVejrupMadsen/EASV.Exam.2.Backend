@@ -33,13 +33,13 @@
 
             // Constants
         #[OA\Property( type: 'string' )]
-        public const table_name = 'security_configuration';
+        protected const table_name = 'security_configuration';
 
         #[OA\Property( type: 'string' )]
-        public const field_key   = 'key';
+        protected const field_key   = 'key';
 
         #[OA\Property( type: 'string' )]
-        public const field_value = 'value';
+        protected const field_value = 'value';
 
 
         /**

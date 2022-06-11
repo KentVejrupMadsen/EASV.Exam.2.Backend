@@ -29,32 +29,32 @@
         // Variables
             // Const
         #[OA\Property( type: 'string' )]
-        public const table_name = 'security_csrf_token';
+        protected const table_name = 'security_csrf_token';
 
         #[OA\Property( type: 'string' )]
-        public const field_assigned_to = 'assigned_to';
+        protected const field_assigned_to = 'assigned_to';
 
         #[OA\Property( type: 'string' )]
-        public const field_issued   = 'issued';
+        protected const field_issued   = 'issued';
 
         #[OA\Property( type: 'string' )]
-        public const field_accessed = 'accessed';
+        protected const field_accessed = 'accessed';
 
         #[OA\Property( type: 'string' )]
-        public const field_activated   = 'activated';
+        protected const field_activated   = 'activated';
 
         #[OA\Property( type: 'string' )]
-        public const field_invalidated = 'invalidated';
+        protected const field_invalidated = 'invalidated';
 
 
         #[OA\Property( type: 'string' )]
-        public const field_secret_token = 'secret_token';
+        protected const field_secret_token = 'secret_token';
 
         #[OA\Property( type: 'string' )]
-        public const field_secure_token = 'secure_token';
+        protected const field_secure_token = 'secure_token';
 
         #[OA\Property( type: 'string' )]
-        public const field_identity = 'id';
+        protected const field_identity = 'id';
 
             // table
         protected $table = self::table_name;

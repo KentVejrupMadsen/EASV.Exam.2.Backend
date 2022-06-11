@@ -25,7 +25,7 @@
         extends ExtensionNoTimestampModel
     {
         #[OA\Property( type: 'string' )]
-        public const table_name = 'account_states';
+        protected const table_name = 'account_states';
 
         // Variables
             // Table
@@ -34,19 +34,19 @@
 
             // Constants
         #[OA\Property( type: 'string' )]
-        public const field_account_id            = 'account_id';
+        protected  const field_account_id            = 'account_id';
 
         #[OA\Property( type: 'string' )]
-        public const field_deactivated           = 'deactivated';
+        protected  const field_deactivated           = 'deactivated';
 
         #[OA\Property( type: 'string' )]
-        public const field_writeable_disabled    = 'writeable_disabled';
+        protected  const field_writeable_disabled    = 'writeable_disabled';
 
         #[OA\Property( type: 'string' )]
-        public const field_locked                = 'locked';
+        protected  const field_locked                = 'locked';
 
         #[OA\Property( type: 'string' )]
-        public const field_archived              = 'archived';
+        protected  const field_archived              = 'archived';
 
 
         /**

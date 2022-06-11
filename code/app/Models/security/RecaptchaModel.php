@@ -29,26 +29,26 @@
         // Variables
             // Table
         #[OA\Property( type: 'string' )]
-        public const table_name = 'security_recaptcha';
+        protected const table_name = 'security_recaptcha';
 
         protected $table = self::table_name;
         protected $primaryKey = self::identity;
 
             // Const
         #[OA\Property( type: 'string' )]
-        public const field_success   = 'success';
+        protected const field_success   = 'success';
 
         #[OA\Property( type: 'string' )]
-        public const field_score     = 'score';
+        protected const field_score     = 'score';
 
         #[OA\Property( type: 'string' )]
-        public const field_at_date   = 'at_date';
+        protected const field_at_date   = 'at_date';
 
         #[OA\Property( type: 'string' )]
-        public const field_hostname  = 'hostname';
+        protected const field_hostname  = 'hostname';
 
         #[OA\Property( type: 'string' )]
-        public const field_error     = 'error';
+        protected const field_error     = 'error';
 
 
         /**
