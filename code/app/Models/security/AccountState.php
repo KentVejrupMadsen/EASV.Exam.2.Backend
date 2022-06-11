@@ -7,8 +7,8 @@
      */
     namespace App\Models\security;
 
-    use App\Models\templates\BaseModel;
-    use App\Models\templates\ExtensionNoTimestampModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionNoTimestampModel;
 
     use OpenApi\Attributes
         as OA;
@@ -30,6 +30,7 @@
         // Variables
             // Table
         protected $table = self::table_name;
+        protected $primaryKey = self::identity;
 
             // Constants
         #[OA\Property( type: 'string' )]

@@ -8,8 +8,8 @@
     namespace App\Models\security;
 
     // Internal libraries
-    use App\Models\templates\BaseModel;
-    use App\Models\templates\ExtensionNoTimestampModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionNoTimestampModel;
 
     // External libraries
     use OpenApi\Attributes
@@ -58,6 +58,7 @@
 
             // table
         protected $table = self::table_name;
+        protected $primaryKey = self::identity;
 
 
         /**
