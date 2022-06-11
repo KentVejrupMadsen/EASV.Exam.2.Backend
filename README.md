@@ -25,9 +25,9 @@
 
 ## Links
 ### Public version
-* [Frontend website](frontend.goalpioneers.com)
-* [Backend website](kanban.goalpioneers.com)
-* [Cache website](cache.goalpioneers.com)
+* [Frontend website](https://frontend.goalpioneers.com)
+* [Backend website](https://kanban.goalpioneers.com)
+* [Cache website](https://cache.goalpioneers.com)
 
 
 ### Repositories

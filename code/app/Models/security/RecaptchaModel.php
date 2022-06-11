@@ -8,8 +8,8 @@
     namespace App\Models\security;
 
     // Internal libraries
-    use App\Models\templates\BaseModel;
-    use App\Models\templates\ExtensionNoTimestampModel;
+    use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionNoTimestampModel;
 
     // External libraries
     use OpenApi\Attributes
@@ -22,39 +22,58 @@
     #[OA\Schema( title: 'Recaptcha Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class RecaptchaModel
         extends ExtensionNoTimestampModel
     {
         // Variables
-            // Table
-        #[OA\Property( type: 'string' )]
-        public const table_name = 'security_recaptcha';
-
-        protected $table = self::table_name;
-
             // Const
-        #[OA\Property( type: 'string' )]
-        public const field_success   = 'success';
+        #[OA\Property( title:'table name',
+                       type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
+                       deprecated: false)]
+        protected const table_name = 'security_recaptcha';
 
-        #[OA\Property( type: 'string' )]
-        public const field_score     = 'score';
+        #[OA\Property( title:'success column',
+                       type: self::typeBoolean,
+                       deprecated: false )]
+        protected const field_success   = 'success';
 
-        #[OA\Property( type: 'string' )]
-        public const field_at_date   = 'at_date';
+        #[OA\Property( title:'score column',
+                       type: self::typeDouble,
+                       deprecated: false )]
+        protected const field_score     = 'score';
 
-        #[OA\Property( type: 'string' )]
-        public const field_hostname  = 'hostname';
+        #[OA\Property( title:'at date column',
+                       type: self::typeTimestamp,
+                       deprecated: false )]
+        protected const field_at_date   = 'at_date';
 
-        #[OA\Property( type: 'string' )]
-        public const field_error     = 'error';
+        #[OA\Property( title:'hostname column',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const field_hostname  = 'hostname';
 
+        #[OA\Property( title:'error column',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const field_error     = 'error';
+
+
+            // Table
+        protected $table = self::table_name;
+        protected $primaryKey = self::identity;
 
         /**
          * @var string[]
          */
         protected $fillable =
         [
+            self::identity,
+
             self::field_success,
             self::field_score,
             self::field_at_date,
@@ -68,6 +87,8 @@
          */
         protected $hidden =
         [
+            self::identity,
+
             self::field_hostname,
             self::field_error
         ];
@@ -78,11 +99,13 @@
          */
         protected $casts =
         [
-            self::field_success     => 'boolean',
-            self::field_score       => 'double',
-            self::field_at_date     => 'datetime',
-            self::field_hostname    => 'string',
-            self::field_error       => 'string'
+            self::identity          => self::typeInteger,
+
+            self::field_success     => self::typeBoolean,
+            self::field_score       => self::typeDouble,
+            self::field_at_date     => self::typeDatetime,
+            self::field_hostname    => self::typeString,
+            self::field_error       => self::typeString
         ];
     }
 ?>

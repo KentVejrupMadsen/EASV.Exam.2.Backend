@@ -8,117 +8,312 @@ DROP TABLE IF EXISTS `account_emails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `account_emails` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'email address. only unique mail addresses are allowed.',
+  PRIMARY KEY (`identity`),
   UNIQUE KEY `account_emails_content_unique` (`content`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_insert_of_account_emails` BEFORE INSERT ON `account_emails` FOR EACH ROW begin
+    set new.content = lower(new.content);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_update_of_account_emails` BEFORE UPDATE ON `account_emails` FOR EACH ROW begin
+    set new.content = lower(new.content);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 DROP TABLE IF EXISTS `account_information_options`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `account_information_options` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `account_id` bigint unsigned NOT NULL,
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `account_identity` bigint unsigned NOT NULL,
   `settings` json NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `account_information_options_account_id_unique` (`account_id`),
-  CONSTRAINT `account_information_options_account_id_foreign` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE
+  PRIMARY KEY (`identity`),
+  UNIQUE KEY `account_information_options_account_identity_unique` (`account_identity`),
+  CONSTRAINT `account_information_options_account_identity_foreign` FOREIGN KEY (`account_identity`) REFERENCES `accounts` (`identity`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `account_states`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `account_states` (
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `account_identity` bigint unsigned NOT NULL,
+  `deactivated` tinyint(1) NOT NULL DEFAULT '0',
+  `writeable_disabled` tinyint(1) NOT NULL DEFAULT '0',
+  `locked` tinyint(1) NOT NULL DEFAULT '0',
+  `archived` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`identity`),
+  UNIQUE KEY `account_states_account_identity_unique` (`account_identity`),
+  CONSTRAINT `account_states_account_identity_foreign` FOREIGN KEY (`account_identity`) REFERENCES `accounts` (`identity`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `accounts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accounts` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_id` bigint unsigned NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Account username used as an identifier when logging in.',
+  `account_email_identity` bigint unsigned NOT NULL COMMENT 'maps to the accounts email by id and newsletter email if the account has one',
+  `email_verified_at` timestamp NULL DEFAULT NULL COMMENT 'At what point a client has verified his account though the api.',
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'used when authenticating as a client.',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `settings` json NOT NULL,
-  PRIMARY KEY (`id`),
+  `settings` json NOT NULL COMMENT 'User settings for their account. Used by frontend.',
+  PRIMARY KEY (`identity`),
   UNIQUE KEY `accounts_username_unique` (`username`),
-  UNIQUE KEY `accounts_email_id_unique` (`email_id`),
-  CONSTRAINT `accounts_email_id_foreign` FOREIGN KEY (`email_id`) REFERENCES `account_emails` (`id`)
+  UNIQUE KEY `accounts_account_email_identity_unique` (`account_email_identity`),
+  CONSTRAINT `accounts_account_email_identity_foreign` FOREIGN KEY (`account_email_identity`) REFERENCES `account_emails` (`identity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_creation_of_accounts` AFTER INSERT ON `accounts` FOR EACH ROW begin
+    insert into account_states( account_identity )
+        values ( New.identity );
+
+    insert into account_information_options( account_identity,
+                                             settings,
+                                             created_at,
+                                             updated_at )
+    values
+        (
+         New.identity,
+         '{}',
+         now(),
+         now()
+        );
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+DROP TABLE IF EXISTS `accounts_view`;
+/*!50001 DROP VIEW IF EXISTS `accounts_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `accounts_view` AS SELECT 
+ 1 AS `identity`,
+ 1 AS `username`,
+ 1 AS `email`,
+ 1 AS `email_verified_at`,
+ 1 AS `password`,
+ 1 AS `remember_token`,
+ 1 AS `created_at`,
+ 1 AS `updated_at`,
+ 1 AS `settings`*/;
+SET character_set_client = @saved_cs_client;
 DROP TABLE IF EXISTS `address_road_names`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `address_road_names` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'A given road address name.',
+  PRIMARY KEY (`identity`),
   UNIQUE KEY `address_road_names_content_unique` (`content`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_insert_of_address_road_names` BEFORE INSERT ON `address_road_names` FOR EACH ROW begin
+    set new.content = lower(new.content);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_update_of_address_road_names` BEFORE UPDATE ON `address_road_names` FOR EACH ROW begin
+    set new.content = lower(new.content);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 DROP TABLE IF EXISTS `addresses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `addresses` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `account_information_id` bigint unsigned NOT NULL,
-  `road_name_id` bigint unsigned NOT NULL,
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `account_information_identity` bigint unsigned NOT NULL,
+  `road_name_identity` bigint unsigned NOT NULL,
   `road_number` int NOT NULL,
-  `levels` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `country_id` bigint unsigned NOT NULL,
-  `zip_code_id` bigint unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `addresses_account_information_id_unique` (`account_information_id`),
-  KEY `addresses_road_name_id_foreign` (`road_name_id`),
-  KEY `addresses_levels_index` (`levels`),
-  KEY `addresses_country_id_index` (`country_id`),
-  KEY `addresses_zip_code_id_index` (`zip_code_id`),
-  CONSTRAINT `addresses_account_information_id_foreign` FOREIGN KEY (`account_information_id`) REFERENCES `account_information_options` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `addresses_country_id_foreign` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`),
-  CONSTRAINT `addresses_road_name_id_foreign` FOREIGN KEY (`road_name_id`) REFERENCES `address_road_names` (`id`),
-  CONSTRAINT `addresses_zip_code_id_foreign` FOREIGN KEY (`zip_code_id`) REFERENCES `zip_codes` (`id`)
+  `level_identity` bigint unsigned NOT NULL,
+  `country_identity` bigint unsigned NOT NULL,
+  `zip_code_identity` bigint unsigned NOT NULL,
+  PRIMARY KEY (`identity`),
+  UNIQUE KEY `addresses_account_information_identity_unique` (`account_information_identity`),
+  KEY `addresses_level_identity_foreign` (`level_identity`),
+  KEY `addresses_road_name_identity_foreign` (`road_name_identity`),
+  KEY `addresses_country_identity_index` (`country_identity`),
+  KEY `addresses_zip_code_identity_index` (`zip_code_identity`),
+  CONSTRAINT `addresses_account_information_identity_foreign` FOREIGN KEY (`account_information_identity`) REFERENCES `account_information_options` (`identity`) ON DELETE CASCADE,
+  CONSTRAINT `addresses_country_identity_foreign` FOREIGN KEY (`country_identity`) REFERENCES `countries` (`identity`),
+  CONSTRAINT `addresses_level_identity_foreign` FOREIGN KEY (`level_identity`) REFERENCES `apartment_levels` (`identity`),
+  CONSTRAINT `addresses_road_name_identity_foreign` FOREIGN KEY (`road_name_identity`) REFERENCES `address_road_names` (`identity`),
+  CONSTRAINT `addresses_zip_code_identity_foreign` FOREIGN KEY (`zip_code_identity`) REFERENCES `zip_codes` (`identity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `board_titles`;
+DROP TABLE IF EXISTS `addresses_view`;
+/*!50001 DROP VIEW IF EXISTS `addresses_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `addresses_view` AS SELECT 
+ 1 AS `identity`,
+ 1 AS `account_information_identity`,
+ 1 AS `road_name`,
+ 1 AS `road_number`,
+ 1 AS `level_identity`,
+ 1 AS `address_country`,
+ 1 AS `zip_code_identity`*/;
+SET character_set_client = @saved_cs_client;
+DROP TABLE IF EXISTS `apartment_levels`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `board_titles` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `board_titles_content_unique` (`content`)
+CREATE TABLE `apartment_levels` (
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'which apartment level direction an given person lives in.',
+  PRIMARY KEY (`identity`),
+  UNIQUE KEY `apartment_levels_content_unique` (`content`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `boards`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `boards` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `kanban_id` bigint unsigned NOT NULL,
-  `board_title_id` bigint unsigned NOT NULL,
-  `body` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `boards_kanban_id_foreign` (`kanban_id`),
-  KEY `boards_board_title_id_foreign` (`board_title_id`),
-  CONSTRAINT `boards_board_title_id_foreign` FOREIGN KEY (`board_title_id`) REFERENCES `board_titles` (`id`),
-  CONSTRAINT `boards_kanban_id_foreign` FOREIGN KEY (`kanban_id`) REFERENCES `kanbans` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_insert_of_apartment_levels` BEFORE INSERT ON `apartment_levels` FOR EACH ROW begin
+    set new.content = lower(new.content);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_update_of_apartment_levels` BEFORE UPDATE ON `apartment_levels` FOR EACH ROW begin
+    set new.content = lower(new.content);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 DROP TABLE IF EXISTS `countries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `countries` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `country_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `country_acronym` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `country_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'the accurate name of a specific country in english',
+  `country_acronym` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'the acronym for the given countries',
+  PRIMARY KEY (`identity`),
   UNIQUE KEY `countries_country_name_unique` (`country_name`),
   KEY `countries_country_acronym_index` (`country_acronym`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_insert_of_countries` BEFORE INSERT ON `countries` FOR EACH ROW begin
+    set new.country_name = lower(new.country_name);
+    set new.country_acronym = lower(new.country_acronym);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_update_of_countries` BEFORE UPDATE ON `countries` FOR EACH ROW begin
+    set new.country_name = lower(new.country_name);
+    set new.country_acronym = lower(new.country_acronym);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 DROP TABLE IF EXISTS `failed_jobs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -132,42 +327,6 @@ CREATE TABLE `failed_jobs` (
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `kanban_titles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `kanban_titles` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `kanban_titles_content_unique` (`content`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `kanbans`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `kanbans` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `kanban_title_id` bigint unsigned NOT NULL,
-  `project_id` bigint unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `kanbans_kanban_title_id_foreign` (`kanban_title_id`),
-  KEY `kanbans_project_id_foreign` (`project_id`),
-  CONSTRAINT `kanbans_kanban_title_id_foreign` FOREIGN KEY (`kanban_title_id`) REFERENCES `kanban_titles` (`id`),
-  CONSTRAINT `kanbans_project_id_foreign` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `member_groups`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `member_groups` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `member_groups_content_unique` (`content`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `migrations`;
@@ -184,66 +343,157 @@ DROP TABLE IF EXISTS `newsletter_users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `newsletter_users` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `email_id` bigint unsigned NOT NULL,
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `email_identity` bigint unsigned NOT NULL COMMENT 'which email has been assigned to the newsletter system',
+  `account_identity` bigint unsigned DEFAULT NULL COMMENT 'if the email has an account associated. the user has the option to set it though his settings and the "newsletter" will be associatedwith his account',
   `options` json NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `newsletter_users_email_id_index` (`email_id`),
-  CONSTRAINT `newsletter_users_email_id_foreign` FOREIGN KEY (`email_id`) REFERENCES `account_emails` (`id`)
+  PRIMARY KEY (`identity`),
+  KEY `newsletter_users_account_identity_foreign` (`account_identity`),
+  KEY `newsletter_users_email_identity_index` (`email_identity`),
+  CONSTRAINT `newsletter_users_account_identity_foreign` FOREIGN KEY (`account_identity`) REFERENCES `accounts` (`identity`),
+  CONSTRAINT `newsletter_users_email_identity_foreign` FOREIGN KEY (`email_identity`) REFERENCES `account_emails` (`identity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `newsletter_view`;
+/*!50001 DROP VIEW IF EXISTS `newsletter_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `newsletter_view` AS SELECT 
+ 1 AS `identity`,
+ 1 AS `email`,
+ 1 AS `options`*/;
+SET character_set_client = @saved_cs_client;
 DROP TABLE IF EXISTS `password_resets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `password_resets` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `email_id` bigint unsigned NOT NULL,
+  `email_identity` bigint unsigned NOT NULL COMMENT 'Which e-mail address requested that they had forgot their password',
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL COMMENT 'at which point the request was created.',
   PRIMARY KEY (`id`),
-  KEY `password_resets_email_id_index` (`email_id`),
+  KEY `password_resets_email_identity_index` (`email_identity`),
   KEY `password_resets_token_index` (`token`),
-  CONSTRAINT `password_resets_email_id_foreign` FOREIGN KEY (`email_id`) REFERENCES `account_emails` (`id`)
+  CONSTRAINT `password_resets_email_identity_foreign` FOREIGN KEY (`email_identity`) REFERENCES `account_emails` (`identity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `person_name`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `person_name` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `account_information_id` bigint unsigned NOT NULL,
-  `person_name_first_id` bigint unsigned NOT NULL,
-  `person_name_lastname_id` bigint unsigned NOT NULL,
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `account_information_identity` bigint unsigned NOT NULL,
+  `person_name_first_identity` bigint unsigned NOT NULL,
+  `person_name_lastname_identity` bigint unsigned DEFAULT NULL,
   `person_name_middlename` json DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `person_name_account_information_id_unique` (`account_information_id`),
-  KEY `person_name_person_name_first_id_foreign` (`person_name_first_id`),
-  KEY `person_name_person_name_lastname_id_foreign` (`person_name_lastname_id`),
-  CONSTRAINT `person_name_account_information_id_foreign` FOREIGN KEY (`account_information_id`) REFERENCES `account_information_options` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `person_name_person_name_first_id_foreign` FOREIGN KEY (`person_name_first_id`) REFERENCES `person_name_first` (`id`),
-  CONSTRAINT `person_name_person_name_lastname_id_foreign` FOREIGN KEY (`person_name_lastname_id`) REFERENCES `person_name_middle_and_last` (`id`)
+  PRIMARY KEY (`identity`),
+  UNIQUE KEY `person_name_account_information_identity_unique` (`account_information_identity`),
+  KEY `person_name_person_name_first_identity_foreign` (`person_name_first_identity`),
+  KEY `person_name_person_name_lastname_identity_foreign` (`person_name_lastname_identity`),
+  CONSTRAINT `person_name_account_information_identity_foreign` FOREIGN KEY (`account_information_identity`) REFERENCES `account_information_options` (`identity`) ON DELETE CASCADE,
+  CONSTRAINT `person_name_person_name_first_identity_foreign` FOREIGN KEY (`person_name_first_identity`) REFERENCES `person_name_first` (`identity`),
+  CONSTRAINT `person_name_person_name_lastname_identity_foreign` FOREIGN KEY (`person_name_lastname_identity`) REFERENCES `person_name_middle_and_last` (`identity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `person_name_first`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `person_name_first` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'a given persons firstname',
+  PRIMARY KEY (`identity`),
   UNIQUE KEY `person_name_first_content_unique` (`content`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_insert_of_person_first` BEFORE INSERT ON `person_name_first` FOR EACH ROW begin
+    set new.content = lower(new.content);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_update_of_person_first` BEFORE UPDATE ON `person_name_first` FOR EACH ROW begin
+    set new.content = lower(new.content);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 DROP TABLE IF EXISTS `person_name_middle_and_last`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `person_name_middle_and_last` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'a given persons surname or middle name',
+  PRIMARY KEY (`identity`),
   UNIQUE KEY `person_name_middle_and_last_content_unique` (`content`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_insert_of_person_name_middle_and_last` BEFORE INSERT ON `person_name_middle_and_last` FOR EACH ROW begin
+    set new.content = lower(new.content);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_update_of_person_name_middle_and_last` BEFORE UPDATE ON `person_name_middle_and_last` FOR EACH ROW begin
+    set new.content = lower(new.content);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+DROP TABLE IF EXISTS `person_names_view`;
+/*!50001 DROP VIEW IF EXISTS `person_names_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `person_names_view` AS SELECT 
+ 1 AS `identity`,
+ 1 AS `account_information_identity`,
+ 1 AS `person_first_name`,
+ 1 AS `person_name_middlename`,
+ 1 AS `person_last_name`*/;
+SET character_set_client = @saved_cs_client;
 DROP TABLE IF EXISTS `personal_access_tokens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -260,51 +510,6 @@ CREATE TABLE `personal_access_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `project_members`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `project_members` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `project_id` bigint unsigned NOT NULL,
-  `account_id` bigint unsigned NOT NULL,
-  `member_group_id` bigint unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `project_members_project_id_foreign` (`project_id`),
-  KEY `project_members_account_id_foreign` (`account_id`),
-  KEY `project_members_member_group_id_foreign` (`member_group_id`),
-  CONSTRAINT `project_members_account_id_foreign` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `project_members_member_group_id_foreign` FOREIGN KEY (`member_group_id`) REFERENCES `member_groups` (`id`),
-  CONSTRAINT `project_members_project_id_foreign` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `project_titles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `project_titles` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `project_titles_content_unique` (`content`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `projects`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `projects` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `account_owner_id` bigint unsigned NOT NULL,
-  `project_title_id` bigint unsigned NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tags` json NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `projects_account_owner_id_foreign` (`account_owner_id`),
-  KEY `projects_project_title_id_foreign` (`project_title_id`),
-  CONSTRAINT `projects_account_owner_id_foreign` FOREIGN KEY (`account_owner_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `projects_project_title_id_foreign` FOREIGN KEY (`project_title_id`) REFERENCES `project_titles` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `security_configuration`;
@@ -365,34 +570,154 @@ CREATE TABLE `sessions` (
   KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `tasks`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tasks` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `board_id` bigint unsigned NOT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `tasks_board_id_foreign` (`board_id`),
-  CONSTRAINT `tasks_board_id_foreign` FOREIGN KEY (`board_id`) REFERENCES `boards` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `zip_codes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `zip_codes` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `identity` bigint unsigned NOT NULL AUTO_INCREMENT,
   `area_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `zip_number` int unsigned NOT NULL,
-  `country_id` bigint unsigned NOT NULL,
-  PRIMARY KEY (`id`),
+  `country_identity` bigint unsigned NOT NULL,
+  PRIMARY KEY (`identity`),
   KEY `zip_codes_area_name_index` (`area_name`),
   KEY `zip_codes_zip_number_index` (`zip_number`),
-  KEY `zip_codes_country_id_index` (`country_id`),
-  CONSTRAINT `zip_codes_country_id_foreign` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`)
+  KEY `zip_codes_country_identity_index` (`country_identity`),
+  CONSTRAINT `zip_codes_country_identity_foreign` FOREIGN KEY (`country_identity`) REFERENCES `countries` (`identity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_insert_of_zip_codes` BEFORE INSERT ON `zip_codes` FOR EACH ROW begin
+    set new.area_name = lower(new.area_name);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`%`*/ /*!50003 TRIGGER `on_update_of_zip_codes` BEFORE UPDATE ON `zip_codes` FOR EACH ROW begin
+    set new.area_name = lower(new.area_name);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+DROP TABLE IF EXISTS `zip_codes_view_full`;
+/*!50001 DROP VIEW IF EXISTS `zip_codes_view_full`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `zip_codes_view_full` AS SELECT 
+ 1 AS `identity`,
+ 1 AS `area_name`,
+ 1 AS `zip_number`,
+ 1 AS `country_name`,
+ 1 AS `country_acronym`*/;
+SET character_set_client = @saved_cs_client;
+DROP TABLE IF EXISTS `zip_codes_view_short`;
+/*!50001 DROP VIEW IF EXISTS `zip_codes_view_short`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `zip_codes_view_short` AS SELECT 
+ 1 AS `identity`,
+ 1 AS `area_name`,
+ 1 AS `zip_number`,
+ 1 AS `country_acronym`*/;
+SET character_set_client = @saved_cs_client;
+/*!50001 DROP VIEW IF EXISTS `accounts_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`admin`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `accounts_view` AS select `accounts`.`identity` AS `identity`,`accounts`.`username` AS `username`,`ae`.`content` AS `email`,`accounts`.`email_verified_at` AS `email_verified_at`,`accounts`.`password` AS `password`,`accounts`.`remember_token` AS `remember_token`,`accounts`.`created_at` AS `created_at`,`accounts`.`updated_at` AS `updated_at`,`accounts`.`settings` AS `settings` from (`accounts` left join `account_emails` `ae` on((`accounts`.`account_email_identity` = `ae`.`identity`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!50001 DROP VIEW IF EXISTS `addresses_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`admin`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `addresses_view` AS select `ad`.`identity` AS `identity`,`ad`.`account_information_identity` AS `account_information_identity`,`arn`.`content` AS `road_name`,`ad`.`road_number` AS `road_number`,`ad`.`level_identity` AS `level_identity`,`c`.`country_name` AS `address_country`,`ad`.`zip_code_identity` AS `zip_code_identity` from (((`addresses` `ad` left join `countries` `c` on((`c`.`identity` = `ad`.`country_identity`))) left join `address_road_names` `arn` on((`arn`.`identity` = `ad`.`road_name_identity`))) left join `apartment_levels` `alvl` on((`alvl`.`identity` = `ad`.`level_identity`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!50001 DROP VIEW IF EXISTS `newsletter_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`admin`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `newsletter_view` AS select `newsletter_users`.`identity` AS `identity`,`ae`.`content` AS `email`,`newsletter_users`.`options` AS `options` from (`newsletter_users` left join `account_emails` `ae` on((`ae`.`identity` = `newsletter_users`.`email_identity`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!50001 DROP VIEW IF EXISTS `person_names_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`admin`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `person_names_view` AS select `person_name`.`identity` AS `identity`,`person_name`.`account_information_identity` AS `account_information_identity`,`pnf`.`content` AS `person_first_name`,`person_name`.`person_name_middlename` AS `person_name_middlename`,`pnmal`.`content` AS `person_last_name` from ((`person_name` left join `person_name_first` `pnf` on((`pnf`.`identity` = `person_name`.`person_name_first_identity`))) left join `person_name_middle_and_last` `pnmal` on((`pnmal`.`identity` = `person_name`.`person_name_lastname_identity`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!50001 DROP VIEW IF EXISTS `zip_codes_view_full`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`admin`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `zip_codes_view_full` AS select `zip_codes`.`identity` AS `identity`,`zip_codes`.`area_name` AS `area_name`,`zip_codes`.`zip_number` AS `zip_number`,`c`.`country_name` AS `country_name`,`c`.`country_acronym` AS `country_acronym` from (`zip_codes` left join `countries` `c` on((`zip_codes`.`country_identity` = `c`.`identity`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!50001 DROP VIEW IF EXISTS `zip_codes_view_short`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`admin`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `zip_codes_view_short` AS select `zip_codes`.`identity` AS `identity`,`zip_codes`.`area_name` AS `area_name`,`zip_codes`.`zip_number` AS `zip_number`,`c`.`country_acronym` AS `country_acronym` from (`zip_codes` left join `countries` `c` on((`zip_codes`.`country_identity` = `c`.`identity`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -404,11 +729,9 @@ INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1);
 INSERT INTO `migrations` VALUES (2,'2014_10_12_100000_create_password_resets_table',1);
 INSERT INTO `migrations` VALUES (3,'2019_08_19_000000_create_failed_jobs_table',1);
 INSERT INTO `migrations` VALUES (4,'2019_12_14_000001_create_personal_access_tokens_table',1);
-INSERT INTO `migrations` VALUES (5,'2022_05_02_133433_project_migrations',1);
-INSERT INTO `migrations` VALUES (6,'2022_05_02_134337_kanban_migrations',1);
-INSERT INTO `migrations` VALUES (7,'2022_05_02_134536_board_migrations',1);
-INSERT INTO `migrations` VALUES (8,'2022_05_17_182049_create_sessions_table',1);
-INSERT INTO `migrations` VALUES (9,'2022_05_17_203246_recaptcha_migration',1);
-INSERT INTO `migrations` VALUES (10,'2022_05_17_204656_security_configuration',1);
-INSERT INTO `migrations` VALUES (11,'2022_05_22_105404_newsletter_migration',1);
-INSERT INTO `migrations` VALUES (12,'2022_05_22_120121_owner_information_migration',1);
+INSERT INTO `migrations` VALUES (5,'2022_05_17_182049_create_sessions_table',1);
+INSERT INTO `migrations` VALUES (6,'2022_05_17_203246_recaptcha_migration',1);
+INSERT INTO `migrations` VALUES (7,'2022_05_17_204656_security_configuration',1);
+INSERT INTO `migrations` VALUES (8,'2022_05_22_105404_newsletter_migration',1);
+INSERT INTO `migrations` VALUES (9,'2022_05_22_120121_owner_information_migration',1);
+INSERT INTO `migrations` VALUES (10,'2022_05_30_070202_security_migration',1);

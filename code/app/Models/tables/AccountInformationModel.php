@@ -8,7 +8,7 @@
     namespace App\Models\tables;
 
     // Internal Libraries
-    use App\Models\templates\BaseModel;
+    use App\Models\tables\templates\BaseModel;
 
     // External libraries
     use OpenApi\Attributes
@@ -21,29 +21,46 @@
     #[OA\Schema( title: 'Account Information Model',
                  description: '',
                  type: BaseModel::model_type,
+                 readOnly: false,
+                 writeOnly: false,
                  deprecated: false )]
     class AccountInformationModel
         extends BaseModel
     {
-        #[OA\Property( type: 'string' )]
-        public const table_name = 'account_information_options';
+        // Constants
+        #[OA\Property( title:'table name',
+                       type: self::typeString,
+                       readOnly: true,
+                       writeOnly: false,
+                       deprecated: false )]
+        protected const table_name = 'account_information_options';
+
+        #[OA\Property( title: 'account column',
+                       type: self::typeInteger,
+                       deprecated: false )]
+        protected const field_account = 'account_identity';
+
+        #[OA\Property( title: 'creation date column',
+                       type: self::typeDatetime,
+                       deprecated: false )]
+        protected const field_created_at = 'created_at';
+
+        #[OA\Property( title:'last updated column',
+                       type: self::typeDatetime,
+                       deprecated: false )]
+        protected const field_updated_at = 'updated_at';
+
+
+        #[OA\Property( title:'account settings column',
+                       type: self::typeString,
+                       deprecated: false )]
+        protected const field_settings = 'settings';
+
 
         // Variables
             // Model
         protected $table = self::table_name;
-
-            // Constants
-        #[OA\Property( type: 'string' )]
-        public const field_account = 'account_id';
-
-        #[OA\Property( type: 'string' )]
-        public const field_created_at = 'created_at';
-
-        #[OA\Property( type: 'string' )]
-        public const field_updated_at = 'updated_at';
-
-        #[OA\Property( type: 'string' )]
-        public const field_settings = 'settings';
+        protected $primaryKey = self::identity;
 
 
         /**
@@ -51,6 +68,7 @@
          */
         protected $fillable =
         [
+            self::identity,
             self::field_account,
             self::field_created_at,
             self::field_updated_at
@@ -62,6 +80,7 @@
          */
         protected $hidden =
         [
+            self::identity,
             self::field_account,
         ];
 
@@ -71,7 +90,9 @@
          */
         protected $casts =
         [
+            self::identity          => self::typeInteger,
             self::field_account     => self::typeInteger,
+
             self::field_created_at  => self::typeDatetime,
             self::field_updated_at  => self::typeDatetime,
         ];

@@ -15,10 +15,13 @@
      */
     return new class extends Migration
     {
-        public function up()
+        private const table_name = 'failed_jobs';
+
+        // create tables
+        public function up(): void
         {
             Schema::create(
-                'failed_jobs',
+                self::table_name,
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -38,10 +41,10 @@
             );
         }
 
-        
-        public function down()
+        // drop tables
+        public function down(): void
         {
-            Schema::dropIfExists( 'failed_jobs' );
+            Schema::dropIfExists( self::table_name );
         }
     };
 ?>
