@@ -21,6 +21,7 @@
 
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Http\Requests\account\account\AccountRequest;
+
     use App\Models\tables\AccountEmailModel;
     use App\Models\tables\User;
 
@@ -140,7 +141,7 @@
 
         /**
          * @param AccountRequest $request
-         * @return JsonResponse
+         * @return mixed
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/me',
                   tags: ['1.0.0', 'account', 'authentication'] )]
@@ -157,21 +158,9 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function me( AccountRequest $request ): JsonResponse
+        public final function me( AccountRequest $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            $currentUser = $request->user();
-            $response[ 'account' ] = $currentUser;
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
@@ -198,8 +187,7 @@
                         in: 'header' )]
         public final function public_read( AccountRequest $request )
         {
-
-            return $this->read( $request );
+            return null;
         }
 
         /**
@@ -208,10 +196,7 @@
          */
         public final function read( Request $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-            $response = [];
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
@@ -234,16 +219,7 @@
                        description: 'content not found' )]
         public final function login( Request $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
@@ -275,22 +251,7 @@
                        description: 'content not found' )]
         public final function logout( Request $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            $user = $request->user();
-            $user->currentAccessToken()->delete();
-
-            $response[ 'issued' ] = Carbon::now();
-            $response[ 'message' ] = 'tokens revoked';
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
