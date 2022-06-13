@@ -8,7 +8,8 @@
     namespace App\Http\Controllers\schemas\account\account\packages;
 
     use App\Models\tables\User;
-    use Builder;
+    use App\Http\Controllers\templates\Builder;
+
     use Illuminate\Support\Facades\Hash;
 
 
@@ -23,6 +24,7 @@
          */
         public function __construct()
         {
+            parent::__construct();
 
         }
 
@@ -36,14 +38,7 @@
          */
         public final function createAccountForm( array $form ): ?User
         {
-            $m = User::factory()->create(
-                [
-                    User::field_username => $form[ User::field_username ],
-                    User::field_password => Hash::make( $form[ User::field_password ] ),
-                    User::field_email_id => $form[ 'email_id' ],
-                    User::field_settings => array()
-                ]
-            );
+
 
             return $m;
         }
@@ -55,7 +50,7 @@
          */
         public final function issueBearerToken( User $account ): string
         {
-            return $account->createToken( 'account-migrator-issue-bearer-token' )->plainTextToken;
+            return '';
         }
 
 
@@ -65,15 +60,7 @@
          */
         public final function validateEmailIsUsedWithId( int $id ): bool
         {
-            $retVal = false;
-            $m = User::where( User::field_email_id, $id )->first();
-
-            if( isset( $m ) )
-            {
-                $retVal = true;
-            }
-
-            return $retVal;
+            return false;
         }
 
         /**
@@ -82,18 +69,11 @@
          */
         public final function validateUsernameIsUsed( string $username ): bool
         {
-            $retVal = false;
-            $account = User::where( 'username', $username )->first();
-
-            if( isset( $account ) )
-            {
-                $retVal = true;
-            }
-
-            return $retVal;
+            return false;
         }
 
         // Accessors
+            // getters
         /**
          * @return AccountBuilder|null
          */
@@ -107,6 +87,7 @@
             return self::$singleton;
         }
 
+            // setters
         /**
          * @param AccountBuilder|null $singleton
          */

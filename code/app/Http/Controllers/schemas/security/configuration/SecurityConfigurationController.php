@@ -8,12 +8,15 @@
     namespace App\Http\Controllers\schemas\security\configuration;
 
     // External libraries
-    use App\Http\Controllers\templates\CrudController;
-    use App\Http\Requests\security\configuration\SecurityConfigurationRequest;
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
 
     // Internal Libraries
+    use App\Http\Controllers\templates\CrudController;
+    use App\Http\Requests\security\configuration\SecurityConfigurationRequest;
+
 
 
     /**

@@ -8,20 +8,21 @@
     namespace App\Http\Controllers\schemas\account\account;
 
     // External Libraries
-    use App\Http\Controllers\AccountBuilder;
-    use App\Http\Controllers\schemas\account\account\packages\AccountResponseJSONFactory;
-    use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailBuilder;
-    use App\Http\Controllers\schemas\account\entities\email\PersonEmailController;
+    use Carbon\Carbon;
+    use Illuminate\Http\JsonResponse;
+    use Illuminate\Http\Request;
+
+    use OpenApi\Attributes
+        as OA;
+
+    // Internal Libraries
+    use App\Http\Controllers\schemas\account\account\packages\AccountBuilder;
+    use App\Http\Controllers\schemas\account\account\packages\format\AccountResponseJSON;
+
     use App\Http\Controllers\templates\ControllerPipeline;
     use App\Http\Requests\account\account\AccountRequest;
     use App\Models\tables\AccountEmailModel;
     use App\Models\tables\User;
-    use Carbon\Carbon;
-    use Illuminate\Http\JsonResponse;
-    use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
-
-    // Internal Libraries
 
 
     /**
@@ -47,8 +48,8 @@
         }
 
         // Variables
-        private static ?AccountController           $controller = null;
-        private static ?AccountResponseJSONFactory  $responseFactory = null;
+        private static ?AccountController $controller = null;
+        private static ?AccountResponseJSON  $responseFactory = null;
 
         private const contentType = 'Content-Type';
 
@@ -595,9 +596,9 @@
         }
 
         /**
-         * @param AccountResponseJSONFactory|null $responseFactory
+         * @param AccountResponseJSON|null $responseFactory
          */
-        public final static function setResponseFactory( ?AccountResponseJSONFactory $responseFactory ): void
+        public final static function setResponseFactory( ?AccountResponseJSON $responseFactory ): void
         {
             self::$responseFactory = $responseFactory;
         }
@@ -618,13 +619,13 @@
         }
 
         /**
-         * @return AccountResponseJSONFactory|null
+         * @return AccountResponseJSON|null
          */
-        public final static function getResponseFactory(): ?AccountResponseJSONFactory
+        public final static function getResponseFactory(): ?AccountResponseJSON
         {
             if( is_null( self::$responseFactory ) )
             {
-                self::setResponseFactory( AccountResponseJSONFactory::getSingleton() );
+                self::setResponseFactory( AccountResponseJSON::getSingleton() );
             }
 
             return self::$responseFactory;
