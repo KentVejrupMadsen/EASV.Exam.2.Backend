@@ -357,86 +357,12 @@
 
 
         /**
-         * @param array $InputKeys
-         * @param AccountEmailModel $mailForm
-         * @param string $password
-         * @return array
-         */
-        private function createForm( array $InputKeys,
-                                     AccountEmailModel $mailForm,
-                                     string $password ): array
-        {
-            return
-            [
-                User::field_username => $InputKeys[ User::field_username ],
-                User::field_password => $password,
-                User::field_email_id => $mailForm[ 'id' ],
-                User::field_created_at => Carbon::now(),
-                User::field_updated_at => Carbon::now(),
-                User::field_settings => array()
-            ];
-        }
-
-
-        /**
          * @param Request $request
          * @return JsonResponse|null
          */
         public final function create( Request $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-            $accountMigrator = self::getConstructor();
-
-            $form = $request->input( 'account' );
-            $securityPassword = $request->input( 'account.security.password' );
-
-            // Make private function
-            $mailModel = null;
-
-            if( PersonEmailController::hasAccountEmailContainer( $request ) )
-            {
-                $personContainer = $form[ 'person' ];
-
-                $emailConstructor = PersonEmailBuilder::getSingleton();
-
-                if( !$emailConstructor->hasEmailContainer( $personContainer[ 'email' ] ) )
-                {
-                    $mailModel = $emailConstructor->createEmail( $personContainer[ 'email' ] );
-                }
-                else
-                {
-                    $mailModel = $emailConstructor->retrieveEmail( $personContainer[ 'email' ] );
-
-                    if( $accountMigrator->validateEmailIsUsedWithId( $mailModel->id ) )
-                    {
-                        abort( 400, message: 'the given email is already taken by another account');
-                    }
-                }
-            }
-
-            if( $accountMigrator->validateUsernameIsUsed( $form[ User::field_username ] ) )
-            {
-                abort( 400, message: 'the given username is already taken by another account' );
-            }
-
-            $account = $accountMigrator->createAccountForm(
-                $this::createForm( $form, $mailModel, $securityPassword )
-            );
-
-            $token = $accountMigrator->issueBearerToken( $account );
-
-            $response[ 'username' ] = $account->username;
-            $response[ 'bearer_token' ] = $token;
-
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
@@ -476,16 +402,7 @@
          */
         public final function update( Request $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
@@ -518,7 +435,7 @@
         public final function public_delete( AccountRequest $request )
         {
 
-            return $this->delete( $request );
+            return null;
         }
 
 
@@ -528,16 +445,7 @@
          */
         public final function delete( Request $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
@@ -562,16 +470,7 @@
                        description: 'content not found' )]
         public final function verify( AccountRequest $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
