@@ -8,7 +8,6 @@
     namespace App\Http\Controllers\schemas\account\account;
 
     // External Libraries
-    use Carbon\Carbon;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
@@ -16,11 +15,19 @@
         as OA;
 
     // Internal Libraries
-    use App\Http\Controllers\schemas\account\account\packages\AccountBuilder;
+        // Request to the controller : http
+    use App\Http\Requests\account\account\AccountRequest
+        as ControllerRequest;
+
+    use App\Http\Controllers\schemas\account\account\packages\AccountBuilder
+        as Builder;
+
+    use App\Http\Controllers\schemas\account\account\packages\AccountGC
+        as GC;
+
     use App\Http\Controllers\schemas\account\account\packages\format\AccountResponseJSON;
 
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\account\account\AccountRequest;
 
     use App\Models\tables\AccountEmailModel;
     use App\Models\tables\User;
@@ -129,7 +136,7 @@
 
 
         /**
-         * @param AccountRequest $request
+         * @param ControllerRequest $request
          * @return mixed
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/me',
@@ -147,14 +154,14 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function me( AccountRequest $request )
+        public final function me( ControllerRequest $request )
         {
             return null;
         }
 
 
         /**
-         * @param AccountRequest $request
+         * @param ControllerRequest $request
          * @return null
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/read',
@@ -174,7 +181,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_read( AccountRequest $request )
+        public final function public_read( ControllerRequest $request )
         {
             return null;
         }
@@ -190,7 +197,7 @@
 
 
         /**
-         * @param Request $request
+         * @param ControllerRequest $request
          * @return JsonResponse|null
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/login',
@@ -206,14 +213,14 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function login( Request $request )
+        public final function login( ControllerRequest $request )
         {
             return null;
         }
 
 
         /**
-         * @param AccountRequest $request
+         * @param ControllerRequest $request
          * @return null
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/logout',
@@ -238,14 +245,14 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function logout( Request $request )
+        public final function logout( ControllerRequest $request )
         {
             return null;
         }
 
 
         /**
-         * @param Request $request
+         * @param ControllerRequest $request
          * @return JsonResponse
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/create',
@@ -300,14 +307,14 @@
                        description: 'Bad Request - an account already exist with the given parameters' )]
         #[OA\Response( response: '540',
                        description: 'content not found' )]
-        public final function public_create( Request $request )
+        public final function public_create( ControllerRequest $request )
         {
             return $this->create( $request );
         }
 
 
         /**
-         * @param Request $request
+         * @param ControllerRequest $request
          * @return JsonResponse|null
          */
         public final function create( Request $request )
@@ -317,7 +324,7 @@
 
 
         /**
-         * @param AccountRequest $request
+         * @param ControllerRequest $request
          * @return JsonResponse
          */
         #[OA\Patch( path: '/api/1.0.0/accounts/account/update',
@@ -341,7 +348,7 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_update( AccountRequest $request )
+        public final function public_update( ControllerRequest $request )
         {
             return $this->update( $request );
         }
@@ -357,7 +364,7 @@
 
 
         /**
-         * @param AccountRequest $request
+         * @param ControllerRequest $request
          * @return JsonResponse|null
          */
         #[OA\Delete( path: '/api/1.0.0/accounts/account/delete',
@@ -382,7 +389,7 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_delete( AccountRequest $request )
+        public final function public_delete( ControllerRequest $request )
         {
 
             return null;
@@ -400,7 +407,7 @@
 
 
         /**
-         * @param AccountRequest $request
+         * @param ControllerRequest $request
          * @return null
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/verify',
@@ -418,7 +425,7 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function verify( AccountRequest $request )
+        public final function verify( ControllerRequest $request )
         {
             return null;
         }
