@@ -24,53 +24,29 @@
          */
         public function __construct()
         {
-            parent::__construct();
 
         }
+
+        public function creationOfModels( array $array ): void
+        {
+            // TODO: Implement creationOfModels() method.
+        }
+
+        public function templateModels( array $array ): void
+        {
+            // TODO: Implement templateModels() method.
+        }
+
+        public function retrieveOutputResults(): ?array
+        {
+            // TODO: Implement retrieveOutputResults() method.
+            return null;
+        }
+
 
         // Variables
         private static ?AccountBuilder $singleton =  null;
 
-
-        /**
-         * @param array $form
-         * @return User|null
-         */
-        public final function createAccountForm( array $form ): ?User
-        {
-
-
-            return $m;
-        }
-
-
-        /**
-         * @param User $account
-         * @return string
-         */
-        public final function issueBearerToken( User $account ): string
-        {
-            return '';
-        }
-
-
-        /**
-         * @param int $id
-         * @return bool
-         */
-        public final function validateEmailIsUsedWithId( int $id ): bool
-        {
-            return false;
-        }
-
-        /**
-         * @param string $username
-         * @return bool
-         */
-        public final function validateUsernameIsUsed( string $username ): bool
-        {
-            return false;
-        }
 
         // Accessors
             // getters
@@ -81,7 +57,9 @@
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new AccountBuilder() );
+                self::setSingleton(
+                    new AccountBuilder()
+                );
             }
 
             return self::$singleton;

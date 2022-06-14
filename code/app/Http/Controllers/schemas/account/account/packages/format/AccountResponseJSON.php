@@ -3,7 +3,7 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     *
      */
     namespace App\Http\Controllers\schemas\account\account\packages\format;
 
@@ -24,8 +24,9 @@
 
         }
 
+
         // Variables
-        private static $singleton = null;
+        private static ?AccountResponseJSON $singleton = null;
 
         /**
          * @param array $array
@@ -54,7 +55,9 @@
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new AccountResponseJSON() );
+                self::setSingleton(
+                    new AccountResponseJSON()
+                );
             }
 
             return self::$singleton;

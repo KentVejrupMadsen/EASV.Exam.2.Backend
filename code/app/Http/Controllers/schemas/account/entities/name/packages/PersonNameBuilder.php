@@ -24,6 +24,21 @@
 
         }
 
+        public function creationOfModels( array $array ): void
+        {
+            // TODO: Implement creationOfModels() method.
+        }
+
+        public function templateModels( array $array ): void
+        {
+            // TODO: Implement templateModels() method.
+        }
+
+        public function retrieveOutputResults(): ?array
+        {
+            // TODO: Implement retrieveOutputResults() method.
+            return null;
+        }
 
 
         // Variables

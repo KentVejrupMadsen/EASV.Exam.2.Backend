@@ -25,43 +25,21 @@
 
         }
 
-        /**
-         * @param string $email
-         * @return AccountEmailModel|null
-         */
-        public final function retrieveEmail( string $email ): ?AccountEmailModel
+        public function creationOfModels( array $array ): void
         {
-            $model = AccountEmailModel::where( 'content', $email )->first();
-            return $model;
+            // TODO: Implement creationOfModels() method.
         }
 
-        /**
-         * @param string $email
-         * @return bool|null
-         */
-        public final function hasEmailContainer( string $email ): ?bool
+        public function templateModels( array $array ): void
         {
-            $retVal = false;
-
-            $model = AccountEmailModel::where( 'content', $email )->first();
-
-            if( isset( $model ) )
-            {
-                $retVal = true;
-            }
-
-            return $retVal;
+            // TODO: Implement templateModels() method.
         }
 
-        /**
-         * @param string $email
-         * @return AccountEmailModel|null
-         */
-        public final function createEmail( string $email ): ?AccountEmailModel
+        public function retrieveOutputResults(): ?array
         {
-            return AccountEmailModel::factory()->create( [ 'content' => $email ] );
+            // TODO: Implement retrieveOutputResults() method.
+            return null;
         }
-
 
 
         // Variables

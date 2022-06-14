@@ -3,7 +3,7 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     *
      */
     namespace App\Http\Controllers\schemas\account\account\packages\format;
 
@@ -25,7 +25,7 @@
         }
 
         // Variables
-        private static $singleton = null;
+        private static ?AccountResponseXML $singleton = null;
 
         /**
          * @param array $array
@@ -46,15 +46,16 @@
             return false;
         }
 
+
         // getters
         /**
-         * @return AccountResponseJSON
+         * @return AccountResponseXML
          */
-        public static function getSingleton(): AccountResponseJSON
+        public static function getSingleton(): AccountResponseXML
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new AccountResponseJSON() );
+                self::setSingleton( new AccountResponseXML() );
             }
 
             return self::$singleton;
@@ -62,10 +63,10 @@
 
             // setters
         /**
-         * @param AccountResponseJSON $singleton
+         * @param AccountResponseXML $singleton
          * @return void
          */
-        public static function setSingleton(AccountResponseJSON $singleton ): void
+        public static function setSingleton( AccountResponseXML $singleton ): void
         {
             self::$singleton = $singleton;
         }

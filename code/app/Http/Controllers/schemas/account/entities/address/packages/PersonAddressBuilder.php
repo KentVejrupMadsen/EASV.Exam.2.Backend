@@ -24,26 +24,44 @@
 
         }
 
+        public function creationOfModels( array $array ): void
+        {
+            // TODO: Implement creationOfModels() method.
+        }
+
+        public function templateModels( array $array ): void
+        {
+            // TODO: Implement templateModels() method.
+        }
+
+        public function retrieveOutputResults(): ?array
+        {
+            // TODO: Implement retrieveOutputResults() method.
+            return null;
+        }
+
         // Variables
-        private static ?AccountBuilder $singleton =  null;
+        private static ?PersonAddressBuilder $singleton =  null;
 
         /**
-         * @return AccountBuilder|null
+         * @return PersonAddressBuilder|null
          */
-        public static function getSingleton(): ?AccountBuilder
+        public static function getSingleton(): ?PersonAddressBuilder
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new AccountBuilder() );
+                self::setSingleton(
+                    new PersonAddressBuilder()
+                );
             }
 
             return self::$singleton;
         }
 
         /**
-         * @param AccountBuilder|null $singleton
+         * @param PersonAddressBuilder|null $singleton
          */
-        public static function setSingleton( ?AccountBuilder $singleton ): void
+        public static function setSingleton( ?PersonAddressBuilder $singleton ): void
         {
             self::$singleton = $singleton;
         }
