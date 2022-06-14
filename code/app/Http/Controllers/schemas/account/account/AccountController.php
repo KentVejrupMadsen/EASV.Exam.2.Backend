@@ -50,9 +50,6 @@
 
         // Variables
         private static ?AccountController $controller = null;
-        private static ?AccountResponseJSON  $responseFactory = null;
-
-        private const contentType = 'Content-Type';
 
 
         // implement output
@@ -80,14 +77,6 @@
         {
 
             return false;
-        }
-
-        /**
-         * @return string
-         */
-        protected function defaultToContent(): string
-        {
-            return 'application/json';
         }
 
 
@@ -455,14 +444,6 @@
             self::$controller = $controller;
         }
 
-        /**
-         * @param AccountResponseJSON|null $responseFactory
-         */
-        public final static function setResponseFactory( ?AccountResponseJSON $responseFactory ): void
-        {
-            self::$responseFactory = $responseFactory;
-        }
-
 
         // Getters
         /**
@@ -478,33 +459,5 @@
             return self::$controller;
         }
 
-        /**
-         * @return AccountResponseJSON|null
-         */
-        public final static function getResponseFactory(): ?AccountResponseJSON
-        {
-            if( is_null( self::$responseFactory ) )
-            {
-                self::setResponseFactory( AccountResponseJSON::getSingleton() );
-            }
-
-            return self::$responseFactory;
-        }
-
-        /**
-         * @return AccountBuilder|null
-         */
-        public static final function getConstructor(): ?AccountBuilder
-        {
-            return AccountBuilder::getSingleton();
-        }
-
-        /**
-         * @return string
-         */
-        protected final function getContentType(): string
-        {
-            return self::contentType;
-        }
     }
 ?>

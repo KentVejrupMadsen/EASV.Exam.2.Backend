@@ -27,16 +27,30 @@
 
         }
 
+
+        /**
+         * @param array $array
+         * @return void
+         */
         public function creationOfModels( array $array ): void
         {
             // TODO: Implement creationOfModels() method.
         }
 
+
+        /**
+         * @param array $array
+         * @return void
+         */
         public function templateModels( array $array ): void
         {
             // TODO: Implement templateModels() method.
         }
 
+
+        /**
+         * @return array|null
+         */
         public function retrieveOutputResults(): ?array
         {
             // TODO: Implement retrieveOutputResults() method.
