@@ -60,9 +60,9 @@
 
         // Variables
         private static ?PersonEmailController $controller = null;
-        private static ?ControllerBuilder $builder = null;
-        private static ?ControllerGC $gc = null;
-        private static ?ControllerStates $states = null;
+        private static ?ControllerBuilder     $builder = null;
+        private static ?ControllerGC          $gc = null;
+        private static ?ControllerStates      $states = null;
 
 
         // functions
@@ -74,6 +74,7 @@
             return false;
         }
 
+
         /**
          * @return bool
          */
@@ -82,6 +83,7 @@
             return true;
         }
 
+
         /**
          * @return bool
          */
@@ -89,6 +91,7 @@
         {
             return false;
         }
+
 
         /**
          * @param array $request
@@ -105,6 +108,7 @@
             return null;
         }
 
+
         /**
          * @param array $request
          * @return ResponseJson
@@ -119,6 +123,7 @@
 
             return Response()->json();
         }
+
 
         /**
          * @param array $request
@@ -137,7 +142,6 @@
 
 
         // Code
-
         /**
          * @param ControllerRequest $request
          * @return Model|null
@@ -197,6 +201,7 @@
             return $this->delete( $request );
         }
 
+
         /**
          * @param Request $request
          * @return false
@@ -242,7 +247,8 @@
          * @param ControllerRequest $request
          * @return ResponseJson
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/entities/email/update', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/email/update',
+                    tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
@@ -272,34 +278,37 @@
          * @param PersonEmailController $controller
          * @return void
          */
-        public static final function setSingleton( PersonEmailController $controller ): void
+        protected static final function setSingleton( PersonEmailController $controller ): void
         {
             self::$controller = $controller;
         }
 
 
         /**
-         * @param ControllerBuilder|null $builder
+         * @param ControllerBuilder $builder
+         * @return void
          */
-        protected static final function setBuilder( ?ControllerBuilder $builder ): void
+        protected static final function setBuilder( ControllerBuilder $builder ): void
         {
             self::$builder = $builder;
         }
 
 
         /**
-         * @param ControllerStates|null $states
+         * @param ControllerStates $states
+         * @return void
          */
-        protected static final function setStates( ?ControllerStates $states ): void
+        protected static final function setStates( ControllerStates $states ): void
         {
             self::$states = $states;
         }
 
 
         /**
-         * @param ControllerGC|null $gc
+         * @param ControllerGC $gc
+         * @return void
          */
-        protected static final function setGc( ?ControllerGC $gc ): void
+        protected static final function setGc( ControllerGC $gc ): void
         {
             self::$gc = $gc;
         }
@@ -329,7 +338,7 @@
             if( is_null( self::$states ) )
             {
                 self::setStates(
-                    new ControllerStates()
+                    ControllerStates::getSingleton()
                 );
             }
 
@@ -345,7 +354,7 @@
             if( is_null( self::$builder ) )
             {
                 self::setBuilder(
-                    new ControllerBuilder()
+                    ControllerBuilder::getSingleton()
                 );
             }
 
@@ -361,7 +370,7 @@
             if( is_null( self::$gc ) )
             {
                 self::setGc(
-                    new ControllerGC()
+                    ControllerGC::getSingleton()
                 );
             }
 

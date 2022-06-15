@@ -35,9 +35,9 @@
         // Accessors
             // getters
         /**
-         * @return PersonAddressStates|null
+         * @return PersonAddressStates
          */
-        public static function getSingleton(): ?PersonAddressStates
+        public static final function getSingleton(): PersonAddressStates
         {
             if( is_null( self::$singleton ) )
             {
@@ -51,9 +51,10 @@
 
             // setters
         /**
-         * @param PersonAddressStates|null $singleton
+         * @param PersonAddressStates $singleton
+         * @return void
          */
-        public static function setSingleton( ?PersonAddressStates $singleton ): void
+        protected static final function setSingleton( PersonAddressStates $singleton ): void
         {
             self::$singleton = $singleton;
         }

@@ -8,6 +8,7 @@
     namespace App\Http\Controllers\schemas\account\entities\address\packages;
 
     use App\Http\Controllers\templates\Builder;
+    use App\Models\tables\AddressModel;
 
 
     /**
@@ -24,41 +25,76 @@
 
         }
 
-        public function templateModel( array $input ): mixed
+
+        /**
+         * @param array $input
+         * @return mixed
+         */
+        public final function templateModel( array $input ): mixed
         {
 
             return null;
         }
 
-        public function createModel( array $input ): mixed
+
+        /**
+         * @param array $input
+         * @return mixed
+         */
+        public final function createModel( array $input ): mixed
         {
 
             return null;
         }
 
-        public function creationOfModels( array $array ): void
+
+        /**
+         * @param array $array
+         * @return void
+         */
+        public final function creationOfModels( array $array ): void
         {
             // TODO: Implement creationOfModels() method.
         }
 
-        public function templateModels( array $array ): void
+
+        /***
+         * @param array $array
+         * @return void
+         */
+        public final function templateModels( array $array ): void
         {
             // TODO: Implement templateModels() method.
         }
 
-        public function retrieveOutputResults(): ?array
+
+        /**
+         * @return array|null
+         */
+        public final function retrieveOutputResults(): ?array
         {
             // TODO: Implement retrieveOutputResults() method.
             return null;
         }
 
+
+        /**
+         * @return AddressModel|null
+         */
+        public final function retrieveSingular(): ?AddressModel
+        {
+            // TODO: Implement retrieveSingular() method.
+            return null;
+        }
+
+
         // Variables
         private static ?PersonAddressBuilder $singleton =  null;
 
         /**
-         * @return PersonAddressBuilder|null
+         * @return PersonAddressBuilder
          */
-        public static function getSingleton(): ?PersonAddressBuilder
+        public static final function getSingleton(): PersonAddressBuilder
         {
             if( is_null( self::$singleton ) )
             {
@@ -70,10 +106,12 @@
             return self::$singleton;
         }
 
+
         /**
-         * @param PersonAddressBuilder|null $singleton
+         * @param PersonAddressBuilder $singleton
+         * @return void
          */
-        public static function setSingleton( ?PersonAddressBuilder $singleton ): void
+        protected static final function setSingleton( PersonAddressBuilder $singleton ): void
         {
             self::$singleton = $singleton;
         }

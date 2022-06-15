@@ -24,29 +24,62 @@
 
         }
 
-        public function creationOfModels( array $array ): void
+        /**
+         * @param array $array
+         * @return void
+         */
+        public final function creationOfModels( array $array ): void
         {
             // TODO: Implement creationOfModels() method.
         }
 
-        public function templateModels( array $array ): void
+
+        /**
+         * @param array $array
+         * @return void
+         */
+        public final function templateModels( array $array ): void
         {
             // TODO: Implement templateModels() method.
         }
 
-        public function retrieveOutputResults(): ?array
+
+        /**
+         * @return array|null
+         */
+        public final function retrieveOutputResults(): ?array
         {
             // TODO: Implement retrieveOutputResults() method.
             return null;
         }
 
-        public function templateModel( array $input ): mixed
+
+        /**
+         * @param array $input
+         * @return mixed
+         */
+        public final function templateModel( array $input ): mixed
         {
 
             return null;
         }
 
-        public function createModel( array $input ): mixed
+
+        /**
+         * @param array $input
+         * @return mixed
+         */
+        public final function createModel( array $input ): mixed
+        {
+
+            return null;
+        }
+
+
+        /**
+         * @return mixed
+         */
+        public final function retrieveSingular(): mixed
         {
 
             return null;
@@ -56,23 +89,29 @@
         // Variables
         private static ?PersonNameBuilder $singleton =  null;
 
+        // Accessors
+            // Getters
         /**
-         * @return PersonNameBuilder|null
+         * @return PersonNameBuilder
          */
-        public static function getSingleton(): ?PersonNameBuilder
+        public static function getSingleton(): PersonNameBuilder
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new PersonNameBuilder() );
+                self::setSingleton(
+                    new PersonNameBuilder()
+                );
             }
 
             return self::$singleton;
         }
 
+            // Setters
         /**
-         * @param PersonNameBuilder|null $singleton
+         * @param PersonNameBuilder $singleton
+         * @return void
          */
-        public static function setSingleton( ?PersonNameBuilder $singleton ): void
+        protected static function setSingleton( PersonNameBuilder $singleton ): void
         {
             self::$singleton = $singleton;
         }

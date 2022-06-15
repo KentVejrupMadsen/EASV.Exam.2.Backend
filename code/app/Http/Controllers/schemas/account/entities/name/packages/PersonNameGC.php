@@ -16,6 +16,7 @@
     class PersonNameGC
         extends Truncator
     {
+
         /**
          *
          */
@@ -23,6 +24,7 @@
         {
 
         }
+
 
         /**
          * @param array $array
@@ -33,6 +35,7 @@
 
             return false;
         }
+
 
         /**
          * @param array $array
@@ -48,23 +51,30 @@
         // Variables
         private static ?PersonNameGC $singleton =  null;
 
+
+        // Accessors
+            // Getters
         /**
-         * @return PersonNameGC|null
+         * @return PersonNameGC
          */
-        public static function getSingleton(): ?PersonNameGC
+        public static final function getSingleton(): PersonNameGC
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new PersonNameGC() );
+                self::setSingleton(
+                    new PersonNameGC()
+                );
             }
 
             return self::$singleton;
         }
 
+            // Setters
         /**
-         * @param PersonNameGC|null $singleton
+         * @param PersonNameGC $singleton
+         * @return void
          */
-        public static function setSingleton( ?PersonNameGC $singleton ): void
+        public static final function setSingleton( PersonNameGC $singleton ): void
         {
             self::$singleton = $singleton;
         }

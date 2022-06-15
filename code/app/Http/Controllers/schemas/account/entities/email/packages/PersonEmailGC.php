@@ -53,13 +53,15 @@
         private static ?PersonEmailGC $singleton =  null;
 
         /**
-         * @return PersonEmailGC|null
+         * @return PersonEmailGC
          */
-        public static function getSingleton(): ?PersonEmailGC
+        public static function getSingleton(): PersonEmailGC
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new PersonEmailGC() );
+                self::setSingleton(
+                    new PersonEmailGC()
+                );
             }
 
             return self::$singleton;
@@ -67,10 +69,10 @@
 
 
         /**
-         * @param PersonEmailGC|null $singleton
+         * @param PersonEmailGC $singleton
          * @return void
          */
-        public static function setSingleton( ?PersonEmailGC $singleton ): void
+        protected static function setSingleton( PersonEmailGC $singleton ): void
         {
             self::$singleton = $singleton;
         }

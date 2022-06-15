@@ -252,7 +252,7 @@
          * @param PersonNameController $controller
          * @return void
          */
-        public static final function setSingleton( PersonNameController $controller ): void
+        protected static final function setSingleton( PersonNameController $controller ): void
         {
             self::$controller = $controller;
         }
@@ -265,7 +265,9 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new PersonNameController() );
+                self::setSingleton(
+                    new PersonNameController()
+                );
             }
 
             return self::$controller;

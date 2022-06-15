@@ -239,7 +239,9 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new SecurityCSRFTokenController() );
+                self::setSingleton(
+                    new SecurityCSRFTokenController()
+                );
             }
 
             return self::$controller;
@@ -253,7 +255,9 @@
         {
             if( $this->isCacheEmpty() )
             {
-                $this->setCache( new RedisCacheCSRFController( true ) );
+                $this->setCache(
+                    new RedisCacheCSRFController( true )
+                );
             }
 
             return $this->cache;
@@ -314,7 +318,7 @@
          * @param SecurityCSRFTokenController $controller
          * @return void
          */
-        public static final function setSingleton( SecurityCSRFTokenController $controller ): void
+        protected static final function setSingleton( SecurityCSRFTokenController $controller ): void
         {
             self::$controller = $controller;
         }

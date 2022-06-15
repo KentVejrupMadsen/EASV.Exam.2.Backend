@@ -273,11 +273,13 @@
         /**
          * @return PersonAddressController
          */
-        public static function getSingleton(): PersonAddressController
+        public static final function getSingleton(): PersonAddressController
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new PersonAddressController() );
+                self::setSingleton(
+                    new PersonAddressController()
+                );
             }
 
             return self::$controller;

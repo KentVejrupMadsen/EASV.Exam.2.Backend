@@ -193,7 +193,7 @@
          * @param SecurityConfigurationController $controller
          * @return void
          */
-        public static final function setSingleton( SecurityConfigurationController $controller ): void
+        protected static final function setSingleton( SecurityConfigurationController $controller ): void
         {
             self::$controller = $controller;
         }
@@ -206,7 +206,9 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new SecurityConfigurationController() );
+                self::setSingleton(
+                    new SecurityConfigurationController()
+                );
             }
 
             return self::$controller;

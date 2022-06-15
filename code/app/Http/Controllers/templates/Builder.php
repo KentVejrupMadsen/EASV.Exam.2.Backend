@@ -18,6 +18,7 @@
          */
         public abstract function createModel( Array $input ): mixed;
 
+
         /**
          * @param array $input
          * @return mixed
@@ -31,15 +32,23 @@
          */
         public abstract function templateModels( Array $array ): void;
 
+
         /**
          * @param array $array
          * @return void
          */
         public abstract function creationOfModels( Array $array ): void;
 
+
         /**
          * @return array|null
          */
         public abstract function retrieveOutputResults(): ?array;
+
+
+        /**
+         * @return mixed
+         */
+        public abstract function retrieveSingular(): mixed;
     }
 ?>

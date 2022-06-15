@@ -25,6 +25,7 @@
 
         }
 
+
         /**
          * @param array $input
          * @return mixed
@@ -35,7 +36,8 @@
             return null;
         }
 
-        /**
+
+        /** Creates persistence data in the database and return it as a model
          * @param array $input
          * @return mixed
          */
@@ -45,7 +47,8 @@
             return null;
         }
 
-        /**
+
+        /** Creates multiple persistence data in the database and returns them as models in the output file
          * @param array $array
          * @return void
          */
@@ -65,6 +68,7 @@
         }
 
 
+
         /**
          * @return array|null
          */
@@ -75,27 +79,44 @@
         }
 
 
+        /**
+         * @return AccountEmailModel|null
+         */
+        public final function retrieveSingular(): ?AccountEmailModel
+        {
+
+            return null;
+        }
+
+
         // Variables
         private static ?PersonEmailBuilder $singleton =  null;
 
+
+        // Accessors
+            // Getters
         /**
-         * @return PersonEmailBuilder|null
+         * @return PersonEmailBuilder
          */
-        public static final function getSingleton(): ?PersonEmailBuilder
+        public static final function getSingleton(): PersonEmailBuilder
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new PersonEmailBuilder() );
+                self::setSingleton(
+                    new PersonEmailBuilder()
+                );
             }
 
             return self::$singleton;
         }
 
+
+            // Setters
         /**
-         * @param PersonEmailBuilder|null $singleton
+         * @param PersonEmailBuilder $singleton
          * @return void
          */
-        public static final function setSingleton( ?PersonEmailBuilder $singleton ): void
+        protected static final function setSingleton( PersonEmailBuilder $singleton ): void
         {
             self::$singleton = $singleton;
         }

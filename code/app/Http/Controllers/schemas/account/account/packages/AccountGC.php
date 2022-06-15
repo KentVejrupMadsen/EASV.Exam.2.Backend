@@ -56,9 +56,9 @@
         // Accessors
             // getters
         /**
-         * @return AccountGC|null
+         * @return AccountGC
          */
-        public static function getSingleton(): ?AccountGC
+        public static function getSingleton(): AccountGC
         {
             if( is_null( self::$singleton ) )
             {
@@ -72,9 +72,10 @@
 
             // setters
         /**
-         * @param AccountGC|null $singleton
+         * @param AccountGC $singleton
+         * @return void
          */
-        public static function setSingleton( ?AccountGC $singleton ): void
+        protected static function setSingleton( AccountGC $singleton ): void
         {
             self::$singleton = $singleton;
         }

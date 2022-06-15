@@ -460,7 +460,7 @@
          * @param AccountController $controller
          * @return void
          */
-        public static final function setSingleton( AccountController $controller ): void
+        protected static final function setSingleton( AccountController $controller ): void
         {
             self::$controller = $controller;
         }

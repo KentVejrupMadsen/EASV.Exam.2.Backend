@@ -27,13 +27,23 @@
 
         }
 
-        public function templateModel( array $input ): mixed
+
+        /**
+         * @param array $input
+         * @return mixed
+         */
+        public final function templateModel( array $input ): mixed
         {
 
             return null;
         }
 
-        public function createModel( array $input ): mixed
+
+        /**
+         * @param array $input
+         * @return mixed
+         */
+        public final function createModel( array $input ): mixed
         {
 
             return null;
@@ -44,7 +54,7 @@
          * @param array $array
          * @return void
          */
-        public function creationOfModels( array $array ): void
+        public final function creationOfModels( array $array ): void
         {
             // TODO: Implement creationOfModels() method.
         }
@@ -54,7 +64,7 @@
          * @param array $array
          * @return void
          */
-        public function templateModels( array $array ): void
+        public final function templateModels( array $array ): void
         {
             // TODO: Implement templateModels() method.
         }
@@ -63,9 +73,19 @@
         /**
          * @return array|null
          */
-        public function retrieveOutputResults(): ?array
+        public final function retrieveOutputResults(): ?array
         {
             // TODO: Implement retrieveOutputResults() method.
+            return null;
+        }
+
+
+        /**
+         * @return User|null
+         */
+        public final function retrieveSingular(): ?User
+        {
+            // TODO: Implement retrieveSingular() method.
             return null;
         }
 
@@ -77,9 +97,9 @@
         // Accessors
             // getters
         /**
-         * @return AccountBuilder|null
+         * @return AccountBuilder
          */
-        public static function getSingleton(): ?AccountBuilder
+        public static final function getSingleton(): AccountBuilder
         {
             if( is_null( self::$singleton ) )
             {
@@ -93,9 +113,10 @@
 
             // setters
         /**
-         * @param AccountBuilder|null $singleton
+         * @param AccountBuilder $singleton
+         * @return void
          */
-        public static function setSingleton( ?AccountBuilder $singleton ): void
+        protected static final function setSingleton( AccountBuilder $singleton ): void
         {
             self::$singleton = $singleton;
         }

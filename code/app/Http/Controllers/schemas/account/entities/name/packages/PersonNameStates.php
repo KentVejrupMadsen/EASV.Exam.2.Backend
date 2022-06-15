@@ -28,23 +28,30 @@
         // Variables
         private static ?PersonNameStates $singleton =  null;
 
+
+        // Accessors
+            // Getters
         /**
-         * @return PersonNameStates|null
+         * @return PersonNameStates
          */
-        public static function getSingleton(): ?PersonNameStates
+        public static final function getSingleton(): PersonNameStates
         {
             if( is_null( self::$singleton ) )
             {
-                self::setSingleton( new PersonNameStates() );
+                self::setSingleton(
+                    new PersonNameStates()
+                );
             }
 
             return self::$singleton;
         }
 
+            // Setters
         /**
-         * @param PersonNameStates|null $singleton
+         * @param PersonNameStates $singleton
+         * @return void
          */
-        public static function setSingleton( ?PersonNameStates $singleton ): void
+        protected static final function setSingleton( PersonNameStates $singleton ): void
         {
             self::$singleton = $singleton;
         }
