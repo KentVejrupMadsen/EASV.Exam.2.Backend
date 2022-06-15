@@ -11,7 +11,9 @@
     use App\Http\Requests\template\AccountProtectedRequest;
     use App\Http\Requests\template\BaseRequest;
     use App\Http\Requests\template\RequestDefaults;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
 
     // Internal
 

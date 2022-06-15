@@ -245,7 +245,7 @@
          * @param NewsletterController $controller
          * @return void
          */
-        public static final function setSingleton( NewsletterController $controller )
+        protected static final function setSingleton( NewsletterController $controller ): void
         {
             self::$controller = $controller;
         }
@@ -258,7 +258,9 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new NewsletterController() );
+                self::setSingleton(
+                    new NewsletterController()
+                );
             }
 
             return self::$controller;

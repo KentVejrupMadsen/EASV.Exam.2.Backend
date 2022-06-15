@@ -8,19 +8,20 @@
     namespace App\Http\Controllers\schemas\security\csrf;
 
     // External libraries
-    use App\Builders\SecurityCSRFBuilder;
+    use Illuminate\Http\JsonResponse;
+    use Illuminate\Http\Request;
+
+    use OpenApi\Attributes
+        as OA;
+
+
+    // Internal libraries
     use App\Http\Controllers\schemas\security\csrf\packages\CSRFResponseJSONFactory;
     use App\Http\Controllers\schemas\security\csrf\packages\RedisCacheCSRFController;
     use App\Http\Controllers\templates\CrudController;
     use App\Http\Requests\security\csrf\SecurityCSRFRequest;
     use App\Models\security\CSRFModel;
-    use Illuminate\Http\JsonResponse;
-    use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
-
-
-    // Internal libraries
-
+    use SecurityCSRFBuilder;
 
     /**
      * 
@@ -36,17 +37,6 @@
          */
         public function __construct( bool $makeSingleton = false )
         {
-            if( $this->isCacheEmpty() )
-            {
-                $controller = new RedisCacheCSRFController( true );
-                $this->setCache( $controller );
-            }
-
-            if( $this->isJsonFactoryEmpty() )
-            {
-                $this->setJsonFactory( CSRFResponseJSONFactory::getSingleton() );
-            }
-
             if( $makeSingleton )
             {
                 self::setSingleton( $this );
@@ -78,16 +68,16 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function access( SecurityCSRFRequest $request ): JsonResponse
+        public final function access( SecurityCSRFRequest $request )
         {
-            return Response()->json([], 200);
+            return null;
         }
 
 
         //
         /**
          * @param SecurityCSRFRequest $Request
-         * @return JsonResponse
+         * @return null
          */
         #[OA\Get( path: '/api/1.0.0/securities/csrf/read',
                   tags: [ '1.0.0', 'security' ] )]
@@ -101,7 +91,7 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicRead( SecurityCSRFRequest $Request ): JsonResponse
+        public function publicRead( SecurityCSRFRequest $Request )
         {
             return $this->read( $Request );
         }
@@ -109,11 +99,11 @@
 
         /**
          * @param Request $request
-         * @return JsonResponse
+         * @return null
          */
-        public function read( Request $request ): JsonResponse
+        public function read( Request $request )
         {
-            return Response()->json([], 200);
+            return null;
         }
 
 
@@ -133,14 +123,9 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public function publicCreate( SecurityCSRFRequest $Request ): JsonResponse
+        public function publicCreate( SecurityCSRFRequest $Request )
         {
-            $model = $this->create( $Request );
-
-            // Caches the secret and public key
-            $this->getCache()->create( $model, false );
-
-            return $this->getJsonFactory()->CreateResponse( $model );
+            return $this->create( $Request );
         }
 
 
@@ -148,9 +133,9 @@
          * @param Request $request
          * @return CSRFModel|null
          */
-        public final function create( Request $request ): ?CSRFModel
+        public final function create( Request $request )
         {
-            return $this->getConstructor()->constructNewModel( $request->ip() );
+            return null;
         }
 
 
@@ -170,7 +155,7 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function publicUpdate( SecurityCSRFRequest $Request ): JsonResponse
+        public final function publicUpdate( SecurityCSRFRequest $Request )
         {
             return $this->update( $Request );
         }
@@ -180,7 +165,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        public final function update( Request $request ): JsonResponse
+        public final function update( Request $request )
         {
             $array = [];
 
@@ -204,9 +189,9 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function reset( SecurityCSRFRequest $request ): JsonResponse
+        public final function reset( SecurityCSRFRequest $request )
         {
-            return Response()->json( [], 200 );
+            return null;
         }
 
 
@@ -229,9 +214,9 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function publicDelete( SecurityCSRFRequest $Request ): JsonResponse
+        public final function publicDelete( SecurityCSRFRequest $Request )
         {
-            return Response()->json( [], 200 );
+            return $this->delete( $Request );
         }
 
 
@@ -254,7 +239,9 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new SecurityCSRFTokenController() );
+                self::setSingleton(
+                    new SecurityCSRFTokenController()
+                );
             }
 
             return self::$controller;
@@ -268,7 +255,9 @@
         {
             if( $this->isCacheEmpty() )
             {
-                $this->setCache( new RedisCacheCSRFController( true ) );
+                $this->setCache(
+                    new RedisCacheCSRFController( true )
+                );
             }
 
             return $this->cache;
@@ -329,7 +318,7 @@
          * @param SecurityCSRFTokenController $controller
          * @return void
          */
-        public static final function setSingleton( SecurityCSRFTokenController $controller ): void
+        protected static final function setSingleton( SecurityCSRFTokenController $controller ): void
         {
             self::$controller = $controller;
         }

@@ -56,7 +56,7 @@
          * @param StateController $controller
          * @return void
          */
-        public static final function setSingleton( StateController $controller ): void
+        protected static final function setSingleton( StateController $controller ): void
         {
             self::$controller = $controller;
         }
@@ -68,7 +68,9 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new StateController() );
+                self::setSingleton(
+                    new StateController()
+                );
             }
 
             return self::$controller;

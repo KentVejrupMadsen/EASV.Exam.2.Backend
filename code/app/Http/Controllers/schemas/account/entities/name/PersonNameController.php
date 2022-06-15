@@ -11,7 +11,9 @@
     use App\Http\Controllers\templates\ControllerPipeline;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
 
     // Internal libraries
 
@@ -250,7 +252,7 @@
          * @param PersonNameController $controller
          * @return void
          */
-        public static final function setSingleton( PersonNameController $controller ): void
+        protected static final function setSingleton( PersonNameController $controller ): void
         {
             self::$controller = $controller;
         }
@@ -263,7 +265,9 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new PersonNameController() );
+                self::setSingleton(
+                    new PersonNameController()
+                );
             }
 
             return self::$controller;
