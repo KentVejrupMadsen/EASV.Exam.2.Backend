@@ -31,6 +31,9 @@
 
 
     //
+    use App\Http\Controllers\schemas\account\account\packages\format\AccountResponseFormat
+        as ControllerResponseFormat;
+
     use App\Http\Controllers\schemas\account\account\packages\format\AccountResponseJSON
         as ControllerJsonResponse;
 
@@ -69,11 +72,14 @@
             }
         }
 
+
         // Variables
-        private static ?AccountController $controller   = null;
-        private static ?Builder $builder                = null;
-        private static ?States $states                  = null;
-        private static ?GC $gc                          = null;
+        private static ?AccountController $controller       = null;
+        private static ?Builder $builder                    = null;
+        private static ?States $states                      = null;
+        private static ?GC $gc                              = null;
+        private static ?ControllerResponseFormat $formatter = null;
+
 
 
         // implement output
@@ -84,6 +90,7 @@
         {
             return false;
         }
+
 
         /**
          * @return bool
@@ -202,6 +209,7 @@
         {
             return null;
         }
+
 
         /**
          * @param Request $request
@@ -370,6 +378,7 @@
             return $this->update( $request );
         }
 
+
         /**
          * @param Request $request
          * @return JsonResponse
@@ -499,6 +508,16 @@
         }
 
 
+        /**
+         * @param ControllerResponseFormat $formatter
+         * @return void
+         */
+        protected static final function setFormatter( ControllerResponseFormat $formatter ): void
+        {
+            self::$formatter = $formatter;
+        }
+
+
         // Getters
         /**
          * @return AccountController
@@ -519,7 +538,7 @@
         /**
          * @return GC
          */
-        public static final function getGc(): GC
+        protected static final function getGc(): GC
         {
             if( is_null( self::$gc ) )
             {
@@ -535,7 +554,7 @@
         /**
          * @return Builder
          */
-        public static final function getBuilder(): Builder
+        protected static final function getBuilder(): Builder
         {
             if( is_null( self::$builder ) )
             {
@@ -551,7 +570,7 @@
         /**
          * @return States
          */
-        public static final function getStates(): States
+        protected static final function getStates(): States
         {
             if( is_null( self::$states ) )
             {
@@ -563,5 +582,22 @@
             return self::$states;
         }
 
+
+        /**
+         * @return ControllerResponseFormat|null
+         */
+        protected static final function getFormatter(): ?ControllerResponseFormat
+        {
+            return self::$formatter;
+        }
+
+
+        /**
+         * @return bool
+         */
+        protected static final function isFormatterNull(): bool
+        {
+            return is_null( self::$formatter );
+        }
     }
 ?>

@@ -28,6 +28,10 @@
         }
 
 
+        // Variables
+        private static ?AccountBuilder $singleton =  null;
+
+
         /**
          * @param array $input
          * @return mixed
@@ -56,7 +60,7 @@
          */
         public final function creationOfModels( array $array ): void
         {
-            // TODO: Implement creationOfModels() method.
+
         }
 
 
@@ -66,7 +70,7 @@
          */
         public final function templateModels( array $array ): void
         {
-            // TODO: Implement templateModels() method.
+
         }
 
 
@@ -75,7 +79,7 @@
          */
         public final function retrieveOutputResults(): ?array
         {
-            // TODO: Implement retrieveOutputResults() method.
+
             return null;
         }
 
@@ -85,13 +89,9 @@
          */
         public final function retrieveSingular(): ?User
         {
-            // TODO: Implement retrieveSingular() method.
+
             return null;
         }
-
-
-        // Variables
-        private static ?AccountBuilder $singleton =  null;
 
 
         // Accessors
