@@ -70,7 +70,10 @@
         }
 
         // Variables
-        private static ?AccountController $controller = null;
+        private static ?AccountController $controller   = null;
+        private static ?Builder $builder                = null;
+        private static ?States $states                  = null;
+        private static ?GC $gc                          = null;
 
 
         // implement output
@@ -466,6 +469,36 @@
         }
 
 
+        /**
+         * @param Builder $builder
+         * @return void
+         */
+        protected static final function setBuilder( Builder $builder ): void
+        {
+            self::$builder = $builder;
+        }
+
+
+        /**
+         * @param States $states
+         * @return void
+         */
+        protected static final function setStates( States $states ): void
+        {
+            self::$states = $states;
+        }
+
+
+        /**
+         * @param GC $gc
+         * @return void
+         */
+        protected final static function setGc( GC $gc ): void
+        {
+            self::$gc = $gc;
+        }
+
+
         // Getters
         /**
          * @return AccountController
@@ -474,10 +507,60 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new AccountController() );
+                self::setSingleton(
+                    new AccountController()
+                );
             }
 
             return self::$controller;
+        }
+
+
+        /**
+         * @return GC
+         */
+        public static final function getGc(): GC
+        {
+            if( is_null( self::$gc ) )
+            {
+                self::setGc(
+                    new GC()
+                );
+            }
+
+            return self::$gc;
+        }
+
+
+        /**
+         * @return Builder
+         */
+        public static final function getBuilder(): Builder
+        {
+            if( is_null( self::$builder ) )
+            {
+                self::setBuilder(
+                    new Builder()
+                );
+            }
+
+            return self::$builder;
+        }
+
+
+        /**
+         * @return States
+         */
+        public static final function getStates(): States
+        {
+            if( is_null( self::$states ) )
+            {
+                self::setStates(
+                    new States()
+                );
+            }
+
+            return self::$states;
         }
 
     }
