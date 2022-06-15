@@ -66,8 +66,9 @@
 
             if( $isArray )
             {
-
             }
+
+            return;
         }
 
 
@@ -110,11 +111,54 @@
         public final function creationOfModels( array $input ): void
         {
             $isArray = $this->hasInputArrayCreationKey( $input );
+            $modelsCreated = null;
 
             if( $isArray )
             {
+                $array = $input[ $this->getCreateOperation() ];
+                $modelsToBeInserted = $this->convertToEloquentModels( $array );
+                $sizeOfModels = count( $modelsToBeInserted );
 
+                for( $index = 0;
+                     $index < $sizeOfModels;
+                     $index++ )
+                {
+                    $current = $modelsToBeInserted[ $index ];
+                    fwrite(STDERR, print_r($current, true));
+
+                    $justCreated = Model::create( $current );
+                    $this->appendToBuffer( $justCreated );
+                }
             }
+
+            // Appends the current result to the buffer
+            if( isset( $modelsCreated ) )
+            {
+                $this->appendToBuffer( $modelsCreated );
+            }
+        }
+
+
+        /**
+         * @param array $inputArr
+         * @return array
+         */
+        private function convertToEloquentModels( array $inputArr ): array
+        {
+            $retVal = array();
+            $sizeOfArray = count( $inputArr );
+
+            for( $index = 0;
+                 $index < $sizeOfArray;
+                 $index++ )
+            {
+                $currentIndexString = $inputArr[ $index ];
+                $el = $this->makeEloquentModel( $currentIndexString );
+
+                array_push( $retVal, $el );
+            }
+
+            return $retVal;
         }
 
 
@@ -259,16 +303,9 @@
          * @param string $key
          * @return bool
          */
-        protected final function isInputAnArray( array $input, string $key ) : bool
+        protected final function isValueInInputAnArray( array $input, string $key ): bool
         {
-            $value = false;
-
-            if( is_array( $input[ $key ] ) )
-            {
-                $value = true;
-            }
-
-            return $value;
+            return is_array( $input[ $key ] );
         }
 
 
@@ -289,7 +326,7 @@
          */
         protected final function hasInputArrayCreationKey( array $input ): bool
         {
-            return $this->hasInputArrayKey( $input, $this->getCreateOperation() );
+            return $this->isValueInInputAnArray( $input, $this->getCreateOperation() );
         }
 
 
@@ -299,7 +336,7 @@
          */
         protected final function hasInputArrayMakeTemplateKey( array $input ): bool
         {
-            return $this->hasInputArrayKey( $input, $this->getMakeTemplatesOperation() );
+            return $this->isValueInInputAnArray( $input, $this->getMakeTemplatesOperation() );
         }
 
 
@@ -326,11 +363,17 @@
 
         /**
          * @param Model $input
-         * @return int
+         * @return array
          */
-        protected final function appendToBuffer( Model $input ): int
+        protected final function appendToBuffer( Model $input ): array
         {
-            return array_push($this->buffer, $input);
+            if( is_null( $this->buffer ) )
+            {
+                $this->setBuffer( array() );
+            }
+
+            array_push( $this->buffer, $input );
+            return $this->getBuffer();
         }
     }
 ?>
