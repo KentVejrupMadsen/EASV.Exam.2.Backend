@@ -8,13 +8,12 @@
     namespace App\Http\Controllers\schemas\account\entities\email;
 
     // External Libraries
+    use Illuminate\Http\JsonResponse;
     use OpenApi\Attributes
         as OA;
 
     use Illuminate\Http\JsonResponse
         as ResponseJson;
-
-
 
     use Illuminate\Http\Request;
 
@@ -22,8 +21,17 @@
     use App\Http\Controllers\templates\ControllerPipeline
         as Pipeline;
 
-    use App\Models\tables\AccountEmailModel;
+    use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailBuilder
+        as ControllerBuilder;
 
+    use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailGC
+        as ControllerGC;
+
+    use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailStates
+        as ControllerStates;
+
+    use App\Models\tables\AccountEmailModel
+        as Model;
 
 
     /**
@@ -50,6 +58,9 @@
 
         // Variables
         private static ?PersonEmailController $controller = null;
+        private static ?ControllerBuilder $builder = null;
+        private static ?ControllerGC $gc = null;
+        private static ?ControllerStates $states = null;
 
 
         // functions
@@ -94,9 +105,9 @@
 
         /**
          * @param array $request
-         * @return JsonResponse|null
+         * @return ResponseJson
          */
-        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
+        public final function pipelineTowardJSON( Array $request ): ResponseJson
         {
             if( !$this->hasImplementedJSON() )
             {
@@ -104,7 +115,7 @@
                 abort(501);
             }
 
-            return null;
+            return Response()->json();
         }
 
         /**
@@ -127,7 +138,7 @@
         /**
          * Pipeline function:
          * @param Request $request
-         * @return AccountEmailModel|null
+         * @return Model|null
          */
         #[OA\Get( path: '/api/1.0.0/accounts/entities/email/read', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
@@ -143,7 +154,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_read( Request $request ): ?AccountEmailModel
+        public final function public_read( Request $request ): ?Model
         {
             return $this->read( $request );
         }
@@ -151,9 +162,9 @@
 
         /**
          * @param Request $request
-         * @return AccountEmailModel|null
+         * @return Model|null
          */
-        public final function read( Request $request ): ?AccountEmailModel
+        public final function read( Request $request ): ?Model
         {
             return null;
         }
@@ -205,7 +216,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_create( Request $request )
+        public final function public_create( Request $request ): JsonResponse
         {
             return $this->create( $request );
         }
@@ -215,7 +226,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        public final function create( Request $request )
+        public final function create( Request $request ): JsonResponse
         {
 
             return Response()->json(null, 200);
@@ -251,6 +262,42 @@
 
 
         // Accessors
+            // Setters
+        /**
+         * @param PersonEmailController $controller
+         * @return void
+         */
+        public static final function setSingleton( PersonEmailController $controller ): void
+        {
+            self::$controller = $controller;
+        }
+
+
+        /**
+         * @param ControllerBuilder|null $builder
+         */
+        protected static final function setBuilder( ?ControllerBuilder $builder ): void
+        {
+            self::$builder = $builder;
+        }
+
+        /**
+         * @param ControllerStates|null $states
+         */
+        protected static final function setStates( ?ControllerStates $states ): void
+        {
+            self::$states = $states;
+        }
+
+        /**
+         * @param ControllerGC|null $gc
+         */
+        protected static final function setGc( ?ControllerGC $gc ): void
+        {
+            self::$gc = $gc;
+        }
+
+            // Getters
         /**
          * @return PersonEmailController
          */
@@ -258,19 +305,56 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new PersonEmailController() );
+                self::setSingleton(
+                    new PersonEmailController()
+                );
             }
 
             return self::$controller;
         }
 
         /**
-         * @param PersonEmailController $controller
-         * @return void
+         * @return ControllerStates
          */
-        public static final function setSingleton( PersonEmailController $controller )
+        protected static final function getStates(): ControllerStates
         {
-            self::$controller = $controller;
+            if( is_null( self::$states ) )
+            {
+                self::setStates(
+                    new ControllerStates()
+                );
+            }
+
+            return self::$states;
+        }
+
+        /**
+         * @return ControllerBuilder
+         */
+        protected static final function getBuilder(): ControllerBuilder
+        {
+            if( is_null( self::$builder ) )
+            {
+                self::setBuilder(
+                    new ControllerBuilder()
+                );
+            }
+
+            return self::$builder;
+        }
+
+        /**
+         * @return ControllerGC
+         */
+        protected static final function getGc(): ControllerGC
+        {
+            if( is_null( self::$gc ) )
+            {
+                self::setGc(
+                    new ControllerGC()
+                );
+            }
+            return self::$gc;
         }
     }
 ?>

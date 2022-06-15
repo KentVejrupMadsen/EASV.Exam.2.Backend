@@ -16,7 +16,18 @@
 
     // Internal Libraries
     use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\account\entities\address\PersonAddressRequest;
+
+    use App\Http\Requests\account\entities\address\PersonAddressRequest
+        as ControllerRequest;
+
+    use App\Http\Controllers\schemas\account\entities\address\packages\PersonAddressBuilder
+        as ControllerBuilder;
+
+    use App\Http\Controllers\schemas\account\entities\address\packages\PersonAddressGC
+        as ControllerGC;
+
+    use App\Http\Controllers\schemas\account\entities\address\packages\PersonAddressStates
+        as ControllerStates;
 
 
     /**
@@ -146,7 +157,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_read( PersonAddressRequest $request )
+        public final function public_read( ControllerRequest $request )
         {
 
             return $this->read( $request );
@@ -154,7 +165,7 @@
 
 
         /**
-         * @param PersonAddressRequest $request
+         * @param ControllerRequest $request
          * @return false
          */
         #[OA\Delete( path: '/api/1.0.0/accounts/entities/address/delete',
@@ -172,7 +183,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public function public_delete( PersonAddressRequest $request )
+        public function public_delete( ControllerRequest $request )
         {
 
             return $this->delete( $request );
@@ -207,7 +218,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_create( PersonAddressRequest $request )
+        public final function public_create( ControllerRequest $request )
         {
             return $this->create( $request );
         }
@@ -241,7 +252,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_update( PersonAddressRequest $request ): JsonResponse
+        public final function public_update( ControllerRequest $request ): JsonResponse
         {
             return $this->update( $request );
         }
