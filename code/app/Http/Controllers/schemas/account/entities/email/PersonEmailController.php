@@ -8,16 +8,18 @@
     namespace App\Http\Controllers\schemas\account\entities\email;
 
     // External Libraries
-    use Illuminate\Http\JsonResponse;
-    use OpenApi\Attributes
-        as OA;
-
     use Illuminate\Http\JsonResponse
         as ResponseJson;
 
     use Illuminate\Http\Request;
 
+    use OpenApi\Attributes
+        as OA;
+
     // Internal libraries
+    use App\Http\Requests\account\entities\email\PersonEmailRequest
+        as ControllerRequest;
+
     use App\Http\Controllers\templates\ControllerPipeline
         as Pipeline;
 
@@ -135,12 +137,13 @@
 
 
         // Code
+
         /**
-         * Pipeline function:
-         * @param Request $request
+         * @param ControllerRequest $request
          * @return Model|null
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/entities/email/read', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/email/read',
+                  tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -154,7 +157,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_read( Request $request ): ?Model
+        public final function public_read( ControllerRequest $request ): ?Model
         {
             return $this->read( $request );
         }
@@ -171,10 +174,11 @@
 
 
         /**
-         * @param Request $request
+         * @param ControllerRequest $request
          * @return false
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/entities/email/delete', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/email/delete',
+                     tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -188,7 +192,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_delete( Request $request )
+        public final function public_delete( ControllerRequest $request )
         {
             return $this->delete( $request );
         }
@@ -205,10 +209,11 @@
 
 
         /**
-         * @param Request $request
-         * @return JsonResponse
+         * @param ControllerRequest $request
+         * @return ResponseJson
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/entities/email/create', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/email/create',
+                   tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
@@ -216,7 +221,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_create( Request $request ): JsonResponse
+        public final function public_create( ControllerRequest $request ): ResponseJson
         {
             return $this->create( $request );
         }
@@ -224,9 +229,9 @@
 
         /**
          * @param Request $request
-         * @return JsonResponse
+         * @return ResponseJson
          */
-        public final function create( Request $request ): JsonResponse
+        public final function create( Request $request ): ResponseJson
         {
 
             return Response()->json(null, 200);
@@ -234,8 +239,8 @@
 
 
         /**
-         * @param Request $request
-         * @return JsonResponse
+         * @param ControllerRequest $request
+         * @return ResponseJson
          */
         #[OA\Patch( path: '/api/1.0.0/accounts/entities/email/update', tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
@@ -245,7 +250,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_update( Request $request ): JsonResponse
+        public final function public_update( ControllerRequest $request ): ResponseJson
         {
             return $this->update( $request );
         }
@@ -253,9 +258,9 @@
 
         /**
          * @param Request $request
-         * @return JsonResponse
+         * @return ResponseJson
          */
-        public final function update( Request $request ): JsonResponse
+        public final function update( Request $request ): ResponseJson
         {
             return Response()->json( null, 200 );
         }
@@ -281,6 +286,7 @@
             self::$builder = $builder;
         }
 
+
         /**
          * @param ControllerStates|null $states
          */
@@ -288,6 +294,7 @@
         {
             self::$states = $states;
         }
+
 
         /**
          * @param ControllerGC|null $gc
@@ -313,6 +320,7 @@
             return self::$controller;
         }
 
+
         /**
          * @return ControllerStates
          */
@@ -327,6 +335,7 @@
 
             return self::$states;
         }
+
 
         /**
          * @return ControllerBuilder
@@ -343,6 +352,7 @@
             return self::$builder;
         }
 
+
         /**
          * @return ControllerGC
          */
@@ -354,6 +364,7 @@
                     new ControllerGC()
                 );
             }
+
             return self::$gc;
         }
     }
