@@ -8,15 +8,17 @@
     namespace App\Http\Controllers\schemas\security\recaptcha;
 
     // External libraries
-use App\Http\Controllers\templates\CrudController;
-use App\Http\Requests\security\csrf\SecurityCSRFRequest;
-use Illuminate\Http\Request;
-use OpenApi\Attributes as OA;
+    use Illuminate\Http\Request;
 
-// Internal libraries
+    use OpenApi\Attributes
+        as OA;
+
+    // Internal libraries
+    use App\Http\Controllers\templates\CrudController;
+    use App\Http\Requests\security\csrf\SecurityCSRFRequest;
 
 
-/**
+    /**
      *
      */
     #[OA\Schema( title: 'Security Recaptcha Controller',
@@ -61,6 +63,7 @@ use OpenApi\Attributes as OA;
         {
             return $this->read( $Request );
         }
+
 
         /**
          * @param Request $request
@@ -127,6 +130,7 @@ use OpenApi\Attributes as OA;
             return $this->create( $Request );
         }
 
+
         /**
          * @param Request $request
          * @return null
@@ -159,6 +163,7 @@ use OpenApi\Attributes as OA;
             return $this->delete( $Request );
         }
 
+
         /**
          * @param Request $request
          * @return null
@@ -171,15 +176,7 @@ use OpenApi\Attributes as OA;
 
 
         // Accessors
-        /**
-         * @param SecurityRecaptchaController $controller
-         * @return void
-         */
-        public static final function setSingleton( SecurityRecaptchaController $controller ): void
-        {
-            self::$controller = $controller;
-        }
-
+            // Getters
         /**
          * @return SecurityRecaptchaController
          */
@@ -187,10 +184,22 @@ use OpenApi\Attributes as OA;
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new SecurityRecaptchaController() );
+                self::setSingleton(
+                    new SecurityRecaptchaController()
+                );
             }
 
             return self::$controller;
+        }
+
+        // setters
+        /**
+         * @param SecurityRecaptchaController $controller
+         * @return void
+         */
+        protected static final function setSingleton( SecurityRecaptchaController $controller ): void
+        {
+            self::$controller = $controller;
         }
     }
 ?>

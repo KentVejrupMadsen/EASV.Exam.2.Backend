@@ -8,20 +8,46 @@
     namespace App\Http\Controllers\schemas\account\account;
 
     // External Libraries
-    use App\Builders\AccountBuilder;
-    use App\Builders\PersonEmailBuilder;
-    use App\Http\Controllers\schemas\account\account\packages\AccountResponseJSONFactory;
-    use App\Http\Controllers\schemas\account\entities\email\PersonEmailController;
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Http\Requests\account\account\AccountRequest;
-    use App\Models\tables\AccountEmailModel;
-    use App\Models\tables\User;
-    use Carbon\Carbon;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
 
     // Internal Libraries
+        // Request to the controller : http
+    use App\Http\Requests\account\account\AccountRequest
+        as ControllerRequest;
+
+    //
+    use App\Http\Controllers\schemas\account\account\packages\AccountBuilder
+        as Builder;
+
+    use App\Http\Controllers\schemas\account\account\packages\AccountStates
+        as States;
+
+    use App\Http\Controllers\schemas\account\account\packages\AccountGC
+        as GC;
+
+
+    //
+    use App\Http\Controllers\schemas\account\account\packages\format\AccountResponseFormat
+        as ControllerResponseFormat;
+
+    use App\Http\Controllers\schemas\account\account\packages\format\AccountResponseJSON
+        as ControllerJsonResponse;
+
+    use App\Http\Controllers\schemas\account\account\packages\format\AccountResponseCSV
+        as ControllerCSVResponse;
+
+    use App\Http\Controllers\schemas\account\account\packages\format\AccountResponseXML
+        as ControllerXMLResponse;
+
+    //
+    use App\Http\Controllers\templates\ControllerPipeline;
+
+    // Account Model
+    use App\Models\tables\User;
 
 
     /**
@@ -46,11 +72,14 @@
             }
         }
 
-        // Variables
-        private static ?AccountController           $controller = null;
-        private static ?AccountResponseJSONFactory  $responseFactory = null;
 
-        private const contentType = 'Content-Type';
+        // Variables
+        private static ?AccountController $controller       = null;
+        private static ?Builder $builder                    = null;
+        private static ?States $states                      = null;
+        private static ?GC $gc                              = null;
+        private static ?ControllerResponseFormat $formatter = null;
+
 
 
         // implement output
@@ -61,6 +90,7 @@
         {
             return false;
         }
+
 
         /**
          * @return bool
@@ -78,14 +108,6 @@
         {
 
             return false;
-        }
-
-        /**
-         * @return string
-         */
-        protected function defaultToContent(): string
-        {
-            return 'application/json';
         }
 
 
@@ -138,8 +160,8 @@
 
 
         /**
-         * @param AccountRequest $request
-         * @return JsonResponse
+         * @param ControllerRequest $request
+         * @return mixed
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/me',
                   tags: ['1.0.0', 'account', 'authentication'] )]
@@ -156,26 +178,14 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function me( AccountRequest $request ): JsonResponse
+        public final function me( ControllerRequest $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            $currentUser = $request->user();
-            $response[ 'account' ] = $currentUser;
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
         /**
-         * @param AccountRequest $request
+         * @param ControllerRequest $request
          * @return null
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/read',
@@ -195,11 +205,11 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_read( AccountRequest $request )
+        public final function public_read( ControllerRequest $request )
         {
-
-            return $this->read( $request );
+            return null;
         }
+
 
         /**
          * @param Request $request
@@ -207,15 +217,12 @@
          */
         public final function read( Request $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-            $response = [];
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
         /**
-         * @param Request $request
+         * @param ControllerRequest $request
          * @return JsonResponse|null
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/login',
@@ -231,23 +238,14 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function login( Request $request )
+        public final function login( ControllerRequest $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
         /**
-         * @param AccountRequest $request
+         * @param ControllerRequest $request
          * @return null
          */
         #[OA\Get( path: '/api/1.0.0/accounts/account/logout',
@@ -272,29 +270,14 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function logout( Request $request )
+        public final function logout( ControllerRequest $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            $user = $request->user();
-            $user->currentAccessToken()->delete();
-
-            $response[ 'issued' ] = Carbon::now();
-            $response[ 'message' ] = 'tokens revoked';
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
         /**
-         * @param Request $request
+         * @param ControllerRequest $request
          * @return JsonResponse
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/create',
@@ -349,98 +332,24 @@
                        description: 'Bad Request - an account already exist with the given parameters' )]
         #[OA\Response( response: '540',
                        description: 'content not found' )]
-        public final function public_create( Request $request )
+        public final function public_create( ControllerRequest $request )
         {
             return $this->create( $request );
         }
 
 
         /**
-         * @param array $InputKeys
-         * @param AccountEmailModel $mailForm
-         * @param string $password
-         * @return array
-         */
-        private function createForm( array $InputKeys,
-                                     AccountEmailModel $mailForm,
-                                     string $password ): array
-        {
-            return
-            [
-                User::field_username => $InputKeys[ User::field_username ],
-                User::field_password => $password,
-                User::field_email_id => $mailForm[ 'id' ],
-                User::field_created_at => Carbon::now(),
-                User::field_updated_at => Carbon::now(),
-                User::field_settings => array()
-            ];
-        }
-
-
-        /**
-         * @param Request $request
+         * @param ControllerRequest $request
          * @return JsonResponse|null
          */
         public final function create( Request $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-            $accountMigrator = self::getConstructor();
-
-            $form = $request->input( 'account' );
-            $securityPassword = $request->input( 'account.security.password' );
-
-            // Make private function
-            $mailModel = null;
-
-            if( PersonEmailController::hasAccountEmailContainer( $request ) )
-            {
-                $personContainer = $form[ 'person' ];
-
-                $emailConstructor = PersonEmailBuilder::getSingleton();
-
-                if( !$emailConstructor->hasEmailContainer( $personContainer[ 'email' ] ) )
-                {
-                    $mailModel = $emailConstructor->createEmail( $personContainer[ 'email' ] );
-                }
-                else
-                {
-                    $mailModel = $emailConstructor->retrieveEmail( $personContainer[ 'email' ] );
-
-                    if( $accountMigrator->validateEmailIsUsedWithId( $mailModel->id ) )
-                    {
-                        abort( 400, message: 'the given email is already taken by another account');
-                    }
-                }
-            }
-
-            if( $accountMigrator->validateUsernameIsUsed( $form[ User::field_username ] ) )
-            {
-                abort( 400, message: 'the given username is already taken by another account' );
-            }
-
-            $account = $accountMigrator->createAccountForm(
-                $this::createForm( $form, $mailModel, $securityPassword )
-            );
-
-            $token = $accountMigrator->issueBearerToken( $account );
-
-            $response[ 'username' ] = $account->username;
-            $response[ 'bearer_token' ] = $token;
-
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
         /**
-         * @param AccountRequest $request
+         * @param ControllerRequest $request
          * @return JsonResponse
          */
         #[OA\Patch( path: '/api/1.0.0/accounts/account/update',
@@ -464,10 +373,11 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_update( AccountRequest $request )
+        public final function public_update( ControllerRequest $request )
         {
             return $this->update( $request );
         }
+
 
         /**
          * @param Request $request
@@ -475,21 +385,12 @@
          */
         public final function update( Request $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
         /**
-         * @param AccountRequest $request
+         * @param ControllerRequest $request
          * @return JsonResponse|null
          */
         #[OA\Delete( path: '/api/1.0.0/accounts/account/delete',
@@ -514,10 +415,10 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function public_delete( AccountRequest $request )
+        public final function public_delete( ControllerRequest $request )
         {
 
-            return $this->delete( $request );
+            return null;
         }
 
 
@@ -527,21 +428,12 @@
          */
         public final function delete( Request $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
         /**
-         * @param AccountRequest $request
+         * @param ControllerRequest $request
          * @return null
          */
         #[OA\Post( path: '/api/1.0.0/accounts/account/verify',
@@ -559,18 +451,9 @@
         )]
         #[OA\Response( response: '404',
                        description: 'content not found' )]
-        public final function verify( AccountRequest $request )
+        public final function verify( ControllerRequest $request )
         {
-            $content_type = $request->header( $this->getContentType() );
-
-            if( !isset( $content_type ) )
-            {
-                $content_type = $this->defaultToContent();
-            }
-
-            $response = [];
-
-            return $this->Pipeline( $content_type, $response );
+            return null;
         }
 
 
@@ -589,17 +472,49 @@
          * @param AccountController $controller
          * @return void
          */
-        public static final function setSingleton( AccountController $controller ): void
+        protected static final function setSingleton( AccountController $controller ): void
         {
             self::$controller = $controller;
         }
 
+
         /**
-         * @param AccountResponseJSONFactory|null $responseFactory
+         * @param Builder $builder
+         * @return void
          */
-        public final static function setResponseFactory( ?AccountResponseJSONFactory $responseFactory ): void
+        protected static final function setBuilder( Builder $builder ): void
         {
-            self::$responseFactory = $responseFactory;
+            self::$builder = $builder;
+        }
+
+
+        /**
+         * @param States $states
+         * @return void
+         */
+        protected static final function setStates( States $states ): void
+        {
+            self::$states = $states;
+        }
+
+
+        /**
+         * @param GC $gc
+         * @return void
+         */
+        protected final static function setGc( GC $gc ): void
+        {
+            self::$gc = $gc;
+        }
+
+
+        /**
+         * @param ControllerResponseFormat $formatter
+         * @return void
+         */
+        protected static final function setFormatter( ControllerResponseFormat $formatter ): void
+        {
+            self::$formatter = $formatter;
         }
 
 
@@ -611,39 +526,78 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new AccountController() );
+                self::setSingleton(
+                    new AccountController()
+                );
             }
 
             return self::$controller;
         }
 
+
         /**
-         * @return AccountResponseJSONFactory|null
+         * @return GC
          */
-        public final static function getResponseFactory(): ?AccountResponseJSONFactory
+        protected static final function getGc(): GC
         {
-            if( is_null( self::$responseFactory ) )
+            if( is_null( self::$gc ) )
             {
-                self::setResponseFactory( AccountResponseJSONFactory::getSingleton() );
+                self::setGc(
+                    new GC()
+                );
             }
 
-            return self::$responseFactory;
+            return self::$gc;
         }
 
-        /**
-         * @return AccountBuilder|null
-         */
-        public static final function getConstructor(): ?AccountBuilder
-        {
-            return AccountBuilder::getSingleton();
-        }
 
         /**
-         * @return string
+         * @return Builder
          */
-        protected final function getContentType(): string
+        protected static final function getBuilder(): Builder
         {
-            return self::contentType;
+            if( is_null( self::$builder ) )
+            {
+                self::setBuilder(
+                    new Builder()
+                );
+            }
+
+            return self::$builder;
+        }
+
+
+        /**
+         * @return States
+         */
+        protected static final function getStates(): States
+        {
+            if( is_null( self::$states ) )
+            {
+                self::setStates(
+                    new States()
+                );
+            }
+
+            return self::$states;
+        }
+
+
+        /**
+         * @return ControllerResponseFormat|null
+         */
+        protected static final function getFormatter(): ?ControllerResponseFormat
+        {
+            return self::$formatter;
+        }
+
+
+        /**
+         * @return bool
+         */
+        protected static final function isFormatterNull(): bool
+        {
+            return is_null( self::$formatter );
         }
     }
 ?>

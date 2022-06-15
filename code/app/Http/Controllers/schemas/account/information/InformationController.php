@@ -8,12 +8,14 @@
     namespace App\Http\Controllers\schemas\account\information;
 
     // External libraries
-    use App\Http\Controllers\templates\ControllerPipeline;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
 
     // Internal libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
 
 
     /**
@@ -116,6 +118,7 @@
             return null;
         }
 
+
         /**
          * @param Request $request
          * @return null
@@ -138,6 +141,7 @@
 
             return $this->read( $request );
         }
+
 
         /**
          * @param Request $request
@@ -174,6 +178,7 @@
             return $this->create( $request );
         }
 
+
         /**
          * @param Request $request
          * @return null
@@ -208,6 +213,7 @@
 
             return $this->update( $request );
         }
+
 
         /**
          * @param Request $request
@@ -245,6 +251,7 @@
             return $this->delete( $request );
         }
 
+
         /**
          * @param Request $request
          * @return null
@@ -255,12 +262,13 @@
             return null;
         }
 
+
         // Accessor
         /**
          * @param InformationController $controller
          * @return void
          */
-        public static final function setSingleton( InformationController $controller ): void
+        protected static final function setSingleton( InformationController $controller ): void
         {
             self::$controller = $controller;
         }
@@ -272,7 +280,9 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new InformationController() );
+                self::setSingleton(
+                    new InformationController()
+                );
             }
 
             return self::$controller;

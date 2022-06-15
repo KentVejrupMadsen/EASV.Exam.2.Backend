@@ -8,12 +8,15 @@
     namespace App\Http\Controllers\schemas\security\configuration;
 
     // External libraries
-    use App\Http\Controllers\templates\CrudController;
-    use App\Http\Requests\security\configuration\SecurityConfigurationRequest;
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
 
     // Internal Libraries
+    use App\Http\Controllers\templates\CrudController;
+    use App\Http\Requests\security\configuration\SecurityConfigurationRequest;
+
 
 
     /**
@@ -190,7 +193,7 @@
          * @param SecurityConfigurationController $controller
          * @return void
          */
-        public static final function setSingleton( SecurityConfigurationController $controller ): void
+        protected static final function setSingleton( SecurityConfigurationController $controller ): void
         {
             self::$controller = $controller;
         }
@@ -203,7 +206,9 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new SecurityConfigurationController() );
+                self::setSingleton(
+                    new SecurityConfigurationController()
+                );
             }
 
             return self::$controller;

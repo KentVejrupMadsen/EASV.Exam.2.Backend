@@ -8,13 +8,32 @@
     namespace App\Http\Controllers\schemas\account\entities\email;
 
     // External Libraries
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Models\tables\AccountEmailModel;
-    use Illuminate\Http\JsonResponse;
+    use Illuminate\Http\JsonResponse
+        as ResponseJson;
+
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
+
+    use OpenApi\Attributes
+        as OA;
 
     // Internal libraries
+    use App\Http\Requests\account\entities\email\PersonEmailRequest
+        as ControllerRequest;
+
+    use App\Http\Controllers\templates\ControllerPipeline
+        as Pipeline;
+
+    use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailBuilder
+        as ControllerBuilder;
+
+    use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailGC
+        as ControllerGC;
+
+    use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailStates
+        as ControllerStates;
+
+    use App\Models\tables\AccountEmailModel
+        as Model;
 
 
     /**
@@ -24,7 +43,7 @@
                  description: '',
                  type: self::model_type )]
     class PersonEmailController
-        extends ControllerPipeline
+        extends Pipeline
     {
         /**
          * @param bool $makeSingleton
@@ -41,6 +60,9 @@
 
         // Variables
         private static ?PersonEmailController $controller = null;
+        private static ?ControllerBuilder     $builder = null;
+        private static ?ControllerGC          $gc = null;
+        private static ?ControllerStates      $states = null;
 
 
         // functions
@@ -52,6 +74,7 @@
             return false;
         }
 
+
         /**
          * @return bool
          */
@@ -60,6 +83,7 @@
             return true;
         }
 
+
         /**
          * @return bool
          */
@@ -67,6 +91,7 @@
         {
             return false;
         }
+
 
         /**
          * @param array $request
@@ -83,11 +108,12 @@
             return null;
         }
 
+
         /**
          * @param array $request
-         * @return JsonResponse|null
+         * @return ResponseJson
          */
-        public final function pipelineTowardJSON( Array $request ): ?JsonResponse
+        public final function pipelineTowardJSON( Array $request ): ResponseJson
         {
             if( !$this->hasImplementedJSON() )
             {
@@ -95,8 +121,9 @@
                 abort(501);
             }
 
-            return null;
+            return Response()->json();
         }
+
 
         /**
          * @param array $request
@@ -116,11 +143,11 @@
 
         // Code
         /**
-         * Pipeline function:
-         * @param Request $request
-         * @return AccountEmailModel|null
+         * @param ControllerRequest $request
+         * @return Model|null
          */
-        #[OA\Get( path: '/api/1.0.0/accounts/entities/email/read', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Get( path: '/api/1.0.0/accounts/entities/email/read',
+                  tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -134,7 +161,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_read( Request $request ): ?AccountEmailModel
+        public final function public_read( ControllerRequest $request ): ?Model
         {
             return $this->read( $request );
         }
@@ -142,19 +169,20 @@
 
         /**
          * @param Request $request
-         * @return AccountEmailModel|null
+         * @return Model|null
          */
-        public final function read( Request $request ): ?AccountEmailModel
+        public final function read( Request $request ): ?Model
         {
             return null;
         }
 
 
         /**
-         * @param Request $request
+         * @param ControllerRequest $request
          * @return false
          */
-        #[OA\Delete( path: '/api/1.0.0/accounts/entities/email/delete', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Delete( path: '/api/1.0.0/accounts/entities/email/delete',
+                     tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data',
                        content:
@@ -168,10 +196,11 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_delete( Request $request )
+        public final function public_delete( ControllerRequest $request )
         {
             return $this->delete( $request );
         }
+
 
         /**
          * @param Request $request
@@ -185,10 +214,11 @@
 
 
         /**
-         * @param Request $request
-         * @return JsonResponse
+         * @param ControllerRequest $request
+         * @return ResponseJson
          */
-        #[OA\Post( path: '/api/1.0.0/accounts/entities/email/create', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Post( path: '/api/1.0.0/accounts/entities/email/create',
+                   tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
@@ -196,7 +226,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_create( Request $request )
+        public final function public_create( ControllerRequest $request ): ResponseJson
         {
             return $this->create( $request );
         }
@@ -204,9 +234,9 @@
 
         /**
          * @param Request $request
-         * @return JsonResponse
+         * @return ResponseJson
          */
-        public final function create( Request $request )
+        public final function create( Request $request ): ResponseJson
         {
 
             return Response()->json(null, 200);
@@ -214,10 +244,11 @@
 
 
         /**
-         * @param Request $request
-         * @return JsonResponse
+         * @param ControllerRequest $request
+         * @return ResponseJson
          */
-        #[OA\Patch( path: '/api/1.0.0/accounts/entities/email/update', tags: [ '1.0.0', 'account-additional' ] )]
+        #[OA\Patch( path: '/api/1.0.0/accounts/entities/email/update',
+                    tags: [ '1.0.0', 'account-additional' ] )]
         #[OA\Response( response: '200',
                        description: 'The data' )]
         #[OA\Response( response: '404',
@@ -225,7 +256,7 @@
         #[OA\Parameter( name:'Authorization',
                         description: 'has to be included in the header of the request',
                         in: 'header' )]
-        public final function public_update( Request $request ): JsonResponse
+        public final function public_update( ControllerRequest $request ): ResponseJson
         {
             return $this->update( $request );
         }
@@ -233,15 +264,56 @@
 
         /**
          * @param Request $request
-         * @return JsonResponse
+         * @return ResponseJson
          */
-        public final function update( Request $request ): JsonResponse
+        public final function update( Request $request ): ResponseJson
         {
             return Response()->json( null, 200 );
         }
 
 
         // Accessors
+            // Setters
+        /**
+         * @param PersonEmailController $controller
+         * @return void
+         */
+        protected static final function setSingleton( PersonEmailController $controller ): void
+        {
+            self::$controller = $controller;
+        }
+
+
+        /**
+         * @param ControllerBuilder $builder
+         * @return void
+         */
+        protected static final function setBuilder( ControllerBuilder $builder ): void
+        {
+            self::$builder = $builder;
+        }
+
+
+        /**
+         * @param ControllerStates $states
+         * @return void
+         */
+        protected static final function setStates( ControllerStates $states ): void
+        {
+            self::$states = $states;
+        }
+
+
+        /**
+         * @param ControllerGC $gc
+         * @return void
+         */
+        protected static final function setGc( ControllerGC $gc ): void
+        {
+            self::$gc = $gc;
+        }
+
+            // Getters
         /**
          * @return PersonEmailController
          */
@@ -249,19 +321,60 @@
         {
             if( is_null( self::$controller ) )
             {
-                self::setSingleton( new PersonEmailController() );
+                self::setSingleton(
+                    new PersonEmailController()
+                );
             }
 
             return self::$controller;
         }
 
+
         /**
-         * @param PersonEmailController $controller
-         * @return void
+         * @return ControllerStates
          */
-        public static final function setSingleton( PersonEmailController $controller )
+        protected static final function getStates(): ControllerStates
         {
-            self::$controller = $controller;
+            if( is_null( self::$states ) )
+            {
+                self::setStates(
+                    ControllerStates::getSingleton()
+                );
+            }
+
+            return self::$states;
+        }
+
+
+        /**
+         * @return ControllerBuilder
+         */
+        protected static final function getBuilder(): ControllerBuilder
+        {
+            if( is_null( self::$builder ) )
+            {
+                self::setBuilder(
+                    ControllerBuilder::getSingleton()
+                );
+            }
+
+            return self::$builder;
+        }
+
+
+        /**
+         * @return ControllerGC
+         */
+        protected static final function getGc(): ControllerGC
+        {
+            if( is_null( self::$gc ) )
+            {
+                self::setGc(
+                    ControllerGC::getSingleton()
+                );
+            }
+
+            return self::$gc;
         }
     }
 ?>
