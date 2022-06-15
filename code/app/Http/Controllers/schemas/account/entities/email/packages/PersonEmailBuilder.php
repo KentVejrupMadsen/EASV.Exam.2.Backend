@@ -44,13 +44,29 @@
          */
         public final function templateModel( array $input ): mixed
         {
-            if( array_key_exists(
-                $this->getMakeTemplatesOperation(), $input ) )
+            $isArray = $this->hasInputArrayMakeTemplateKey( $input );
+
+            if( $isArray )
             {
 
             }
 
             return null;
+        }
+
+
+        /**
+         * @param array $input
+         * @return void
+         */
+        public final function templateModels( array $input ): void
+        {
+            $isArray = $this->hasInputArrayMakeTemplateKey( $input );
+
+            if( $isArray )
+            {
+
+            }
         }
 
 
@@ -84,22 +100,6 @@
 
             }
         }
-
-
-        /**
-         * @param array $input
-         * @return void
-         */
-        public final function templateModels( array $input ): void
-        {
-            $isArray = $this->hasInputArrayMakeTemplateKey( $input );
-
-            if( $isArray )
-            {
-
-            }
-        }
-
 
 
         /**
