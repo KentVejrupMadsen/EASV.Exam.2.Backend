@@ -40,6 +40,18 @@
             return null;
         }
 
+        public function templateModel( array $input ): mixed
+        {
+
+            return null;
+        }
+
+        public function createModel( array $input ): mixed
+        {
+
+            return null;
+        }
+
 
         // Variables
         private static ?PersonNameBuilder $singleton =  null;

@@ -26,20 +26,26 @@
 
         }
 
-        public function creationOfModels( array $array ): void
+
+        /**
+         * @param array $array
+         * @return bool
+         */
+        public function removal( array $array ): bool
         {
-            // TODO: Implement creationOfModels() method.
+
+            return false;
         }
 
-        public function templateModels( array $array ): void
-        {
-            // TODO: Implement templateModels() method.
-        }
 
-        public function retrieveOutputResults(): ?array
+        /**
+         * @param array $array
+         * @return bool
+         */
+        public function removalOfModels( array $array ): bool
         {
-            // TODO: Implement retrieveOutputResults() method.
-            return null;
+
+            return false;
         }
 
 
@@ -58,6 +64,7 @@
 
             return self::$singleton;
         }
+
 
         /**
          * @param PersonEmailGC|null $singleton

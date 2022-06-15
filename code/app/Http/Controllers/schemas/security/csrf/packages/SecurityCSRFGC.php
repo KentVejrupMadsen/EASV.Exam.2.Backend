@@ -6,10 +6,6 @@
      *
      */
 
-    use App\Models\security\CSRFModel;
-    use App\Http\Controllers\templates\Builder;
-    use Carbon\Carbon;
-    use Illuminate\Support\Str;
 
     use App\Http\Controllers\templates\Truncator;
 
@@ -28,26 +24,32 @@
 
         }
 
-        public function creationOfModels( array $array ): void
+
+        /**
+         * @param array $array
+         * @return bool
+         */
+        public final function removal( array $array ): bool
         {
-            // TODO: Implement creationOfModels() method.
+
+            return false;
         }
 
-        public function templateModels( array $array ): void
-        {
-            // TODO: Implement templateModels() method.
-        }
 
-        public function retrieveOutputResults(): ?array
+        /**
+         * @param array $array
+         * @return bool
+         */
+        public final function removalOfModels( array $array ): bool
         {
-            // TODO: Implement retrieveOutputResults() method.
-            return null;
+
+            return false;
         }
 
 
         // Variables
-        private int $tokenDefaultLength = 64;
         private static ?SecurityCSRFGC $factory = null;
+
 
 
         /**
@@ -57,7 +59,7 @@
         {
             if( is_null( self::$factory ) )
             {
-                self::setFactory( new SecurityCSRFBuilder() );
+                self::setFactory( new SecurityCSRFGC() );
             }
 
             return self::$factory;

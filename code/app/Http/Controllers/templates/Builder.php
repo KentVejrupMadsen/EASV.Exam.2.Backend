@@ -13,6 +13,19 @@
     abstract class Builder
     {
         /**
+         * @param array $input
+         * @return mixed
+         */
+        public abstract function createModel( Array $input ): mixed;
+
+        /**
+         * @param array $input
+         * @return mixed
+         */
+        public abstract function templateModel( Array $input ): mixed;
+
+
+        /**
          * @param array $array
          * @return void
          */

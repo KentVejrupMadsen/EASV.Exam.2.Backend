@@ -27,6 +27,18 @@
 
         }
 
+        public function templateModel( array $input ): mixed
+        {
+
+            return null;
+        }
+
+        public function createModel( array $input ): mixed
+        {
+
+            return null;
+        }
+
 
         /**
          * @param array $array

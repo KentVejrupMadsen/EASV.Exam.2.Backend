@@ -9,6 +9,7 @@
 
     abstract class Truncator
     {
-
+        public abstract function removal( Array $array ): bool;
+        public abstract function removalOfModels( Array $array ): bool;
     }
 ?>

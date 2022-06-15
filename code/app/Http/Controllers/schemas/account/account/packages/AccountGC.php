@@ -27,6 +27,26 @@
 
         }
 
+        /**
+         * @param array $array
+         * @return bool
+         */
+        public final function removal( array $array ): bool
+        {
+
+            return false;
+        }
+
+        /**
+         * @param array $array
+         * @return bool
+         */
+        public final function removalOfModels( array $array ): bool
+        {
+
+            return false;
+        }
+
 
 
         // Variables

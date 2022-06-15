@@ -24,6 +24,18 @@
 
         }
 
+        public function templateModel( array $input ): mixed
+        {
+
+            return null;
+        }
+
+        public function createModel( array $input ): mixed
+        {
+
+            return null;
+        }
+
         public function creationOfModels( array $array ): void
         {
             // TODO: Implement creationOfModels() method.

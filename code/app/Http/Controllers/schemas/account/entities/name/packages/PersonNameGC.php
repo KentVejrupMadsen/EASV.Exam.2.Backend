@@ -24,20 +24,24 @@
 
         }
 
-        public function creationOfModels( array $array ): void
+        /**
+         * @param array $array
+         * @return bool
+         */
+        public final function removal( array $array ): bool
         {
-            // TODO: Implement creationOfModels() method.
+
+            return false;
         }
 
-        public function templateModels( array $array ): void
+        /**
+         * @param array $array
+         * @return bool
+         */
+        public final function removalOfModels( array $array ): bool
         {
-            // TODO: Implement templateModels() method.
-        }
 
-        public function retrieveOutputResults(): ?array
-        {
-            // TODO: Implement retrieveOutputResults() method.
-            return null;
+            return false;
         }
 
 

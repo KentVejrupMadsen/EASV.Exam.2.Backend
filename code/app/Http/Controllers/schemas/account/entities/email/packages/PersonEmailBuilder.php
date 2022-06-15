@@ -25,19 +25,52 @@
 
         }
 
-        public function creationOfModels( array $array ): void
+        /**
+         * @param array $input
+         * @return mixed
+         */
+        public function templateModel( array $input ): mixed
         {
-            // TODO: Implement creationOfModels() method.
+
+            return null;
         }
 
-        public function templateModels( array $array ): void
+        /**
+         * @param array $input
+         * @return mixed
+         */
+        public function createModel( array $input ): mixed
         {
-            // TODO: Implement templateModels() method.
+
+            return null;
         }
 
-        public function retrieveOutputResults(): ?array
+        /**
+         * @param array $array
+         * @return void
+         */
+        public final function creationOfModels( array $array ): void
         {
-            // TODO: Implement retrieveOutputResults() method.
+
+        }
+
+
+        /**
+         * @param array $array
+         * @return void
+         */
+        public final function templateModels( array $array ): void
+        {
+
+        }
+
+
+        /**
+         * @return array|null
+         */
+        public final function retrieveOutputResults(): ?array
+        {
+
             return null;
         }
 
@@ -48,7 +81,7 @@
         /**
          * @return PersonEmailBuilder|null
          */
-        public static function getSingleton(): ?PersonEmailBuilder
+        public static final function getSingleton(): ?PersonEmailBuilder
         {
             if( is_null( self::$singleton ) )
             {
@@ -62,7 +95,7 @@
          * @param PersonEmailBuilder|null $singleton
          * @return void
          */
-        public static function setSingleton( ?PersonEmailBuilder $singleton ): void
+        public static final function setSingleton( ?PersonEmailBuilder $singleton ): void
         {
             self::$singleton = $singleton;
         }

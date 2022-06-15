@@ -8,13 +8,22 @@
     namespace App\Http\Controllers\schemas\account\entities\email;
 
     // External Libraries
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use App\Models\tables\AccountEmailModel;
-    use Illuminate\Http\JsonResponse;
+    use OpenApi\Attributes
+        as OA;
+
+    use Illuminate\Http\JsonResponse
+        as ResponseJson;
+
+
+
     use Illuminate\Http\Request;
-    use OpenApi\Attributes as OA;
 
     // Internal libraries
+    use App\Http\Controllers\templates\ControllerPipeline
+        as Pipeline;
+
+    use App\Models\tables\AccountEmailModel;
+
 
 
     /**
@@ -24,7 +33,7 @@
                  description: '',
                  type: self::model_type )]
     class PersonEmailController
-        extends ControllerPipeline
+        extends Pipeline
     {
         /**
          * @param bool $makeSingleton
