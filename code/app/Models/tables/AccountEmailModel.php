@@ -13,8 +13,6 @@
 
 
     // External libraries
-    use Illuminate\Database\Eloquent\Relations\HasOne;
-
     use OpenApi\Attributes
         as OA;
 
@@ -44,26 +42,5 @@
             // Models
         protected $table = self::table_name;
         protected $primaryKey = self::identity;
-
-        // Relationships
-        /**
-         * @return HasOne
-         */
-        public final function newsletterSubscription(): HasOne
-        {
-            return $this->hasOne( NewsletterSubscriptionModel::class,
-                                  NewsletterSubscriptionModel::getFieldEmailIdentity(),
-                                  self::identity );
-        }
-
-        /**
-         * @return HasOne
-         */
-        public final function Account(): HasOne
-        {
-            return $this->hasOne( User::class,
-                                  User::getFieldEmailIdentity(),
-                                  self::identity );
-        }
     }
 ?>
