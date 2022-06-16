@@ -176,6 +176,9 @@
                                   'identity' );
         }
 
+        /**
+         * @return HasOne
+         */
         public final function accountStates(): HasOne
         {
             return $this->hasOne( AccountState::class,

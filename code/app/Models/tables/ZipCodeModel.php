@@ -12,6 +12,8 @@
     use App\Models\tables\templates\ExtensionNoTimestampModel;
 
     // External libraries
+    use \Illuminate\Database\Eloquent\Relations\BelongsTo;
+
     use OpenApi\Attributes
         as OA;
 
@@ -92,5 +94,17 @@
             self::field_zip_number => self::typeInteger,
             self::field_country_id => self::typeInteger
         ];
+
+
+        // relationships
+        /**
+         * @return BelongsTo
+         */
+        public function country(): BelongsTo
+        {
+            return $this->belongsTo( CountryModel::class,
+                                     'country_identity',
+                                     'identity' );
+        }
     }
 ?>
