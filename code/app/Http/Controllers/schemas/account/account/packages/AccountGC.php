@@ -27,6 +27,10 @@
 
         }
 
+        // Variables
+        private static ?AccountGC $singleton =  null;
+
+
         /**
          * @param array $array
          * @return bool
@@ -48,9 +52,22 @@
         }
 
 
+        /**
+         * @return bool
+         */
+        public final function removeByIds(): bool
+        {
+            return false;
+        }
 
-        // Variables
-        private static ?AccountGC $singleton =  null;
+        /**
+         * @return bool
+         */
+        public final function removeById(): bool
+        {
+
+            return false;
+        }
 
 
         // Accessors

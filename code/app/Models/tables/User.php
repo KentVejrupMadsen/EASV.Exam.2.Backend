@@ -49,6 +49,11 @@
                        deprecated: false )]
         protected const field_email_id = 'account_email_identity';
 
+        public static function getFieldEmailIdentity(): string
+        {
+            return self::field_email_id;
+        }
+
         #[OA\Property( title: 'is email verified column',
                        type: self::typeDatetime,
                        deprecated: false )]

@@ -46,6 +46,11 @@
                        deprecated: false )]
         protected const field_email_id = 'email_identity';
 
+        public static function getFieldEmailIdentity(): string
+        {
+            return self::field_email_id;
+        }
+
         #[OA\Property( title:'account identity column',
                        type: self::typeInteger,
                        deprecated: false )]
@@ -68,6 +73,7 @@
             self::field_account_id
         ];
 
+
         /**
          * @var string[]
          */
@@ -78,16 +84,17 @@
             self::field_account_id
         ];
 
+
         /**
          * @var string[]
          */
         protected $casts =
         [
-            self::identity => self::typeInteger,
-            self::field_email_id => self::typeInteger,
-            self::field_account_id => self::typeInteger,
+            self::identity          => self::typeInteger,
+            self::field_email_id    => self::typeInteger,
+            self::field_account_id  => self::typeInteger,
 
-            self::field_options => self::typeArray
+            self::field_options     => self::typeArray
         ];
     }
 ?>

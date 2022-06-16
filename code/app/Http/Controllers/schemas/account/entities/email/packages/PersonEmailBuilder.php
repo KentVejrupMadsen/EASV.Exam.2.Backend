@@ -7,17 +7,19 @@
      */
     namespace App\Http\Controllers\schemas\account\entities\email\packages;
 
+    // Internal libraries
     use App\Models\tables\AccountEmailModel
         as Model;
 
-    use App\Http\Controllers\templates\Builder;
+    use App\Http\Controllers\templates\Builder
+        as BuilderTemplate;
 
 
     /**
      *
      */
     class PersonEmailBuilder
-        extends Builder
+        extends BuilderTemplate
     {
         /**
          *
@@ -32,10 +34,6 @@
         private static ?PersonEmailBuilder $singleton = null;
         private ?array $buffer                        = null;
 
-        private const create_operation = 'create';
-        private const update_operation = 'update';
-
-        private const make_templates_operation = 'templates';
         private const field_content = 'content';
 
 
@@ -45,12 +43,7 @@
          */
         public final function templateModel( array $input ): mixed
         {
-            $isArray = $this->hasInputArrayMakeTemplateKey( $input );
 
-            if( $isArray )
-            {
-
-            }
 
             return null;
         }
@@ -62,11 +55,7 @@
          */
         public final function templateModels( array $input ): void
         {
-            $isArray = $this->hasInputArrayMakeTemplateKey( $input );
 
-            if( $isArray )
-            {
-            }
 
             return;
         }
@@ -78,29 +67,28 @@
          */
         public final function createModel( array $input ): ?Model
         {
-            $isArray = $this->hasInputArrayCreationKey( $input );
+            $retVal = null;
 
-            if( $isArray )
+            $hKey = $this->hasArrayContentKey( $input );
+
+            if( $hKey &&
+                $this->isContentKeyAString( $input ) )
             {
-                $valueIsString = is_string(
-                                    $input[ $this->getCreateOperation() ]
-                );
-
-                if( $valueIsString )
-                {
-                    $currentString = $input[ $this->getCreateOperation() ];
-                    $inputForm = $this->makeEloquentModel( $currentString );
-
-                    $madeModel = Model::create( $inputForm );
-                    $this->appendToBuffer( $madeModel );
-                }
-                else
-                {
-                    abort( 'expects string' );
-                }
+                $created = Model::create( $input );
+                $retVal = $created;
             }
 
-            return null;
+            return $retVal;
+        }
+
+
+        /**
+         * @param array $input
+         * @return bool
+         */
+        protected final function isContentKeyAString( array $input ): bool
+        {
+            return is_string( $input[ $this->getContentField() ] );
         }
 
 
@@ -110,31 +98,20 @@
          */
         public final function creationOfModels( array $input ): void
         {
-            $isArray = $this->hasInputArrayCreationKey( $input );
-            $modelsCreated = null;
+            $modelsToBeInserted = $this->convertToEloquentModels( $input );
+            $sizeOfModels = count( $modelsToBeInserted );
 
-            if( $isArray )
+            for( $index = 0;
+                 $index < $sizeOfModels;
+                 $index++ )
             {
-                $array = $input[ $this->getCreateOperation() ];
-                $modelsToBeInserted = $this->convertToEloquentModels( $array );
-                $sizeOfModels = count( $modelsToBeInserted );
+                $current = $modelsToBeInserted[ $index ];
+                $justCreated = Model::create( $current );
 
-                for( $index = 0;
-                     $index < $sizeOfModels;
-                     $index++ )
+                if( isset( $justCreated ) )
                 {
-                    $current = $modelsToBeInserted[ $index ];
-                    fwrite(STDERR, print_r($current, true));
-
-                    $justCreated = Model::create( $current );
                     $this->appendToBuffer( $justCreated );
                 }
-            }
-
-            // Appends the current result to the buffer
-            if( isset( $modelsCreated ) )
-            {
-                $this->appendToBuffer( $modelsCreated );
             }
         }
 
@@ -252,33 +229,6 @@
         /**
          * @return string
          */
-        public final function getCreateOperation(): string
-        {
-            return self::create_operation;
-        }
-
-
-        /**
-         * @return string
-         */
-        public final function getUpdateOperation(): string
-        {
-            return self::update_operation;
-        }
-
-
-        /**
-         * @return string
-         */
-        public final function getMakeTemplatesOperation(): string
-        {
-            return self::make_templates_operation;
-        }
-
-
-        /**
-         * @return string
-         */
         public final function getContentField(): string
         {
             return self::field_content;
@@ -297,46 +247,14 @@
             ];
         }
 
-
-        /**
-         * @param array $input
-         * @param string $key
-         * @return bool
-         */
-        protected final function isValueInInputAnArray( array $input, string $key ): bool
+        protected final function hasArrayContentKey( Array $array )
         {
-            return is_array( $input[ $key ] );
+            return array_key_exists( $this->getContent(), $array );
         }
 
-
-        /**
-         * @param array $input
-         * @param string $key
-         * @return bool
-         */
-        protected final function hasInputArrayKey( array $input, string $key ): bool
+        protected final function getContent(): string
         {
-            return array_key_exists( $key, $input );
-        }
-
-
-        /**
-         * @param array $input
-         * @return bool
-         */
-        protected final function hasInputArrayCreationKey( array $input ): bool
-        {
-            return $this->isValueInInputAnArray( $input, $this->getCreateOperation() );
-        }
-
-
-        /**
-         * @param array $input
-         * @return bool
-         */
-        protected final function hasInputArrayMakeTemplateKey( array $input ): bool
-        {
-            return $this->isValueInInputAnArray( $input, $this->getMakeTemplatesOperation() );
+            return self::getContentField();
         }
 
 
