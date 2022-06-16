@@ -56,6 +56,11 @@
                        deprecated: false )]
         protected const field_account_id = 'account_identity';
 
+        public static function getFieldAccountIdentity(): string
+        {
+            return self::field_account_id;
+        }
+
         #[OA\Property( title:'option column',
                        type: self::typeString,
                        deprecated: false )]
