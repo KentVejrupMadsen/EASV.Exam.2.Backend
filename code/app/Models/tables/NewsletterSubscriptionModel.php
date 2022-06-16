@@ -11,6 +11,9 @@
     use App\Models\tables\templates\BaseModel;
     use App\Models\tables\templates\ExtensionNoTimestampModel;
 
+    use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+
     // External libraries
     use OpenApi\Attributes
         as OA;
@@ -46,6 +49,9 @@
                        deprecated: false )]
         protected const field_email_id = 'email_identity';
 
+        /**
+         * @return string
+         */
         public static function getFieldEmailIdentity(): string
         {
             return self::field_email_id;
@@ -56,6 +62,9 @@
                        deprecated: false )]
         protected const field_account_id = 'account_identity';
 
+        /**
+         * @return string
+         */
         public static function getFieldAccountIdentity(): string
         {
             return self::field_account_id;
@@ -101,5 +110,27 @@
 
             self::field_options     => self::typeArray
         ];
+
+
+        /**
+         * @return BelongsTo
+         */
+        public final function accountEmail(): BelongsTo
+        {
+            return $this->belongsTo( AccountEmailModel::class,
+                                     'email_identity',
+                                     'identity' );
+        }
+
+
+        /**
+         * @return BelongsTo
+         */
+        public final function account(): BelongsTo
+        {
+            return $this->belongsTo( User::class,
+                                     'account_identity',
+                                     'identity' );
+        }
     }
 ?>

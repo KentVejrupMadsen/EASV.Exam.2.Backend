@@ -11,8 +11,9 @@
     use App\Models\tables\templates\BaseModel;
     use App\Models\tables\templates\ExtensionLabelModel;
 
+
     // External libraries
-    use \Illuminate\Database\Eloquent\Relations\HasOne;
+    use Illuminate\Database\Eloquent\Relations\HasOne;
 
     use OpenApi\Attributes
         as OA;
