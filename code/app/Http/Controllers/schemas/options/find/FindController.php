@@ -32,6 +32,8 @@ use OpenApi\Attributes as OA;
                 self::setSingleton( $this );
             }
         }
+        
+        public const name = 'find';
 
 
         // Variables

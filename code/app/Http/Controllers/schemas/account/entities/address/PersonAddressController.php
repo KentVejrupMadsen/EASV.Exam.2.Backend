@@ -8,29 +8,16 @@
     namespace App\Http\Controllers\schemas\account\entities\address;
 
     // External libraries
-    use Illuminate\Http\JsonResponse;
-    use Illuminate\Http\Request;
+use App\Http\Controllers\templates\ControllerPipeline;
+use App\Http\Requests\account\entities\address\PersonAddressRequest as ControllerRequest;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use OpenApi\Attributes as OA;
 
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal Libraries
-    use App\Http\Controllers\templates\ControllerPipeline;
-
-    use App\Http\Requests\account\entities\address\PersonAddressRequest
-        as ControllerRequest;
-
-    use App\Http\Controllers\schemas\account\entities\address\packages\PersonAddressBuilder
-        as ControllerBuilder;
-
-    use App\Http\Controllers\schemas\account\entities\address\packages\PersonAddressGC
-        as ControllerGC;
-
-    use App\Http\Controllers\schemas\account\entities\address\packages\PersonAddressStates
-        as ControllerStates;
+// Internal Libraries
 
 
-    /**
+/**
      * Account Email controller. That are used when getting "ask" by a computer for data.
      */
     #[OA\Schema( title: 'Person Address Controller',
@@ -51,6 +38,8 @@
                 self::setSingleton( $this );
             }
         }
+        
+        public const name = 'address';
 
         // variables
         private static ?PersonAddressController $controller = null;

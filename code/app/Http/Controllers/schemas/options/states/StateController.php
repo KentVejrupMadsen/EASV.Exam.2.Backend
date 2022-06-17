@@ -20,6 +20,7 @@ use OpenApi\Attributes as OA;
     class StateController
         extends ControllerOption
     {
+        public const name = 'state';
         /**
          * @param bool $makeSingleton
          */

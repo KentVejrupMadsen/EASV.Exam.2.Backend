@@ -3,22 +3,20 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     * 
      */
     namespace App\Http\Controllers\schemas\account\entities\name;
 
     // External Libraries
-    use App\Http\Controllers\templates\ControllerPipeline;
-    use Illuminate\Http\JsonResponse;
-    use Illuminate\Http\Request;
+use App\Http\Controllers\templates\ControllerPipeline;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use OpenApi\Attributes as OA;
 
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal libraries
+// Internal libraries
 
 
-    /**
+/**
      * Account Email controller. That are used when getting "ask" by a computer for data.
      */
     #[OA\Schema( title: 'Person Name Controller',
@@ -27,6 +25,8 @@
     class PersonNameController
         extends ControllerPipeline
     {
+        public const name = 'name';
+        
         /**
          * @param bool $makeSingleton
          */

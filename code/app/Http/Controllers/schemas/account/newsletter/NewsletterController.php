@@ -15,7 +15,6 @@ use OpenApi\Attributes as OA;
 
 // internal Libraries
 
-
 /**
      *
      */
@@ -25,6 +24,8 @@ use OpenApi\Attributes as OA;
     class NewsletterController
         extends ControllerPipeline
     {
+        public const name = 'newsletter';
+    
         /**
          * @param bool $makeSingleton
          */

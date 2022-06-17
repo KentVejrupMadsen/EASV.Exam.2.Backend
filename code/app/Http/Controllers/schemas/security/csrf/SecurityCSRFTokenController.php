@@ -18,7 +18,6 @@ use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 use SecurityCSRFBuilder;
 
-
 // Internal libraries
 
 

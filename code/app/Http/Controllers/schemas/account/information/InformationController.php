@@ -37,6 +37,8 @@ use OpenApi\Attributes as OA;
                 self::setSingleton( $this );
             }
         }
+        
+        public const name = 'information';
 
         // Variables
         private static ?InformationController $controller = null;

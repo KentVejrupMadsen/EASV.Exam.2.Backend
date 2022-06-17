@@ -3,15 +3,15 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     * 
      */
     namespace App\Http\Controllers;
     
-        // external libraries
-use Illuminate\Http\Request;
+    // external libraries
+    use Illuminate\Http\Request;
 
-// Internal libraries
-                // Account
+    // Internal libraries
+        // Account
     
     
     // Options
@@ -49,7 +49,174 @@ use Illuminate\Http\Request;
          */
         protected function generateAccountApi(): array
         {
-            $structure = [];
+            $structure = 
+            [
+                'account' => 
+                [   'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/accounts/account/create'),
+                        'requestHeader' => 'post'
+                    ],
+
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/accounts/account/delete'),
+                        'requestHeader' => 'delete'
+                    ],
+
+                    'login' =>
+                    [ 
+                        'operation' => 'login',
+                        'url' => url('/api/1.0.0/accounts/account/login'),
+                        'requestHeader' => 'post'
+                    ],
+
+                    'logout' =>
+                    [ 
+                        'operation' => 'logout',
+                        'url' => url('/api/1.0.0/accounts/account/logout'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'me' =>
+                    [ 
+                        'operation' => 'me',
+                        'url' => url('/api/1.0.0/accounts/account/me'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/accounts/account/read'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/accounts/account/update'),
+                        'requestHeader' => 'patch'
+                    ],
+
+                    'verify' =>
+                    [ 
+                        'operation' => 'verify',
+                        'url' => url('/api/1.0.0/accounts/account/verify'),
+                        'requestHeader' => 'post'
+                    ]
+                ],
+
+                'entities' => 
+                [
+                    'address' =>
+                    [
+                        'create' =>
+                        [ 
+                            'operation' => 'create',
+                            'url' => url('/api/1.0.0/accounts/entities/address/create'),
+                            'requestHeader' => 'post'
+                        ],
+
+                        'read' =>
+                        [ 
+                            'operation' => 'read',
+                            'url' => url('/api/1.0.0/accounts/entities/address/read'),
+                            'requestHeader' => 'get'
+                        ],
+
+                        'update' =>
+                        [ 
+                            'operation' => 'update',
+                            'url' => url('/api/1.0.0/accounts/entities/address/update'),
+                            'requestHeader' => 'patch'
+                        ],
+
+                        'delete' =>
+                        [ 
+                            'operation' => 'delete',
+                            'url' => url('/api/1.0.0/accounts/entities/address/delete'),
+                            'requestHeader' => 'delete'
+                        ]
+                    ],
+
+                    'email' =>
+                    [
+                        
+                        'create' =>
+                        [ 
+                            'operation' => 'create',
+                            'url' => url('/api/1.0.0/accounts/entities/email/create'),
+                            'requestHeader' => 'post'
+                        ],
+
+                        'read' =>
+                        [ 
+                            'operation' => 'read',
+                            'url' => url('/api/1.0.0/accounts/entities/email/read'),
+                            'requestHeader' => 'get'
+                        ],
+
+                        'update' =>
+                        [ 
+                            'operation' => 'update',
+                            'url' => url('/api/1.0.0/accounts/entities/email/create'),
+                            'requestHeader' => 'patch'
+                        ],
+
+                        'delete' =>
+                        [ 
+                            'operation' => 'delete',
+                            'url' => url('/api/1.0.0/accounts/entities/email/delete'),
+                            'requestHeader' => 'delete'
+                        ]
+                    ],
+                    
+                    'name' =>
+                    [
+                        
+                        'create' =>
+                        [ 
+                            'operation' => 'create',
+                            'url' => url('/api/1.0.0/accounts/entities/name/create'),
+                            'requestHeader' => 'post'
+                        ],
+
+                        'read' =>
+                        [ 
+                            'operation' => 'read',
+                            'url' => url('/api/1.0.0/accounts/entities/name/read'),
+                            'requestHeader' => 'get'
+                        ],
+
+                        'update' =>
+                        [ 
+                            'operation' => 'update',
+                            'url' => url('/api/1.0.0/accounts/entities/name/update'),
+                            'requestHeader' => 'patch'
+                        ],
+
+                        'delete' =>
+                        [ 
+                            'operation' => 'delete',
+                            'url' => url('/api/1.0.0/accounts/entities/name/delete'),
+                            'requestHeader' => 'delete'
+                        ]
+                    ]
+                ],
+
+                'information' => 
+                [
+
+                ],
+
+                'newsletter' => 
+                [
+
+                ]
+            ];
 
             return $structure;
         }
@@ -60,7 +227,10 @@ use Illuminate\Http\Request;
          */
         protected function generateOptionsApi(): array
         {
-            $structure = [];
+            $structure = 
+            [
+
+            ];
 
             return $structure;
         }
@@ -71,18 +241,10 @@ use Illuminate\Http\Request;
          */
         protected function generateSecurityApi(): array
         {
-            $structure = [];
+            $structure = 
+            [
 
-            return $structure;
-        }
-
-
-        /**
-         * @return array
-         */
-        protected function generateToolsApi(): array
-        {
-            $structure = [];
+            ];
 
             return $structure;
         }
@@ -100,10 +262,9 @@ use Illuminate\Http\Request;
                 [
                     'routes' =>
                     [
-                        'account'   => $this->generateAccountApi(),
+                        'accounts'   => $this->generateAccountApi(),
                         'options'   => $this->generateOptionsApi(),
-                        'security'  => $this->generateSecurityApi(),
-                        'tools'     => $this->generateToolsApi()
+                        'security'  => $this->generateSecurityApi()
                     ]
                 ]
             ];
