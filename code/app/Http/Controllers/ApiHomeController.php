@@ -209,12 +209,66 @@
 
                 'information' => 
                 [
+                    'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/accounts/information/create'),
+                        'requestHeader' => 'post'
+                    ],
+
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/accounts/information/read'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/accounts/information/update'),
+                        'requestHeader' => 'patch'
+                    ],
+
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/accounts/information/delete'),
+                        'requestHeader' => 'delete'
+                    ]
 
                 ],
 
                 'newsletter' => 
                 [
+                    
+                    'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/accounts/newsletter/create'),
+                        'requestHeader' => 'post'
+                    ],
 
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/accounts/newsletter/read'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/accounts/newsletter/update'),
+                        'requestHeader' => 'patch'
+                    ],
+
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/accounts/newsletter/delete'),
+                        'requestHeader' => 'delete'
+                    ]
                 ]
             ];
 
@@ -229,7 +283,19 @@
         {
             $structure = 
             [
+                'find' =>
+                [ 
+                    'operation' => 'find',
+                    'url' => url('/api/1.0.0/options/find/email'),
+                    'requestHeader' => 'post'
+                ],
 
+                'state' =>
+                [ 
+                    'operation' => 'state',
+                    'url' => url('/api/1.0.0/options/state/email'),
+                    'requestHeader' => 'post'
+                ]
             ];
 
             return $structure;
