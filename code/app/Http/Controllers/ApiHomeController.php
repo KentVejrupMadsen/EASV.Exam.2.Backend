@@ -292,7 +292,7 @@
 
                 'state' =>
                 [ 
-                    'operation' => 'state',
+                    'operation' => 'state of',
                     'url' => url('/api/1.0.0/options/state/email'),
                     'requestHeader' => 'post'
                 ]
@@ -309,7 +309,98 @@
         {
             $structure = 
             [
+                'csrf' => 
+                [
+                    'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/securities/newsletter/create'),
+                        'requestHeader' => 'post'
+                    ],
 
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/securities/newsletter/read'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/securities/newsletter/update'),
+                        'requestHeader' => 'patch'
+                    ],
+
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/securities/newsletter/delete'),
+                        'requestHeader' => 'delete'
+                    ]
+                ],
+
+                'configuration' => 
+                [
+                    'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/securities/newsletter/create'),
+                        'requestHeader' => 'post'
+                    ],
+
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/securities/newsletter/read'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/securities/newsletter/update'),
+                        'requestHeader' => 'patch'
+                    ],
+
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/securities/newsletter/delete'),
+                        'requestHeader' => 'delete'
+                    ]
+                ],
+
+                'recaptcha' => 
+                [
+                    'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/securities/newsletter/create'),
+                        'requestHeader' => 'post'
+                    ],
+
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/securities/newsletter/read'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/securities/newsletter/update'),
+                        'requestHeader' => 'patch'
+                    ],
+
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/securities/newsletter/delete'),
+                        'requestHeader' => 'delete'
+                    ]
+                ]
             ];
 
             return $structure;
