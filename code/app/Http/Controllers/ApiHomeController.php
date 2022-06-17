@@ -6,34 +6,23 @@
      * TODO: Make description
      */
     namespace App\Http\Controllers;
+    
+        // external libraries
+use Illuminate\Http\Request;
 
-    // Internal libraries
-        // Account
-    use App\Http\Controllers\httpControllers\account\AccountController;
-    use App\Http\Controllers\httpControllers\account\InformationController;
-    use App\Http\Controllers\httpControllers\account\NewsletterController;
-
-        // Options
-    use App\Http\Controllers\httpControllers\options\FindController;
-    use App\Http\Controllers\httpControllers\options\StateController;
-
-        // Security
-    use App\Http\Controllers\httpControllers\security\SecurityConfigurationController;
-    use App\Http\Controllers\httpControllers\security\SecurityCSRFTokenController;
-    use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
-
-        // Tools
-    use App\Http\Controllers\httpControllers\tools\BoardController;
-    use App\Http\Controllers\httpControllers\tools\KanbanController;
-    use App\Http\Controllers\httpControllers\tools\ProjectController;
-    use App\Http\Controllers\httpControllers\tools\ProjectMemberController;
-    use App\Http\Controllers\httpControllers\tools\TaskController;
-
-    // external libraries
-    use Illuminate\Http\Request;
+// Internal libraries
+                // Account
+    
+    
+    // Options
+    
+    
+    // Security
 
 
-    //
+    /**
+     * 
+     */
     class ApiHomeController
         extends Controller
     {
@@ -109,7 +98,7 @@
                 'current' => $this->currentVersion(),
                 'paths'   =>
                 [
-                    $this->currentVersionNumber() =>
+                    'routes' =>
                     [
                         'account'   => $this->generateAccountApi(),
                         'options'   => $this->generateOptionsApi(),
@@ -127,8 +116,9 @@
          */
         protected function apiUrl(): string
         {
-            return './api';
+            return url('/api');
         }
+
 
         /**
          * @return array
@@ -137,7 +127,7 @@
         {
             $returnValue = array();
 
-            $returnValue[ 'root' ] = $this->apiUrl();
+            $returnValue[ 'parent' ] = $this->apiUrl();
             $returnValue[ 'explorer' ] = $this->generateExplorerStructure();
 
             return $returnValue;
@@ -155,16 +145,25 @@
         //
         private static $controller = null;
 
-        public static final function setSingleton( ApiHomeController $controller )
+
+        // accessors
+        /**
+         * @param ApiHomeController $controller
+         * @return void
+         */
+        public static final function setSingleton( ApiHomeController $controller ): void
         {
             self::$controller = $controller;
         }
 
+        /**
+         * @return ApiHomeController
+         */
         public static final function getSingleton(): ApiHomeController
         {
-            if(is_null(self::$controller))
+            if( is_null( self::$controller ) )
             {
-                self::setSingleton(new ApiHomeController());
+                self::setSingleton( new ApiHomeController() );
             }
 
             return self::$controller;

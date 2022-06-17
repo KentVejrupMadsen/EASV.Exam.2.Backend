@@ -6,7 +6,7 @@
      *
      */
     // External libraries
-use App\Http\Controllers\httpControllers\security\SecurityConfigurationController;
+use App\Http\Controllers\schemas\security\configuration\SecurityConfigurationController;
 use App\Routes\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 

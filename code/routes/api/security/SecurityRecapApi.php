@@ -6,14 +6,14 @@
      *
      */
     // External libraries
-use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
+use App\Http\Controllers\schemas\security\recaptcha\SecurityRecaptchaController;
 use App\Routes\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 
 // Internal libraries
 
 
-/**
+    /**
      *
      */
     class SecurityRecapApi
@@ -53,6 +53,7 @@ use Illuminate\Support\Facades\Route;
             );
         }
     }
+
 
     /**
      * @return void
