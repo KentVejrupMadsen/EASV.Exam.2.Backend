@@ -5,10 +5,13 @@
      * Description:
      *
      */
-
-use App\Http\Controllers\httpControllers\status\HealthController;
+     
+     // Internal
+use App\Http\Controllers\schemas\status\health\HealthController;
 use App\Routes\Controllers\NodesController;
 use Illuminate\Support\Facades\Route;
+
+// External 
 
 
 /**
@@ -17,6 +20,9 @@ use Illuminate\Support\Facades\Route;
     class StatusRoutes
         extends NodesController
     {
+        /**
+         * 
+         */
         public function __construct()
         {
             $this->setNodeRouteName( self::statusRoute );

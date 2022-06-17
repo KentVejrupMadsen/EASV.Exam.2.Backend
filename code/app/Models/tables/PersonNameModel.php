@@ -9,12 +9,14 @@
 
     // Internal libraries
     use App\Models\tables\templates\BaseModel;
-
-    // External libraries
     use App\Models\tables\templates\ExtensionNoTimestampModel;
 
+    // External libraries
+    use Illuminate\Database\Eloquent\Relations\BelongsTo;
+    use Illuminate\Database\Eloquent\Relations\HasOne;
+
     use OpenApi\Attributes
-            as OA;
+        as OA;
 
 
     /**
@@ -72,6 +74,7 @@
             self::identity,
 
             self::field_account_information_id,
+
             self::field_person_name_first_id,
             self::field_person_name_lastname_id,
             self::field_person_name_middlename
@@ -86,6 +89,7 @@
             self::identity,
 
             self::field_account_information_id,
+
             self::field_person_name_first_id,
             self::field_person_name_lastname_id,
         ];
@@ -99,10 +103,43 @@
             self::identity => self::typeInteger,
 
             self::field_account_information_id  => self::typeInteger,
+
             self::field_person_name_first_id    => self::typeInteger,
             self::field_person_name_lastname_id => self::typeInteger,
 
             self::field_person_name_middlename  => self::typeArray,
         ];
+
+
+        /**
+         * @return BelongsTo
+         */
+        public final function accountInformation(): BelongsTo
+        {
+            return $this->belongsTo( AccountInformationModel::class,
+                                     'account_information_identity',
+                                     'identity' );
+        }
+
+        /**
+         * @return HasOne
+         */
+        public final function personFirstName(): HasOne
+        {
+            return $this->hasOne( PersonFirstnameModel::class,
+                                  'person_name_first_identity',
+                                  'identity' );
+        }
+
+
+        /**
+         * @return HasOne
+         */
+        public final function personLastName(): HasOne
+        {
+            return $this->hasOne( PersonFirstnameModel::class,
+                                  'person_name_lastname_identity',
+                                  'identity' );
+        }
     }
 ?>

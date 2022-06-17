@@ -11,6 +11,7 @@
     use App\Models\tables\templates\BaseModel;
     use App\Models\tables\templates\ExtensionLabelModel;
 
+
     // External libraries
     use OpenApi\Attributes
         as OA;

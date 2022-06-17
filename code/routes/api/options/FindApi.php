@@ -6,10 +6,12 @@
      *
      */
 
-use App\Http\Controllers\httpControllers\options\FindController;
+    // External 
+use App\Http\Controllers\schemas\options\find\FindController;
 use App\Routes\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 
+// Internal
 
 /**
      *

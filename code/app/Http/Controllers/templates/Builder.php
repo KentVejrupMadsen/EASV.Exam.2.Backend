@@ -27,17 +27,17 @@
 
 
         /**
-         * @param array $array
+         * @param array $input
          * @return void
          */
-        public abstract function templateModels( Array $array ): void;
+        public abstract function templateModels( Array $input ): void;
 
 
         /**
-         * @param array $array
+         * @param array $input
          * @return void
          */
-        public abstract function creationOfModels( Array $array ): void;
+        public abstract function creationOfModels( Array $input ): void;
 
 
         /**

@@ -5,10 +5,12 @@
      * Description:
      *
      */
-
-use App\Http\Controllers\httpControllers\options\StateController;
+     // external libraries
+use App\Http\Controllers\schemas\options\states\StateController;
 use App\Routes\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
+
+// Internal libraries
 
 
 /**
@@ -43,6 +45,10 @@ use Illuminate\Support\Facades\Route;
         }
     }
 
+
+    /**
+     * @return void
+     */
     function MakeStateApi(): void
     {
         $api = new StateApi();

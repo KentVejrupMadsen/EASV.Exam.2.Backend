@@ -2,13 +2,11 @@
     namespace App\Http\Controllers\schemas\status\structure;
 
     // External
-    use Illuminate\Http\JsonResponse;
-
-    use Illuminate\Routing\Controller
-        as BaseController;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controller as BaseController;
 
 
-    /**
+/**
      *
      */
     class StructureController
@@ -34,9 +32,38 @@
          */
         public function now(): JsonResponse
         {
-            $arr = ['status' => 'online'];
+            $arr = [ 'status' => 'online' ];
             return Response()->json( $arr, 200 );
         }
+
+        /**
+         * @return array
+         */
+        protected function HomeStructure(): array
+        {
+            return 
+            [
+                'version' => 
+                [
+                    '1.0.0' => 
+                    [
+                        'state' => 'alpha',
+                        'link'  => url("/api/1.0.0" ),
+                        'openapi' => 'https://app.swaggerhub.com/apis/Goal-Pioneers/kanban-project_backend_api/1.0.0-alpha'
+                    ]
+                ]
+            ];
+        }
+
+        
+        /**
+         * @return JsonResponse
+         */
+        public final function home(): JsonResponse
+        {
+            return Response()->json( $this->HomeStructure() );
+        }
+        
 
         // Accessor
         /**
@@ -47,7 +74,7 @@
             return self::$singleton;
         }
 
-
+        
         /**
          * @param StructureController|null $singleton
          * @return void

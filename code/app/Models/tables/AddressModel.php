@@ -9,11 +9,11 @@
 
     // Internal libraries
     use App\Models\tables\templates\BaseModel;
+    use App\Models\tables\templates\ExtensionNoTimestampModel;
 
     // External libraries
-    use App\Models\tables\templates\ExtensionNoTimestampModel;
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
+    use \Illuminate\Database\Eloquent\Relations\HasOne;
+    use \Illuminate\Database\Eloquent\Relations\BelongsTo;
 
     use OpenApi\Attributes
         as OA;
@@ -109,13 +109,60 @@
          */
         protected $casts =
         [
-            self::identity                      => self::typeInteger,
+            self::identity                     => self::typeInteger,
             self::field_account_information_id => self::typeInteger,
+
             self::field_road_name_id           => self::typeInteger,
             self::field_road_number            => self::typeInteger,
             self::field_levels                 => self::typeInteger,
             self::field_country_id             => self::typeInteger,
+
             self::field_zip_code_id            => self::typeInteger
         ];
+
+        // Relationships
+        /**
+         * @return BelongsTo
+         */
+        public final function accountInformation(): BelongsTo
+        {
+            return $this->belongsTo( AccountInformationModel::class,
+                                    'account_information_identity',
+                                    'identity');
+        }
+
+
+        /**
+         * @return HasOne
+         */
+        public final function country(): HasOne
+        {
+            return $this->hasOne( CountryModel::class,
+                                 'country_identity',
+                                 'identity');
+        }
+
+
+        /**
+         * @return HasOne
+         */
+        public final function level(): HasOne
+        {
+            return $this->hasOne( ApartmentLevelModel::class,
+                                 'level_identity',
+                                 'identity');
+        }
+
+
+        /**
+         * @return HasOne
+         */
+        public final function roadName(): HasOne
+        {
+            return $this->hasOne( AddressRoadNameModel::class,
+                                  'road_name_identity',
+                                  'identity' );
+        }
+
     }
 ?>

@@ -6,7 +6,7 @@
 
      */
     // External libraries
-use App\Http\Controllers\httpControllers\security\SecurityCSRFTokenController;
+use App\Http\Controllers\schemas\security\csrf\SecurityCSRFTokenController;
 use App\Routes\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 

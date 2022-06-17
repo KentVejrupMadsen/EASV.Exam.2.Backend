@@ -9,7 +9,7 @@
         view, update and delete they own data.
      */
     // External library
-use App\Http\Controllers\httpControllers\account\entities\PersonNameController;
+use App\Http\Controllers\schemas\account\entities\name\PersonNameController;
 use App\Routes\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 

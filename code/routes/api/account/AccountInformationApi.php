@@ -6,7 +6,7 @@
      * Serves the routes for the account models.
      */
     // Internal libraries
-    use App\Http\Controllers\schemas\account\account\AccountController;
+    use App\Http\Controllers\schemas\account\information\InformationController;
     use App\Routes\Controllers\RouteController;
     use Illuminate\Support\Facades\Route;
 
@@ -16,7 +16,7 @@
     /**
      *
      */
-    class AccountApi
+    class AccountInformationApi
         extends RouteController
     {
         /**
@@ -28,16 +28,11 @@
         }
 
         // Variables
-        private const route = 'account';
+        private const route = 'information';
 
         private const create_route  =  ACTION_CREATE;
         private const delete_route  =  ACTION_DELETE;
-
-        private const me_route      =  'me';
-        private const login_route   =  'login';
-        private const logout_route  =  'logout';
         private const update_route  =  ACTION_UPDATE;
-        private const verify_route  =  'verify';
         private const read_route    =  ACTION_READ;
 
 
@@ -46,12 +41,10 @@
          */
         protected final function execute(): void
         {
-            Route::controller( AccountController::class )->group
+            Route::controller( InformationController::class )->group
             (
                 function(): void
                 {
-                    Route::post( self::create_route, 'public_create' );
-                    Route::post( self::login_route, 'login' );
                     $this->secureRoutes();
                 }
             );
@@ -68,10 +61,8 @@
                 {
                     Route::get( self::read_route, 'public_read' );
                     Route::delete( self::delete_route, 'public_delete' );
-                    Route::get( self::logout_route, 'logout' );
-                    Route::get( self::me_route, 'me' );
                     Route::patch( self::update_route, 'public_update' );
-                    Route::post( self::verify_route, 'verify' );
+                    Route::post( self::create_route, 'public_create' );
                 }
             );
         }
@@ -81,9 +72,9 @@
     /**
      * @return void
      */
-    function MakeAccountApi(): void
+    function MakeAccountInformationApi(): void
     {
-        $api = new AccountApi();
+        $api = new AccountInformationApi();
         $api->run();
     }
 ?>
