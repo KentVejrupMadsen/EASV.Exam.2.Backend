@@ -25,6 +25,9 @@
 
         }
 
+        // Variables
+        private static ?PersonNameGC $singleton =  null;
+
 
         /**
          * @param array $array
@@ -35,7 +38,6 @@
 
             return false;
         }
-
 
         /**
          * @param array $array
@@ -48,8 +50,23 @@
         }
 
 
-        // Variables
-        private static ?PersonNameGC $singleton =  null;
+        /**
+         * @return bool
+         */
+        public final function removeByIds(): bool
+        {
+
+            return false;
+        }
+
+        /**
+         * @return bool
+         */
+        public final function removeById(): bool
+        {
+
+            return false;
+        }
 
 
         // Accessors

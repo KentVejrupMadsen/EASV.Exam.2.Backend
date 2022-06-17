@@ -3,40 +3,25 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     * 
      */
     namespace App\Http\Controllers\schemas\account\entities\email;
 
     // External Libraries
-    use Illuminate\Http\JsonResponse
-        as ResponseJson;
+use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailBuilder as ControllerBuilder;
+use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailGC as ControllerGC;
+use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailStates as ControllerStates;
+use App\Http\Controllers\templates\ControllerPipeline as Pipeline;
+use App\Http\Requests\account\entities\email\PersonEmailRequest as ControllerRequest;
+use App\Models\tables\AccountEmailModel as Model;
+use Illuminate\Http\JsonResponse as ResponseJson;
+use Illuminate\Http\Request;
+use OpenApi\Attributes as OA;
 
-    use Illuminate\Http\Request;
-
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal libraries
-    use App\Http\Requests\account\entities\email\PersonEmailRequest
-        as ControllerRequest;
-
-    use App\Http\Controllers\templates\ControllerPipeline
-        as Pipeline;
-
-    use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailBuilder
-        as ControllerBuilder;
-
-    use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailGC
-        as ControllerGC;
-
-    use App\Http\Controllers\schemas\account\entities\email\packages\PersonEmailStates
-        as ControllerStates;
-
-    use App\Models\tables\AccountEmailModel
-        as Model;
+// Internal libraries
 
 
-    /**
+/**
      * Account Email controller. That are used when getting "ask" by a computer for data.
      */
     #[OA\Schema( title: 'Person Email Controller',
@@ -57,6 +42,8 @@
                 self::setSingleton( $this );
             }
         }
+        
+        public const name = 'email';
 
         // Variables
         private static ?PersonEmailController $controller = null;

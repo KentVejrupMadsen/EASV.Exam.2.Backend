@@ -7,8 +7,13 @@
      */
     namespace App\Models\tables;
 
-    // External
+    // Internal
+    use App\Models\security\AccountState;
     use App\Models\tables\templates\AccountModel;
+
+    // External
+    use Illuminate\Database\Eloquent\Relations\HasOne;
+    use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
     use OpenApi\Attributes
         as OA;
@@ -48,6 +53,11 @@
                        type: self::typeInteger,
                        deprecated: false )]
         protected const field_email_id = 'account_email_identity';
+
+        public static function getFieldEmailIdentity(): string
+        {
+            return self::field_email_id;
+        }
 
         #[OA\Property( title: 'is email verified column',
                        type: self::typeDatetime,
@@ -133,5 +143,50 @@
 
             self::field_settings          => self::typeArray
         ];
+
+
+        // Model relationships
+        /**
+         * @return HasOne
+         */
+        public final function newsletterSubscription(): HasOne
+        {
+            return $this->hasOne( NewsletterSubscriptionModel::class,
+                                  NewsletterSubscriptionModel::getFieldAccountIdentity(),
+                                  'identity' );
+        }
+
+
+        /**
+         * @return BelongsTo
+         */
+        public final function accountEmail(): BelongsTo
+        {
+            return $this->belongsTo( AccountEmailModel::class,
+                                     self::field_email_id,
+                                     'identity');
+        }
+
+
+        /**
+         * @return HasOne
+         */
+        public final function accountInformation(): HasOne
+        {
+            return $this->hasOne( AccountInformationModel::class,
+                                  'account_identity',
+                                  'identity' );
+        }
+
+
+        /**
+         * @return HasOne
+         */
+        public final function accountStates(): HasOne
+        {
+            return $this->hasOne( AccountState::class,
+                                  'account_identity',
+                                  'identity');
+        }
     }
 ?>

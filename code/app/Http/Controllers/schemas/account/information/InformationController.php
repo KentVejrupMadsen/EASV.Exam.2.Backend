@@ -3,22 +3,20 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     * 
      */
     namespace App\Http\Controllers\schemas\account\information;
 
     // External libraries
-    use Illuminate\Http\JsonResponse;
-    use Illuminate\Http\Request;
+use App\Http\Controllers\templates\ControllerPipeline;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use OpenApi\Attributes as OA;
 
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal libraries
-    use App\Http\Controllers\templates\ControllerPipeline;
+// Internal libraries
 
 
-    /**
+/**
      *
      */
     #[OA\Schema( title: 'Account Information Controller',
@@ -39,6 +37,8 @@
                 self::setSingleton( $this );
             }
         }
+        
+        public const name = 'information';
 
         // Variables
         private static ?InformationController $controller = null;

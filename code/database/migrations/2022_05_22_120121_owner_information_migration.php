@@ -243,16 +243,17 @@
             // drop tables
           public function down(): void
           {
+              Schema::dropIfExists( self::person_name_table );
+              Schema::dropIfExists( self::addresses_table );
+
               Schema::dropIfExists( self::account_information_options_table );
 
-              Schema::dropIfExists( self::person_name_table );
               Schema::dropIfExists( self::person_name_first_table );
               Schema::dropIfExists( self::person_name_middle_and_last_table );
 
               Schema::dropIfExists( self::zip_codes_table );
               Schema::dropIfExists( self::countries_table );
 
-              Schema::dropIfExists( self::addresses_table );
               Schema::dropIfExists( self::address_road_name_table );
           }
      };

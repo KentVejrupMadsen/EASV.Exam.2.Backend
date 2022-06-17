@@ -2,19 +2,19 @@
     /**
      * Author: Kent vejrup Madsen
      * Description:
-     * TODO: Make description
+     * 
      */
     namespace App\Http\Controllers\schemas\options\find;
 
     // External
-    use App\Http\Controllers\templates\ControllerOption;
-    use App\Http\Requests\options\find\FindRequest;
-    use OpenApi\Attributes as OA;
+use App\Http\Controllers\templates\ControllerOption;
+use App\Http\Requests\options\find\FindRequest;
+use OpenApi\Attributes as OA;
 
-    // Internal
+// Internal
 
 
-    #[OA\Schema( title: 'Find Controller',
+#[OA\Schema( title: 'Find Controller',
                  description: '',
                  type: self::model_type )]
     class FindController
@@ -32,6 +32,8 @@
                 self::setSingleton( $this );
             }
         }
+        
+        public const name = 'find';
 
 
         // Variables

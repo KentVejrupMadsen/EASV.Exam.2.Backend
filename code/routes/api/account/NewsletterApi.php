@@ -6,7 +6,7 @@
      * Serves the route for the newsletter model.
      */
     // External libraries
-use App\Http\Controllers\httpControllers\account\NewsletterController;
+use App\Http\Controllers\schemas\account\newsletter\NewsletterController;
 use App\Routes\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 

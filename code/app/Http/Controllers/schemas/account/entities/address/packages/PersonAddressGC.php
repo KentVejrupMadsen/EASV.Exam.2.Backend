@@ -28,6 +28,11 @@
         }
 
 
+        // Variables
+        private static ?PersonAddressGC $singleton =  null;
+
+
+
         /**
          * @param array $array
          * @return bool
@@ -42,14 +47,27 @@
          * @param array $array
          * @return bool
          */
-        public final function removalOfModels(array $array): bool
+        public final function removalOfModels( array $array ): bool
         {
             return false;
         }
 
 
-        // Variables
-        private static ?PersonAddressGC $singleton =  null;
+        /**
+         * @return bool
+         */
+        public final function removeByIds(): bool
+        {
+            return false;
+        }
+
+        /**
+         * @return bool
+         */
+        public final function removeById(): bool
+        {
+            return false;
+        }
 
 
         // Accessors

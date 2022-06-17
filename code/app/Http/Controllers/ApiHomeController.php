@@ -3,37 +3,26 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     * 
      */
     namespace App\Http\Controllers;
-
-    // Internal libraries
-        // Account
-    use App\Http\Controllers\httpControllers\account\AccountController;
-    use App\Http\Controllers\httpControllers\account\InformationController;
-    use App\Http\Controllers\httpControllers\account\NewsletterController;
-
-        // Options
-    use App\Http\Controllers\httpControllers\options\FindController;
-    use App\Http\Controllers\httpControllers\options\StateController;
-
-        // Security
-    use App\Http\Controllers\httpControllers\security\SecurityConfigurationController;
-    use App\Http\Controllers\httpControllers\security\SecurityCSRFTokenController;
-    use App\Http\Controllers\httpControllers\security\SecurityRecaptchaController;
-
-        // Tools
-    use App\Http\Controllers\httpControllers\tools\BoardController;
-    use App\Http\Controllers\httpControllers\tools\KanbanController;
-    use App\Http\Controllers\httpControllers\tools\ProjectController;
-    use App\Http\Controllers\httpControllers\tools\ProjectMemberController;
-    use App\Http\Controllers\httpControllers\tools\TaskController;
-
+    
     // external libraries
     use Illuminate\Http\Request;
 
+    // Internal libraries
+        // Account
+    
+    
+    // Options
+    
+    
+    // Security
 
-    //
+
+    /**
+     * 
+     */
     class ApiHomeController
         extends Controller
     {
@@ -60,7 +49,228 @@
          */
         protected function generateAccountApi(): array
         {
-            $structure = [];
+            $structure = 
+            [
+                'account' => 
+                [   'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/accounts/account/create'),
+                        'requestHeader' => 'post'
+                    ],
+
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/accounts/account/delete'),
+                        'requestHeader' => 'delete'
+                    ],
+
+                    'login' =>
+                    [ 
+                        'operation' => 'login',
+                        'url' => url('/api/1.0.0/accounts/account/login'),
+                        'requestHeader' => 'post'
+                    ],
+
+                    'logout' =>
+                    [ 
+                        'operation' => 'logout',
+                        'url' => url('/api/1.0.0/accounts/account/logout'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'me' =>
+                    [ 
+                        'operation' => 'me',
+                        'url' => url('/api/1.0.0/accounts/account/me'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/accounts/account/read'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/accounts/account/update'),
+                        'requestHeader' => 'patch'
+                    ],
+
+                    'verify' =>
+                    [ 
+                        'operation' => 'verify',
+                        'url' => url('/api/1.0.0/accounts/account/verify'),
+                        'requestHeader' => 'post'
+                    ]
+                ],
+
+                'entities' => 
+                [
+                    'address' =>
+                    [
+                        'create' =>
+                        [ 
+                            'operation' => 'create',
+                            'url' => url('/api/1.0.0/accounts/entities/address/create'),
+                            'requestHeader' => 'post'
+                        ],
+
+                        'read' =>
+                        [ 
+                            'operation' => 'read',
+                            'url' => url('/api/1.0.0/accounts/entities/address/read'),
+                            'requestHeader' => 'get'
+                        ],
+
+                        'update' =>
+                        [ 
+                            'operation' => 'update',
+                            'url' => url('/api/1.0.0/accounts/entities/address/update'),
+                            'requestHeader' => 'patch'
+                        ],
+
+                        'delete' =>
+                        [ 
+                            'operation' => 'delete',
+                            'url' => url('/api/1.0.0/accounts/entities/address/delete'),
+                            'requestHeader' => 'delete'
+                        ]
+                    ],
+
+                    'email' =>
+                    [
+                        
+                        'create' =>
+                        [ 
+                            'operation' => 'create',
+                            'url' => url('/api/1.0.0/accounts/entities/email/create'),
+                            'requestHeader' => 'post'
+                        ],
+
+                        'read' =>
+                        [ 
+                            'operation' => 'read',
+                            'url' => url('/api/1.0.0/accounts/entities/email/read'),
+                            'requestHeader' => 'get'
+                        ],
+
+                        'update' =>
+                        [ 
+                            'operation' => 'update',
+                            'url' => url('/api/1.0.0/accounts/entities/email/create'),
+                            'requestHeader' => 'patch'
+                        ],
+
+                        'delete' =>
+                        [ 
+                            'operation' => 'delete',
+                            'url' => url('/api/1.0.0/accounts/entities/email/delete'),
+                            'requestHeader' => 'delete'
+                        ]
+                    ],
+                    
+                    'name' =>
+                    [
+                        
+                        'create' =>
+                        [ 
+                            'operation' => 'create',
+                            'url' => url('/api/1.0.0/accounts/entities/name/create'),
+                            'requestHeader' => 'post'
+                        ],
+
+                        'read' =>
+                        [ 
+                            'operation' => 'read',
+                            'url' => url('/api/1.0.0/accounts/entities/name/read'),
+                            'requestHeader' => 'get'
+                        ],
+
+                        'update' =>
+                        [ 
+                            'operation' => 'update',
+                            'url' => url('/api/1.0.0/accounts/entities/name/update'),
+                            'requestHeader' => 'patch'
+                        ],
+
+                        'delete' =>
+                        [ 
+                            'operation' => 'delete',
+                            'url' => url('/api/1.0.0/accounts/entities/name/delete'),
+                            'requestHeader' => 'delete'
+                        ]
+                    ]
+                ],
+
+                'information' => 
+                [
+                    'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/accounts/information/create'),
+                        'requestHeader' => 'post'
+                    ],
+
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/accounts/information/read'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/accounts/information/update'),
+                        'requestHeader' => 'patch'
+                    ],
+
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/accounts/information/delete'),
+                        'requestHeader' => 'delete'
+                    ]
+
+                ],
+
+                'newsletter' => 
+                [
+                    
+                    'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/accounts/newsletter/create'),
+                        'requestHeader' => 'post'
+                    ],
+
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/accounts/newsletter/read'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/accounts/newsletter/update'),
+                        'requestHeader' => 'patch'
+                    ],
+
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/accounts/newsletter/delete'),
+                        'requestHeader' => 'delete'
+                    ]
+                ]
+            ];
 
             return $structure;
         }
@@ -71,7 +281,22 @@
          */
         protected function generateOptionsApi(): array
         {
-            $structure = [];
+            $structure = 
+            [
+                'find' =>
+                [ 
+                    'operation' => 'find',
+                    'url' => url('/api/1.0.0/options/find/email'),
+                    'requestHeader' => 'post'
+                ],
+
+                'state' =>
+                [ 
+                    'operation' => 'state of',
+                    'url' => url('/api/1.0.0/options/state/email'),
+                    'requestHeader' => 'post'
+                ]
+            ];
 
             return $structure;
         }
@@ -82,18 +307,101 @@
          */
         protected function generateSecurityApi(): array
         {
-            $structure = [];
+            $structure = 
+            [
+                'csrf' => 
+                [
+                    'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/securities/newsletter/create'),
+                        'requestHeader' => 'post'
+                    ],
 
-            return $structure;
-        }
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/securities/newsletter/read'),
+                        'requestHeader' => 'get'
+                    ],
 
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/securities/newsletter/update'),
+                        'requestHeader' => 'patch'
+                    ],
 
-        /**
-         * @return array
-         */
-        protected function generateToolsApi(): array
-        {
-            $structure = [];
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/securities/newsletter/delete'),
+                        'requestHeader' => 'delete'
+                    ]
+                ],
+
+                'configuration' => 
+                [
+                    'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/securities/newsletter/create'),
+                        'requestHeader' => 'post'
+                    ],
+
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/securities/newsletter/read'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/securities/newsletter/update'),
+                        'requestHeader' => 'patch'
+                    ],
+
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/securities/newsletter/delete'),
+                        'requestHeader' => 'delete'
+                    ]
+                ],
+
+                'recaptcha' => 
+                [
+                    'create' =>
+                    [ 
+                        'operation' => 'create',
+                        'url' => url('/api/1.0.0/securities/newsletter/create'),
+                        'requestHeader' => 'post'
+                    ],
+
+                    'read' =>
+                    [ 
+                        'operation' => 'read',
+                        'url' => url('/api/1.0.0/securities/newsletter/read'),
+                        'requestHeader' => 'get'
+                    ],
+
+                    'update' =>
+                    [ 
+                        'operation' => 'update',
+                        'url' => url('/api/1.0.0/securities/newsletter/update'),
+                        'requestHeader' => 'patch'
+                    ],
+
+                    'delete' =>
+                    [ 
+                        'operation' => 'delete',
+                        'url' => url('/api/1.0.0/securities/newsletter/delete'),
+                        'requestHeader' => 'delete'
+                    ]
+                ]
+            ];
 
             return $structure;
         }
@@ -109,12 +417,11 @@
                 'current' => $this->currentVersion(),
                 'paths'   =>
                 [
-                    $this->currentVersionNumber() =>
+                    'routes' =>
                     [
-                        'account'   => $this->generateAccountApi(),
+                        'accounts'   => $this->generateAccountApi(),
                         'options'   => $this->generateOptionsApi(),
-                        'security'  => $this->generateSecurityApi(),
-                        'tools'     => $this->generateToolsApi()
+                        'security'  => $this->generateSecurityApi()
                     ]
                 ]
             ];
@@ -127,8 +434,9 @@
          */
         protected function apiUrl(): string
         {
-            return './api';
+            return url('/api');
         }
+
 
         /**
          * @return array
@@ -137,7 +445,7 @@
         {
             $returnValue = array();
 
-            $returnValue[ 'root' ] = $this->apiUrl();
+            $returnValue[ 'parent' ] = $this->apiUrl();
             $returnValue[ 'explorer' ] = $this->generateExplorerStructure();
 
             return $returnValue;
@@ -155,16 +463,25 @@
         //
         private static $controller = null;
 
-        public static final function setSingleton( ApiHomeController $controller )
+
+        // accessors
+        /**
+         * @param ApiHomeController $controller
+         * @return void
+         */
+        public static final function setSingleton( ApiHomeController $controller ): void
         {
             self::$controller = $controller;
         }
 
+        /**
+         * @return ApiHomeController
+         */
         public static final function getSingleton(): ApiHomeController
         {
-            if(is_null(self::$controller))
+            if( is_null( self::$controller ) )
             {
-                self::setSingleton(new ApiHomeController());
+                self::setSingleton( new ApiHomeController() );
             }
 
             return self::$controller;

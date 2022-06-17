@@ -8,7 +8,7 @@
           interact with his / her own data and view it 'specifically'.
      */
     // External libraries
-use App\Http\Controllers\httpControllers\account\entities\PersonEmailController;
+use App\Http\Controllers\schemas\account\entities\email\PersonEmailController;
 use App\Routes\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 

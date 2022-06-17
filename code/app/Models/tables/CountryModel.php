@@ -13,6 +13,8 @@
 
 
     // External libraries
+    use Illuminate\Database\Eloquent\Relations\HasMany;
+
     use OpenApi\Attributes
         as OA;
 
@@ -71,9 +73,20 @@
          */
         protected $casts =
         [
-            self::identity => self::typeInteger,
+            self::identity              => self::typeInteger,
             self::field_country_name    => self::typeString,
             self::field_country_acronym => self::typeString
         ];
+
+        // relationships
+        /**
+         * @return HasMany
+         */
+        public final function zipCodes(): HasMany
+        {
+            return $this->hasMany( ZipCodeModel::class,
+                                   'country_identity',
+                                   'identity' );
+        }
     }
 ?>

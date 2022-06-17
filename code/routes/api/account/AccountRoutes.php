@@ -9,11 +9,12 @@
     require_once 'entities/EntitiesRoutes.php';
     require_once 'NewsletterApi.php';
     require_once 'AccountApi.php';
+    require_once 'AccountInformationApi.php';
 
-use App\Routes\Controllers\NodesController;
+    use App\Routes\Controllers\NodesController;
 
 
-/**
+    /**
      *
      */
     class AccountRoutes
@@ -35,6 +36,7 @@ use App\Routes\Controllers\NodesController;
         protected function execute(): void
         {
             MakeAccountApi();
+            MakeAccountInformationApi();
             MakeNewsletterApi();
             MakeEntitiesRoutes();
         }

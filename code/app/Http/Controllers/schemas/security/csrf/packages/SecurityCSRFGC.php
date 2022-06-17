@@ -25,6 +25,10 @@
         }
 
 
+        // Variables
+        private static ?SecurityCSRFGC $factory = null;
+
+
         /**
          * @param array $array
          * @return bool
@@ -34,7 +38,6 @@
 
             return false;
         }
-
 
         /**
          * @param array $array
@@ -47,11 +50,24 @@
         }
 
 
-        // Variables
-        private static ?SecurityCSRFGC $factory = null;
+        /**
+         * @return bool
+         */
+        public final function removeByIds(): bool
+        {
+            return false;
+        }
+
+        /**
+         * @return bool
+         */
+        public final function removeById(): bool
+        {
+            return false;
+        }
 
 
-
+        // Accessors
         /**
          * @return SecurityCSRFGC
          */

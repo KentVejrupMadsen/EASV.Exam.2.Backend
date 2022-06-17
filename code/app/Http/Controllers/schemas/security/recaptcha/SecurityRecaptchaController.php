@@ -3,22 +3,20 @@
      * Author: Kent vejrup Madsen
      * Contact: Kent.vejrup.madsen@protonmail.com
      * Description:
-     * TODO: Make description
+     * 
      */
     namespace App\Http\Controllers\schemas\security\recaptcha;
 
     // External libraries
-    use Illuminate\Http\Request;
+use App\Http\Controllers\templates\CrudController;
+use App\Http\Requests\security\csrf\SecurityCSRFRequest;
+use Illuminate\Http\Request;
+use OpenApi\Attributes as OA;
 
-    use OpenApi\Attributes
-        as OA;
-
-    // Internal libraries
-    use App\Http\Controllers\templates\CrudController;
-    use App\Http\Requests\security\csrf\SecurityCSRFRequest;
+// Internal libraries
 
 
-    /**
+/**
      *
      */
     #[OA\Schema( title: 'Security Recaptcha Controller',
@@ -27,6 +25,8 @@
     class SecurityRecaptchaController
         extends CrudController
     {
+        public const name = 'recaptcha';
+        
         /**
          * @param bool $makeSingleton
          */
