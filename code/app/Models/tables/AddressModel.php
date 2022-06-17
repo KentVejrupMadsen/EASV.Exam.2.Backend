@@ -127,8 +127,8 @@
         public final function accountInformation(): BelongsTo
         {
             return $this->belongsTo( AccountInformationModel::class,
-                'account_information_identity',
-                'identity');
+                                    'account_information_identity',
+                                    'identity');
         }
 
 

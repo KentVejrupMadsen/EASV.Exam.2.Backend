@@ -100,7 +100,7 @@
         /**
          * @return BelongsTo
          */
-        public function country(): BelongsTo
+        public final function country(): BelongsTo
         {
             return $this->belongsTo( CountryModel::class,
                                      'country_identity',

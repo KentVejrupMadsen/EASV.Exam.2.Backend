@@ -156,6 +156,7 @@
                                   'identity' );
         }
 
+
         /**
          * @return BelongsTo
          */
@@ -166,6 +167,7 @@
                                      'identity');
         }
 
+
         /**
          * @return HasOne
          */
@@ -175,6 +177,7 @@
                                   'account_identity',
                                   'identity' );
         }
+
 
         /**
          * @return HasOne
