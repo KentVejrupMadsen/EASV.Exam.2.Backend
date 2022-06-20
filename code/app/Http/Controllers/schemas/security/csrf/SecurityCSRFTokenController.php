@@ -49,6 +49,43 @@ use SecurityCSRFBuilder;
         private ?SecurityCSRFBuilder $constructor = null;
 
 
+        public static function explorerStructure(): array
+        {
+            return 
+            [
+                'csrf' => 
+                [
+                        'create' =>
+                            [
+                                'operation' => 'create',
+                                'url' => url('/api/1.0.0/securities/csrf/create'),
+                                'requestHeader' => 'post'
+                            ],
+
+                        'read' =>
+                            [
+                                'operation' => 'read',
+                                'url' => url('/api/1.0.0/securities/csrf/read'),
+                                'requestHeader' => 'get'
+                            ],
+
+                        'update' =>
+                            [
+                                'operation' => 'update',
+                                'url' => url('/api/1.0.0/securities/csrf/update'),
+                                'requestHeader' => 'patch'
+                            ],
+
+                        'delete' =>
+                            [
+                                'operation' => 'delete',
+                                'url' => url('/api/1.0.0/securities/csrf/delete'),
+                                'requestHeader' => 'delete'
+                            ]
+                    ]
+            ];
+        }
+
         // Functions that the routes interacts with
         /**
          * @param SecurityCSRFRequest $request

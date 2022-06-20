@@ -8,11 +8,13 @@
     namespace App\Http\Controllers;
     
     // external libraries
-    use Illuminate\Http\Request;
+use App\Http\Controllers\schemas\security\configuration\SecurityConfigurationController as ConfigurationController;
+use App\Http\Controllers\schemas\security\csrf\SecurityCSRFTokenController as CSRFController;
+use App\Http\Controllers\schemas\security\recaptcha\SecurityRecaptchaController as RecaptchaController;
+use Illuminate\Http\Request;
 
-    // Internal libraries
+// Internal libraries
         // Account
-    
     
     // Options
     
@@ -20,7 +22,7 @@
     // Security
 
 
-    /**
+/**
      * 
      */
     class ApiHomeController
@@ -307,103 +309,12 @@
          */
         protected function generateSecurityApi(): array
         {
-            $structure = 
-            [
-                'csrf' => 
-                [
-                    'create' =>
-                    [ 
-                        'operation' => 'create',
-                        'url' => url('/api/1.0.0/securities/newsletter/create'),
-                        'requestHeader' => 'post'
-                    ],
+            $list = array();
+            array_push($list, CSRFController::explorerStructure());
+            array_push($list, ConfigurationController::explorerStructure());
+            array_push($list, RecaptchaController::explorerStructure());
 
-                    'read' =>
-                    [ 
-                        'operation' => 'read',
-                        'url' => url('/api/1.0.0/securities/newsletter/read'),
-                        'requestHeader' => 'get'
-                    ],
-
-                    'update' =>
-                    [ 
-                        'operation' => 'update',
-                        'url' => url('/api/1.0.0/securities/newsletter/update'),
-                        'requestHeader' => 'patch'
-                    ],
-
-                    'delete' =>
-                    [ 
-                        'operation' => 'delete',
-                        'url' => url('/api/1.0.0/securities/newsletter/delete'),
-                        'requestHeader' => 'delete'
-                    ]
-                ],
-
-                'configuration' => 
-                [
-                    'create' =>
-                    [ 
-                        'operation' => 'create',
-                        'url' => url('/api/1.0.0/securities/newsletter/create'),
-                        'requestHeader' => 'post'
-                    ],
-
-                    'read' =>
-                    [ 
-                        'operation' => 'read',
-                        'url' => url('/api/1.0.0/securities/newsletter/read'),
-                        'requestHeader' => 'get'
-                    ],
-
-                    'update' =>
-                    [ 
-                        'operation' => 'update',
-                        'url' => url('/api/1.0.0/securities/newsletter/update'),
-                        'requestHeader' => 'patch'
-                    ],
-
-                    'delete' =>
-                    [ 
-                        'operation' => 'delete',
-                        'url' => url('/api/1.0.0/securities/newsletter/delete'),
-                        'requestHeader' => 'delete'
-                    ]
-                ],
-
-                'recaptcha' => 
-                [
-                    'create' =>
-                    [ 
-                        'operation' => 'create',
-                        'url' => url('/api/1.0.0/securities/newsletter/create'),
-                        'requestHeader' => 'post'
-                    ],
-
-                    'read' =>
-                    [ 
-                        'operation' => 'read',
-                        'url' => url('/api/1.0.0/securities/newsletter/read'),
-                        'requestHeader' => 'get'
-                    ],
-
-                    'update' =>
-                    [ 
-                        'operation' => 'update',
-                        'url' => url('/api/1.0.0/securities/newsletter/update'),
-                        'requestHeader' => 'patch'
-                    ],
-
-                    'delete' =>
-                    [ 
-                        'operation' => 'delete',
-                        'url' => url('/api/1.0.0/securities/newsletter/delete'),
-                        'requestHeader' => 'delete'
-                    ]
-                ]
-            ];
-
-            return $structure;
+            return $list;
         }
 
 
@@ -419,7 +330,7 @@
                 [
                     'routes' =>
                     [
-                        'accounts'   => $this->generateAccountApi(),
+                        'accounts'  => $this->generateAccountApi(),
                         'options'   => $this->generateOptionsApi(),
                         'security'  => $this->generateSecurityApi()
                     ]

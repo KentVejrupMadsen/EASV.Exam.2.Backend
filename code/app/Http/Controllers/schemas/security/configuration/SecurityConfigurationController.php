@@ -40,6 +40,42 @@ use OpenApi\Attributes as OA;
         // Variables
         private static ?SecurityConfigurationController $controller = null;
 
+        public static function explorerStructure(): array
+        {
+            return
+                [
+                    'configuration' =>
+                    [
+                        'create' =>
+                            [
+                                'operation' => 'create',
+                                'url' => url('/api/1.0.0/securities/configuration/create'),
+                                'requestHeader' => 'post'
+                            ],
+
+                        'read' =>
+                            [
+                                'operation' => 'read',
+                                'url' => url('/api/1.0.0/securities/configuration/read'),
+                                'requestHeader' => 'get'
+                            ],
+
+                        'update' =>
+                            [
+                                'operation' => 'update',
+                                'url' => url('/api/1.0.0/securities/configuration/update'),
+                                'requestHeader' => 'patch'
+                            ],
+
+                        'delete' =>
+                            [
+                                'operation' => 'delete',
+                                'url' => url('/api/1.0.0/securities/configuration/delete'),
+                                'requestHeader' => 'delete'
+                            ]
+                    ]
+                ];
+        }
 
         // Functions that the routes interacts with
         /**

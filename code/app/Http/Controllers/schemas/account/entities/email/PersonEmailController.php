@@ -47,9 +47,9 @@ use OpenApi\Attributes as OA;
 
         // Variables
         private static ?PersonEmailController $controller = null;
-        private static ?ControllerBuilder     $builder = null;
-        private static ?ControllerGC          $gc = null;
-        private static ?ControllerStates      $states = null;
+        private static ?ControllerBuilder     $builder    = null;
+        private static ?ControllerGC          $gc         = null;
+        private static ?ControllerStates      $states     = null;
 
 
         // functions

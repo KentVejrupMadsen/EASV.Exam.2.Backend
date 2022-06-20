@@ -38,6 +38,43 @@ use OpenApi\Attributes as OA;
             }
         }
 
+        public static function explorerStructure(): array
+        {
+            return
+                [
+                    'recaptcha' =>
+                        [
+                            'create' =>
+                                [
+                                    'operation' => 'create',
+                                    'url' => url('/api/1.0.0/securities/recaptcha/create'),
+                                    'requestHeader' => 'post'
+                                ],
+
+                            'read' =>
+                                [
+                                    'operation' => 'read',
+                                    'url' => url('/api/1.0.0/securities/recaptcha/read'),
+                                    'requestHeader' => 'get'
+                                ],
+
+                            'update' =>
+                                [
+                                    'operation' => 'update',
+                                    'url' => url('/api/1.0.0/securities/recaptcha/update'),
+                                    'requestHeader' => 'patch'
+                                ],
+
+                            'delete' =>
+                                [
+                                    'operation' => 'delete',
+                                    'url' => url('/api/1.0.0/securities/recaptcha/delete'),
+                                    'requestHeader' => 'delete'
+                                ]
+                        ]
+                ];
+        }
+
         // Variables
         private static ?SecurityRecaptchaController $controller = null;
 
