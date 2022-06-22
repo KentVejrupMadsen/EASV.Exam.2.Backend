@@ -78,7 +78,7 @@
                 'account.security.password' => 'required|min:6|max:16',
                 'account.security.confirm'  => 'required|same:account.security.password',
                 
-                'account.person.email' 		=> 'required'
+                'account.person.email' 		=> 'required|email:rfc,dns'
             ];
         }
     }
