@@ -1,22 +1,26 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * 
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers\schemas\account\information;
 
-    // External libraries
-use App\Http\Controllers\templates\ControllerPipeline;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use OpenApi\Attributes as OA;
 
-// Internal libraries
+        // External libraries
+    use Illuminate\Http\JsonResponse;
+    use Illuminate\Http\Request;
+    use OpenApi\Attributes 
+    	as OA;
+
+    // Internal libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
 
 
-/**
+    /**
      *
      */
     #[OA\Schema( title: 'Account Information Controller',

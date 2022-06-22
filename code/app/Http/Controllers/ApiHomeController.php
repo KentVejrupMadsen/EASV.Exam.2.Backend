@@ -1,28 +1,29 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * 
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers;
     
     // external libraries
-use App\Http\Controllers\schemas\security\configuration\SecurityConfigurationController as ConfigurationController;
-use App\Http\Controllers\schemas\security\csrf\SecurityCSRFTokenController as CSRFController;
-use App\Http\Controllers\schemas\security\recaptcha\SecurityRecaptchaController as RecaptchaController;
-use Illuminate\Http\Request;
+	use Illuminate\Http\Request;
 
-// Internal libraries
-        // Account
-    
-    // Options
-    
-    
-    // Security
-
-
-/**
+	// Internal libraries
+    use App\Http\Controllers\schemas\security\configuration\SecurityConfigurationController 
+    	as ConfigurationController;
+	
+	use App\Http\Controllers\schemas\security\csrf\SecurityCSRFTokenController 
+		as CSRFController;
+		
+	use App\Http\Controllers\schemas\security\recaptcha\SecurityRecaptchaController 
+		as RecaptchaController;
+	
+	
+	/**
      * 
      */
     class ApiHomeController

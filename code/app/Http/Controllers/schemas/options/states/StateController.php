@@ -1,20 +1,24 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * 
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers\schemas\options\states;
 
     // External libraries
-use App\Http\Controllers\templates\ControllerOption;
-use App\Http\Requests\options\states\StateRequest;
-use OpenApi\Attributes as OA;
+    use OpenApi\Attributes 
+    	as OA;
 
-// Internal libraries
+    // Internal libraries
+    use App\Http\Controllers\templates\ControllerOption;
+    use App\Http\Requests\options\states\StateRequest;
 
 
-#[OA\Schema( title: 'State Controller',
+    #[OA\Schema( title: 'State Controller',
                  description: '',
                  type: self::model_type )]
     class StateController

@@ -1,18 +1,21 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     *
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers\schemas\account\entities\email\packages;
 
-    // Internal libraries
-    use App\Models\tables\AccountEmailModel
-        as Model;
 
-    use App\Http\Controllers\templates\Builder
-        as BuilderTemplate;
+    // Internal libraries
+    use App\Http\Controllers\templates\Builder 
+    	as BuilderTemplate;
+    	
+    use App\Models\tables\AccountEmailModel 
+    	as Model;
 
 
     /**
@@ -28,15 +31,17 @@
         {
 
         }
-
-
+        
+        
         // Variables
         private static ?PersonEmailBuilder $singleton = null;
         private ?array $buffer                        = null;
-
+        
+        private const zero = 0;
+        
         private const field_content = 'content';
-
-
+        
+        
         /**
          * @param array $input
          * @return mixed
@@ -47,8 +52,8 @@
 
             return null;
         }
-
-
+        
+        
         /**
          * @param array $input
          * @return void
@@ -59,8 +64,8 @@
 
             return;
         }
-
-
+        
+        
         /**
          * @param array $input
          * @return array|null
@@ -80,8 +85,8 @@
 
             return $retVal;
         }
-
-
+        
+        
         /**
          * @param array $input
          * @return bool
@@ -90,8 +95,8 @@
         {
             return is_string( $input[ $this->getContentField() ] );
         }
-
-
+        
+        
         /** Creates multiple persistence data in the database and returns them as models in the output file
          * @param array $input
          * @return void
@@ -101,7 +106,7 @@
             $modelsToBeInserted = $this->convertToEloquentModels( $input );
             $sizeOfModels = count( $modelsToBeInserted );
 
-            for( $index = 0;
+            for( $index = self::zero;
                  $index < $sizeOfModels;
                  $index++ )
             {
@@ -114,8 +119,8 @@
                 }
             }
         }
-
-
+        
+        
         /**
          * @param array $inputArr
          * @return array
@@ -125,7 +130,7 @@
             $retVal = array();
             $sizeOfArray = count( $inputArr );
 
-            for( $index = 0;
+            for( $index = self::zero;
                  $index < $sizeOfArray;
                  $index++ )
             {
@@ -137,8 +142,8 @@
 
             return $retVal;
         }
-
-
+        
+        
         /**
          * @return array|null
          */
@@ -149,8 +154,8 @@
 
             return $retArray;
         }
-
-
+        
+        
         /**
          * @return Model|null
          */
@@ -160,8 +165,8 @@
 
             return null;
         }
-
-
+        
+        
         /** Empties the buffer by replacing the array with an empty one
          * @return array
          */
@@ -171,8 +176,8 @@
 
             return $this->getBuffer();
         }
-
-
+        
+        
         // Accessors
             // Getters
         /**
@@ -189,8 +194,8 @@
 
             return self::$singleton;
         }
-
-
+        
+        
         /**
          * @return array
          */
@@ -203,8 +208,8 @@
 
             return $this->buffer;
         }
-
-
+        
+        
             // Setters
         /**
          * @param PersonEmailBuilder $singleton
@@ -214,8 +219,8 @@
         {
             self::$singleton = $singleton;
         }
-
-
+        
+        
         /**
          * @param array $buffer
          * @return void
@@ -224,8 +229,8 @@
         {
             $this->buffer = $buffer;
         }
-
-
+        
+        
         /**
          * @return string
          */
@@ -233,8 +238,8 @@
         {
             return self::field_content;
         }
-
-
+        
+        
         /**
          * @param string $emailValue
          * @return string[]
@@ -246,18 +251,27 @@
                 $this->getContentField() => $emailValue
             ];
         }
-
+        
+        
+        /**
+         * @param array $array
+         * @return bool
+         */
         protected final function hasArrayContentKey( Array $array )
         {
             return array_key_exists( $this->getContent(), $array );
         }
-
+        
+        
+        /**
+         * @return string
+         */
         protected final function getContent(): string
         {
             return self::getContentField();
         }
-
-
+        
+        
         /**
          * @param array|null $input
          * @return bool
@@ -266,8 +280,8 @@
         {
             return is_null( $input );
         }
-
-
+        
+        
         /**
          * @param array $input
          * @return bool
@@ -277,8 +291,8 @@
             $val = count( $input );
             return ( $val == 0 );
         }
-
-
+        
+        
         /**
          * @param Model $input
          * @return array

@@ -1,22 +1,26 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * 
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers\schemas\security\recaptcha;
 
     // External libraries
-use App\Http\Controllers\templates\CrudController;
-use App\Http\Requests\security\csrf\SecurityCSRFRequest;
-use Illuminate\Http\Request;
-use OpenApi\Attributes as OA;
-
-// Internal libraries
+	use Illuminate\Http\Request;
+	use OpenApi\Attributes 
+		as OA;
 
 
-/**
+	// Internal libraries
+	use App\Http\Controllers\templates\CrudController;
+	use App\Http\Requests\security\csrf\SecurityCSRFRequest;
+
+
+	/**
      *
      */
     #[OA\Schema( title: 'Security Recaptcha Controller',
