@@ -40,6 +40,16 @@
 
             return $debug_variable;
         }
+        
+        protected final function getOperationState(): string
+        {
+        	$path = $this->path();
+			
+			$result = explode('/', $path );
+			$last = ( count( $result ) - 1 );
+			
+			return $result[$last];
+        }
 
 
         /**

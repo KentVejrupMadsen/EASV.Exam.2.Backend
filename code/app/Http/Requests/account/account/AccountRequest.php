@@ -37,9 +37,10 @@
             return $this->CRUDRoutes();
         }
 
+
         /**
-         * @return bool
-         */
+		 * @return bool
+		 */
         public final function authorize(): bool
         {
             $retVal = false;
@@ -71,14 +72,46 @@
 		  */
         public final function rules(): array
         {
-            return
-            [
-                'account.username' => 'required|min:2|max:20',
-                
-                'account.security.password' => 'required|min:6|max:16',
-                'account.security.confirm'  => 'required|same:account.security.password',
-                
-                'account.person.email' 		=> 'required|email:rfc,dns'
+        	switch ( $this->getOperationState() )
+        	{
+        		default:
+        			return [];
+        			
+				case 'login':
+					return $this->validateLogin();
+					
+				case 'create':
+					return $this->validateCreate();
+        	}
+        }
+        
+        
+        /**
+		 * @return array
+		 */
+        protected final function validateLogin(): array
+        {
+        	return 
+        	[
+        		'account.username' => 'required|min:2|max:20',
+        		'account.security.password' => 'required|min:6|max:16',
+			];
+        }
+        
+        
+        /**
+		 * @return array
+		 */
+        protected final function validateCreate(): array 
+        {
+        	return
+			[
+				'account.username' => 'required|min:2|max:20',
+											
+				'account.security.password' => 'required|min:6|max:16',
+				'account.security.confirm'  => 'required|same:account.security.password',
+											
+				'account.person.email' 		=> 'required|email:rfc,dns'
             ];
         }
     }
