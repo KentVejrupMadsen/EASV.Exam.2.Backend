@@ -1,21 +1,26 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * 
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers\schemas\account\newsletter;
 
     // External Libraries
-use App\Http\Controllers\templates\ControllerPipeline;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use OpenApi\Attributes as OA;
+    use Illuminate\Http\JsonResponse;
+    use Illuminate\Http\Request;
+    use OpenApi\Attributes 
+    	as OA;
 
-// internal Libraries
 
-/**
+    // internal Libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
+
+
+    /**
      *
      */
     #[OA\Schema( title: 'Newsletter Controller',

@@ -1,19 +1,20 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     *
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
-
     // External 
-use App\Http\Controllers\schemas\options\find\FindController;
-use App\Routes\Controllers\RouteController;
-use Illuminate\Support\Facades\Route;
+	use Illuminate\Support\Facades\Route;
+	
+	// Internal
+	use App\Http\Controllers\schemas\options\find\FindController;
+	use App\Routes\Controllers\RouteController;
 
-// Internal
-
-/**
+	/**
      *
      */
     class FindApi

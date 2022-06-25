@@ -1,9 +1,11 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * TODO: Make description
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers\schemas\account\account;
 
@@ -344,7 +346,11 @@
          */
         public final function create( Request $request )
         {
-            return null;
+        	$builder = self::getBuilder();
+        	
+        	$res = $request->input('account.security');
+        	
+            return $res;
         }
 
 

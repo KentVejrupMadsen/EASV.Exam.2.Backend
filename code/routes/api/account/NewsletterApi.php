@@ -1,19 +1,21 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * Serves the route for the newsletter model.
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     // External libraries
-use App\Http\Controllers\schemas\account\newsletter\NewsletterController;
-use App\Routes\Controllers\RouteController;
-use Illuminate\Support\Facades\Route;
+	use Illuminate\Support\Facades\Route;
+	
+	// Internal libraries
+	use App\Http\Controllers\schemas\account\newsletter\NewsletterController;
+	use App\Routes\Controllers\RouteController;
 
-// Internal libraries
 
-
-/**
+	/**
      *
      */
     class NewsletterApi

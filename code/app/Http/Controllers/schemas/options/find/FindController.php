@@ -1,20 +1,25 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * 
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers\schemas\options\find;
-
+	
     // External
-use App\Http\Controllers\templates\ControllerOption;
-use App\Http\Requests\options\find\FindRequest;
-use OpenApi\Attributes as OA;
-
-// Internal
+    use OpenApi\Attributes 
+    	as OA;
 
 
-#[OA\Schema( title: 'Find Controller',
+    // Internal
+    use App\Http\Controllers\templates\ControllerOption;
+    use App\Http\Requests\options\find\FindRequest;
+
+
+    #[OA\Schema( title: 'Find Controller',
                  description: '',
                  type: self::model_type )]
     class FindController

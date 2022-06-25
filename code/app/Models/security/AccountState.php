@@ -1,15 +1,20 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * TODO: Make description
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Models\security;
 
+	// Internal
     use App\Models\tables\templates\BaseModel;
     use App\Models\tables\templates\ExtensionNoTimestampModel;
 
+
+	// External
     use OpenApi\Attributes
         as OA;
 

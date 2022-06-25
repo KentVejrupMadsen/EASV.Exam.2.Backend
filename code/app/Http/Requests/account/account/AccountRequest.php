@@ -1,19 +1,22 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * TODO: Make description
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Requests\account\account;
 
     // External
+    use OpenApi\Attributes 
+    	as OA;
+
+    // Internal
     use App\Http\Requests\template\BaseRequest;
     use App\Http\Requests\template\PublicRequest;
     use App\Http\Requests\template\RequestDefaults;
-    use OpenApi\Attributes as OA;
-
-    // Internal
 
 
     /**
@@ -34,9 +37,10 @@
             return $this->CRUDRoutes();
         }
 
+
         /**
-         * @return bool
-         */
+		 * @return bool
+		 */
         public final function authorize(): bool
         {
             $retVal = false;
@@ -64,13 +68,50 @@
 
 
         /**
-         * @return array
-         */
+		  * @return string[]
+		  */
         public final function rules(): array
         {
-            return
-            [
-                //
+        	switch ( $this->getOperationState() )
+        	{
+        		default:
+        			return [];
+        			
+				case 'login':
+					return $this->validateLogin();
+					
+				case 'create':
+					return $this->validateCreate();
+        	}
+        }
+        
+        
+        /**
+		 * @return array
+		 */
+        protected final function validateLogin(): array
+        {
+        	return 
+        	[
+        		'account.username' => 'required|min:2|max:20',
+        		'account.security.password' => 'required|min:6|max:16',
+			];
+        }
+        
+        
+        /**
+		 * @return array
+		 */
+        protected final function validateCreate(): array 
+        {
+        	return
+			[
+				'account.username' => 'required|min:2|max:20',
+											
+				'account.security.password' => 'required|min:6|max:16',
+				'account.security.confirm'  => 'required|same:account.security.password',
+											
+				'account.person.email' 		=> 'required|email:rfc,dns'
             ];
         }
     }

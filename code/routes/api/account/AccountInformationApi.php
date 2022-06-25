@@ -1,16 +1,18 @@
-    <?php
-    /**
+<?php
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * Serves the routes for the account models.
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     // Internal libraries
     use App\Http\Controllers\schemas\account\information\InformationController;
     use App\Routes\Controllers\RouteController;
-    use Illuminate\Support\Facades\Route;
 
     // External libraries
+    use Illuminate\Support\Facades\Route;
 
 
     /**

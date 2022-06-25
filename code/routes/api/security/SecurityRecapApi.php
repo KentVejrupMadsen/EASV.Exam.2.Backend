@@ -1,16 +1,18 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     *
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     // External libraries
-use App\Http\Controllers\schemas\security\recaptcha\SecurityRecaptchaController;
-use App\Routes\Controllers\RouteController;
-use Illuminate\Support\Facades\Route;
+	use Illuminate\Support\Facades\Route;
 
-// Internal libraries
+	// Internal libraries
+	use App\Http\Controllers\schemas\security\recaptcha\SecurityRecaptchaController;
+	use App\Routes\Controllers\RouteController;
 
 
     /**

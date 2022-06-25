@@ -1,22 +1,28 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * 
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers\schemas\account\entities\name;
 
-    // External Libraries
-use App\Http\Controllers\templates\ControllerPipeline;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use OpenApi\Attributes as OA;
-
-// Internal libraries
+	// Internal Libraries
+    use App\Http\Controllers\templates\ControllerPipeline;
 
 
-/**
+    // External libraries
+    use Illuminate\Http\JsonResponse;
+    
+    use Illuminate\Http\Request;
+    
+    use OpenApi\Attributes 
+    	as OA;
+
+
+    /**
      * Account Email controller. That are used when getting "ask" by a computer for data.
      */
     #[OA\Schema( title: 'Person Name Controller',
