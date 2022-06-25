@@ -1,12 +1,14 @@
+# reads all objects it finds on the repository as a text files.
+
 * text=auto
 
+# Specifc types
 *.blade.php diff=html
 *.md diff=markdown
 
 *.php diff=php
 *.php text eol=lf
 
-*.sql diff=text
 *.sql text eol=lf
 
 *.json diff=json
