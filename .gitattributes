@@ -12,5 +12,12 @@
 *.sh diff=bash
 *.sh text eol=lf
 
+    # Powershell settings
+*.ps1 text eol=crlf
+
+    # Git attributes
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
 /.github export-ignore
 CHANGELOG.md export-ignore
