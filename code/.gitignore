@@ -1,23 +1,15 @@
-node_modules/
-node_modules/*
-
-/public/hot
-/public/storage
-
-/storage/*.key
-
-/vendor
-
-
-.phpunit.result.cache
-
+# Files to ignore
+*.json
 *.log
 
-.htaccess
-
 *.example
-*.json
 *.xml
 *.css
 
 *.yaml
+
+.htaccess
+.env
+*.lock
+*.key
+*.crt

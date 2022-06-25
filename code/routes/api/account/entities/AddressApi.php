@@ -1,19 +1,22 @@
 <?php
     /**
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
         Serves the routes for the address model.
         so the client can interact with their associated 'address model'
         though the address controller. it's boundried so the client can only
         view, update and delete they own data.
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     // External libraries
-use App\Http\Controllers\schemas\account\entities\address\PersonAddressController;
-use App\Routes\Controllers\RouteController;
-use Illuminate\Support\Facades\Route;
-
-// Internal libraries
+	use Illuminate\Support\Facades\Route;
+	
+	// Internal libraries
+	use App\Http\Controllers\schemas\account\entities\address\PersonAddressController;
+	use App\Routes\Controllers\RouteController;
 
 
 /**

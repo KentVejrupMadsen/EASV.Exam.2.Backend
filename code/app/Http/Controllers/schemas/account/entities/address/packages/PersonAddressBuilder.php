@@ -1,12 +1,15 @@
-<?php
-    /**
+<?php 
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     *
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers\schemas\account\entities\address\packages;
-
+    
+    // Internal Models
     use App\Http\Controllers\templates\Builder;
     use App\Models\tables\AddressModel;
 
@@ -43,6 +46,7 @@
          */
         public final function createModel( array $input ): mixed
         {
+            
 
             return null;
         }
@@ -54,7 +58,7 @@
          */
         public final function creationOfModels( array $array ): void
         {
-            // TODO: Implement creationOfModels() method.
+        
         }
 
 
@@ -64,7 +68,7 @@
          */
         public final function templateModels( array $array ): void
         {
-            // TODO: Implement templateModels() method.
+        
         }
 
 
@@ -73,7 +77,7 @@
          */
         public final function retrieveOutputResults(): ?array
         {
-            // TODO: Implement retrieveOutputResults() method.
+        
             return null;
         }
 
@@ -83,7 +87,7 @@
          */
         public final function retrieveSingular(): ?AddressModel
         {
-            // TODO: Implement retrieveSingular() method.
+            
             return null;
         }
 

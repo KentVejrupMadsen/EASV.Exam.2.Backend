@@ -1,22 +1,26 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
         Serves the routes for the name model.
         so the client can interact with their associated 'name models'
         though the person name controller. it's boundried so the client can only
         view, update and delete they own data.
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
+   
      */
     // External library
-use App\Http\Controllers\schemas\account\entities\name\PersonNameController;
-use App\Routes\Controllers\RouteController;
-use Illuminate\Support\Facades\Route;
+	use Illuminate\Support\Facades\Route;
 
-// Internal library
+	// Internal library
+	use App\Http\Controllers\schemas\account\entities\name\PersonNameController;
+	use App\Routes\Controllers\RouteController;
 
 
-/**
+	/**
      *
      */
     class NameApi

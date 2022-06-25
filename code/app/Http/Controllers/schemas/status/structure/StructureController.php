@@ -1,12 +1,22 @@
 <?php
+    /*
+     * Author: Kent vejrup Madsen
+     * Contact: Kent.vejrup.madsen@designermadsen.com
+     * Description:
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
+     */
     namespace App\Http\Controllers\schemas\status\structure;
 
     // External
-use Illuminate\Http\JsonResponse;
-use Illuminate\Routing\Controller as BaseController;
+	use Illuminate\Http\JsonResponse;
+	
+	use Illuminate\Routing\Controller 
+		as BaseController;
 
 
-/**
+	/**
      *
      */
     class StructureController

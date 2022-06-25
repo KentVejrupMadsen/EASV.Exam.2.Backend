@@ -1,20 +1,22 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     *
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
      
      // Internal
-use App\Http\Controllers\schemas\status\health\HealthController;
-use App\Routes\Controllers\NodesController;
-use Illuminate\Support\Facades\Route;
+	use App\Http\Controllers\schemas\status\health\HealthController;
+	use App\Routes\Controllers\NodesController;
 
-// External 
+	// External 
+	use Illuminate\Support\Facades\Route;
 
 
-/**
+	/**
      *
      */
     class StatusRoutes

@@ -1,27 +1,31 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * 
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers\schemas\security\csrf;
 
     // External libraries
-use App\Http\Controllers\schemas\security\csrf\packages\CSRFResponseJSONFactory;
-use App\Http\Controllers\schemas\security\csrf\packages\RedisCacheCSRFController;
-use App\Http\Controllers\templates\CrudController;
-use App\Http\Requests\security\csrf\SecurityCSRFRequest;
-use App\Models\security\CSRFModel;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use OpenApi\Attributes as OA;
-use SecurityCSRFBuilder;
+	use Illuminate\Http\JsonResponse;
+	use Illuminate\Http\Request;
+	use OpenApi\Attributes 
+		as OA;
+		
 
-// Internal libraries
+	// Internal libraries
+	use App\Http\Controllers\schemas\security\csrf\packages\CSRFResponseJSONFactory;
+	use App\Http\Controllers\schemas\security\csrf\packages\RedisCacheCSRFController;
+	use App\Http\Controllers\templates\CrudController;
+	use App\Http\Requests\security\csrf\SecurityCSRFRequest;
+	use App\Models\security\CSRFModel;
+	use SecurityCSRFBuilder;
 
 
-/**
+    /**
      * 
      */
     #[OA\Schema( title: 'Security CSRF Token Controller',
@@ -48,6 +52,43 @@ use SecurityCSRFBuilder;
         private ?CSRFResponseJSONFactory $jsonFactory = null;
         private ?SecurityCSRFBuilder $constructor = null;
 
+
+        public static function explorerStructure(): array
+        {
+            return 
+            [
+                'csrf' => 
+                [
+                        'create' =>
+                            [
+                                'operation' => 'create',
+                                'url' => url('/api/1.0.0/securities/csrf/create'),
+                                'requestHeader' => 'post'
+                            ],
+
+                        'read' =>
+                            [
+                                'operation' => 'read',
+                                'url' => url('/api/1.0.0/securities/csrf/read'),
+                                'requestHeader' => 'get'
+                            ],
+
+                        'update' =>
+                            [
+                                'operation' => 'update',
+                                'url' => url('/api/1.0.0/securities/csrf/update'),
+                                'requestHeader' => 'patch'
+                            ],
+
+                        'delete' =>
+                            [
+                                'operation' => 'delete',
+                                'url' => url('/api/1.0.0/securities/csrf/delete'),
+                                'requestHeader' => 'delete'
+                            ]
+                    ]
+            ];
+        }
 
         // Functions that the routes interacts with
         /**

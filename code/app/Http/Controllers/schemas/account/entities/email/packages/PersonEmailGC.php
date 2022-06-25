@@ -1,15 +1,17 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     *
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Controllers\schemas\account\entities\email\packages;
 
     use App\Http\Controllers\templates\Truncator;
-    use App\Models\tables\AccountEmailModel;
-    use App\Http\Controllers\templates\Builder;
+
+    // 
 
 
     /**

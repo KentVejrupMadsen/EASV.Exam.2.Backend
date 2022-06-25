@@ -1,11 +1,17 @@
 .editorconfig
 
-.env
 .env.backup
 
-*.lock
-
-.idea/*
-/.vscode
+.idea*
+.vscode*
 
 code.zip
+
+.phpunit.result.cache
+
+node_modules*
+
+/public/hot/*
+/public/storage/*
+
+vendor*

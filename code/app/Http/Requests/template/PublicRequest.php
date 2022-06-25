@@ -1,9 +1,11 @@
 <?php
-    /**
+    /*
      * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@protonmail.com
+     * Contact: Kent.vejrup.madsen@designermadsen.com
      * Description:
-     * TODO: Make description
+     * Tags: 
+     * License: MIT License (https://opensource.org/licenses/MIT)
+     * Copyright: Kent vejrup Madsen, 2022
      */
     namespace App\Http\Requests\template;
 
@@ -37,6 +39,16 @@
             }
 
             return $debug_variable;
+        }
+        
+        protected final function getOperationState(): string
+        {
+        	$path = $this->path();
+			
+			$result = explode('/', $path );
+			$last = ( count( $result ) - 1 );
+			
+			return $result[$last];
         }
 
 
