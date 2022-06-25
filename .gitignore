@@ -1,13 +1,18 @@
+# Files
 .editorconfig
 
-.env.backup
+*.backup
+*.zip
+*.cache
 
+*.key
+*.crt
+*.log
+*.lock
+
+# Directories to ignore
 .idea*
 .vscode*
-
-code.zip
-
-.phpunit.result.cache
 
 node_modules*
 

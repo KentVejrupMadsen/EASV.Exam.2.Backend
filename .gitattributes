@@ -2,8 +2,15 @@
 
 *.blade.php diff=html
 *.md diff=markdown
+
 *.php diff=php
+*.php text eol=lf
+
 *.json diff=json
+
+    # bash settings
+*.sh diff=bash
+*.sh text eol=lf
 
 /.github export-ignore
 CHANGELOG.md export-ignore
