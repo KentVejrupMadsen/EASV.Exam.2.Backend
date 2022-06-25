@@ -6,6 +6,9 @@
 *.php diff=php
 *.php text eol=lf
 
+*.sql diff=text
+*.sql text eol=lf
+
 *.json diff=json
 
     # bash settings
