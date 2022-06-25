@@ -20,6 +20,18 @@
     # Powershell settings
 *.ps1 text eol=crlf
 
+
+
+# Line conversion, internally it will be treated as if it is utf-8
+# *.ps1 text working-tree-encoding=UTF-16
+*.sql text working-tree-encoding=UTF-8
+*.php text working-tree-encoding=UTF-8
+*.html text working-tree-encoding=UTF-8
+*.md text working-tree-encoding=UTF-8
+*.sh text working-tree-encoding=UTF-8
+
+
+
     # Git attributes
 .gitignore text eol=lf
 .gitattributes text eol=lf
