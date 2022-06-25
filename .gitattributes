@@ -1,0 +1,9 @@
+* text=auto
+
+*.blade.php diff=html
+*.md diff=markdown
+*.php diff=php
+*.json diff=json
+
+/.github export-ignore
+CHANGELOG.md export-ignore

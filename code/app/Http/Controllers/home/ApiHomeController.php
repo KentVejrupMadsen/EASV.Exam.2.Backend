@@ -1,31 +1,33 @@
 <?php
     /*
-     * Author: Kent vejrup Madsen
-     * Contact: Kent.vejrup.madsen@designermadsen.com
-     * Description:
-     * Tags: 
-     * License: MIT License (https://opensource.org/licenses/MIT)
-     * Copyright: Kent vejrup Madsen, 2022
-     */
-    namespace App\Http\Controllers;
+ * Author: Kent vejrup Madsen
+ * Contact: Kent.vejrup.madsen@designermadsen.com
+ * Description:
+ * Tags:
+ * License: MIT License (https://opensource.org/licenses/MIT)
+ * Copyright: Kent vejrup Madsen, 2022
+ */
+    namespace App\Http\Controllers\home;
     
     // external libraries
-	use Illuminate\Http\Request;
+    use Illuminate\Http\Request;
 
-	// Internal libraries
-    use App\Http\Controllers\schemas\security\configuration\SecurityConfigurationController 
-    	as ConfigurationController;
-	
-	use App\Http\Controllers\schemas\security\csrf\SecurityCSRFTokenController 
-		as CSRFController;
-		
-	use App\Http\Controllers\schemas\security\recaptcha\SecurityRecaptchaController 
-		as RecaptchaController;
-	
-	
-	/**
-     * 
-     */
+    // Internal libraries
+    use App\Http\Controllers\Controller;
+
+    use App\Http\Controllers\schemas\security\configuration\SecurityConfigurationController
+        as ConfigurationController;
+
+    use App\Http\Controllers\schemas\security\csrf\SecurityCSRFTokenController
+        as CSRFController;
+
+    use App\Http\Controllers\schemas\security\recaptcha\SecurityRecaptchaController
+        as RecaptchaController;
+
+
+    /**
+      *
+      */
     class ApiHomeController
         extends Controller
     {
@@ -36,7 +38,6 @@
         {
             return '1.0.0';
         }
-
 
         /**
          * @return string

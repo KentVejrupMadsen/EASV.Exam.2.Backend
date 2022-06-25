@@ -7,6 +7,7 @@
      * License: MIT License (https://opensource.org/licenses/MIT)
      * Copyright: Kent vejrup Madsen, 2022
      */
+    // External libraries
     use Illuminate\Contracts\Http\Kernel;
     use Illuminate\Http\Request;
 
