@@ -1,15 +1,17 @@
 # Files to ignore
-*.json
-*.log
-
+    # Example files
 *.example
-*.xml
+
+    # Style files
 *.css
 
+    # Configuration files
 *.yaml
+*.json
+*.xml
 
+    # Apache settings
 .htaccess
+
+    # Envirotment files
 .env
-*.lock
-*.key
-*.crt
