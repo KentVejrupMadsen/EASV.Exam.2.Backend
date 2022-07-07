@@ -1,16 +1,40 @@
+# reads all objects it finds on the repository as a text files.
+
 * text=auto
 
+# Specifc types
 *.blade.php diff=html
 *.md diff=markdown
 
 *.php diff=php
 *.php text eol=lf
 
+*.sql text eol=lf
+
 *.json diff=json
 
     # bash settings
 *.sh diff=bash
 *.sh text eol=lf
+
+    # Powershell settings
+*.ps1 text eol=crlf
+
+
+
+# Line conversion, internally it will be treated as if it is utf-8
+# *.ps1 text working-tree-encoding=UTF-16
+*.sql text working-tree-encoding=UTF-8
+*.php text working-tree-encoding=UTF-8
+*.html text working-tree-encoding=UTF-8
+*.md text working-tree-encoding=UTF-8
+*.sh text working-tree-encoding=UTF-8
+
+
+
+    # Git attributes
+.gitignore text eol=lf
+.gitattributes text eol=lf
 
 /.github export-ignore
 CHANGELOG.md export-ignore
