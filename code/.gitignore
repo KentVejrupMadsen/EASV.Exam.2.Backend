@@ -7,7 +7,6 @@
 
     # Configuration files
 *.yaml
-*.json
 *.xml
 
     # Apache settings
